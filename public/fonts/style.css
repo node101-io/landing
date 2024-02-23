@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Igra Sans';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Igra Sans'), local('Igra-Sans'),
+      url('Igra-Sans.woff2') format('woff2'),
+      url('Igra-Sans.woff') format('woff'),
+      url('Igra-Sans.ttf') format('truetype');
+  font-display: swap;
+}

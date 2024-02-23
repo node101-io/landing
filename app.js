@@ -28,8 +28,11 @@ if (cluster.isMaster) {
   const app = express();
   const server = http.createServer(app);
 
-  const PORT = process.env.PORT || 3000;
+  const DEFAULT_PAGE_LANGUAGE = 'en';
   const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/node101';
+  const PORT = process.env.PORT || 3000;
+
+  const insertLanguageToLink = require('./utils/insertLanguageToLink');
 
   const indexRouteController = require('./routes/indexRoute');
 
@@ -43,15 +46,15 @@ if (cluster.isMaster) {
   });
 
   i18n.configure({
-    locales: ['tr', 'en'],
+    locales: ['en', 'tr'],
     directory: __dirname + '/translations',
     queryParameter: 'lang',
-    defaultLocale: 'tr'
+    defaultLocale: DEFAULT_PAGE_LANGUAGE
   });
 
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-  app.use(bodyParser.json({ limit: MAX_SERVER_UPLOAD_LIMIT }));
+  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
   }));
@@ -74,6 +77,12 @@ if (cluster.isMaster) {
       req.query = {};
     if (!req.body || typeof req.body != 'object')
       req.body = {};
+
+    res.locals.page_lang = req.headers['accept-language'] ? req.headers['accept-language'].split('-')[0] : DEFAULT_PAGE_LANGUAGE;
+    if (req.query.lang)
+      res.locals.lang = req.query.lang;
+
+    res.locals.insertLanguageToLink = insertLanguageToLink;
 
     next();
   });
