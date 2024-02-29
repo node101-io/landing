@@ -2,7 +2,12 @@ module.exports = (link, language) => {
   if (!link || typeof link != 'string')
     return '/';
 
-  let link_clean = link.split('/').join('/');
+  let add_https = false;
+  if (link.includes('https://'))
+    add_https = true;
+
+  let link_clean = (add_https ? 'https://' : '/') + link.replace('https://', '').split('/').join('/');
+  
 
   if (!link_clean.length)
     link_clean = '/';

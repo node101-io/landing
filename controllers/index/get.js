@@ -13,6 +13,12 @@ module.exports = (req, res) => {
         image: '/res/images/open-graph/header.png',
         twitter: true
       }
-    }
+    },
+    portfolio: [],
+    services: [],
+    events_title: '',
+    events: [],
+    contributions: [],
+    frequently_asked_questions: []
   });
 }

@@ -28,9 +28,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--background-color);
-  padding: var(--page-vertical-padding) var(--page-horizontal-padding);
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .header-wrapper {
@@ -45,6 +43,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
+  z-index: 999;
 }
 
 .header-logo-wrapper {
@@ -527,10 +526,4 @@
   font-size: 16px;
   color: var(--dark-text-color);
   cursor: pointer;
-}
-
-.content-wrapper {
-  height: calc(100vw - 2 * var(--page-horizontal-padding));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  background-color: var(--light-color);
 }
