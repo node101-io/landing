@@ -6,18 +6,49 @@ block content
         a.header-logo-link(href=insertLanguageToLink('/', lang))
           img.header-logo(src='/img/logo.svg' alt='node101 logo')
       .header-buttons-wrapper
+        - let header_buttons = [__('Portfolio'), __('Services'), __('Events'), __('Contributions'), __('About Us'), __('Reach Us')]
         a.each-header-button#header-portfolio-button
-          h1.each-header-button-text= __('Portfolio')
+          h1.each-header-button-text-wrapper
+            each letter, i in header_buttons[0].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          h1.each-header-button-text-wrapper-two
+            each letter, i in header_buttons[0].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         a.each-header-button(href=insertLanguageToLink('/validator-services', lang))
-          h1.each-header-button-text= __('Services')
+          h1.each-header-button-text-wrapper
+            each letter, i in header_buttons[1].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          h1.each-header-button-text-wrapper-two
+            each letter, i in header_buttons[1].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         a.each-header-button(href=`https://events.node101.io${lang ? '?lang=' + lang : ''}` target='_blank')
-          h1.each-header-button-text= __('Events')
+          h1.each-header-button-text-wrapper
+            each letter, i in header_buttons[2].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          h1.each-header-button-text-wrapper-two
+            each letter, i in header_buttons[2].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         a.each-header-button#header-ecosystem-contributions-button
-          h1.each-header-button-text= __('Contributions')
+          h1.each-header-button-text-wrapper
+            each letter, i in header_buttons[3].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          h1.each-header-button-text-wrapper-two
+            each letter, i in header_buttons[3].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         a.each-header-button(href=insertLanguageToLink('/about-us', lang))
-          h1.each-header-button-text= __('About Us')
+          h1.each-header-button-text-wrapper
+            each letter, i in header_buttons[4].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          h1.each-header-button-text-wrapper-two
+            each letter, i in header_buttons[4].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         a.each-header-button#header-reach-us-button
-          h1.each-header-button-text= __('Reach Us')
+          h1.each-header-button-text-wrapper
+            each letter, i in header_buttons[5].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          h1.each-header-button-text-wrapper-two
+            each letter, i in header_buttons[5].split('')
+              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
       .header-menu-wrapper
         a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
           .header-stake-with-node101-button-background

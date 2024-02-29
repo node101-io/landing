@@ -6,11 +6,7 @@ module.exports = (link, language) => {
   if (link.includes('https://'))
     add_https = true;
 
-  let link_clean = (add_https ? 'https://' : '/') + link.replace('https://', '').split('/').join('/');
-  
-
-  if (!link_clean.length)
-    link_clean = '/';
+  const link_clean = (add_https ? 'https://' : '') + link.replace('https://', '').split('/').join('/');
 
   if (!language || typeof language != 'string' || !language.trim().length)
     return link_clean;

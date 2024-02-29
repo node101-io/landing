@@ -6,6 +6,8 @@
   --header-logo-width: 62px;
   --header-menu-gap: 30px;
   --header-font-size: 15px;
+  --header-button-text-animation-transition-constant: 0.2s;
+  --header-button-space-width: 7px;
   --header-stake-with-node101-button-width: 145px;
   --header-stake-with-node101-button-height: 45px;
   --header-stake-with-node101-button-horizontal-padding: 17px;
@@ -85,18 +87,46 @@
   border-radius: calc((var(--header-height) - 2 * var(--header-vertical-padding)) / 2);
 }
 .each-header-button {
+  position: relative;
   height: fit-content;
   min-height: fit-content;
   width: fit-content;
   min-width: fit-content;
   text-decoration: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.each-header-button-text-wrapper {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  flex-shrink: 1 0 auto;
+}
+.each-header-button:hover .each-header-button-text-wrapper .each-header-button-text {
+  transform: translateY(1.2em);
+}
+.each-header-button-text-wrapper-two {
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  flex-shrink: 1 0 auto;
+}
+.each-header-button .each-header-button-text-wrapper-two .each-header-button-text {
+  transform: translateY(-1.2em);
+}
+.each-header-button:hover .each-header-button-text-wrapper-two .each-header-button-text {
+  transform: translateY(0);
 }
 .each-header-button-text {
   font-family: 'Igra Sans', sans-serif;
   font-size: var(--header-font-size);
   font-weight: 400;
   color: var(--dark-text-color);
+  flex-shrink: 0;
+  min-width: fit-content;
+  width: fit-content;
 }
 
 .header-menu-wrapper {
