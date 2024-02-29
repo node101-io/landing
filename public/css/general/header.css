@@ -5,6 +5,7 @@
   --header-gap: 50px;
   --header-logo-width: 62px;
   --header-menu-gap: 30px;
+  --header-font-size: 15px;
   --header-stake-with-node101-button-width: 145px;
   --header-stake-with-node101-button-height: 45px;
   --header-stake-with-node101-button-horizontal-padding: 17px;
@@ -93,7 +94,7 @@
 }
 .each-header-button-text {
   font-family: 'Igra Sans', sans-serif;
-  font-size: 16px;
+  font-size: var(--header-font-size);
   font-weight: 400;
   color: var(--dark-text-color);
 }
@@ -291,7 +292,7 @@
 }
 .header-stake-with-node101-button-text {
   font-family: 'Igra Sans', sans-serif;
-  font-size: 16px;
+  font-size: var(--header-font-size);
   font-weight: 400;
   color: var(--dark-text-color);
   margin-bottom: -2px;
@@ -328,7 +329,7 @@
 }
 .header-change-language-button-text {
   font-family: 'Igra Sans', sans-serif;
-  font-size: 16px;
+  font-size: var(--header-font-size);
   color: var(--dark-text-color);
 }
 .header-change-language-button-icon {
@@ -523,7 +524,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Igra Sans', sans-serif;
-  font-size: 16px;
+  font-size: var(--header-font-size);
   color: var(--dark-text-color);
   cursor: pointer;
 }

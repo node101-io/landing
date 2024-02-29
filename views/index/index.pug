@@ -4,7 +4,7 @@ block main
     .start-page-top-line-one
     .start-page-top-line-two
   .content-inner-wrapper
-    .start-page-background
+    //- .start-page-background
       .start-page-background-shape-wrapper
         .start-page-background-shape-one-wrapper
           svg.start-page-background-shape-one(viewbox='0 0 1467 1077' fill='none' xmlns='http://www.w3.org/2000/svg')
@@ -19,14 +19,25 @@ block main
       .start-page-external-link-wrapper.start-page-external-klein-wrapper
       .start-page-external-link-wrapper.start-page-external-events-wrapper
       .start-page-header-wrapper
-        h1.start-page-header-each-line= __('FOR YOU TO')
-        h1.start-page-header-each-line= __('MAKE MOST OF')
-        h1.start-page-header-each-line= __('THE')
-        h1.start-page-header-each-line= __('DISTRIBUTED')
+        - let start_page_text = [__('FOR YOU TO'), __('MAKE MOST OF'), __('THE'), __('DISTRIBUTED'), __('VALUE')]
+        h1.start-page-header-each-line
+          each letter in start_page_text[0].split('')
+            span= letter
+        h1.start-page-header-each-line
+          each letter in start_page_text[1].split('')
+            span= letter
+        h1.start-page-header-each-line
+          each letter in start_page_text[2].split('')
+            span= letter
+        h1.start-page-header-each-line
+          each letter in start_page_text[3].split('')
+            span= letter
         .start-page-last-line-wrapper
-          h1.start-page-header-each-line= __('VALUE')
+          h1.start-page-header-each-line
+            each letter in start_page_text[4].split('')
+              span= letter
           h2.start-page-description= __('World is changing, and there are a lot of new values emerging with blockchain technology. Now, it is the time to distribute the value.')
-      .start-page-social-media-wrapper
+      //- .start-page-social-media-wrapper
         a.start-page-each-social-media-button
           svg.start-page-each-social-media-icon(viewbox='0 0 26 23' xmlns='http://www.w3.org/2000/svg')
             path(d='M19.9585 0H23.792L15.4169 9.70726L25.2695 22.9167H17.555L11.5128 14.9052L4.59902 22.9167H0.763204L9.72116 12.5337L0.269531 0H8.17988L13.6416 7.32276L19.9585 0ZM18.6131 20.5897H20.7372L7.02566 2.2047H4.74619L18.6131 20.5897Z')
