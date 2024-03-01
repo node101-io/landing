@@ -21,7 +21,7 @@ block content
           h1.each-header-button-text-wrapper-two
             each letter, i in header_buttons[1].split('')
               .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-        a.each-header-button(href=`https://events.node101.io${lang ? '?lang=' + lang : ''}` target='_blank')
+        a.each-header-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
           h1.each-header-button-text-wrapper
             each letter, i in header_buttons[2].split('')
               .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter

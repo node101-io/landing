@@ -1,6 +1,7 @@
 let headerIsLanguageButtonOpen = false;
 
 let HEADER_HEIGHT;
+let WINDOW_HEIGHT;
 
 function headerBackgroundAnimation(percentage, amount) {
   if (typeof percentage != 'number' || percentage < 0 || percentage > 1)
@@ -10,8 +11,8 @@ function headerBackgroundAnimation(percentage, amount) {
   const buttonsWrapper = document.querySelector('.header-buttons-wrapper');
   const headerMenuWrapper = document.querySelector('.header-menu-wrapper');
 
-  const startPageLeftColor = document.querySelector('.start-page-left-color');
-  const startPageRightColor = document.querySelector('.start-page-right-color');
+  const startPageLeftTopRadius = document.querySelector('.start-page-left-top-radius');
+  const startPageRightTopRadius = document.querySelector('.start-page-right-top-radius');
 
   headerLogoWrapper.style.borderBottomRightRadius = `calc((var(--header-height) - 10px) * ${1 - percentage})`;
   buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - percentage} * var(--header-vertical-padding)))`;
@@ -22,16 +23,17 @@ function headerBackgroundAnimation(percentage, amount) {
   buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${percentage})`;
   headerMenuWrapper.style.borderBottomLeftRadius = `calc((var(--header-height) - 10px) * ${1 - percentage})`;
 
-  if (startPageLeftColor && startPageRightColor) {
-    startPageLeftColor.style.height = `calc(max(0px, (100vh - 2 * var(--page-vertical-padding) - var(--header-height)) - ${amount}px)`;
-    startPageLeftColor.style.minHeight = `calc(max(0px, (100vh - 2 * var(--page-vertical-padding) - var(--header-height)) - ${amount}px)`;
-    startPageRightColor.style.height = `calc(max(0px, (100vh - 2 * var(--page-vertical-padding) - var(--header-height)) - ${amount}px)`;
-    startPageRightColor.style.minHeight = `calc(max(0px, (100vh - 2 * var(--page-vertical-padding) - var(--header-height)) - ${amount}px)`;
+  if (startPageLeftTopRadius && startPageRightTopRadius) {
+    if (amount >= WINDOW_HEIGHT - HEADER_HEIGHT)
+      startPageLeftTopRadius.style.display = startPageRightTopRadius.style.display = 'none';
+    else
+      startPageLeftTopRadius.style.display = startPageRightTopRadius.style.display = 'flex';
   }
 };
 
 window.addEventListener('load', _ => {
   HEADER_HEIGHT = Number(getComputedStyle(document.documentElement).getPropertyValue('--header-height').replace('px', ''));
+  WINDOW_HEIGHT = window.innerHeight;
 
   const headerChangeLanguageButtonMenuWrapper = document.querySelector('.header-change-language-button-menu-wrapper');
 

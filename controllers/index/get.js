@@ -1,3 +1,62 @@
+const PORTFOLIO = [
+  {
+    _id: 'asset-mantle',
+    name: 'Asset Mantle'
+  },
+  {
+    _id: 'band-protocol',
+    name: 'Band Protocol'
+  },
+  {
+    _id: 'canto',
+    name: 'Canto'
+  },
+  {
+    _id: 'cheqd',
+    name: 'Cheqd'
+  },
+  {
+    _id: 'cosmos-hub',
+    name: 'Cosmos Hub'
+  },
+  {
+    _id: 'crescent',
+    name: 'Crescent'
+  },
+  {
+    _id: 'desmos',
+    name: 'Desmos'
+  },
+  {
+    _id: 'e-money',
+    name: 'E-Money'
+  },
+  {
+    _id: 'iris-net',
+    name: 'Iris Network'
+  },
+  {
+    _id: 'ki-chain',
+    name: 'Ki Chain'
+  },
+  {
+    _id: 'nym',
+    name: 'NYM Mixnode'
+  },
+  {
+    _id: 'orai-chain',
+    name: 'Orai Chain'
+  },
+  {
+    _id: 'shentu',
+    name: 'Shentu'
+  },
+  {
+    _id: 'umee',
+    name: 'UMEE'
+  }
+];
+
 module.exports = (req, res) => {
   return res.render('index/index', {
     page: 'index/index',
@@ -14,7 +73,7 @@ module.exports = (req, res) => {
         twitter: true
       }
     },
-    portfolio: [],
+    portfolio: PORTFOLIO,
     services: [],
     events_title: '',
     events: [],
