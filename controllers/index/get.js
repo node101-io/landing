@@ -57,7 +57,7 @@ const PORTFOLIO = [
   }
 ];
 
-module.exports = (req, res) => {
+module.exports = (req, res) => {l
   return res.render('index/index', {
     page: 'index/index',
     title: res.__('For you to make most of the distributed value'),

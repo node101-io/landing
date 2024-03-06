@@ -3,8 +3,39 @@
   --start-page-radius: 30px;
   --start-page-color-empty-height: 0px;
   --start-page-social-media-wrapper-width: 50px;
-  --start-page-background-shape-one-height-over-width-ratio: .7342;
-  --start-page-background-shape-one-height-difference: 15vh;
+
+  --start-page-background-shape-height: 130vh;
+
+  --start-page-background-shape-one-over-total-height-ratio: 746 / 1415;
+  --start-page-background-shape-one-width-over-height-ratio: 763 / 746;
+  --start-page-background-shape-one-two-height-difference-ratio: 532 / 746;
+  --start-page-background-shape-one-two-width-difference-ratio: 27 / 763;
+  --start-page-background-shape-one-animation-duration: 1s;
+
+  --start-page-background-shape-two-over-total-height-ratio: 254 / 1415;
+  --start-page-background-shape-two-width-over-height-ratio: 706 / 254;
+  --start-page-background-shape-two-three-height-difference-ratio: 11 / 254;
+  --start-page-background-shape-two-three-width-difference-ratio: 610 / 706;
+  --start-page-background-shape-two-animation-height-start-ratio: 121 / 254;
+  --start-page-background-shape-two-animation-duration: 0.4s;
+
+  --start-page-background-shape-three-over-total-height-ratio: 293 / 1415;
+  --start-page-background-shape-three-width-over-height-ratio: 99 / 293;
+  --start-page-background-shape-three-four-height-difference-ratio: 34 / 293;
+  --start-page-background-shape-two-four-width-difference-ratio: 142 / 706;
+  --start-page-background-shape-three-animation-duration: 0.25s;
+
+  --start-page-background-shape-four-over-total-height-ratio: 202 / 1415;
+  --start-page-background-shape-four-width-over-height-ratio: 495 / 202;
+  --start-page-background-shape-two-five-height-difference-ratio: 409 / 254;
+  --start-page-background-shape-two-five-width-difference-ratio: 149 / 706;
+  --start-page-background-shape-four-animation-duration: 0.25s;
+
+  --start-page-background-shape-five-over-total-height-ratio: 473 / 1415;
+  --start-page-background-shape-five-width-over-height-ratio: 623 / 473;
+  --start-page-background-shape-five-animation-height-start-ratio: 104 / 473;
+  --start-page-background-shape-five-animation-duration: 0.6s;
+
   --start-page-header-font-size: 100px;
   --start-page-header-font-space: 30px;
   --start-page-header-gap: 40px;
@@ -29,7 +60,6 @@
   display: flex;
   flex-direction: column;
   padding: var(--page-vertical-padding) var(--page-horizontal-padding);
-  margin-top: var(--header-height);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -42,106 +72,262 @@
   min-width: 100vw;
   display: flex;
   flex-direction: column;
-}
-
-.start-page-top-line {
-  display: flex;
-  height: fit-content;
-  min-height: fit-content;
-  width: 100%;
-  min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.start-page-top-line-one {
-  height: var(--header-vertical-padding);
-  min-height: var(--header-vertical-padding);
-  width: calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)));
-  position: absolute;
-  top: var(--page-vertical-padding);
-  left: calc(var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width));
-  background-color: var(--light-color);
-  border-top-left-radius: var(--header-vertical-padding);
-  border-top-right-radius: var(--header-vertical-padding);
-  z-index: 2;
-}
-.start-page-top-line-two {
-  height: calc(var(--header-height) - var(--header-vertical-padding));
-  min-height: calc(var(--header-height) - var(--header-vertical-padding));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
-  position: absolute;
-  top: calc(var(--page-vertical-padding) + var(--header-vertical-padding));
-  left: var(--page-horizontal-padding);
-  background-color: var(--light-color);
-  z-index: 2;
+  z-index: 4;
+  overflow: visible;
 }
 
 .start-page-background {
-  height: calc(100vh - 2 * var(--page-vertical-padding) - var(--header-height));
-  min-height: calc(100vh - 2 * var(--page-vertical-padding) - var(--header-height));
+  position: absolute;
+  height: calc(100vh - 2 * var(--page-vertical-padding));
+  min-height: calc(100vh - 2 * var(--page-vertical-padding));
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
   border-radius: var(--start-page-radius);
   background-color: var(--light-color);
+  overflow: hidden;
+  z-index: 1;
 }
+
 .start-page-background-shape-one-wrapper {
   position: absolute;
-  top: var(--page-vertical-padding);
-  left: calc(var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap));
+  top: calc(min(0px, 100vh - var(--start-page-background-shape-height)));
+  left: calc(var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding));
+  height: 0;
+  min-height: 0;
+  width: 0;
+  min-width: 0;
+  animation: startPageBackgroundShapeOneAnimation var(--start-page-background-shape-one-animation-duration) linear forwards;
   overflow: hidden;
-  animation: startPageBackgroundShapeOneAnimation 4s linear 1;
 }
 @keyframes startPageBackgroundShapeOneAnimation {
   0% {
-    height: 0px;
-    min-height: 0px;
-    width: 0px;
-    min-width: 0px;
+    height: 0;
+    min-height: 0;
+    width: 0;
+    min-width: 0;
   }
-  50% {
-    height: calc(.7 * min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)));
-    min-height: calc(.7 * min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)));
-    width: calc(.3 * min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))), min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)) * (1 / var(--start-page-background-shape-one-height-over-width-ratio))));
-    min-width: calc(.3 * min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))), min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)) * (1 / var(--start-page-background-shape-one-height-over-width-ratio))));
+  70% {
+    height: calc(var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: calc(0.4 * var(--start-page-background-shape-one-width-over-height-ratio) * var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(0.4 * var(--start-page-background-shape-one-width-over-height-ratio) * var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
   }
   100% {
-    height: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)));
-    min-height: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)));
-    width: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))), min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)) * (1 / var(--start-page-background-shape-one-height-over-width-ratio))));
-    min-width: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))), min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)) * (1 / var(--start-page-background-shape-one-height-over-width-ratio))));
+    height: calc(var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: calc(1 * var(--start-page-background-shape-one-width-over-height-ratio) * var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(1 * var(--start-page-background-shape-one-width-over-height-ratio) * var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
   }
 }
 .start-page-background-shape-one {
-  height: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)));
-  min-height: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)));
-  width: calc(min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))), min((100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio), 100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)) * (1 / var(--start-page-background-shape-one-height-over-width-ratio))));
-  min-width: calc(min(
-    (100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))),
-    min(
-      (100vw - (var(--start-page-social-media-wrapper-width) + 2 * var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) + var(--header-logo-width) + 2 * var(--header-gap))) * var(--start-page-background-shape-one-height-over-width-ratio),
-      100vh - 2 * var(--page-vertical-padding) - var(--start-page-background-shape-one-height-difference)) * (1 / var(--start-page-background-shape-one-height-over-width-ratio))
-    )
-  );
+  height: calc(var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: auto;
+  min-width: auto;
 }
 .start-page-background-shape-two-wrapper {
-
+  position: absolute;
+  top: calc(
+    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
+    * var(--start-page-background-shape-one-two-height-difference-ratio)
+  );
+  left: calc(
+    var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
+    * (1 - var(--start-page-background-shape-one-two-width-difference-ratio))
+  );
+  height: calc(var(--start-page-background-shape-two-animation-height-start-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-two-animation-height-start-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: 0;
+  min-width: 0;
+  animation: startPageBackgroundShapeTwoAnimation var(--start-page-background-shape-two-animation-duration) var(--start-page-background-shape-one-animation-duration) linear forwards;
+  overflow: hidden;
+}
+@keyframes startPageBackgroundShapeTwoAnimation {
+  0% {
+    height: calc(var(--start-page-background-shape-two-animation-height-start-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-two-animation-height-start-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: 0;
+    min-width: 0;
+  }
+  70% {
+    height: calc((0.4 + var(--start-page-background-shape-two-animation-height-start-ratio)) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc((0.4 + var(--start-page-background-shape-two-animation-height-start-ratio)) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: calc(0.7 * var(--start-page-background-shape-two-width-over-height-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(0.7 * var(--start-page-background-shape-two-width-over-height-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+  }
+  100% {
+    height: calc(var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: calc(1 * var(--start-page-background-shape-two-width-over-height-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(1 * var(--start-page-background-shape-two-width-over-height-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+  }
+}
+.start-page-background-shape-two {
+  height: calc(var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: auto;
+  min-width: auto;
 }
 .start-page-background-shape-three-wrapper {
-  
+  position: absolute;
+  top: calc(
+    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
+    * var(--start-page-background-shape-one-two-height-difference-ratio) +
+    (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height))
+    * (1 - var(--start-page-background-shape-two-three-height-difference-ratio))
+  );
+  left: calc(
+    var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
+    * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
+    (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
+    * var(--start-page-background-shape-two-three-width-difference-ratio)
+  );
+  height: 0;
+  min-height: 0;
+  width: fit-content;
+  min-width: fit-content;
+  animation: startPageBackgroundShapeThreeAnimation  var(--start-page-background-shape-three-animation-duration) calc(var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
+  overflow: hidden;
 }
+@keyframes startPageBackgroundShapeThreeAnimation {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));  
+  }
+}
+.start-page-background-shape-three {
+  height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: auto;
+  min-width: auto;
+}
+.start-page-background-shape-four-wrapper {
+  position: absolute;
+  top: calc(
+    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
+    * var(--start-page-background-shape-one-two-height-difference-ratio) +
+    (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height))
+    * (1 - var(--start-page-background-shape-two-three-height-difference-ratio)) +
+    var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height)
+    * (1 - var(--start-page-background-shape-three-four-height-difference-ratio))
+  );
+  left: calc(
+    var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
+    * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
+    (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
+    * var(--start-page-background-shape-two-four-width-difference-ratio) +
+    var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height)
+  );
+  height: fit-content;
+  min-height: fit-content;
+  width: 0;
+  min-width: 0;
+  animation: startPageBackgroundShapeFourAnimation  var(--start-page-background-shape-four-animation-duration) calc(var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
+  overflow: hidden;
+  direction: rtl;
+}
+@keyframes startPageBackgroundShapeFourAnimation {
+  0% {
+    width: 0;
+    min-width: 0;
+    left: calc(
+      var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
+      (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
+      * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
+      (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
+      * var(--start-page-background-shape-two-four-width-difference-ratio) +
+      var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height)
+    );
+  }
+  100% {
+    width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));  
+    left: calc(
+      var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
+      (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
+      * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
+      (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
+      * var(--start-page-background-shape-two-four-width-difference-ratio)
+    );
+  }
+}
+.start-page-background-shape-four {
+  height: calc(var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: auto;
+  min-width: auto;
+}
+.start-page-background-shape-five-wrapper {
+  position: absolute;
+  top: calc(
+    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
+    * var(--start-page-background-shape-one-two-height-difference-ratio) +
+    (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-five-height-difference-ratio)
+  );
+  left: calc(
+    var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
+    (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
+    * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
+    (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
+    * var(--start-page-background-shape-two-five-width-difference-ratio)
+  );
+  height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: 0;
+  min-width: 0;
+  animation: startPageBackgroundShapeFiveAnimation  var(--start-page-background-shape-five-animation-duration) calc(var(--start-page-background-shape-four-animation-duration) + var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
+  overflow: hidden;
+}
+@keyframes startPageBackgroundShapeFiveAnimation {
+  0% {
+    height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: 0;
+    min-width: 0;
+  }
+  50% {
+    height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: calc(0.5 * var(--start-page-background-shape-five-width-over-height-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(0.5 * var(--start-page-background-shape-five-width-over-height-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+  }
+  100% {
+    height: calc(var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-height: calc(var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    width: calc(var(--start-page-background-shape-five-width-over-height-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+    min-width: calc(var(--start-page-background-shape-five-width-over-height-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+  }
+}
+.start-page-background-shape-five {
+  height: calc(var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+  min-height: calc(var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
+  width: auto;
+  min-width: auto;
+}
+
 
 .start-page-wrapper {
   position: relative;
-  height: calc(100vh - 2 * var(--page-vertical-padding) - var(--header-height));
-  min-height: calc(100vh - 2 * var(--page-vertical-padding) - var(--header-height));
+  height: calc(100vh - 2 * var(--page-vertical-padding));
+  min-height: calc(100vh - 2 * var(--page-vertical-padding));
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  padding-top: var(--header-height);
   display: flex;
   justify-content: center;
   align-items: stretch;
+  border-radius: var(--start-page-radius);
 }
 
 .start-page-left-top-radius, .start-page-right-top-radius {
@@ -186,6 +372,8 @@
   justify-content: center;
   padding: 0 var(--header-horizontal-padding);
   border-radius: var(--start-page-radius);
+  background-color: transparent;
+  z-index: 2;
 }
 .start-page-header-wrapper {
   height: fit-content;

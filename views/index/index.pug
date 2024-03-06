@@ -1,22 +1,44 @@
 extends ../partials/header
 block main
   // yalandan sourcet
-  .start-page-top-line
-    .start-page-top-line-one
-    .start-page-top-line-two
   .content-inner-wrapper
+    .start-page-background
+      .start-page-background-shape-one-wrapper
+        svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M746.781 641.412C609.904 718.184 535.009 739.688 390.57 729.514C249.613 719.596 136.997 621.716 65.9475 498.373C-11.6865 363.608 21.8524 246.676 24.9619 77.9549C25.4327 52.3231 26.13 26.684 27.1477 0.999761' stroke='url(#paint0_linear_68_1510)' stroke-width='30' stroke-miterlimit='10')
+          defs
+            lineargradient#paint0_linear_68_1510(x1='-1860.33' y1='-1791.59' x2='1604.06' y2='1352.99' gradientunits='userSpaceOnUse')
+              stop(stop-color='#947E8A')
+              stop(offset='1' stop-color='#DFE5FF')
+      .start-page-background-shape-two-wrapper
+        svg.start-page-background-shape-two(viewbox='0 0 699 255' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M684.589 250.119C643.51 106 497.836 43.9581 370.996 19.8956C270.105 0.758287 109.123 52.4698 7.99991 109.169' stroke='url(#paint0_linear_69_1512)' stroke-width='30' stroke-miterlimit='10')
+          defs
+            lineargradient#paint0_linear_69_1512(x1='-2599.1' y1='-2323.83' x2='865.283' y2='820.744' gradientunits='userSpaceOnUse')
+              stop(stop-color='#947E8A')
+              stop(offset='1' stop-color='#DFE5FF')
+      .start-page-background-shape-three-wrapper
+        svg.start-page-background-shape-three(viewbox='0 0 100 300' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M13.1216 290.91C71.8701 206.315 100.424 95.7198 74.5178 4.9999' stroke='url(#paint0_linear_69_1514)' stroke-width='30' stroke-miterlimit='10')
+          defs
+            lineargradient#paint0_linear_69_1514(x1='-3209.17' y1='-2568.95' x2='255.213' y2='575.624' gradientunits='userSpaceOnUse')
+              stop(stop-color='#947E8A')
+              stop(offset='1' stop-color='#DFE5FF')
+      .start-page-background-shape-four-wrapper
+        svg.start-page-background-shape-four(viewbox='0 0 498 203' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M25.3562 6.06469C-5.65223 89.1754 42.6004 154.947 107.127 175.522C230.673 214.94 394.325 154.099 485.064 23.4341' stroke='url(#paint0_linear_69_1513)' stroke-width='30' stroke-miterlimit='10')
+          defs
+            lineargradient#paint0_linear_69_1513(x1='-2737.23' y1='-2836.43' x2='727.155' y2='308.149' gradientunits='userSpaceOnUse')
+              stop(stop-color='#947E8A')
+              stop(offset='1' stop-color='#DFE5FF')
+      .start-page-background-shape-five-wrapper
+        svg.start-page-background-shape-five(viewbox='0 0 617 473' fill='none' xmlns='http://www.w3.org/2000/svg')
+          path(d='M601.747 469.082C567.652 301.181 493.14 149.03 337.893 62.6248C202.088 -16.3608 52.8544 6.91536 14.6732 109.231' stroke='url(#paint0_linear_70_1515)' stroke-width='30' stroke-miterlimit='10')
+          defs
+            lineargradient#paint0_linear_70_1515(x1='-2747.91' y1='-2733.27' x2='716.475' y2='411.311' gradientunits='userSpaceOnUse')
+              stop(stop-color='#947E8A')
+              stop(offset='1' stop-color='#DFE5FF')
     .start-page-wrapper
-      //- .start-page-background
-        .start-page-background-shape-wrapper
-          .start-page-background-shape-one-wrapper
-            svg.start-page-background-shape-one(viewbox='0 0 1467 1077' fill='none' xmlns='http://www.w3.org/2000/svg')
-              path(d='M1379.7 1068.36C1439.22 983.765 1468.15 873.17 1441.9 782.45C1400.28 638.331 1252.69 576.289 1124.17 552.226C1021.95 533.089 858.847 584.8 756.39 641.5C617.708 718.272 541.824 739.775 395.48 729.602C252.663 719.683 138.561 621.803 66.5746 498.46C-12.0836 363.696 21.8979 246.764 25.0483 78.0425C25.5254 52.4108 26.2319 26.7716 27.2629 1.0874' stroke='url(#paint0_linear_34_5)' stroke-width='30' stroke-miterlimit='10')
-              defs
-                lineargradient#paint0_linear_34_5(x1='-1885.11' y1='-1791.51' x2='1583.37' y2='1398.32' gradientunits='userSpaceOnUse')
-                  stop(stop-color='#281E29' stop-opacity='0.13')
-                  stop(offset='1' stop-color='#DFE5FF')
-          .start-page-background-shape-two-wrapper
-          .start-page-background-shape-three-wrapper
       .start-page-left-top-radius
         .start-page-left-top-radius-inner-circle
       .start-page-content
@@ -40,7 +62,7 @@ block main
             h1.start-page-header-each-line
               each letter in start_page_text[4].split('')
                 span= letter
-            h2.start-page-description= __('World is changing, and there are lots of of new values emerging with blockchain technology. Now, it is the time to distribute the value.')
+            h2.start-page-description= __('World is changing, and there are lots of new values emerging with blockchain technology. Now, it is the time to distribute the value.')
         .start-page-social-media-wrapper
           a.start-page-social-media-each-button(href='https://twitter.com/node_101' target='_blank')
             svg.start-page-social-media-each-button-icon(viewbox='0 0 26 23' xmlns='http://www.w3.org/2000/svg')

@@ -7,6 +7,9 @@ function headerBackgroundAnimation(percentage, amount) {
   if (typeof percentage != 'number' || percentage < 0 || percentage > 1)
     return;
 
+  const headerTopLineRadiusLeftInnerCircle = document.querySelector('.header-top-line-radius-left-inner-circle');
+  const headerTopLineRadiusRightInnerCircle = document.querySelector('.header-top-line-radius-right-inner-circle');
+
   const headerLogoWrapper = document.querySelector('.header-logo-wrapper');
   const buttonsWrapper = document.querySelector('.header-buttons-wrapper');
   const headerMenuWrapper = document.querySelector('.header-menu-wrapper');
@@ -22,6 +25,14 @@ function headerBackgroundAnimation(percentage, amount) {
   buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - percentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
   buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${percentage})`;
   headerMenuWrapper.style.borderBottomLeftRadius = `calc((var(--header-height) - 10px) * ${1 - percentage})`;
+
+  if (percentage == 1)  {
+    headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
+    headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'var(--background-color)';
+  } else {
+    headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '100%';
+    headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'transparent';
+  }
 
   if (startPageLeftTopRadius && startPageRightTopRadius) {
     if (amount >= WINDOW_HEIGHT - HEADER_HEIGHT)

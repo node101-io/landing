@@ -2,72 +2,87 @@ extends ./head
 block content
   .all-wrapper
     .header-wrapper
-      .header-logo-wrapper
-        a.header-logo-link(href=insertLanguageToLink('/', lang))
-          img.header-logo(src='/img/logo.svg' alt='node101 logo')
-      .header-buttons-wrapper
-        - let header_buttons = [__('Portfolio'), __('Services'), __('Events'), __('Contributions'), __('About Us'), __('Reach Us')]
-        a.each-header-button#header-portfolio-button
-          h1.each-header-button-text-wrapper
-            each letter, i in header_buttons[0].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          h1.each-header-button-text-wrapper-two
-            each letter, i in header_buttons[0].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-        a.each-header-button(href=insertLanguageToLink('/validator-services', lang))
-          h1.each-header-button-text-wrapper
-            each letter, i in header_buttons[1].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          h1.each-header-button-text-wrapper-two
-            each letter, i in header_buttons[1].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-        a.each-header-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
-          h1.each-header-button-text-wrapper
-            each letter, i in header_buttons[2].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          h1.each-header-button-text-wrapper-two
-            each letter, i in header_buttons[2].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-        a.each-header-button#header-ecosystem-contributions-button
-          h1.each-header-button-text-wrapper
-            each letter, i in header_buttons[3].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          h1.each-header-button-text-wrapper-two
-            each letter, i in header_buttons[3].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-        a.each-header-button(href=insertLanguageToLink('/about-us', lang))
-          h1.each-header-button-text-wrapper
-            each letter, i in header_buttons[4].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          h1.each-header-button-text-wrapper-two
-            each letter, i in header_buttons[4].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-        a.each-header-button#header-reach-us-button
-          h1.each-header-button-text-wrapper
-            each letter, i in header_buttons[5].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          h1.each-header-button-text-wrapper-two
-            each letter, i in header_buttons[5].split('')
-              .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-      .header-menu-wrapper
-        a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
-          .header-stake-with-node101-button-background
-            .header-stake-with-node101-button-background-each-bubble-left-blue
-            .header-stake-with-node101-button-background-each-bubble-left-red
-            .header-stake-with-node101-button-background-each-bubble-right-blue
-            .header-stake-with-node101-button-background-each-bubble-right-yellow
-            .header-stake-with-node101-button-background-each-bubble-right-pink
-          .header-stake-with-node101-button-content
-            h1.header-stake-with-node101-button-text= __('Stake Now')
-            svg.header-stake-with-node101-button-icon(viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg')
-              path(d='M5.40505 10.6973C5.41499 10.7076 5.7198 10.7858 6.08234 10.8711C6.44493 10.9564 6.7455 11.0132 6.75034 10.9973C6.75513 10.9815 6.79264 10.7238 6.83366 10.4247C6.91607 9.82413 7.11559 9.12291 7.32879 8.68436C7.99333 7.31761 9.18564 6.41262 10.6318 6.17741L11 6.1175V5.51373V4.90992L10.6662 4.85258C8.47953 4.47694 7.0539 2.80279 6.78721 0.297409C6.76981 0.13381 6.749 0 6.74099 0C6.66724 0 5.44524 0.301547 5.42213 0.325436C5.40542 0.342709 5.41785 0.496078 5.4498 0.666197C5.80341 2.54996 6.81589 4.08284 8.12978 4.72377L8.44495 4.87752L1.96389 4.88955L0 4.8972V6.11913L1.97443 6.12678L8.44021 6.13886L8.04232 6.34529C7.01008 6.88077 6.19283 7.93117 5.71156 9.34108C5.57442 9.74275 5.36748 10.6585 5.40505 10.6973Z')
-        .header-change-language-button
-          .header-change-language-button-content
-            .header-change-language-button-text= page_lang.toUpperCase()
-            svg.header-change-language-button-icon(viewBox='0 0 16 8' fill='none' xmlns='http://www.w3.org/2000/svg')
-              path(d='M0.912746 0.00640504C0.898795 0.0206121 0.792117 0.456097 0.67577 0.974064C0.559423 1.4921 0.48201 1.92153 0.503619 1.92844C0.525292 1.93528 0.876667 1.98888 1.2845 2.04749C2.10347 2.16522 3.05967 2.45029 3.65769 2.75488C5.52145 3.70432 6.75551 5.4078 7.07626 7.47388L7.15796 8L7.98127 8L8.80465 8L8.88284 7.52314C9.39508 4.39896 11.678 2.36215 15.0944 1.98112C15.3175 1.95626 15.5 1.92653 15.5 1.91509C15.5 1.80972 15.0888 0.0638242 15.0562 0.0308058C15.0327 0.00693003 14.8235 0.02469 14.5915 0.0703368C12.0228 0.575544 9.93249 2.0221 9.0585 3.89928L8.84884 4.34957L7.12882 4.34279L6.84733 3.77431C6.11713 2.29953 4.68476 1.13192 2.76216 0.444325C2.21443 0.248386 0.965696 -0.0472662 0.912746 0.00640504Z')
-          .header-change-language-button-menu-wrapper
-            .header-change-language-button-menu
-              .each-header-change-language-button-menu-text(id=`each-header-change-language-button-${page_lang == 'en' ? 'tr' : 'en'}`)= page_lang == 'en' ? 'TR' : 'EN'
+      .header-top-line-wrapper
+        .header-top-line-radius-left
+          .header-top-line-radius-left-inner-circle
+        .header-top-line-radius-right
+          .header-top-line-radius-right-inner-circle
+      .header-bottom-line-wrapper
+        .header-logo-wrapper
+          a.header-logo-link(href=insertLanguageToLink('/', lang))
+            img.header-logo(src='/img/logo.svg' alt='node101 logo')
+        .header-buttons-wrapper
+          - let header_buttons = [__('Portfolio'), __('Services'), __('Events'), __('Contributions'), __('About Us'), __('Reach Us')]
+          a.each-header-button#header-portfolio-button
+            h1.each-header-button-text-wrapper
+              each letter, i in header_buttons[0].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+            h1.each-header-button-text-wrapper-two
+              each letter, i in header_buttons[0].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          a.each-header-button(href=insertLanguageToLink('/validator-services', lang))
+            h1.each-header-button-text-wrapper
+              each letter, i in header_buttons[1].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+            h1.each-header-button-text-wrapper-two
+              each letter, i in header_buttons[1].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          a.each-header-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
+            h1.each-header-button-text-wrapper
+              each letter, i in header_buttons[2].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+            h1.each-header-button-text-wrapper-two
+              each letter, i in header_buttons[2].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          a.each-header-button#header-ecosystem-contributions-button
+            h1.each-header-button-text-wrapper
+              each letter, i in header_buttons[3].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+            h1.each-header-button-text-wrapper-two
+              each letter, i in header_buttons[3].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          a.each-header-button(href=insertLanguageToLink('/about-us', lang))
+            h1.each-header-button-text-wrapper
+              each letter, i in header_buttons[4].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+            h1.each-header-button-text-wrapper-two
+              each letter, i in header_buttons[4].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          a.each-header-button#header-reach-us-button
+            h1.each-header-button-text-wrapper
+              each letter, i in header_buttons[5].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+            h1.each-header-button-text-wrapper-two
+              each letter, i in header_buttons[5].split('')
+                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+        .header-menu-wrapper
+          a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+            .header-stake-with-node101-button-background
+              .circle.circle-12
+              .circle.circle-11
+              .circle.circle-10
+              .circle.circle-9
+              .circle.circle-8
+              .circle.circle-7
+              .circle.circle-6
+              .circle.circle-5
+              .circle.circle-4
+              .circle.circle-3
+              .circle.circle-2
+              .circle.circle-1
+            .header-stake-with-node101-button-content
+              svg.header-stake-with-node101-button-icon-left(viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M5.40505 10.6973C5.41499 10.7076 5.7198 10.7858 6.08234 10.8711C6.44493 10.9564 6.7455 11.0132 6.75034 10.9973C6.75513 10.9815 6.79264 10.7238 6.83366 10.4247C6.91607 9.82413 7.11559 9.12291 7.32879 8.68436C7.99333 7.31761 9.18564 6.41262 10.6318 6.17741L11 6.1175V5.51373V4.90992L10.6662 4.85258C8.47953 4.47694 7.0539 2.80279 6.78721 0.297409C6.76981 0.13381 6.749 0 6.74099 0C6.66724 0 5.44524 0.301547 5.42213 0.325436C5.40542 0.342709 5.41785 0.496078 5.4498 0.666197C5.80341 2.54996 6.81589 4.08284 8.12978 4.72377L8.44495 4.87752L1.96389 4.88955L0 4.8972V6.11913L1.97443 6.12678L8.44021 6.13886L8.04232 6.34529C7.01008 6.88077 6.19283 7.93117 5.71156 9.34108C5.57442 9.74275 5.36748 10.6585 5.40505 10.6973Z')
+              h1.header-stake-with-node101-button-text= __('Stake Now')
+              svg.header-stake-with-node101-button-icon-right(viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M5.40505 10.6973C5.41499 10.7076 5.7198 10.7858 6.08234 10.8711C6.44493 10.9564 6.7455 11.0132 6.75034 10.9973C6.75513 10.9815 6.79264 10.7238 6.83366 10.4247C6.91607 9.82413 7.11559 9.12291 7.32879 8.68436C7.99333 7.31761 9.18564 6.41262 10.6318 6.17741L11 6.1175V5.51373V4.90992L10.6662 4.85258C8.47953 4.47694 7.0539 2.80279 6.78721 0.297409C6.76981 0.13381 6.749 0 6.74099 0C6.66724 0 5.44524 0.301547 5.42213 0.325436C5.40542 0.342709 5.41785 0.496078 5.4498 0.666197C5.80341 2.54996 6.81589 4.08284 8.12978 4.72377L8.44495 4.87752L1.96389 4.88955L0 4.8972V6.11913L1.97443 6.12678L8.44021 6.13886L8.04232 6.34529C7.01008 6.88077 6.19283 7.93117 5.71156 9.34108C5.57442 9.74275 5.36748 10.6585 5.40505 10.6973Z')
+          .header-change-language-button
+            .header-change-language-button-content
+              .header-change-language-button-text= page_lang.toUpperCase()
+              svg.header-change-language-button-icon(viewBox='0 0 16 8' fill='none' xmlns='http://www.w3.org/2000/svg')
+                path(d='M0.912746 0.00640504C0.898795 0.0206121 0.792117 0.456097 0.67577 0.974064C0.559423 1.4921 0.48201 1.92153 0.503619 1.92844C0.525292 1.93528 0.876667 1.98888 1.2845 2.04749C2.10347 2.16522 3.05967 2.45029 3.65769 2.75488C5.52145 3.70432 6.75551 5.4078 7.07626 7.47388L7.15796 8L7.98127 8L8.80465 8L8.88284 7.52314C9.39508 4.39896 11.678 2.36215 15.0944 1.98112C15.3175 1.95626 15.5 1.92653 15.5 1.91509C15.5 1.80972 15.0888 0.0638242 15.0562 0.0308058C15.0327 0.00693003 14.8235 0.02469 14.5915 0.0703368C12.0228 0.575544 9.93249 2.0221 9.0585 3.89928L8.84884 4.34957L7.12882 4.34279L6.84733 3.77431C6.11713 2.29953 4.68476 1.13192 2.76216 0.444325C2.21443 0.248386 0.965696 -0.0472662 0.912746 0.00640504Z')
+            .header-change-language-button-menu-wrapper
+              .header-change-language-button-menu
+                .each-header-change-language-button-menu-text(id=`each-header-change-language-button-${page_lang == 'en' ? 'tr' : 'en'}`)= page_lang == 'en' ? 'TR' : 'EN'
     .content-wrapper
       block main
