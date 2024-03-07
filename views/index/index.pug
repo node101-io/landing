@@ -92,7 +92,7 @@ block main
           .portfolio-header-bottom-line-color
       .portfolio-content-wrapper
         if portfolio && portfolio.length
-          .portfolio-content-project-wrapper-by-five
+          //- .portfolio-content-project-wrapper-by-five
             - for (let line = 0; line < parseInt(portfolio.length / 5) + (portfolio.length % 5 ? 1 : 0); line++)
               .portfolio-content-project-each-line
                 - for (let i = line * 5; i < Math.min(portfolio.length, 5 * (line + 1)); i++)
@@ -166,7 +166,7 @@ block main
     .services-wrapper
       .services-header-wrapper
         h2.services-header-subtitle= __('Validator')
-        h1.services-header-title= __('Services')
+        h1.services-header-title= __('Services') 
       if services && services.length >= 6
         .services-content-wrapper
           .services-content-each-line-wrapper

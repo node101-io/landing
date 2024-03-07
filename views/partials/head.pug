@@ -1,5 +1,5 @@
 doctype html
-html(lang='tr')
+html(lang=__('en'))
   head
     //- // Google tag (gtag.js)
     //- script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-X8ZHYFMTRY')
@@ -9,7 +9,7 @@ html(lang='tr')
     //-   gtag('js', new Date());
     //-   gtag('config', 'G-X8ZHYFMTRY');
     meta(name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no')
-    meta(charset='UTF-8')
+    meta(content='text/html; charset=UTF-8' http-equiv='content-type')
     if title
       title #{title} | node101
     else
@@ -30,6 +30,7 @@ html(lang='tr')
     meta(name='msapplication-TileImage' content='/favicon-144.png')
     meta(name='msapplication-config' content='/browserconfig.xml')
     link(href='https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800' rel='stylesheet')
+    link(rel='stylesheet' media='screen' href=`/fonts/style.css`)
     if includes
       if includes.meta
         meta(property='og:type' content='website')
