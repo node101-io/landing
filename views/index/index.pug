@@ -171,32 +171,80 @@ block main
         .services-content-wrapper
           .services-content-each-line-wrapper
             article.services-content-each-service-wrapper
-              h1.services-content-each-service-title= services[0].title
-              h2.services-content-each-service-description= services[0].description
+              each line in services[0].title
+                h1.services-content-each-service-title= line
+              h2.services-content-each-service-description
+                each item in services[0].description
+                  if item.type == 'text'
+                    span(style=(item.spaceRight ? 'margin-right: var(--services-each-text-space-size)' : ''))= item.content
+                  else if item.type == 'button'
+                    a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
+                  else if item.type == 'link'
+                    a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
             article.services-content-each-service-wrapper
-              h1.services-content-each-service-title= services[1].title
-              h2.services-content-each-service-description= services[1].description
+              each line in services[1].title
+                h1.services-content-each-service-title= line
+              h2.services-content-each-service-description
+                each item in services[1].description
+                  if item.type == 'text'
+                    span(style=(item.spaceRight ? 'margin-right: var(--services-each-text-space-size)' : ''))= item.content
+                  else if item.type == 'button'
+                    a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
+                  else if item.type == 'link'
+                    a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
             article.services-content-each-service-wrapper
-              h1.services-content-each-service-title= services[2].title
-              h2.services-content-each-service-description= services[2].description
+              each line in services[2].title
+                h1.services-content-each-service-title= line
+              h2.services-content-each-service-description
+                each item in services[2].description
+                  if item.type == 'text'
+                    span(style=(item.spaceRight ? 'margin-right: var(--services-each-text-space-size)' : ''))= item.content
+                  else if item.type == 'button'
+                    a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
+                  else if item.type == 'link'
+                    a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
           .services-content-each-line-wrapper
             .services-content-description-wrapper
-              h1.services-content-description-title= __('That we could do or are already doing,')
+              h1.services-content-description-title= __('That we could do or are already doing;')
               h2.services-content-description-subtitle= __('Visit services page to discover why node101 is the best partner in staking for you.')
               a.services-content-description-button(href=insertLanguageToLink('/validator-services', lang))
-                .services-content-description-button-text= __('all services')
+                .services-content-description-button-text= __('more services')
                 svg.services-content-description-button-icon(viewBox='0 0 15 16' xmlns='http://www.w3.org/2000/svg')
                   path(d='M7.37052 15.0873C7.38408 15.1012 7.79973 15.2079 8.2941 15.3242C8.78854 15.4406 9.19841 15.518 9.20501 15.4964C9.21153 15.4747 9.2627 15.1233 9.31863 14.7155C9.431 13.8965 9.70308 12.9403 9.9938 12.3423C10.9 10.4786 12.5259 9.24449 14.4978 8.92374L15 8.84204V8.01873V7.19535L14.5449 7.11716C11.563 6.60492 9.61896 4.32198 9.25529 0.905558C9.23156 0.682467 9.20318 0.5 9.19226 0.5C9.09169 0.5 7.42532 0.911201 7.39381 0.943775C7.37102 0.96733 7.38797 1.17647 7.43154 1.40845C7.91373 3.97722 9.2944 6.06751 11.0861 6.9415L11.5158 7.15116L2.67803 7.16757L0 7.178V8.84426L2.6924 8.8547L11.5094 8.87118L10.9668 9.15267C9.5592 9.88287 8.44477 11.3152 7.78849 13.2378C7.60148 13.7856 7.31929 15.0343 7.37052 15.0873Z')
             article.services-content-each-service-wrapper
-              h1.services-content-each-service-title= services[3].title
-              h2.services-content-each-service-description= services[3].description
+              each line in services[3].title
+                h1.services-content-each-service-title= line
+              h2.services-content-each-service-description
+                each item in services[3].description
+                  if item.type == 'text'
+                    span(style=(item.spaceRight ? 'margin-right: var(--services-each-text-space-size)' : ''))= item.content
+                  else if item.type == 'button'
+                    a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
+                  else if item.type == 'link'
+                    a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
             article.services-content-each-service-wrapper
-              h1.services-content-each-service-title= services[4].title
-              h2.services-content-each-service-description= services[4].description
+              each line in services[4].title
+                h1.services-content-each-service-title= line
+              h2.services-content-each-service-description
+                each item in services[4].description
+                  if item.type == 'text'
+                    span(style=(item.spaceRight ? 'margin-right: var(--services-each-text-space-size)' : ''))= item.content
+                  else if item.type == 'button'
+                    a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
+                  else if item.type == 'link'
+                    a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
           .services-content-each-line-wrapper
             article.services-content-each-service-wrapper
-              h1.services-content-each-service-title= services[5].title
-              h2.services-content-each-service-description= services[5].description
+              each line in services[5].title
+                h1.services-content-each-service-title= line
+              h2.services-content-each-service-description
+                each item in services[5].description
+                  if item.type == 'text'
+                    span(style=(item.spaceRight ? 'margin-right: var(--services-each-text-space-size)' : ''))= item.content
+                  else if item.type == 'button'
+                    a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
+                  else if item.type == 'link'
+                    a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
     if events && events.length
       .events-wrapper
         if events_title && typeof events.title == 'string' && events_title.split('').length
