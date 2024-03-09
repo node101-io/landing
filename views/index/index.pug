@@ -104,7 +104,7 @@ block main
           .portfolio-header-bottom-line-color
       .portfolio-content-wrapper
         if portfolio && portfolio.length
-          //- .portfolio-content-project-wrapper-by-five
+          .portfolio-content-project-wrapper.portfolio-content-project-wrapper-by-five
             - for (let line = 0; line < parseInt(portfolio.length / 5) + (portfolio.length % 5 ? 1 : 0); line++)
               .portfolio-content-project-each-line
                 - for (let i = line * 5; i < Math.min(portfolio.length, 5 * (line + 1)); i++)
@@ -112,7 +112,7 @@ block main
                     img.portfolio-content-each-project-logo(src=`/img/chains/${portfolio[i]._id}-80w.png` width='100%' alt=portfolio[i].name)
                     .portfolio-content-each-project-content-wrapper
                       h3.portfolio-content-each-project-content-name= portfolio[i].name
-                      h4.portfolio-content-each-project-content-apr= portfolio[i].apr
+                      h4.portfolio-content-each-project-content-apr #{__('APR')} ~ #{page_lang == 'tr' ? '%' + portfolio[i].apr : portfolio[i].apr + '%'}
                   if i == portfolio.length - 1 && portfolio.length % 5
                     a.portfolio-content-all-projects-link(href=insertLanguageToLink(`/stake-with-node101#${portfolio[i]._id}`, lang))
                       svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
@@ -124,7 +124,7 @@ block main
                   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
                     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
                   .portfolio-content-all-projects-link-text= __('All Projects')
-          //- .portfolio-content-project-wrapper-by-four
+          //-  .portfolio-content-project-wrapper.portfolio-content-project-wrapper-by-four
             - for (let line = 0; line < parseInt(portfolio.length / 4) + (portfolio.length % 4 ? 1 : 0); line++)
               .portfolio-content-project-each-line
                 - for (let i = line * 4; i < Math.min(portfolio.length, 4 * (line + 1)); i++)
@@ -144,7 +144,7 @@ block main
                   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
                     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
                   .portfolio-content-all-projects-link-text= __('All Projects')
-          //- .portfolio-content-project-wrapper-by-three
+          //-  .portfolio-content-project-wrapper.portfolio-content-project-wrapper-by-three
             - for (let line = 0; line < parseInt(portfolio.length / 3) + (portfolio.length % 3 ? 1 : 0); line++)
               .portfolio-content-project-each-line
                 - for (let i = line * 3; i < Math.min(portfolio.length, 3 * (line + 1)); i++)
@@ -164,7 +164,7 @@ block main
                   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
                     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
                   .portfolio-content-all-projects-link-text= __('All Projects')
-          //- .portfolio-content-project-wrapper-responsive
+          //-  .portfolio-content-project-wrapper.portfolio-content-project-wrapper-responsive
             each project in portfolio
               .portfolio-content-each-project-wrapper-responsive
                 img.portfolio-content-each-project-logo(src=`/img/chains/${portfolio[i]._id}-40w.png` width='100%' alt=portfolio[i].name)

@@ -2,59 +2,73 @@ module.exports = (req, res) => {
   const PORTFOLIO = [
     {
       _id: 'asset-mantle',
-      name: 'Asset Mantle'
+      name: 'Asset Mantle',
+      apr: ''
     },
     {
       _id: 'band-protocol',
-      name: 'Band Protocol'
+      name: 'Band Protocol',
+      apr: ''
     },
     {
       _id: 'canto',
-      name: 'Canto'
+      name: 'Canto',
+      apr: ''
     },
     {
       _id: 'cheqd',
-      name: 'Cheqd'
+      name: 'Cheqd',
+      apr: ''
     },
     {
       _id: 'cosmos-hub',
-      name: 'Cosmos Hub'
+      name: 'Cosmos Hub',
+      apr: ''
     },
     {
       _id: 'crescent',
-      name: 'Crescent'
+      name: 'Crescent',
+      apr: ''
     },
     {
       _id: 'desmos',
-      name: 'Desmos'
+      name: 'Desmos',
+      apr: ''
     },
     {
       _id: 'e-money',
-      name: 'E-Money'
+      name: 'E-Money',
+      apr: ''
     },
     {
       _id: 'iris-net',
-      name: 'Iris Network'
+      name: 'Iris Network',
+      apr: ''
     },
     {
       _id: 'ki-chain',
-      name: 'Ki Chain'
+      name: 'Ki Chain',
+      apr: ''
     },
     {
       _id: 'nym',
-      name: 'NYM Mixnode'
+      name: 'NYM Mixnode',
+      apr: ''
     },
     {
       _id: 'orai-chain',
-      name: 'Orai Chain'
+      name: 'Orai Chain',
+      apr: ''
     },
     {
       _id: 'shentu',
-      name: 'Shentu'
+      name: 'Shentu',
+      apr: ''
     },
     {
       _id: 'umee',
-      name: 'UMEE'
+      name: 'UMEE',
+      apr: ''
     }
   ];
   const SERVICES = [

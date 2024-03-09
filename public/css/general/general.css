@@ -62,6 +62,7 @@ input[type=number] {
   --light-text-color: rgba(245, 245, 245, 1);
   --link-dark-color: rgba(71, 53, 202, 1);
   --link-light-color: rgba(150, 149, 223, 1);
+  --dark-color-contrast: rgba(112, 130, 227, 1);
   --bright-color-gradient-one: rgba(253, 134, 77, 1);
   --bright-color-gradient-two: rgba(254, 72, 108, 1);
 }
