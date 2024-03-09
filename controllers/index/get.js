@@ -147,7 +147,45 @@ module.exports = (req, res) => {
       name: 'Cryptist',
       logo: '/img/events/cryptist/logo.png'
     }
-  ]
+  ];
+  const CONTRIBUTIONS = [
+    {
+      _id: 'zero-knowledge',
+      title: 'Zero Knowledge',
+    },
+    {
+      _id: 'staking',
+      title: 'Staking',
+    },
+    {
+      _id: 'Software',
+      title: 'Software',
+    },
+    {
+      _id: 'crypto',
+      title: 'Crypto',
+    },
+    {
+      _id: 'validator',
+      title: 'Validator',
+    },
+    {
+      _id: 'events',
+      title: 'Events',
+    },
+    {
+      _id: 'management',
+      title: 'Management',
+    },
+    {
+      _id: 'blockchain',
+      title: 'Blockchain',
+    },
+    {
+      _id: 'cosmos',
+      title: 'Cosmos',
+    }
+  ];
 
   return res.render('index/index', {
     page: 'index/index',
@@ -167,7 +205,7 @@ module.exports = (req, res) => {
     portfolio: PORTFOLIO,
     services: SERVICES,
     events: EVENTS,
-    contributions: [],
+    contributions: CONTRIBUTIONS.concat(CONTRIBUTIONS),
     frequently_asked_questions: []
   });
 }

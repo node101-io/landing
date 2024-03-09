@@ -87,7 +87,7 @@ block main
               path(d='M12.5103 0.192261C5.59245 0.192261 0 5.70105 0 12.5162C0 17.9639 3.58327 22.5752 8.55422 24.2073C9.17572 24.33 9.40337 23.9422 9.40337 23.6159C9.40337 23.3302 9.38288 22.3509 9.38288 21.3305C5.90281 22.0652 5.17812 19.8614 5.17812 19.8614C4.61885 18.4331 3.79018 18.066 3.79018 18.066C2.65116 17.3111 3.87315 17.3111 3.87315 17.3111C5.13663 17.3927 5.79961 18.5761 5.79961 18.5761C6.9179 20.4531 8.7199 19.9227 9.44486 19.5962C9.54831 18.8005 9.87993 18.2496 10.232 17.9436C7.45642 17.6579 4.53613 16.5969 4.53613 11.8631C4.53613 10.5165 5.03292 9.41473 5.8201 8.55786C5.6959 8.25187 5.26083 6.9866 5.94455 5.29315C5.94455 5.29315 7.00086 4.96663 9.38263 6.55817C10.4023 6.28841 11.454 6.15117 12.5103 6.15002C13.5667 6.15002 14.6435 6.293 15.6378 6.55817C18.0198 4.96663 19.0761 5.29315 19.0761 5.29315C19.7599 6.9866 19.3245 8.25187 19.2003 8.55786C20.0083 9.41473 20.4846 10.5165 20.4846 11.8631C20.4846 16.5969 17.5643 17.6374 14.7679 17.9436C15.2237 18.3312 15.6171 19.0656 15.6171 20.2287C15.6171 21.8814 15.5966 23.2077 15.5966 23.6156C15.5966 23.9422 15.8245 24.33 16.4457 24.2076C21.4167 22.575 24.9999 17.9639 24.9999 12.5162C25.0204 5.70105 19.4075 0.192261 12.5103 0.192261Z')
       .start-page-right-top-radius
         .start-page-right-top-radius-inner-circle
-    //- .portfolio-wrapper
+    .portfolio-wrapper
       .portfolio-header-wrapper
         .portfolio-header-top-line
           h2.portfolio-header-top-line-text= __('node101 is validating and distributing the value in more than 15 blockchains, all with different visions for their community.')
@@ -175,7 +175,7 @@ block main
               .portfolio-content-all-projects-link-text= __('all projects')
               svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
                 path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
-    //- .services-wrapper
+    .services-wrapper
       .services-header-wrapper
         h2.services-header-subtitle= __('Validator')
         h1.services-header-title= __('Services') 
@@ -220,8 +220,10 @@ block main
               h1.services-content-description-title= __('That we could do or are already doing;')
               h2.services-content-description-subtitle= __('Visit services page to discover why node101 is the best partner in staking for you.')
               a.services-content-description-button(href=insertLanguageToLink('/validator-services', lang))
+                svg.services-content-description-button-icon.services-content-description-button-icon-left(viewBox='0 0 15 16' xmlns='http://www.w3.org/2000/svg')
+                  path(d='M7.37052 15.0873C7.38408 15.1012 7.79973 15.2079 8.2941 15.3242C8.78854 15.4406 9.19841 15.518 9.20501 15.4964C9.21153 15.4747 9.2627 15.1233 9.31863 14.7155C9.431 13.8965 9.70308 12.9403 9.9938 12.3423C10.9 10.4786 12.5259 9.24449 14.4978 8.92374L15 8.84204V8.01873V7.19535L14.5449 7.11716C11.563 6.60492 9.61896 4.32198 9.25529 0.905558C9.23156 0.682467 9.20318 0.5 9.19226 0.5C9.09169 0.5 7.42532 0.911201 7.39381 0.943775C7.37102 0.96733 7.38797 1.17647 7.43154 1.40845C7.91373 3.97722 9.2944 6.06751 11.0861 6.9415L11.5158 7.15116L2.67803 7.16757L0 7.178V8.84426L2.6924 8.8547L11.5094 8.87118L10.9668 9.15267C9.5592 9.88287 8.44477 11.3152 7.78849 13.2378C7.60148 13.7856 7.31929 15.0343 7.37052 15.0873Z')
                 .services-content-description-button-text= __('more services')
-                svg.services-content-description-button-icon(viewBox='0 0 15 16' xmlns='http://www.w3.org/2000/svg')
+                svg.services-content-description-button-icon.services-content-description-button-icon-right(viewBox='0 0 15 16' xmlns='http://www.w3.org/2000/svg')
                   path(d='M7.37052 15.0873C7.38408 15.1012 7.79973 15.2079 8.2941 15.3242C8.78854 15.4406 9.19841 15.518 9.20501 15.4964C9.21153 15.4747 9.2627 15.1233 9.31863 14.7155C9.431 13.8965 9.70308 12.9403 9.9938 12.3423C10.9 10.4786 12.5259 9.24449 14.4978 8.92374L15 8.84204V8.01873V7.19535L14.5449 7.11716C11.563 6.60492 9.61896 4.32198 9.25529 0.905558C9.23156 0.682467 9.20318 0.5 9.19226 0.5C9.09169 0.5 7.42532 0.911201 7.39381 0.943775C7.37102 0.96733 7.38797 1.17647 7.43154 1.40845C7.91373 3.97722 9.2944 6.06751 11.0861 6.9415L11.5158 7.15116L2.67803 7.16757L0 7.178V8.84426L2.6924 8.8547L11.5094 8.87118L10.9668 9.15267C9.5592 9.88287 8.44477 11.3152 7.78849 13.2378C7.60148 13.7856 7.31929 15.0343 7.37052 15.0873Z')
             article.services-content-each-service-wrapper
               each line in services[3].title
@@ -257,7 +259,7 @@ block main
                     a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
                   else if item.type == 'link'
                     a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
-    //- if events && events.length
+    if events && events.length
       .events-wrapper
         - events_title = __('A bridge leading to the Istanbul ecosystem. ')
         .events-header-wrapper
@@ -271,7 +273,7 @@ block main
         .events-description-wrapper
           h2.events-description
             span= __('We see events as the fastest way of distributing the value of blockchain. Until now, node101 organized more than 40 blockchain events and hosted more than 2000 people. Reach out to us from ')
-            a.events-description-mail(href='mailto:hello@node101.io') hello@node101.io
+            a.events-description-mail(href='mailto:hello@node101.io' target='_blank') hello@node101.io
             span= __(' to discuss how we can help you reach the Turkish community.')
         .events-links-wrapper
           .events-links-individual-wrapper
@@ -298,21 +300,23 @@ block main
         .contributions-header-wrapper
           h1.contributions-header-text
             span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways. ') 
-            .contributions-header-highlight-text= __('Scroll to explore.')
+            span.contributions-header-highlight-text= __('Scroll to explore.')
         .contributions-content-wrapper
           .contributions-navbar-wrapper
             .contributions-navbar-scroll-wrapper
+              .contributions-navbar-scroll-inner-wrapper
             svg.contributions-navbar-selected-icon(viewbox='0 0 51 53' xmlns='http://www.w3.org/2000/svg')
               path(d='M25.0598 51.5416C25.1059 51.5909 26.5191 51.9679 28.1999 52.3789C29.881 52.79 31.2746 53.0636 31.297 52.9872C31.3192 52.9106 31.4932 51.6691 31.6833 50.2281C32.0654 47.3344 32.9905 43.9558 33.9789 41.8428C37.06 35.2576 42.588 30.8972 49.2927 29.7639L51 29.4752V26.5662V23.6569L49.4525 23.3806C39.3142 21.5707 32.7045 13.5043 31.468 1.43297C31.3873 0.644722 31.2908 0 31.2537 0C30.9118 0 25.2461 1.45291 25.139 1.56801C25.0615 1.65123 25.1191 2.3902 25.2672 3.20986C26.9067 12.2862 31.601 19.6719 37.6926 22.76L39.1539 23.5008L9.10529 23.5588L0 23.5956L0 29.4831L9.15417 29.5199L39.1319 29.5782L37.2871 30.5728C32.5013 33.1528 28.7122 38.2138 26.4809 45.007C25.845 46.9424 24.8856 51.3545 25.0598 51.5416Z')
             .contributions-navbar-content-wrapper
-              - let contributions_random_start_index = parseInt(Math.random() * contributions.length)
-              - for (let i = contributions_random_start_index; i < contributions.length; i++)
-                .contributions-navbar-content-each-contribution(id=`contribution-${contribution._id}` class=(i == contributions_random_start_index ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
-              - for (let i = 0; i < contributions_random_start_index; i++)
-                .contributions-navbar-content-each-contribution(id=`contribution-${contribution._id}`)= contributions[i].title
+              .contributions-navbar-content-inner-wrapper
+                - let contributions_random_start_index = parseInt(Math.random() * contributions.length)
+                - for (let i = contributions_random_start_index; i < contributions.length; i++)
+                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}` class=(i == contributions_random_start_index ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
+                - for (let i = 0; i < contributions_random_start_index; i++)
+                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}`)= contributions[i].title
             .contributions-navbar-border
-          .contributions-content-wrapper
-            includes= `/includes/contributions/contribution-${contribution._id}`
+          .contributions-content-inner-wrapper
+            //- includes= `/includes/contributions/contribution-${contribution._id}`
     .team-wrapper
       .team-background-wrapper
         svg.team-background(viewBox='0 0 1806 827' fill='none' xmlns='http://www.w3.org/2000/svg')

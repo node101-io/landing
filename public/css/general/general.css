@@ -65,6 +65,7 @@ input[type=number] {
   --dark-color-contrast: rgba(112, 130, 227, 1);
   --bright-color-gradient-one: rgba(253, 134, 77, 1);
   --bright-color-gradient-two: rgba(254, 72, 108, 1);
+  --lila-color: rgba(231, 224, 255, 1);
   --green-color: rgba(220, 254, 188, 1);
   --purple-color: rgba(127, 48, 255, 1);
 }
