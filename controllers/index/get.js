@@ -141,6 +141,13 @@ module.exports = (req, res) => {
       ]
     }
   ];
+  const EVENTS = [
+    {
+      _id: 'cryptist',
+      name: 'Cryptist',
+      logo: '/img/events/cryptist/logo.png'
+    }
+  ]
 
   return res.render('index/index', {
     page: 'index/index',
@@ -159,8 +166,7 @@ module.exports = (req, res) => {
     },
     portfolio: PORTFOLIO,
     services: SERVICES,
-    events_title: '',
-    events: [],
+    events: EVENTS,
     contributions: [],
     frequently_asked_questions: []
   });
