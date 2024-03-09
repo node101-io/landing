@@ -257,7 +257,7 @@ block main
                     a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
                   else if item.type == 'link'
                     a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
-    if events && events.length
+    //- if events && events.length
       .events-wrapper
         - events_title = __('A bridge leading to the Istanbul ecosystem. ')
         .events-header-wrapper
@@ -317,22 +317,31 @@ block main
       .team-background-wrapper
         svg.team-background(viewBox='0 0 1806 827' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M-345 302.339C-264.122 342.872 -225.965 324.571 -168 394.001C-82.5691 497.601 -46.6279 577.058 21.3721 708.322C81.8605 805.98 231.023 828.976 314.837 761.763C398.651 694.549 433.013 636.56 588.345 508.746C679.694 433.646 828.775 279.195 1030.81 292.85C1132.89 299.756 1251.58 381.562 1345.91 424.114C1461.52 476.272 1483.13 480.524 1545.52 492.869C1619.63 507.555 1768.21 555.381 1933 424.114C1992.17 333.498 2009.26 66.1736 1740.5 79.0004C1520.5 89.5 1544 232.5 1586.5 269.5C1629 306.5 1726.12 289 1714.5 188.5C1702.88 88 1489.5 -27.1266 1414 -36.5' stroke='#FBFFE0' stroke-width='52' stroke-miterlimit='10')
-      .team-header-wrapper
-        .team-header-description= __('How do we achieve it all? By having one of the best teams in the ecosystem, all members with the vision of helping, growing, and distributing the value.')
-        .team-header-color
-      .team-content-wrapper
-        .team-content-images-wrapper
-        .team-content-button(href=insertLanguageToLink('/about-us', lang))
-          .team-content-button-text= __('101 team')
-          svg.team-content-button-icon(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
-            path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
+      .team-content-outer-wrapper
+        .team-top-line-color-wrapper
+          .team-top-line-color
+            .team-top-line-color-inner-circle
+        .team-header-wrapper
+          .team-header-description= __('How do we achieve it all? By having one of the best teams in the ecosystem, all members with the vision of helping, growing, and distributing the value.')
+          .team-header-color
+            .team-header-color-inner-circle
+        .team-content-wrapper
+          .team-content-images-wrapper
+            - for (let i = 1; i <= 6; i++)
+              img.team-content-each-image(src=`/img/team/photos/${i}.png` alt=`node101 team image ${i}`)
+          a.team-content-button(href=insertLanguageToLink('/about-us', lang))
+            svg.team-content-button-icon.team-content-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+              path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
+            .team-content-button-text= __('101 team')
+            svg.team-content-button-icon.team-content-button-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+              path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
       .team-footer-wrapper
-        .team-footer-description
-          h3.team-footer-description-text
-            span= __('If you also are sharing our values, believing in our vision, and thinking that it is time to change something; reach out to us at')
-            a.team-footer-description-link(href='mailto:hello@node101.io') hello@node101.io
-            span= __(', and let’s discuss when you can start.')
         .team-footer-color
+          .team-footer-color-inner-circle
+        h3.team-footer-description
+          span= __('If you also are sharing our values, believing in our vision, and thinking that it is time to change something; reach out to us at ')
+          a.team-footer-description-link(href='mailto:hello@node101.io' target='_blank') hello@node101.io
+          span= __(', and let’s discuss when you can start.')
     .frequently-asked-questions-wrapper
       h1.frequently-asked-questions-title= __('Frequently Asked Questions')
       each question, i in frequently_asked_questions
