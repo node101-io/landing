@@ -53,9 +53,10 @@
   --start-page-social-media-button-width: 22px;
   --start-page-social-media-button-gap: 20px;
 
-  --portfolio-curvature-border-radius: 20px;
+  --portfolio-curvature-border-radius: 40px;
   --portfolio-header-font-size: 22px;
   --portfolio-header-text-gap: 15px;
+  --portfolio-header-curvature-border-radius: 20px;
   --portfolio-header-top-line-text-width: 50vw;
   --portfolio-header-bottom-line-text-width: 45vw;
   --portfolio-header-bottom-line-link-icon-width: 20px;
@@ -615,7 +616,6 @@
   flex-direction: column;
   margin-left: var(--page-horizontal-padding);
   margin-top: calc(var(--page-vertical-padding) + var(--content-gap));
-  z-index: 3;
 }
 
 .portfolio-header-wrapper {
@@ -641,7 +641,7 @@
   font-weight: 600;
   font-size: var(--portfolio-header-font-size);
   background-color: var(--background-color);
-  border-bottom-right-radius: var(--portfolio-curvature-border-radius);
+  border-bottom-right-radius: var(--portfolio-header-curvature-border-radius);
   line-height: calc(1.6 * var(--portfolio-header-font-size));
   z-index: 2;
   padding-right: var(--portfolio-header-text-gap);
@@ -651,10 +651,10 @@
 .portfolio-header-top-line-color-space {
   height: 100%;
   min-height: 100%;
-  width: var(--portfolio-curvature-border-radius);
-  min-width: var(--portfolio-curvature-border-radius);
+  width: var(--portfolio-header-curvature-border-radius);
+  min-width: var(--portfolio-header-curvature-border-radius);
   background-color: var(--dark-text-color);
-  margin-left: calc(-1 * var(--portfolio-curvature-border-radius));
+  margin-left: calc(-1 * var(--portfolio-header-curvature-border-radius));
 }
 .portfolio-header-top-line-color {
   height: 100%;
@@ -662,7 +662,7 @@
   width: calc(100vw - var(--portfolio-header-top-line-text-width) - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - var(--portfolio-header-top-line-text-width) - 2 * var(--page-horizontal-padding));
   background-color: var(--dark-text-color);
-  border-top-left-radius: var(--portfolio-curvature-border-radius);
+  border-top-left-radius: var(--portfolio-header-curvature-border-radius);
   border-top-right-radius: var(--portfolio-curvature-border-radius);
 }
 .portfolio-header-bottom-line {
@@ -681,7 +681,7 @@
   font-size: var(--portfolio-header-font-size);
   line-height: calc(1.2 * var(--portfolio-header-font-size));
   background-color: var(--background-color);
-  border-bottom-right-radius: var(--portfolio-curvature-border-radius);
+  border-bottom-right-radius: var(--portfolio-header-curvature-border-radius);
   line-height: calc(1.6 * var(--portfolio-header-font-size));
   z-index: 2;
   color: var(--link-light-color);
@@ -713,10 +713,10 @@
 .portfolio-header-bottom-line-color-space {
   height: 100%;
   min-height: 100%;
-  width: var(--portfolio-curvature-border-radius);
-  min-width: var(--portfolio-curvature-border-radius);
+  width: var(--portfolio-header-curvature-border-radius);
+  min-width: var(--portfolio-header-curvature-border-radius);
   background-color: var(--dark-text-color);
-  margin-left: calc(-1 * var(--portfolio-curvature-border-radius));
+  margin-left: calc(-1 * var(--portfolio-header-curvature-border-radius));
 }
 .portfolio-header-bottom-line-color {
   height: 100%;
@@ -724,7 +724,7 @@
   width: calc(100vw - var(--portfolio-header-bottom-line-text-width) - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - var(--portfolio-header-bottom-line-text-width) - 2 * var(--page-horizontal-padding));
   background-color: var(--dark-text-color);
-  border-top-left-radius: var(--portfolio-curvature-border-radius);
+  border-top-left-radius: var(--portfolio-header-curvature-border-radius);
 }
 
 .portfolio-content-wrapper {
@@ -880,7 +880,6 @@
   padding: calc(var(--content-gap) / 2) var(--page-horizontal-padding);
   background-color: var(--light-color);
   border-radius: var(--services-curvature-border-radius);
-  z-index: 3;
 }
 
 .services-header-wrapper {
@@ -1216,6 +1215,7 @@
   min-height: var(--contributions-navbar-content-each-contribution-height);
   font-family: 'Igra Sans', sans-serif;
   font-size: var(--contributions-navbar-content-each-contribution-font-size);
+  /* font-size: 12px; */
   color: var(--background-color);
 }
 .contributions-navbar-border {

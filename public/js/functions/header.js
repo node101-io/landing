@@ -17,14 +17,14 @@ function headerBackgroundAnimation(percentage, amount) {
   const startPageLeftTopRadius = document.querySelector('.start-page-left-top-radius');
   const startPageRightTopRadius = document.querySelector('.start-page-right-top-radius');
 
-  headerLogoWrapper.style.borderBottomRightRadius = `calc((var(--header-height) - 10px) * ${1 - percentage})`;
+  headerLogoWrapper.style.borderBottomRightRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - percentage})` : `calc(30px * ${1 - percentage})`;
   buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - percentage} * var(--header-vertical-padding)))`;
   buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - percentage})`;
   buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = `calc(max(var(--header-vertical-padding), ((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - percentage}))`;
   buttonsWrapper.style.width = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - percentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
   buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - percentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
   buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${percentage})`;
-  headerMenuWrapper.style.borderBottomLeftRadius = `calc((var(--header-height) - 10px) * ${1 - percentage})`;
+  headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - percentage})` : `calc(30px * ${1 - percentage})`;
 
   if (percentage == 1)  {
     headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
@@ -32,13 +32,6 @@ function headerBackgroundAnimation(percentage, amount) {
   } else {
     headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '100%';
     headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'transparent';
-  }
-
-  if (startPageLeftTopRadius && startPageRightTopRadius) {
-    if (amount >= WINDOW_HEIGHT - HEADER_HEIGHT)
-      startPageLeftTopRadius.style.display = startPageRightTopRadius.style.display = 'none';
-    else
-      startPageLeftTopRadius.style.display = startPageRightTopRadius.style.display = 'flex';
   }
 };
 
