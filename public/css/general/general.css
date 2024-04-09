@@ -68,6 +68,8 @@ input[type=number] {
   --lila-color: rgba(231, 224, 255, 1);
   --green-color: rgba(220, 254, 188, 1);
   --purple-color: rgba(127, 48, 255, 1);
+  --footer-background-color: rgba(196, 205, 244, 1);
+  --placeholder-color: rgba(153, 153, 153, 1);
 }
 
 .display-none {
