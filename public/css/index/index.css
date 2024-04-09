@@ -36,7 +36,7 @@
   --start-page-background-shape-five-animation-duration: 0.3s;
 
   --start-page-external-link-hover-transition-duration: 0.3s;
-  --start-page-external-link-title-font-size: 20px;
+  --start-page-external-link-title-font-size: 18px;
   --start-page-external-link-icon-width: 15px;
   --start-page-external-link-icon-margin-left: 8px;
   --start-page-external-link-text-font-size: 15px;
@@ -1181,9 +1181,12 @@
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.contributions-navbar-scroll-inner-wrapper {
-  height: calc(20 * (9 * var(--contributions-navbar-content-each-contribution-height)));
-  min-height: calc(20 * (9 * var(--contributions-navbar-content-each-contribution-height)));
+.contributions-navbar-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.contributions-navbar-scroll-inner-each-wrapper {
+  height: var(--contributions-navbar-content-each-contribution-height);
+  min-height: var(--contributions-navbar-content-each-contribution-height);
   width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
   min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
 }

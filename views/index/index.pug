@@ -297,14 +297,15 @@ block main
             includes= `../includes/events/${events[0]._id}`
     if contributions && contributions.length
       .contributions-wrapper
-        .contributions-header-wrapper
+        //- .contributions-header-wrapper
           h1.contributions-header-text
             span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways. ') 
             span.contributions-header-highlight-text= __('Scroll to explore.')
         .contributions-content-wrapper
           .contributions-navbar-wrapper
             .contributions-navbar-scroll-wrapper
-              .contributions-navbar-scroll-inner-wrapper
+              - for (let i = 0; i < contributions.length + 2; i++)
+                .contributions-navbar-scroll-inner-each-wrapper
             svg.contributions-navbar-selected-icon(viewbox='0 0 51 53' xmlns='http://www.w3.org/2000/svg')
               path(d='M25.0598 51.5416C25.1059 51.5909 26.5191 51.9679 28.1999 52.3789C29.881 52.79 31.2746 53.0636 31.297 52.9872C31.3192 52.9106 31.4932 51.6691 31.6833 50.2281C32.0654 47.3344 32.9905 43.9558 33.9789 41.8428C37.06 35.2576 42.588 30.8972 49.2927 29.7639L51 29.4752V26.5662V23.6569L49.4525 23.3806C39.3142 21.5707 32.7045 13.5043 31.468 1.43297C31.3873 0.644722 31.2908 0 31.2537 0C30.9118 0 25.2461 1.45291 25.139 1.56801C25.0615 1.65123 25.1191 2.3902 25.2672 3.20986C26.9067 12.2862 31.601 19.6719 37.6926 22.76L39.1539 23.5008L9.10529 23.5588L0 23.5956L0 29.4831L9.15417 29.5199L39.1319 29.5782L37.2871 30.5728C32.5013 33.1528 28.7122 38.2138 26.4809 45.007C25.845 46.9424 24.8856 51.3545 25.0598 51.5416Z')
             .contributions-navbar-content-wrapper

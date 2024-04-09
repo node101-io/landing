@@ -82,3 +82,13 @@ p, h1, h2, h3, h4, h5, h6 {
     --page-horizontal-padding: calc((100vw - 1920) / 2 + 40px);
   }
 }
+@media only screen and (max-width: 800px) {
+  :root {
+    --page-horizontal-padding: 30px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  :root {
+    --page-horizontal-padding: 20px;
+  }
+}

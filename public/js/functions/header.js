@@ -1,5 +1,6 @@
 let headerIsLanguageButtonOpen = false;
 
+const HEADER_ANIMATION_WIDTH_LIMIT = 900;
 let HEADER_HEIGHT;
 let WINDOW_HEIGHT;
 
@@ -39,10 +40,12 @@ window.addEventListener('load', _ => {
   HEADER_HEIGHT = Number(getComputedStyle(document.documentElement).getPropertyValue('--header-height').replace('px', ''));
   WINDOW_HEIGHT = window.innerHeight;
 
-  const headerChangeLanguageButtonMenuWrapper = document.querySelector('.header-change-language-button-menu-wrapper');
+  const headerWrapperResponsiveMenu = document.querySelector('.header-wrapper-responsive-menu');
 
   document.addEventListener('click', event => {
     if (event.target.closest('.header-change-language-button')) {
+      const headerChangeLanguageButtonMenuWrapper = event.target.closest('.header-change-language-button').childNodes[1];
+
       if (headerIsLanguageButtonOpen) {
         headerIsLanguageButtonOpen = false;
         headerChangeLanguageButtonMenuWrapper.classList.remove('header-change-language-button-menu-wrapper-open-animation');
@@ -57,10 +60,26 @@ window.addEventListener('load', _ => {
       headerChangeLanguageButtonMenuWrapper.classList.remove('header-change-language-button-menu-wrapper-open-animation');
       headerChangeLanguageButtonMenuWrapper.classList.add('header-change-language-button-menu-wrapper-close-animation');
     };
+
+    if (event.target.closest('.header-responsive-menu-button')) {
+      const target = event.target.closest('.header-responsive-menu-button');
+
+      if (target.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
+        headerWrapperResponsiveMenu.classList.remove('header-wrapper-responsive-menu-opened');
+        target.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
+        target.childNodes[1].classList.remove('header-responsive-menu-button-each-icon-middle-opened');
+        target.childNodes[2].classList.remove('header-responsive-menu-button-each-icon-bottom-opened');
+      } else {
+        headerWrapperResponsiveMenu.classList.add('header-wrapper-responsive-menu-opened');
+        target.childNodes[0].classList.add('header-responsive-menu-button-each-icon-top-opened');
+        target.childNodes[1].classList.add('header-responsive-menu-button-each-icon-middle-opened');
+        target.childNodes[2].classList.add('header-responsive-menu-button-each-icon-bottom-opened');
+      };
+    }
   });
 
   document.querySelector('.content-wrapper').addEventListener('scroll', event => {
-    const percentage = Math.min(1, event.target.scrollTop / HEADER_HEIGHT);
-    headerBackgroundAnimation(percentage, event.target.scrollTop);
+    if (window.innerWidth > HEADER_ANIMATION_WIDTH_LIMIT)
+      headerBackgroundAnimation(Math.min(1, event.target.scrollTop / HEADER_HEIGHT), event.target.scrollTop);
   });
 });

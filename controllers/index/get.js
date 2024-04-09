@@ -149,10 +149,10 @@ module.exports = (req, res) => {
     }
   ];
   const CONTRIBUTIONS = [
-    {
-      _id: 'zero-knowledge',
-      title: 'Zero Knowledge',
-    },
+    // {
+    //   _id: 'zero-knowledge',
+    //   title: 'Zero Knowledge',
+    // },
     {
       _id: 'staking',
       title: 'Staking',
