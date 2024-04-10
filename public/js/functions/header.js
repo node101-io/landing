@@ -1,11 +1,12 @@
+let headerLastBackgroundAnimationPercentage = 0;
 let headerIsLanguageButtonOpen = false;
 
 const HEADER_ANIMATION_WIDTH_LIMIT = 900;
 let HEADER_HEIGHT;
 let WINDOW_HEIGHT;
 
-function headerBackgroundAnimation(percentage, amount) {
-  if (typeof percentage != 'number' || percentage < 0 || percentage > 1)
+function headerBackgroundAnimation() {
+  if (typeof headerLastBackgroundAnimationPercentage != 'number' || headerLastBackgroundAnimationPercentage < 0 || headerLastBackgroundAnimationPercentage > 1)
     return;
 
   const headerTopLineRadiusLeftInnerCircle = document.querySelector('.header-top-line-radius-left-inner-circle');
@@ -15,24 +16,34 @@ function headerBackgroundAnimation(percentage, amount) {
   const buttonsWrapper = document.querySelector('.header-buttons-wrapper');
   const headerMenuWrapper = document.querySelector('.header-menu-wrapper');
 
-  const startPageLeftTopRadius = document.querySelector('.start-page-left-top-radius');
-  const startPageRightTopRadius = document.querySelector('.start-page-right-top-radius');
-
-  headerLogoWrapper.style.borderBottomRightRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - percentage})` : `calc(30px * ${1 - percentage})`;
-  buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - percentage} * var(--header-vertical-padding)))`;
-  buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - percentage})`;
-  buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = `calc(max(var(--header-vertical-padding), ((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - percentage}))`;
-  buttonsWrapper.style.width = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - percentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
-  buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - percentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
-  buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${percentage})`;
-  headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - percentage})` : `calc(30px * ${1 - percentage})`;
-
-  if (percentage == 1)  {
+  if (window.innerWidth > HEADER_ANIMATION_WIDTH_LIMIT) {
+    headerLogoWrapper.style.borderBottomRightRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
+    buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - headerLastBackgroundAnimationPercentage} * var(--header-vertical-padding)))`;
+    buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage})`;
+    buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = `calc(max(var(--header-vertical-padding), ((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage}))`;
+    buttonsWrapper.style.width = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
+    buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
+    buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${headerLastBackgroundAnimationPercentage})`;
+    headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
+  
+    if (headerLastBackgroundAnimationPercentage == 1)  {
+      headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
+      headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'var(--background-color)';
+    } else {
+      headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '100%';
+      headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'transparent';
+    }
+  } else {
+    headerLogoWrapper.style.borderBottomRightRadius = '0';
+    buttonsWrapper.style.height = 'calc(calc(var(--header-height) - 2 * var(--header-vertical-padding)))';
+    buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = '0';
+    buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = '0';
+    buttonsWrapper.style.width = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
+    buttonsWrapper.style.minWidth = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
+    buttonsWrapper.style.padding = '0';
+    headerMenuWrapper.style.borderBottomLeftRadius = '0';
     headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
     headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'var(--background-color)';
-  } else {
-    headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '100%';
-    headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'transparent';
   }
 };
 
@@ -79,7 +90,11 @@ window.addEventListener('load', _ => {
   });
 
   document.querySelector('.content-wrapper').addEventListener('scroll', event => {
-    if (window.innerWidth > HEADER_ANIMATION_WIDTH_LIMIT)
-      headerBackgroundAnimation(Math.min(1, event.target.scrollTop / HEADER_HEIGHT), event.target.scrollTop);
+    headerLastBackgroundAnimationPercentage = Math.min(1, event.target.scrollTop / HEADER_HEIGHT);
+    headerBackgroundAnimation();
   });
+});
+
+window.addEventListener('resize', _ => {
+  headerBackgroundAnimation();
 });
