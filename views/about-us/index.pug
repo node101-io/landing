@@ -1,0 +1,79 @@
+extends ../partials/header
+block main
+    .about-us-page-text-wrapper
+      .about-us-page-text-title Hello node101 team
+      .about-us-page-text-text Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
+    .about-us-page-image-card-wrapper
+      if team && team.length
+        - for (let i = 0; i < team.length; i++)
+          .about-us-page-image-card(id=`card${i + 1}`)
+            img.about-us-page-image(src=`/img/team/headshot/${team[i].name}.png` alt=`node101 team member ${team[i].name}`)
+            .about-us-page-image-text-wrapper
+              .about-us-page-image-name= team[i].name
+              .about-us-page-image-title= team[i].title
+            .about-us-page-image-information-box Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //- .about-us-page-image-wrapper#card1
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Akin
+      //-     .about-us-page-image-title Akin
+      //- .about-us-page-image-wrapper#card2
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Mustafa
+      //-     .about-us-page-image-title Mustafa
+      //- .about-us-page-image-wrapper#card3
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Yunus
+      //-     .about-us-page-image-title Yunus
+      //- .about-us-page-image-wrapper#card4
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Mete
+      //-     .about-us-page-image-title Mete
+      //- .about-us-page-image-wrapper#card5
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Hatun
+      //-     .about-us-page-image-title Hatun
+      //- .about-us-page-image-wrapper#card6
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Yakup
+      //-     .about-us-page-image-title Yakup
+      //- .about-us-page-image-wrapper#card7
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Aleyna
+      //-     .about-us-page-image-title Aleyna
+      //- .about-us-page-image-wrapper#card8
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Necip
+      //-     .about-us-page-image-title Necip
+      //- .about-us-page-image-wrapper#card9
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Kaleab
+      //-     .about-us-page-image-title Kaleab
+      //- .about-us-page-image-wrapper#card10
+      //-   img.about-us-page-image(src='/img/team/headshot/akin.png' alt='node101 events contact Mete Koray Gergin')
+      //-   .about-us-page-image-text-wrapper
+      //-     .about-us-page-image-name Ömer
+      //-     .about-us-page-image-title Ömer

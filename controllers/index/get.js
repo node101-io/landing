@@ -186,7 +186,48 @@ module.exports = (req, res) => {
       title: 'Cosmos',
     }
   ];
-
+  const TEAM = [
+    {
+      name: 'Akın',
+      title: 'Title'
+    },
+    {
+      name: 'Mustafa',
+      title: 'Title'
+    },
+    {
+      name: 'Yunus',
+      title: 'Title'
+    },
+    {
+      name: 'Mete',
+      title: 'Title'
+    },
+    {
+      name: 'Hatun',
+      title: 'Title'
+    },
+    {
+      name: 'Yakup',
+      title: 'Title'
+    },
+    {
+      name: 'Aleyna',
+      title: 'Title'
+    },
+    {
+      name: 'Necip',
+      title: 'Title'
+    },
+    {
+      name: 'Kaleab',
+      title: 'Title'
+    },
+    {
+      name: 'Ömer',
+      title: 'Title'
+    }
+  ];
   return res.render('index/index', {
     page: 'index/index',
     title: res.__('For you to make most of the distributed value'),
@@ -206,6 +247,7 @@ module.exports = (req, res) => {
     services: SERVICES,
     events: EVENTS,
     contributions: CONTRIBUTIONS.concat(CONTRIBUTIONS),
-    frequently_asked_questions: []
+    frequently_asked_questions: [],
+    team: TEAM
   });
 }
