@@ -16,6 +16,7 @@ let contributionScrollEnded = false;
 
 function eventsSlideAnimation() {
   const firstElement = eventsHeaderInnerWrapper.childNodes[0];
+  // const firstElementWidth = Math.cos(parseFloat(window.getComputedStyle(firstElement).getPropertyValue('transform').split(',')[1])) * firstElement.getBoundingClientRect().width;
   const firstElementWidth = firstElement.getBoundingClientRect().width;
 
   if (eventsHeaderInnerWrapperMarginLeft >= firstElementWidth) {
@@ -142,7 +143,7 @@ window.addEventListener('load', (_) => {
   eventsHeaderInnerWrapper = document.querySelector('.events-header-inner-wrapper');
   contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
   const contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
-  // eventsSlideAnimation();
+  eventsSlideAnimation();
 
   contributionsNavbarScrollWrapper.addEventListener('scroll', (event) => {
     contributionScrollTop = event.target.scrollTop;
