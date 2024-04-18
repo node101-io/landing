@@ -56,7 +56,8 @@ block content
               each letter, i in header_buttons[5].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         .header-menu-wrapper
-          a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+          //- a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+          a.header-stake-with-node101-button
             .header-stake-with-node101-button-background
               .header-stake-with-node101-button-background-circle.header-stake-with-node101-button-background-circle-5
               .header-stake-with-node101-button-background-circle.header-stake-with-node101-button-background-circle-4
