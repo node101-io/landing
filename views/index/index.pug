@@ -136,7 +136,7 @@ block main
     //- .services-wrapper
       .services-header-wrapper
         h2.services-header-subtitle= __('Validator')
-        h1.services-header-title= __('Services') 
+        h1.services-header-title= __('Services')
       if services && services.length >= 6
         .services-content-wrapper
           .services-content-each-line-wrapper
@@ -221,11 +221,11 @@ block main
       .events-wrapper
         - events_title = __('A bridge leading to the Istanbul ecosystem. ')
         .events-header-wrapper
-          .events-header-inner-wrapper
-            - for (let i = 0; i < 3; i++)
+          - for (let i = 0; i < 3; i++)
+            .events-header-each-inner-wrapper
               each letter, j in events_title.split('')
                 span.events-header-each-letter(style=`
-                  animation-delay: calc(-1 * ${(i * events_title.split('').length + j) / (5 / 3 * events_title.split('').length)} * var(--events-header-slide-animation-duration));
+                  animation-delay: calc(-1 * ${j} * var(--events-header-animation-duration) / ${events_title.split('').length});
                   ${letter == ' ' ? 'width: var(--events-header-space-width); min-width: var(--events-header-space-width)' : ''}
                 `)= letter
         .events-description-wrapper
@@ -257,7 +257,7 @@ block main
       .contributions-wrapper
         //- .contributions-header-wrapper
           h1.contributions-header-text
-            span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways. ') 
+            span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways. ')
             span.contributions-header-highlight-text= __('Scroll to explore.')
         .contributions-content-wrapper
           .contributions-navbar-wrapper

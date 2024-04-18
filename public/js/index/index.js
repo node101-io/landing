@@ -83,7 +83,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
       contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].remove();
 
       contributionsFirstItemMarginTop = CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT;
-      
+
       setTimeout(() => {
         if (contributionScrollTopLast - contributionScrollTop <= -CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT)
           scrollContributionsContentBy(newScrollAmount, () => callback());
@@ -143,7 +143,7 @@ window.addEventListener('load', (_) => {
   eventsHeaderInnerWrapper = document.querySelector('.events-header-inner-wrapper');
   contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
   const contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
-  eventsSlideAnimation();
+  // eventsSlideAnimation();
 
   contributionsNavbarScrollWrapper.addEventListener('scroll', (event) => {
     contributionScrollTop = event.target.scrollTop;

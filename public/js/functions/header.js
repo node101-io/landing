@@ -66,10 +66,20 @@ window.addEventListener('load', _ => {
         headerChangeLanguageButtonMenuWrapper.classList.add('header-change-language-button-menu-wrapper-open-animation');
         headerChangeLanguageButtonMenuWrapper.classList.remove('header-change-language-button-menu-wrapper-close-animation');
       };
+
     } else if (headerIsLanguageButtonOpen) {
       headerIsLanguageButtonOpen = false;
       headerChangeLanguageButtonMenuWrapper.classList.remove('header-change-language-button-menu-wrapper-open-animation');
       headerChangeLanguageButtonMenuWrapper.classList.add('header-change-language-button-menu-wrapper-close-animation');
+    };
+
+    if (event.target.closest('.each-header-change-language-button-menu-text')) {
+      const language = event.target.closest('.each-header-change-language-button-menu-text').innerText.toLowerCase();
+
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', language);
+
+      window.location.href = url;
     };
 
     if (event.target.closest('.header-responsive-menu-button')) {

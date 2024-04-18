@@ -92,8 +92,8 @@
   --services-content-description-button-icon-transition-duration: 0.5s;
 
   --events-header-height: 130px;
-  --events-header-slide-animation-duration: 40s;
   --events-header-animation-duration: 30s;
+  --events-header-rotation-angle : 10deg;
   --events-header-vertical-margin: 60px;
   --events-header-font-size: 40px;
   --events-header-space-width: 15px;
@@ -323,7 +323,7 @@
   }
   100% {
     height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));
-    min-height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));  
+    min-height: calc(var(--start-page-background-shape-three-over-total-height-ratio) * var(--start-page-background-shape-height));
   }
 }
 .start-page-background-shape-three {
@@ -375,7 +375,7 @@
   }
   80% {
     width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
-    min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));  
+    min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     left: calc(
       var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
@@ -387,7 +387,7 @@
   }
   100% {
     width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
-    min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));  
+    min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     left: calc(
       var(--page-horizontal-padding) + 2 * var(--header-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
@@ -1083,6 +1083,7 @@
 }
 
 .events-header-wrapper {
+  display: flex;
   height: var(--events-header-height);
   min-height: var(--events-header-height);
   width: calc(100vw - 2 * var(--page-horizontal-padding));
@@ -1092,29 +1093,29 @@
   margin-left: var(--page-horizontal-padding);
   padding-bottom: 5px;
 }
-.events-header-inner-wrapper {
+.events-header-each-inner-wrapper {
   height: var(--events-header-height);
   min-height: var(--events-header-height);
   width: fit-content;
   min-width: fit-content;
   display: flex;
   align-items: flex-end;
-  /* animation: eventsHeaderScrollAnimation 5s infinite linear; */
+  animation: eventsHeaderScrollAnimation var(--events-header-animation-duration) infinite linear;
 }
-/* @keyframes eventsHeaderScrollAnimation {
+@keyframes eventsHeaderScrollAnimation {
   0% {
-    margin-left: 0px;
+    transform: translateX(0);
   }
   100% {
-    margin-left: calc(-1 * 100%);
+    transform: translateX(-100%);
   }
-} */
+}
 .events-header-each-letter {
   font-weight: 500;
   font-family: 'Igra Sans', sans-serif;
   font-size: var(--events-header-font-size);
   color: var(--bright-color-gradient-two);
-  animation: eventsHeaderLetterAnimation var(--events-header-animation-duration) alternate infinite ease-in-out;
+  animation: eventsHeaderLetterAnimation var(--events-header-animation-duration) infinite ease-in-out;
 }
 @keyframes eventsHeaderLetterAnimation {
   0% {
@@ -1122,14 +1123,14 @@
     transform: rotate(0deg);
   }
   25% {
-    /* transform: rotate(-5deg); */
+    transform: rotate(calc(-1 * var(--events-header-rotation-angle)));
   }
   50% {
     margin-bottom: var(--events-header-vertical-margin);
-    /* transform: rotate(0deg); */
+    transform: rotate(0deg);
   }
   75% {
-    /* transform: rotate(5deg); */
+    transform: rotate(var(--events-header-rotation-angle));
   }
   100% {
     margin-bottom: 0;

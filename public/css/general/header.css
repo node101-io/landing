@@ -457,7 +457,7 @@
   border-bottom-right-radius: var(--header-change-language-button-menu-border-radius);
 }
 .header-change-language-button-menu-wrapper-open-animation {
-  animation: headerChangeLanguageButtonMenuOpenBottomAnimation .8s linear forwards;
+  animation: headerChangeLanguageButtonMenuOpenBottomAnimation .6s linear forwards;
 }
 .header-change-language-button-menu-wrapper-close-animation {
   animation: headerChangeLanguageButtonMenuCloseBottomAnimation .3s ease-in forwards;
