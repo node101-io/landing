@@ -653,6 +653,18 @@
   min-height: 10px;
   border-radius: 3px;
 }
+/* .header-responsive-menu-button-each-icon-middle-opened::after {
+  content: '';
+  position: relative;
+  display: block;
+  background: var(--background-color);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 4px;
+} */
 .header-responsive-menu-button-each-icon-bottom {
   top: calc(2 * var(--header-responsive-menu-button-each-icon-height) + 2 * var(--header-responsive-menu-button-each-icon-gap));
 }
