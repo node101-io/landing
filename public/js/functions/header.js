@@ -107,38 +107,26 @@ window.addEventListener('load', _ => {
     ) {
       let offsetTop = 0;
 
-      if (
-        event.target.closest('#header-portfolio-button') ||
-        event.target.closest('#header-portfolio-button-responsive') ||
-        event.target.closest('.header-stake-with-node101-button')
-      ) {
+      if (event.target.closest('#header-portfolio-button') || event.target.closest('#header-portfolio-button-responsive') || event.target.closest('.header-stake-with-node101-button')) {
         offsetTop = document.querySelector('.portfolio-wrapper').getBoundingClientRect().top;
-      } else if (
-        event.target.closest('#header-ecosystem-contributions-button') ||
-        event.target.closest('#header-contributions-button-responsive')
-      ) {
+      } else if (event.target.closest('#header-ecosystem-contributions-button') || event.target.closest('#header-contributions-button-responsive')) {
         offsetTop = document.querySelector('.contributions-wrapper').getBoundingClientRect().top;
-      } else if (
-        event.target.closest('#header-about-us-button') ||
-        event.target.closest('#header-about-us-button-responsive')
-      ) {
+      } else if (event.target.closest('#header-about-us-button') || event.target.closest('#header-about-us-button-responsive')) {
         offsetTop = document.querySelector('.team-wrapper').getBoundingClientRect().top;
-      } else if (
-        event.target.closest('#header-reach-us-button') ||
-        event.target.closest('#header-reach-us-button-responsive')
-      ) {
+      } else if (event.target.closest('#header-reach-us-button') || event.target.closest('#header-reach-us-button-responsive')) {
         offsetTop = document.querySelector('.footer-wrapper').getBoundingClientRect().top;
       };
 
       if (offsetTop != 0) {
         const contentWrapper = document.querySelector('.content-wrapper');
         const cssRoot = getComputedStyle(document.documentElement);
+        const contentGap = parseInt(cssRoot.getPropertyValue('--content-gap'));
         const headerHeight =
           parseInt(cssRoot.getPropertyValue('--header-height')) +
           parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
 
         contentWrapper.scrollBy({
-          top: offsetTop - headerHeight,
+          top: offsetTop - headerHeight - contentGap / 2,
           behavior: 'smooth'
         });
       };

@@ -32,7 +32,7 @@ if (cluster.isMaster) {
   const PORT = process.env.PORT || 3000;
 
   const DEFAULT_PAGE_LANGUAGE = 'en';
-  const SUPPORTED_PAGE_LANGUAGES = ['en', 'tr'];
+  const SUPPORTED_PAGE_LANGUAGES = ['tr', 'en'];
 
   const insertLanguageToLink = require('./utils/insertLanguageToLink');
 
