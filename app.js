@@ -28,9 +28,11 @@ if (cluster.isMaster) {
   const app = express();
   const server = http.createServer(app);
 
-  const DEFAULT_PAGE_LANGUAGE = 'en';
   const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/node101';
   const PORT = process.env.PORT || 3000;
+
+  const DEFAULT_PAGE_LANGUAGE = 'en';
+  const SUPPORTED_PAGE_LANGUAGES = ['en', 'tr'];
 
   const insertLanguageToLink = require('./utils/insertLanguageToLink');
 
@@ -46,7 +48,7 @@ if (cluster.isMaster) {
   });
 
   i18n.configure({
-    locales: ['en', 'tr'],
+    locales: SUPPORTED_PAGE_LANGUAGES,
     directory: __dirname + '/translations',
     queryParameter: 'lang',
     defaultLocale: DEFAULT_PAGE_LANGUAGE
@@ -78,7 +80,7 @@ if (cluster.isMaster) {
     if (!req.body || typeof req.body != 'object')
       req.body = {};
 
-    res.locals.page_lang = req.headers['accept-language'] ? req.headers['accept-language'].split('-')[0] : DEFAULT_PAGE_LANGUAGE;
+    res.locals.page_lang = req.acceptsLanguages(...SUPPORTED_PAGE_LANGUAGES) || DEFAULT_PAGE_LANGUAGE;
     if (req.query.lang)
       res.locals.lang = req.query.lang;
 
