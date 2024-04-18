@@ -2,16 +2,18 @@ extends ../partials/header
 block main
     .about-us-page-text-wrapper
       .about-us-page-text-title Hello node101 team
-      .about-us-page-text-text Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
+      .about-us-page-text-text Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus porro, pariatur minus quasi ipsam dolor, fugiat at rem, tempora nesciunt blanditiis minima rerum? Blanditiis impedit quaerat assumenda fugiat nulla at!
     .about-us-page-image-card-wrapper
       if team && team.length
-        - for (let i = 0; i < team.length; i++)
+        each member, i in team
           .about-us-page-image-card(id=`card${i + 1}`)
-            img.about-us-page-image(src=`/img/team/headshot/${team[i].name}.png` alt=`node101 team member ${team[i].name}`)
+            img.about-us-page-image(src=`/img/team/headshot/${member.name}.png` alt=`node101 team member ${member.name}`)
             .about-us-page-image-text-wrapper
-              .about-us-page-image-name= team[i].name
-              .about-us-page-image-title= team[i].title
-            .about-us-page-image-information-box Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
+              .about-us-page-image-name= member.name
+              .about-us-page-image-title= member.title
+            .about-us-page-image-information-box Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis eaque, aut molestias saepe ipsum numquam modi corporis ad repellat soluta.
+
+
 
 
 

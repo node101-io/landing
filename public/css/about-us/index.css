@@ -1,4 +1,5 @@
 :root {
+  --about-us-header-radius: 40px;
   --about-us-page-text-font-size: 15px;
   --about-us-page-image-card-text-font-size: 12px;
   --about-us-page-information-boox-text-background: rgba(237,237,237,1);
@@ -9,10 +10,28 @@
   overflow-y: auto;
   background-color: var(--light-color);
   display: flex;
+  align-items: center;
 }
 
-.header-buttons-wrapper, .header-logo-wrapper, .header-menu-wrapper, .header-top-line-wrapper {
+.header-wrapper {
+  align-items: center;
+  position: fixed;
+}
+.header-buttons-wrapper, .header-logo-wrapper, .header-menu-wrapper, .header-top-line-wrapper, .header-change-language-button-content {
   background-color: transparent;
+}
+.header-top-line-wrapper {
+  background-color: var(--light-color);
+}
+.header-top-line-radius-left, .header-top-line-radius-right {
+  display: none;
+}
+.header-bottom-line-wrapper {
+  background-color: white;
+  width: calc(100vw - 2* var(--page-horizontal-padding));
+  min-width: calc(100vw - 2* var(--page-horizontal-padding));
+  border-top-left-radius: var(--about-us-header-radius);
+  border-top-right-radius: var(--about-us-header-radius);
 }
 
 .content-wrapper {
@@ -22,8 +41,11 @@
   margin-top: calc(var(--page-vertical-padding) + var(--header-height));
   padding-top: var(--header-height);
   padding-left: calc(var(--page-horizontal-padding) + var(--header-horizontal-padding));
-  padding-right: calc(var(--page-horizontal-padding) + var(--header-horizontal-padding));
+  /* padding-right: calc(var(--page-horizontal-padding) + var(--header-horizontal-padding)); */
   padding-bottom: var(--header-height);
+  width: calc(100vw - 2* var(--page-horizontal-padding));
+  min-width: calc(100vw - 2* var(--page-horizontal-padding));
+  background-color: white;
   /* padding: var(--header-height) calc(var(--page-horizontal-padding) + var(--header-horizontal-padding)) var(--header-height); */
 
 }
@@ -42,7 +64,6 @@
   font-size: var(--about-us-page-text-font-size);
   font-weight: 400;
 }
-
 .about-us-page-image-card-wrapper {
   width: 100%;
   display: flex;
@@ -51,7 +72,6 @@
   padding-left: calc(1 * (var(--page-horizontal-padding) + var(--header-horizontal-padding)));
   padding-right: calc(1 * (var(--page-horizontal-padding) + var(--header-horizontal-padding)));
 }
-
 .about-us-page-image-card {
   position: relative;
   height: 250px;
