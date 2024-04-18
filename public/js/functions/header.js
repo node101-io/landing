@@ -51,6 +51,7 @@ window.addEventListener('load', _ => {
   HEADER_HEIGHT = Number(getComputedStyle(document.documentElement).getPropertyValue('--header-height').replace('px', ''));
   WINDOW_HEIGHT = window.innerHeight;
 
+  const headerResponsiveMenuButton = document.querySelector('.header-responsive-menu-button');
   const headerWrapperResponsiveMenu = document.querySelector('.header-wrapper-responsive-menu');
 
   document.addEventListener('click', event => {
@@ -82,34 +83,65 @@ window.addEventListener('load', _ => {
       window.location.href = url;
     };
 
-    if (event.target.closest('.header-responsive-menu-button')) {
-      const target = event.target.closest('.header-responsive-menu-button');
-
-      if (target.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
+    if (
+      event.target.closest('.header-responsive-menu-button') ||
+      event.target.closest('.header-wrapper-responsive-menu-each-button')
+    ) {
+      if (headerResponsiveMenuButton.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
         headerWrapperResponsiveMenu.classList.remove('header-wrapper-responsive-menu-opened');
-        target.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
-        target.childNodes[1].classList.remove('header-responsive-menu-button-each-icon-middle-opened');
-        target.childNodes[2].classList.remove('header-responsive-menu-button-each-icon-bottom-opened');
+        headerResponsiveMenuButton.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
+        headerResponsiveMenuButton.childNodes[1].classList.remove('header-responsive-menu-button-each-icon-middle-opened');
+        headerResponsiveMenuButton.childNodes[2].classList.remove('header-responsive-menu-button-each-icon-bottom-opened');
       } else {
         headerWrapperResponsiveMenu.classList.add('header-wrapper-responsive-menu-opened');
-        target.childNodes[0].classList.add('header-responsive-menu-button-each-icon-top-opened');
-        target.childNodes[1].classList.add('header-responsive-menu-button-each-icon-middle-opened');
-        target.childNodes[2].classList.add('header-responsive-menu-button-each-icon-bottom-opened');
+        headerResponsiveMenuButton.childNodes[0].classList.add('header-responsive-menu-button-each-icon-top-opened');
+        headerResponsiveMenuButton.childNodes[1].classList.add('header-responsive-menu-button-each-icon-middle-opened');
+        headerResponsiveMenuButton.childNodes[2].classList.add('header-responsive-menu-button-each-icon-bottom-opened');
       };
     };
 
-    if (event.target.closest('.header-stake-with-node101-button')) {
-      const portfolioWrapperTop = document.querySelector('.portfolio-wrapper').getBoundingClientRect().top;
+    if (
+      event.target.closest('.each-header-button') ||
+      event.target.closest('.header-wrapper-responsive-menu-each-button') ||
+      event.target.closest('.header-stake-with-node101-button')
+    ) {
+      let offsetTop = 0;
 
-      const cssRoot = getComputedStyle(document.documentElement);
-      const headerHeight =
-        parseInt(cssRoot.getPropertyValue('--header-height')) +
-        parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
+      if (
+        event.target.closest('#header-portfolio-button') ||
+        event.target.closest('#header-portfolio-button-responsive') ||
+        event.target.closest('.header-stake-with-node101-button')
+      ) {
+        offsetTop = document.querySelector('.portfolio-wrapper').getBoundingClientRect().top;
+      } else if (
+        event.target.closest('#header-ecosystem-contributions-button') ||
+        event.target.closest('#header-contributions-button-responsive')
+      ) {
+        offsetTop = document.querySelector('.contributions-wrapper').getBoundingClientRect().top;
+      } else if (
+        event.target.closest('#header-about-us-button') ||
+        event.target.closest('#header-about-us-button-responsive')
+      ) {
+        offsetTop = document.querySelector('.team-wrapper').getBoundingClientRect().top;
+      } else if (
+        event.target.closest('#header-reach-us-button') ||
+        event.target.closest('#header-reach-us-button-responsive')
+      ) {
+        offsetTop = document.querySelector('.footer-wrapper').getBoundingClientRect().top;
+      };
 
-      document.querySelector('.content-wrapper').scrollBy({
-        top: portfolioWrapperTop - headerHeight,
-        behavior: 'smooth'
-      });
+      if (offsetTop != 0) {
+        const contentWrapper = document.querySelector('.content-wrapper');
+        const cssRoot = getComputedStyle(document.documentElement);
+        const headerHeight =
+          parseInt(cssRoot.getPropertyValue('--header-height')) +
+          parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
+
+        contentWrapper.scrollBy({
+          top: offsetTop - headerHeight,
+          behavior: 'smooth'
+        });
+      };
     };
   });
 

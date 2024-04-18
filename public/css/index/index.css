@@ -1275,9 +1275,9 @@
   margin-left: var(--contributions-navbar-border-margin-left);
   background: linear-gradient(to bottom, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.4), rgba(245, 245, 245, 0));
 }
-.contributions-content-inner-wrapper {
+/* .contributions-content-inner-wrapper {
 
-}
+} */
 
 .team-wrapper {
   position: relative;

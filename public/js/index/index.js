@@ -14,32 +14,32 @@ let contributionScrollTop = 0;
 let contributionScrollTopLast = 0;
 let contributionScrollEnded = false;
 
-function eventsSlideAnimation() {
-  const firstElement = eventsHeaderInnerWrapper.childNodes[0];
-  // const firstElementWidth = Math.cos(parseFloat(window.getComputedStyle(firstElement).getPropertyValue('transform').split(',')[1])) * firstElement.getBoundingClientRect().width;
-  const firstElementWidth = firstElement.getBoundingClientRect().width;
+// function eventsSlideAnimation() {
+//   const firstElement = eventsHeaderInnerWrapper.childNodes[0];
+//   // const firstElementWidth = Math.cos(parseFloat(window.getComputedStyle(firstElement).getPropertyValue('transform').split(',')[1])) * firstElement.getBoundingClientRect().width;
+//   const firstElementWidth = firstElement.getBoundingClientRect().width;
 
-  if (eventsHeaderInnerWrapperMarginLeft >= firstElementWidth) {
-    const newElement = firstElement.cloneNode(true);
-    firstElement.remove();
-    eventsHeaderInnerWrapper.appendChild(newElement);
-    eventsHeaderInnerWrapperMarginLeft =
-      eventsHeaderInnerWrapperMarginLeft - firstElementWidth;
-  } else {
-    eventsHeaderInnerWrapperMarginLeft += 0.5;
-  }
+//   if (eventsHeaderInnerWrapperMarginLeft >= firstElementWidth) {
+//     const newElement = firstElement.cloneNode(true);
+//     firstElement.remove();
+//     eventsHeaderInnerWrapper.appendChild(newElement);
+//     eventsHeaderInnerWrapperMarginLeft =
+//       eventsHeaderInnerWrapperMarginLeft - firstElementWidth;
+//   } else {
+//     eventsHeaderInnerWrapperMarginLeft += 0.5;
+//   }
 
-  eventsHeaderInnerWrapper.style.marginLeft = `-${eventsHeaderInnerWrapperMarginLeft}px`;
+//   eventsHeaderInnerWrapper.style.marginLeft = `-${eventsHeaderInnerWrapperMarginLeft}px`;
 
-  for (let i = 0; i < eventsHeaderInnerWrapper.childNodes.length; i++) {
-    const element = eventsHeaderInnerWrapper.childNodes[i];
-    element.style.marginBottom = `${firstElementWidth}px`;
-  }
+//   for (let i = 0; i < eventsHeaderInnerWrapper.childNodes.length; i++) {
+//     const element = eventsHeaderInnerWrapper.childNodes[i];
+//     element.style.marginBottom = `${firstElementWidth}px`;
+//   }
 
-  setTimeout(() => {
-    eventsSlideAnimation();
-  }, EVENTS_HEADER_ANIMATION_INTERVAL);
-}
+//   setTimeout(() => {
+//     eventsSlideAnimation();
+//   }, EVENTS_HEADER_ANIMATION_INTERVAL);
+// }
 
 function scrollContributionsContentBy(scrollAmount, callback) {
   if (scrollAmount == 0) return callback();

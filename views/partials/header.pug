@@ -41,7 +41,7 @@ block content
             h1.each-header-button-text-wrapper-two
               each letter, i in header_buttons[3].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          a.each-header-button(href=insertLanguageToLink('/about-us', lang))
+          a.each-header-button#header-about-us-button
             h1.each-header-button-text-wrapper
               each letter, i in header_buttons[4].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
@@ -122,7 +122,7 @@ block content
           //- a.header-wrapper-responsive-menu-each-button#header-services-button-responsive= __('Validator Services')
           a.header-wrapper-responsive-menu-each-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')= __('Events')
           a.header-wrapper-responsive-menu-each-button#header-contributions-button-responsive= __('Ecosystem Contributions')
-          a.header-wrapper-responsive-menu-each-button(href=insertLanguageToLink('/about-us', lang))= __('About Us')
+          a.header-wrapper-responsive-menu-each-button#header-about-us-button-responsive= __('About Us')
           a.header-wrapper-responsive-menu-each-button#header-reach-us-button-responsive= __('Reach Us')
         .header-wrapper-responsive-menu-social-media-wrapper
           a.header-wrapper-responsive-menu-media-each-button(href='https://twitter.com/node_101' target='_blank')
