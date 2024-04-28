@@ -47,7 +47,58 @@ function headerBackgroundAnimation() {
   }
 };
 
+function handleScrollToSection(section, behavior) {
+  let selector = '';
+
+  if (section == 'portfolio') {
+    selector = '.portfolio-wrapper';
+  } else if (section == 'contributions') {
+    selector = '.contributions-wrapper';
+  } else if (section == 'team') {
+    selector = '.team-wrapper';
+  } else if (section == 'footer') {
+    selector = '.footer-wrapper';
+  };
+
+  const offsetTop = document.querySelector(selector)?.getBoundingClientRect().top;
+
+  if (!offsetTop) {
+    const url = new URL(window.location.href);
+    url.pathname = '/';
+    url.hash = section;
+    return window.location.href = url.href;
+  };
+
+  window.location.hash = section;
+
+  const contentWrapper = document.querySelector('.content-wrapper');
+  const cssRoot = getComputedStyle(document.documentElement);
+  const contentGap = parseInt(cssRoot.getPropertyValue('--content-gap'));
+  const headerHeight =
+    parseInt(cssRoot.getPropertyValue('--header-height')) +
+    parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
+
+  contentWrapper.scrollBy({
+    top: offsetTop - headerHeight - (section != 'footer' ? contentGap / 2 : 0),
+    behavior: behavior || 'instant'
+  });
+};
+
 window.addEventListener('load', _ => {
+  if (window.location.hash) {
+    if (window.location.hash == '#portfolio') {
+      handleScrollToSection('portfolio');
+    } else if (window.location.hash == '#contributions') {
+      handleScrollToSection('contributions');
+    } else if (window.location.hash == '#team') {
+      handleScrollToSection('team');
+    } else if (window.location.hash == '#footer') {
+      handleScrollToSection('footer');
+    } else {
+      window.location.hash = '';
+    };
+  };
+
   HEADER_HEIGHT = Number(getComputedStyle(document.documentElement).getPropertyValue('--header-height').replace('px', ''));
   WINDOW_HEIGHT = window.innerHeight;
 
@@ -105,30 +156,14 @@ window.addEventListener('load', _ => {
       event.target.closest('.header-wrapper-responsive-menu-each-button') ||
       event.target.closest('.header-stake-with-node101-button')
     ) {
-      let offsetTop = 0;
-
       if (event.target.closest('#header-portfolio-button') || event.target.closest('#header-portfolio-button-responsive') || event.target.closest('.header-stake-with-node101-button')) {
-        offsetTop = document.querySelector('.portfolio-wrapper').getBoundingClientRect().top;
+        handleScrollToSection('portfolio', 'smooth');
       } else if (event.target.closest('#header-ecosystem-contributions-button') || event.target.closest('#header-contributions-button-responsive')) {
-        offsetTop = document.querySelector('.contributions-wrapper').getBoundingClientRect().top;
+        handleScrollToSection('contributions', 'smooth');
       } else if (event.target.closest('#header-about-us-button') || event.target.closest('#header-about-us-button-responsive')) {
-        offsetTop = document.querySelector('.team-wrapper').getBoundingClientRect().top;
+        handleScrollToSection('team', 'smooth');
       } else if (event.target.closest('#header-reach-us-button') || event.target.closest('#header-reach-us-button-responsive')) {
-        offsetTop = document.querySelector('.footer-wrapper').getBoundingClientRect().top;
-      };
-
-      if (offsetTop != 0) {
-        const contentWrapper = document.querySelector('.content-wrapper');
-        const cssRoot = getComputedStyle(document.documentElement);
-        const contentGap = parseInt(cssRoot.getPropertyValue('--content-gap'));
-        const headerHeight =
-          parseInt(cssRoot.getPropertyValue('--header-height')) +
-          parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
-
-        contentWrapper.scrollBy({
-          top: offsetTop - headerHeight - contentGap / 2,
-          behavior: 'smooth'
-        });
+        handleScrollToSection('footer', 'smooth');
       };
     };
   });

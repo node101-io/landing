@@ -1,74 +1,104 @@
 module.exports = (req, res) => {
   const PORTFOLIO = [
     {
-      _id: 'asset-mantle',
-      name: 'Asset Mantle',
-      apr: ''
-    },
-    {
-      _id: 'band-protocol',
-      name: 'Band Protocol',
-      apr: ''
-    },
-    {
-      _id: 'canto',
-      name: 'Canto',
-      apr: ''
-    },
-    {
-      _id: 'cheqd',
-      name: 'Cheqd',
-      apr: ''
-    },
-    {
       _id: 'cosmos-hub',
       name: 'Cosmos Hub',
-      apr: ''
+      apr: '14.39'
     },
     {
-      _id: 'crescent',
-      name: 'Crescent',
-      apr: ''
+      _id: 'celestia',
+      name: 'Celestia',
+      apr: '11.29'
     },
     {
-      _id: 'desmos',
-      name: 'Desmos',
-      apr: ''
+      _id: 'band',
+      name: 'Band',
+      apr: '11.96'
     },
     {
-      _id: 'e-money',
-      name: 'E-Money',
-      apr: ''
+      _id: 'neutron',
+      name: 'Neutron',
+      apr: '0.00'
     },
     {
-      _id: 'iris-net',
-      name: 'Iris Network',
-      apr: ''
-    },
-    {
-      _id: 'ki-chain',
-      name: 'Ki Chain',
-      apr: ''
-    },
-    {
-      _id: 'nym',
-      name: 'NYM Mixnode',
-      apr: ''
+      _id: 'stride',
+      name: 'Stride',
+      apr: '3.26'
     },
     {
       _id: 'orai-chain',
       name: 'Orai Chain',
-      apr: ''
+      apr: '17.78'
+    },
+    {
+      _id: 'fxcore',
+      name: 'f(x)Core',
+      apr: '14.28'
+    },
+    {
+      _id: 'canto',
+      name: 'Canto',
+      apr: '5.30'
     },
     {
       _id: 'shentu',
       name: 'Shentu',
-      apr: ''
+      apr: '24.18'
     },
     {
-      _id: 'umee',
-      name: 'UMEE',
-      apr: ''
+      _id: 'agoric',
+      name: 'Agoric',
+      apr: '9.59'
+    },
+    {
+      _id: 'iris-net',
+      name: 'Iris Network',
+      apr: '10.24'
+    },
+    {
+      _id: 'cheqd',
+      name: 'Cheqd',
+      apr: '5.05'
+    },
+    {
+      _id: 'pica',
+      name: 'Pica',
+      apr: '2.66'
+    },
+    {
+      _id: 'kyve',
+      name: 'Kyve',
+      apr: '21.48'
+    },
+    {
+      _id: 'ux',
+      name: 'UX',
+      apr: '13.31'
+    },
+    {
+      _id: 'ki-chain',
+      name: 'Ki Chain',
+      apr: '6.59'
+    },
+    {
+      _id: 'asset-mantle',
+      name: 'Asset Mantle',
+      apr: '59.13'
+    },
+    {
+      _id: 'desmos',
+      name: 'Desmos',
+      apr: '5.58'
+    },
+    {
+      _id: 'e-money',
+      name: 'e-Money',
+      apr: '33.13'
+    },
+    {
+      _id: 'crescent',
+      name: 'Crescent',
+      apr: '8.79'
     }
   ];
   const SERVICES = [
@@ -145,7 +175,38 @@ module.exports = (req, res) => {
     {
       _id: 'cryptist',
       name: 'Cryptist',
-      logo: '/img/events/cryptist/logo.png'
+      logo: '/img/events/cryptist/logo.png',
+      link: 'https://cryptist.org/'
+    },
+    {
+      _id: 'cosmosphere',
+      name: 'Cosmosphere',
+      logo: '/img/events/cosmosphere/logo.png',
+      link: 'https://cosmosphere.dev/'
+    },
+    {
+      _id: 'moda-palas',
+      name: 'Moda Palas',
+      logo: '/img/events/moda-palas/logo.png',
+      link: 'https://events.node101.io/moda-palas'
+    },
+    {
+      _id: 'aleo-tour',
+      name: 'Aleo Tour',
+      logo: '/img/events/aleo-tour/logo.png',
+      link: 'https://events.node101.io/aleo-tour-of-turkiye'
+    },
+    {
+      _id: 'sui-move-workshops',
+      name: 'Sui Move Workshops',
+      logo: '/img/events/sui-move-workshops/logo.png',
+      link: 'https://events.node101.io/sui-move-workshop'
+    },
+    {
+      _id: 'nym-gathering',
+      name: 'Nym Gathering',
+      logo: '/img/events/nym-gathering/logo.png',
+      link: 'https://events.node101.io/nym-community-gathering'
     }
   ];
   const CONTRIBUTIONS = [

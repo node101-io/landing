@@ -3,10 +3,16 @@ const express = require('express');
 const router = express.Router();
 
 const indexGetController = require('../controllers/index/get');
+const aboutUsGetController = require('../controllers/about-us/get');
 
 router.get(
   '/',
-  indexGetController
+    indexGetController
+);
+
+router.get(
+  '/about-us',
+    aboutUsGetController
 );
 
 module.exports = router;

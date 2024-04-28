@@ -531,11 +531,12 @@
 .header-wrapper-responsive {
   position: fixed;
   top: 0;
-  left: var(--page-horizontal-padding);
+  left: 0;
+  right: 0;
   height: calc(var(--page-vertical-padding) + var(--header-height));
   min-height: calc(var(--page-vertical-padding) + var(--header-height));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: 100vw;
+  min-width: 100vw;
   display: none;
   flex-direction: column;
   z-index: 999;
@@ -590,22 +591,22 @@
 }
 .header-responsive-menu-button-color-curvature-two {
   position: absolute;
-  bottom: calc(-1 * var(--header-height) / 2);
+  top: var(--header-height);
   right: 0;
-  height: calc(var(--header-height) / 2);
-  min-height: calc(var(--header-height) / 2);
-  width: calc(var(--header-height) / 2);
-  min-width: calc(var(--header-height) / 2);
+  height: calc(var(--start-page-radius));
+  min-height: calc(var(--start-page-radius));
+  width: calc(var(--start-page-radius));
+  min-width: calc(var(--start-page-radius));
   overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
 }
 .header-responsive-menu-button-color-curvature-two-inner-circle {
-  height: var(--header-height);
-  min-height: var(--header-height);
-  width: var(--header-height);
-  min-width: var(--header-height);
+  height: calc(2 * var(--start-page-radius));
+  min-height: calc(2 * var(--start-page-radius));
+  width: calc(2 * var(--start-page-radius));
+  min-width: calc(2 * var(--start-page-radius));
   border-radius: 100%;
   background-color: transparent;
   box-shadow: 0 0 0 1000px var(--background-color);
@@ -767,6 +768,22 @@
   margin-top: var(--header-wrapper-responsive-copyright-text-margin-top);
 }
 
+.content-wrapper {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--page-vertical-padding);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.content-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 @media only screen and (max-width: 1250px) {
   :root {
     --header-horizontal-padding: 50px;
@@ -902,6 +919,11 @@
     padding: 0;
     margin-right: auto;
     background-color: transparent;
+  }
+  .header-buttons-wrapper, .header-stake-with-node101-button, .header-stake-with-node101-button-background, .header-stake-with-node101-button-content {
+    height: calc(var(--header-height) - 1.6 * var(--header-vertical-padding));
+    min-height: calc(var(--header-height) - 1.6 * var(--header-vertical-padding));
+    border-radius: calc((var(--header-height) - 1.6 * var(--header-vertical-padding)) / 2);
   }
   .header-stake-with-node101-button {
     margin-right: var(--header-responsive-menu-button-spacing);
