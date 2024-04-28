@@ -246,6 +246,7 @@
 }
 
 .header-stake-with-node101-button-background {
+  position: relative;
   height: calc(var(--header-height) - 2 * var(--header-vertical-padding));
   min-height: calc(var(--header-height) - 2 * var(--header-vertical-padding));
   width: var(--header-stake-with-node101-button-width);
