@@ -1,27 +1,81 @@
 const EVENTS_HEADER_ANIMATION_INTERVAL = 20;
-let CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT = 75;
+let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 35;
+let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
-
-let eventsHeaderInnerWrapper;
-let eventsHeaderInnerWrapperMarginLeft = 0;
-
-let contributionsNavbarContentInnerWrapper;
+const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
+const CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION = 80;
+const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION = 3;
+const CONTRIBUTIONS_SCROLL_RESET_DISTANCE = 500;
 
 let contributionsFirstItemMarginTop = 0;
-
+let contributionsNavbarContentInnerWrapper;
+let contributionsNavbarScrollWrapper
+let contributionScrollEnded = false;
 let contributionScrollStarted = false;
 let contributionScrollTop = 0;
 let contributionScrollTopLast = 0;
-let contributionScrollEnded = false;
+
+function changeContributionsContentInnerWrapperContent(id) {
+  
+};
+
+function handleContributionNavbarContentItemsAnimation() {
+  const contributionsNavbarContentItems = document.querySelectorAll('.contributions-navbar-content-each-contribution');
+
+  const middleIndex = parseInt(CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT / 2);
+
+  const startOpacity = 0.55;
+  const endOpacity = 1;
+  const opacityChange = (endOpacity - startOpacity) / (middleIndex + 1);
+  const opacityChanges = [];
+
+  const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.82;
+  const endFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE;
+  const fontSizeChange = (endFontSize - startFontSize) / (middleIndex + 1);
+  const fontSizeChanges = [];
+
+  for (let i = 0; i < middleIndex; i++) {
+    const currentOpacity = startOpacity + opacityChange * i;
+    const previousOpacity = currentOpacity - opacityChange;
+    const animatedOpacity = previousOpacity + (currentOpacity - previousOpacity) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+    opacityChanges.push(animatedOpacity);
+
+    const currentFontSize = startFontSize + fontSizeChange * i;
+    const previousFontSize = currentFontSize - fontSizeChange;
+    const animatedFontSize = previousFontSize + (currentFontSize - previousFontSize) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+    fontSizeChanges.push(animatedFontSize);
+
+    contributionsNavbarContentItems[i].style.opacity = animatedOpacity;
+    contributionsNavbarContentItems[i].style.fontSize = `${animatedFontSize}px`;
+  };
+  
+  const currentOpacity = endOpacity;
+  const previousOpacity = endOpacity - opacityChange;
+  const animatedOpacity = previousOpacity + (currentOpacity - previousOpacity) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+  const currentFontSize = endFontSize;
+  const previousFontSize = endFontSize - fontSizeChange;
+  const animatedFontSize = previousFontSize + (currentFontSize - previousFontSize) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+  contributionsNavbarContentItems[middleIndex].style.opacity = animatedOpacity;
+  contributionsNavbarContentItems[middleIndex].style.fontSize = `${animatedFontSize}px`;
+
+  for (let i = middleIndex + 1; i < CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT; i++) {
+    contributionsNavbarContentItems[i].style.opacity = opacityChanges.pop();
+    contributionsNavbarContentItems[i].style.fontSize = `${fontSizeChanges.pop()}px`;
+  };
+};
 
 function scrollContributionsContentBy(scrollAmount, callback) {
   if (scrollAmount == 0) return callback();
 
+  handleContributionNavbarContentItemsAnimation();
+
   if (scrollAmount > 0) {
     scrollAmount = Math.min(scrollAmount, CONTRIBUTIONS_MAX_SCROLL_SPEED);
 
-    if (contributionsFirstItemMarginTop + scrollAmount >= CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT) {
-      const newScrollAmount = scrollAmount + contributionsFirstItemMarginTop - CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT;
+    if (contributionsFirstItemMarginTop + scrollAmount >= CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT) {
+      const newScrollAmount = scrollAmount + contributionsFirstItemMarginTop - CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
 
       const newElement = contributionsNavbarContentInnerWrapper.childNodes[0].cloneNode(true);
       newElement.style.marginTop = '0';
@@ -31,11 +85,11 @@ function scrollContributionsContentBy(scrollAmount, callback) {
       contributionsFirstItemMarginTop = 0;
 
       setTimeout(() => {
-        if (contributionScrollTop - contributionScrollTopLast >= CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT)
+        if (contributionScrollTop - contributionScrollTopLast >= CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT)
           scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, 80);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -50,19 +104,19 @@ function scrollContributionsContentBy(scrollAmount, callback) {
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = 0;
 
       const newElement = contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].cloneNode(true);
-      newElement.style.marginTop = `-${CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT}px`;
+      newElement.style.marginTop = `-${CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
       contributionsNavbarContentInnerWrapper.insertBefore(newElement, contributionsNavbarContentInnerWrapper.childNodes[0]);
 
       contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].remove();
 
-      contributionsFirstItemMarginTop = CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT;
+      contributionsFirstItemMarginTop = CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
 
       setTimeout(() => {
-        if (contributionScrollTopLast - contributionScrollTop <= -CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT)
+        if (contributionScrollTopLast - contributionScrollTop <= -CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT)
           scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, 80);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -78,11 +132,11 @@ function scrollContributionsContentBySmooth(scrollAmount) {
   if (scrollAmount > 0) {
     contributionsFirstItemMarginTop += 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), 3);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
   } else {
     contributionsFirstItemMarginTop -= 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), 3);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
   }
 };
 
@@ -93,11 +147,43 @@ function handleContributionScroll() {
     return;
   };
 
+  handleContributionNavbarContentItemsAnimation();
+
   scrollContributionsContentBy(contributionScrollTop - contributionScrollTopLast, _ => {
       contributionScrollTopLast = contributionScrollTop;
 
+      if (contributionsNavbarScrollWrapper.scrollTop < CONTRIBUTIONS_SCROLL_RESET_DISTANCE || contributionsNavbarScrollWrapper.scrollTop + contributionsNavbarScrollWrapper.getBoundingClientRect().height > contributionsNavbarScrollWrapper.scrollHeight - CONTRIBUTIONS_SCROLL_RESET_DISTANCE)
+        contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
+
       handleContributionScroll();
   });
+};
+
+function initalizeContributionScrollEvent() {
+  CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = Number(getComputedStyle(document.documentElement).getPropertyValue('--contributions-navbar-content-each-contribution-font-size').replace('px', ''));
+  CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = document.querySelector('.contributions-navbar-content-each-contribution').getBoundingClientRect().height;
+
+  contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
+  contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
+
+  contributionsNavbarScrollWrapper.addEventListener('scroll', event => {
+    contributionScrollTop = event.target.scrollTop;
+
+    if (!contributionScrollStarted) {
+      contributionScrollStarted = true;
+      contributionScrollEnded = false;
+      handleContributionScroll();
+    };
+  });
+  contributionsNavbarScrollWrapper.addEventListener('scrollend', _ => {
+    contributionScrollEnded = true;
+    contributionScrollStarted = false;
+
+    if (contributionsFirstItemMarginTop != 0)
+      scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
+  });
+
+  contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
 };
 
 const addToSubscriberList = _ => {
@@ -125,26 +211,7 @@ const addToSubscriberList = _ => {
 };
 
 window.addEventListener('load', _ => {
-  eventsHeaderInnerWrapper = document.querySelector('.events-header-inner-wrapper');
-  contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
-  const contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
-
-  contributionsNavbarScrollWrapper.addEventListener('scroll', event => {
-    contributionScrollTop = event.target.scrollTop;
-
-    if (!contributionScrollStarted) {
-      contributionScrollStarted = true;
-      contributionScrollEnded = false;
-      handleContributionScroll();
-    };
-  });
-  contributionsNavbarScrollWrapper.addEventListener('scrollend', event => {
-    contributionScrollEnded = true;
-    contributionScrollStarted = false;
-
-    if (contributionsFirstItemMarginTop != 0)
-      scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
-  });
+  initalizeContributionScrollEvent();
 
   document.addEventListener('click', event => {
     if (event.target.closest('.events-content-navbar-header-wrapper')) {

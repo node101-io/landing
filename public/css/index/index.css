@@ -1532,6 +1532,7 @@
   min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
   display: flex;
 }
+
 .contributions-navbar-scroll-wrapper {
   position: absolute;
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
@@ -1542,6 +1543,7 @@
   left: 0;
   overflow-x: hidden;
   overflow-y: scroll;
+  z-index: 2;
 }
 .contributions-navbar-scroll-wrapper::-webkit-scrollbar {
   display: none;
@@ -1552,6 +1554,7 @@
   width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
   min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
 }
+
 .contributions-navbar-selected-icon {
   height: var(--contributions-navbar-selected-icon-height);
   min-height: var(--contributions-navbar-selected-icon-height);
@@ -1560,6 +1563,7 @@
   fill: var(--green-color);
   margin-top: calc(4 * var(--contributions-navbar-content-each-contribution-height));
 }
+
 .contributions-navbar-content-wrapper {
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
@@ -1580,8 +1584,8 @@
   min-height: var(--contributions-navbar-content-each-contribution-height);
   font-family: 'Igra Sans', sans-serif;
   font-size: var(--contributions-navbar-content-each-contribution-font-size);
-  /* font-size: 12px; */
   color: var(--background-color);
+  padding-top: 1px;
 }
 .contributions-navbar-border {
   height: calc(0.8 * (var(--contributions-content-height) - 2 * var(--page-horizontal-padding)));
@@ -1591,13 +1595,17 @@
   margin-left: var(--contributions-navbar-border-margin-left);
   background: linear-gradient(to bottom, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.4), rgba(245, 245, 245, 0));
 }
+
 .contributions-content-inner-wrapper {
+  height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
+  min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
   min-width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
   display: flex;
   flex-direction: column;
   gap: var(--content-gap);
 }
+
 .contributions-content-each-contribution-wrapper {
   height: 100%;
   min-height: 100%;
@@ -1608,6 +1616,7 @@
   flex-direction: column;
   padding-left: var(--page-horizontal-padding);
 }
+
 .contributions-content-101-telegram-dialog-wrapper {
   width: 100%;
   min-width: 100%;

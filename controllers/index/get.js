@@ -210,41 +210,45 @@ module.exports = (req, res) => {
     }
   ];
   const CONTRIBUTIONS = [
-    // {
-    //   _id: 'zero-knowledge',
-    //   title: 'Zero Knowledge',
-    // },
     {
       _id: 'staking',
       title: 'Staking',
+      color: 'green'
     },
     {
       _id: 'Software',
       title: 'Software',
+      color: 'blue'
     },
     {
       _id: 'crypto',
       title: 'Crypto',
+      color: 'yellow'
     },
     {
       _id: 'validator',
       title: 'Validator',
+      color: 'purple'
     },
     {
       _id: 'events',
       title: 'Events',
+      color: 'red'
     },
     {
       _id: 'management',
       title: 'Management',
+      color: 'orange'
     },
     {
       _id: 'blockchain',
       title: 'Blockchain',
+      color: 'pink'
     },
     {
       _id: 'cosmos',
       title: 'Cosmos',
+      color: 'turquoise'
     }
   ];
 
