@@ -1,0 +1,6 @@
+.contributions-content-klein-loading-text-wrapper
+  .contributions-content-klein-loading-each-text= __('Your node is loading...')
+  .contributions-content-klein-loading-each-text= __('60%')
+.contributions-content-klein-loading-bar
+  - for (let i = 0; i < 60; i++)
+    .contributions-content-klein-loading-bar-each-part= '} '

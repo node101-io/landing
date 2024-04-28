@@ -147,6 +147,9 @@
   --contributions-content-101-telegram-link-icon-height: 20px;
   --contributions-content-101-telegram-link-text-font-size: 14px;
 
+  --contributions-content-klein-loading-each-text-font-size: 16px;
+  --contributions-content-klein-loading-bar-font-size: 16px;
+
   --team-wrapper-height: 700px;
   --team-wrapper-border-radius: 50px;
   --team-top-line-color-height: 40px;
@@ -1695,6 +1698,32 @@
   font-family: 'Igra Sans', sans-serif;
   font-size: var(--contributions-content-101-telegram-link-text-font-size);
   color: var(--light-pink-color);
+}
+
+.contributions-content-klein-loading-text-wrapper {
+  height: fit-content;
+  min-height: fit-content;
+  width: 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contributions-content-klein-loading-each-text {
+  font-size: var(--contributions-content-klein-loading-each-text-font-size);
+  color: var(--klein-color);
+}
+.contributions-content-klein-loading-bar {
+  display: flex;
+  font-size: var(--contributions-content-klein-loading-bar-font-size);
+  background-image: linear-gradient(to right, var(--klein-color), var(--klein-color) 50%, var(--background-color) 50%, var(--background-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.contributions-content-klein-loading-bar-each-part {
+  font-family: 'Igra Sans', sans-serif;
+  width: 1%;
+  min-width: 1%;
 }
 
 
