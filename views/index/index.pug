@@ -325,6 +325,9 @@ block main
             label.footer-top-left-input-wrapper
               input.footer-top-left-input(type='email' autocomplete='none' placeholder=__('node@101.com'))
               .footer-top-left-input-button= __('Send')
+            .footer-top-left-each-message.footer-top-left-error-bad-request-message.display-none= __('Please enter a valid email address.')
+            .footer-top-left-each-message.footer-top-left-error-duplicated-field-message.display-none= __('You have already subscribed.')
+            .footer-top-left-each-message.footer-top-left-success-message.display-none= __('Success!')
             .footer-top-left-checkbox-wrapper
               .footer-top-left-checkbox
                 svg.footer-top-left-checkbox-icon(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 448 512')

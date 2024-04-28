@@ -541,6 +541,7 @@
   flex-direction: column;
   z-index: 999;
   padding-top: var(--page-vertical-padding);
+  padding-left: var(--page-horizontal-padding);
   background-color: var(--background-color);
 }
 

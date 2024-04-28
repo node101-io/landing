@@ -16,7 +16,7 @@ let contributionScrollTop = 0;
 let contributionScrollTopLast = 0;
 
 function changeContributionsContentInnerWrapperContent(id) {
-  
+
 };
 
 function handleContributionNavbarContentItemsAnimation() {
@@ -48,7 +48,7 @@ function handleContributionNavbarContentItemsAnimation() {
     contributionsNavbarContentItems[i].style.opacity = animatedOpacity;
     contributionsNavbarContentItems[i].style.fontSize = `${animatedFontSize}px`;
   };
-  
+
   const currentOpacity = endOpacity;
   const previousOpacity = endOpacity - opacityChange;
   const animatedOpacity = previousOpacity + (currentOpacity - previousOpacity) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
@@ -186,27 +186,36 @@ function initalizeContributionScrollEvent() {
   contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
 };
 
-const addToSubscriberList = _ => {
+function addToSubscriberList() {
   const email = document.querySelector('.footer-top-left-input').value.trim();
+
+  const successMessage = document.querySelector('.footer-top-left-success-message');
+  const alreadyRegisteredMessage = document.querySelector('.footer-top-left-error-duplicated-field-message');
+  const unknownError = document.querySelector('.footer-top-left-error-bad-request-message');
 
   if (!email) return;
 
   serverRequest('/subscribe', 'POST', {
-    email
-  }, res => {
-    console.log(res);
-    // if (res.error && res.error != 'duplicated_unique_field') {
-    //   // unknownError.style.display = 'block';
-    //   console.error(res.error);
-    // };
+    email: email,
+    type: 'general'
+  }, (err, res) => {
+    if (err && err != 'duplicated_unique_field') {
+      successMessage.classList.add('display-none');
+      alreadyRegisteredMessage.classList.add('display-none');
+      unknownError.classList.remove('display-none');
+      return;
+    };
 
-    // if (res.error) {
-    //   // alreadyRegisteredMessage.style.display = 'block';
-    //   console.error(res.error);
-    // };
+    if (err) {
+      successMessage.classList.add('display-none');
+      unknownError.classList.add('display-none');
+      alreadyRegisteredMessage.classList.remove('display-none');
+      return;
+    };
 
-    // // successMessage.style.display = 'block';
-    // console.log(res.data);
+    unknownError.classList.add('display-none');
+    alreadyRegisteredMessage.classList.add('display-none');
+    successMessage.classList.remove('display-none');
   });
 };
 

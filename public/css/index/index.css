@@ -2056,6 +2056,20 @@
   cursor: pointer;
 }
 
+.footer-top-left-each-message {
+  font-family: 'Quality Sunrise', Georgia, sans-serif;
+  font-weight: 400;
+  font-size: var(--footer-top-left-input-title-font-size);
+  color: var(--dark-text-color);
+  margin: 10px 0;
+}
+.footer-top-left-error-bad-request-message, .footer-top-left-error-duplicated-field-message {
+  color: var(--bright-color-gradient-two);
+}
+.footer-top-left-success-message {
+  color: var(--link-light-color);
+}
+
 .footer-top-left-checkbox-wrapper {
   height: fit-content;
   min-height: fit-content;
@@ -2145,6 +2159,11 @@
   min-width: auto;
   fill: var(--link-light-color);
   margin-left: 10px;
+  transition: all .5s;
+  transform: translateY(10%);
+}
+.footer-top-right-text-wrapper:hover .footer-top-right-icon {
+  transform: translate(10%, 0);
 }
 
 .footer-top-right-contact-wrapper {
