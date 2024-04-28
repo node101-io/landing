@@ -21,7 +21,7 @@ function serverRequest(url, method, data, callback) {
       if (req.responseText) {
         try {
           const data = JSON.parse(req.responseText);
-          return callback(null, data);
+          return callback(data?.error || null, data?.data || null);
         } catch (err) {
           console.log(err);
           return callback('network_error');
