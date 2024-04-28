@@ -9,8 +9,9 @@ const MongoStore = require('connect-mongo');
 const path = require('path');
 const session = require('express-session');
 
-const setLanguage = require('./middleware/setLanguage');
 const detectNewUser = require('./middleware/detectNewUser');
+const enableDynamicInclude = require('./middleware/enableDynamicInclude');
+const setLanguage = require('./middleware/setLanguage');
 
 dotenv.config({ path: path.join(__dirname, '.env') });
 const numCPUs = process.env.WEB_CONCURRENCY || require('os').cpus().length;
@@ -59,6 +60,7 @@ if (cluster.isMaster) {
     })
   }));
   app.use(setLanguage);
+  app.use(enableDynamicInclude);
   app.use(detectNewUser);
 
   app.use('/', indexRouteController);

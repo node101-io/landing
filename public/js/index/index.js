@@ -16,7 +16,13 @@ let contributionScrollTop = 0;
 let contributionScrollTopLast = 0;
 
 function changeContributionsContentInnerWrapperContent(id) {
+  const allContributions = document.querySelectorAll('.contributions-content-each-contribution-wrapper');
 
+  allContributions.forEach(contribution => {
+    contribution.classList.add('display-none');
+  });
+
+  document.querySelector(`.contributions-content-${id}-wrapper`).classList.remove('display-none');
 };
 
 function handleContributionNavbarContentItemsAnimation() {

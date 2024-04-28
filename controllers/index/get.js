@@ -1,106 +1,145 @@
+const PORTFOLIO = [
+  {
+    _id: 'cosmos-hub',
+    name: 'Cosmos Hub',
+    apr: '14.39'
+  },
+  {
+    _id: 'celestia',
+    name: 'Celestia',
+    apr: '11.29'
+  },
+  {
+    _id: 'band',
+    name: 'Band',
+    apr: '11.96'
+  },
+  {
+    _id: 'neutron',
+    name: 'Neutron',
+    apr: '0.00'
+  },
+  {
+    _id: 'stride',
+    name: 'Stride',
+    apr: '3.26'
+  },
+  {
+    _id: 'orai-chain',
+    name: 'Orai Chain',
+    apr: '17.78'
+  },
+  {
+    _id: 'fxcore',
+    name: 'f(x)Core',
+    apr: '14.28'
+  },
+  {
+    _id: 'canto',
+    name: 'Canto',
+    apr: '5.30'
+  },
+  {
+    _id: 'shentu',
+    name: 'Shentu',
+    apr: '24.18'
+  },
+  {
+    _id: 'agoric',
+    name: 'Agoric',
+    apr: '9.59'
+  },
+  {
+    _id: 'iris-net',
+    name: 'Iris Network',
+    apr: '10.24'
+  },
+  {
+    _id: 'cheqd',
+    name: 'Cheqd',
+    apr: '5.05'
+  },
+  {
+    _id: 'pica',
+    name: 'Pica',
+    apr: '2.66'
+  },
+  {
+    _id: 'kyve',
+    name: 'Kyve',
+    apr: '21.48'
+  },
+  {
+    _id: 'ux',
+    name: 'UX',
+    apr: '13.31'
+  },
+  {
+    _id: 'ki-chain',
+    name: 'Ki Chain',
+    apr: '6.59'
+  },
+  {
+    _id: 'asset-mantle',
+    name: 'Asset Mantle',
+    apr: '59.13'
+  },
+  {
+    _id: 'desmos',
+    name: 'Desmos',
+    apr: '5.58'
+  },
+  {
+    _id: 'e-money',
+    name: 'e-Money',
+    apr: '33.13'
+  },
+  {
+    _id: 'crescent',
+    name: 'Crescent',
+    apr: '8.79'
+  }
+];
+const EVENTS = [
+  {
+    _id: 'cryptist',
+    name: 'Cryptist',
+    logo: '/img/events/cryptist/logo.png',
+    link: 'https://cryptist.org/'
+  },
+  {
+    _id: 'cosmosphere',
+    name: 'Cosmosphere',
+    logo: '/img/events/cosmosphere/logo.png',
+    link: 'https://cosmosphere.dev/'
+  },
+  {
+    _id: 'moda-palas',
+    name: 'Moda Palas',
+    logo: '/img/events/moda-palas/logo.png',
+    link: 'https://events.node101.io/moda-palas'
+  },
+  {
+    _id: 'aleo-tour',
+    name: 'Aleo Tour',
+    logo: '/img/events/aleo-tour/logo.png',
+    link: 'https://events.node101.io/aleo-tour-of-turkiye'
+  },
+  {
+    _id: 'sui-move-workshops',
+    name: 'Sui Move Workshops',
+    logo: '/img/events/sui-move-workshops/logo.png',
+    link: 'https://events.node101.io/sui-move-workshop'
+  },
+  {
+    _id: 'nym-gathering',
+    name: 'Nym Gathering',
+    logo: '/img/events/nym-gathering/logo.png',
+    link: 'https://events.node101.io/nym-community-gathering'
+  }
+];
+
 module.exports = (req, res) => {
-  const PORTFOLIO = [
-    {
-      _id: 'cosmos-hub',
-      name: 'Cosmos Hub',
-      apr: '14.39'
-    },
-    {
-      _id: 'celestia',
-      name: 'Celestia',
-      apr: '11.29'
-    },
-    {
-      _id: 'band',
-      name: 'Band',
-      apr: '11.96'
-    },
-    {
-      _id: 'neutron',
-      name: 'Neutron',
-      apr: '0.00'
-    },
-    {
-      _id: 'stride',
-      name: 'Stride',
-      apr: '3.26'
-    },
-    {
-      _id: 'orai-chain',
-      name: 'Orai Chain',
-      apr: '17.78'
-    },
-    {
-      _id: 'fxcore',
-      name: 'f(x)Core',
-      apr: '14.28'
-    },
-    {
-      _id: 'canto',
-      name: 'Canto',
-      apr: '5.30'
-    },
-    {
-      _id: 'shentu',
-      name: 'Shentu',
-      apr: '24.18'
-    },
-    {
-      _id: 'agoric',
-      name: 'Agoric',
-      apr: '9.59'
-    },
-    {
-      _id: 'iris-net',
-      name: 'Iris Network',
-      apr: '10.24'
-    },
-    {
-      _id: 'cheqd',
-      name: 'Cheqd',
-      apr: '5.05'
-    },
-    {
-      _id: 'pica',
-      name: 'Pica',
-      apr: '2.66'
-    },
-    {
-      _id: 'kyve',
-      name: 'Kyve',
-      apr: '21.48'
-    },
-    {
-      _id: 'ux',
-      name: 'UX',
-      apr: '13.31'
-    },
-    {
-      _id: 'ki-chain',
-      name: 'Ki Chain',
-      apr: '6.59'
-    },
-    {
-      _id: 'asset-mantle',
-      name: 'Asset Mantle',
-      apr: '59.13'
-    },
-    {
-      _id: 'desmos',
-      name: 'Desmos',
-      apr: '5.58'
-    },
-    {
-      _id: 'e-money',
-      name: 'e-Money',
-      apr: '33.13'
-    },
-    {
-      _id: 'crescent',
-      name: 'Crescent',
-      apr: '8.79'
-    }
-  ];
   const SERVICES = [
     {
       title: [res.__('100%'), res.__('Uptime Guarantee')],
@@ -110,7 +149,7 @@ module.exports = (req, res) => {
       }]
     },
     {
-      title:[res.__('Auto'), res.__('Restaking')],
+      title: [res.__('Auto'), res.__('Restaking')],
       description: [{
         type: 'text',
         content: res.__('By using the trustless auto restake tool we provide, you can maximize your gain with compound reward mechanisms. We restake the tokens you receive periodically and help you make most of your regular income.')
@@ -171,84 +210,62 @@ module.exports = (req, res) => {
       ]
     }
   ];
-  const EVENTS = [
-    {
-      _id: 'cryptist',
-      name: 'Cryptist',
-      logo: '/img/events/cryptist/logo.png',
-      link: 'https://cryptist.org/'
-    },
-    {
-      _id: 'cosmosphere',
-      name: 'Cosmosphere',
-      logo: '/img/events/cosmosphere/logo.png',
-      link: 'https://cosmosphere.dev/'
-    },
-    {
-      _id: 'moda-palas',
-      name: 'Moda Palas',
-      logo: '/img/events/moda-palas/logo.png',
-      link: 'https://events.node101.io/moda-palas'
-    },
-    {
-      _id: 'aleo-tour',
-      name: 'Aleo Tour',
-      logo: '/img/events/aleo-tour/logo.png',
-      link: 'https://events.node101.io/aleo-tour-of-turkiye'
-    },
-    {
-      _id: 'sui-move-workshops',
-      name: 'Sui Move Workshops',
-      logo: '/img/events/sui-move-workshops/logo.png',
-      link: 'https://events.node101.io/sui-move-workshop'
-    },
-    {
-      _id: 'nym-gathering',
-      name: 'Nym Gathering',
-      logo: '/img/events/nym-gathering/logo.png',
-      link: 'https://events.node101.io/nym-community-gathering'
-    }
-  ];
+
   const CONTRIBUTIONS = [
     {
-      _id: 'staking',
-      title: 'Staking',
+      _id: 'open-source',
+      title: 'Open Source',
       color: 'green'
     },
     {
-      _id: 'Software',
-      title: 'Software',
-      color: 'blue'
+      _id: 'relayers',
+      title: 'Relayers',
+      color: 'green'
     },
     {
-      _id: 'crypto',
-      title: 'Crypto',
-      color: 'yellow'
+      _id: 'articles',
+      title: 'Articles',
+      color: 'green'
+    },
+    {
+      _id: 'videos',
+      title: 'Videos',
+      color: 'green'
+    },
+    {
+      _id: 'podcasts',
+      title: 'Podcasts',
+      color: 'green'
+    },
+    {
+      _id: '101-telegram',
+      title: '101 Telegram',
+      color: 'green'
+    },
+    {
+      _id: '101-x',
+      title: '101 X',
+      color: 'green'
+    },
+    {
+      _id: 'bot101',
+      title: 'bot101',
+      color: 'green'
+    },
+    {
+      _id: 'klein',
+      title: 'Klein',
+      color: 'green'
+    },
+    {
+      _id: 'rpcs',
+      title: 'RPCs',
+      color: 'green'
     },
     {
       _id: 'validator',
       title: 'Validator',
-      color: 'purple'
-    },
-    {
-      _id: 'events',
-      title: 'Events',
-      color: 'red'
-    },
-    {
-      _id: 'management',
-      title: 'Management',
-      color: 'orange'
-    },
-    {
-      _id: 'blockchain',
-      title: 'Blockchain',
-      color: 'pink'
-    },
-    {
-      _id: 'cosmos',
-      title: 'Cosmos',
-      color: 'turquoise'
+      color: 'green'
     }
   ];
 
@@ -273,4 +290,4 @@ module.exports = (req, res) => {
     contributions: CONTRIBUTIONS.concat(CONTRIBUTIONS),
     frequently_asked_questions: []
   });
-}
+};
