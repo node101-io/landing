@@ -1,9 +1,8 @@
-const EVENTS_HEADER_ANIMATION_INTERVAL = 20;
 let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 35;
 let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
 const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
-const CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION = 80;
+const CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION = 40;
 const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION = 3;
 const CONTRIBUTIONS_SCROLL_RESET_DISTANCE = 500;
 
@@ -33,49 +32,44 @@ function handleContributionNavbarContentItemsAnimation() {
   const startOpacity = 0.55;
   const endOpacity = 1;
   const opacityChange = (endOpacity - startOpacity) / (middleIndex + 1);
-  const opacityChanges = [];
 
   const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.82;
   const endFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE;
   const fontSizeChange = (endFontSize - startFontSize) / (middleIndex + 1);
-  const fontSizeChanges = [];
 
   for (let i = 0; i < middleIndex; i++) {
     const currentOpacity = startOpacity + opacityChange * i;
-    const previousOpacity = currentOpacity - opacityChange;
-    const animatedOpacity = previousOpacity + (currentOpacity - previousOpacity) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
-    opacityChanges.push(animatedOpacity);
+    const animatedOpacity = currentOpacity + opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
 
     const currentFontSize = startFontSize + fontSizeChange * i;
-    const previousFontSize = currentFontSize - fontSizeChange;
-    const animatedFontSize = previousFontSize + (currentFontSize - previousFontSize) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
-    fontSizeChanges.push(animatedFontSize);
+    const animatedFontSize = currentFontSize + fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
 
     contributionsNavbarContentItems[i].style.opacity = animatedOpacity;
     contributionsNavbarContentItems[i].style.fontSize = `${animatedFontSize}px`;
   };
 
-  const currentOpacity = endOpacity;
-  const previousOpacity = endOpacity - opacityChange;
-  const animatedOpacity = previousOpacity + (currentOpacity - previousOpacity) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
-
-  const currentFontSize = endFontSize;
-  const previousFontSize = endFontSize - fontSizeChange;
-  const animatedFontSize = previousFontSize + (currentFontSize - previousFontSize) * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
-
-  contributionsNavbarContentItems[middleIndex].style.opacity = animatedOpacity;
-  contributionsNavbarContentItems[middleIndex].style.fontSize = `${animatedFontSize}px`;
+  contributionsNavbarContentItems[middleIndex].style.opacity = endOpacity - opacityChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+  contributionsNavbarContentItems[middleIndex].style.fontSize = `${endFontSize - fontSizeChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
 
   for (let i = middleIndex + 1; i < CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT; i++) {
-    contributionsNavbarContentItems[i].style.opacity = opacityChanges.pop();
-    contributionsNavbarContentItems[i].style.fontSize = `${fontSizeChanges.pop()}px`;
+    const currentOpacity = endOpacity - opacityChange * (i - middleIndex);
+    const animatedOpacity = currentOpacity + opacityChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+    const currentFontSize = endFontSize - fontSizeChange * (i - middleIndex);
+    const animatedFontSize = currentFontSize + fontSizeChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+    contributionsNavbarContentItems[i].style.opacity = animatedOpacity;
+    contributionsNavbarContentItems[i].style.fontSize = `${animatedFontSize}px`;
   };
+
+  contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.opacity = startOpacity + opacityChange - opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+  contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.fontSize = `${startFontSize + fontSizeChange - fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
+
+  setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
 };
 
 function scrollContributionsContentBy(scrollAmount, callback) {
   if (scrollAmount == 0) return callback();
-
-  handleContributionNavbarContentItemsAnimation();
 
   if (scrollAmount > 0) {
     scrollAmount = Math.min(scrollAmount, CONTRIBUTIONS_MAX_SCROLL_SPEED);
@@ -85,6 +79,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
 
       const newElement = contributionsNavbarContentInnerWrapper.childNodes[0].cloneNode(true);
       newElement.style.marginTop = '0';
+      newElement.style.opacity = 0.55;
       contributionsNavbarContentInnerWrapper.childNodes[0].remove();
       contributionsNavbarContentInnerWrapper.appendChild(newElement);
 
@@ -153,8 +148,6 @@ function handleContributionScroll() {
     return;
   };
 
-  handleContributionNavbarContentItemsAnimation();
-
   scrollContributionsContentBy(contributionScrollTop - contributionScrollTopLast, _ => {
       contributionScrollTopLast = contributionScrollTop;
 
@@ -190,6 +183,7 @@ function initalizeContributionScrollEvent() {
   });
 
   contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
+  handleContributionNavbarContentItemsAnimation();
 };
 
 function addToSubscriberList() {

@@ -5,7 +5,7 @@ block main
     img.hello-node101-text(src='/img/hello-node101-text.svg' alt='Hello, we\'re')
     img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
   .content-inner-wrapper
-    .start-page-background
+    //- .start-page-background
       .start-page-background-shape-one-wrapper
         svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M746.781 641.412C609.904 718.184 535.009 739.688 390.57 729.514C249.613 719.596 136.997 621.716 65.9475 498.373C-11.6865 363.608 21.8524 246.676 24.9619 77.9549C25.4327 52.3231 26.13 26.684 27.1477 0.999761' stroke='url(#paint0_linear_68_1510)' stroke-width='30' stroke-miterlimit='10')
@@ -41,7 +41,7 @@ block main
             lineargradient#paint0_linear_70_1515(x1='-2747.91' y1='-2733.27' x2='716.475' y2='411.311' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-    .start-page-wrapper
+    //- .start-page-wrapper
       .start-page-left-top-radius
         .start-page-left-top-radius-inner-circle
       .start-page-content
@@ -87,7 +87,7 @@ block main
               path(d='M12.5103 0.192261C5.59245 0.192261 0 5.70105 0 12.5162C0 17.9639 3.58327 22.5752 8.55422 24.2073C9.17572 24.33 9.40337 23.9422 9.40337 23.6159C9.40337 23.3302 9.38288 22.3509 9.38288 21.3305C5.90281 22.0652 5.17812 19.8614 5.17812 19.8614C4.61885 18.4331 3.79018 18.066 3.79018 18.066C2.65116 17.3111 3.87315 17.3111 3.87315 17.3111C5.13663 17.3927 5.79961 18.5761 5.79961 18.5761C6.9179 20.4531 8.7199 19.9227 9.44486 19.5962C9.54831 18.8005 9.87993 18.2496 10.232 17.9436C7.45642 17.6579 4.53613 16.5969 4.53613 11.8631C4.53613 10.5165 5.03292 9.41473 5.8201 8.55786C5.6959 8.25187 5.26083 6.9866 5.94455 5.29315C5.94455 5.29315 7.00086 4.96663 9.38263 6.55817C10.4023 6.28841 11.454 6.15117 12.5103 6.15002C13.5667 6.15002 14.6435 6.293 15.6378 6.55817C18.0198 4.96663 19.0761 5.29315 19.0761 5.29315C19.7599 6.9866 19.3245 8.25187 19.2003 8.55786C20.0083 9.41473 20.4846 10.5165 20.4846 11.8631C20.4846 16.5969 17.5643 17.6374 14.7679 17.9436C15.2237 18.3312 15.6171 19.0656 15.6171 20.2287C15.6171 21.8814 15.5966 23.2077 15.5966 23.6156C15.5966 23.9422 15.8245 24.33 16.4457 24.2076C21.4167 22.575 24.9999 17.9639 24.9999 12.5162C25.0204 5.70105 19.4075 0.192261 12.5103 0.192261Z')
       .start-page-right-top-radius
         .start-page-right-top-radius-inner-circle
-    .portfolio-wrapper
+    //- .portfolio-wrapper
       .portfolio-header-wrapper
         .portfolio-header-top-line
           h2.portfolio-header-top-line-text= __('node101 is validating and distributing the value in more than 15 blockchains, all with different visions for their community.')
@@ -211,7 +211,7 @@ block main
                     a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
                   else if item.type == 'link'
                     a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
-    if events && events.length
+    //- if events && events.length
       .events-wrapper
         - events_title = __('A bridge leading to the Istanbul ecosystem. ')
         .events-header-wrapper
