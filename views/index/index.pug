@@ -273,8 +273,10 @@ block main
             .contributions-navbar-border
           .contributions-content-inner-wrapper
             each contribution, i in contributions.slice(0, contributions.length / 2)
-              .contributions-content-each-contribution-wrapper(class=`.contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
-                |!{include(`/includes/contributions/${contribution._id}.pug`)}
+              //- .contributions-content-each-contribution-wrapper(class=`.contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
+              //-   |!{include(`/includes/contributions/${contribution._id}.pug`)}
+            .contributions-content-each-contribution-wrapper.contributions-content-relayers-wrapper
+              include ../includes/contributions/relayers.pug
               //- .contributions-content-each-contribution-wrapper(style=`background-color: ${contribution.color}`)
     .team-wrapper
       .team-background-wrapper

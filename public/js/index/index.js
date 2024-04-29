@@ -2,8 +2,8 @@ let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 35;
 let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
 const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
-const CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION = 40;
-const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION = 3;
+const CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY = 40;
+const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY = 3;
 const CONTRIBUTIONS_SCROLL_RESET_DISTANCE = 500;
 
 let contributionsFirstItemMarginTop = 0;
@@ -90,7 +90,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
           scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -117,7 +117,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
           scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -127,17 +127,17 @@ function scrollContributionsContentBy(scrollAmount, callback) {
 };
 
 function scrollContributionsContentBySmooth(scrollAmount) {
-  if (scrollAmount == 0) return console.log('scroll ended'); // now change the content
+  if (scrollAmount == 0) return;
   if (contributionScrollStarted) return;
 
   if (scrollAmount > 0) {
     contributionsFirstItemMarginTop += 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
   } else {
     contributionsFirstItemMarginTop -= 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
   };
 };
 
