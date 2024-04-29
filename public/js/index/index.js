@@ -65,7 +65,7 @@ function handleContributionNavbarContentItemsAnimation() {
   contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.opacity = startOpacity + opacityChange - opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
   contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.fontSize = `${startFontSize + fontSizeChange - fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
 
-  setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
+  return setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
 };
 
 function scrollContributionsContentBy(scrollAmount, callback) {

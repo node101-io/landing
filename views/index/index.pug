@@ -1,47 +1,46 @@
 extends ../partials/header
 block main
-  //- img.pointer(src='/img/pointer.svg' alt='pointer')
   .hello-node101-wrapper(class=`${is_new_user ? '' : 'display-none'}`)
     img.hello-node101-text(src='/img/hello-node101-text.svg' alt='Hello, we\'re')
     img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
   .content-inner-wrapper
-    //- .start-page-background
-      .start-page-background-shape-one-wrapper
+    .start-page-background
+      .start-page-background-shape-one-wrapper(style=`${is_new_user ? 'animation-delay: calc(var(--hello-node101-opacity-animation-duration) * 1.2)' : ''}`)
         svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M746.781 641.412C609.904 718.184 535.009 739.688 390.57 729.514C249.613 719.596 136.997 621.716 65.9475 498.373C-11.6865 363.608 21.8524 246.676 24.9619 77.9549C25.4327 52.3231 26.13 26.684 27.1477 0.999761' stroke='url(#paint0_linear_68_1510)' stroke-width='30' stroke-miterlimit='10')
           defs
             lineargradient#paint0_linear_68_1510(x1='-1860.33' y1='-1791.59' x2='1604.06' y2='1352.99' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-two-wrapper
+      .start-page-background-shape-two-wrapper(style=`${is_new_user ? 'animation-delay: calc(var(--hello-node101-opacity-animation-duration) * 1.2 + var(--start-page-background-shape-two-animation-delay))' : ''}`)
         svg.start-page-background-shape-two(viewbox='0 0 699 255' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M684.589 250.119C643.51 106 497.836 43.9581 370.996 19.8956C270.105 0.758287 109.123 52.4698 7.99991 109.169' stroke='url(#paint0_linear_69_1512)' stroke-width='30' stroke-miterlimit='10')
           defs
             lineargradient#paint0_linear_69_1512(x1='-2599.1' y1='-2323.83' x2='865.283' y2='820.744' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-three-wrapper
+      .start-page-background-shape-three-wrapper(style=`${is_new_user ? 'animation-delay: calc(var(--hello-node101-opacity-animation-duration) * 1.2 + var(--start-page-background-shape-three-animation-delay))' : ''}`)
         svg.start-page-background-shape-three(viewbox='0 0 100 300' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M13.1216 290.91C71.8701 206.315 100.424 95.7198 74.5178 4.9999' stroke='url(#paint0_linear_69_1514)' stroke-width='30' stroke-miterlimit='10')
           defs
             lineargradient#paint0_linear_69_1514(x1='-3209.17' y1='-2568.95' x2='255.213' y2='575.624' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-four-wrapper
+      .start-page-background-shape-four-wrapper(style=`${is_new_user ? 'animation-delay: calc(var(--hello-node101-opacity-animation-duration) * 1.2 + var(--start-page-background-shape-four-animation-delay))' : ''}`)
         svg.start-page-background-shape-four(viewbox='0 0 498 203' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M25.3562 6.06469C-5.65223 89.1754 42.6004 154.947 107.127 175.522C230.673 214.94 394.325 154.099 485.064 23.4341' stroke='url(#paint0_linear_69_1513)' stroke-width='30' stroke-miterlimit='10')
           defs
             lineargradient#paint0_linear_69_1513(x1='-2737.23' y1='-2836.43' x2='727.155' y2='308.149' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-five-wrapper
+      .start-page-background-shape-five-wrapper(style=`${is_new_user ? 'animation-delay: calc(var(--hello-node101-opacity-animation-duration) * 1.2 + var(--start-page-background-shape-five-animation-delay))' : ''}`)
         svg.start-page-background-shape-five(viewbox='0 0 617 473' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M601.747 469.082C567.652 301.181 493.14 149.03 337.893 62.6248C202.088 -16.3608 52.8544 6.91536 14.6732 109.231' stroke='url(#paint0_linear_70_1515)' stroke-width='30' stroke-miterlimit='10')
           defs
             lineargradient#paint0_linear_70_1515(x1='-2747.91' y1='-2733.27' x2='716.475' y2='411.311' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-    //- .start-page-wrapper
+    .start-page-wrapper
       .start-page-left-top-radius
         .start-page-left-top-radius-inner-circle
       .start-page-content
@@ -87,7 +86,7 @@ block main
               path(d='M12.5103 0.192261C5.59245 0.192261 0 5.70105 0 12.5162C0 17.9639 3.58327 22.5752 8.55422 24.2073C9.17572 24.33 9.40337 23.9422 9.40337 23.6159C9.40337 23.3302 9.38288 22.3509 9.38288 21.3305C5.90281 22.0652 5.17812 19.8614 5.17812 19.8614C4.61885 18.4331 3.79018 18.066 3.79018 18.066C2.65116 17.3111 3.87315 17.3111 3.87315 17.3111C5.13663 17.3927 5.79961 18.5761 5.79961 18.5761C6.9179 20.4531 8.7199 19.9227 9.44486 19.5962C9.54831 18.8005 9.87993 18.2496 10.232 17.9436C7.45642 17.6579 4.53613 16.5969 4.53613 11.8631C4.53613 10.5165 5.03292 9.41473 5.8201 8.55786C5.6959 8.25187 5.26083 6.9866 5.94455 5.29315C5.94455 5.29315 7.00086 4.96663 9.38263 6.55817C10.4023 6.28841 11.454 6.15117 12.5103 6.15002C13.5667 6.15002 14.6435 6.293 15.6378 6.55817C18.0198 4.96663 19.0761 5.29315 19.0761 5.29315C19.7599 6.9866 19.3245 8.25187 19.2003 8.55786C20.0083 9.41473 20.4846 10.5165 20.4846 11.8631C20.4846 16.5969 17.5643 17.6374 14.7679 17.9436C15.2237 18.3312 15.6171 19.0656 15.6171 20.2287C15.6171 21.8814 15.5966 23.2077 15.5966 23.6156C15.5966 23.9422 15.8245 24.33 16.4457 24.2076C21.4167 22.575 24.9999 17.9639 24.9999 12.5162C25.0204 5.70105 19.4075 0.192261 12.5103 0.192261Z')
       .start-page-right-top-radius
         .start-page-right-top-radius-inner-circle
-    //- .portfolio-wrapper
+    .portfolio-wrapper
       .portfolio-header-wrapper
         .portfolio-header-top-line
           h2.portfolio-header-top-line-text= __('node101 is validating and distributing the value in more than 15 blockchains, all with different visions for their community.')
@@ -110,7 +109,7 @@ block main
                 .portfolio-content-each-project-content-wrapper
                   h3.portfolio-content-each-project-content-name= project.name
                   h4.portfolio-content-each-project-content-apr #{__('APR')} ~ #{page_lang == 'tr' ? '%' + project.apr : project.apr + '%'}
-            //- a.portfolio-content-all-projects-link(href=insertLanguageToLink(`/stake-with-node101`, lang))
+            a.portfolio-content-all-projects-link(href=insertLanguageToLink(`/stake-with-node101`, lang))
               svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
                 path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
               .portfolio-content-all-projects-link-text= __('All Projects')
@@ -123,10 +122,10 @@ block main
                 a.portfolio-content-all-projects-link-responsive(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
                   svg.portfolio-content-all-projects-link-responsive-icon(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
                     path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
-            //- .portfolio-content-all-projects-link-responsive
-            //-   .portfolio-content-all-projects-link-text= __('all projects')
-            //-   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
-            //-     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
+            .portfolio-content-all-projects-link-responsive
+              .portfolio-content-all-projects-link-text= __('all projects')
+              svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
+                path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
     //- .services-wrapper
       .services-header-wrapper
         h2.services-header-subtitle= __('Validator')
@@ -211,7 +210,7 @@ block main
                     a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
                   else if item.type == 'link'
                     a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
-    //- if events && events.length
+    if events && events.length
       .events-wrapper
         - events_title = __('A bridge leading to the Istanbul ecosystem. ')
         .events-header-wrapper
@@ -273,10 +272,16 @@ block main
                   .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}`)= contributions[i].title
             .contributions-navbar-border
           .contributions-content-inner-wrapper
-            each contribution, i in contributions.slice(0, contributions.length / 2)
-              .contributions-content-each-contribution-wrapper(class=`.contributions-content-contribution-${contribution._id}-wrapper ${contribution._id == contributions[contributions_random_start_index]._id ? '' : 'display-none'}`)
-                |!{include(`/includes/contributions/${contribution._id}.pug`)}
+            //- each contribution, i in contributions.slice(0, contributions.length / 2)
+            //-   .contributions-content-each-contribution-wrapper(class=`.contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[contributions_random_start_index]._id ? '' : 'display-none'}`)
+            //-     |!{include(`/includes/contributions/${contribution._id}.pug`)}
               //- .contributions-content-each-contribution-wrapper(style=`background-color: ${contribution.color}`)
+            //- .contributions-content-podcasts-wrapper
+            //-   include ../includes/contributions/podcasts.pug
+            .contributions-content-101-telegram-wrapper
+              include ../includes/contributions/101-telegram.pug
+            //- .contributions-content-videos-wrapper
+            //-   include ../includes/contributions/videos.pug
     .team-wrapper
       .team-background-wrapper
         svg.team-background(viewBox='0 0 1806 827' fill='none' xmlns='http://www.w3.org/2000/svg')

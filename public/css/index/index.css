@@ -9,6 +9,8 @@
   --start-page-social-media-wrapper-width: 50px;
   --start-page-background-shape-height: 130vh;
 
+  /* --start-page-background-global-delay: 0; */
+
   --start-page-background-shape-one-over-total-height-ratio: 746 / 1415;
   --start-page-background-shape-one-width-over-height-ratio: 763 / 746;
   --start-page-background-shape-one-two-height-difference-ratio: 533 / 746;
@@ -135,6 +137,7 @@
   --contributions-navbar-content-each-contribution-height: 75px;
   --contributions-navbar-content-each-contribution-font-size: 35px;
   --contributions-navbar-border-margin-left: 10px;
+  --contributions-content-101-telegram-margin: 40px;
   --contributions-content-101-telegram-each-message-text-font-size: 16px;
   --contributions-content-101-telegram-each-message-height: 32px;
   --contributions-content-101-telegram-each-sticker-height: 130px;
@@ -149,6 +152,18 @@
 
   --contributions-content-klein-loading-each-text-font-size: 16px;
   --contributions-content-klein-loading-bar-font-size: 16px;
+
+  --contributions-content-podcasts-images-gap: 20px;
+  --contributions-content-podcasts-images-margin-bottom: 40px;
+  --contributions-content-podcasts-rectangle-image-width: 150px;
+  --contributions-content-podcasts-title-gap: 10px;
+  --contributions-content-podcasts-title-margin-bottom: 20px;
+  --contributions-content-podcasts-title-icon-height: 20px;
+  --contributions-content-podcasts-text-font-size: 16px;
+
+  --contributions-content-videos-thumbnails-gap: 20px;
+  --contributions-content-videos-thumbnails-margin-bottom: 40px;
+  --contributions-content-videos-each-thumbnail-width: 200px;
 
   --team-wrapper-height: 700px;
   --team-wrapper-border-radius: 50px;
@@ -290,6 +305,10 @@
   background-color: var(--light-color);
   overflow: hidden;
   z-index: 1;
+  --start-page-background-shape-two-animation-delay: calc(var(--start-page-background-shape-one-animation-duration));
+  --start-page-background-shape-three-animation-delay: calc(var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration));
+  --start-page-background-shape-four-animation-delay: calc(var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration));
+  --start-page-background-shape-five-animation-delay: calc(var(--start-page-background-shape-four-animation-duration) + var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration));
 }
 
 .start-page-background-shape-one-wrapper {
@@ -345,7 +364,7 @@
   min-height: calc(var(--start-page-background-shape-two-animation-height-start-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeTwoAnimation var(--start-page-background-shape-two-animation-duration) var(--start-page-background-shape-one-animation-duration) linear forwards;
+  animation: startPageBackgroundShapeTwoAnimation var(--start-page-background-shape-two-animation-duration) var(--start-page-background-shape-two-animation-delay) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeTwoAnimation {
@@ -394,7 +413,7 @@
   min-height: 0;
   width: fit-content;
   min-width: fit-content;
-  animation: startPageBackgroundShapeThreeAnimation  var(--start-page-background-shape-three-animation-duration) calc(var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
+  animation: startPageBackgroundShapeThreeAnimation  var(--start-page-background-shape-three-animation-duration) var(--start-page-background-shape-three-animation-delay) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeThreeAnimation {
@@ -436,7 +455,7 @@
   min-height: fit-content;
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeFourAnimation  var(--start-page-background-shape-four-animation-duration) calc(var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
+  animation: startPageBackgroundShapeFourAnimation  var(--start-page-background-shape-four-animation-duration) var(--start-page-background-shape-four-animation-delay) linear forwards;
   overflow: hidden;
   direction: rtl;
 }
@@ -504,7 +523,7 @@
   min-height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeFiveAnimation  var(--start-page-background-shape-five-animation-duration) calc(var(--start-page-background-shape-four-animation-duration) + var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
+  animation: startPageBackgroundShapeFiveAnimation  var(--start-page-background-shape-five-animation-duration) var(--start-page-background-shape-five-animation-delay) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeFiveAnimation {
@@ -1606,7 +1625,6 @@
   min-width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
   display: flex;
   flex-direction: column;
-  gap: var(--content-gap);
 }
 
 .contributions-content-each-contribution-wrapper {
@@ -1620,6 +1638,16 @@
   padding-left: var(--page-horizontal-padding);
 }
 
+.contributions-content-101-telegram-wrapper {
+  height: fit-content;
+  min-height: fit-content;
+  width: 100%;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--contributions-content-101-telegram-margin);
+  /* gap: var(--contributions-content-101-telegram-gap); */
+}
 .contributions-content-101-telegram-dialog-wrapper {
   width: 100%;
   min-width: 100%;
@@ -1726,6 +1754,145 @@
   min-width: 1%;
 }
 
+.contributions-content-podcasts-wrapper {
+  width: calc(var(--contributions-content-podcasts-rectangle-image-width) * 2.9 + var(--contributions-content-podcasts-images-gap) * 2);
+  min-width: calc(var(--contributions-content-podcasts-rectangle-image-width) * 2.9 + var(--contributions-content-podcasts-images-gap) * 2);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.contributions-content-podcasts-images-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: var(--contributions-content-podcasts-images-gap);
+  margin-bottom: var(--contributions-content-podcasts-images-margin-bottom);
+}
+.contributions-content-podcasts-vertical-image {
+  height: auto;
+  min-height: auto;
+  width: calc(.9 * var(--contributions-content-podcasts-rectangle-image-width));
+  min-width: calc(.9 * var(--contributions-content-podcasts-rectangle-image-width));;
+  object-fit: contain;
+}
+.contributions-content-podcasts-each-rectangle-link-wrapper {
+  position: relative;
+  height: var(--contributions-content-podcasts-rectangle-image-width);
+  min-height: var(--contributions-content-podcasts-rectangle-image-width);
+  width: var(--contributions-content-podcasts-rectangle-image-width);
+  min-width: var(--contributions-content-podcasts-rectangle-image-width);
+  margin-top: calc(var(--contributions-content-podcasts-rectangle-image-width) / 10);
+  overflow: hidden;
+  border-radius: calc(var(--contributions-content-podcasts-rectangle-image-width) / 7);
+}
+.contributions-content-podcasts-each-rectangle-image {
+  height: var(--contributions-content-podcasts-rectangle-image-width);
+  min-height: var(--contributions-content-podcasts-rectangle-image-width);
+  width: var(--contributions-content-podcasts-rectangle-image-width);
+  min-width: var(--contributions-content-podcasts-rectangle-image-width);
+}
+.contributions-content-podcasts-each-rectangle-text {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: var(--contributions-content-podcasts-rectangle-image-width);
+  min-height: var(--contributions-content-podcasts-rectangle-image-width);
+  width: var(--contributions-content-podcasts-rectangle-image-width);
+  min-width: var(--contributions-content-podcasts-rectangle-image-width);
+  padding-bottom: calc(var(--contributions-content-podcasts-rectangle-image-width) / 8);
+  font-size: calc(.1 * var(--contributions-content-podcasts-rectangle-image-width));
+  color: var(--background-color);
+  opacity: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
+  cursor: pointer;
+  transition: opacity .5s;
+}
+.contributions-content-podcasts-each-rectangle-link-wrapper:hover .contributions-content-podcasts-each-rectangle-text {
+  opacity: 1;
+}
+.contributions-content-podcasts-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--contributions-content-podcasts-title-gap);
+  margin-bottom: var(--contributions-content-podcasts-title-margin-bottom);
+}
+.contributions-content-podcasts-title-icon {
+  height: var(--contributions-content-podcasts-title-icon-height);
+  min-height: var(--contributions-content-podcasts-title-icon-height);
+  width: auto;
+  min-width: auto;
+  fill: rgba(30, 215, 96, 1);
+}
+.contributions-content-podcasts-title-text {
+  font-family: 'Igra Sans', sans-serif;
+  font-size: var(--contributions-content-podcasts-text-font-size);
+  color: var(--background-color);
+}
+.contributions-content-podcasts-text {
+  font-family: 'Igra Sans', sans-serif;
+  font-size: var(--contributions-content-podcasts-text-font-size);
+  color: var(--background-color);
+  line-height: 1.3;
+}
+
+.contributions-content-videos-thumbnails-wrapper {
+  display: flex;
+  gap: var(--contributions-content-videos-thumbnails-gap);
+  margin-bottom: var(--contributions-content-videos-thumbnails-margin-bottom);
+}
+.contributions-content-videos-each-thumbnail-wrapper {
+  position: relative;
+  height: calc(var(--contributions-content-videos-each-thumbnail-width) * 9 / 16);
+  min-height: calc(var(--contributions-content-videos-each-thumbnail-width) * 9 / 16);
+  width: var(--contributions-content-videos-each-thumbnail-width);
+  min-width: var(--contributions-content-videos-each-thumbnail-width);
+  overflow: hidden;
+  border-radius: calc(var(--contributions-content-videos-each-thumbnail-width) / 10);
+}
+.contributions-content-videos-each-thumbnail-image {
+  height: auto;
+  min-height: auto;
+  width: var(--contributions-content-videos-each-thumbnail-width);
+  min-width: var(--contributions-content-videos-each-thumbnail-width);
+  border-bottom-right-radius: 0;
+}
+.contributions-content-videos-each-thumbnail-text {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  height: calc(var(--contributions-content-videos-each-thumbnail-width) * 9 / 16);
+  min-height: calc(var(--contributions-content-videos-each-thumbnail-width) * 9 / 16);
+  width: var(--contributions-content-videos-each-thumbnail-width);
+  min-width: var(--contributions-content-videos-each-thumbnail-width);
+  padding-left: calc(var(--contributions-content-videos-each-thumbnail-width) / 20);
+  padding-bottom: calc(var(--contributions-content-videos-each-thumbnail-width) / 20);
+  font-family: 'Igra Sans', sans-serif;
+  font-size: calc(var(--contributions-content-videos-each-thumbnail-width) / 16);
+  color: var(--background-color);
+  opacity: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .6));
+  cursor: pointer;
+  transition: opacity .5s;
+}
+.contributions-content-videos-each-thumbnail-wrapper:hover .contributions-content-videos-each-thumbnail-text {
+  opacity: 1;
+}
+.contributions-content-videos-each-thumbnail-button-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-text-color);
+  height: calc(var(--contributions-content-videos-each-thumbnail-width) / 6);
+  min-height: calc(var(--contributions-content-videos-each-thumbnail-width) / 6);
+  width: calc(var(--contributions-content-videos-each-thumbnail-width) / 6);
+  min-width: calc(var(--contributions-content-videos-each-thumbnail-width) / 6);
+  z-index: 2;
+}
 
 .team-wrapper {
   position: relative;
