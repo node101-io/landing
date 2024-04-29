@@ -267,21 +267,15 @@ block main
               .contributions-navbar-content-inner-wrapper
                 - let contributions_random_start_index = parseInt(Math.random() * contributions.length)
                 - for (let i = contributions_random_start_index; i < contributions.length; i++)
-                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}` class=(i == contributions_random_start_index ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
+                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}` class=(i == (contributions_random_start_index + 4 % (contributions.length / 2)) ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
                 - for (let i = 0; i < contributions_random_start_index; i++)
                   .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}`)= contributions[i].title
             .contributions-navbar-border
           .contributions-content-inner-wrapper
-            //- each contribution, i in contributions.slice(0, contributions.length / 2)
-            //-   .contributions-content-each-contribution-wrapper(class=`.contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[contributions_random_start_index]._id ? '' : 'display-none'}`)
-            //-     |!{include(`/includes/contributions/${contribution._id}.pug`)}
+            each contribution, i in contributions.slice(0, contributions.length / 2)
+              .contributions-content-each-contribution-wrapper(class=`.contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
+                |!{include(`/includes/contributions/${contribution._id}.pug`)}
               //- .contributions-content-each-contribution-wrapper(style=`background-color: ${contribution.color}`)
-            //- .contributions-content-podcasts-wrapper
-            //-   include ../includes/contributions/podcasts.pug
-            .contributions-content-101-telegram-wrapper
-              include ../includes/contributions/101-telegram.pug
-            //- .contributions-content-videos-wrapper
-            //-   include ../includes/contributions/videos.pug
     .team-wrapper
       .team-background-wrapper
         svg.team-background(viewBox='0 0 1806 827' fill='none' xmlns='http://www.w3.org/2000/svg')

@@ -127,7 +127,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
 };
 
 function scrollContributionsContentBySmooth(scrollAmount) {
-  if (scrollAmount == 0) return;
+  if (scrollAmount == 0) return console.log('scroll ended'); // now change the content
   if (contributionScrollStarted) return;
 
   if (scrollAmount > 0) {
@@ -138,23 +138,21 @@ function scrollContributionsContentBySmooth(scrollAmount) {
     contributionsFirstItemMarginTop -= 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
     setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
-  }
+  };
 };
 
 function handleContributionScroll() {
   if (contributionScrollEnded) return;
-  if (contributionScrollTop == contributionScrollTopLast) {
-    setTimeout(handleContributionScroll, 10);
-    return;
-  };
+  if (contributionScrollTop == contributionScrollTopLast)
+    return setTimeout(handleContributionScroll, 10);
 
   scrollContributionsContentBy(contributionScrollTop - contributionScrollTopLast, _ => {
-      contributionScrollTopLast = contributionScrollTop;
+    contributionScrollTopLast = contributionScrollTop;
 
-      if (contributionsNavbarScrollWrapper.scrollTop < CONTRIBUTIONS_SCROLL_RESET_DISTANCE || contributionsNavbarScrollWrapper.scrollTop + contributionsNavbarScrollWrapper.getBoundingClientRect().height > contributionsNavbarScrollWrapper.scrollHeight - CONTRIBUTIONS_SCROLL_RESET_DISTANCE)
-        contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
+    if (contributionsNavbarScrollWrapper.scrollTop < CONTRIBUTIONS_SCROLL_RESET_DISTANCE || contributionsNavbarScrollWrapper.scrollTop + contributionsNavbarScrollWrapper.getBoundingClientRect().height > contributionsNavbarScrollWrapper.scrollHeight - CONTRIBUTIONS_SCROLL_RESET_DISTANCE)
+      contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
 
-      handleContributionScroll();
+    handleContributionScroll();
   });
 };
 
