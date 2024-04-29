@@ -6,7 +6,5 @@ module.exports = (req, res, next) => {
     res.locals.is_new_user = false;
   };
 
-  res.locals.is_new_user = true;
-  // # varsa da
   next();
 };

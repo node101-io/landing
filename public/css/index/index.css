@@ -9,7 +9,7 @@
   --start-page-social-media-wrapper-width: 50px;
   --start-page-background-shape-height: 130vh;
 
-  /* --start-page-background-global-delay: 0; */
+  --start-page-background-global-delay: 0;
 
   --start-page-background-shape-one-over-total-height-ratio: 746 / 1415;
   --start-page-background-shape-one-width-over-height-ratio: 763 / 746;
@@ -305,10 +305,6 @@
   background-color: var(--light-color);
   overflow: hidden;
   z-index: 1;
-  --start-page-background-shape-two-animation-delay: calc(var(--start-page-background-shape-one-animation-duration));
-  --start-page-background-shape-three-animation-delay: calc(var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration));
-  --start-page-background-shape-four-animation-delay: calc(var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration));
-  --start-page-background-shape-five-animation-delay: calc(var(--start-page-background-shape-four-animation-duration) + var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration));
 }
 
 .start-page-background-shape-one-wrapper {
@@ -319,7 +315,7 @@
   min-height: 0;
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeOneAnimation var(--start-page-background-shape-one-animation-duration) linear forwards;
+  animation: startPageBackgroundShapeOneAnimation var(--start-page-background-shape-one-animation-duration) var(--start-page-background-global-delay) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeOneAnimation {
@@ -364,7 +360,7 @@
   min-height: calc(var(--start-page-background-shape-two-animation-height-start-ratio) * var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height));
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeTwoAnimation var(--start-page-background-shape-two-animation-duration) var(--start-page-background-shape-two-animation-delay) linear forwards;
+  animation: startPageBackgroundShapeTwoAnimation var(--start-page-background-shape-two-animation-duration) calc(var(--start-page-background-global-delay) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeTwoAnimation {
@@ -413,7 +409,7 @@
   min-height: 0;
   width: fit-content;
   min-width: fit-content;
-  animation: startPageBackgroundShapeThreeAnimation  var(--start-page-background-shape-three-animation-duration) var(--start-page-background-shape-three-animation-delay) linear forwards;
+  animation: startPageBackgroundShapeThreeAnimation  var(--start-page-background-shape-three-animation-duration) calc(var(--start-page-background-global-delay) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeThreeAnimation {
@@ -455,7 +451,7 @@
   min-height: fit-content;
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeFourAnimation  var(--start-page-background-shape-four-animation-duration) var(--start-page-background-shape-four-animation-delay) linear forwards;
+  animation: startPageBackgroundShapeFourAnimation  var(--start-page-background-shape-four-animation-duration) calc(var(--start-page-background-global-delay) + var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
   overflow: hidden;
   direction: rtl;
 }
@@ -523,7 +519,7 @@
   min-height: calc(var(--start-page-background-shape-five-animation-height-start-ratio) * var(--start-page-background-shape-five-over-total-height-ratio) * var(--start-page-background-shape-height));
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeFiveAnimation  var(--start-page-background-shape-five-animation-duration) var(--start-page-background-shape-five-animation-delay) linear forwards;
+  animation: startPageBackgroundShapeFiveAnimation  var(--start-page-background-shape-five-animation-duration) calc(var(--start-page-background-global-delay) + var(--start-page-background-shape-four-animation-duration) + var(--start-page-background-shape-three-animation-duration) + var(--start-page-background-shape-two-animation-duration) + var(--start-page-background-shape-one-animation-duration)) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeFiveAnimation {
