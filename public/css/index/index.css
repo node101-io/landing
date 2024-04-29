@@ -9,7 +9,7 @@
   --start-page-social-media-wrapper-width: 50px;
   --start-page-background-shape-height: 130vh;
 
-  --start-page-background-global-delay: 0;
+  --start-page-background-global-delay: 0.01s;
 
   --start-page-background-shape-one-over-total-height-ratio: 746 / 1415;
   --start-page-background-shape-one-width-over-height-ratio: 763 / 746;
@@ -315,7 +315,7 @@
   min-height: 0;
   width: 0;
   min-width: 0;
-  animation: startPageBackgroundShapeOneAnimation var(--start-page-background-shape-one-animation-duration) var(--start-page-background-global-delay) linear forwards;
+  animation: startPageBackgroundShapeOneAnimation var(--start-page-background-shape-one-animation-duration) calc(var(--start-page-background-global-delay)) linear forwards;
   overflow: hidden;
 }
 @keyframes startPageBackgroundShapeOneAnimation {
