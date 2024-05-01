@@ -1,18 +1,19 @@
 .contributions-content-videos-thumbnails-wrapper
-  - const videos = [
-  -   {
-  -     title: 'Modular Meetup II',
-  -     video_id: 'xLM_67AjNt0'
-  -   },
-  -   {
-  -     title: 'Modular Meetup III',
-  -     video_id: 'RhHTRTL7JCE'
-  -   },
-  -   {
-  -     title: 'Cryptist - Dean Tribble',
-  -     video_id: 'C3eiWFlROHQ'
-  -   }
-  - ];
+  -
+    const videos = [
+      {
+        title: 'Modular Meetup II',
+        video_id: 'xLM_67AjNt0'
+      },
+      {
+        title: 'Modular Meetup III',
+        video_id: 'RhHTRTL7JCE'
+      },
+      {
+        title: 'Cryptist - Dean Tribble',
+        video_id: 'C3eiWFlROHQ'
+      }
+    ];
   each video in videos
     a.contributions-content-videos-each-thumbnail-wrapper(href=`https://youtu.be/${video.video_id}` target='_blank')
       .contributions-content-videos-each-thumbnail-button-wrapper

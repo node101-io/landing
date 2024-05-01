@@ -6,9 +6,21 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
 >
   <url>
-    <loc>https://node101.i0.com/</loc>
+    <loc>https://node101.io.com/</loc>
     <lastmod>2024-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://node101.io.com/about-us</loc>
+    <lastmod>2024-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://node101.io.com/subscribe</loc>
+    <lastmod>2024-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

@@ -229,8 +229,9 @@ block main
         .events-links-wrapper
           .events-links-individual-wrapper
             each event in events
-              a.events-links-each-individual-event(href=event.link target='_blank')
-                img.events-links-each-individual-event-image(src=event.logo alt=event.name)
+              if (event.logo)
+                a.events-links-each-individual-event(href=event.link target='_blank')
+                  img.events-links-each-individual-event-image(src=event.logo alt=event.name)
           a.events-links-all-events-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
             svg.events-links-all-events-button-icon.events-links-all-events-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
@@ -275,8 +276,8 @@ block main
             each contribution, i in contributions.slice(0, contributions.length / 2)
               //- .contributions-content-each-contribution-wrapper(class=`.contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
               //-   |!{include(`/includes/contributions/${contribution._id}.pug`)}
-            .contributions-content-each-contribution-wrapper.contributions-content-relayers-wrapper
-              include ../includes/contributions/relayers.pug
+            .contributions-content-each-contribution-wrapper.contributions-content-101-telegram-wrapper
+              include ../includes/contributions/101-telegram.pug
               //- .contributions-content-each-contribution-wrapper(style=`background-color: ${contribution.color}`)
     .team-wrapper
       .team-background-wrapper

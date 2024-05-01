@@ -27,7 +27,7 @@ block content
           //-   h1.each-header-button-text-wrapper-two
           //-     each letter, i in header_buttons[1].split('')
           //-       .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          a.each-header-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
+          a.each-header-button#header-events-button
             h1.each-header-button-text-wrapper
               each letter, i in header_buttons[2].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
@@ -120,7 +120,7 @@ block content
         .header-wrapper-responsive-menu-buttons-wrapper
           a.header-wrapper-responsive-menu-each-button#header-portfolio-button-responsive= __('Portfolio')
           //- a.header-wrapper-responsive-menu-each-button#header-services-button-responsive= __('Validator Services')
-          a.header-wrapper-responsive-menu-each-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')= __('Events')
+          a.header-wrapper-responsive-menu-each-button#header-events-button-responsive= __('Events')
           a.header-wrapper-responsive-menu-each-button#header-contributions-button-responsive= __('Ecosystem Contributions')
           a.header-wrapper-responsive-menu-each-button#header-about-us-button-responsive= __('About Us')
           a.header-wrapper-responsive-menu-each-button#header-reach-us-button-responsive= __('Reach Us')

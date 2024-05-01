@@ -29,11 +29,11 @@ function handleContributionNavbarContentItemsAnimation() {
 
   const middleIndex = parseInt(CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT / 2);
 
-  const startOpacity = 0.55;
+  const startOpacity = 0.1;
   const endOpacity = 1;
   const opacityChange = (endOpacity - startOpacity) / (middleIndex + 1);
 
-  const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.82;
+  const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.6;
   const endFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE;
   const fontSizeChange = (endFontSize - startFontSize) / (middleIndex + 1);
 
