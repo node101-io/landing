@@ -52,6 +52,8 @@ function handleScrollToSection(section, behavior) {
 
   if (section == 'portfolio') {
     selector = '.portfolio-wrapper';
+  } else if (section == 'events') {
+    selector = '.events-wrapper';
   } else if (section == 'contributions') {
     selector = '.contributions-wrapper';
   } else if (section == 'team') {
@@ -88,6 +90,8 @@ window.addEventListener('load', _ => {
   if (window.location.hash) {
     if (window.location.hash == '#portfolio') {
       handleScrollToSection('portfolio');
+    } else if (window.location.hash == '#events') {
+      handleScrollToSection('events');
     } else if (window.location.hash == '#contributions') {
       handleScrollToSection('contributions');
     } else if (window.location.hash == '#team') {
@@ -134,10 +138,7 @@ window.addEventListener('load', _ => {
       window.location.href = url;
     };
 
-    if (
-      event.target.closest('.header-responsive-menu-button') ||
-      event.target.closest('.header-wrapper-responsive-menu-each-button')
-    ) {
+    if (event.target.closest('.header-responsive-menu-button') || event.target.closest('.header-wrapper-responsive-menu-each-button')) {
       if (headerResponsiveMenuButton.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
         headerWrapperResponsiveMenu.classList.remove('header-wrapper-responsive-menu-opened');
         headerResponsiveMenuButton.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
@@ -151,13 +152,11 @@ window.addEventListener('load', _ => {
       };
     };
 
-    if (
-      event.target.closest('.each-header-button') ||
-      event.target.closest('.header-wrapper-responsive-menu-each-button') ||
-      event.target.closest('.header-stake-with-node101-button')
-    ) {
+    if (event.target.closest('.each-header-button') || event.target.closest('.header-wrapper-responsive-menu-each-button') || event.target.closest('.header-stake-with-node101-button')) {
       if (event.target.closest('#header-portfolio-button') || event.target.closest('#header-portfolio-button-responsive') || event.target.closest('.header-stake-with-node101-button')) {
         handleScrollToSection('portfolio', 'smooth');
+      } else if (event.target.closest('#header-events-button') || event.target.closest('#header-events-button-responsive')) {
+        handleScrollToSection('events', 'smooth');
       } else if (event.target.closest('#header-ecosystem-contributions-button') || event.target.closest('#header-contributions-button-responsive')) {
         handleScrollToSection('contributions', 'smooth');
       } else if (event.target.closest('#header-about-us-button') || event.target.closest('#header-about-us-button-responsive')) {

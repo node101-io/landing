@@ -2,8 +2,8 @@ let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 35;
 let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
 const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
-const CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION = 40;
-const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION = 3;
+const CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY = 40;
+const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY = 3;
 const CONTRIBUTIONS_SCROLL_RESET_DISTANCE = 500;
 
 let contributionsFirstItemMarginTop = 0;
@@ -29,11 +29,11 @@ function handleContributionNavbarContentItemsAnimation() {
 
   const middleIndex = parseInt(CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT / 2);
 
-  const startOpacity = 0.55;
+  const startOpacity = 0.1;
   const endOpacity = 1;
   const opacityChange = (endOpacity - startOpacity) / (middleIndex + 1);
 
-  const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.82;
+  const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.6;
   const endFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE;
   const fontSizeChange = (endFontSize - startFontSize) / (middleIndex + 1);
 
@@ -65,7 +65,7 @@ function handleContributionNavbarContentItemsAnimation() {
   contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.opacity = startOpacity + opacityChange - opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
   contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.fontSize = `${startFontSize + fontSizeChange - fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
 
-  setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
+  return setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
 };
 
 function scrollContributionsContentBy(scrollAmount, callback) {
@@ -90,7 +90,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
           scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -117,7 +117,7 @@ function scrollContributionsContentBy(scrollAmount, callback) {
           scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DILATION);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -133,28 +133,26 @@ function scrollContributionsContentBySmooth(scrollAmount) {
   if (scrollAmount > 0) {
     contributionsFirstItemMarginTop += 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
   } else {
     contributionsFirstItemMarginTop -= 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DILATION);
-  }
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
+  };
 };
 
 function handleContributionScroll() {
   if (contributionScrollEnded) return;
-  if (contributionScrollTop == contributionScrollTopLast) {
-    setTimeout(handleContributionScroll, 10);
-    return;
-  };
+  if (contributionScrollTop == contributionScrollTopLast)
+    return setTimeout(handleContributionScroll, 10);
 
   scrollContributionsContentBy(contributionScrollTop - contributionScrollTopLast, _ => {
-      contributionScrollTopLast = contributionScrollTop;
+    contributionScrollTopLast = contributionScrollTop;
 
-      if (contributionsNavbarScrollWrapper.scrollTop < CONTRIBUTIONS_SCROLL_RESET_DISTANCE || contributionsNavbarScrollWrapper.scrollTop + contributionsNavbarScrollWrapper.getBoundingClientRect().height > contributionsNavbarScrollWrapper.scrollHeight - CONTRIBUTIONS_SCROLL_RESET_DISTANCE)
-        contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
+    if (contributionsNavbarScrollWrapper.scrollTop < CONTRIBUTIONS_SCROLL_RESET_DISTANCE || contributionsNavbarScrollWrapper.scrollTop + contributionsNavbarScrollWrapper.getBoundingClientRect().height > contributionsNavbarScrollWrapper.scrollHeight - CONTRIBUTIONS_SCROLL_RESET_DISTANCE)
+      contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
 
-      handleContributionScroll();
+    handleContributionScroll();
   });
 };
 

@@ -14,7 +14,7 @@ i18n.configure({
 });
 
 module.exports = (req, res, next) => {
-  if (!req.query || typeof req.query != 'object')
+  if (!req.query || typeof req.query != 'object') // TODO
     req.query = {};
   if (!req.body || typeof req.body != 'object')
     req.body = {};

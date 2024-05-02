@@ -120,6 +120,30 @@ const EVENTS = [
     link: 'https://events.node101.io/moda-palas'
   },
   {
+    _id: 'workshops',
+    name: 'Workshops'
+  },
+  {
+    _id: 'gatherings',
+    name: 'Gatherings'
+  },
+  {
+    _id: 'summits',
+    name: 'Summits'
+  },
+  {
+    _id: 'hacker-houses',
+    name: 'Hacker Houses'
+  },
+  {
+    _id: 'parties',
+    name: 'Parties'
+  },
+  {
+    _id: 'hacker-tours',
+    name: 'Hacker Tours'
+  },
+  {
     _id: 'aleo-tour',
     name: 'Aleo Tour',
     logo: '/img/events/aleo-tour/logo.png',
