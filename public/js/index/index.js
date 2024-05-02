@@ -21,7 +21,8 @@ function changeContributionsContentInnerWrapperContent(id) {
     contribution.classList.add('display-none');
   });
 
-  document.querySelector(`.contributions-content-${id}-wrapper`).classList.remove('display-none');
+  if (document.querySelector(`.contributions-content-${id}-wrapper`))
+    document.querySelector(`.contributions-content-${id}-wrapper`).classList.remove('display-none');
 };
 
 function handleContributionNavbarContentItemsAnimation() {
@@ -83,6 +84,8 @@ function scrollContributionsContentBy(scrollAmount, callback) {
       contributionsNavbarContentInnerWrapper.childNodes[0].remove();
       contributionsNavbarContentInnerWrapper.appendChild(newElement);
 
+      changeContributionsContentInnerWrapperContent(contributionsNavbarContentInnerWrapper.childNodes[4].id.replace('contribution-', ''));
+
       contributionsFirstItemMarginTop = 0;
 
       setTimeout(() => {
@@ -107,8 +110,9 @@ function scrollContributionsContentBy(scrollAmount, callback) {
       const newElement = contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].cloneNode(true);
       newElement.style.marginTop = `-${CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
       contributionsNavbarContentInnerWrapper.insertBefore(newElement, contributionsNavbarContentInnerWrapper.childNodes[0]);
-
       contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].remove();
+
+      changeContributionsContentInnerWrapperContent(contributionsNavbarContentInnerWrapper.childNodes[4].id.replace('contribution-', ''));
 
       contributionsFirstItemMarginTop = CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
 
