@@ -14,11 +14,6 @@ i18n.configure({
 });
 
 module.exports = (req, res, next) => {
-  if (!req.query || typeof req.query != 'object') // TODO
-    req.query = {};
-  if (!req.body || typeof req.body != 'object')
-    req.body = {};
-
   res.locals.page_lang = req.query.lang || req.acceptsLanguages(...SUPPORTED_PAGE_LANGUAGES) || DEFAULT_PAGE_LANGUAGE;
 
   if (req.query.lang)

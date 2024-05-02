@@ -46,7 +46,7 @@ if (cluster.isMaster) {
   });
 
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+  app.use(favicon(path.join(__dirname, 'public/img/favicon/favicon.ico')));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
     extended: true
@@ -59,6 +59,14 @@ if (cluster.isMaster) {
       mongoUrl: MONGODB_URI
     })
   }));
+  app.use((req, res, next) => {
+    if (!req.query || typeof req.query != 'object')
+      req.query = {};
+    if (!req.body || typeof req.body != 'object')
+      req.body = {};
+
+    next();
+  });
   app.use(setLanguage);
   app.use(enableDynamicInclude);
   app.use(detectNewUser);

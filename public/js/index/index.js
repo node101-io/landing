@@ -227,12 +227,22 @@ window.addEventListener('load', _ => {
       document.querySelector('.events-content-navbar-header-icon-line-right').classList.toggle('events-content-navbar-header-icon-line-right-reversed');
     };
 
-    if (event.target.closest('.events-content-navbar-each-event')) {
+    if (event.target.closest('.events-content-navbar-each-event') || event.target.closest('.events-content-navbar-each-event-responsive')) {
       const target = event.target.closest('.events-content-navbar-each-event');
-      const eventId = target.id.replace('event-', '');
+      const targetResponsive = event.target.closest('.events-content-navbar-each-event-responsive');
 
-      document.querySelector('.events-content-navbar-each-event-selected').classList.remove('events-content-navbar-each-event-selected');
-      target.classList.add('events-content-navbar-each-event-selected');
+      const eventId = target ? target.id.replace('event-', '') : targetResponsive.id.replace('event-', '');
+
+      const selectedEvent = document.querySelector('.events-content-navbar-each-event-selected');
+      const selectedEventResponsive = document.querySelector('.events-content-navbar-each-event-selected-responsive');
+
+      document.querySelector('.events-content-navbar-each-event-selected')?.classList.remove('events-content-navbar-each-event-selected');
+      document.querySelector('.events-content-navbar-each-event-selected-responsive')?.classList.remove('events-content-navbar-each-event-selected-responsive');
+
+      if (target)
+        target.classList.add('events-content-navbar-each-event-selected');
+      else
+        targetResponsive.classList.add('events-content-navbar-each-event-selected-responsive');
 
       document.querySelectorAll('.events-content-each-event-wrapper').forEach(eachEvent => {
         if (!eachEvent.classList.contains(`events-content-${eventId}-wrapper`))
@@ -251,11 +261,4 @@ window.addEventListener('load', _ => {
       addToSubscriberList();
     };
   });
-
-  // const pointer = document.querySelector('.pointer');
-
-  // document.addEventListener('mousemove', event => {
-  //   pointer.style.setProperty('--pointer-x', `${event.clientX - 5}px`);
-  //   pointer.style.setProperty('--pointer-y', `${event.clientY}px`);
-  // });
 });

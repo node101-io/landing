@@ -1,7 +1,7 @@
 extends ../partials/header
 block main
   .hello-node101-wrapper(class=`${is_new_user ? '' : 'display-none'}`)
-    img.hello-node101-text(src='/img/hello-node101-text.svg' alt='Hello, we\'re')
+    .hello-node101-text= __('hello, we\'re')
     img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
   .content-inner-wrapper
     .start-page-background(style=`${is_new_user ? '--start-page-background-global-delay: calc(1.2 * var(--hello-node101-opacity-animation-duration))' : ''}`)
@@ -56,7 +56,7 @@ block main
           h1.start-page-header-each-line= start_page_text[0]
           h1.start-page-header-each-line= start_page_text[1]
           h1.start-page-header-each-line= start_page_text[2]
-            a.start-page-external-link-wrapper.start-page-external-events-wrapper(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
+            a.start-page-external-link-wrapper.start-page-external-events-wrapper(href='https://lu.ma/node101' target='_blank')
               .start-page-external-link-each-line
                 h1.start-page-external-link-each-title= __('Gatherings')
                 svg.start-page-external-link-each-icon(viewbox='0 0 16 15' xmlns='http://www.w3.org/2000/svg')
@@ -66,7 +66,7 @@ block main
           h1.start-page-header-each-line= start_page_text[3]
           .start-page-last-line-wrapper
             h1.start-page-header-each-line= start_page_text[4]
-              a.start-page-external-link-wrapper.start-page-external-events-wrapper.start-page-external-events-wrapper-responsive(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
+              a.start-page-external-link-wrapper.start-page-external-events-wrapper.start-page-external-events-wrapper-responsive(href='https://lu.ma/node101' target='_blank')
                 .start-page-external-link-each-line
                   h1.start-page-external-link-each-title= __('Gatherings')
                   svg.start-page-external-link-each-icon(viewbox='0 0 16 15' xmlns='http://www.w3.org/2000/svg')
@@ -105,27 +105,35 @@ block main
           .portfolio-content-project-wrapper
             each project in portfolio
               a.portfolio-content-each-project-wrapper(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
-                img.portfolio-content-each-project-logo(src=`/img/chains/${project._id}-256w.webp` width='100%' alt=project.name)
+                img.portfolio-content-each-project-logo(
+                  srcset=`/img/chains/${project._id}-160w.png, /img/chains/${project._id}-240w.png 1.5x, /img/chains/${project._id}-320w.png 2x`,
+                  src=`/img/chains/${project._id}-320w.png`
+                  alt=project.name
+                )
                 .portfolio-content-each-project-content-wrapper
                   h3.portfolio-content-each-project-content-name= project.name
                   h4.portfolio-content-each-project-content-apr #{__('APR')} ~ #{page_lang == 'tr' ? '%' + project.apr : project.apr + '%'}
-            a.portfolio-content-all-projects-link(href=insertLanguageToLink(`/stake-with-node101`, lang))
-              svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
-                path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
-              .portfolio-content-all-projects-link-text= __('All Projects')
+            //- a.portfolio-content-all-projects-link(href=insertLanguageToLink(`/stake-with-node101`, lang))
+            //-   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
+            //-     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
+            //-   .portfolio-content-all-projects-link-text= __('All Projects')
           .portfolio-content-project-wrapper-responsive
             each project, i in portfolio
               .portfolio-content-each-project-wrapper-responsive(class=`${i < 5 ? '' : 'display-none'}`)
-                img.portfolio-content-each-project-logo(src=`/img/chains/${project._id}-64w.webp` width='100%' alt=project.name)
+                img.portfolio-content-each-project-logo(
+                  srcset=`/img/chains/${project._id}-80w.png, /img/chains/${project._id}-160w.png 2x`,
+                  src=`/img/chains/${project._id}-160w.png`
+                  alt=project.name
+                )
                 h3.portfolio-content-each-project-content-name= project.name
                 h4.portfolio-content-each-project-content-apr #{__('APR')} #{page_lang == 'tr' ? '%' + project.apr : project.apr + '%'}
-                a.portfolio-content-all-projects-link-responsive(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
-                  svg.portfolio-content-all-projects-link-responsive-icon(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+                a.portfolio-content-each-project-link-responsive(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
+                  svg.portfolio-content-each-project-link-responsive-icon(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
                     path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
-            .portfolio-content-all-projects-link-responsive
-              .portfolio-content-all-projects-link-text= __('all projects')
-              svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
-                path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
+            //- .portfolio-content-all-projects-link-responsive
+            //-   .portfolio-content-all-projects-link-text= __('all projects')
+            //-   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
+            //-     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
     //- .services-wrapper
       .services-header-wrapper
         h2.services-header-subtitle= __('Validator')
@@ -232,7 +240,7 @@ block main
               if (event.logo)
                 a.events-links-each-individual-event(href=event.link target='_blank')
                   img.events-links-each-individual-event-image(src=event.logo alt=event.name)
-          a.events-links-all-events-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
+          a.events-links-all-events-button(href='https://lu.ma/node101' target='_blank')
             svg.events-links-all-events-button-icon.events-links-all-events-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
             .events-links-all-events-button-text events.node101
@@ -248,9 +256,19 @@ block main
             .events-content-navbar-events-wrapper
               each event, i in events
                 .events-content-navbar-each-event(id=`event-${event._id}` class=(!i ? 'events-content-navbar-each-event-selected' : ''))= event.name
+          .events-content-navbar-wrapper-responsive
+            each event, i in events
+              .events-content-navbar-each-event-responsive(id=`event-${event._id}` class=(i == 0 ? 'events-content-navbar-each-event-selected-responsive' : ''))= event.name
           .events-content-inner-wrapper
             each event in events
               |!{include(`/includes/events/${event._id}.pug`)}
+          a.events-links-all-events-button-responsive(href='https://lu.ma/node101' target='_blank')
+            svg.events-links-all-events-button-responsive-icon.events-links-all-events-button-responsive-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+              path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
+            .events-links-all-events-button-responsive-text events.node101
+            svg.events-links-all-events-button-responsive-icon.events-links-all-events-button-responsive-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+              path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
+
     if contributions && contributions.length
       .contributions-wrapper
         //- .contributions-header-wrapper
@@ -299,8 +317,13 @@ block main
         .team-content-wrapper
           .team-header-description-responsive= __('How do we achieve it all? By having one of the best teams in the ecosystem, all members with the vision of helping, growing, and distributing the value.')
           .team-content-images-wrapper
-            - for (let i = 1; i <= 6; i++)
-              img.team-content-each-image(src=`/img/team/photos/${i}.png` style=`transform: rotate(${Math.floor(Math.random() * 5 - 2.5)}deg);` alt=`node101 team image ${i}`)
+            - for (let i = 1; i <= 10; i++)
+              img.team-content-each-image(
+                srcset=`/img/team/photos/team-${i}-512w.png, /img/team/photos/team-${i}-1024w.png 2x, /img/team/photos/team-${i}-2048w.png 4x`
+                src=`/img/team/photos/team-${i}-2048w.png`
+                style=`transform: rotate(${Math.floor(Math.random() * 5 - 2.5)}deg);`
+                alt=`node101 team image ${i}`
+              )
           a.team-content-button(href=insertLanguageToLink('/about-us', lang))
             svg.team-content-button-icon.team-content-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
@@ -343,7 +366,11 @@ block main
                 path(d='M11.7839 14.7786C11.8041 14.7844 12.2508 14.6596 12.7765 14.5013C13.3022 14.343 13.7277 14.194 13.7222 14.1702C13.7166 14.1463 13.5746 13.7898 13.4066 13.3778C13.0691 12.5504 12.807 11.5083 12.756 10.7913C12.597 8.55693 13.452 6.52302 15.1246 5.15701L15.5505 4.80914L15.1056 4.03844L14.6606 3.26768L14.1922 3.44046C11.1241 4.57253 8.07047 3.48614 5.88362 0.484594C5.74083 0.288586 5.61566 0.133114 5.60543 0.139017C5.51129 0.193371 4.17365 1.47889 4.16175 1.52642C4.15315 1.56078 4.28205 1.74739 4.44821 1.941C6.28789 4.08501 8.71003 5.29553 10.8596 5.14535L11.3752 5.10934L3.11101 9.90115L0.609757 11.3583L1.5103 12.918L4.03628 11.4727L12.2987 6.72294L11.9429 7.27968C11.0199 8.72396 10.7509 10.6671 11.1756 12.8215C11.2966 13.4353 11.7073 14.7568 11.7839 14.7786Z')
             h1.footer-top-right-subtitle= __('Do you have a question about our events ?')
             .footer-top-right-contact-wrapper
-              img.footer-top-right-contact-image(src='/img/team/contact/mete.png' alt='node101 events contact Mete Koray Gergin')
+              img.footer-top-right-contact-image(
+                srcset='/img/team/contact/mete-80w.png, /img/team/contact/mete-160w.png 2x'
+                src='/img/team/contact/mete-160w.png'
+                alt='node101 events contact Mete Koray Gergin'
+              )
               .footer-top-right-contact-text-wrapper
                 .footer-top-right-contact-title-wrapper
                   .footer-top-right-contact-title Mete Koray Gergin
@@ -353,7 +380,11 @@ block main
                 a.footer-top-right-contact-text(href='mailto:mete@node101.io' target='_blank') mete@node101.io
             h1.footer-top-right-subtitle= __('Do you have a question about our validator services ?')
             .footer-top-right-contact-wrapper
-              img.footer-top-right-contact-image(src='/img/team/contact/mustafa-abi.png' alt='node101 events contact Mustafa Aksöz')
+              img.footer-top-right-contact-image(
+                srcset='/img/team/contact/mustafa-80w.png, /img/team/contact/mustafa-160w.png 2x'
+                src='/img/team/contact/mustafa-160w.png'
+                alt='node101 events contact Mustafa Aksöz'
+              )
               .footer-top-right-contact-text-wrapper
                 .footer-top-right-contact-title-wrapper
                   .footer-top-right-contact-title Mustafa Aksöz

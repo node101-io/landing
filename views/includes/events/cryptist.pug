@@ -1,14 +1,28 @@
-.events-content-each-event-wrapper.events-content-cryptist-wrapper.display-none
+.events-content-each-event-wrapper.events-content-cryptist-wrapper
   .events-content-cryptist-text= __('Cryptİst is an annual day-long Zero-Knowledge community event held in Istanbul. The summit aims to bring together Turkiye\'s most talented developers with global seniors, contributing to the goal of making Istanbul a zero-knowledge developer center.')
   .events-content-cryptist-bottom-wrapper
     .events-content-cryptist-images-wrapper
       .events-content-cryptist-each-image-wrapper
-        img.events-content-cryptist-each-image(src='/img/events/cryptist/cryptist-1.png' alt='Cryptİst 1')
-        .events-content-cryptist-title= __('Cryptİst')
+        img.events-content-cryptist-each-image(
+          srcset='/img/events/cryptist/cryptist-1-200w.png, /img/events/cryptist/cryptist-1-400w.png 2x, /img/events/cryptist/cryptist-1-800w.png 4x'
+          src='/img/events/cryptist/cryptist-1-800w.png'
+          alt='Cryptİst 1'
+        )
+        a.events-content-cryptist-title-link(href='https://cryptist.org/' target='_blank')= __('Cryptİst')
+          svg.events-content-cryptist-title-link-icon(viewBox='0 0 11 11' xmlns='http://www.w3.org/2000/svg')
+            path(d='M8.6308 10.883C8.64605 10.8854 8.96029 10.7546 9.32903 10.5924C9.6978 10.4301 9.99443 10.2836 9.98829 10.2667C9.98208 10.2499 9.8468 10.0029 9.6876 9.71779C9.36794 9.1453 9.08397 8.40965 8.98275 7.89203C8.6674 6.27877 9.10851 4.72098 10.2048 3.57665L10.4839 3.28524L10.091 2.76363L9.69804 2.24198L9.37237 2.40965C7.23875 3.50822 4.91758 2.98966 3.05669 0.998753C2.93519 0.86874 2.83013 0.76668 2.82321 0.771893C2.75949 0.81989 1.90002 1.87568 1.8956 1.91135C1.8924 1.93715 2.00295 2.06156 2.14126 2.18774C3.6727 3.58506 5.545 4.25043 7.09723 3.94907L7.46957 3.87679L1.87822 8.10503L0.186537 9.38972L0.981762 10.4454L2.69251 9.16705L8.28635 4.96959L8.07694 5.40688C7.53364 6.54127 7.5112 7.9806 8.01298 9.51187C8.1559 9.94814 8.57307 10.8739 8.6308 10.883Z')
       .events-content-cryptist-each-image-wrapper
-        img.events-content-cryptist-each-image(src='/img/events/cryptist/cryptist-2.png' alt='Cryptİst 2')
+        img.events-content-cryptist-each-image(
+          srcset='/img/events/cryptist/cryptist-2-200w.png, /img/events/cryptist/cryptist-2-400w.png 2x, /img/events/cryptist/cryptist-2-800w.png 4x'
+          src='/img/events/cryptist/cryptist-2-800w.png'
+          alt='Cryptİst 2'
+        )
       .events-content-cryptist-each-image-wrapper
-        img.events-content-cryptist-each-image(src='/img/events/cryptist/cryptist-3.png' alt='Cryptİst 3')
+        img.events-content-cryptist-each-image(
+          srcset='/img/events/cryptist/cryptist-3-200w.png, /img/events/cryptist/cryptist-3-400w.png 2x, /img/events/cryptist/cryptist-3-800w.png 4x'
+          src='/img/events/cryptist/cryptist-3-800w.png'
+          alt='Cryptİst 3'
+        )
     .events-content-cryptist-links-wrapper
       a.events-content-cryptist-each-link(href='https://cryptist.org/' target='_blank')= __('Website')
         svg.events-content-cryptist-each-link-icon(viewBox='0 0 11 11' xmlns='http://www.w3.org/2000/svg')

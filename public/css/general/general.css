@@ -21,8 +21,7 @@ body {
   width: 100vw;
   overflow: hidden;
   background: var(--background-color);
-  /* cursor: url('/img/cursor.svg') 4 0, auto; */
-  /* cursor: none; */
+  cursor: url('/img/pointer.svg') 4 0, auto;
 }
 
 input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }

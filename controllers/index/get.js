@@ -1,6 +1,6 @@
 const PORTFOLIO = [
   {
-    _id: 'cosmos-hub',
+    _id: 'cosmos',
     name: 'Cosmos Hub',
     apr: '14.39'
   },
@@ -25,14 +25,9 @@ const PORTFOLIO = [
     apr: '3.26'
   },
   {
-    _id: 'orai-chain',
+    _id: 'orai',
     name: 'Orai Chain',
     apr: '17.78'
-  },
-  {
-    _id: 'fxcore',
-    name: 'f(x)Core',
-    apr: '14.28'
   },
   {
     _id: 'canto',
@@ -50,7 +45,7 @@ const PORTFOLIO = [
     apr: '9.59'
   },
   {
-    _id: 'iris-net',
+    _id: 'irisnet',
     name: 'Iris Network',
     apr: '10.24'
   },
@@ -64,41 +59,41 @@ const PORTFOLIO = [
     name: 'Pica',
     apr: '2.66'
   },
-  {
-    _id: 'kyve',
-    name: 'Kyve',
-    apr: '21.48'
-  },
-  {
-    _id: 'ux',
-    name: 'UX',
-    apr: '13.31'
-  },
-  {
-    _id: 'ki-chain',
-    name: 'Ki Chain',
-    apr: '6.59'
-  },
-  {
-    _id: 'asset-mantle',
-    name: 'Asset Mantle',
-    apr: '59.13'
-  },
-  {
-    _id: 'desmos',
-    name: 'Desmos',
-    apr: '5.58'
-  },
-  {
-    _id: 'e-money',
-    name: 'e-Money',
-    apr: '33.13'
-  },
-  {
-    _id: 'crescent',
-    name: 'Crescent',
-    apr: '8.79'
-  }
+  // {
+  //   _id: 'kyve',
+  //   name: 'Kyve',
+  //   apr: '21.48'
+  // },
+  // {
+  //   _id: 'ux',
+  //   name: 'UX',
+  //   apr: '13.31'
+  // },
+  // {
+  //   _id: 'ki-chain',
+  //   name: 'Ki Chain',
+  //   apr: '6.59'
+  // },
+  // {
+  //   _id: 'assetmantle',
+  //   name: 'Asset Mantle',
+  //   apr: '59.13'
+  // },
+  // {
+  //   _id: 'desmos',
+  //   name: 'Desmos',
+  //   apr: '5.58'
+  // },
+  // {
+  //   _id: 'e-money',
+  //   name: 'e-Money',
+  //   apr: '33.13'
+  // },
+  // {
+  //   _id: 'crescent',
+  //   name: 'Crescent',
+  //   apr: '8.79'
+  // }
 ];
 const EVENTS = [
   {
