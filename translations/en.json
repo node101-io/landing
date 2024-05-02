@@ -67,6 +67,7 @@
 	"Send": "Send",
 	"I agree to the": "I agree to the",
 	"privacy statement": "privacy statement",
+	"by submitting this form": "",
 	"Let’s Talk": "Let’s Talk",
 	"Do you have a question ?": "Do you have a question ?",
 	"Do you have a question about our events ?": "Do you have a question about our events ?",
@@ -74,7 +75,7 @@
 	"Do you have a question about our validator services ?": "Do you have a question about our validator services ?",
 	"Mustafa Aksöz": "Mustafa Aksöz",
 	"Address": "Address",
-	"Maslak Mahallesi Taşyoncası Sokak 1/U Ağaoğlu 1453 sitesi Sarıyer/İstanbul": "Maslak Mahallesi Taşyoncası Sokak 1/U Ağaoğlu 1453 sitesi Sarıyer/İstanbul",
+	"Maslak District Tasyoncasi Street 1/U Agaoglu 1453 Buildings Sariyer / Istanbul": "Maslak District Tasyoncasi Street 1/U Agaoglu 1453 Buildings Sariyer / Istanbul",
 	"Follow us": "Follow us",
 	"Hello, we're": "Hello, we're",
 	"Join the Telegram Group": "Join the Telegram Group",
@@ -87,5 +88,7 @@
 	"Subscribe to 101 newsletter to stay connected and to learn about the latest news in the 101 ecosystem instantly.": "Subscribe to 101 newsletter to stay connected and to learn about the latest news in the 101 ecosystem instantly.",
 	"Please enter a valid email address.": "Please enter a valid email address.",
 	"You have already subscribed.": "You have already subscribed.",
-	"Success!": "Success!"
+	"Success!": "Success!",
+	"Your node is loading...": "Your node is loading...",
+	"60%": "60%"
 }

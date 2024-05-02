@@ -5,7 +5,7 @@ block main
     img.hello-node101-text(src='/img/hello-node101-text.svg' alt='Hello, we\'re')
     img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
   .content-inner-wrapper
-    //- .start-page-background
+    .start-page-background
       .start-page-background-shape-one-wrapper
         svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')
           path(d='M746.781 641.412C609.904 718.184 535.009 739.688 390.57 729.514C249.613 719.596 136.997 621.716 65.9475 498.373C-11.6865 363.608 21.8524 246.676 24.9619 77.9549C25.4327 52.3231 26.13 26.684 27.1477 0.999761' stroke='url(#paint0_linear_68_1510)' stroke-width='30' stroke-miterlimit='10')
@@ -41,7 +41,7 @@ block main
             lineargradient#paint0_linear_70_1515(x1='-2747.91' y1='-2733.27' x2='716.475' y2='411.311' gradientunits='userSpaceOnUse')
               stop(stop-color='#947E8A')
               stop(offset='1' stop-color='#DFE5FF')
-    //- .start-page-wrapper
+    .start-page-wrapper
       .start-page-left-top-radius
         .start-page-left-top-radius-inner-circle
       .start-page-content
@@ -87,7 +87,7 @@ block main
               path(d='M12.5103 0.192261C5.59245 0.192261 0 5.70105 0 12.5162C0 17.9639 3.58327 22.5752 8.55422 24.2073C9.17572 24.33 9.40337 23.9422 9.40337 23.6159C9.40337 23.3302 9.38288 22.3509 9.38288 21.3305C5.90281 22.0652 5.17812 19.8614 5.17812 19.8614C4.61885 18.4331 3.79018 18.066 3.79018 18.066C2.65116 17.3111 3.87315 17.3111 3.87315 17.3111C5.13663 17.3927 5.79961 18.5761 5.79961 18.5761C6.9179 20.4531 8.7199 19.9227 9.44486 19.5962C9.54831 18.8005 9.87993 18.2496 10.232 17.9436C7.45642 17.6579 4.53613 16.5969 4.53613 11.8631C4.53613 10.5165 5.03292 9.41473 5.8201 8.55786C5.6959 8.25187 5.26083 6.9866 5.94455 5.29315C5.94455 5.29315 7.00086 4.96663 9.38263 6.55817C10.4023 6.28841 11.454 6.15117 12.5103 6.15002C13.5667 6.15002 14.6435 6.293 15.6378 6.55817C18.0198 4.96663 19.0761 5.29315 19.0761 5.29315C19.7599 6.9866 19.3245 8.25187 19.2003 8.55786C20.0083 9.41473 20.4846 10.5165 20.4846 11.8631C20.4846 16.5969 17.5643 17.6374 14.7679 17.9436C15.2237 18.3312 15.6171 19.0656 15.6171 20.2287C15.6171 21.8814 15.5966 23.2077 15.5966 23.6156C15.5966 23.9422 15.8245 24.33 16.4457 24.2076C21.4167 22.575 24.9999 17.9639 24.9999 12.5162C25.0204 5.70105 19.4075 0.192261 12.5103 0.192261Z')
       .start-page-right-top-radius
         .start-page-right-top-radius-inner-circle
-    //- .portfolio-wrapper
+    .portfolio-wrapper
       .portfolio-header-wrapper
         .portfolio-header-top-line
           h2.portfolio-header-top-line-text= __('node101 is validating and distributing the value in more than 15 blockchains, all with different visions for their community.')
@@ -127,7 +127,7 @@ block main
             //-   .portfolio-content-all-projects-link-text= __('all projects')
             //-   svg.portfolio-content-all-projects-link-icon(viewbox='0 0 106 104' xmlns='http://www.w3.org/2000/svg')
             //-     path(d='M86.5767 103.341C86.7321 103.366 89.9359 102.033 93.6953 100.379C97.455 98.7249 100.479 97.2309 100.417 97.0592C100.353 96.8875 98.9743 94.3689 97.3515 91.4625C94.093 85.6259 91.1984 78.1257 90.1668 72.8485C86.9529 56.4013 91.4511 40.5201 102.628 28.8545L105.474 25.8838L101.469 20.5657L97.463 15.2473L94.1427 16.9565C72.3899 28.1548 48.7261 22.8665 29.7558 2.56811C28.5172 1.24255 27.4462 0.201988 27.3756 0.255131C26.726 0.74441 17.963 11.5075 17.9179 11.8712C17.8853 12.1342 19.0123 13.4027 20.4223 14.6891C36.0342 28.9357 55.1218 35.7204 70.9468 32.6492L74.7428 31.9125L17.7365 75.0153L0.489087 88.1114L8.59562 98.8743L26.0374 85.843L83.0691 43.0541L80.9338 47.5121C75.3942 59.0767 75.1644 73.7506 80.2789 89.3621C81.7357 93.8099 85.9882 103.249 86.5767 103.341Z')
-    //- .services-wrapper
+    .services-wrapper
       .services-header-wrapper
         h2.services-header-subtitle= __('Validator')
         h1.services-header-title= __('Services')
@@ -211,7 +211,7 @@ block main
                     a.services-content-each-service-description-button(href=item.link target=item.target)= item.content
                   else if item.type == 'link'
                     a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
-    //- if events && events.length
+    if events && events.length
       .events-wrapper
         - events_title = __('A bridge leading to the Istanbul ecosystem. ')
         .events-header-wrapper
@@ -319,11 +319,11 @@ block main
             .footer-top-left-text= __('Subscribe to 101 newsletter to stay connected and to learn about the latest news in the 101 ecosystem instantly.')
             .footer-top-left-input-title= __('Email Address')
             label.footer-top-left-input-wrapper
-              input.footer-top-left-input(type='email' autocomplete='none' placeholder=__('node@101.com'))
+              input.footer-top-left-input(type='email' autocomplete='none' placeholder='node@101.com')
               .footer-top-left-input-button= __('Send')
             .footer-top-left-each-message.footer-top-left-error-bad-request-message.display-none= __('Please enter a valid email address.')
-            .footer-top-left-each-message.footer-top-left-error-duplicated-field-message.display-none= __('You have already subscribed.')
-            .footer-top-left-each-message.footer-top-left-success-message.display-none= __('Success!')
+            .footer-top-left-each-message.footer-top-left-error-duplicated-field-message.display-none= __('You have already subscribed, thank you for your interest.')
+            .footer-top-left-each-message.footer-top-left-success-message.display-none= __('Thank you for joining our community!')
             .footer-top-left-checkbox-wrapper
               .footer-top-left-checkbox
                 svg.footer-top-left-checkbox-icon(xmlns='http://www.w3.org/2000/svg' viewbox='0 0 448 512')
@@ -331,6 +331,7 @@ block main
               .footer-top-left-checkbox-text
                 span= __('I agree to the')
                 a.footer-top-left-checkbox-text-link(href='/')= __('privacy statement')
+                span= __('by submitting this form')
           .footer-top-right-wrapper
             h1.footer-top-right-title= __('Let’s Talk')
             h1.footer-top-right-subtitle= __('Do you have a question ?')
@@ -343,7 +344,7 @@ block main
               img.footer-top-right-contact-image(src='/img/team/contact/mete.png' alt='node101 events contact Mete Koray Gergin')
               .footer-top-right-contact-text-wrapper
                 .footer-top-right-contact-title-wrapper
-                  .footer-top-right-contact-title= __('Mete Koray Gergin')
+                  .footer-top-right-contact-title Mete Koray Gergin
                   a.footer-top-right-contact-link(href='https://www.linkedin.com/in/metekoraygergin/' target='_blank')
                     svg.footer-top-right-contact-link-icon(viewbox='0 0 21 22' xmlns='http://www.w3.org/2000/svg')
                       path(d='M19.4455 0.5H1.55039C0.693164 0.5 0 1.17676 0 2.01348V19.9824C0 20.8191 0.693164 21.5 1.55039 21.5H19.4455C20.3027 21.5 21 20.8191 21 19.9865V2.01348C21 1.17676 20.3027 0.5 19.4455 0.5ZM6.23027 18.3951H3.11309V8.3709H6.23027V18.3951ZM4.67168 7.00508C3.6709 7.00508 2.86289 6.19707 2.86289 5.20039C2.86289 4.20371 3.6709 3.3957 4.67168 3.3957C5.66836 3.3957 6.47637 4.20371 6.47637 5.20039C6.47637 6.19297 5.66836 7.00508 4.67168 7.00508ZM17.8951 18.3951H14.782V13.5225C14.782 12.3617 14.7615 10.8646 13.1619 10.8646C11.5418 10.8646 11.2957 12.132 11.2957 13.4404V18.3951H8.18672V8.3709H11.1727V9.74082H11.2137C11.6279 8.95332 12.6451 8.1207 14.1586 8.1207C17.3127 8.1207 17.8951 10.1961 17.8951 12.8949V18.3951Z')
@@ -353,14 +354,14 @@ block main
               img.footer-top-right-contact-image(src='/img/team/contact/mustafa-abi.png' alt='node101 events contact Mustafa Aksöz')
               .footer-top-right-contact-text-wrapper
                 .footer-top-right-contact-title-wrapper
-                  .footer-top-right-contact-title= __('Mustafa Aksöz')
+                  .footer-top-right-contact-title Mustafa Aksöz
                   a.footer-top-right-contact-link(href='https://www.linkedin.com/in/mustafa-aksoz/' target='_blank')
                     svg.footer-top-right-contact-link-icon(viewbox='0 0 21 22' xmlns='http://www.w3.org/2000/svg')
                       path(d='M19.4455 0.5H1.55039C0.693164 0.5 0 1.17676 0 2.01348V19.9824C0 20.8191 0.693164 21.5 1.55039 21.5H19.4455C20.3027 21.5 21 20.8191 21 19.9865V2.01348C21 1.17676 20.3027 0.5 19.4455 0.5ZM6.23027 18.3951H3.11309V8.3709H6.23027V18.3951ZM4.67168 7.00508C3.6709 7.00508 2.86289 6.19707 2.86289 5.20039C2.86289 4.20371 3.6709 3.3957 4.67168 3.3957C5.66836 3.3957 6.47637 4.20371 6.47637 5.20039C6.47637 6.19297 5.66836 7.00508 4.67168 7.00508ZM17.8951 18.3951H14.782V13.5225C14.782 12.3617 14.7615 10.8646 13.1619 10.8646C11.5418 10.8646 11.2957 12.132 11.2957 13.4404V18.3951H8.18672V8.3709H11.1727V9.74082H11.2137C11.6279 8.95332 12.6451 8.1207 14.1586 8.1207C17.3127 8.1207 17.8951 10.1961 17.8951 12.8949V18.3951Z')
                 a.footer-top-right-contact-text(href='mailto:mechul@node101.io' target='_blank') mechul@node101.io
             h1.footer-top-right-subtitle= __('Address')
             .footer-top-right-text-wrapper(href='mailto:hello@node101.io' target='_blank')
-              .footer-top-right-text= __('Maslak Mahallesi Taşyoncası Sokak 1/U Ağaoğlu 1453 sitesi Sarıyer/İstanbul')
+              .footer-top-right-text= __('Maslak District Tasyoncasi Street 1/U Agaoglu 1453 Buildings Sariyer / Istanbul')
               svg.footer-top-right-icon(viewbox='0 0 16 15' xmlns='http://www.w3.org/2000/svg')
                 path(d='M11.7839 14.7786C11.8041 14.7844 12.2508 14.6596 12.7765 14.5013C13.3022 14.343 13.7277 14.194 13.7222 14.1702C13.7166 14.1463 13.5746 13.7898 13.4066 13.3778C13.0691 12.5504 12.807 11.5083 12.756 10.7913C12.597 8.55693 13.452 6.52302 15.1246 5.15701L15.5505 4.80914L15.1056 4.03844L14.6606 3.26768L14.1922 3.44046C11.1241 4.57253 8.07047 3.48614 5.88362 0.484594C5.74083 0.288586 5.61566 0.133114 5.60543 0.139017C5.51129 0.193371 4.17365 1.47889 4.16175 1.52642C4.15315 1.56078 4.28205 1.74739 4.44821 1.941C6.28789 4.08501 8.71003 5.29553 10.8596 5.14535L11.3752 5.10934L3.11101 9.90115L0.609757 11.3583L1.5103 12.918L4.03628 11.4727L12.2987 6.72294L11.9429 7.27968C11.0199 8.72396 10.7509 10.6671 11.1756 12.8215C11.2966 13.4353 11.7073 14.7568 11.7839 14.7786Z')
         .footer-bottom-wrapper
