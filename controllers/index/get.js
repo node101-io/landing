@@ -238,11 +238,11 @@ module.exports = (req, res) => {
       title: 'Relayers',
       color: 'green'
     },
-    {
-      _id: 'articles',
-      title: 'Articles',
-      color: 'green'
-    },
+    // {
+    //   _id: 'articles',
+    //   title: 'Articles',
+    //   color: 'green'
+    // },
     {
       _id: 'videos',
       title: 'Videos',
@@ -258,11 +258,11 @@ module.exports = (req, res) => {
       title: '101 Telegram',
       color: 'green'
     },
-    {
-      _id: '101-x',
-      title: '101 X',
-      color: 'green'
-    },
+    // {
+    //   _id: '101-x',
+    //   title: '101 X',
+    //   color: 'green'
+    // },
     {
       _id: 'bot101',
       title: 'bot101',
@@ -290,7 +290,7 @@ module.exports = (req, res) => {
     title: res.__('For you to make most of the distributed value'),
     includes: {
       external: {
-        css: ['general', 'header', 'page'],
+        css: ['general', 'header', 'page', 'events', 'contributions'],
         js: ['header', 'page', 'serverRequest']
       },
       meta: {

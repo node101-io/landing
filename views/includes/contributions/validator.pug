@@ -1,0 +1,11 @@
+.contributions-content-validator-projects-wrapper
+  - const projects = ['cosmos', 'celestia', 'band', 'neutron', 'stride', 'canto', 'shentu'];
+  each project, i in projects
+    .contributions-content-validator-each-project-wrapper(style=`align-items: ${i % 2 == 0 ? 'flex-end' : 'flex-start'};`)
+      img.contributions-content-validator-each-project-image(
+        srcset=`/img/chains/${project}-160w.png, /img/chains/${project}-240w.png 1.5x, /img/chains/${project}-320w.png 2x`,
+        src=`/img/chains/${project}-320w.png`
+        alt=project
+      )
+.contributions-content-validator-each-text= __('You don’t need to be a developer, an expert, or even good with computers to earn from crypto. Just view our site to see how you can help crypto projects in the world and get rewards. You will earn start learning and earning with node101 instantly. And you know what is the best part?')
+.contributions-content-validator-each-text= __('We will be with you all the time.')

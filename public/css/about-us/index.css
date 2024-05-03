@@ -40,7 +40,11 @@
 
 .about-us-page-frame-wrapper {
   position: absolute;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   width: 100vw;
   min-width: 100vw;
@@ -169,7 +173,11 @@
 }
 .about-us-page-each-card-pair-wrapper {
   display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   justify-content: space-between;
   gap: var(--about-us-page-each-card-pair-wrapper-gap);
@@ -211,7 +219,8 @@
   min-height: 100%;
   width: 100%;
   min-width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .about-us-page-each-card-text-wrapper {
   display: flex;
@@ -227,7 +236,11 @@
   top: var(--about-us-page-each-card-width);
   left: calc(var(--about-us-page-each-card-width) / 4);
   opacity: 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   width: var(--about-us-page-each-card-information-box-width);
   min-width: var(--about-us-page-each-card-information-box-width);

@@ -1,1 +1,10 @@
-.contributions-content-each-contribution-wrapper.contributions-content-bot101-wrapper
+.contributions-content-bot101-each-text= __('Our most working member: In order to make sure we never miss an update, bot101 works 7 / 24 behind the scenes. The bot is also open-sourced, meaning it’s available for anyone to use if they need to.')
+.contributions-content-bot101-projects-wrapper
+  - const projects = ['cosmos', 'celestia', 'band', 'neutron', 'stride', 'canto', 'shentu', 'agoric', 'irisnet'];
+  each project in projects
+    .contributions-content-bot101-each-project-wrapper
+      img.contributions-content-bot101-each-project-image(
+        srcset=`/img/chains/${project}-160w.png, /img/chains/${project}-240w.png 1.5x, /img/chains/${project}-320w.png 2x`,
+        src=`/img/chains/${project}-320w.png`
+        alt=project
+      )

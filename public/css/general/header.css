@@ -895,7 +895,8 @@
   overflow-x: hidden;
   overflow-y: auto;
   -ms-scroll-chaining: none;
-      overscroll-behavior: none;
+  overscroll-behavior: none;
+  scrollbar-width: none;
 }
 
 .content-wrapper::-webkit-scrollbar {
