@@ -21,11 +21,11 @@ body {
   width: 100vw;
   overflow: hidden;
   background: var(--background-color);
-  cursor: url('/img/pointer.svg') 4 0, auto;
+  cursor: var(--pointer-default-dark);
 }
 
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
@@ -52,6 +52,16 @@ input[type=number] {
 }
 
 :root {
+  --pointer-default-dark: url('/img/pointers/default-dark.svg') 4 0, auto;
+  --pointer-hand-dark: url('/img/pointers/hand-dark.svg') 6 0, auto;
+  --pointer-hand-light: url('/img/pointers/hand-light.svg') 6 0, auto;
+  --pointer-hand-drag-dark: url('/img/pointers/hand-drag-dark.svg') 6 0, auto;
+  --pointer-hand-drop-light: url('/img/pointers/hand-drop-light.svg') 6 0, auto;
+  --pointer-hand-explore-dark: url('/img/pointers/hand-explore-dark.svg') 6 0, auto;
+  --pointer-hand-explore-light: url('/img/pointers/hand-explore-light.svg') 6 0, auto;
+  --pointer-hand-stake-dark: url('/img/pointers/hand-stake-dark.svg') 6 0, auto;
+  --pointer-hand-stake-light: url('/img/pointers/hand-stake-light.svg') 6 0, auto;
+
   --page-horizontal-padding: 40px;
   --page-vertical-padding: 20px;
 

@@ -146,7 +146,7 @@
   min-width: -moz-fit-content;
   min-width: fit-content;
   text-decoration: none;
-  cursor: pointer;
+  cursor: var(--pointer-hand-light);
 }
 .header-logo {
   height: auto;
@@ -181,7 +181,7 @@
   min-width: -moz-fit-content;
   min-width: fit-content;
   text-decoration: none;
-  cursor: pointer;
+  cursor: var(--pointer-hand-light);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -248,7 +248,7 @@
   text-align: center;
   text-decoration: none;
   margin-left: 10px;
-  cursor: pointer;
+  cursor: var(--pointer-hand-light);
   z-index: 2;
 }
 .header-stake-with-node101-button:hover .header-stake-with-node101-button-text,
@@ -493,7 +493,7 @@
   align-items: flex-start;
   z-index: 2;
   background-color: var(--background-color);
-  cursor: pointer;
+  cursor: var(--pointer-hand-light);
 }
 .header-change-language-button-text {
   font-family: 'Igra Sans', sans-serif;
@@ -633,7 +633,7 @@
   font-family: 'Igra Sans', sans-serif;
   font-size: var(--header-font-size);
   color: var(--dark-text-color);
-  cursor: pointer;
+  cursor: var(--pointer-hand-light);
 }
 .each-header-change-language-button-menu-text:hover {
   font-weight: 600;
@@ -737,7 +737,7 @@
   flex-direction: column;
   margin-left: var(--header-responsive-menu-button-spacing);
   overflow: visible;
-  cursor: pointer;
+  cursor: var(--pointer-hand-light);
 }
 .header-responsive-menu-button-each-icon {
   position: absolute;
@@ -770,18 +770,6 @@
   min-height: 10px;
   border-radius: 3px;
 }
-/* .header-responsive-menu-button-each-icon-middle-opened::after {
-  content: '';
-  position: relative;
-  display: block;
-  background: var(--background-color);
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 4px;
-} */
 .header-responsive-menu-button-each-icon-bottom {
   top: calc(2 * var(--header-responsive-menu-button-each-icon-height) + 2 * var(--header-responsive-menu-button-each-icon-gap));
 }
@@ -838,7 +826,7 @@
   margin-top: var(--header-wrapper-responsive-menu-each-button-margin-top);
   border-bottom: 2px solid transparent;
   text-decoration: none;
-  cursor: pointer;
+  cursor: var(--pointer-hand-dark);
 }
 .header-wrapper-responsive-menu-each-button:hover {
   border-bottom: 2px solid var(--dark-text-color);
@@ -865,7 +853,7 @@
   min-width: fit-content;
   margin: 0 calc(var(--header-wrapper-responsive-menu-media-each-button-icon-gap) / 2);
   opacity: 0.9;
-  cursor: pointer;
+  cursor: var(--pointer-hand-dark);
   text-decoration: none;
 }
 .header-wrapper-responsive-menu-media-each-button:hover {

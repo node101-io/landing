@@ -2,93 +2,108 @@ const PORTFOLIO = [
   {
     _id: 'cosmos',
     name: 'Cosmos Hub',
-    apr: '14.39'
+    apr: '14.39',
+    link: 'https://wallet.keplr.app/chains/cosmos-hub?modal=validator&chain=cosmoshub-4&validator_address=cosmosvaloper1lrzxwu4dmy8030waevcpft7rpxjjz26cpzvumd'
   },
   {
     _id: 'celestia',
     name: 'Celestia',
-    apr: '11.29'
+    apr: '11.29',
+    link: 'https://wallet.keplr.app/chains/celestia?modal=validator&chain=celestia&validator_address=celestiavaloper1lrzxwu4dmy8030waevcpft7rpxjjz26csrtqm4'
   },
   {
     _id: 'band',
     name: 'Band',
-    apr: '11.96'
+    apr: '11.96',
+    link: 'https://ping.pub/band/staking/bandvaloper1l8zzhhe3ltlkk7sd38rcw7u6g9d609t2etc2zp'
   },
-  {
-    _id: 'neutron',
-    name: 'Neutron',
-    apr: '0.00'
-  },
-  {
-    _id: 'stride',
-    name: 'Stride',
-    apr: '3.26'
-  },
-  {
-    _id: 'orai',
-    name: 'Orai Chain',
-    apr: '17.78'
-  },
+  // {
+  //   _id: 'neutron',
+  //   name: 'Neutron',
+  //   apr: '0.00'
+  // },
+  // {
+  //   _id: 'stride',
+  //   name: 'Stride',
+  //   apr: '3.26'
+  // },
+  // {
+  //   _id: 'orai',
+  //   name: 'Orai Chain',
+  //   apr: '17.78'
+  // },
   {
     _id: 'canto',
     name: 'Canto',
-    apr: '5.30'
+    apr: '5.30',
+    link: 'https://ping.pub/canto/staking/cantovaloper1f3t7qs0r3tfzvxrfszh34dnm8y0qwnzd26s2uj'
   },
   {
     _id: 'shentu',
     name: 'Shentu',
-    apr: '24.18'
+    apr: '24.18',
+    link: 'https://wallet.keplr.app/chains/shentu?modal=validator&chain=shentu-2.2&validator_address=shentuvaloper1lrzxwu4dmy8030waevcpft7rpxjjz26c3jv9w9'
   },
   {
     _id: 'agoric',
     name: 'Agoric',
-    apr: '9.59'
+    apr: '9.59',
+    link: 'https://wallet.keplr.app/chains/agoric?modal=validator&chain=agoric-3&validator_address=agoricvaloper1k334nqagmmxajt32hdtxrpnsavz0njwa3mtcqc'
   },
   {
     _id: 'irisnet',
     name: 'Iris Network',
-    apr: '10.24'
+    apr: '10.24',
+    link: 'https://wallet.keplr.app/chains/irisnet?modal=validator&chain=irishub-1&validator_address=iva1lrzxwu4dmy8030waevcpft7rpxjjz26cy9jhgg'
   },
   {
     _id: 'cheqd',
     name: 'Cheqd',
-    apr: '5.05'
+    apr: '5.05',
+    link: 'https://cheqd.omniflix.co/stake'
   },
   {
     _id: 'pica',
     name: 'Pica',
-    apr: '2.66'
+    apr: '2.66',
+    link: 'https://ping.pub/composable/staking/centaurivaloper1lrzxwu4dmy8030waevcpft7rpxjjz26c6mldw5'
   },
-  // {
-  //   _id: 'kyve',
-  //   name: 'Kyve',
-  //   apr: '21.48'
-  // },
-  // {
-  //   _id: 'ux',
-  //   name: 'UX',
-  //   apr: '13.31'
-  // },
-  // {
-  //   _id: 'ki-chain',
-  //   name: 'Ki Chain',
-  //   apr: '6.59'
-  // },
-  // {
-  //   _id: 'assetmantle',
-  //   name: 'Asset Mantle',
-  //   apr: '59.13'
-  // },
-  // {
-  //   _id: 'desmos',
-  //   name: 'Desmos',
-  //   apr: '5.58'
-  // },
-  // {
-  //   _id: 'e-money',
-  //   name: 'e-Money',
-  //   apr: '33.13'
-  // },
+  {
+    _id: 'kyve',
+    name: 'Kyve',
+    apr: '21.48',
+    link: 'https://wallet.keplr.app/chains/kyve?modal=validator&chain=kyve-1&validator_address=kyvevaloper1lrzxwu4dmy8030waevcpft7rpxjjz26cpg4ljc'
+  },
+  {
+    _id: 'ux',
+    name: 'UX',
+    apr: '13.31',
+    link: 'https://ping.pub/umee/staking/umeevaloper12h8fpmg5qs570rmlem27km5xu4l2gv0lapuels'
+  },
+  {
+    _id: 'ki-chain',
+    name: 'Ki Chain',
+    apr: '6.59',
+    link: 'https://ping.pub/kichain/staking/kivaloper1lrzxwu4dmy8030waevcpft7rpxjjz26cpu8ms5'
+  },
+  {
+    _id: 'assetmantle',
+    name: 'Asset Mantle',
+    apr: '59.13',
+    link: 'https://wallet.assetmantle.one/stake'
+  },
+  {
+    _id: 'desmos',
+    name: 'Desmos',
+    apr: '5.58',
+    link: 'https://ping.pub/desmos/staking/desmosvaloper1y6j0ych2elrxsqmxg5z39svtdlnkcxql4wvclc'
+  },
+  {
+    _id: 'e-money',
+    name: 'e-Money',
+    apr: '33.13',
+    link: 'https://ping.pub/e-money/staking/emoneyvaloper1lrzxwu4dmy8030waevcpft7rpxjjz26cv4yf7w'
+  },
   // {
   //   _id: 'crescent',
   //   name: 'Crescent',
@@ -126,36 +141,18 @@ const EVENTS = [
     _id: 'summits',
     name: 'Summits'
   },
-  {
-    _id: 'hacker-houses',
-    name: 'Hacker Houses'
-  },
-  {
-    _id: 'parties',
-    name: 'Parties'
-  },
-  {
-    _id: 'hacker-tours',
-    name: 'Hacker Tours'
-  },
-  {
-    _id: 'aleo-tour',
-    name: 'Aleo Tour',
-    logo: '/img/events/aleo-tour/logo.png',
-    link: 'https://events.node101.io/aleo-tour-of-turkiye'
-  },
-  {
-    _id: 'sui-move-workshops',
-    name: 'Sui Move Workshops',
-    logo: '/img/events/sui-move-workshops/logo.png',
-    link: 'https://events.node101.io/sui-move-workshop'
-  },
-  {
-    _id: 'nym-gathering',
-    name: 'Nym Gathering',
-    logo: '/img/events/nym-gathering/logo.png',
-    link: 'https://events.node101.io/nym-community-gathering'
-  }
+  // {
+  //   _id: 'hacker-houses',
+  //   name: 'Hacker Houses'
+  // },
+  // {
+  //   _id: 'parties',
+  //   name: 'Parties'
+  // },
+  // {
+  //   _id: 'hacker-tours',
+  //   name: 'Hacker Tours'
+  // }
 ];
 
 module.exports = (req, res) => {
@@ -299,7 +296,7 @@ module.exports = (req, res) => {
       meta: {
         title: res.__('For you to make most of the distributed value'),
         description: res.__('World is changing, and there are a lot of new values emerging with blockchain technology. Now, it is the time to distribute the value. node101 is validating and distributing the value in more than 15 blockchains, all with different visions for their community. To discover and learn more how you can join the distributed ecosystem, reach out at hello@node101.io.'),
-        image: '/res/images/open-graph/header.png',
+        image: '/img/meta/header.png',
         twitter: true
       }
     },

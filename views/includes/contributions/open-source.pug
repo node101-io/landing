@@ -1,0 +1,46 @@
+.contributions-content-open-source-projects-wrapper
+  -
+    const projects = [
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      },
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      },
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      },
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      },
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      },
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      },
+      {
+        name: 'Lorem ipsum',
+        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
+        link: 'https://github.com/node101-io'
+      }
+    ];
+  each project, i in projects
+    .contributions-content-open-source-each-project-wrapper(class=`${i == 2 ? 'contributions-content-open-source-each-project-wrapper-open' : ''}`)
+      .contributions-content-open-source-each-project-name= project.name
+      .contributions-content-open-source-each-project-description= project.description
+      a.contributions-content-open-source-each-project-link(href=project.link target='_blank')
+        svg.contributions-content-open-source-each-project-link-icon(viewBox='0 0 17 16' xmlns='http://www.w3.org/2000/svg')
+          path(d='M14.6674 14.8989C14.692 14.8992 15.1599 14.6225 15.7069 14.2839C16.2539 13.9453 16.6904 13.6475 16.6769 13.6222C16.6634 13.597 16.3945 13.2364 16.0793 12.8211C15.4464 11.9869 14.8337 10.8868 14.5584 10.0907C13.7008 7.60978 14.0517 5.04822 15.5307 2.9947L15.9073 2.47177L15.1698 1.73435L14.4324 0.996873L13.9547 1.33449C10.8251 3.54646 7.03915 3.24292 3.65344 0.508662C3.43237 0.330102 3.24352 0.192086 3.23374 0.201869C3.14366 0.291946 2.01945 2.15276 2.0204 2.21016C2.02109 2.25167 2.22359 2.42381 2.47039 2.59256C5.20304 4.46145 8.31186 5.09703 10.6994 4.27509L11.2721 4.07794L3.37108 12.0084L0.981791 14.4164L2.47421 15.9088L4.89506 13.5066L12.8069 5.6243L12.5731 6.3624C11.9663 8.27716 12.2511 10.5582 13.3853 12.8681C13.7084 13.5262 14.5741 14.8973 14.6674 14.8989Z')

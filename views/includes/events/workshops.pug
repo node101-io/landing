@@ -1,40 +1,43 @@
-.events-content-each-event-wrapper.events-content-workshops-wrapper.display-none
-  .events-content-workshops-text= __('101 supports the Turkish Blockchain Builder Ecosystem by training developers through workshops, covering various language families and blockchain projects with specific curriculums, to enable them to create profitable products for humanity\'s benefit while promoting the blockchain philosophy.')
-  .events-content-workshops-bottom-wrapper
-    -
-      const workshops = [
-        {
-          _id: 'cosmos',
-          name: 'Cosmos Workshops',
-          link: 'https://lu.ma/CosmosAnkaraWorkshop'
-        },
-        {
-          _id: 'agoric',
-          name: 'Agoric Workshops',
-          link: 'https://lu.ma/orchestrate-istanbul'
-        },
-        {
-          _id: 'cosmos',
-          name: 'Cosmos Workshops',
-          link: 'https://lu.ma/CosmosAnkaraWorkshop'
-        },
-        {
-          _id: 'agoric',
-          name: 'Agoric Workshops',
-          link: 'https://lu.ma/orchestrate-istanbul'
-        },
-        {
-          _id: 'cosmos',
-          name: 'Cosmos Workshops',
-          link: 'https://lu.ma/CosmosAnkaraWorkshop'
-        },
-        {
-          _id: 'agoric',
-          name: 'Agoric Workshops',
-          link: 'https://lu.ma/orchestrate-istanbul'
-        }
-      ];
-    each workshop in workshops
-      a.events-content-workshops-each-card-wrapper(href=workshop.link target='_blank')
-        img.events-content-workshops-each-card-image(src=`/img/events/workshops/${workshop._id}.png` alt=workshop.name)
-        .events-content-workshops-each-card-text= __(workshop.name)
+.events-content-workshops-text= __('101 supports the Turkish Blockchain Builder Ecosystem by training developers through workshops, covering various language families and blockchain projects with specific curriculums, to enable them to create profitable products for humanity\'s benefit while promoting the blockchain philosophy.')
+.events-content-workshops-bottom-wrapper
+  -
+    const workshops = [
+      {
+        _id: 'cosmos',
+        name: 'Cosmos Workshops',
+        link: 'https://lu.ma/CosmosAnkaraWorkshop'
+      },
+      {
+        _id: 'agoric',
+        name: 'Agoric Workshops',
+        link: 'https://lu.ma/orchestrate-istanbul'
+      },
+      {
+        _id: 'sui',
+        name: 'Sui Move Workshops',
+        link: insertLanguageToLink('events.node101.io/sui-move-workshops')
+      },
+      {
+        _id: 'cosmos',
+        name: 'Cosmos Workshops',
+        link: 'https://lu.ma/CosmosAnkaraWorkshop'
+      },
+      {
+        _id: 'agoric',
+        name: 'Agoric Workshops',
+        link: 'https://lu.ma/orchestrate-istanbul'
+      },
+      {
+        _id: 'sui',
+        name: 'Sui Move Workshops',
+        link: insertLanguageToLink('events.node101.io/sui-move-workshops')
+      }
+    ];
+  each workshop in workshops
+    a.events-content-workshops-each-card-wrapper(href=workshop.link target='_blank')
+      img.events-content-workshops-each-card-image(
+        srcset=`/img/events/workshops/${workshop._id}-160w.png, /img/events/workshops/${workshop._id}-320w.png 2x`
+        src=`/img/events/workshops/${workshop._id}-320w.png`
+        alt=workshop.name
+      )
+      .events-content-workshops-each-card-text= __(workshop.name)

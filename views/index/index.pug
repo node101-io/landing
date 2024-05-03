@@ -93,7 +93,14 @@ block main
           .portfolio-header-top-line-color-space
           .portfolio-header-top-line-color
         .portfolio-header-bottom-line
-          h1.portfolio-header-bottom-line-text= __('Start distributing and increasing your value,')
+          //- h1.portfolio-header-bottom-line-text= __('Start distributing and increasing your value,')
+          //-   a.portfolio-header-bottom-line-link(href=insertLanguageToLink('/stake-with-node101', lang))
+          //-     .portfolio-header-bottom-line-link-text= __('stake now.')
+          //-     svg.portfolio-header-bottom-line-link-icon(viewBox='0 0 13 13' xmlns='http://www.w3.org/2000/svg')
+          //-       path(d='M9.40829 12.9216C9.42527 12.9264 9.80023 12.8217 10.2414 12.6889C10.6827 12.556 11.0398 12.4309 11.0352 12.4109C11.0305 12.3909 10.9113 12.0917 10.7702 11.7459C10.487 11.0514 10.2671 10.1768 10.2242 9.57503C10.0908 7.69967 10.8084 5.99259 12.2122 4.84608L12.5697 4.55411L12.1962 3.90725L11.8227 3.26035L11.4297 3.40537C8.85454 4.35552 6.2916 3.44371 4.45616 0.924474C4.33632 0.759963 4.23125 0.629474 4.22267 0.634429C4.14366 0.680048 3.02096 1.759 3.01098 1.79889C3.00376 1.82773 3.11194 1.98436 3.2514 2.14685C4.79547 3.94635 6.82839 4.96234 8.63251 4.8363L9.06528 4.80607L2.12908 8.82789L0.0297508 10.0509L0.785585 11.36L2.90567 10.1469L9.84042 6.16038L9.54181 6.62766C8.76712 7.83986 8.54128 9.47075 8.89777 11.279C8.99929 11.7942 9.34402 12.9032 9.40829 12.9216Z')
+          h1.portfolio-header-bottom-line-text
+            each word in __('Start distributing and increasing your value,').split(' ')
+              span= word
             a.portfolio-header-bottom-line-link(href=insertLanguageToLink('/stake-with-node101', lang))
               .portfolio-header-bottom-line-link-text= __('stake now.')
               svg.portfolio-header-bottom-line-link-icon(viewBox='0 0 13 13' xmlns='http://www.w3.org/2000/svg')
@@ -104,7 +111,8 @@ block main
         if portfolio && portfolio.length
           .portfolio-content-project-wrapper
             each project in portfolio
-              a.portfolio-content-each-project-wrapper(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
+              //- a.portfolio-content-each-project-wrapper(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
+              a.portfolio-content-each-project-wrapper(href=project.link target='_blank')
                 img.portfolio-content-each-project-logo(
                   srcset=`/img/chains/${project._id}-160w.png, /img/chains/${project._id}-240w.png 1.5x, /img/chains/${project._id}-320w.png 2x`,
                   src=`/img/chains/${project._id}-320w.png`
@@ -229,17 +237,17 @@ block main
                   animation-delay: calc(-1 * ${j} * var(--events-header-animation-duration) / ${events_title.split('').length});
                   ${letter == ' ' ? 'width: var(--events-header-space-width); min-width: var(--events-header-space-width)' : ''}
                 `)= letter
-        .events-description-wrapper
-          h2.events-description
-            span= __('We see events as the fastest way of distributing the value of blockchain. Until now, node101 organized more than 40 blockchain events and hosted more than 2000 people. Reach out to us from ')
-            a.events-description-mail(href='mailto:hello@node101.io' target='_blank') hello@node101.io
-            span= __(' to discuss how we can help you reach the Turkish community.')
+        //- .events-description-wrapper
+        //-   h2.events-description
+        //-     span= __('We see events as the fastest way of distributing the value of blockchain. Until now, node101 organized more than 40 blockchain events and hosted more than 2000 people. Reach out to us from ')
+        //-     a.events-description-mail(href='mailto:hello@node101.io' target='_blank') hello@node101.io
+        //-     span= __(' to discuss how we can help you reach the Turkish community.')
         .events-links-wrapper
           .events-links-individual-wrapper
-            each event in events
-              if (event.logo)
-                a.events-links-each-individual-event(href=event.link target='_blank')
-                  img.events-links-each-individual-event-image(src=event.logo alt=event.name)
+            //- each event in events
+            //-   if (event.logo)
+            //-     a.events-links-each-individual-event(href=event.link target='_blank')
+            //-       img.events-links-each-individual-event-image(src=event.logo alt=event.name)
           a.events-links-all-events-button(href='https://lu.ma/node101' target='_blank')
             svg.events-links-all-events-button-icon.events-links-all-events-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
@@ -258,10 +266,11 @@ block main
                 .events-content-navbar-each-event(id=`event-${event._id}` class=(!i ? 'events-content-navbar-each-event-selected' : ''))= event.name
           .events-content-navbar-wrapper-responsive
             each event, i in events
-              .events-content-navbar-each-event-responsive(id=`event-${event._id}` class=(i == 0 ? 'events-content-navbar-each-event-selected-responsive' : ''))= event.name
+              .events-content-navbar-each-event-responsive(id=`event-${event._id}-responsive` class=(i == 0 ? 'events-content-navbar-each-event-selected-responsive' : ''))= event.name
           .events-content-inner-wrapper
-            each event in events
-              |!{include(`/includes/events/${event._id}.pug`)}
+            each event, i in events
+              .events-content-each-event-wrapper(class=`events-content-${event._id}-wrapper ${i ? 'display-none' : ''}`)
+                |!{include(`/includes/events/${event._id}.pug`)}
           a.events-links-all-events-button-responsive(href='https://lu.ma/node101' target='_blank')
             svg.events-links-all-events-button-responsive-icon.events-links-all-events-button-responsive-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
@@ -291,11 +300,11 @@ block main
                   .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}`)= contributions[i].title
             .contributions-navbar-border
           .contributions-content-inner-wrapper
-            each contribution, i in contributions.slice(0, contributions.length / 2)
-              .contributions-content-each-contribution-wrapper(class=`contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
-                |!{include(`/includes/contributions/${contribution._id}.pug`)}
-            //- .contributions-content-each-contribution-wrapper.contributions-content-101-telegram-wrapper
-              include ../includes/contributions/101-telegram.pug
+            //- each contribution, i in contributions.slice(0, contributions.length / 2)
+            //-   .contributions-content-each-contribution-wrapper(class=`contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
+            //-     |!{include(`/includes/contributions/${contribution._id}.pug`)}
+            .contributions-content-each-contribution-wrapper.contributions-content-videos-wrapper
+              include ../includes/contributions/videos.pug
               //- .contributions-content-each-contribution-wrapper(style=`background-color: ${contribution.color}`)
     .team-wrapper
       .team-background-wrapper

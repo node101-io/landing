@@ -188,6 +188,46 @@ function initalizeContributionScrollEvent() {
   handleContributionNavbarContentItemsAnimation();
 };
 
+function addDragAbility(selector) {
+  let isDown = false;
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  const element = document.querySelector(selector);
+
+  document.addEventListener('click', event => {
+    if (isDragging && event.target.closest(selector))
+      event.preventDefault();
+  });
+
+  element.addEventListener('mousedown', event => {
+    if (isDragging)
+      event.preventDefault();
+    isDown = true;
+    startX = event.pageX - element.offsetLeft;
+    scrollLeft = element.scrollLeft;
+  });
+  element.addEventListener('mouseleave', _ => {
+    isDown = false;
+  });
+  element.addEventListener('mouseup', _ => {
+    isDown = false;
+    setTimeout(() => {
+      isDragging = false;
+    }, 100);
+  });
+  element.addEventListener('mousemove', event => {
+    if (!isDown) return;
+
+    event.preventDefault();
+    isDragging = true;
+    const x = event.pageX - element.offsetLeft;
+    const walk = x - startX;
+    element.scrollLeft = scrollLeft - walk;
+  });
+};
+
 function addToSubscriberList() {
   const email = document.querySelector('.footer-top-left-input').value.trim();
 
@@ -223,6 +263,10 @@ function addToSubscriberList() {
 
 window.addEventListener('load', _ => {
   initalizeContributionScrollEvent();
+  addDragAbility('.team-content-images-wrapper');
+  addDragAbility('.contributions-content-videos-thumbnails-wrapper');
+  addDragAbility('.events-content-workshops-bottom-wrapper');
+  addDragAbility('.events-content-gatherings-bottom-wrapper');
 
   document.addEventListener('click', event => {
     if (event.target.closest('.events-content-navbar-header-wrapper')) {
@@ -235,18 +279,13 @@ window.addEventListener('load', _ => {
       const target = event.target.closest('.events-content-navbar-each-event');
       const targetResponsive = event.target.closest('.events-content-navbar-each-event-responsive');
 
-      const eventId = target ? target.id.replace('event-', '') : targetResponsive.id.replace('event-', '');
+      const eventId = target ? target.id.replace('event-', '') : targetResponsive.id.replace('event-', '').replace('-responsive', '');
 
-      const selectedEvent = document.querySelector('.events-content-navbar-each-event-selected');
-      const selectedEventResponsive = document.querySelector('.events-content-navbar-each-event-selected-responsive');
+      document.querySelector('.events-content-navbar-each-event-selected').classList.remove('events-content-navbar-each-event-selected');
+      document.querySelector('.events-content-navbar-each-event-selected-responsive').classList.remove('events-content-navbar-each-event-selected-responsive');
 
-      document.querySelector('.events-content-navbar-each-event-selected')?.classList.remove('events-content-navbar-each-event-selected');
-      document.querySelector('.events-content-navbar-each-event-selected-responsive')?.classList.remove('events-content-navbar-each-event-selected-responsive');
-
-      if (target)
-        target.classList.add('events-content-navbar-each-event-selected');
-      else
-        targetResponsive.classList.add('events-content-navbar-each-event-selected-responsive');
+      document.getElementById(`event-${eventId}`).classList.add('events-content-navbar-each-event-selected');
+      document.getElementById(`event-${eventId}-responsive`).classList.add('events-content-navbar-each-event-selected-responsive');
 
       document.querySelectorAll('.events-content-each-event-wrapper').forEach(eachEvent => {
         if (!eachEvent.classList.contains(`events-content-${eventId}-wrapper`))
@@ -257,6 +296,12 @@ window.addEventListener('load', _ => {
 
     if (event.target.closest('.footer-top-left-input-button')) {
       addToSubscriberList();
+    };
+
+    if (event.target.closest('.contributions-content-open-source-each-project-wrapper') && !event.target.closest('.contributions-content-open-source-each-project-wrapper-open')) {
+      document.querySelector('.contributions-content-open-source-each-project-wrapper-open').classList.remove('contributions-content-open-source-each-project-wrapper-open');
+
+      event.target.closest('.contributions-content-open-source-each-project-wrapper').classList.add('contributions-content-open-source-each-project-wrapper-open');
     };
   });
 
