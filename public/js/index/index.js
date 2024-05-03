@@ -1,45 +1,73 @@
-const EVENTS_HEADER_ANIMATION_INTERVAL = 20;
-let CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT = 75;
+let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 35;
+let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
-
-let eventsHeaderInnerWrapper;
-let eventsHeaderInnerWrapperMarginLeft = 0;
-
-let contributionsNavbarContentInnerWrapper;
+const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
+const CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY = 40;
+const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY = 3;
+const CONTRIBUTIONS_SCROLL_RESET_DISTANCE = 500;
 
 let contributionsFirstItemMarginTop = 0;
-
+let contributionsNavbarContentInnerWrapper;
+let contributionsNavbarScrollWrapper
+let contributionScrollEnded = false;
 let contributionScrollStarted = false;
 let contributionScrollTop = 0;
 let contributionScrollTopLast = 0;
-let contributionScrollEnded = false;
 
-function eventsSlideAnimation() {
-  const firstElement = eventsHeaderInnerWrapper.childNodes[0];
-  // const firstElementWidth = Math.cos(parseFloat(window.getComputedStyle(firstElement).getPropertyValue('transform').split(',')[1])) * firstElement.getBoundingClientRect().width;
-  const firstElementWidth = firstElement.getBoundingClientRect().width;
+function changeContributionsContentInnerWrapperContent(id) {
+  const allContributions = document.querySelectorAll('.contributions-content-each-contribution-wrapper');
 
-  if (eventsHeaderInnerWrapperMarginLeft >= firstElementWidth) {
-    const newElement = firstElement.cloneNode(true);
-    firstElement.remove();
-    eventsHeaderInnerWrapper.appendChild(newElement);
-    eventsHeaderInnerWrapperMarginLeft =
-      eventsHeaderInnerWrapperMarginLeft - firstElementWidth;
-  } else {
-    eventsHeaderInnerWrapperMarginLeft += 0.5;
-  }
+  allContributions.forEach(contribution => {
+    contribution.classList.add('display-none');
+  });
 
-  eventsHeaderInnerWrapper.style.marginLeft = `-${eventsHeaderInnerWrapperMarginLeft}px`;
+  if (document.querySelector(`.contributions-content-${id}-wrapper`))
+    document.querySelector(`.contributions-content-${id}-wrapper`).classList.remove('display-none');
+};
 
-  for (let i = 0; i < eventsHeaderInnerWrapper.childNodes.length; i++) {
-    const element = eventsHeaderInnerWrapper.childNodes[i];
-    element.style.marginBottom = `${firstElementWidth}px`;
-  }
+function handleContributionNavbarContentItemsAnimation() {
+  const contributionsNavbarContentItems = document.querySelectorAll('.contributions-navbar-content-each-contribution');
 
-  setTimeout(() => {
-    eventsSlideAnimation();
-  }, EVENTS_HEADER_ANIMATION_INTERVAL);
-}
+  const middleIndex = parseInt(CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT / 2);
+
+  const startOpacity = 0.1;
+  const endOpacity = 1;
+  const opacityChange = (endOpacity - startOpacity) / (middleIndex + 1);
+
+  const startFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE * 0.6;
+  const endFontSize = CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE;
+  const fontSizeChange = (endFontSize - startFontSize) / (middleIndex + 1);
+
+  for (let i = 0; i < middleIndex; i++) {
+    const currentOpacity = startOpacity + opacityChange * i;
+    const animatedOpacity = currentOpacity + opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+    const currentFontSize = startFontSize + fontSizeChange * i;
+    const animatedFontSize = currentFontSize + fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+    contributionsNavbarContentItems[i].style.opacity = animatedOpacity;
+    contributionsNavbarContentItems[i].style.fontSize = `${animatedFontSize}px`;
+  };
+
+  contributionsNavbarContentItems[middleIndex].style.opacity = endOpacity - opacityChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+  contributionsNavbarContentItems[middleIndex].style.fontSize = `${endFontSize - fontSizeChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
+
+  for (let i = middleIndex + 1; i < CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT; i++) {
+    const currentOpacity = endOpacity - opacityChange * (i - middleIndex);
+    const animatedOpacity = currentOpacity + opacityChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+    const currentFontSize = endFontSize - fontSizeChange * (i - middleIndex);
+    const animatedFontSize = currentFontSize + fontSizeChange * contributionsFirstItemMarginTop / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
+    contributionsNavbarContentItems[i].style.opacity = animatedOpacity;
+    contributionsNavbarContentItems[i].style.fontSize = `${animatedFontSize}px`;
+  };
+
+  contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.opacity = startOpacity + opacityChange - opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+  contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.fontSize = `${startFontSize + fontSizeChange - fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
+
+  return setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
+};
 
 function scrollContributionsContentBy(scrollAmount, callback) {
   if (scrollAmount == 0) return callback();
@@ -47,22 +75,25 @@ function scrollContributionsContentBy(scrollAmount, callback) {
   if (scrollAmount > 0) {
     scrollAmount = Math.min(scrollAmount, CONTRIBUTIONS_MAX_SCROLL_SPEED);
 
-    if (contributionsFirstItemMarginTop + scrollAmount >= CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT) {
-      const newScrollAmount = scrollAmount + contributionsFirstItemMarginTop - CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT;
+    if (contributionsFirstItemMarginTop + scrollAmount >= CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT) {
+      const newScrollAmount = scrollAmount + contributionsFirstItemMarginTop - CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
 
       const newElement = contributionsNavbarContentInnerWrapper.childNodes[0].cloneNode(true);
       newElement.style.marginTop = '0';
+      newElement.style.opacity = 0.55;
       contributionsNavbarContentInnerWrapper.childNodes[0].remove();
       contributionsNavbarContentInnerWrapper.appendChild(newElement);
+
+      changeContributionsContentInnerWrapperContent(contributionsNavbarContentInnerWrapper.childNodes[4].id.replace('contribution-', ''));
 
       contributionsFirstItemMarginTop = 0;
 
       setTimeout(() => {
-        if (contributionScrollTop - contributionScrollTopLast >= CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT)
-          scrollContributionsContentBy(newScrollAmount, () => callback());
+        if (contributionScrollTop - contributionScrollTopLast >= CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT)
+          scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, 80);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
@@ -77,26 +108,27 @@ function scrollContributionsContentBy(scrollAmount, callback) {
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = 0;
 
       const newElement = contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].cloneNode(true);
-      newElement.style.marginTop = `-${CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT}px`;
+      newElement.style.marginTop = `-${CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
       contributionsNavbarContentInnerWrapper.insertBefore(newElement, contributionsNavbarContentInnerWrapper.childNodes[0]);
-
       contributionsNavbarContentInnerWrapper.childNodes[contributionsNavbarContentInnerWrapper.childNodes.length - 1].remove();
 
-      contributionsFirstItemMarginTop = CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT;
-      
+      changeContributionsContentInnerWrapperContent(contributionsNavbarContentInnerWrapper.childNodes[4].id.replace('contribution-', ''));
+
+      contributionsFirstItemMarginTop = CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
+
       setTimeout(() => {
-        if (contributionScrollTopLast - contributionScrollTop <= -CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT)
-          scrollContributionsContentBy(newScrollAmount, () => callback());
+        if (contributionScrollTopLast - contributionScrollTop <= -CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT)
+          scrollContributionsContentBy(newScrollAmount, callback);
         else
           callback();
-      }, 80);
+      }, CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY);
     } else {
       contributionsFirstItemMarginTop += scrollAmount;
       contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
       callback();
-    }
-  }
-}
+    };
+  };
+};
 
 function scrollContributionsContentBySmooth(scrollAmount) {
   if (scrollAmount == 0) return;
@@ -105,60 +137,177 @@ function scrollContributionsContentBySmooth(scrollAmount) {
   if (scrollAmount > 0) {
     contributionsFirstItemMarginTop += 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => {
-      scrollContributionsContentBySmooth(scrollAmount - 1);
-    }, 3);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
   } else {
     contributionsFirstItemMarginTop -= 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => {
-      scrollContributionsContentBySmooth(scrollAmount + 1);
-    }, 3);
-  }
-}
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
+  };
+};
 
 function handleContributionScroll() {
   if (contributionScrollEnded) return;
-  if (contributionScrollTop == contributionScrollTopLast) {
-    setTimeout(() => {
-      handleContributionScroll();
-    }, 10);
-    return;
-  }
+  if (contributionScrollTop == contributionScrollTopLast)
+    return setTimeout(handleContributionScroll, 10);
 
-  scrollContributionsContentBy(contributionScrollTop - contributionScrollTopLast, () => {
-    // if (Math.abs(contributionScrollTop - contributionScrollTopLast) >= CONTRIBUTONS_EACH_CONTRIBUTION_HEIGHT) {
-      contributionScrollTopLast = contributionScrollTop;
+  scrollContributionsContentBy(contributionScrollTop - contributionScrollTopLast, _ => {
+    contributionScrollTopLast = contributionScrollTop;
 
-      handleContributionScroll();
-    // } else {
-    //   contributionScrollTopLast = contributionScrollTop;
-    //   contributionScrollEnded = true;
-    //   contributionScrollStarted = false;
-    // }
+    if (contributionsNavbarScrollWrapper.scrollTop < CONTRIBUTIONS_SCROLL_RESET_DISTANCE || contributionsNavbarScrollWrapper.scrollTop + contributionsNavbarScrollWrapper.getBoundingClientRect().height > contributionsNavbarScrollWrapper.scrollHeight - CONTRIBUTIONS_SCROLL_RESET_DISTANCE)
+      contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
+
+    handleContributionScroll();
   });
-}
+};
 
-window.addEventListener('load', (_) => {
-  eventsHeaderInnerWrapper = document.querySelector('.events-header-inner-wrapper');
+function initalizeContributionScrollEvent() {
+  CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = Number(getComputedStyle(document.documentElement).getPropertyValue('--contributions-navbar-content-each-contribution-font-size').replace('px', ''));
+  CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = document.querySelector('.contributions-navbar-content-each-contribution').getBoundingClientRect().height;
+
   contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
-  const contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
-  eventsSlideAnimation();
+  contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
 
-  contributionsNavbarScrollWrapper.addEventListener('scroll', (event) => {
+  contributionsNavbarScrollWrapper.addEventListener('scroll', event => {
     contributionScrollTop = event.target.scrollTop;
 
     if (!contributionScrollStarted) {
       contributionScrollStarted = true;
       contributionScrollEnded = false;
       handleContributionScroll();
-    }
+    };
   });
-  contributionsNavbarScrollWrapper.addEventListener('scrollend', (event) => {
+  contributionsNavbarScrollWrapper.addEventListener('scrollend', _ => {
     contributionScrollEnded = true;
     contributionScrollStarted = false;
 
     if (contributionsFirstItemMarginTop != 0)
       scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
+  });
+
+  contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
+  handleContributionNavbarContentItemsAnimation();
+};
+
+function addDragAbility(selector) {
+  let isDown = false;
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  const element = document.querySelector(selector);
+
+  document.addEventListener('click', event => {
+    if (isDragging && event.target.closest(selector))
+      event.preventDefault();
+  });
+
+  element.addEventListener('mousedown', event => {
+    if (isDragging)
+      event.preventDefault();
+    isDown = true;
+    startX = event.pageX - element.offsetLeft;
+    scrollLeft = element.scrollLeft;
+  });
+  element.addEventListener('mouseleave', _ => {
+    isDown = false;
+  });
+  element.addEventListener('mouseup', _ => {
+    isDown = false;
+    setTimeout(() => {
+      isDragging = false;
+    }, 100);
+  });
+  element.addEventListener('mousemove', event => {
+    if (!isDown) return;
+
+    event.preventDefault();
+    isDragging = true;
+    const x = event.pageX - element.offsetLeft;
+    const walk = x - startX;
+    element.scrollLeft = scrollLeft - walk;
+  });
+};
+
+function addToSubscriberList() {
+  const email = document.querySelector('.footer-top-left-input').value.trim();
+
+  const successMessage = document.querySelector('.footer-top-left-success-message');
+  const alreadyRegisteredMessage = document.querySelector('.footer-top-left-error-duplicated-field-message');
+  const unknownError = document.querySelector('.footer-top-left-error-bad-request-message');
+
+  if (!email) return;
+
+  serverRequest('/subscribe', 'POST', {
+    email: email,
+    type: 'general'
+  }, (err, res) => {
+    if (err && err != 'duplicated_unique_field') {
+      successMessage.classList.add('display-none');
+      alreadyRegisteredMessage.classList.add('display-none');
+      unknownError.classList.remove('display-none');
+      return;
+    };
+
+    if (err) {
+      successMessage.classList.add('display-none');
+      unknownError.classList.add('display-none');
+      alreadyRegisteredMessage.classList.remove('display-none');
+      return;
+    };
+
+    unknownError.classList.add('display-none');
+    alreadyRegisteredMessage.classList.add('display-none');
+    successMessage.classList.remove('display-none');
+  });
+};
+
+window.addEventListener('load', _ => {
+  initalizeContributionScrollEvent();
+  addDragAbility('.team-content-images-wrapper');
+  addDragAbility('.contributions-content-videos-thumbnails-wrapper');
+  addDragAbility('.events-content-workshops-bottom-wrapper');
+  addDragAbility('.events-content-gatherings-bottom-wrapper');
+
+  document.addEventListener('click', event => {
+    if (event.target.closest('.events-content-navbar-header-wrapper')) {
+      document.querySelector('.events-content-navbar-events-wrapper').classList.toggle('events-content-navbar-events-wrapper-closed');
+      document.querySelector('.events-content-navbar-header-icon-line-left').classList.toggle('events-content-navbar-header-icon-line-left-reversed');
+      document.querySelector('.events-content-navbar-header-icon-line-right').classList.toggle('events-content-navbar-header-icon-line-right-reversed');
+    };
+
+    if (event.target.closest('.events-content-navbar-each-event') || event.target.closest('.events-content-navbar-each-event-responsive')) {
+      const target = event.target.closest('.events-content-navbar-each-event');
+      const targetResponsive = event.target.closest('.events-content-navbar-each-event-responsive');
+
+      const eventId = target ? target.id.replace('event-', '') : targetResponsive.id.replace('event-', '').replace('-responsive', '');
+
+      document.querySelector('.events-content-navbar-each-event-selected').classList.remove('events-content-navbar-each-event-selected');
+      document.querySelector('.events-content-navbar-each-event-selected-responsive').classList.remove('events-content-navbar-each-event-selected-responsive');
+
+      document.getElementById(`event-${eventId}`).classList.add('events-content-navbar-each-event-selected');
+      document.getElementById(`event-${eventId}-responsive`).classList.add('events-content-navbar-each-event-selected-responsive');
+
+      document.querySelectorAll('.events-content-each-event-wrapper').forEach(eachEvent => {
+        if (!eachEvent.classList.contains(`events-content-${eventId}-wrapper`))
+          eachEvent.classList.add('display-none');
+      });
+      document.querySelector(`.events-content-${eventId}-wrapper`).classList.remove('display-none');
+    };
+
+    if (event.target.closest('.footer-top-left-input-button')) {
+      addToSubscriberList();
+    };
+
+    if (event.target.closest('.contributions-content-open-source-each-project-wrapper') && !event.target.closest('.contributions-content-open-source-each-project-wrapper-open')) {
+      document.querySelector('.contributions-content-open-source-each-project-wrapper-open').classList.remove('contributions-content-open-source-each-project-wrapper-open');
+
+      event.target.closest('.contributions-content-open-source-each-project-wrapper').classList.add('contributions-content-open-source-each-project-wrapper-open');
+    };
+  });
+
+  document.addEventListener('keyup', event => {
+    if (event.target.classList.contains('footer-top-left-input') && event.key == 'Enter') {
+      addToSubscriberList();
+    };
   });
 });

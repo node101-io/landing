@@ -21,10 +21,11 @@ body {
   width: 100vw;
   overflow: hidden;
   background: var(--background-color);
+  cursor: var(--pointer-default-dark);
 }
 
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
@@ -51,24 +52,41 @@ input[type=number] {
 }
 
 :root {
+  --pointer-default-dark: url('/img/pointers/default-dark.svg') 4 0, auto;
+  --pointer-hand-dark: url('/img/pointers/hand-dark.svg') 6 0, auto;
+  --pointer-hand-light: url('/img/pointers/hand-light.svg') 6 0, auto;
+  --pointer-hand-drag-dark: url('/img/pointers/hand-drag-dark.svg') 6 0, auto;
+  --pointer-hand-drop-light: url('/img/pointers/hand-drop-light.svg') 6 0, auto;
+  --pointer-hand-explore-dark: url('/img/pointers/hand-explore-dark.svg') 6 0, auto;
+  --pointer-hand-explore-light: url('/img/pointers/hand-explore-light.svg') 6 0, auto;
+  --pointer-hand-stake-dark: url('/img/pointers/hand-stake-dark.svg') 6 0, auto;
+  --pointer-hand-stake-light: url('/img/pointers/hand-stake-light.svg') 6 0, auto;
+
   --page-horizontal-padding: 40px;
   --page-vertical-padding: 20px;
 
   --background-color: rgba(245, 245, 245, 1);
   --light-color: rgba(223, 229, 255, 1);
   --light-color-contrast: rgba(251, 255, 224, 1);
+  --light-color-shadow: rgba(213, 218, 243, 1);
   --dark-color: rgba(33, 24, 32, 1);
   --dark-text-color: rgba(44, 32, 42, 1);
   --light-text-color: rgba(245, 245, 245, 1);
   --link-dark-color: rgba(71, 53, 202, 1);
   --link-light-color: rgba(150, 149, 223, 1);
+  --secondary-light-color: rgba(196, 205, 244, 1);
   --dark-color-contrast: rgba(112, 130, 227, 1);
   --bright-color-gradient-one: rgba(253, 134, 77, 1);
   --bright-color-gradient-two: rgba(254, 72, 108, 1);
   --lila-color: rgba(231, 224, 255, 1);
   --green-color: rgba(220, 254, 188, 1);
   --purple-color: rgba(127, 48, 255, 1);
-  --footer-background-color: rgba(196, 205, 244, 1);
+  --light-pink-color: rgba(240, 213, 236, 1);
+  --klein-color: rgba(89, 100, 250, 1);
+
+  --hello-101-logo-color: rgba(172, 150, 234, 1);
+  --about-us-page-each-card-information-box-background-color: rgba(237, 237, 237, 1);
+  --about-us-page-each-card-information-box-text-color: rgba(94, 93, 157, 1);
   --placeholder-color: rgba(153, 153, 153, 1);
 }
 
@@ -78,6 +96,23 @@ input[type=number] {
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
+
+/* .pointer {
+  --pointer-x: -100;
+  --pointer-y: -100;
+  cursor: none;
+  position: fixed;
+  top: var(--pointer-y);
+  left: var(--pointer-x);
+  background-color: black;
+  height: 15px;
+  min-height: 15px;
+  width: 15px;
+  min-width: 15px;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 1001;
+} */
 
 @media only screen and (min-width: 1920) {
   :root {
@@ -92,5 +127,10 @@ p, h1, h2, h3, h4, h5, h6 {
 @media only screen and (max-width: 700px) {
   :root {
     --page-horizontal-padding: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  :root {
+    --page-horizontal-padding: 15px;
   }
 }

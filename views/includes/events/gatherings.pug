@@ -1,0 +1,49 @@
+//- used workshop classes for now, will be updated
+.events-content-workshops-text= __('101 supports the Turkish Blockchain Builder Ecosystem by training developers through workshops, covering various language families and blockchain projects with specific curriculums, to enable them to create profitable products for humanity\'s benefit while promoting the blockchain philosophy.')
+.events-content-gatherings-bottom-wrapper.events-content-workshops-bottom-wrapper
+  -
+    const gatherings = [
+      {
+        _id: 'moda-palas',
+        name: 'Moda Palas | Private Monthly Gatherings',
+        link: insertLanguageToLink('https://events.node101.io/moda-palas', lang)
+      },
+      {
+        _id: 'modular-meetup',
+        name: 'Celestia Modular Meetups',
+        link: 'https://lu.ma/Modular-Meetup-Istanbul-3'
+      },
+      {
+        _id: 'sui-moda-palas',
+        name: 'SUI Moda Palas',
+        link: 'https://lu.ma/suimodapalas'
+      },
+      {
+        _id: 'mina-moda-palas',
+        name: 'Mina Moda Palas',
+        link: 'https://lu.ma/minapalas'
+      },
+      {
+        _id: 'sui-iftar',
+        name: 'SUI İftar',
+        link: 'https://lu.ma/suiftar'
+      },
+      {
+        _id: 'nym-community-gathering',
+        name: 'NYM Community Gathering',
+        link: insertLanguageToLink('https://events.node101.io/nym-community-gathering', lang)
+      }
+    ];
+  each gathering in gatherings
+    a.events-content-workshops-each-card-wrapper(href=gathering.link target='_blank')
+      //- img.events-content-workshops-each-card-image(
+      //-   srcset=`/img/events/gatherings/${gathering._id}-120w.png, /img/events/gatherings/${gathering._id}-240w.png 2x`,
+      //-   src=`/img/events/gatherings/${gathering._id}-240w.png`
+      //-   alt=gathering.name
+      //- )
+      img.events-content-workshops-each-card-image(
+        srcset=`/img/events/gatherings/moda-palas-120w.png, /img/events/gatherings/moda-palas-240w.png 2x`,
+        src=`/img/events/gatherings/moda-palas-240w.png`
+        alt=gathering.name
+      )
+      .events-content-workshops-each-card-text= __(gathering.name)

@@ -20,14 +20,14 @@ block content
             h1.each-header-button-text-wrapper-two
               each letter, i in header_buttons[0].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[0].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          a.each-header-button.each-header-button-secondary(href=insertLanguageToLink('/validator-services', lang))
-            h1.each-header-button-text-wrapper
-              each letter, i in header_buttons[1].split('')
-                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-            h1.each-header-button-text-wrapper-two
-              each letter, i in header_buttons[1].split('')
-                .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          a.each-header-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')
+          //- a.each-header-button.each-header-button-secondary(href=insertLanguageToLink('/validator-services', lang))
+          //-   h1.each-header-button-text-wrapper
+          //-     each letter, i in header_buttons[1].split('')
+          //-       .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          //-   h1.each-header-button-text-wrapper-two
+          //-     each letter, i in header_buttons[1].split('')
+          //-       .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[1].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
+          a.each-header-button#header-events-button
             h1.each-header-button-text-wrapper
               each letter, i in header_buttons[2].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[2].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
@@ -41,7 +41,7 @@ block content
             h1.each-header-button-text-wrapper-two
               each letter, i in header_buttons[3].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[3].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
-          a.each-header-button(href=insertLanguageToLink('/about-us', lang))
+          a.each-header-button#header-about-us-button
             h1.each-header-button-text-wrapper
               each letter, i in header_buttons[4].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[4].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
@@ -56,7 +56,8 @@ block content
               each letter, i in header_buttons[5].split('')
                 .each-header-button-text(style=`${letter == ' ' ? 'width: var(--header-button-space-width); min-width: var(--header-button-space-width); ' : ''}transition: calc((1s - var(--header-button-text-animation-transition-constant)) * ${(i + 1) / header_buttons[5].split('').length} + var(--header-button-text-animation-transition-constant))`)= letter
         .header-menu-wrapper
-          a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+          //- a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+          a.header-stake-with-node101-button
             .header-stake-with-node101-button-background
               .header-stake-with-node101-button-background-circle.header-stake-with-node101-button-background-circle-5
               .header-stake-with-node101-button-background-circle.header-stake-with-node101-button-background-circle-4
@@ -83,7 +84,8 @@ block content
         .header-logo-wrapper
           a.header-logo-link(href=insertLanguageToLink('/', lang))
             img.header-logo(src='/img/logo.svg' alt='node101 logo')
-        a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+        //- a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
+        a.header-stake-with-node101-button
             .header-stake-with-node101-button-background
               .header-stake-with-node101-button-background-circle.header-stake-with-node101-button-background-circle-5
               .header-stake-with-node101-button-background-circle.header-stake-with-node101-button-background-circle-4
@@ -100,13 +102,13 @@ block content
         .header-responsive-menu-button-wrapper
           .header-responsive-menu-button-color-curvature
             .header-responsive-menu-button-color-curvature-inner-circle
-          .header-responsive-menu-button-color-curvature-two
-            .header-responsive-menu-button-color-curvature-two-inner-circle
           .header-responsive-menu-button
             .header-responsive-menu-button-each-icon.header-responsive-menu-button-each-icon-top
             .header-responsive-menu-button-each-icon.header-responsive-menu-button-each-icon-middle
             .header-responsive-menu-button-each-icon.header-responsive-menu-button-each-icon-bottom
       .header-wrapper-responsive-menu
+        .header-responsive-menu-button-color-curvature-two
+          .header-responsive-menu-button-color-curvature-two-inner-circle
         .header-change-language-button
           .header-change-language-button-content
             .header-change-language-button-text= page_lang.toUpperCase()
@@ -117,10 +119,10 @@ block content
               .each-header-change-language-button-menu-text(id=`each-header-change-language-button-${page_lang == 'en' ? 'tr' : 'en'}`)= page_lang == 'en' ? 'TR' : 'EN'
         .header-wrapper-responsive-menu-buttons-wrapper
           a.header-wrapper-responsive-menu-each-button#header-portfolio-button-responsive= __('Portfolio')
-          a.header-wrapper-responsive-menu-each-button#header-services-button-responsive= __('Validator Services')
-          a.header-wrapper-responsive-menu-each-button(href=insertLanguageToLink('https://events.node101.io', lang) target='_blank')= __('Events')
+          //- a.header-wrapper-responsive-menu-each-button#header-services-button-responsive= __('Validator Services')
+          a.header-wrapper-responsive-menu-each-button#header-events-button-responsive= __('Events')
           a.header-wrapper-responsive-menu-each-button#header-contributions-button-responsive= __('Ecosystem Contributions')
-          a.header-wrapper-responsive-menu-each-button(href=insertLanguageToLink('/about-us', lang))= __('About Us')
+          a.header-wrapper-responsive-menu-each-button#header-about-us-button-responsive= __('About Us')
           a.header-wrapper-responsive-menu-each-button#header-reach-us-button-responsive= __('Reach Us')
         .header-wrapper-responsive-menu-social-media-wrapper
           a.header-wrapper-responsive-menu-media-each-button(href='https://twitter.com/node_101' target='_blank')

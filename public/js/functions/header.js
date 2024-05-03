@@ -25,7 +25,7 @@ function headerBackgroundAnimation() {
     buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
     buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${headerLastBackgroundAnimationPercentage})`;
     headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
-  
+
     if (headerLastBackgroundAnimationPercentage == 1)  {
       headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
       headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'var(--background-color)';
@@ -47,10 +47,66 @@ function headerBackgroundAnimation() {
   }
 };
 
+function handleScrollToSection(section, behavior) {
+  let selector = '';
+
+  if (section == 'portfolio') {
+    selector = '.portfolio-wrapper';
+  } else if (section == 'events') {
+    selector = '.events-wrapper';
+  } else if (section == 'contributions') {
+    selector = '.contributions-wrapper';
+  } else if (section == 'team') {
+    selector = '.team-wrapper';
+  } else if (section == 'footer') {
+    selector = '.footer-wrapper';
+  };
+
+  const offsetTop = document.querySelector(selector)?.getBoundingClientRect().top;
+
+  if (!offsetTop) {
+    const url = new URL(window.location.href);
+    url.pathname = '/';
+    url.hash = section;
+    return window.location.href = url.href;
+  };
+
+  window.location.hash = section;
+
+  const contentWrapper = document.querySelector('.content-wrapper');
+  const cssRoot = getComputedStyle(document.documentElement);
+  const contentGap = parseInt(cssRoot.getPropertyValue('--content-gap'));
+  const headerHeight =
+    parseInt(cssRoot.getPropertyValue('--header-height')) +
+    parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
+
+  contentWrapper.scrollBy({
+    top: offsetTop - headerHeight - (section != 'footer' ? contentGap / 2 : 0),
+    behavior: behavior || 'instant'
+  });
+};
+
 window.addEventListener('load', _ => {
+  if (window.location.hash) {
+    if (window.location.hash == '#portfolio') {
+      handleScrollToSection('portfolio');
+    } else if (window.location.hash == '#events') {
+      handleScrollToSection('events');
+    } else if (window.location.hash == '#contributions') {
+      handleScrollToSection('contributions');
+    } else if (window.location.hash == '#team') {
+      handleScrollToSection('team');
+    } else if (window.location.hash == '#footer') {
+      handleScrollToSection('footer');
+    } else {
+      window.location.hash = '';
+    };
+  };
+
   HEADER_HEIGHT = Number(getComputedStyle(document.documentElement).getPropertyValue('--header-height').replace('px', ''));
   WINDOW_HEIGHT = window.innerHeight;
 
+  const headerResponsiveMenuButton = document.querySelector('.header-responsive-menu-button');
   const headerWrapperResponsiveMenu = document.querySelector('.header-wrapper-responsive-menu');
 
   document.addEventListener('click', event => {
@@ -66,27 +122,49 @@ window.addEventListener('load', _ => {
         headerChangeLanguageButtonMenuWrapper.classList.add('header-change-language-button-menu-wrapper-open-animation');
         headerChangeLanguageButtonMenuWrapper.classList.remove('header-change-language-button-menu-wrapper-close-animation');
       };
+
     } else if (headerIsLanguageButtonOpen) {
       headerIsLanguageButtonOpen = false;
       headerChangeLanguageButtonMenuWrapper.classList.remove('header-change-language-button-menu-wrapper-open-animation');
       headerChangeLanguageButtonMenuWrapper.classList.add('header-change-language-button-menu-wrapper-close-animation');
     };
 
-    if (event.target.closest('.header-responsive-menu-button')) {
-      const target = event.target.closest('.header-responsive-menu-button');
+    if (event.target.closest('.each-header-change-language-button-menu-text')) {
+      const language = event.target.closest('.each-header-change-language-button-menu-text').innerText.toLowerCase();
 
-      if (target.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', language);
+
+      window.location.href = url;
+    };
+
+    if (event.target.closest('.header-responsive-menu-button') || event.target.closest('.header-wrapper-responsive-menu-each-button')) {
+      if (headerResponsiveMenuButton.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
         headerWrapperResponsiveMenu.classList.remove('header-wrapper-responsive-menu-opened');
-        target.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
-        target.childNodes[1].classList.remove('header-responsive-menu-button-each-icon-middle-opened');
-        target.childNodes[2].classList.remove('header-responsive-menu-button-each-icon-bottom-opened');
+        headerResponsiveMenuButton.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
+        headerResponsiveMenuButton.childNodes[1].classList.remove('header-responsive-menu-button-each-icon-middle-opened');
+        headerResponsiveMenuButton.childNodes[2].classList.remove('header-responsive-menu-button-each-icon-bottom-opened');
       } else {
         headerWrapperResponsiveMenu.classList.add('header-wrapper-responsive-menu-opened');
-        target.childNodes[0].classList.add('header-responsive-menu-button-each-icon-top-opened');
-        target.childNodes[1].classList.add('header-responsive-menu-button-each-icon-middle-opened');
-        target.childNodes[2].classList.add('header-responsive-menu-button-each-icon-bottom-opened');
+        headerResponsiveMenuButton.childNodes[0].classList.add('header-responsive-menu-button-each-icon-top-opened');
+        headerResponsiveMenuButton.childNodes[1].classList.add('header-responsive-menu-button-each-icon-middle-opened');
+        headerResponsiveMenuButton.childNodes[2].classList.add('header-responsive-menu-button-each-icon-bottom-opened');
       };
-    }
+    };
+
+    if (event.target.closest('.each-header-button') || event.target.closest('.header-wrapper-responsive-menu-each-button') || event.target.closest('.header-stake-with-node101-button')) {
+      if (event.target.closest('#header-portfolio-button') || event.target.closest('#header-portfolio-button-responsive') || event.target.closest('.header-stake-with-node101-button')) {
+        handleScrollToSection('portfolio', 'smooth');
+      } else if (event.target.closest('#header-events-button') || event.target.closest('#header-events-button-responsive')) {
+        handleScrollToSection('events', 'smooth');
+      } else if (event.target.closest('#header-ecosystem-contributions-button') || event.target.closest('#header-contributions-button-responsive')) {
+        handleScrollToSection('contributions', 'smooth');
+      } else if (event.target.closest('#header-about-us-button') || event.target.closest('#header-about-us-button-responsive')) {
+        handleScrollToSection('team', 'smooth');
+      } else if (event.target.closest('#header-reach-us-button') || event.target.closest('#header-reach-us-button-responsive')) {
+        handleScrollToSection('footer', 'smooth');
+      };
+    };
   });
 
   document.querySelector('.content-wrapper').addEventListener('scroll', event => {

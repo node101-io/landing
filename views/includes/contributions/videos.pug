@@ -1,0 +1,30 @@
+.contributions-content-videos-thumbnails-wrapper
+  -
+    const videos = [
+      {
+        title: 'Modular Meetup II',
+        video_id: 'xLM_67AjNt0'
+      },
+      {
+        title: 'Modular Meetup III',
+        video_id: 'RhHTRTL7JCE'
+      },
+      {
+        title: 'Cryptist - Dean Tribble',
+        video_id: 'C3eiWFlROHQ'
+      }
+    ];
+  each video in videos
+    a.contributions-content-videos-each-thumbnail-wrapper(href=`https://youtu.be/${video.video_id}` target='_blank')
+      .contributions-content-videos-each-thumbnail-button-wrapper
+        .contributions-content-videos-each-thumbnail-button-icon-wrapper
+          svg.contributions-content-videos-each-thumbnail-button-icon(viewbox='0 0 16 15' xmlns='http://www.w3.org/2000/svg')
+            path(d='M11.7819 14.7784C11.8021 14.7841 12.2489 14.6593 12.7745 14.5011C13.3003 14.3428 13.7258 14.1937 13.7203 14.1699C13.7147 14.1461 13.5727 13.7895 13.4046 13.3775C13.0672 12.5502 12.8051 11.508 12.754 10.7911C12.595 8.55669 13.4501 6.52277 15.1227 5.15677L15.5486 4.8089L15.1036 4.0382L14.6586 3.26743L14.1903 3.44022C11.1221 4.57228 8.06852 3.4859 5.88166 0.48435C5.73888 0.288342 5.6137 0.13287 5.60348 0.138773C5.50933 0.193127 4.17169 1.47865 4.1598 1.52617C4.1512 1.56054 4.28009 1.74715 4.44625 1.94076C6.28594 4.08477 8.70807 5.29529 10.8576 5.14511L11.3732 5.10909L3.10906 9.9009L0.607804 11.358L1.50835 12.9178L4.03433 11.4724L12.2968 6.72269L11.941 7.27944C11.018 8.72372 10.7489 10.6668 11.1736 12.8213C11.2946 13.4351 11.7053 14.7565 11.7819 14.7784Z')
+        .contributions-content-videos-each-thumbnail-button-radius-top
+          .contributions-content-videos-each-thumbnail-button-radius-top-inner-circle
+        .contributions-content-videos-each-thumbnail-button-radius-left
+          .contributions-content-videos-each-thumbnail-button-radius-left-inner-circle
+      img.contributions-content-videos-each-thumbnail-image(src=`https://i.ytimg.com/vi/${video.video_id}/mqdefault.jpg` alt=video.title)
+      .contributions-content-videos-each-thumbnail-text= __(video.title)
+.contributions-content-videos-each-text= __('node101 YouTube Videos')
+.contributions-content-videos-each-text= __('The easiest way of learning is for sure seeing it for yourself. node101’s blockchain videos are available in English & Turkish for its followers, making sure to include anything from the ground level.')

@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Quality Sunrise';
   src: url('Quality-Sunrise.eot');
-  src: url('Quality-Sunrise.eot?#iefix') format('embedded-opentype'), 
+  src: url('Quality-Sunrise.eot?#iefix') format('embedded-opentype'),
     url('Quality-Sunrise.woff2') format('woff2'),
     url('Quality-Sunrise.otf') format('opentype'),
     url('Quality-Sunrise.woff') format('woff'),
@@ -19,4 +19,13 @@
       url('Igra-Sans.woff2') format('woff2'),
       url('Igra-Sans.woff') format('woff'),
       url('Igra-Sans.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-display: swap;
+  src: local('Montserrat'), local('Montserrat'),
+      url('Montserrat.woff2') format('woff2'),
+      url('Montserrat.woff') format('woff'),
+      url('Montserrat.ttf') format('truetype');
 }
