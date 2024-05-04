@@ -1,15 +1,18 @@
 .contributions-content-klein-loading-text-wrapper
-  .contributions-content-klein-loading-each-text= __('Your node is loading...')
-  .contributions-content-klein-loading-each-text= __('60%')
+  .contributions-content-klein-loading-each-text(style='margin-right: auto;')= __('Your node is loading...')
+  if (lang == 'tr')
+    .contributions-content-klein-loading-each-text= '%'
+    .contributions-content-klein-loading-counter
+  else
+    .contributions-content-klein-loading-counter
+    .contributions-content-klein-loading-each-text= '%'
 .contributions-content-klein-loading-bar
   - for (let i = 0; i < 100; i++)
-    svg.contributions-content-klein-loading-bar-each-part(class=`${i < 60 ? 'contributions-content-klein-loading-bar-each-part-filled' : ''}` viewBox='0 0 3 5' xmlns='http://www.w3.org/2000/svg')
+    svg.contributions-content-klein-loading-bar-each-part(class=`${i < 60 ? 'contributions-content-klein-loading-bar-each-part-filled' : ''}` style=(i < 60 ? `animation-delay: calc(${i} * var(--contributions-content-klein-loading-animation-duration) / 100);` : '') viewBox='0 0 3 5' xmlns='http://www.w3.org/2000/svg')
       path(d='M0.744304 5L2.44557 2.70344L3 2.70344L3 2.18701L2.44557 2.18701L0.767089 -1.95207e-07L0.049367 -2.57953e-07L1.97089 2.49218L1.97468 2.33177L-4.37114e-07 5L0.744304 5Z')
-    //- svg.contributions-content-klein-loading-bar-each-part(fill=`${i < 60 ? '#5964FA' : 'var(--background-color)'}` viewBox='0 0 3 5' xmlns='http://www.w3.org/2000/svg')
-    //-   path(d='M0.744304 5L2.44557 2.70344L3 2.70344L3 2.18701L2.44557 2.18701L0.767089 -1.95207e-07L0.049367 -2.57953e-07L1.97089 2.49218L1.97468 2.33177L-4.37114e-07 5L0.744304 5Z')
 .contributions-content-klein-loading-bar-responsive
   - for (let i = 0; i < 50; i++)
-    svg.contributions-content-klein-loading-bar-each-part(fill=`${i < 30 ? '#5964FA' : 'var(--background-color)'}` viewBox='0 0 3 5' xmlns='http://www.w3.org/2000/svg')
+    svg.contributions-content-klein-loading-bar-each-part(class=`${i < 30 ? 'contributions-content-klein-loading-bar-each-part-filled' : ''}` style=(i < 60 ? `animation-delay: calc(${i} * var(--contributions-content-klein-loading-animation-duration) / 50);` : '') viewBox='0 0 3 5' xmlns='http://www.w3.org/2000/svg')
       path(d='M0.744304 5L2.44557 2.70344L3 2.70344L3 2.18701L2.44557 2.18701L0.767089 -1.95207e-07L0.049367 -2.57953e-07L1.97089 2.49218L1.97468 2.33177L-4.37114e-07 5L0.744304 5Z')
 a.contributions-content-klein-link-wrapper()= __('Klein')
   svg.contributions-content-klein-link-icon(width='9', height='12', viewBox='0 0 9 12', fill='none', xmlns='http://www.w3.org/2000/svg')
