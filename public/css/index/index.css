@@ -1142,10 +1142,6 @@
   background-color: var(--dark-text-color);
   border-radius: calc(var(--portfolio-content-project-wrapper-responsive-height) / 2);
   padding: var(--portfolio-content-project-wrapper-responsive-padding);
-  cursor: var(--pointer-hand-stake-dark);
-}
-.portfolio-content-each-project-wrapper-responsive:hover .portfolio-content-each-project-link-responsive-icon {
-  transform: translateX(10%);
 }
 .portfolio-content-each-project-logo {
   width: 100%;
@@ -1211,6 +1207,9 @@
   background-color: var(--secondary-light-color);
   border-radius: calc(var(--portfolio-content-project-wrapper-responsive-height) / 2);
   cursor: var(--pointer-hand-stake-dark);
+}
+.portfolio-content-each-project-link-responsive:hover .portfolio-content-each-project-link-responsive-icon {
+  transform: translateX(10%);
 }
 .portfolio-content-each-project-link-responsive-icon {
   height: calc((var(--portfolio-content-project-wrapper-responsive-height) - 2 * var(--portfolio-content-project-wrapper-responsive-padding)) / 2);
@@ -1559,7 +1558,8 @@
   height: calc(var(--team-images-height) * 1.2);
   min-height: calc(var(--team-images-height) * 1.2);
   width: calc(100vw - 2 * var(--page-horizontal-padding));
-  padding-left: var(--page-horizontal-padding);
+  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  padding-left: calc(var(--content-gap) / 3);
   margin-top: calc(4 * var(--page-vertical-padding));
   display: flex;
   align-items: center;
@@ -1589,8 +1589,8 @@
   display: flex;
   align-items: center;
   padding: 0 var(--team-button-horizontal-padding);
-  margin-top: var(--page-horizontal-padding);
-  margin-left: calc(2 * var(--page-horizontal-padding));
+  margin-top: var(--page-vertical-padding);
+  margin-left: calc(var(--content-gap) / 2);
   border: 1px solid var(--dark-text-color);
   border-radius: calc(var(--team-button-height) / 2);
   text-decoration: none;
@@ -1637,7 +1637,7 @@
   min-height: fit-content;
   width: var(--team-footer-width);
   min-width: var(--team-footer-width);
-  padding: calc(2 * var(--page-horizontal-padding));
+  padding: calc(var(--content-gap) / 2);
   padding-top: 0;
   margin-top: var(--team-wrapper-height);
   background-color: var(--light-color);

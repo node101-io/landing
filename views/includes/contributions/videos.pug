@@ -2,20 +2,30 @@
   -
     const videos = [
       {
+        title: 'Cosmosphere Playlist',
+        video_id: 'L8G9EN3dRXo',
+        playlist_id: 'PL5c21nTlaW9NVYb6FrBhAxdp8bOLti0OP'
+      },
+      {
+        title: 'CryptIst Playlist',
+        video_id: 'XpZqkFtpauY',
+        playlist_id: 'PL5c21nTlaW9ODGy_XOOUTFzZZbrlSO2d7'
+      },
+      {
         title: 'Modular Meetup II',
         video_id: 'xLM_67AjNt0'
       },
       {
-        title: 'Modular Meetup III',
-        video_id: 'RhHTRTL7JCE'
+        title: 'Dean Tribble',
+        video_id: 'C3eiWFlROHQ'
       },
       {
-        title: 'Cryptist - Dean Tribble',
-        video_id: 'C3eiWFlROHQ'
+        title: 'Modular Meetup I',
+        video_id: 'RhHTRTL7JCE'
       }
     ];
   each video in videos
-    a.contributions-content-videos-each-thumbnail-wrapper(href=`https://youtu.be/${video.video_id}` target='_blank')
+    a.contributions-content-videos-each-thumbnail-wrapper(href=`https://www.youtube.com/watch?v=${video.video_id}${playlist_id ? '&list=' + playlist_id : ''}` target='_blank')
       .contributions-content-videos-each-thumbnail-button-wrapper
         .contributions-content-videos-each-thumbnail-button-icon-wrapper
           svg.contributions-content-videos-each-thumbnail-button-icon(viewbox='0 0 16 15' xmlns='http://www.w3.org/2000/svg')
@@ -24,7 +34,7 @@
           .contributions-content-videos-each-thumbnail-button-radius-top-inner-circle
         .contributions-content-videos-each-thumbnail-button-radius-left
           .contributions-content-videos-each-thumbnail-button-radius-left-inner-circle
-      img.contributions-content-videos-each-thumbnail-image(src=`https://i.ytimg.com/vi/${video.video_id}/mqdefault.jpg` alt=video.title)
+      img.contributions-content-videos-each-thumbnail-image(src=`https://i.ytimg.com/vi/${video.video_id}/hqdefault.jpg` alt=video.title)
       .contributions-content-videos-each-thumbnail-text= __(video.title)
 .contributions-content-videos-each-text= __('node101 YouTube Videos')
 .contributions-content-videos-each-text= __('The easiest way of learning is for sure seeing it for yourself. node101’s blockchain videos are available in English & Turkish for its followers, making sure to include anything from the ground level.')

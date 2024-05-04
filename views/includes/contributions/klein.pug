@@ -3,8 +3,12 @@
   .contributions-content-klein-loading-each-text= __('60%')
 .contributions-content-klein-loading-bar
   - for (let i = 0; i < 100; i++)
-    svg.contributions-content-klein-loading-bar-each-part(width='3', height='5', viewBox='0 0 3 5', fill='none', xmlns='http://www.w3.org/2000/svg')
+    svg.contributions-content-klein-loading-bar-each-part(viewBox='0 0 3 5', fill='none', xmlns='http://www.w3.org/2000/svg')
       path(d='M0.744304 5L2.44557 2.70344L3 2.70344L3 2.18701L2.44557 2.18701L0.767089 -1.95207e-07L0.049367 -2.57953e-07L1.97089 2.49218L1.97468 2.33177L-4.37114e-07 5L0.744304 5Z', fill=`${i < 60 ? '#5964FA' : 'var(--background-color)'}`)
+.contributions-content-klein-loading-bar-responsive
+  - for (let i = 0; i < 50; i++)
+    svg.contributions-content-klein-loading-bar-each-part(viewBox='0 0 3 5', fill='none', xmlns='http://www.w3.org/2000/svg')
+      path(d='M0.744304 5L2.44557 2.70344L3 2.70344L3 2.18701L2.44557 2.18701L0.767089 -1.95207e-07L0.049367 -2.57953e-07L1.97089 2.49218L1.97468 2.33177L-4.37114e-07 5L0.744304 5Z', fill=`${i < 30 ? '#5964FA' : 'var(--background-color)'}`)
 a.contributions-content-klein-link-wrapper()= __('Klein')
   svg.contributions-content-klein-link-icon(width='9', height='12', viewBox='0 0 9 12', fill='none', xmlns='http://www.w3.org/2000/svg')
     path(d='M3.42742 11.6698C3.43732 11.681 3.74092 11.7663 4.10201 11.8594C4.46314 11.9525 4.76251 12.0144 4.76733 11.9971C4.7721 11.9798 4.80946 11.6987 4.85031 11.3724C4.93239 10.7172 5.13111 9.95226 5.34346 9.47384C6.00534 7.98284 7.19289 6.99559 8.63322 6.73899L9 6.67364V6.01498V5.35628L8.66757 5.29372C6.4896 4.88394 5.06967 3.05758 4.80405 0.324446C4.78671 0.145974 4.766 0 4.75802 0C4.68456 0 3.46745 0.328961 3.44443 0.355021C3.42779 0.373864 3.44017 0.541177 3.47199 0.726761C3.82418 2.78178 4.83261 4.454 6.14125 5.1532L6.45516 5.32093L0 5.33406L0.0105005 6.68376L6.45044 6.69694L6.05413 6.92213C5.02602 7.50629 4.21205 8.65219 3.73271 10.1903C3.59611 10.6285 3.39 11.6274 3.42742 11.6698Z', fill='#F5F5F5')

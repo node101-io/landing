@@ -1,1 +1,28 @@
-.div hacker-tours
+.events-content-hacker-tours-text= __('Türkiye is a massive country with a population exceeding 90 million, so it is not just about Istanbul. 101 goes to all significant developer hubs, especially Ankara, Izmir, and Antalya, and organizes events such as gatherings and workshops.')
+.events-content-hacker-tours-bottom-wrapper
+  -
+    const tours = [
+      {
+        _id: 'cosmos-ankara-workshops',
+        name: 'Cosmos Ankara Workshops',
+        link: 'https://lu.ma/CosmosAnkaraWorkshop'
+      },
+      {
+        _id: 'cosmos-meetup-ankara',
+        name: 'Cosmos Meetup Ankara',
+        link: 'https://lu.ma/CosmosAnkara'
+      },
+      {
+        _id: 'aleo-tour-of-turkiye',
+        name: 'Aleo Tour of Türkiye',
+        link: insertLanguageToLink('https://events.node101.io/aleo-tour-of-turkiye', lang)
+      }
+    ];
+  each tour in tours
+    a.events-content-hacker-tours-each-card-wrapper(href=tour.link target='_blank')
+      img.events-content-hacker-tours-each-card-image(
+        srcset=`/img/events/hacker-tours/${tour._id}-500w.png, /img/events/hacker-tours/${tour._id}-750w.png 1.5x, /img/events/hacker-tours/${tour._id}-1000w.png 2x`
+        src=`/img/events/hacker-tours/${tour._id}-1000w.png`
+        alt=tour.name
+      )
+      .events-content-hacker-tours-each-card-text= __(tour.name)

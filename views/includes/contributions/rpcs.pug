@@ -1,27 +1,21 @@
 .contributions-content-rpcs-json-wrapper
-  span
-    | {
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size));")
-    |   "jsonrpc": "2.0",
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size));")
-    |   "id": -1,
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size));")
-    |   "result": {
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 2);")
-    |     "response": {
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 3);")
-    |       "data": "node101",
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 3);")
-    |       "version": "1.0.1",
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 3);")
-    |       "last_block_height": "1010101",
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 3);")
-    |       "last_block_app_hash": "hY919X885FtsI8TGCkCvwsn4NuqLOCG0Yg8b2hyw/3g="
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 2);")
-    |     }
-  span(style="margin-left: calc(var(--contributions-content-rpcs-json-font-size) * 1);")
-    |   }
-  span
-    | }
+  span.contributions-content-rpcs-json-foldable#contributions-content-rpcs-json-foldable-1 {
+  .contributions-content-rpcs-json-layer-each-dots#contributions-content-rpcs-json-layer-1-dots.display-none ...
+  .contributions-content-rpcs-json-layer#contributions-content-rpcs-json-layer-1
+    span "jsonrpc": "2.0",
+    span "id": -1,
+    span.contributions-content-rpcs-json-foldable#contributions-content-rpcs-json-foldable-2 "result": {
+    .contributions-content-rpcs-json-layer-each-dots#contributions-content-rpcs-json-layer-2-dots.display-none ...
+    .contributions-content-rpcs-json-layer#contributions-content-rpcs-json-layer-2
+      span.contributions-content-rpcs-json-foldable#contributions-content-rpcs-json-foldable-3 "response": {
+      .contributions-content-rpcs-json-layer-each-dots#contributions-content-rpcs-json-layer-3-dots.display-none ...
+      .contributions-content-rpcs-json-layer#contributions-content-rpcs-json-layer-3
+        span "data": "node101",
+        span "version": "1.0.1",
+        span "last_block_height": "1010101",
+        span "last_block_app_hash": "hY919X885FtsI8TGCkCvwsn4NuqLOCG0Yg8b2hyw/3g="
+      span }
+    span }
+  span }
 .contributions-content-rpcs-each-text= __('RPC Nodes')
 .contributions-content-rpcs-each-text= __('node101 is hosting non-profit RPC, gRPC, LCD, and WebAPI services along with its mainnet & testnet nodes to distribute the value even more, helping the chains to reach their full potential.')

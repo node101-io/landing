@@ -1,4 +1,4 @@
-let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 35;
+let CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = 30;
 let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
 const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
@@ -160,9 +160,15 @@ function handleContributionScroll() {
   });
 };
 
-function initalizeContributionScrollEvent() {
+function updateContributionsStyleInfoRegularly() {
   CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = Number(getComputedStyle(document.documentElement).getPropertyValue('--contributions-navbar-content-each-contribution-font-size').replace('px', ''));
   CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = document.querySelector('.contributions-navbar-content-each-contribution').getBoundingClientRect().height;
+
+  return setTimeout(updateContributionsStyleInfoRegularly, 1000);
+};
+
+function initalizeContributionScrollEvent() {
+  updateContributionsStyleInfoRegularly();
 
   contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
   contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
@@ -267,6 +273,8 @@ window.addEventListener('load', _ => {
   addDragAbility('.contributions-content-videos-thumbnails-wrapper');
   addDragAbility('.events-content-workshops-bottom-wrapper');
   addDragAbility('.events-content-gatherings-bottom-wrapper');
+  addDragAbility('.events-content-hacker-houses-bottom-wrapper');
+  addDragAbility('.events-content-hacker-tours-bottom-wrapper');
 
   document.addEventListener('click', event => {
     if (event.target.closest('.events-content-navbar-header-wrapper')) {
@@ -294,6 +302,18 @@ window.addEventListener('load', _ => {
       document.querySelector(`.events-content-${eventId}-wrapper`).classList.remove('display-none');
     };
 
+    if (event.target.closest('.contributions-navbar-each-contribution-responsive')) {
+      const target = event.target.closest('.contributions-navbar-each-contribution-responsive');
+
+      const contributionId = target.id.replace('contribution-', '').replace('-responsive', '');
+
+      document.querySelector('.contributions-navbar-each-contribution-selected-responsive').classList.remove('contributions-navbar-each-contribution-selected-responsive');
+
+      document.getElementById(`contribution-${contributionId}-responsive`).classList.add('contributions-navbar-each-contribution-selected-responsive');
+
+      changeContributionsContentInnerWrapperContent(contributionId);
+    };
+
     if (event.target.closest('.footer-top-left-input-button')) {
       addToSubscriberList();
     };
@@ -302,6 +322,17 @@ window.addEventListener('load', _ => {
       document.querySelector('.contributions-content-open-source-each-project-wrapper-open').classList.remove('contributions-content-open-source-each-project-wrapper-open');
 
       event.target.closest('.contributions-content-open-source-each-project-wrapper').classList.add('contributions-content-open-source-each-project-wrapper-open');
+    };
+
+    if (event.target.closest('.contributions-content-rpcs-json-foldable')) {
+      const target = event.target.closest('.contributions-content-rpcs-json-foldable');
+
+      target.classList.toggle('contributions-content-rpcs-json-folded');
+
+      const idToHide = parseInt(target.id.replace('contributions-content-rpcs-json-foldable-', ''));
+
+      document.getElementById(`contributions-content-rpcs-json-layer-${idToHide}`).classList.toggle('display-none');
+      document.getElementById(`contributions-content-rpcs-json-layer-${idToHide}-dots`).classList.toggle('display-none');
     };
   });
 

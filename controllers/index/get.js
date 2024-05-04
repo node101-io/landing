@@ -114,20 +114,14 @@ const EVENTS = [
   {
     _id: 'cryptist',
     name: 'Cryptist',
-    logo: '/img/events/cryptist/logo.png',
-    link: 'https://cryptist.org/'
   },
   {
     _id: 'cosmosphere',
     name: 'Cosmosphere',
-    logo: '/img/events/cosmosphere/logo.png',
-    link: 'https://cosmosphere.dev/'
   },
   {
     _id: 'moda-palas',
     name: 'Moda Palas',
-    logo: '/img/events/moda-palas/logo.png',
-    link: 'https://events.node101.io/moda-palas'
   },
   {
     _id: 'workshops',
@@ -141,18 +135,18 @@ const EVENTS = [
     _id: 'summits',
     name: 'Summits'
   },
-  // {
-  //   _id: 'hacker-houses',
-  //   name: 'Hacker Houses'
-  // },
-  // {
-  //   _id: 'parties',
-  //   name: 'Parties'
-  // },
-  // {
-  //   _id: 'hacker-tours',
-  //   name: 'Hacker Tours'
-  // }
+  {
+    _id: 'hacker-houses',
+    name: 'Hacker-Houses'
+  },
+  {
+    _id: 'parties',
+    name: 'Parties'
+  },
+  {
+    _id: 'hacker-tours',
+    name: 'Hacker-Tours'
+  }
 ];
 
 module.exports = (req, res) => {
@@ -290,7 +284,7 @@ module.exports = (req, res) => {
     title: res.__('For you to make most of the distributed value'),
     includes: {
       external: {
-        css: ['general', 'header', 'page', 'events', 'contributions'],
+        css: ['general', 'header', 'page'],
         js: ['header', 'page', 'serverRequest']
       },
       meta: {

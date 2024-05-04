@@ -7,9 +7,10 @@
   --contributions-navbar-content-each-contribution-height: 75px;
   --contributions-navbar-content-each-contribution-font-size: 35px;
   --contributions-navbar-border-margin-left: 10px;
+  --contributions-navbar-responsive-gap: 8px;
+  --contributions-navbar-each-event-responsive-font-size: 16px;
 
-  --contributions-content-101-telegram-wrapper-width: 700px;
-  --contributions-content-101-telegram-margin: 40px;
+  --contributions-content-101-telegram-wrapper-width: 680px;
   --contributions-content-101-telegram-each-message-text-font-size: 16px;
   --contributions-content-101-telegram-each-message-height: 32px;
   --contributions-content-101-telegram-each-sticker-height: 130px;
@@ -17,12 +18,12 @@
   --contributions-content-101-telegram-dialog-margin-bottom: 40px;
   --contributions-content-101-telegram-title-font-size: 22px;
   --contributions-content-101-telegram-title-margin-bottom: 30px;
-  --contributions-content-101-telegram-each-text-font-size: 18px;
+  --contributions-content-101-telegram-each-text-font-size: 16px;
   --contributions-content-101-telegram-link-gap: 8px;
   --contributions-content-101-telegram-link-icon-height: 20px;
   --contributions-content-101-telegram-link-text-font-size: 14px;
 
-  --contributions-content-klein-wrapper-width: 700px;
+  --contributions-content-klein-wrapper-width: 680px;
   --contributions-content-klein-loading-each-text-font-size: 16px;
   --contributions-content-klein-loading-bar-font-size: 16px;
   --contributions-content-klein-loading-bar-margin: 20px;
@@ -37,7 +38,7 @@
   --contributions-content-podcasts-title-icon-height: 20px;
   --contributions-content-podcasts-text-font-size: 16px;
 
-  --contributions-content-open-source-wrapper-width: 700px;
+  --contributions-content-open-source-wrapper-width: 680px;
   --contributions-content-open-source-projects-gap: 4px;
   --contributions-content-open-source-projects-wrapper-margin-bottom: 40px;
   --contributions-content-open-source-project-animation-duration: .5s;
@@ -50,37 +51,38 @@
   --contributions-content-open-source-title-margin-bottom: 30px;
   --contributions-content-open-source-link-text-font-size: 14px;
 
-  --contributions-content-videos-wrapper-width: 700px;
+  --contributions-content-videos-wrapper-width: 680px;
   --contributions-content-videos-thumbnails-gap: 14px;
   --contributions-content-videos-thumbnails-margin-bottom: 50px;
   --contributions-content-videos-each-thumbnail-width: 200px;
   --contributions-content-videos-each-text-font-size: 16px;
   --contributions-content-videos-each-text-margin-top: 30px;
 
-  --contributions-content-relayers-wrapper-width: 700px;
+  --contributions-content-relayers-wrapper-width: 680px;
   --contributions-content-relayers-image-margin-bottom: 20px;
   --contributions-content-relayers-each-text-font-size: 16px;
   --contributions-content-relayers-each-text-margin-top: 30px;
 
 
-  --contributions-content-articles-wrapper-width: 700px;
+  --contributions-content-articles-wrapper-width: 680px;
   --contributions-content-articles-each-link-height: 40px;
   --contributions-content-articles-each-text-font-size: 16px;
   --contributions-content-articles-each-text-margin-top: 30px;
 
-  --contributions-content-bot101-wrapper-width: 700px;
+  --contributions-content-bot101-wrapper-width: 680px;
   --contributions-content-bot101-each-text-font-size: 16px;
   --contributions-content-bot101-each-text-margin-bottom: 30px;
+  --contributions-content-bot101-projects-image-width: 80%;
   --contributions-content-bot101-projects-gap: 10px;
   --contributions-content-bot101-each-project-width: 60px;
 
-  --contributions-content-rpcs-wrapper-width: 700px;
+  --contributions-content-rpcs-wrapper-width: 680px;
   --contributions-content-rpcs-each-text-font-size: 16px;
   --contributions-content-rpcs-each-text-margin-bottom: 30px;
   --contributions-content-rpcs-json-font-size: 14px;
   --contributions-content-rpcs-json-margin-bottom: 40px;
 
-  --contributions-content-validator-wrapper-width: 700px;
+  --contributions-content-validator-wrapper-width: 680px;
   --contributions-content-validator-each-text-font-size: 16px;
   --contributions-content-validator-each-text-margin-top: 30px;
   --contributions-content-validator-projects-each-project-height: 60px;
@@ -131,32 +133,64 @@
 }
 
 .contributions-content-wrapper {
-  height: calc(2 * var(--page-horizontal-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
-  min-height: calc(2 * var(--page-horizontal-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  height: calc(2 * var(--page-vertical-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
+  min-height: calc(2 * var(--page-vertical-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
+  width: 100%;
+  min-width: 100%;
   display: flex;
-  padding: var(--page-horizontal-padding);
+  justify-content: center;
+  padding: var(--page-vertical-padding) calc(var(--content-gap) / 4);
   margin-top: var(--contributions-header-margin-top);
   background-color: var(--dark-text-color);
-  border-radius: var(--page-horizontal-padding);
+  border-radius: var(--page-vertical-padding);
 }
 
 .contributions-navbar-wrapper {
   position: relative;
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: calc(0.3 * (100vw - var(--content-gap) / 2));
+  min-width: calc(0.3 * (100vw - var(--content-gap) / 2));
   display: flex;
+}
+.contributions-navbar-wrapper-responsive {
+  display: none;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  width: 100%;
+  min-width: 100%;
+  flex-wrap: wrap;
+  gap: var(--contributions-navbar-responsive-gap);
+  margin-bottom: var(--page-vertical-padding);
+}
+.contributions-navbar-each-contribution-responsive {
+  font-family: 'Igra Sans', sans-serif;
+  font-size: var(--contributions-navbar-each-event-responsive-font-size);
+  color: var(--background-color);
+  background-color: var(--dark-text-color);
+  padding: calc(var(--contributions-navbar-each-event-responsive-font-size) / 2) calc(var(--contributions-navbar-each-event-responsive-font-size));
+  border-radius: var(--contributions-navbar-each-event-responsive-font-size);
+  cursor: var(--pointer-hand-dark);
+  transition: all .5s;
+}
+.contributions-navbar-each-contribution-responsive:hover {
+  opacity: 0.8;
+}
+.contributions-navbar-each-contribution-selected-responsive {
+  background-color: var(--lila-color);
+  color: var(--dark-text-color);
 }
 
 .contributions-navbar-scroll-wrapper {
   position: absolute;
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: calc(0.3 * (100vw - var(--content-gap) / 2));
+  min-width: calc(0.3 * (100vw - var(--content-gap) / 2));
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -170,8 +204,8 @@
 .contributions-navbar-scroll-inner-each-wrapper {
   height: var(--contributions-navbar-content-each-contribution-height);
   min-height: var(--contributions-navbar-content-each-contribution-height);
-  width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: calc(0.3 * (100vw - var(--content-gap) / 2));
+  min-width: calc(0.3 * (100vw - var(--content-gap) / 2));
 }
 
 .contributions-navbar-selected-icon {
@@ -211,8 +245,8 @@
   padding-top: 1px;
 }
 .contributions-navbar-border {
-  height: calc(0.8 * (var(--contributions-content-height) - 2 * var(--page-horizontal-padding)));
-  min-height: calc(0.8 * (var(--contributions-content-height) - 2 * var(--page-horizontal-padding)));
+  height: calc(0.8 * (var(--contributions-content-height) - var(--page-vertical-padding) * 2));
+  min-height: calc(0.8 * (var(--contributions-content-height) - var(--page-vertical-padding) * 2));
   width: 1px;
   min-width: 1px;
   margin-left: var(--contributions-navbar-border-margin-left);
@@ -222,11 +256,12 @@
 .contributions-content-inner-wrapper {
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: auto;
+  min-width: auto;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  padding-left: var(--page-horizontal-padding);
+  padding-left: calc(var(--content-gap) / 4);
 }
 
 .contributions-content-each-contribution-wrapper {
@@ -251,7 +286,6 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  padding: var(--contributions-content-101-telegram-margin);
 }
 .contributions-content-101-telegram-dialog-wrapper {
   width: 100%;
@@ -363,16 +397,21 @@
   font-size: var(--contributions-content-klein-loading-each-text-font-size);
   color: var(--klein-color);
 }
-.contributions-content-klein-loading-bar {
+.contributions-content-klein-loading-bar,
+.contributions-content-klein-loading-bar-responsive {
   display: flex;
   font-size: var(--contributions-content-klein-loading-bar-font-size);
   background-image: linear-gradient(to right, var(--klein-color), var(--klein-color) 50%, var(--background-color) 50%, var(--background-color));
   gap: calc((100% - 100 * var(--contributions-content-klein-loading-bar-each-part-width)) / 99);
   margin-top: var(--contributions-content-klein-loading-bar-margin);
-  margin-bottom: calc(--contributions-content-klein-loading-bar-margin);
+  margin-bottom: var(--contributions-content-klein-loading-bar-margin);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   overflow: hidden;
+}
+.contributions-content-klein-loading-bar-responsive {
+  display: none;
+  gap: calc((100% - 50 * var(--contributions-content-klein-loading-bar-each-part-width)) / 49);
 }
 .contributions-content-klein-loading-bar-each-part {
   font-family: 'Igra Sans', sans-serif;
@@ -636,11 +675,12 @@
   margin: auto;
 }
 .contributions-content-videos-thumbnails-wrapper {
-  width: calc(100% + var(--page-horizontal-padding));
-  min-width: calc(100% + var(--page-horizontal-padding));
+  width: 100%;
+  min-width: 100%;
   display: flex;
   gap: var(--contributions-content-videos-thumbnails-gap);
   margin-bottom: var(--contributions-content-videos-thumbnails-margin-bottom);
+  padding-right: calc(var(--contributions-content-videos-thumbnails-gap));
   overflow-x: auto;
   cursor: var(--pointer-hand-drag-dark);
   scrollbar-width: none;
@@ -654,6 +694,9 @@
   min-height: calc(var(--contributions-content-videos-each-thumbnail-width) * 9 / 16);
   width: var(--contributions-content-videos-each-thumbnail-width);
   min-width: var(--contributions-content-videos-each-thumbnail-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   border-radius: calc(var(--contributions-content-videos-each-thumbnail-width) * 1 / 10);
   cursor: var(--pointer-hand-drag-dark);
@@ -661,8 +704,8 @@
 .contributions-content-videos-each-thumbnail-image {
   height: auto;
   min-height: auto;
-  width: 100%;
-  min-width: 100%;
+  width: 102%;
+  min-width: 102%;
   border-bottom-right-radius: calc(var(--contributions-content-videos-each-thumbnail-width) * 12 / 100);
   -o-object-position: 10%;
      object-position: 10%;
@@ -857,6 +900,16 @@
 }
 .contributions-content-bot101-projects-wrapper {
   display: flex;
+  justify-content: center;
+}
+.contributions-content-bot101-projects-image {
+  width: var(--contributions-content-bot101-projects-image-width);
+  min-width: var(--contributions-content-bot101-projects-image-width);
+  height: auto;
+  min-height: auto;
+}
+/* .contributions-content-bot101-projects-wrapper {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--contributions-content-bot101-projects-gap);
@@ -866,7 +919,7 @@
   min-height: var(--contributions-content-bot101-each-project-width);
   width: var(--contributions-content-bot101-each-project-width);
   min-width: var(--contributions-content-bot101-each-project-width);
-}
+} */
 .contributions-content-bot101-each-project-image {
   height: auto;
   min-height: auto;
@@ -889,6 +942,32 @@
   font-size: var(--contributions-content-rpcs-json-font-size);
   color: var(--background-color);
   margin-bottom: var(--contributions-content-rpcs-json-margin-bottom);
+  margin-left: var(--contributions-content-rpcs-json-font-size);
+}
+.contributions-content-rpcs-json-layer {
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--contributions-content-rpcs-json-font-size);
+}
+.contributions-content-rpcs-json-layer-each-dots {
+  margin-left: var(--contributions-content-rpcs-json-font-size);
+}
+.contributions-content-rpcs-json-foldable {
+  position: relative;
+  cursor: var(--pointer-hand-dark);
+}
+.contributions-content-rpcs-json-foldable::before {
+  content: '';
+  position: absolute;
+  border-left: calc(var(--contributions-content-rpcs-json-font-size) / 4) solid transparent;
+  border-right: calc(var(--contributions-content-rpcs-json-font-size) / 4) solid transparent;
+  border-top: calc(var(--contributions-content-rpcs-json-font-size) / 2) solid var(--background-color);
+  bottom: 0;
+  left: calc(var(--contributions-content-rpcs-json-font-size) * -1);
+  margin-bottom: calc(var(--contributions-content-rpcs-json-font-size) / 4);
+}
+.contributions-content-rpcs-json-folded::before {
+  transform: rotate(-90deg);
 }
 .contributions-content-rpcs-each-text {
   font-family: 'Igra Sans', sans-serif;
@@ -939,4 +1018,127 @@
   color: var(--background-color);
   line-height: 1.3;
   margin-top: var(--contributions-content-validator-each-text-margin-top);
+}
+
+@media only screen and (max-width: 1200px) {
+  :root {
+    --contributions-navbar-content-each-contribution-font-size: 30px;
+
+    --contributions-content-101-telegram-wrapper-width: 560px;
+    --contributions-content-klein-wrapper-width: 560px;
+    --contributions-content-open-source-wrapper-width: 560px;
+    --contributions-content-videos-wrapper-width: 560px;
+    --contributions-content-relayers-wrapper-width: 560px;
+    --contributions-content-articles-wrapper-width: 560px;
+    --contributions-content-bot101-wrapper-width: 560px;
+    --contributions-content-rpcs-wrapper-width: 560px;
+    --contributions-content-validator-wrapper-width: 560px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  :root {
+    --contributions-navbar-content-each-contribution-font-size: 24px;
+    --contributions-navbar-content-each-contribution-height: 70px;
+
+    --contributions-content-101-telegram-wrapper-width: 500px;
+    --contributions-content-klein-wrapper-width: 500px;
+    --contributions-content-open-source-wrapper-width: 500px;
+    --contributions-content-videos-wrapper-width: 500px;
+    --contributions-content-relayers-wrapper-width: 500px;
+    --contributions-content-articles-wrapper-width: 500px;
+    --contributions-content-bot101-wrapper-width: 500px;
+    --contributions-content-rpcs-wrapper-width: 500px;
+    --contributions-content-validator-wrapper-width: 500px;
+  }
+
+  .contributions-content-bot101-projects-wrapper {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  :root {
+    --contributions-navbar-content-each-contribution-font-size: 22px;
+
+    --contributions-content-101-telegram-wrapper-width: 460px;
+    --contributions-content-klein-wrapper-width: 460px;
+    --contributions-content-open-source-wrapper-width: 460px;
+    --contributions-content-videos-wrapper-width: 460px;
+    --contributions-content-relayers-wrapper-width: 460px;
+    --contributions-content-articles-wrapper-width: 460px;
+    --contributions-content-bot101-wrapper-width: 460px;
+    --contributions-content-rpcs-wrapper-width: 460px;
+    --contributions-content-validator-wrapper-width: 460px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  :root {
+    --contributions-content-101-telegram-wrapper-width: 100%;
+    --contributions-content-klein-wrapper-width: 100%;
+    --contributions-content-open-source-wrapper-width: 100%;
+    --contributions-content-videos-wrapper-width: 100%;
+    --contributions-content-relayers-wrapper-width: 100%;
+    --contributions-content-articles-wrapper-width: 100%;
+    --contributions-content-bot101-wrapper-width: 100%;
+    --contributions-content-rpcs-wrapper-width: 100%;
+    --contributions-content-validator-wrapper-width: 100%;
+  }
+  .contributions-navbar-wrapper {
+    display: none;
+  }
+  .contributions-content-inner-wrapper {
+    padding: 0;
+    width: 100%;
+    min-width: 100%;
+  }
+  .contributions-navbar-wrapper-responsive {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 700px) {}
+@media only screen and (max-width: 600px) {
+  :root {
+    --contributions-content-101-telegram-each-message-height: 26px;
+    --contributions-content-101-telegram-title-margin-bottom: 20px;
+    --contributions-content-101-telegram-each-text-font-size: 14px;
+
+    --contributions-content-podcasts-rectangle-image-width: 120px;
+
+    --contributions-content-bot101-projects-image-width: 100%;
+
+    --contributions-content-rpcs-json-font-size: 12px;
+
+    --contributions-content-validator-projects-each-project-height: 48px;
+
+    --contributions-content-open-source-each-project-width: 32px;
+  }
+
+  .contributions-content-klein-loading-bar {
+    display: none;
+  }
+  .contributions-content-klein-loading-bar-responsive {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 500px) {
+  :root {
+    --contributions-content-open-source-each-project-name-font-size: 14px;
+    --contributions-content-open-source-each-project-width: 30px;
+
+    --contributions-content-podcasts-rectangle-image-width: 100px;
+  }
+
+  .contributions-content-validator-each-project-wrapper {
+    margin: 0 -10px;
+    height: calc(var(--contributions-content-validator-projects-each-project-height) * 2);
+    min-height: calc(var(--contributions-content-validator-projects-each-project-height) * 2);
+  }
+}
+@media only screen and (max-width: 400px) {
+  :root {
+    --contributions-content-podcasts-images-gap: 10px;
+    --contributions-content-podcasts-rectangle-image-width: 76px;
+
+    --contributions-content-101-telegram-each-message-text-font-size: 12px;
+  }
 }

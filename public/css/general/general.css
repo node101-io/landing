@@ -97,26 +97,9 @@ p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-/* .pointer {
-  --pointer-x: -100;
-  --pointer-y: -100;
-  cursor: none;
-  position: fixed;
-  top: var(--pointer-y);
-  left: var(--pointer-x);
-  background-color: black;
-  height: 15px;
-  min-height: 15px;
-  width: 15px;
-  min-width: 15px;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  z-index: 1001;
-} */
-
-@media only screen and (min-width: 1920) {
+@media only screen and (min-width: 1920px) {
   :root {
-    --page-horizontal-padding: calc((100vw - 1920) / 2 + 40px);
+    --page-horizontal-padding: calc((100vw - 1920px) / 2 + 40px);
   }
 }
 @media only screen and (max-width: 800px) {

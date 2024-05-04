@@ -1,1 +1,18 @@
-.div hacker-houses
+.events-content-hacker-houses-text= __('As a full-fledged developer hub, Moda Palas also hosts Hackerhouses, which can accommodate 10+ participants and allow builders to develop hackathon products comfortably.')
+.events-content-hacker-houses-bottom-wrapper.events-content-hacker-houses-bottom-wrapper
+  -
+    const hackerHouses = [
+      {
+        _id: 'celestia-infinite-space',
+        name: 'Celestia Infinite Space Bazaar',
+        link: 'https://lu.ma/Hackerhouse-Celestia-Istanbul'
+      }
+    ];
+  each hackerHouse in hackerHouses
+    a.events-content-hacker-houses-each-card-wrapper(href=hackerHouse.link target='_blank')
+      img.events-content-hacker-houses-each-card-image(
+        srcset=`/img/events/hacker-houses/${hackerHouse._id}-240w.png, /img/events/hacker-houses/${hackerHouse._id}-480w.png 2x`,
+        src=`/img/events/hacker-houses/${hackerHouse._id}-480w.png`
+        alt=hackerHouse.name
+      )
+      .events-content-hacker-houses-each-card-text= __(hackerHouse.name)
