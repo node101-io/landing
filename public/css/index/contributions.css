@@ -11,7 +11,6 @@
   --contributions-navbar-each-event-responsive-font-size: 16px;
 
   --contributions-content-101-telegram-wrapper-width: 680px;
-  --contributions-content-101-telegram-each-message-text-font-size: 16px;
   --contributions-content-101-telegram-each-message-height: 32px;
   --contributions-content-101-telegram-each-sticker-height: 130px;
   --contributions-content-101-telegram-dialog-gap: 12px;
@@ -296,12 +295,23 @@
   margin-bottom: var(--contributions-content-101-telegram-dialog-margin-bottom);
 }
 .contributions-content-101-telegram-each-left-message-wrapper, .contributions-content-101-telegram-each-right-message-wrapper {
-  height: var(--contributions-content-101-telegram-each-message-height);
-  min-height: var(--contributions-content-101-telegram-each-message-height);
+  height: 0;
+  min-height: 0;
   display: flex;
+  animation: contributionsContent101TelegramEachMessage .5s forwards ease-in-out;
 }
 .contributions-content-101-telegram-each-right-message-wrapper {
   margin-left: auto;
+}
+@keyframes contributionsContent101TelegramEachMessage {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-message-height);
+    min-height: var(--contributions-content-101-telegram-each-message-height);
+  }
 }
 .contributions-content-101-telegram-each-message-part {
   height: 100%;
@@ -310,13 +320,24 @@
   min-width: auto;
 }
 .contributions-content-101-telegram-each-sticker {
-  height: var(--contributions-content-101-telegram-each-sticker-height);
-  min-height: var(--contributions-content-101-telegram-each-sticker-height);
+  height: 0;
+  min-height: 0;
   width: auto;
   min-width: auto;
   margin-left: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  animation: contributionsContent101TelegramEachSticker .5s forwards ease-in-out;
+}
+@keyframes contributionsContent101TelegramEachSticker {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-sticker-height);
+    min-height: var(--contributions-content-101-telegram-each-sticker-height);
+  }
 }
 .contributions-content-101-telegram-each-left-message-text, .contributions-content-101-telegram-each-right-message-text {
   height: 100%;
@@ -327,18 +348,42 @@
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
-  padding-right: 10px;
   display: flex;
   align-items: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: var(--contributions-content-101-telegram-each-message-text-font-size);
+  font-size: 0;
+  animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out;
 }
 .contributions-content-101-telegram-each-left-message-text {
   background-color: rgba(255, 255, 255, 1);
-;
+}
+@keyframes contributionsContent101TelegramEachMessageText {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: calc(var(--contributions-content-101-telegram-each-message-height) / 2);
+  }
 }
 .contributions-content-101-telegram-each-right-message-text {
   background-color: var(--light-pink-color);
+}
+.contributions-content-101-telegram-each-right-message-text-bouncing {
+  animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out, contributionsContent101TelegramEachMessageTextBouncing 2s infinite;
+}
+@keyframes contributionsContent101TelegramEachMessageTextBouncing {
+  0% {
+    padding-bottom: 0;
+  }
+  25% {
+    padding-bottom: calc(var(--contributions-content-101-telegram-each-message-height) / 4);
+  }
+  50% {
+    padding-bottom: 0;
+  }
+  100% {
+    padding-bottom: 0;
+  }
 }
 .contributions-content-101-telegram-title {
   font-family: 'Igra Sans', sans-serif;
@@ -418,7 +463,11 @@
   height: auto;
   min-height: auto;
   width: var(--contributions-content-klein-loading-bar-each-part-width);
-  min-width: var(--contributions-content-klein-loading-bar-each-part-width);;
+  min-width: var(--contributions-content-klein-loading-bar-each-part-width);
+  fill: var(--background-color);
+}
+.contributions-content-klein-loading-bar-each-part-filled {
+  fill: var(--klein-color);
 }
 .contributions-content-klein-link-wrapper {
   display: flex;
@@ -1138,7 +1187,5 @@
   :root {
     --contributions-content-podcasts-images-gap: 10px;
     --contributions-content-podcasts-rectangle-image-width: 76px;
-
-    --contributions-content-101-telegram-each-message-text-font-size: 12px;
   }
 }
