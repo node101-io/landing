@@ -328,11 +328,6 @@ window.addEventListener('load', _ => {
       const target = event.target.closest('.contributions-content-rpcs-json-foldable');
 
       target.classList.toggle('contributions-content-rpcs-json-folded');
-
-      const idToHide = parseInt(target.id.replace('contributions-content-rpcs-json-foldable-', ''));
-
-      document.getElementById(`contributions-content-rpcs-json-layer-${idToHide}`).classList.toggle('display-none');
-      document.getElementById(`contributions-content-rpcs-json-layer-${idToHide}-dots`).classList.toggle('display-none');
     };
   });
 
