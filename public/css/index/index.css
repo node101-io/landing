@@ -70,7 +70,6 @@
   --portfolio-header-curvature-border-radius: 20px;
   --portfolio-header-top-line-text-width: 690px;
   --portfolio-header-top-line-text-width-ratio: 17 / 20;
-  --portfolio-header-bottom-line-link-icon-width: 20px;
   --portfolio-content-padding: 40px;
   --portfolio-content-max-width: 1000px;
   --portfolio-content-project-gap: 90px;
@@ -120,7 +119,6 @@
   --team-button-width: 190px;
   --team-button-horizontal-padding: 20px;
   --team-button-font-size: 18px;
-  --team-button-icon-width: 20px;
   --team-button-transition-duration: .5s;
   --team-footer-width: 700px;
   --team-footer-color-size: 30px;
@@ -275,6 +273,20 @@
   background-color: var(--light-color);
   overflow: hidden;
   z-index: 1;
+}
+.start-page-background-inner-wrapper {
+  position: relative;
+  left: var(--start-page-background-left)
+}
+@media (orientation: landscape) {
+  :root {
+    --start-page-background-left: 0;
+  }
+}
+@media (orientation: portrait) {
+  :root {
+    --start-page-background-left: -60vh;
+  }
 }
 
 .start-page-background-shape-one-wrapper {
@@ -809,6 +821,7 @@
   margin-left: calc(-1 * var(--start-page-header-font-size) * .07);
 }
 .start-page-header-each-line {
+  position: relative;
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -821,6 +834,12 @@
   min-width: var(--start-page-header-font-space);
   margin-bottom: var(--start-page-header-gap);
   white-space: nowrap;
+}
+.start-page-header-each-line-turkish-char-fix::before {
+  content: '˘';
+  position: absolute;
+  top: calc(0.17 * var(--start-page-header-font-size));
+  left: calc(8.78 * var(--start-page-header-font-size));
 }
 .start-page-last-line-wrapper {
   height: -webkit-fit-content;
@@ -844,6 +863,8 @@
   font-size: var(--start-page-description-font-size);
   font-weight: 300;
   color: var(--dark-text-color);
+  display: flex;
+  align-items: center;
   max-width: var(--start-page-description-max-width);
   margin-left: var(--start-page-header-gap);
 }
@@ -1008,14 +1029,14 @@
   transform: translate(10%, -20%);
 }
 .portfolio-header-bottom-line-link-text {
-  line-height: calc(1.2 * var(--portfolio-header-font-size));
+  line-height: 1.2;
 }
 .portfolio-header-bottom-line-link-icon {
   fill: var(--link-light-color);
   height: auto;
   min-height: auto;
-  width: var(--portfolio-header-bottom-line-link-icon-width);
-  min-width: var(--portfolio-header-bottom-line-link-icon-width);
+  width: calc(var(--portfolio-header-font-size) * 2 / 3);
+  min-width: calc(var(--portfolio-header-font-size) * 2 / 3);
   margin-left: 6px;
   transform: translateY(-10%);
   transition: var(--start-page-external-link-hover-transition-duration);
@@ -1442,6 +1463,7 @@
 .team-background {
   height: auto;
   min-height: auto;
+  max-height: var(--team-wrapper-height);
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
   right: 0;
@@ -1460,7 +1482,6 @@
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
-  padding-bottom: calc(2 * var(--page-horizontal-padding));
   background-color: transparent;
   top: 0;
   left: 0;
@@ -1610,18 +1631,18 @@
 .team-content-button-icon {
   height: auto;
   min-height: auto;
-  width: var(--team-button-icon-width);
-  min-width: var(--team-button-icon-width);
+  width: var(--team-button-font-size);
+  min-width: var(--team-button-font-size);
   transition: var(--team-button-transition-duration);
 }
 .team-content-button-icon-left {
-  margin-left: calc(-1 * (var(--team-button-horizontal-padding) + var(--team-button-icon-width)));
+  margin-left: calc(-1 * (var(--team-button-horizontal-padding) + var(--team-button-font-size)));
 }
 .team-content-button:hover .team-content-button-icon-left {
   margin-left: 0;
 }
 .team-content-button:hover .team-content-button-icon-right {
-  margin-right: calc(-1 * (var(--team-button-horizontal-padding) + var(--team-button-icon-width)));
+  margin-right: calc(-1 * (var(--team-button-horizontal-padding) + var(--team-button-font-size)));
 }
 .team-content-button-responsive {
   display: none;
@@ -2103,7 +2124,7 @@
 
 .foooter-background-shape {
   position: absolute;
-  left: 0;
+  left: calc(var(--page-horizontal-padding) - var(--footer-background-shape-height) / 20);
   bottom: 0;
   height: var(--footer-background-shape-height);
   min-height: var(--footer-background-shape-height);
@@ -2113,8 +2134,27 @@
   z-index: 2;
 }
 
+@media only screen and (max-height: 850px) {
+  :root {
+    --start-page-background-height: 850px;
+  }
+  .start-page-wrapper {
+    height: calc(850px - var(--header-height) - 2 * var(--page-vertical-padding));
+    min-height: calc(850px - var(--header-height) - 2 * var(--page-vertical-padding));
+  }
+  .start-page-content {
+    height: calc(850px - var(--header-height) - 2 * var(--page-vertical-padding));
+    min-height: calc(850px - var(--header-height) - 2 * var(--page-vertical-padding));
+  }
+  .start-page-background {
+    height: calc(850px - 2 * var(--page-vertical-padding));
+    min-height: calc(850px - 2 * var(--page-vertical-padding));
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   :root {
+    --start-page-header-font-size: 95px;
     --portfolio-content-max-width: 750px;
     --portfolio-content-project-gap: 80px;
 
@@ -2164,7 +2204,7 @@
 }
 @media only screen and (max-width: 1100px) {
   :root {
-    --start-page-header-font-size: 90px;
+    --start-page-header-font-size: 84px;
     --start-page-content-horizontal-padding: 50px;
     --start-page-external-link-title-font-size: 17px;
     --start-page-external-link-text-font-size: 14px;
@@ -2177,6 +2217,8 @@
 }
 @media only screen and (max-width: 1000px) {
   :root {
+    --start-page-header-font-size: 75px;
+
     --team-header-font-size: 20px;
     --team-images-height: 200px;
     --team-footer-font-size: 14px;
@@ -2186,11 +2228,9 @@
     --team-button-width: 170px;
     --team-button-horizontal-padding: 18px;
     --team-button-font-size: 16px;
-    --team-button-icon-width: 18px;
 
     --portfolio-header-top-line-text-width: 630px;
     --portfolio-header-font-size: 20px;
-    --portfolio-header-bottom-line-link-icon-width: 18px;
 
     --footer-top-right-wrapper-width: 360px;
     --footer-top-horizontal-padding: 30px;
@@ -2198,12 +2238,11 @@
 }
 @media only screen and (max-width: 900px) {
   :root {
+    --start-page-header-font-size: 66px;
     --start-page-content-horizontal-padding: 30px;
-    --start-page-header-font-size: 70px;
 
     --portfolio-curvature-border-radius: 20px;
     --portfolio-header-font-size: 18px;
-    --portfolio-header-bottom-line-link-icon-width: 16px;
     --portfolio-header-top-line-text-width: 570px;
     --portfolio-content-max-width: 500px;
     --portfolio-content-project-gap: 60px;
@@ -2279,10 +2318,15 @@
     padding-left: calc(var(--footer-background-shape-height) - var(--page-vertical-padding));
   }
 }
+@media only screen and (max-width: 800px) {
+  :root {
+    --start-page-header-font-size: 58px;
+  }
+}
 @media only screen and (max-width: 700px) {
   :root {
     --start-page-radius: 20px;
-    --start-page-header-font-size: 64px;
+    --start-page-header-font-size: 52px;
     --start-page-description-font-size: 14px;
     --start-page-external-link-title-font-size: 15px;
 
@@ -2330,7 +2374,7 @@
 @media only screen and (max-width: 600px) {
   :root {
     --start-page-content-horizontal-padding: 20px;
-    --start-page-header-font-size: 54px;
+    --start-page-header-font-size: 44px;
     --start-page-external-link-title-font-size: 13px;
 
     --team-wrapper-height: 400px;
@@ -2384,7 +2428,7 @@
   :root {
     --hello-node101-text-font-size: 24px;
 
-    --start-page-header-font-size: 42px;
+    --start-page-header-font-size: 35px;
 
     --portfolio-header-top-line-text-width-ratio: 1;
     --portfolio-content-project-name-font-size: 16px;
@@ -2410,7 +2454,7 @@
 }
 @media only screen and (max-width: 400px) {
   :root {
-    --start-page-header-font-size: 30px;
+    --start-page-header-font-size: 26px;
 
     --portfolio-content-project-name-font-size: 14px;
     --portfolio-content-project-apr-font-size: 14px;

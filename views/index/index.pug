@@ -5,41 +5,42 @@ block main
     img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
   .content-inner-wrapper
     .start-page-background(style=`${is_new_user ? '--start-page-background-global-delay: calc(1.2 * var(--hello-node101-opacity-animation-duration))' : ''}`)
-      .start-page-background-shape-one-wrapper
-        svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')
-          path(d='M746.781 641.412C609.904 718.184 535.009 739.688 390.57 729.514C249.613 719.596 136.997 621.716 65.9475 498.373C-11.6865 363.608 21.8524 246.676 24.9619 77.9549C25.4327 52.3231 26.13 26.684 27.1477 0.999761' stroke='url(#paint0_linear_68_1510)' stroke-width='30' stroke-miterlimit='10')
-          defs
-            lineargradient#paint0_linear_68_1510(x1='-1860.33' y1='-1791.59' x2='1604.06' y2='1352.99' gradientunits='userSpaceOnUse')
-              stop(stop-color='#947E8A')
-              stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-two-wrapper
-        svg.start-page-background-shape-two(viewbox='0 0 699 255' fill='none' xmlns='http://www.w3.org/2000/svg')
-          path(d='M684.589 250.119C643.51 106 497.836 43.9581 370.996 19.8956C270.105 0.758287 109.123 52.4698 7.99991 109.169' stroke='url(#paint0_linear_69_1512)' stroke-width='30' stroke-miterlimit='10')
-          defs
-            lineargradient#paint0_linear_69_1512(x1='-2599.1' y1='-2323.83' x2='865.283' y2='820.744' gradientunits='userSpaceOnUse')
-              stop(stop-color='#947E8A')
-              stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-three-wrapper
-        svg.start-page-background-shape-three(viewbox='0 0 100 300' fill='none' xmlns='http://www.w3.org/2000/svg')
-          path(d='M13.1216 290.91C71.8701 206.315 100.424 95.7198 74.5178 4.9999' stroke='url(#paint0_linear_69_1514)' stroke-width='30' stroke-miterlimit='10')
-          defs
-            lineargradient#paint0_linear_69_1514(x1='-3209.17' y1='-2568.95' x2='255.213' y2='575.624' gradientunits='userSpaceOnUse')
-              stop(stop-color='#947E8A')
-              stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-four-wrapper
-        svg.start-page-background-shape-four(viewbox='0 0 498 203' fill='none' xmlns='http://www.w3.org/2000/svg')
-          path(d='M25.3562 6.06469C-5.65223 89.1754 42.6004 154.947 107.127 175.522C230.673 214.94 394.325 154.099 485.064 23.4341' stroke='url(#paint0_linear_69_1513)' stroke-width='30' stroke-miterlimit='10')
-          defs
-            lineargradient#paint0_linear_69_1513(x1='-2737.23' y1='-2836.43' x2='727.155' y2='308.149' gradientunits='userSpaceOnUse')
-              stop(stop-color='#947E8A')
-              stop(offset='1' stop-color='#DFE5FF')
-      .start-page-background-shape-five-wrapper
-        svg.start-page-background-shape-five(viewbox='0 0 617 473' fill='none' xmlns='http://www.w3.org/2000/svg')
-          path(d='M601.747 469.082C567.652 301.181 493.14 149.03 337.893 62.6248C202.088 -16.3608 52.8544 6.91536 14.6732 109.231' stroke='url(#paint0_linear_70_1515)' stroke-width='30' stroke-miterlimit='10')
-          defs
-            lineargradient#paint0_linear_70_1515(x1='-2747.91' y1='-2733.27' x2='716.475' y2='411.311' gradientunits='userSpaceOnUse')
-              stop(stop-color='#947E8A')
-              stop(offset='1' stop-color='#DFE5FF')
+      .start-page-background-inner-wrapper
+        .start-page-background-shape-one-wrapper
+          svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')
+            path(d='M746.781 641.412C609.904 718.184 535.009 739.688 390.57 729.514C249.613 719.596 136.997 621.716 65.9475 498.373C-11.6865 363.608 21.8524 246.676 24.9619 77.9549C25.4327 52.3231 26.13 26.684 27.1477 0.999761' stroke='url(#paint0_linear_68_1510)' stroke-width='30' stroke-miterlimit='10')
+            defs
+              lineargradient#paint0_linear_68_1510(x1='-1860.33' y1='-1791.59' x2='1604.06' y2='1352.99' gradientunits='userSpaceOnUse')
+                stop(stop-color='#947E8A')
+                stop(offset='1' stop-color='#DFE5FF')
+        .start-page-background-shape-two-wrapper
+          svg.start-page-background-shape-two(viewbox='0 0 699 255' fill='none' xmlns='http://www.w3.org/2000/svg')
+            path(d='M684.589 250.119C643.51 106 497.836 43.9581 370.996 19.8956C270.105 0.758287 109.123 52.4698 7.99991 109.169' stroke='url(#paint0_linear_69_1512)' stroke-width='30' stroke-miterlimit='10')
+            defs
+              lineargradient#paint0_linear_69_1512(x1='-2599.1' y1='-2323.83' x2='865.283' y2='820.744' gradientunits='userSpaceOnUse')
+                stop(stop-color='#947E8A')
+                stop(offset='1' stop-color='#DFE5FF')
+        .start-page-background-shape-three-wrapper
+          svg.start-page-background-shape-three(viewbox='0 0 100 300' fill='none' xmlns='http://www.w3.org/2000/svg')
+            path(d='M13.1216 290.91C71.8701 206.315 100.424 95.7198 74.5178 4.9999' stroke='url(#paint0_linear_69_1514)' stroke-width='30' stroke-miterlimit='10')
+            defs
+              lineargradient#paint0_linear_69_1514(x1='-3209.17' y1='-2568.95' x2='255.213' y2='575.624' gradientunits='userSpaceOnUse')
+                stop(stop-color='#947E8A')
+                stop(offset='1' stop-color='#DFE5FF')
+        .start-page-background-shape-four-wrapper
+          svg.start-page-background-shape-four(viewbox='0 0 498 203' fill='none' xmlns='http://www.w3.org/2000/svg')
+            path(d='M25.3562 6.06469C-5.65223 89.1754 42.6004 154.947 107.127 175.522C230.673 214.94 394.325 154.099 485.064 23.4341' stroke='url(#paint0_linear_69_1513)' stroke-width='30' stroke-miterlimit='10')
+            defs
+              lineargradient#paint0_linear_69_1513(x1='-2737.23' y1='-2836.43' x2='727.155' y2='308.149' gradientunits='userSpaceOnUse')
+                stop(stop-color='#947E8A')
+                stop(offset='1' stop-color='#DFE5FF')
+        .start-page-background-shape-five-wrapper
+          svg.start-page-background-shape-five(viewbox='0 0 617 473' fill='none' xmlns='http://www.w3.org/2000/svg')
+            path(d='M601.747 469.082C567.652 301.181 493.14 149.03 337.893 62.6248C202.088 -16.3608 52.8544 6.91536 14.6732 109.231' stroke='url(#paint0_linear_70_1515)' stroke-width='30' stroke-miterlimit='10')
+            defs
+              lineargradient#paint0_linear_70_1515(x1='-2747.91' y1='-2733.27' x2='716.475' y2='411.311' gradientunits='userSpaceOnUse')
+                stop(stop-color='#947E8A')
+                stop(offset='1' stop-color='#DFE5FF')
     .start-page-wrapper
       .start-page-left-top-radius
         .start-page-left-top-radius-inner-circle
@@ -53,7 +54,7 @@ block main
           h2.start-page-external-link-each-text= __('With Just a Click')
         .start-page-header-wrapper
           - let start_page_text = [__('FOR YOU TO'), __('MAKE MOST OF'), __('THE'), __('DISTRIBUTED'), __('VALUE')]
-          h1.start-page-header-each-line= start_page_text[0]
+          h1.start-page-header-each-line(class=`${lang == 'tr' ? 'start-page-header-each-line-turkish-char-fix' : ''}`)= start_page_text[0]
           h1.start-page-header-each-line= start_page_text[1]
           h1.start-page-header-each-line= start_page_text[2]
             a.start-page-external-link-wrapper.start-page-external-events-wrapper(href='https://lu.ma/node101' target='_blank')
@@ -75,10 +76,10 @@ block main
                 h2.start-page-external-link-each-title= __('Summits')
             h2.start-page-description= __('World is changing, and there are lots of new values emerging with blockchain technology. Now, it is the time to distribute the value.')
         .start-page-social-media-wrapper
-          a.start-page-social-media-each-button(href='https://twitter.com/node_101' target='_blank')
+          a.start-page-social-media-each-button(href=(page_lang == 'tr' ? 'https://twitter.com/node101_TR' : 'https://twitter.com/node_101') target='_blank')
             svg.start-page-social-media-each-button-icon(viewbox='0 0 26 23' xmlns='http://www.w3.org/2000/svg')
               path(d='M19.9585 0H23.792L15.4169 9.70726L25.2695 22.9167H17.555L11.5128 14.9052L4.59902 22.9167H0.763204L9.72116 12.5337L0.269531 0H8.17988L13.6416 7.32276L19.9585 0ZM18.6131 20.5897H20.7372L7.02566 2.2047H4.74619L18.6131 20.5897Z')
-          a.start-page-social-media-each-button(href='https://t.me/node101' target='_blank')
+          a.start-page-social-media-each-button(href=(page_lang == 'tr' ? 'https://t.me/node101_tr' : 'https://t.me/node101') target='_blank')
             svg.start-page-social-media-each-button-icon(viewbox='0 0 25 26' xmlns='http://www.w3.org/2000/svg')
               path(d='M25 12.6923C25 19.5958 19.4036 25.1923 12.5 25.1923C5.59644 25.1923 0 19.5958 0 12.6923C0 5.7887 5.59644 0.192261 12.5 0.192261C19.4036 0.192261 25 5.7887 25 12.6923ZM12.9479 9.42031C11.7321 9.92601 9.30223 10.9727 5.65822 12.5603C5.06649 12.7956 4.75652 13.0258 4.7283 13.2509C4.68061 13.6313 5.15699 13.7811 5.8057 13.9851C5.89394 14.0128 5.98537 14.0416 6.0791 14.0721C6.71733 14.2795 7.57586 14.5222 8.02217 14.5319C8.42702 14.5406 8.87888 14.3737 9.37775 14.0312C12.7825 11.7329 14.54 10.5712 14.6503 10.5462C14.7282 10.5285 14.836 10.5063 14.9091 10.5713C14.9822 10.6362 14.975 10.7593 14.9673 10.7923C14.9201 10.9934 13.0501 12.7319 12.0824 13.6316C11.7807 13.9121 11.5667 14.111 11.523 14.1565C11.425 14.2582 11.3251 14.3545 11.2291 14.4471C10.6362 15.0186 10.1916 15.4473 11.2538 16.1472C11.7642 16.4836 12.1727 16.7618 12.5802 17.0393C13.0252 17.3423 13.4691 17.6446 14.0433 18.0211C14.1897 18.117 14.3294 18.2166 14.4655 18.3136C14.9834 18.6829 15.4487 19.0146 16.0235 18.9617C16.3575 18.9309 16.7026 18.6169 16.8778 17.6801C17.2919 15.4664 18.1059 10.6698 18.294 8.69327C18.3105 8.5201 18.2897 8.29848 18.2731 8.20119C18.2564 8.1039 18.2216 7.96529 18.0952 7.86268C17.9454 7.74115 17.7142 7.71553 17.6108 7.71735C17.1406 7.72563 16.4193 7.97644 12.9479 9.42031Z')
           a.start-page-social-media-each-button(href='https://github.com/node101-io' target='_blank')
@@ -229,7 +230,7 @@ block main
                     a.services-content-each-service-description-link(href=item.link target=item.target)= item.content
     if events && events.length
       .events-wrapper
-        - events_title = __('A bridge leading to the Istanbul ecosystem. ')
+        - const events_title = __('A bridge leading to the Turkiye ecosystem.') + ' ';
         .events-header-wrapper
           - for (let i = 0; i < 3; i++)
             .events-header-each-inner-wrapper
@@ -243,17 +244,17 @@ block main
         //-     span= __('We see events as the fastest way of distributing the value of blockchain. Until now, node101 organized more than 40 blockchain events and hosted more than 2000 people. Reach out to us from ')
         //-     a.events-description-mail(href='mailto:hello@node101.io' target='_blank') hello@node101.io
         //-     span= __(' to discuss how we can help you reach the Turkish community.')
-        .events-links-wrapper
-          .events-links-individual-wrapper
+        //- .events-links-wrapper
+          //- .events-links-individual-wrapper
             //- each event in events
             //-   if (event.logo)
             //-     a.events-links-each-individual-event(href=event.link target='_blank')
             //-       img.events-links-each-individual-event-image(src=event.logo alt=event.name)
-          a.events-links-all-events-button(href='https://lu.ma/node101' target='_blank')
-            svg.events-links-all-events-button-icon.events-links-all-events-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
-              path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
-            .events-links-all-events-button-text events.node101
-            svg.events-links-all-events-button-icon.events-links-all-events-button-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+        a.events-links-all-events-button(href='https://lu.ma/node101' target='_blank')
+          svg.events-links-all-events-button-icon.events-links-all-events-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
+            path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
+          .events-links-all-events-button-text events.node101
+          svg.events-links-all-events-button-icon.events-links-all-events-button-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
         .events-content-wrapper
           .events-content-navbar-wrapper
@@ -278,12 +279,11 @@ block main
             .events-links-all-events-button-responsive-text events.node101
             svg.events-links-all-events-button-responsive-icon.events-links-all-events-button-responsive-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
-
     if contributions && contributions.length
       .contributions-wrapper
-        //- .contributions-header-wrapper
+        .contributions-header-wrapper
           h1.contributions-header-text
-            span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways. ')
+            span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways.') + ' '
             span.contributions-header-highlight-text= __('Scroll to explore.')
         .contributions-navbar-wrapper-responsive
           each contribution, i in contributions.slice(0, contributions.length / 2)
@@ -300,15 +300,15 @@ block main
               path(d='M25.0598 51.5416C25.1059 51.5909 26.5191 51.9679 28.1999 52.3789C29.881 52.79 31.2746 53.0636 31.297 52.9872C31.3192 52.9106 31.4932 51.6691 31.6833 50.2281C32.0654 47.3344 32.9905 43.9558 33.9789 41.8428C37.06 35.2576 42.588 30.8972 49.2927 29.7639L51 29.4752V26.5662V23.6569L49.4525 23.3806C39.3142 21.5707 32.7045 13.5043 31.468 1.43297C31.3873 0.644722 31.2908 0 31.2537 0C30.9118 0 25.2461 1.45291 25.139 1.56801C25.0615 1.65123 25.1191 2.3902 25.2672 3.20986C26.9067 12.2862 31.601 19.6719 37.6926 22.76L39.1539 23.5008L9.10529 23.5588L0 23.5956L0 29.4831L9.15417 29.5199L39.1319 29.5782L37.2871 30.5728C32.5013 33.1528 28.7122 38.2138 26.4809 45.007C25.845 46.9424 24.8856 51.3545 25.0598 51.5416Z')
             .contributions-navbar-content-wrapper
               .contributions-navbar-content-inner-wrapper
-                - let contributions_random_start_index = parseInt(Math.random() * contributions.length)
-                - for (let i = contributions_random_start_index; i < contributions.length; i++)
-                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}` class=(i == (contributions_random_start_index + 4 % (contributions.length / 2)) ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
-                - for (let i = 0; i < contributions_random_start_index; i++)
+                - const contributions_start_index = 5;
+                - for (let i = contributions_start_index; i < contributions.length; i++)
+                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}` class=(i == (contributions_start_index + 4 % (contributions.length / 2)) ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
+                - for (let i = 0; i < contributions_start_index; i++)
                   .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}`)= contributions[i].title
             .contributions-navbar-border
           .contributions-content-inner-wrapper
             each contribution, i in contributions.slice(0, contributions.length / 2)
-              .contributions-content-each-contribution-wrapper(class=`contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_random_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
+              .contributions-content-each-contribution-wrapper(class=`contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
                 |!{include(`/includes/contributions/${contribution._id}.pug`)}
             //- .contributions-content-each-contribution-wrapper.contributions-content-validator-wrapper
             //-   include ../includes/contributions/validator.pug

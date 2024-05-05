@@ -299,6 +299,9 @@
   display: flex;
   align-items: center;
   padding: 0 var(--events-links-all-events-button-horizontal-padding);
+  margin-left: auto;
+  margin-top: var(--events-links-all-events-button-height);
+  margin-right: var(--page-horizontal-padding);
   border: 1px solid var(--dark-text-color);
   border-radius: calc(var(--events-links-all-events-button-height) / 2);
   text-decoration: none;
@@ -1055,9 +1058,17 @@
   display: none;
 }
 .events-content-hacker-tours-each-card-wrapper {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
   min-width: fit-content;
   display: flex;
   flex-direction: column;

@@ -110,44 +110,6 @@ const PORTFOLIO = [
   //   apr: '8.79'
   // }
 ];
-const EVENTS = [
-  {
-    _id: 'cryptist',
-    name: 'Cryptist',
-  },
-  {
-    _id: 'cosmosphere',
-    name: 'Cosmosphere',
-  },
-  {
-    _id: 'moda-palas',
-    name: 'Moda Palas',
-  },
-  {
-    _id: 'workshops',
-    name: 'Workshops'
-  },
-  {
-    _id: 'gatherings',
-    name: 'Gatherings'
-  },
-  {
-    _id: 'summits',
-    name: 'Summits'
-  },
-  {
-    _id: 'hacker-houses',
-    name: 'Hacker-Houses'
-  },
-  {
-    _id: 'parties',
-    name: 'Parties'
-  },
-  {
-    _id: 'hacker-tours',
-    name: 'Hacker-Tours'
-  }
-];
 
 module.exports = (req, res) => {
   const SERVICES = [
@@ -224,58 +186,97 @@ module.exports = (req, res) => {
   const CONTRIBUTIONS = [
     {
       _id: 'open-source',
-      title: 'Open Source',
+      title: res.__('Open Source'),
       color: 'green'
     },
     {
       _id: 'relayers',
-      title: 'Relayers',
+      title: res.__('Relayers'),
       color: 'green'
     },
     // {
     //   _id: 'articles',
-    //   title: 'Articles',
+    //   title: res.__('Articles'),
     //   color: 'green'
     // },
     {
       _id: 'videos',
-      title: 'Videos',
+      title: res.__('Videos'),
       color: 'green'
     },
     {
       _id: 'podcasts',
-      title: 'Podcasts',
+      title: res.__('Podcasts'),
       color: 'green'
     },
     {
       _id: '101-telegram',
-      title: '101 Telegram',
+      title: res.__('101 Telegram'),
       color: 'green'
     },
     // {
     //   _id: '101-x',
-    //   title: '101 X',
+    //   title: res.__('101 X'),
     //   color: 'green'
     // },
     {
       _id: 'bot101',
-      title: 'bot101',
+      title: res.__('bot101'),
       color: 'green'
     },
     {
       _id: 'klein',
-      title: 'Klein',
+      title: res.__('Klein'),
       color: 'green'
     },
     {
       _id: 'rpcs',
-      title: 'RPCs',
+      title: res.__('RPCs'),
       color: 'green'
     },
     {
       _id: 'validator',
-      title: 'Validator',
+      title: res.__('Validator'),
       color: 'green'
+    }
+  ];
+
+  const EVENTS = [
+    {
+      _id: 'cryptist',
+      name: res.__('Cryptist')
+    },
+    {
+      _id: 'cosmosphere',
+      name: res.__('Cosmosphere')
+    },
+    {
+      _id: 'moda-palas',
+      name: res.__('Moda Palas')
+    },
+    {
+      _id: 'workshops',
+      name: res.__('Workshops')
+    },
+    {
+      _id: 'gatherings',
+      name: res.__('Gatherings')
+    },
+    {
+      _id: 'summits',
+      name: res.__('Summits')
+    },
+    {
+      _id: 'hacker-houses',
+      name: res.__('Hacker-Houses')
+    },
+    {
+      _id: 'parties',
+      name: res.__('Parties')
+    },
+    {
+      _id: 'hacker-tours',
+      name: res.__('Hacker-Tours')
     }
   ];
 
@@ -298,6 +299,6 @@ module.exports = (req, res) => {
     services: SERVICES,
     events: EVENTS,
     contributions: CONTRIBUTIONS.concat(CONTRIBUTIONS),
-    frequently_asked_questions: []
+    // frequently_asked_questions: []
   });
 };

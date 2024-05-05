@@ -1,5 +1,5 @@
 :root {
-  --contributions-border-radius: 25px;
+  --contributions-border-radius: 30px;
   --contributions-header-font-size: 22px;
   --contributions-header-margin-top: 5px;
   --contributions-navbar-selected-icon-height: 30px;
@@ -112,24 +112,24 @@
   min-height: fit-content;
   width: calc((100vw - 2 * var(--page-horizontal-padding)) * 3 / 5);
   min-width: calc((100vw - 2 * var(--page-horizontal-padding)) * 3 / 5);
-  padding: var(--page-horizontal-padding);
+  padding: var(--page-vertical-padding) calc(var(--page-vertical-padding) * 2);
   background-color: var(--dark-text-color);
-  border-radius: var(--page-horizontal-padding);
+  border-radius: var(--contributions-border-radius);
 }
 .contributions-header-text {
   font-family: 'Igra Sans', sans-serif;
   font-weight: 400;
   font-size: var(--contributions-header-font-size);
   color: var(--background-color);
-  line-height: calc(1.5 * var(--contributions-header-font-size));
+  line-height: 1.3;
 }
 .contributions-header-highlight-text {
   font-family: 'Quality Sunrise', Georgia, sans-serif;
   color: var(--dark-text-color);
-  line-height: calc(1.5 * var(--contributions-header-font-size));
+  line-height: 1.3;
   background-color: var(--lila-color);
-  padding: 4px;
-  border-radius: 2px;
+  padding: calc(var(--contributions-header-font-size) / 5);
+  border-radius: calc(var(--contributions-header-font-size) / 10);
 }
 
 .contributions-content-wrapper {
@@ -142,7 +142,7 @@
   padding: var(--page-vertical-padding) calc(var(--content-gap) / 4);
   margin-top: var(--contributions-header-margin-top);
   background-color: var(--dark-text-color);
-  border-radius: var(--page-vertical-padding);
+  border-radius: var(--contributions-border-radius);
 }
 
 .contributions-navbar-wrapper {
@@ -299,10 +299,21 @@
   height: 0;
   min-height: 0;
   display: flex;
-  animation: contributionsContent101TelegramEachMessage .5s forwards ease-in-out;
+  -webkit-animation: contributionsContent101TelegramEachMessage .5s forwards ease-in-out;
+          animation: contributionsContent101TelegramEachMessage .5s forwards ease-in-out;
 }
 .contributions-content-101-telegram-each-right-message-wrapper {
   margin-left: auto;
+}
+@-webkit-keyframes contributionsContent101TelegramEachMessage {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-message-height);
+    min-height: var(--contributions-content-101-telegram-each-message-height);
+  }
 }
 @keyframes contributionsContent101TelegramEachMessage {
   0% {
@@ -328,7 +339,18 @@
   margin-left: auto;
   -o-object-fit: contain;
      object-fit: contain;
-  animation: contributionsContent101TelegramEachSticker .5s forwards ease-in-out;
+  -webkit-animation: contributionsContent101TelegramEachSticker .5s forwards ease-in-out;
+          animation: contributionsContent101TelegramEachSticker .5s forwards ease-in-out;
+}
+@-webkit-keyframes contributionsContent101TelegramEachSticker {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-sticker-height);
+    min-height: var(--contributions-content-101-telegram-each-sticker-height);
+  }
 }
 @keyframes contributionsContent101TelegramEachSticker {
   0% {
@@ -353,10 +375,19 @@
   align-items: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0;
-  animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out;
+  -webkit-animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out;
+          animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out;
 }
 .contributions-content-101-telegram-each-left-message-text {
   background-color: rgba(255, 255, 255, 1);
+}
+@-webkit-keyframes contributionsContent101TelegramEachMessageText {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: calc(var(--contributions-content-101-telegram-each-message-height) / 2);
+  }
 }
 @keyframes contributionsContent101TelegramEachMessageText {
   0% {
@@ -370,7 +401,22 @@
   background-color: var(--light-pink-color);
 }
 .contributions-content-101-telegram-each-right-message-text-bouncing {
-  animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out, contributionsContent101TelegramEachMessageTextBouncing 2s infinite;
+  -webkit-animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out, contributionsContent101TelegramEachMessageTextBouncing 2s infinite;
+          animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out, contributionsContent101TelegramEachMessageTextBouncing 2s infinite;
+}
+@-webkit-keyframes contributionsContent101TelegramEachMessageTextBouncing {
+  0% {
+    padding-bottom: 0;
+  }
+  25% {
+    padding-bottom: calc(var(--contributions-content-101-telegram-each-message-height) / 4);
+  }
+  50% {
+    padding-bottom: 0;
+  }
+  100% {
+    padding-bottom: 0;
+  }
 }
 @keyframes contributionsContent101TelegramEachMessageTextBouncing {
   0% {
@@ -447,8 +493,113 @@
   font-size: var(--contributions-content-klein-each-text-font-size);
   color: var(--klein-color);
   line-height: 1.3;
-  animation: contributionsContentKleinLoadingCounter var(--contributions-content-klein-loading-animation-duration) linear forwards;
+  -webkit-animation: contributionsContentKleinLoadingCounter var(--contributions-content-klein-loading-animation-duration) linear forwards;
+          animation: contributionsContentKleinLoadingCounter var(--contributions-content-klein-loading-animation-duration) linear forwards;
   counter-reset: count 0;
+}
+@-webkit-keyframes contributionsContentKleinLoadingCounter {
+  0% { counter-increment: count 0; }
+  1% { counter-increment: count 1; }
+  2% { counter-increment: count 2; }
+  3% { counter-increment: count 3; }
+  4% { counter-increment: count 4; }
+  5% { counter-increment: count 5; }
+  6% { counter-increment: count 6; }
+  7% { counter-increment: count 7; }
+  8% { counter-increment: count 8; }
+  9% { counter-increment: count 9; }
+  10% { counter-increment: count 10; }
+  11% { counter-increment: count 11; }
+  12% { counter-increment: count 12; }
+  13% { counter-increment: count 13; }
+  14% { counter-increment: count 14; }
+  15% { counter-increment: count 15; }
+  16% { counter-increment: count 16; }
+  17% { counter-increment: count 17; }
+  18% { counter-increment: count 18; }
+  19% { counter-increment: count 19; }
+  20% { counter-increment: count 20; }
+  21% { counter-increment: count 21; }
+  22% { counter-increment: count 22; }
+  23% { counter-increment: count 23; }
+  24% { counter-increment: count 24; }
+  25% { counter-increment: count 25; }
+  26% { counter-increment: count 26; }
+  27% { counter-increment: count 27; }
+  28% { counter-increment: count 28; }
+  29% { counter-increment: count 29; }
+  30% { counter-increment: count 30; }
+  31% { counter-increment: count 31; }
+  32% { counter-increment: count 32; }
+  33% { counter-increment: count 33; }
+  34% { counter-increment: count 34; }
+  35% { counter-increment: count 35; }
+  36% { counter-increment: count 36; }
+  37% { counter-increment: count 37; }
+  38% { counter-increment: count 38; }
+  39% { counter-increment: count 39; }
+  40% { counter-increment: count 40; }
+  41% { counter-increment: count 41; }
+  42% { counter-increment: count 42; }
+  43% { counter-increment: count 43; }
+  44% { counter-increment: count 44; }
+  45% { counter-increment: count 45; }
+  46% { counter-increment: count 46; }
+  47% { counter-increment: count 47; }
+  48% { counter-increment: count 48; }
+  49% { counter-increment: count 49; }
+  50% { counter-increment: count 50; }
+  51% { counter-increment: count 51; }
+  52% { counter-increment: count 52; }
+  53% { counter-increment: count 53; }
+  54% { counter-increment: count 54; }
+  55% { counter-increment: count 55; }
+  56% { counter-increment: count 56; }
+  57% { counter-increment: count 57; }
+  58% { counter-increment: count 58; }
+  59% { counter-increment: count 59; }
+  60% { counter-increment: count 60; }
+  100% { counter-increment: count 60; }
+  /* 61% { counter-increment: count 61; }
+  62% { counter-increment: count 62; }
+  63% { counter-increment: count 63; }
+  64% { counter-increment: count 64; }
+  65% { counter-increment: count 65; }
+  66% { counter-increment: count 66; }
+  67% { counter-increment: count 67; }
+  68% { counter-increment: count 68; }
+  69% { counter-increment: count 69; }
+  70% { counter-increment: count 70; }
+  71% { counter-increment: count 71; }
+  72% { counter-increment: count 72; }
+  73% { counter-increment: count 73; }
+  74% { counter-increment: count 74; }
+  75% { counter-increment: count 75; }
+  76% { counter-increment: count 76; }
+  77% { counter-increment: count 77; }
+  78% { counter-increment: count 78; }
+  79% { counter-increment: count 79; }
+  80% { counter-increment: count 80; }
+  81% { counter-increment: count 81; }
+  82% { counter-increment: count 82; }
+  83% { counter-increment: count 83; }
+  84% { counter-increment: count 84; }
+  85% { counter-increment: count 85; }
+  86% { counter-increment: count 86; }
+  87% { counter-increment: count 87; }
+  88% { counter-increment: count 88; }
+  89% { counter-increment: count 89; }
+  90% { counter-increment: count 90; }
+  91% { counter-increment: count 91; }
+  92% { counter-increment: count 92; }
+  93% { counter-increment: count 93; }
+  94% { counter-increment: count 94; }
+  95% { counter-increment: count 95; }
+  96% { counter-increment: count 96; }
+  97% { counter-increment: count 97; }
+  98% { counter-increment: count 98; }
+  99% { counter-increment: count 99; }
+  100% { counter-increment: count 100; } */
 }
 @keyframes contributionsContentKleinLoadingCounter {
   0% { counter-increment: count 0; }
@@ -513,6 +664,46 @@
   59% { counter-increment: count 59; }
   60% { counter-increment: count 60; }
   100% { counter-increment: count 60; }
+  /* 61% { counter-increment: count 61; }
+  62% { counter-increment: count 62; }
+  63% { counter-increment: count 63; }
+  64% { counter-increment: count 64; }
+  65% { counter-increment: count 65; }
+  66% { counter-increment: count 66; }
+  67% { counter-increment: count 67; }
+  68% { counter-increment: count 68; }
+  69% { counter-increment: count 69; }
+  70% { counter-increment: count 70; }
+  71% { counter-increment: count 71; }
+  72% { counter-increment: count 72; }
+  73% { counter-increment: count 73; }
+  74% { counter-increment: count 74; }
+  75% { counter-increment: count 75; }
+  76% { counter-increment: count 76; }
+  77% { counter-increment: count 77; }
+  78% { counter-increment: count 78; }
+  79% { counter-increment: count 79; }
+  80% { counter-increment: count 80; }
+  81% { counter-increment: count 81; }
+  82% { counter-increment: count 82; }
+  83% { counter-increment: count 83; }
+  84% { counter-increment: count 84; }
+  85% { counter-increment: count 85; }
+  86% { counter-increment: count 86; }
+  87% { counter-increment: count 87; }
+  88% { counter-increment: count 88; }
+  89% { counter-increment: count 89; }
+  90% { counter-increment: count 90; }
+  91% { counter-increment: count 91; }
+  92% { counter-increment: count 92; }
+  93% { counter-increment: count 93; }
+  94% { counter-increment: count 94; }
+  95% { counter-increment: count 95; }
+  96% { counter-increment: count 96; }
+  97% { counter-increment: count 97; }
+  98% { counter-increment: count 98; }
+  99% { counter-increment: count 99; }
+  100% { counter-increment: count 100; } */
 }
 .contributions-content-klein-loading-bar,
 .contributions-content-klein-loading-bar-responsive {
@@ -539,7 +730,16 @@
   fill: var(--background-color);
 }
 .contributions-content-klein-loading-bar-each-part-filled {
-  animation: contributionsContentKleinLoadingBar .5s forwards ease-in-out;
+  -webkit-animation: contributionsContentKleinLoadingBar .5s forwards ease-in-out;
+          animation: contributionsContentKleinLoadingBar .5s forwards ease-in-out;
+}
+@-webkit-keyframes contributionsContentKleinLoadingBar {
+  0% {
+    fill: var(--background-color);
+  }
+  100% {
+    fill: var(--klein-color);
+  }
 }
 @keyframes contributionsContentKleinLoadingBar {
   0% {
@@ -976,7 +1176,11 @@
   gap: calc(var(--contributions-content-articles-each-link-height) / 4);
 }
 .contributions-content-articles-links-each-line-wrapper {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   display: flex;
   gap: calc(var(--contributions-content-articles-each-link-height) / 4);
@@ -1128,7 +1332,11 @@
 .contributions-content-validator-projects-wrapper {
   width: 100%;
   min-width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   display: flex;
   justify-content: center;
@@ -1178,6 +1386,8 @@
 }
 @media only screen and (max-width: 1100px) {
   :root {
+    --contributions-header-font-size: 20px;
+
     --contributions-navbar-content-each-contribution-font-size: 24px;
     --contributions-navbar-content-each-contribution-height: 70px;
 
@@ -1198,6 +1408,8 @@
 }
 @media only screen and (max-width: 1000px) {
   :root {
+    --contributions-header-font-size: 18px;
+
     --contributions-navbar-content-each-contribution-font-size: 22px;
 
     --contributions-content-101-telegram-wrapper-width: 460px;
@@ -1223,20 +1435,33 @@
     --contributions-content-rpcs-wrapper-width: 100%;
     --contributions-content-validator-wrapper-width: 100%;
   }
+  .contributions-header-wrapper {
+    display: none;
+  }
   .contributions-navbar-wrapper {
     display: none;
   }
+  .contributions-content-wrapper {
+    height: auto;
+    min-height: 100vw;
+  }
   .contributions-content-inner-wrapper {
-    padding: 0;
+    height: auto;
+    min-height: auto;
     width: 100%;
     min-width: 100%;
+    padding: 0;
   }
   .contributions-navbar-wrapper-responsive {
     display: flex;
   }
 }
 @media only screen and (max-width: 800px) {}
-@media only screen and (max-width: 700px) {}
+@media only screen and (max-width: 700px) {
+  :root {
+    --contributions-border-radius: 20px;
+  }
+}
 @media only screen and (max-width: 600px) {
   :root {
     --contributions-content-101-telegram-each-message-height: 26px;
@@ -1251,7 +1476,9 @@
 
     --contributions-content-validator-projects-each-project-height: 48px;
 
-    --contributions-content-open-source-each-project-width: 32px;
+    --contributions-content-open-source-each-project-name-font-size: 14px;
+    --contributions-content-open-source-each-project-width: 30px;
+    --contributions-content-open-source-each-project-height: 240px;
   }
 
   .contributions-content-klein-loading-bar {
@@ -1263,8 +1490,8 @@
 }
 @media only screen and (max-width: 500px) {
   :root {
-    --contributions-content-open-source-each-project-name-font-size: 14px;
-    --contributions-content-open-source-each-project-width: 30px;
+    --contributions-content-open-source-each-project-width: 28px;
+    --contributions-content-open-source-each-project-height: 300px;
 
     --contributions-content-podcasts-rectangle-image-width: 100px;
   }

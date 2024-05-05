@@ -1,35 +1,35 @@
-.events-content-gatherings-text= __('101 supports the Turkish Blockchain Builder Ecosystem by training developers through workshops, covering various language families and blockchain projects with specific curriculums, to enable them to create profitable products for humanity\'s benefit while promoting the blockchain philosophy.')
+.events-content-gatherings-text= __('Gatherings, where the trending topics and the future of the technology world and the Blockchain ecosystem are discussed in a cool ambiance, bring together ecosystem stakeholders from all walks of roles.')
 .events-content-gatherings-bottom-wrapper
   -
     const gatherings = [
       {
         _id: 'moda-palas',
-        name: 'Moda Palas | Private Monthly Gatherings',
+        name: __('Moda Palas | Private Monthly Gatherings'),
         link: insertLanguageToLink('https://events.node101.io/moda-palas', lang)
       },
       {
         _id: 'modular-meetup',
-        name: 'Celestia Modular Meetups',
+        name: __('Celestia Modular Meetups'),
         link: 'https://lu.ma/Modular-Meetup-Istanbul-3'
       },
       {
         _id: 'sui-moda-palas',
-        name: 'SUI Moda Palas',
+        name: __('SUI Moda Palas'),
         link: 'https://lu.ma/suimodapalas'
       },
       {
         _id: 'mina-palas',
-        name: 'Mina Moda Palas',
+        name: __('Mina Moda Palas'),
         link: 'https://lu.ma/minapalas'
       },
       {
         _id: 'sui-iftar',
-        name: 'SUI İftar',
+        name: __('SUI Iftar'),
         link: 'https://lu.ma/suiftar'
       },
       {
         _id: 'nym',
-        name: 'NYM Community Gathering',
+        name: __('NYM Community Gathering'),
         link: insertLanguageToLink('https://events.node101.io/nym-community-gathering', lang)
       }
     ];
@@ -40,4 +40,4 @@
         src=`/img/events/gatherings/${gathering._id}-320w.png`
         alt=gathering.name
       )
-      .events-content-gatherings-each-card-text= __(gathering.name)
+      .events-content-gatherings-each-card-text= gathering.name
