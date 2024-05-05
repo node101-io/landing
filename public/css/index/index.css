@@ -194,7 +194,7 @@
   }
   100% {
     opacity: 0;
-    display: none;
+    z-index: -1;
   }
 }
 @keyframes helloNode101WrapperAnimation {
@@ -206,7 +206,7 @@
   }
   100% {
     opacity: 0;
-    display: none;
+    z-index: -1;
   }
 }
 .hello-node101-text {
