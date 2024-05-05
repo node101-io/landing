@@ -1,5 +1,5 @@
 :root {
-  --contributions-border-radius: 25px;
+  --contributions-border-radius: 30px;
   --contributions-header-font-size: 22px;
   --contributions-header-margin-top: 5px;
   --contributions-navbar-selected-icon-height: 30px;
@@ -7,27 +7,28 @@
   --contributions-navbar-content-each-contribution-height: 75px;
   --contributions-navbar-content-each-contribution-font-size: 35px;
   --contributions-navbar-border-margin-left: 10px;
+  --contributions-navbar-responsive-gap: 8px;
+  --contributions-navbar-each-event-responsive-font-size: 16px;
 
-  --contributions-content-101-telegram-wrapper-width: 700px;
-  --contributions-content-101-telegram-margin: 40px;
-  --contributions-content-101-telegram-each-message-text-font-size: 16px;
+  --contributions-content-101-telegram-wrapper-width: 680px;
   --contributions-content-101-telegram-each-message-height: 32px;
   --contributions-content-101-telegram-each-sticker-height: 130px;
   --contributions-content-101-telegram-dialog-gap: 12px;
   --contributions-content-101-telegram-dialog-margin-bottom: 40px;
   --contributions-content-101-telegram-title-font-size: 22px;
   --contributions-content-101-telegram-title-margin-bottom: 30px;
-  --contributions-content-101-telegram-each-text-font-size: 18px;
+  --contributions-content-101-telegram-each-text-font-size: 16px;
   --contributions-content-101-telegram-link-gap: 8px;
   --contributions-content-101-telegram-link-icon-height: 20px;
   --contributions-content-101-telegram-link-text-font-size: 14px;
 
-  --contributions-content-klein-wrapper-width: 700px;
+  --contributions-content-klein-wrapper-width: 680px;
   --contributions-content-klein-loading-each-text-font-size: 16px;
   --contributions-content-klein-loading-bar-font-size: 16px;
   --contributions-content-klein-loading-bar-margin: 20px;
   --contributions-content-klein-loading-bar-each-part-width: 5px;
   --contributions-content-klein-each-text-font-size: 16px;
+  --contributions-content-klein-loading-animation-duration: 10s;
 
   --contributions-content-podcasts-images-gap: 20px;
   --contributions-content-podcasts-images-margin-bottom: 40px;
@@ -37,7 +38,7 @@
   --contributions-content-podcasts-title-icon-height: 20px;
   --contributions-content-podcasts-text-font-size: 16px;
 
-  --contributions-content-open-source-wrapper-width: 700px;
+  --contributions-content-open-source-wrapper-width: 680px;
   --contributions-content-open-source-projects-gap: 4px;
   --contributions-content-open-source-projects-wrapper-margin-bottom: 40px;
   --contributions-content-open-source-project-animation-duration: .5s;
@@ -50,37 +51,38 @@
   --contributions-content-open-source-title-margin-bottom: 30px;
   --contributions-content-open-source-link-text-font-size: 14px;
 
-  --contributions-content-videos-wrapper-width: 700px;
+  --contributions-content-videos-wrapper-width: 680px;
   --contributions-content-videos-thumbnails-gap: 14px;
   --contributions-content-videos-thumbnails-margin-bottom: 50px;
   --contributions-content-videos-each-thumbnail-width: 200px;
   --contributions-content-videos-each-text-font-size: 16px;
   --contributions-content-videos-each-text-margin-top: 30px;
 
-  --contributions-content-relayers-wrapper-width: 700px;
+  --contributions-content-relayers-wrapper-width: 680px;
   --contributions-content-relayers-image-margin-bottom: 20px;
   --contributions-content-relayers-each-text-font-size: 16px;
   --contributions-content-relayers-each-text-margin-top: 30px;
 
 
-  --contributions-content-articles-wrapper-width: 700px;
+  --contributions-content-articles-wrapper-width: 680px;
   --contributions-content-articles-each-link-height: 40px;
   --contributions-content-articles-each-text-font-size: 16px;
   --contributions-content-articles-each-text-margin-top: 30px;
 
-  --contributions-content-bot101-wrapper-width: 700px;
+  --contributions-content-bot101-wrapper-width: 680px;
   --contributions-content-bot101-each-text-font-size: 16px;
   --contributions-content-bot101-each-text-margin-bottom: 30px;
+  --contributions-content-bot101-projects-image-width: 80%;
   --contributions-content-bot101-projects-gap: 10px;
   --contributions-content-bot101-each-project-width: 60px;
 
-  --contributions-content-rpcs-wrapper-width: 700px;
+  --contributions-content-rpcs-wrapper-width: 680px;
   --contributions-content-rpcs-each-text-font-size: 16px;
   --contributions-content-rpcs-each-text-margin-bottom: 30px;
   --contributions-content-rpcs-json-font-size: 14px;
   --contributions-content-rpcs-json-margin-bottom: 40px;
 
-  --contributions-content-validator-wrapper-width: 700px;
+  --contributions-content-validator-wrapper-width: 680px;
   --contributions-content-validator-each-text-font-size: 16px;
   --contributions-content-validator-each-text-margin-top: 30px;
   --contributions-content-validator-projects-each-project-height: 60px;
@@ -110,53 +112,85 @@
   min-height: fit-content;
   width: calc((100vw - 2 * var(--page-horizontal-padding)) * 3 / 5);
   min-width: calc((100vw - 2 * var(--page-horizontal-padding)) * 3 / 5);
-  padding: var(--page-horizontal-padding);
+  padding: var(--page-vertical-padding) calc(var(--page-vertical-padding) * 2);
   background-color: var(--dark-text-color);
-  border-radius: var(--page-horizontal-padding);
+  border-radius: var(--contributions-border-radius);
 }
 .contributions-header-text {
   font-family: 'Igra Sans', sans-serif;
   font-weight: 400;
   font-size: var(--contributions-header-font-size);
   color: var(--background-color);
-  line-height: calc(1.5 * var(--contributions-header-font-size));
+  line-height: 1.3;
 }
 .contributions-header-highlight-text {
   font-family: 'Quality Sunrise', Georgia, sans-serif;
   color: var(--dark-text-color);
-  line-height: calc(1.5 * var(--contributions-header-font-size));
+  line-height: 1.3;
   background-color: var(--lila-color);
-  padding: 4px;
-  border-radius: 2px;
+  padding: calc(var(--contributions-header-font-size) / 5);
+  border-radius: calc(var(--contributions-header-font-size) / 10);
 }
 
 .contributions-content-wrapper {
-  height: calc(2 * var(--page-horizontal-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
-  min-height: calc(2 * var(--page-horizontal-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  height: calc(2 * var(--page-vertical-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
+  min-height: calc(2 * var(--page-vertical-padding) + 9 * var(--contributions-navbar-content-each-contribution-height));
+  width: 100%;
+  min-width: 100%;
   display: flex;
-  padding: var(--page-horizontal-padding);
+  justify-content: center;
+  padding: var(--page-vertical-padding) calc(var(--content-gap) / 4);
   margin-top: var(--contributions-header-margin-top);
   background-color: var(--dark-text-color);
-  border-radius: var(--page-horizontal-padding);
+  border-radius: var(--contributions-border-radius);
 }
 
 .contributions-navbar-wrapper {
   position: relative;
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: calc(0.3 * (100vw - var(--content-gap) / 2));
+  min-width: calc(0.3 * (100vw - var(--content-gap) / 2));
   display: flex;
+}
+.contributions-navbar-wrapper-responsive {
+  display: none;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  width: 100%;
+  min-width: 100%;
+  flex-wrap: wrap;
+  gap: var(--contributions-navbar-responsive-gap);
+  margin-bottom: var(--page-vertical-padding);
+}
+.contributions-navbar-each-contribution-responsive {
+  font-family: 'Igra Sans', sans-serif;
+  font-size: var(--contributions-navbar-each-event-responsive-font-size);
+  color: var(--background-color);
+  background-color: var(--dark-text-color);
+  padding: calc(var(--contributions-navbar-each-event-responsive-font-size) / 2) calc(var(--contributions-navbar-each-event-responsive-font-size));
+  border-radius: var(--contributions-navbar-each-event-responsive-font-size);
+  cursor: var(--pointer-hand-dark);
+  transition: all .5s;
+}
+.contributions-navbar-each-contribution-responsive:hover {
+  opacity: 0.8;
+}
+.contributions-navbar-each-contribution-selected-responsive {
+  background-color: var(--lila-color);
+  color: var(--dark-text-color);
 }
 
 .contributions-navbar-scroll-wrapper {
   position: absolute;
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: calc(0.3 * (100vw - var(--content-gap) / 2));
+  min-width: calc(0.3 * (100vw - var(--content-gap) / 2));
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -170,8 +204,8 @@
 .contributions-navbar-scroll-inner-each-wrapper {
   height: var(--contributions-navbar-content-each-contribution-height);
   min-height: var(--contributions-navbar-content-each-contribution-height);
-  width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.3 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: calc(0.3 * (100vw - var(--content-gap) / 2));
+  min-width: calc(0.3 * (100vw - var(--content-gap) / 2));
 }
 
 .contributions-navbar-selected-icon {
@@ -211,8 +245,8 @@
   padding-top: 1px;
 }
 .contributions-navbar-border {
-  height: calc(0.8 * (var(--contributions-content-height) - 2 * var(--page-horizontal-padding)));
-  min-height: calc(0.8 * (var(--contributions-content-height) - 2 * var(--page-horizontal-padding)));
+  height: calc(0.8 * (var(--contributions-content-height) - var(--page-vertical-padding) * 2));
+  min-height: calc(0.8 * (var(--contributions-content-height) - var(--page-vertical-padding) * 2));
   width: 1px;
   min-width: 1px;
   margin-left: var(--contributions-navbar-border-margin-left);
@@ -222,11 +256,12 @@
 .contributions-content-inner-wrapper {
   height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
   min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
-  min-width: calc(0.7 * (100vw - 4 * var(--page-horizontal-padding)));
+  width: auto;
+  min-width: auto;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  padding-left: var(--page-horizontal-padding);
+  padding-left: calc(var(--content-gap) / 4);
 }
 
 .contributions-content-each-contribution-wrapper {
@@ -251,7 +286,6 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  padding: var(--contributions-content-101-telegram-margin);
 }
 .contributions-content-101-telegram-dialog-wrapper {
   width: 100%;
@@ -262,12 +296,34 @@
   margin-bottom: var(--contributions-content-101-telegram-dialog-margin-bottom);
 }
 .contributions-content-101-telegram-each-left-message-wrapper, .contributions-content-101-telegram-each-right-message-wrapper {
-  height: var(--contributions-content-101-telegram-each-message-height);
-  min-height: var(--contributions-content-101-telegram-each-message-height);
+  height: 0;
+  min-height: 0;
   display: flex;
+  -webkit-animation: contributionsContent101TelegramEachMessage .5s forwards ease-in-out;
+          animation: contributionsContent101TelegramEachMessage .5s forwards ease-in-out;
 }
 .contributions-content-101-telegram-each-right-message-wrapper {
   margin-left: auto;
+}
+@-webkit-keyframes contributionsContent101TelegramEachMessage {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-message-height);
+    min-height: var(--contributions-content-101-telegram-each-message-height);
+  }
+}
+@keyframes contributionsContent101TelegramEachMessage {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-message-height);
+    min-height: var(--contributions-content-101-telegram-each-message-height);
+  }
 }
 .contributions-content-101-telegram-each-message-part {
   height: 100%;
@@ -276,13 +332,35 @@
   min-width: auto;
 }
 .contributions-content-101-telegram-each-sticker {
-  height: var(--contributions-content-101-telegram-each-sticker-height);
-  min-height: var(--contributions-content-101-telegram-each-sticker-height);
+  height: 0;
+  min-height: 0;
   width: auto;
   min-width: auto;
   margin-left: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  -webkit-animation: contributionsContent101TelegramEachSticker .5s forwards ease-in-out;
+          animation: contributionsContent101TelegramEachSticker .5s forwards ease-in-out;
+}
+@-webkit-keyframes contributionsContent101TelegramEachSticker {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-sticker-height);
+    min-height: var(--contributions-content-101-telegram-each-sticker-height);
+  }
+}
+@keyframes contributionsContent101TelegramEachSticker {
+  0% {
+    height: 0;
+    min-height: 0;
+  }
+  100% {
+    height: var(--contributions-content-101-telegram-each-sticker-height);
+    min-height: var(--contributions-content-101-telegram-each-sticker-height);
+  }
 }
 .contributions-content-101-telegram-each-left-message-text, .contributions-content-101-telegram-each-right-message-text {
   height: 100%;
@@ -293,18 +371,66 @@
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
-  padding-right: 10px;
   display: flex;
   align-items: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: var(--contributions-content-101-telegram-each-message-text-font-size);
+  font-size: 0;
+  -webkit-animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out;
+          animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out;
 }
 .contributions-content-101-telegram-each-left-message-text {
   background-color: rgba(255, 255, 255, 1);
-;
+}
+@-webkit-keyframes contributionsContent101TelegramEachMessageText {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: calc(var(--contributions-content-101-telegram-each-message-height) / 2);
+  }
+}
+@keyframes contributionsContent101TelegramEachMessageText {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: calc(var(--contributions-content-101-telegram-each-message-height) / 2);
+  }
 }
 .contributions-content-101-telegram-each-right-message-text {
   background-color: var(--light-pink-color);
+}
+.contributions-content-101-telegram-each-right-message-text-bouncing {
+  -webkit-animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out, contributionsContent101TelegramEachMessageTextBouncing 2s infinite;
+          animation: contributionsContent101TelegramEachMessageText .5s forwards ease-in-out, contributionsContent101TelegramEachMessageTextBouncing 2s infinite;
+}
+@-webkit-keyframes contributionsContent101TelegramEachMessageTextBouncing {
+  0% {
+    padding-bottom: 0;
+  }
+  25% {
+    padding-bottom: calc(var(--contributions-content-101-telegram-each-message-height) / 4);
+  }
+  50% {
+    padding-bottom: 0;
+  }
+  100% {
+    padding-bottom: 0;
+  }
+}
+@keyframes contributionsContent101TelegramEachMessageTextBouncing {
+  0% {
+    padding-bottom: 0;
+  }
+  25% {
+    padding-bottom: calc(var(--contributions-content-101-telegram-each-message-height) / 4);
+  }
+  50% {
+    padding-bottom: 0;
+  }
+  100% {
+    padding-bottom: 0;
+  }
 }
 .contributions-content-101-telegram-title {
   font-family: 'Igra Sans', sans-serif;
@@ -356,30 +482,272 @@
   width: 100%;
   min-width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .contributions-content-klein-loading-each-text {
   font-size: var(--contributions-content-klein-loading-each-text-font-size);
   color: var(--klein-color);
 }
-.contributions-content-klein-loading-bar {
+.contributions-content-klein-loading-counter::after {
+  content: counter(count);
+  font-size: var(--contributions-content-klein-each-text-font-size);
+  color: var(--klein-color);
+  line-height: 1.3;
+  -webkit-animation: contributionsContentKleinLoadingCounter var(--contributions-content-klein-loading-animation-duration) linear forwards;
+          animation: contributionsContentKleinLoadingCounter var(--contributions-content-klein-loading-animation-duration) linear forwards;
+  counter-reset: count 0;
+}
+@-webkit-keyframes contributionsContentKleinLoadingCounter {
+  0% { counter-increment: count 0; }
+  1% { counter-increment: count 1; }
+  2% { counter-increment: count 2; }
+  3% { counter-increment: count 3; }
+  4% { counter-increment: count 4; }
+  5% { counter-increment: count 5; }
+  6% { counter-increment: count 6; }
+  7% { counter-increment: count 7; }
+  8% { counter-increment: count 8; }
+  9% { counter-increment: count 9; }
+  10% { counter-increment: count 10; }
+  11% { counter-increment: count 11; }
+  12% { counter-increment: count 12; }
+  13% { counter-increment: count 13; }
+  14% { counter-increment: count 14; }
+  15% { counter-increment: count 15; }
+  16% { counter-increment: count 16; }
+  17% { counter-increment: count 17; }
+  18% { counter-increment: count 18; }
+  19% { counter-increment: count 19; }
+  20% { counter-increment: count 20; }
+  21% { counter-increment: count 21; }
+  22% { counter-increment: count 22; }
+  23% { counter-increment: count 23; }
+  24% { counter-increment: count 24; }
+  25% { counter-increment: count 25; }
+  26% { counter-increment: count 26; }
+  27% { counter-increment: count 27; }
+  28% { counter-increment: count 28; }
+  29% { counter-increment: count 29; }
+  30% { counter-increment: count 30; }
+  31% { counter-increment: count 31; }
+  32% { counter-increment: count 32; }
+  33% { counter-increment: count 33; }
+  34% { counter-increment: count 34; }
+  35% { counter-increment: count 35; }
+  36% { counter-increment: count 36; }
+  37% { counter-increment: count 37; }
+  38% { counter-increment: count 38; }
+  39% { counter-increment: count 39; }
+  40% { counter-increment: count 40; }
+  41% { counter-increment: count 41; }
+  42% { counter-increment: count 42; }
+  43% { counter-increment: count 43; }
+  44% { counter-increment: count 44; }
+  45% { counter-increment: count 45; }
+  46% { counter-increment: count 46; }
+  47% { counter-increment: count 47; }
+  48% { counter-increment: count 48; }
+  49% { counter-increment: count 49; }
+  50% { counter-increment: count 50; }
+  51% { counter-increment: count 51; }
+  52% { counter-increment: count 52; }
+  53% { counter-increment: count 53; }
+  54% { counter-increment: count 54; }
+  55% { counter-increment: count 55; }
+  56% { counter-increment: count 56; }
+  57% { counter-increment: count 57; }
+  58% { counter-increment: count 58; }
+  59% { counter-increment: count 59; }
+  60% { counter-increment: count 60; }
+  100% { counter-increment: count 60; }
+  /* 61% { counter-increment: count 61; }
+  62% { counter-increment: count 62; }
+  63% { counter-increment: count 63; }
+  64% { counter-increment: count 64; }
+  65% { counter-increment: count 65; }
+  66% { counter-increment: count 66; }
+  67% { counter-increment: count 67; }
+  68% { counter-increment: count 68; }
+  69% { counter-increment: count 69; }
+  70% { counter-increment: count 70; }
+  71% { counter-increment: count 71; }
+  72% { counter-increment: count 72; }
+  73% { counter-increment: count 73; }
+  74% { counter-increment: count 74; }
+  75% { counter-increment: count 75; }
+  76% { counter-increment: count 76; }
+  77% { counter-increment: count 77; }
+  78% { counter-increment: count 78; }
+  79% { counter-increment: count 79; }
+  80% { counter-increment: count 80; }
+  81% { counter-increment: count 81; }
+  82% { counter-increment: count 82; }
+  83% { counter-increment: count 83; }
+  84% { counter-increment: count 84; }
+  85% { counter-increment: count 85; }
+  86% { counter-increment: count 86; }
+  87% { counter-increment: count 87; }
+  88% { counter-increment: count 88; }
+  89% { counter-increment: count 89; }
+  90% { counter-increment: count 90; }
+  91% { counter-increment: count 91; }
+  92% { counter-increment: count 92; }
+  93% { counter-increment: count 93; }
+  94% { counter-increment: count 94; }
+  95% { counter-increment: count 95; }
+  96% { counter-increment: count 96; }
+  97% { counter-increment: count 97; }
+  98% { counter-increment: count 98; }
+  99% { counter-increment: count 99; }
+  100% { counter-increment: count 100; } */
+}
+@keyframes contributionsContentKleinLoadingCounter {
+  0% { counter-increment: count 0; }
+  1% { counter-increment: count 1; }
+  2% { counter-increment: count 2; }
+  3% { counter-increment: count 3; }
+  4% { counter-increment: count 4; }
+  5% { counter-increment: count 5; }
+  6% { counter-increment: count 6; }
+  7% { counter-increment: count 7; }
+  8% { counter-increment: count 8; }
+  9% { counter-increment: count 9; }
+  10% { counter-increment: count 10; }
+  11% { counter-increment: count 11; }
+  12% { counter-increment: count 12; }
+  13% { counter-increment: count 13; }
+  14% { counter-increment: count 14; }
+  15% { counter-increment: count 15; }
+  16% { counter-increment: count 16; }
+  17% { counter-increment: count 17; }
+  18% { counter-increment: count 18; }
+  19% { counter-increment: count 19; }
+  20% { counter-increment: count 20; }
+  21% { counter-increment: count 21; }
+  22% { counter-increment: count 22; }
+  23% { counter-increment: count 23; }
+  24% { counter-increment: count 24; }
+  25% { counter-increment: count 25; }
+  26% { counter-increment: count 26; }
+  27% { counter-increment: count 27; }
+  28% { counter-increment: count 28; }
+  29% { counter-increment: count 29; }
+  30% { counter-increment: count 30; }
+  31% { counter-increment: count 31; }
+  32% { counter-increment: count 32; }
+  33% { counter-increment: count 33; }
+  34% { counter-increment: count 34; }
+  35% { counter-increment: count 35; }
+  36% { counter-increment: count 36; }
+  37% { counter-increment: count 37; }
+  38% { counter-increment: count 38; }
+  39% { counter-increment: count 39; }
+  40% { counter-increment: count 40; }
+  41% { counter-increment: count 41; }
+  42% { counter-increment: count 42; }
+  43% { counter-increment: count 43; }
+  44% { counter-increment: count 44; }
+  45% { counter-increment: count 45; }
+  46% { counter-increment: count 46; }
+  47% { counter-increment: count 47; }
+  48% { counter-increment: count 48; }
+  49% { counter-increment: count 49; }
+  50% { counter-increment: count 50; }
+  51% { counter-increment: count 51; }
+  52% { counter-increment: count 52; }
+  53% { counter-increment: count 53; }
+  54% { counter-increment: count 54; }
+  55% { counter-increment: count 55; }
+  56% { counter-increment: count 56; }
+  57% { counter-increment: count 57; }
+  58% { counter-increment: count 58; }
+  59% { counter-increment: count 59; }
+  60% { counter-increment: count 60; }
+  100% { counter-increment: count 60; }
+  /* 61% { counter-increment: count 61; }
+  62% { counter-increment: count 62; }
+  63% { counter-increment: count 63; }
+  64% { counter-increment: count 64; }
+  65% { counter-increment: count 65; }
+  66% { counter-increment: count 66; }
+  67% { counter-increment: count 67; }
+  68% { counter-increment: count 68; }
+  69% { counter-increment: count 69; }
+  70% { counter-increment: count 70; }
+  71% { counter-increment: count 71; }
+  72% { counter-increment: count 72; }
+  73% { counter-increment: count 73; }
+  74% { counter-increment: count 74; }
+  75% { counter-increment: count 75; }
+  76% { counter-increment: count 76; }
+  77% { counter-increment: count 77; }
+  78% { counter-increment: count 78; }
+  79% { counter-increment: count 79; }
+  80% { counter-increment: count 80; }
+  81% { counter-increment: count 81; }
+  82% { counter-increment: count 82; }
+  83% { counter-increment: count 83; }
+  84% { counter-increment: count 84; }
+  85% { counter-increment: count 85; }
+  86% { counter-increment: count 86; }
+  87% { counter-increment: count 87; }
+  88% { counter-increment: count 88; }
+  89% { counter-increment: count 89; }
+  90% { counter-increment: count 90; }
+  91% { counter-increment: count 91; }
+  92% { counter-increment: count 92; }
+  93% { counter-increment: count 93; }
+  94% { counter-increment: count 94; }
+  95% { counter-increment: count 95; }
+  96% { counter-increment: count 96; }
+  97% { counter-increment: count 97; }
+  98% { counter-increment: count 98; }
+  99% { counter-increment: count 99; }
+  100% { counter-increment: count 100; } */
+}
+.contributions-content-klein-loading-bar,
+.contributions-content-klein-loading-bar-responsive {
   display: flex;
   font-size: var(--contributions-content-klein-loading-bar-font-size);
   background-image: linear-gradient(to right, var(--klein-color), var(--klein-color) 50%, var(--background-color) 50%, var(--background-color));
   gap: calc((100% - 100 * var(--contributions-content-klein-loading-bar-each-part-width)) / 99);
   margin-top: var(--contributions-content-klein-loading-bar-margin);
-  margin-bottom: calc(--contributions-content-klein-loading-bar-margin);
+  margin-bottom: var(--contributions-content-klein-loading-bar-margin);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   overflow: hidden;
+}
+.contributions-content-klein-loading-bar-responsive {
+  display: none;
+  gap: calc((100% - 50 * var(--contributions-content-klein-loading-bar-each-part-width)) / 49);
 }
 .contributions-content-klein-loading-bar-each-part {
   font-family: 'Igra Sans', sans-serif;
   height: auto;
   min-height: auto;
   width: var(--contributions-content-klein-loading-bar-each-part-width);
-  min-width: var(--contributions-content-klein-loading-bar-each-part-width);;
+  min-width: var(--contributions-content-klein-loading-bar-each-part-width);
+  fill: var(--background-color);
+}
+.contributions-content-klein-loading-bar-each-part-filled {
+  -webkit-animation: contributionsContentKleinLoadingBar .5s forwards ease-in-out;
+          animation: contributionsContentKleinLoadingBar .5s forwards ease-in-out;
+}
+@-webkit-keyframes contributionsContentKleinLoadingBar {
+  0% {
+    fill: var(--background-color);
+  }
+  100% {
+    fill: var(--klein-color);
+  }
+}
+@keyframes contributionsContentKleinLoadingBar {
+  0% {
+    fill: var(--background-color);
+  }
+  100% {
+    fill: var(--klein-color);
+  }
 }
 .contributions-content-klein-link-wrapper {
   display: flex;
@@ -636,11 +1004,12 @@
   margin: auto;
 }
 .contributions-content-videos-thumbnails-wrapper {
-  width: calc(100% + var(--page-horizontal-padding));
-  min-width: calc(100% + var(--page-horizontal-padding));
+  width: 100%;
+  min-width: 100%;
   display: flex;
   gap: var(--contributions-content-videos-thumbnails-gap);
   margin-bottom: var(--contributions-content-videos-thumbnails-margin-bottom);
+  padding-right: calc(var(--contributions-content-videos-thumbnails-gap));
   overflow-x: auto;
   cursor: var(--pointer-hand-drag-dark);
   scrollbar-width: none;
@@ -654,6 +1023,9 @@
   min-height: calc(var(--contributions-content-videos-each-thumbnail-width) * 9 / 16);
   width: var(--contributions-content-videos-each-thumbnail-width);
   min-width: var(--contributions-content-videos-each-thumbnail-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   border-radius: calc(var(--contributions-content-videos-each-thumbnail-width) * 1 / 10);
   cursor: var(--pointer-hand-drag-dark);
@@ -661,8 +1033,8 @@
 .contributions-content-videos-each-thumbnail-image {
   height: auto;
   min-height: auto;
-  width: 100%;
-  min-width: 100%;
+  width: 102%;
+  min-width: 102%;
   border-bottom-right-radius: calc(var(--contributions-content-videos-each-thumbnail-width) * 12 / 100);
   -o-object-position: 10%;
      object-position: 10%;
@@ -804,7 +1176,11 @@
   gap: calc(var(--contributions-content-articles-each-link-height) / 4);
 }
 .contributions-content-articles-links-each-line-wrapper {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   display: flex;
   gap: calc(var(--contributions-content-articles-each-link-height) / 4);
@@ -857,6 +1233,16 @@
 }
 .contributions-content-bot101-projects-wrapper {
   display: flex;
+  justify-content: center;
+}
+.contributions-content-bot101-projects-image {
+  width: var(--contributions-content-bot101-projects-image-width);
+  min-width: var(--contributions-content-bot101-projects-image-width);
+  height: auto;
+  min-height: auto;
+}
+/* .contributions-content-bot101-projects-wrapper {
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--contributions-content-bot101-projects-gap);
@@ -866,7 +1252,7 @@
   min-height: var(--contributions-content-bot101-each-project-width);
   width: var(--contributions-content-bot101-each-project-width);
   min-width: var(--contributions-content-bot101-each-project-width);
-}
+} */
 .contributions-content-bot101-each-project-image {
   height: auto;
   min-height: auto;
@@ -889,6 +1275,44 @@
   font-size: var(--contributions-content-rpcs-json-font-size);
   color: var(--background-color);
   margin-bottom: var(--contributions-content-rpcs-json-margin-bottom);
+  margin-left: var(--contributions-content-rpcs-json-font-size);
+}
+.contributions-content-rpcs-json-layer-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-left: var(--contributions-content-rpcs-json-font-size);
+}
+.contributions-content-rpcs-json-foldable {
+  position: relative;
+  cursor: var(--pointer-hand-dark);
+}
+.contributions-content-rpcs-json-foldable::before {
+  content: '';
+  position: absolute;
+  border-left: calc(var(--contributions-content-rpcs-json-font-size) / 4) solid transparent;
+  border-right: calc(var(--contributions-content-rpcs-json-font-size) / 4) solid transparent;
+  border-top: calc(var(--contributions-content-rpcs-json-font-size) / 2) solid var(--background-color);
+  bottom: 0;
+  left: calc(var(--contributions-content-rpcs-json-font-size) * -1);
+  margin-bottom: calc(var(--contributions-content-rpcs-json-font-size) / 4);
+}
+.contributions-content-rpcs-json-folded::before {
+  transform: rotate(-90deg);
+}
+.contributions-content-rpcs-json-folded + .contributions-content-rpcs-json-layer-wrapper {
+  height: var(--contributions-content-rpcs-json-font-size);
+  max-height: var(--contributions-content-rpcs-json-font-size);
+  padding-top: var(--contributions-content-rpcs-json-font-size);
+  overflow: hidden;
+}
+.contributions-content-rpcs-json-folded + .contributions-content-rpcs-json-layer-wrapper::before {
+  content: '...';
+  font-size: var(--contributions-content-rpcs-json-font-size);
+  color: var(--background-color);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .contributions-content-rpcs-each-text {
   font-family: 'Igra Sans', sans-serif;
@@ -908,7 +1332,11 @@
 .contributions-content-validator-projects-wrapper {
   width: 100%;
   min-width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
   min-height: fit-content;
   display: flex;
   justify-content: center;
@@ -939,4 +1367,144 @@
   color: var(--background-color);
   line-height: 1.3;
   margin-top: var(--contributions-content-validator-each-text-margin-top);
+}
+
+@media only screen and (max-width: 1200px) {
+  :root {
+    --contributions-navbar-content-each-contribution-font-size: 30px;
+
+    --contributions-content-101-telegram-wrapper-width: 560px;
+    --contributions-content-klein-wrapper-width: 560px;
+    --contributions-content-open-source-wrapper-width: 560px;
+    --contributions-content-videos-wrapper-width: 560px;
+    --contributions-content-relayers-wrapper-width: 560px;
+    --contributions-content-articles-wrapper-width: 560px;
+    --contributions-content-bot101-wrapper-width: 560px;
+    --contributions-content-rpcs-wrapper-width: 560px;
+    --contributions-content-validator-wrapper-width: 560px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  :root {
+    --contributions-header-font-size: 20px;
+
+    --contributions-navbar-content-each-contribution-font-size: 24px;
+    --contributions-navbar-content-each-contribution-height: 70px;
+
+    --contributions-content-101-telegram-wrapper-width: 500px;
+    --contributions-content-klein-wrapper-width: 500px;
+    --contributions-content-open-source-wrapper-width: 500px;
+    --contributions-content-videos-wrapper-width: 500px;
+    --contributions-content-relayers-wrapper-width: 500px;
+    --contributions-content-articles-wrapper-width: 500px;
+    --contributions-content-bot101-wrapper-width: 500px;
+    --contributions-content-rpcs-wrapper-width: 500px;
+    --contributions-content-validator-wrapper-width: 500px;
+  }
+
+  .contributions-content-bot101-projects-wrapper {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  :root {
+    --contributions-header-font-size: 18px;
+
+    --contributions-navbar-content-each-contribution-font-size: 22px;
+
+    --contributions-content-101-telegram-wrapper-width: 460px;
+    --contributions-content-klein-wrapper-width: 460px;
+    --contributions-content-open-source-wrapper-width: 460px;
+    --contributions-content-videos-wrapper-width: 460px;
+    --contributions-content-relayers-wrapper-width: 460px;
+    --contributions-content-articles-wrapper-width: 460px;
+    --contributions-content-bot101-wrapper-width: 460px;
+    --contributions-content-rpcs-wrapper-width: 460px;
+    --contributions-content-validator-wrapper-width: 460px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  :root {
+    --contributions-content-101-telegram-wrapper-width: 100%;
+    --contributions-content-klein-wrapper-width: 100%;
+    --contributions-content-open-source-wrapper-width: 100%;
+    --contributions-content-videos-wrapper-width: 100%;
+    --contributions-content-relayers-wrapper-width: 100%;
+    --contributions-content-articles-wrapper-width: 100%;
+    --contributions-content-bot101-wrapper-width: 100%;
+    --contributions-content-rpcs-wrapper-width: 100%;
+    --contributions-content-validator-wrapper-width: 100%;
+  }
+  .contributions-header-wrapper {
+    display: none;
+  }
+  .contributions-navbar-wrapper {
+    display: none;
+  }
+  .contributions-content-wrapper {
+    height: auto;
+    min-height: 100vw;
+  }
+  .contributions-content-inner-wrapper {
+    height: auto;
+    min-height: auto;
+    width: 100%;
+    min-width: 100%;
+    padding: 0;
+  }
+  .contributions-navbar-wrapper-responsive {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 700px) {
+  :root {
+    --contributions-border-radius: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  :root {
+    --contributions-content-101-telegram-each-message-height: 26px;
+    --contributions-content-101-telegram-title-margin-bottom: 20px;
+    --contributions-content-101-telegram-each-text-font-size: 14px;
+
+    --contributions-content-podcasts-rectangle-image-width: 120px;
+
+    --contributions-content-bot101-projects-image-width: 100%;
+
+    --contributions-content-rpcs-json-font-size: 12px;
+
+    --contributions-content-validator-projects-each-project-height: 48px;
+
+    --contributions-content-open-source-each-project-name-font-size: 14px;
+    --contributions-content-open-source-each-project-width: 30px;
+    --contributions-content-open-source-each-project-height: 240px;
+  }
+
+  .contributions-content-klein-loading-bar {
+    display: none;
+  }
+  .contributions-content-klein-loading-bar-responsive {
+    display: flex;
+  }
+}
+@media only screen and (max-width: 500px) {
+  :root {
+    --contributions-content-open-source-each-project-width: 28px;
+    --contributions-content-open-source-each-project-height: 300px;
+
+    --contributions-content-podcasts-rectangle-image-width: 100px;
+  }
+
+  .contributions-content-validator-each-project-wrapper {
+    margin: 0 -10px;
+    height: calc(var(--contributions-content-validator-projects-each-project-height) * 2);
+    min-height: calc(var(--contributions-content-validator-projects-each-project-height) * 2);
+  }
+}
+@media only screen and (max-width: 400px) {
+  :root {
+    --contributions-content-podcasts-images-gap: 10px;
+    --contributions-content-podcasts-rectangle-image-width: 76px;
+  }
 }

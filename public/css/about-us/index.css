@@ -2,7 +2,7 @@
   --about-us-page-horizontal-padding: 120px;
   --about-us-page-vertical-padding: 60px;
 
-  --about-us-page-wrapper-gap: 0;
+  --about-us-page-wrapper-gap: 0px;
 
   --about-us-page-text-wrapper-width: 400px;
   --about-us-page-text-wrapper-gap: 20px;
@@ -26,15 +26,13 @@
 .header-top-line-wrapper {
   background-color: var(--secondary-light-color) !important;
 }
-.header-responsive-menu-button-color-curvature-two-inner-circle {
-  display: none !important;
-}
 
 .about-us-page-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: calc(var(--page-vertical-padding) + var(--header-height) + var(--about-us-page-vertical-padding)) calc(var(--about-us-page-horizontal-padding) + var(--page-horizontal-padding));
+  margin-bottom: var(--about-us-page-vertical-padding);
   gap: var(--about-us-page-wrapper-gap);
 }
 
@@ -250,8 +248,9 @@
   border-radius: calc(var(--about-us-page-each-card-width) / 20);
   font-family: 'Quality Sunrise', Georgia, sans-serif;
   font-size: var(--about-us-page-each-card-information-box-font-size);
+  line-height: 1.2;
   z-index: -1;
-  transition: all 0.5s;
+  transition: opacity 0.5s;
 }
 
 @media only screen and (max-width: 1300px) {

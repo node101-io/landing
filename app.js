@@ -68,8 +68,8 @@ if (cluster.isMaster) {
     next();
   });
   app.use(setLanguage);
-  app.use(enableDynamicInclude);
   app.use(detectNewUser);
+  app.use(enableDynamicInclude);
 
   app.use('/', indexRouteController);
   app.use('/subscribe', subscribeRouteController);

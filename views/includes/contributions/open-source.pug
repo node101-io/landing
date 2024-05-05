@@ -2,39 +2,29 @@
   -
     const projects = [
       {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
+        name: __('Klein'),
+        description: __('Klein is a fully decentralized and non-profit node management tool that allows anyone to run a node in any chain without any technical knowledge.'),
+        link: 'https://github.com/node101-io/klein'
       },
       {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
+        name: __('bot101'),
+        description: __('bot101 works 7 / 24 behind the scenes and makes sure we never miss an update on any chain we validate.'),
+        link: 'https://github.com/node101-io/upgrade-tracker-bot'
       },
       {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
+        name: __('Photon'),
+        description: __('Paris 2024 hackathon winner Photon is the very first data availability layer on Mina, ready for anyone to use and develop.'),
+        link: 'https://github.com/photon-bridge'
       },
       {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
+        name: __('Library'),
+        description: __('Library is a collection of all the content we made for the community, including articles, blogs, and newsletters.'),
+        link: 'https://github.com/node101-io/library'
       },
       {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
-      },
-      {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
-      },
-      {
-        name: 'Lorem ipsum',
-        description: 'We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean.',
-        link: 'https://github.com/node101-io'
+        name: __('Event Websites'),
+        description: __('All the websites of node101 and the events we organize are also open source.'),
+        link: 'https://github.com/orgs/node101-io/repositories'
       }
     ];
   each project, i in projects
@@ -45,7 +35,7 @@
         svg.contributions-content-open-source-each-project-link-icon(viewBox='0 0 17 16' xmlns='http://www.w3.org/2000/svg')
           path(d='M14.6674 14.8989C14.692 14.8992 15.1599 14.6225 15.7069 14.2839C16.2539 13.9453 16.6904 13.6475 16.6769 13.6222C16.6634 13.597 16.3945 13.2364 16.0793 12.8211C15.4464 11.9869 14.8337 10.8868 14.5584 10.0907C13.7008 7.60978 14.0517 5.04822 15.5307 2.9947L15.9073 2.47177L15.1698 1.73435L14.4324 0.996873L13.9547 1.33449C10.8251 3.54646 7.03915 3.24292 3.65344 0.508662C3.43237 0.330102 3.24352 0.192086 3.23374 0.201869C3.14366 0.291946 2.01945 2.15276 2.0204 2.21016C2.02109 2.25167 2.22359 2.42381 2.47039 2.59256C5.20304 4.46145 8.31186 5.09703 10.6994 4.27509L11.2721 4.07794L3.37108 12.0084L0.981791 14.4164L2.47421 15.9088L4.89506 13.5066L12.8069 5.6243L12.5731 6.3624C11.9663 8.27716 12.2511 10.5582 13.3853 12.8681C13.7084 13.5262 14.5741 14.8973 14.6674 14.8989Z')
 .contributions-content-open-source-each-text= __('Open Source & Clean Code Development')
-.contributions-content-open-source-each-text= __('We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source* and clean. Anyone can contribute to the development of a node101 project and help us distribute the value even faster.')
+.contributions-content-open-source-each-text= __('We believe distributed value is more than about technology, and thus we take the first step by making all the code we develop open source and clean. Anyone can contribute to the development of a node101 project and help us distribute the value even faster.')
 a.contributions-content-open-source-link-wrapper
   svg.contributions-content-open-source-link-icon(viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg')
     rect(width='18' height='18' rx='9' fill='#DFE5FF')

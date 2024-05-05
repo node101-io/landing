@@ -1,16 +1,22 @@
 .contributions-content-101-telegram-dialog-wrapper
-  .contributions-content-101-telegram-each-left-message-wrapper
+  -
+    const message_1_delay = 1;
+    const message_2_delay = 3;
+    const message_3_delay = 5;
+    const message_4_delay = 7;
+  .contributions-content-101-telegram-each-left-message-wrapper(style=`animation-delay: ${message_1_delay}s;`)
     img.contributions-content-101-telegram-each-message-part(src='/img/contributions/101-telegram/message-1-left.png' alt='telegram message')
-    .contributions-content-101-telegram-each-left-message-text= __('Hello!')
+    .contributions-content-101-telegram-each-left-message-text(style=`animation-delay: ${message_1_delay}s;`)= __('Hello!')
     img.contributions-content-101-telegram-each-message-part(src='/img/contributions/101-telegram/message-1-right.png' alt='telegram message')
-  img.contributions-content-101-telegram-each-sticker(src='/img/contributions/101-telegram/duck-sticker.png' alt='telegram sticker')
-  .contributions-content-101-telegram-each-right-message-wrapper
+  img.contributions-content-101-telegram-each-sticker(style=`animation-delay: ${message_2_delay}s;` src='/img/contributions/101-telegram/duck-sticker.gif' alt='telegram sticker')
+  .contributions-content-101-telegram-each-right-message-wrapper(style=`animation-delay: ${message_3_delay}s;`)
     img.contributions-content-101-telegram-each-message-part(src='/img/contributions/101-telegram/message-2-left.png' alt='telegram message')
-    .contributions-content-101-telegram-each-right-message-text= __('Heyy welcome to node101')
+    .contributions-content-101-telegram-each-right-message-text(style=`animation-delay: ${message_3_delay}s;`)= __('Heyy welcome to node101')
     img.contributions-content-101-telegram-each-message-part(src='/img/contributions/101-telegram/message-2-right.png' alt='telegram message')
-  .contributions-content-101-telegram-each-right-message-wrapper
+  .contributions-content-101-telegram-each-right-message-wrapper(style=`animation-delay: ${message_4_delay}s;`)
     img.contributions-content-101-telegram-each-message-part(src='/img/contributions/101-telegram/message-2-left.png' alt='telegram message')
-    .contributions-content-101-telegram-each-right-message-text= __('.....')
+    - for (let i = 0; i < 5; i++)
+      .contributions-content-101-telegram-each-right-message-text.contributions-content-101-telegram-each-right-message-text-bouncing(style=`animation-delay: ${message_4_delay + i / 10}s;`)= '.'
     img.contributions-content-101-telegram-each-message-part(src='/img/contributions/101-telegram/message-2-right.png' alt='telegram message')
 .contributions-content-101-telegram-title= __('Telegram Group')
 .contributions-content-101-telegram-each-text= __('node101 Telegram Group & Support Team')
