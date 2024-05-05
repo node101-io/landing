@@ -6,6 +6,7 @@ const favicon = require('serve-favicon');
 const http = require('http');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
+const os = require('os');
 const path = require('path');
 const session = require('express-session');
 
@@ -14,7 +15,7 @@ const enableDynamicInclude = require('./middleware/enableDynamicInclude');
 const setLanguage = require('./middleware/setLanguage');
 
 dotenv.config({ path: path.join(__dirname, '.env') });
-const numCPUs = process.env.WEB_CONCURRENCY || require('os').cpus().length;
+const numCPUs = process.env.WEB_CONCURRENCY || os.cpus().length;
 
 if (cluster.isMaster) {
   console.log(`Master ${process.pid} is running`);
