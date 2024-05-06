@@ -66,7 +66,7 @@ function handleContributionNavbarContentItemsAnimation() {
   contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.opacity = startOpacity + opacityChange - opacityChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT;
   contributionsNavbarContentItems[CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT].style.fontSize = `${startFontSize + fontSizeChange - fontSizeChange * (CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT - contributionsFirstItemMarginTop) / CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT}px`;
 
-  return setTimeout(() => handleContributionNavbarContentItemsAnimation(), 2);
+  return setTimeout(handleContributionNavbarContentItemsAnimation, 2);
 };
 
 function scrollContributionsContentBy(scrollAmount, callback) {
@@ -186,53 +186,63 @@ function initalizeContributionScrollEvent() {
     contributionScrollEnded = true;
     contributionScrollStarted = false;
 
-    if (contributionsFirstItemMarginTop != 0)
-      scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
+    scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
   });
 
   contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
   handleContributionNavbarContentItemsAnimation();
 };
 
-function addDragAbility(selector) {
-  let isDown = false;
-  let isDragging = false;
-  let startX;
-  let scrollLeft;
+function initalizeDragEvent() {
+  const draggableElementsSelectors = [
+    '.team-content-images-wrapper',
+    '.contributions-content-videos-thumbnails-wrapper',
+    '.events-content-workshops-bottom-wrapper',
+    '.events-content-gatherings-bottom-wrapper',
+    '.events-content-hacker-houses-bottom-wrapper',
+    '.events-content-hacker-tours-bottom-wrapper'
+  ];
 
-  const element = document.querySelector(selector);
+  for (let i = 0; i < draggableElementsSelectors.length; i++) {
+    let isDown = false;
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
 
-  document.addEventListener('click', event => {
-    if (isDragging && event.target.closest(selector))
+    const element = document.querySelector(draggableElementsSelectors[i]);
+
+    document.addEventListener('click', event => {
+      if (isDragging && event.target.closest(draggableElementsSelectors[i]))
+        event.preventDefault();
+    });
+
+    element.addEventListener('mousedown', event => {
+      if (isDragging)
+        event.preventDefault();
+
+      isDown = true;
+      startX = event.pageX - element.offsetLeft;
+      scrollLeft = element.scrollLeft;
+    });
+    element.addEventListener('mouseleave', _ => {
+      isDown = false;
+    });
+    element.addEventListener('mouseup', _ => {
+      isDown = false;
+      setTimeout(() => {
+        isDragging = false;
+      }, 100);
+    });
+    element.addEventListener('mousemove', event => {
+      if (!isDown) return;
+
       event.preventDefault();
-  });
-
-  element.addEventListener('mousedown', event => {
-    if (isDragging) {
-      event.preventDefault();
-    };
-    isDown = true;
-    startX = event.pageX - element.offsetLeft;
-    scrollLeft = element.scrollLeft;
-  });
-  element.addEventListener('mouseleave', _ => {
-    isDown = false;
-  });
-  element.addEventListener('mouseup', _ => {
-    isDown = false;
-    setTimeout(() => {
-      isDragging = false;
-    }, 100);
-  });
-  element.addEventListener('mousemove', event => {
-    if (!isDown) return;
-
-    event.preventDefault();
-    isDragging = true;
-    const x = event.pageX - element.offsetLeft;
-    const walk = x - startX;
-    element.scrollLeft = scrollLeft - walk;
-  });
+      isDragging = true;
+      const x = event.pageX - element.offsetLeft;
+      const walk = x - startX;
+      element.scrollLeft = scrollLeft - walk;
+    });
+  };
 };
 
 function addToSubscriberList() {
@@ -270,12 +280,7 @@ function addToSubscriberList() {
 
 window.addEventListener('load', _ => {
   initalizeContributionScrollEvent();
-  addDragAbility('.team-content-images-wrapper');
-  addDragAbility('.contributions-content-videos-thumbnails-wrapper');
-  addDragAbility('.events-content-workshops-bottom-wrapper');
-  addDragAbility('.events-content-gatherings-bottom-wrapper');
-  addDragAbility('.events-content-hacker-houses-bottom-wrapper');
-  addDragAbility('.events-content-hacker-tours-bottom-wrapper');
+  initalizeDragEvent();
 
   document.addEventListener('click', event => {
     if (event.target.closest('.events-content-navbar-header-wrapper')) {

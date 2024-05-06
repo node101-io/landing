@@ -965,7 +965,7 @@
   font-size: var(--portfolio-header-font-size);
   background-color: var(--background-color);
   border-bottom-right-radius: var(--portfolio-header-curvature-border-radius);
-  line-height: calc(1.5 * var(--portfolio-header-font-size));
+  line-height: 1.5;
   z-index: 2;
   padding-right: var(--portfolio-header-text-gap);
   padding-bottom: 5px;
@@ -1022,7 +1022,7 @@
   font-family: 'Quality Sunrise', Georgia, sans-serif;
   font-size: var(--portfolio-header-font-size);
   font-weight: 400;
-  line-height: calc(1.2 * var(--portfolio-header-font-size));
+  line-height: 1.2;
   color: var(--link-light-color);
 }
 .portfolio-header-bottom-line-link {
@@ -1347,14 +1347,14 @@
   font-family: 'Quality Sunrise', Georgia, sans-serif;
   font-size: var(--services-each-title-font-size);
   color: var(--dark-text-color);
-  line-height: calc(1.4 * var(--services-each-title-font-size));
+  line-height: 1.4;
 }
 .services-content-each-service-description {
   font-size: var(--services-each-text-font-size);
   color: var(--dark-text-color);
   font-style: italic;
   font-weight: 300;
-  line-height: calc(1.3 * var(--services-each-text-font-size));
+  line-height: 1.3;
   margin-top: var(--services-each-text-margin-top);
 }
 .services-content-each-service-description-button {
@@ -1393,13 +1393,13 @@
   font-style: italic;
   font-size: var(--services-content-description-title-font-size);
   color: var(--dark-text-color);
-  line-height: calc(1.2 * var(--services-content-description-title-font-size));
+  line-height: 1.2;
 }
 .services-content-description-subtitle {
   font-weight: 400;
   font-size: var(--services-content-description-subtitle-font-size);
   color: var(--dark-text-color);
-  line-height: calc(1.3 * var(--services-content-description-subtitle-font-size));
+  line-height: 1.3;
   margin-top: var(--services-content-description-subtitle-margin-top);
 }
 .services-content-description-button {
@@ -1542,14 +1542,14 @@
   font-family: 'Igra Sans', sans-serif;
   font-weight: 400;
   font-size: var(--team-header-font-size);
-  line-height: calc(1.5 * var(--team-header-font-size));
+  line-height: 1.5;
 }
 .team-header-description-responsive {
   display: none;
   font-weight: 300;
   font-size: var(--team-footer-font-size);
   color: var(--dark-text-color);
-  line-height: calc(1.4 * var(--team-footer-font-size));
+  line-height: 1.4;
   padding: var(--page-vertical-padding) var(--page-horizontal-padding);
 }
 
@@ -1698,7 +1698,7 @@
   font-size: var(--team-footer-font-size);
   font-style: italic;
   color: var(--dark-text-color);
-  line-height: calc(1.4 * var(--team-footer-font-size));
+  line-height: 1.4;
 }
 .team-footer-description-link {
   font-weight: 400;
@@ -2143,7 +2143,7 @@
   z-index: 2;
 }
 
-@media only screen and (max-height: 850px) {
+@media only screen and (max-height: 850px) and (orientation: landscape) {
   :root {
     --start-page-background-height: 850px;
   }

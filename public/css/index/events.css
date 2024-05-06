@@ -241,7 +241,7 @@
   font-size: var(--events-description-font-size);
   font-style: italic;
   color: var(--dark-text-color);
-  line-height: calc(1.4 * var(--events-description-font-size));
+  line-height: 1.4;
 }
 .events-description-mail {
   color: var(--link-light-color);
