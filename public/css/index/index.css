@@ -835,6 +835,7 @@
   font-family: 'Igra Sans', sans-serif;
   font-variant-ligatures: none;
   font-size: var(--start-page-header-font-size);
+  line-height: 1;
   letter-spacing: -0.05em;
   color: var(--dark-text-color);
   min-width: var(--start-page-header-font-space);
@@ -844,7 +845,7 @@
 .start-page-header-each-line-turkish-char-fix::before {
   content: '˘';
   position: absolute;
-  top: calc(0.17 * var(--start-page-header-font-size));
+  top: 0;
   left: calc(8.78 * var(--start-page-header-font-size));
 }
 .start-page-last-line-wrapper {
