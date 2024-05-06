@@ -208,8 +208,9 @@ function addDragAbility(selector) {
   });
 
   element.addEventListener('mousedown', event => {
-    if (isDragging)
+    if (isDragging) {
       event.preventDefault();
+    };
     isDown = true;
     startX = event.pageX - element.offsetLeft;
     scrollLeft = element.scrollLeft;

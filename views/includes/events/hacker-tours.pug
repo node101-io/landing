@@ -19,10 +19,11 @@
       }
     ];
   each tour in tours
-    a.events-content-hacker-tours-each-card-wrapper(href=tour.link target='_blank')
+    a.events-content-hacker-tours-each-card-wrapper(href=tour.link target='_blank' draggable='false')
       img.events-content-hacker-tours-each-card-image(
         srcset=`/img/events/hacker-tours/${tour._id}-500w.png, /img/events/hacker-tours/${tour._id}-750w.png 1.5x, /img/events/hacker-tours/${tour._id}-1000w.png 2x`
         src=`/img/events/hacker-tours/${tour._id}-1000w.png`
         alt=tour.name
+        draggable='false'
       )
       .events-content-hacker-tours-each-card-text= __(tour.name)
