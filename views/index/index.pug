@@ -328,9 +328,9 @@ block main
             svg.team-content-button-icon.team-content-button-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
           .team-header-description= __('How do we achieve it all? By having one of the best teams in the ecosystem, all members with the vision of helping, growing, and distributing the value.')
-          .team-header-color
-            .team-header-color-inner-circle
         .team-content-wrapper
+          .team-content-color
+            .team-content-color-inner-circle
           .team-header-description-responsive= __('How do we achieve it all? By having one of the best teams in the ecosystem, all members with the vision of helping, growing, and distributing the value.')
           .team-content-images-wrapper
             - for (let i = 1; i <= 10; i++)
@@ -347,12 +347,12 @@ block main
             svg.team-content-button-icon.team-content-button-icon-right(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
               path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
       .team-footer-wrapper
-        .team-footer-color
-          .team-footer-color-inner-circle
         h3.team-footer-description
           span= __('If you also are sharing our values, believing in our vision, and thinking that it is time to change something; reach out to us at ')
           a.team-footer-description-link(href='mailto:hello@node101.io' target='_blank') hello@node101.io
           span= __(', and let’s discuss when you can start.')
+        .team-footer-color
+          .team-footer-color-inner-circle
     .footer-wrapper
       .footer-content-wrapper
         .footer-top-wrapper
