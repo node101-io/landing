@@ -1491,7 +1491,6 @@
   background-color: transparent;
   top: 0;
   left: 0;
-  z-index: 2;
 }
 
 .team-top-line-color-wrapper {
@@ -1536,6 +1535,7 @@
   border-bottom-right-radius: var(--team-wrapper-border-radius);
   padding-bottom: var(--team-header-padding-bottom);
   padding-right: var(--team-header-padding-right);
+  z-index: 3;
 }
 .team-header-description {
   font-family: 'Igra Sans', sans-serif;
