@@ -74,6 +74,7 @@ if (cluster.isMaster) {
 
   app.use('/', indexRouteController);
   app.use('/subscribe', subscribeRouteController);
+  app.use('/stake', (req, res) => res.redirect('/#portfolio'));
 
   server.listen(PORT, () => {
     console.log(`Server is on port ${PORT} as Worker ${cluster.worker.id} running @ process ${cluster.worker.process.pid}`);
