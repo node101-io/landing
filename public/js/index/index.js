@@ -167,11 +167,20 @@ function updateContributionsStyleInfoRegularly() {
   return setTimeout(updateContributionsStyleInfoRegularly, 1000);
 };
 
+function handleContributionScrollEnd() {
+  contributionScrollEnded = true;
+  contributionScrollStarted = false;
+
+  scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
+};
+
 function initalizeContributionScrollEvent() {
   updateContributionsStyleInfoRegularly();
 
   contributionsNavbarContentInnerWrapper = document.querySelector('.contributions-navbar-content-inner-wrapper');
   contributionsNavbarScrollWrapper = document.querySelector('.contributions-navbar-scroll-wrapper');
+
+  let scrollTimeout;
 
   contributionsNavbarScrollWrapper.addEventListener('scroll', event => {
     contributionScrollTop = event.target.scrollTop;
@@ -181,12 +190,11 @@ function initalizeContributionScrollEvent() {
       contributionScrollEnded = false;
       handleContributionScroll();
     };
-  });
-  contributionsNavbarScrollWrapper.addEventListener('scrollend', _ => {
-    contributionScrollEnded = true;
-    contributionScrollStarted = false;
 
-    scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
+    if (scrollTimeout)
+      clearTimeout(scrollTimeout);
+
+    scrollTimeout = setTimeout(handleContributionScrollEnd, 150);
   });
 
   contributionsNavbarScrollWrapper.scrollTo(0, contributionsNavbarScrollWrapper.scrollHeight / 2);
