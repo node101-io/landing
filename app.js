@@ -74,7 +74,15 @@ if (cluster.isMaster) {
 
   app.use('/', indexRouteController);
   app.use('/subscribe', subscribeRouteController);
-  app.use('/stake', (req, res) => res.redirect('/#portfolio'));
+
+  // temporary redirects
+  app.use('/stake', (req, res) => {
+    res.redirect('/#portfolio');
+  });
+  app.use('/blog/a_non_mathematical_introduction_to_zero_knowledge_proofs', (req, res) => {
+    res.redirect('https://library.node101.io/blog/node101/a-non-mathematical-introduction-to-zero-knowledge-proofs');
+  });
+  app.all('*', (req, res) => res.redirect('/'));
 
   server.listen(PORT, () => {
     console.log(`Server is on port ${PORT} as Worker ${cluster.worker.id} running @ process ${cluster.worker.process.pid}`);
