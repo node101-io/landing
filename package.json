@@ -41,6 +41,6 @@
   },
   "homepage": "https://github.com/node101-io/landing#readme",
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.4.0"
   }
 }
