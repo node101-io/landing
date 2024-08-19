@@ -33,6 +33,7 @@ if (cluster.isMaster) {
 
   const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/node101';
   const PORT = process.env.PORT || 10101;
+  const URL = process.env.URL || 'http://localhost:' + PORT;
 
   const indexRouteController = require('./routes/indexRoute');
   const subscribeRouteController = require('./routes/subscribeRoute');
@@ -65,6 +66,8 @@ if (cluster.isMaster) {
       req.query = {};
     if (!req.body || typeof req.body != 'object')
       req.body = {};
+
+    res.locals.url = URL;
 
     next();
   });
