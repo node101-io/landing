@@ -35,11 +35,11 @@ module.exports = (req, res) => {
       title: res.__('Art Director'),
       description: res.__('An artist far from industrialism and mediocrity, a designer who constantly produces diligently, she is the hardest working member of the team and its muse.')
     },
-    // {
-    //   name: 'Necip',
-    //   title: res.__('Lead-Developer'),
-    //   description: res.__('Leader and peer educator of the developer team, sophisticated yet humble and friendly, the man loved by everyone in the ecosystem, the technical owner of 101 products and vision.')
-    // },
+    {
+      name: 'Necip',
+      title: res.__('Lead-Developer'),
+      description: res.__('Leader and peer educator of the developer team, sophisticated yet humble and friendly, the man loved by everyone in the ecosystem, the technical owner of 101 products and vision.')
+    },
     {
       name: 'Kaleab',
       title: res.__('Developer'),
