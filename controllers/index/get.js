@@ -2,41 +2,20 @@ const PORTFOLIO = [
   {
     _id: 'cosmos',
     name: 'Cosmos Hub',
-    apr: '14.39',
+    apr: '15.12',
     link: 'https://wallet.keplr.app/chains/cosmos-hub?modal=validator&chain=cosmoshub-4&validator_address=cosmosvaloper1lrzxwu4dmy8030waevcpft7rpxjjz26cpzvumd'
   },
   {
     _id: 'celestia',
     name: 'Celestia',
-    apr: '11.29',
+    apr: '10.10',
     link: 'https://wallet.keplr.app/chains/celestia?modal=validator&chain=celestia&validator_address=celestiavaloper1lrzxwu4dmy8030waevcpft7rpxjjz26csrtqm4'
   },
   {
     _id: 'band',
     name: 'Band',
-    apr: '11.96',
+    apr: '13.28',
     link: 'https://ping.pub/band/staking/bandvaloper1l8zzhhe3ltlkk7sd38rcw7u6g9d609t2etc2zp'
-  },
-  // {
-  //   _id: 'neutron',
-  //   name: 'Neutron',
-  //   apr: '0.00'
-  // },
-  // {
-  //   _id: 'stride',
-  //   name: 'Stride',
-  //   apr: '3.26'
-  // },
-  // {
-  //   _id: 'orai',
-  //   name: 'Orai Chain',
-  //   apr: '17.78'
-  // },
-  {
-    _id: 'canto',
-    name: 'Canto',
-    apr: '5.30',
-    link: 'https://ping.pub/canto/staking/cantovaloper1f3t7qs0r3tfzvxrfszh34dnm8y0qwnzd26s2uj'
   },
   {
     _id: 'shentu',
@@ -99,16 +78,17 @@ const PORTFOLIO = [
     link: 'https://ping.pub/desmos/staking/desmosvaloper1y6j0ych2elrxsqmxg5z39svtdlnkcxql4wvclc'
   },
   {
-    _id: 'e-money',
-    name: 'e-Money',
-    apr: '33.13',
-    link: 'https://ping.pub/e-money/staking/emoneyvaloper1lrzxwu4dmy8030waevcpft7rpxjjz26cv4yf7w'
+    _id: 'lava',
+    name: 'Lava',
+    apr: '1.16',
+    link: 'https://wallet.keplr.app/chains/lava?modal=staking&chain=lava-mainnet-1&validator_address=lava%40valoper1lrzxwu4dmy8030waevcpft7rpxjjz26cg85tzy&step_id=2'
   },
-  // {
-  //   _id: 'crescent',
-  //   name: 'Crescent',
-  //   apr: '8.79'
-  // }
+  {
+    _id: 'nolus',
+    name: 'Nolus',
+    apr: '3.02',
+    link: 'https://wallet.keplr.app/chains/nolus?modal=staking&chain=pirin-1&validator_address=nolusvaloper1lrzxwu4dmy8030waevcpft7rpxjjz26ctkankx&step_id=2'
+  }
 ];
 
 module.exports = (req, res) => {
