@@ -17,6 +17,7 @@
   --about-us-page-each-card-pair-wrapper-gap: 30px;
   --about-us-page-each-card-wrapper-shifted-margin-top: 56px;
   --about-us-page-each-card-width: 200px;
+  --about-us-page-each-card-border-radius: 25px;
   --about-us-page-each-card-text-font-size: 12px;
   --about-us-page-each-card-information-box-width: 200px;
   --about-us-page-each-card-information-box-padding: 20px;
@@ -211,6 +212,8 @@
   min-height: calc(var(--about-us-page-each-card-width) * 6 / 5);
   width: var(--about-us-page-each-card-width);
   min-width: var(--about-us-page-each-card-width);
+  border-radius: var(--about-us-page-each-card-border-radius);
+  overflow: hidden;
 }
 .about-us-page-each-card-image {
   height: 100%;
@@ -271,6 +274,7 @@
     --about-us-page-each-row-wrapper-gap: 50px;
 
     --about-us-page-each-card-width: 200px;
+    --about-us-page-each-card-border-radius: 15px;
     --about-us-page-each-card-wrapper-shifted-margin-top: 0;
     --about-us-page-each-card-pair-wrapper-shifted-margin-top: 0;
     --about-us-page-each-card-pair-wrapper-shifted-margin-left: auto;
@@ -320,6 +324,7 @@
   :root {
     --about-us-page-each-card-pair-wrapper-gap: 20px;
     --about-us-page-each-card-width: 170px;
+    --about-us-page-each-card-border-radius: 10px;
   }
 }
 @media only screen and (max-width: 400px) {
