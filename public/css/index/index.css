@@ -43,7 +43,7 @@
   --start-page-background-shape-five-animation-height-start-ratio: 104 / 473;
   --start-page-background-shape-five-animation-duration: 0.3s;
 
-  --start-page-external-link-hover-transition-duration: 0.3s;
+  --start-page-external-link-hover-transition-duration: 0.05s;
   --start-page-external-link-title-font-size: 18px;
   --start-page-external-link-icon-width: 15px;
   --start-page-external-link-icon-margin-left: 8px;
@@ -740,9 +740,6 @@
   cursor: var(--pointer-hand-dark);
   text-decoration: none;
 }
-.start-page-external-link-wrapper:hover .start-page-external-link-each-line .start-page-external-link-each-icon {
-  transform: translate(10%, -20%);
-}
 .start-page-external-klein-wrapper {
   margin-bottom: var(--start-page-external-klein-margin-bottom);
 }
@@ -796,13 +793,24 @@
   line-height: 1.3;
   letter-spacing: normal;
 }
-.start-page-external-link-each-icon {
+.start-page-external-link-each-line .start-page-external-link-each-icon {
   width: var(--start-page-external-link-icon-width);
   min-width: var(--start-page-external-link-icon-width);
   height: auto;
   margin-left: var(--start-page-external-link-icon-margin-left);
   transform: translateY(-10%);
   transition: var(--start-page-external-link-hover-transition-duration);
+  visibility: hidden;
+}
+.start-page-external-link-each-line:first-child .start-page-external-link-each-icon {
+  visibility: visible;
+}
+.start-page-external-link-wrapper:hover .start-page-external-link-each-line:first-child .start-page-external-link-each-icon {
+  visibility: hidden;
+}
+.start-page-external-link-wrapper:hover .start-page-external-link-each-line:hover .start-page-external-link-each-icon {
+  visibility: visible;
+  transform: translate(10%, -20%);
 }
 .start-page-external-link-each-text {
   color: var(--dark-text-color);

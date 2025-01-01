@@ -30,6 +30,7 @@
     "mongoose": "^6.10.4",
     "multer": "^1.4.5-lts.1",
     "node-fetch": "^2.6.9",
+    "nodemon": "^3.1.9",
     "os": "^0.1.2",
     "pug": "^3.0.2",
     "serve-favicon": "^2.5.0",
@@ -39,8 +40,5 @@
   "bugs": {
     "url": "https://github.com/node101-io/landing/issues"
   },
-  "homepage": "https://github.com/node101-io/landing#readme",
-  "devDependencies": {
-    "nodemon": "^3.4.0"
-  }
+  "homepage": "https://github.com/node101-io/landing#readme"
 }
