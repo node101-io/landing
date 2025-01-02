@@ -3,9 +3,10 @@ let CONTRIBUTIONS_EACH_CONTRIBUTION_HEIGHT = 75;
 const CONTRIBUTIONS_MAX_SCROLL_SPEED = 10;
 const CONTRIBUTIONS_NAVBAR_CONTENT_ITEM_COUNT = 9;
 const CONTRIBUTIONS_SCROLL_SPEED_MS_DELAY = 40;
-const CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY = 3;
+const CONTRIBUTIONS_SCROLL_SMOOTH_SPEED_MS_DELAY = 3;
 const CONTRIBUTIONS_SCROLL_RESET_DISTANCE = 500;
 
+let clickScrollCount = 0;
 let contributionsFirstItemMarginTop = 0;
 let contributionsNavbarContentInnerWrapper;
 let contributionsNavbarScrollWrapper
@@ -137,11 +138,11 @@ function scrollContributionsContentBySmooth(scrollAmount) {
   if (scrollAmount > 0) {
     contributionsFirstItemMarginTop += 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount - 1), CONTRIBUTIONS_SCROLL_SMOOTH_SPEED_MS_DELAY);
   } else {
     contributionsFirstItemMarginTop -= 1;
     contributionsNavbarContentInnerWrapper.childNodes[0].style.marginTop = `-${contributionsFirstItemMarginTop}px`;
-    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOT_SPEED_MS_DELAY);
+    setTimeout(() => scrollContributionsContentBySmooth(scrollAmount + 1), CONTRIBUTIONS_SCROLL_SMOOTH_SPEED_MS_DELAY);
   };
 };
 
@@ -159,6 +160,21 @@ function handleContributionScroll() {
     handleContributionScroll();
   });
 };
+
+function handleContributionClick(contentDifferenceCount) {
+  if(contentDifferenceCount == 0) return;
+
+  const scrollAmount = contentDifferenceCount > 0 ? -4 : 4;
+  scrollContributionsContentBy(scrollAmount,_ => {}); 
+
+  clickScrollCount++;
+  if(clickScrollCount < Math.abs(contentDifferenceCount) * 18) 
+    setTimeout(() => { handleContributionClick(contentDifferenceCount) }, 10);
+  else {
+    clickScrollCount = 0;
+    scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
+  }    
+}
 
 function updateContributionsStyleInfoRegularly() {
   CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = Number(getComputedStyle(document.documentElement).getPropertyValue('--contributions-navbar-content-each-contribution-font-size').replace('px', ''));
@@ -343,6 +359,14 @@ window.addEventListener('load', _ => {
 
       target.classList.toggle('contributions-content-rpcs-json-folded');
     };
+
+    if (event.target.closest('.contributions-navbar-scroll-inner-each-wrapper')){
+      const targetY = event.target.closest('.contributions-navbar-scroll-inner-each-wrapper').getBoundingClientRect().top
+      const middleContentY = document.querySelectorAll('.contributions-navbar-content-each-contribution')[4].getBoundingClientRect().top
+
+      const diff = Math.ceil((targetY - middleContentY) / 70)
+      handleContributionClick(-diff);
+    }
   });
 
   document.addEventListener('keyup', event => {
