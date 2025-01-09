@@ -2409,8 +2409,8 @@
     --team-header-width-ratio: 1;
 
     --footer-top-right-title-font-size: 50px;
-    --footer-top-right-contact-height: 60px;
-    --footer-top-right-contact-title-font-size: 16px;
+    --footer-top-right-contact-height: 50px;
+    --footer-top-right-contact-title-font-size: 15px;
     --footer-top-left-input-width: 100%;
     --footer-top-left-text-font-size: 16px;
     --footer-top-left-input-height: 50px;
@@ -2450,6 +2450,9 @@
   .footer-top-right-wrapper {
     display: none;
   }
+  .footer-top-right-contact-link {
+    display: none;
+  }
   .footer-wrapper {
     height: -webkit-fit-content;
     height: -moz-fit-content;
@@ -2457,6 +2460,10 @@
     min-height: -webkit-fit-content;
     min-height: -moz-fit-content;
     min-height: fit-content;
+  }
+  .footer-top-right-contact-title {
+    font-weight: 700;
+
   }
 }
 @media only screen and (max-width: 500px) {
@@ -2473,7 +2480,7 @@
     --footer-top-right-subtitle-font-size: 12px;
     --footer-top-right-text-font-size: 14px;
     --footer-top-right-contact-title-font-size: 14px;
-    --footer-top-right-contact-text-font-size: 14px;
+    --footer-top-right-contact-text-font-size: 13px;
     --footer-top-left-text-font-size: 14px;
     --footer-top-left-input-title-font-size: 14px;
     --footer-top-left-input-font-size: 14px;
@@ -2496,7 +2503,7 @@
     --portfolio-content-project-wrapper-responsive-height: 50px;
 
     --footer-top-right-title-font-size: 40px;
-    --footer-top-right-contact-height: 44px;
+    --footer-top-right-contact-height: 40px;
     --footer-top-left-checkbox-text-font-size: 12px;
     --footer-content-padding-bottom: calc(var(--footer-background-shape-height));
     --footer-bottom-margin-top: 0;
