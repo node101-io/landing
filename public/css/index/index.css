@@ -1,8 +1,8 @@
 :root {
   --content-gap: 100px;
 
-  --hello-node101-text-font-size: 30px;
-  --hello-node101-opacity-animation-duration: 2s;
+  --hello-node101-text-font-size: 20px;
+  --hello-node101-opacity-animation-duration: 3s;
 
   --start-page-radius: 30px;
   --start-page-color-empty-height: 0px;
@@ -179,8 +179,8 @@
   gap: calc(var(--hello-node101-text-font-size) / 2);
   background-color: var(--background-color);
   z-index: 1000;
-  -webkit-animation: helloNode101WrapperAnimation calc(var(--hello-node101-opacity-animation-duration) * 2) forwards;
-          animation: helloNode101WrapperAnimation calc(var(--hello-node101-opacity-animation-duration) * 2) forwards;
+  -webkit-animation: helloNode101WrapperAnimation calc(var(--hello-node101-opacity-animation-duration) * 1.2) forwards calc(var(--hello-node101-opacity-animation-duration) * 0.4);
+          animation: helloNode101WrapperAnimation calc(var(--hello-node101-opacity-animation-duration) * 1.2) forwards calc(var(--hello-node101-opacity-animation-duration) * 0.4);
 }
 @-webkit-keyframes helloNode101WrapperAnimation {
   0% {
@@ -213,23 +213,32 @@
   }
 }
 .hello-node101-text {
-  font-family: 'Igra Sans', sans-serif;
-  font-size: var(--hello-node101-text-font-size);
-  margin-top: calc(var(--hello-node101-text-font-size) / 5);
-  -webkit-animation: helloNode101TextAnimation var(--hello-node101-opacity-animation-duration) ease-out;
-          animation: helloNode101TextAnimation var(--hello-node101-opacity-animation-duration) ease-out;
+  height: calc(var(--hello-node101-text-font-size) * 1.5);
+  min-height: calc(var(--hello-node101-text-font-size) * 1.5);
+  width: auto;
+  min-width: auto;
+  fill: var(--dark-text-color);
+}
+.hello-node101-text path {
+  opacity: 0;
+  animation: fadeIn 0s forwards;
+}
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 .hello-node101-logo {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  min-height: -webkit-fit-content;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-  width: calc(var(--hello-node101-text-font-size) * 1.5);
-  min-width: calc(var(--hello-node101-text-font-size) * 1.5);
-  -webkit-animation: helloNode101TextAnimation var(--hello-node101-opacity-animation-duration) ease-out;
-          animation: helloNode101TextAnimation var(--hello-node101-opacity-animation-duration) ease-out;
+  opacity: 0;
+  height: calc(var(--hello-node101-text-font-size) * 1.5);
+  min-height: calc(var(--hello-node101-text-font-size) * 1.5);
+  width: auto;
+  min-width: auto;
+  -webkit-animation: helloNode101TextAnimation calc(var(--hello-node101-opacity-animation-duration) / 4) ease-out forwards;
+          animation: helloNode101TextAnimation calc(var(--hello-node101-opacity-animation-duration) / 4) ease-out forwards;
 }
 @-webkit-keyframes helloNode101TextAnimation {
   0% {
