@@ -277,8 +277,8 @@
   position: absolute;
   top: 0;
   left: var(--page-horizontal-padding);
-  height: calc(100vh - 2 * var(--page-vertical-padding));
-  min-height: calc(100vh - 2 * var(--page-vertical-padding));
+  height: calc(100dvh - 2 * var(--page-vertical-padding));
+  min-height: calc(100dvh - 2 * var(--page-vertical-padding));
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
   border-radius: var(--start-page-radius);
@@ -303,7 +303,7 @@
 
 .start-page-background-shape-one-wrapper {
   position: absolute;
-  top: calc(min(0px, 100vh - var(--start-page-background-shape-height)));
+  top: calc(min(0px, 100dvh - var(--start-page-background-shape-height)));
   left: calc(var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding));
   height: 0;
   min-height: 0;
@@ -362,7 +362,7 @@
 .start-page-background-shape-two-wrapper {
   position: absolute;
   top: calc(
-    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    min(0px, 100dvh - var(--start-page-background-shape-height)) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
     * var(--start-page-background-shape-one-two-height-difference-ratio)
   );
@@ -428,7 +428,7 @@
 .start-page-background-shape-three-wrapper {
   position: absolute;
   top: calc(
-    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    min(0px, 100dvh - var(--start-page-background-shape-height)) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
     * var(--start-page-background-shape-one-two-height-difference-ratio) +
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height))
@@ -482,7 +482,7 @@
 .start-page-background-shape-four-wrapper {
   position: absolute;
   top: calc(
-    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    min(0px, 100dvh - var(--start-page-background-shape-height)) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
     * var(--start-page-background-shape-one-two-height-difference-ratio) +
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height))
@@ -598,7 +598,7 @@
 .start-page-background-shape-five-wrapper {
   position: absolute;
   top: calc(
-    min(0px, 100vh - var(--start-page-background-shape-height)) +
+    min(0px, 100dvh - var(--start-page-background-shape-height)) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height))
     * var(--start-page-background-shape-one-two-height-difference-ratio) +
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-five-height-difference-ratio)
@@ -667,8 +667,8 @@
 
 .start-page-wrapper {
   position: relative;
-  height: calc(100vh - 2 * var(--page-vertical-padding));
-  min-height: calc(100vh - 2 * var(--page-vertical-padding));
+  height: calc(100dvh - 2 * var(--page-vertical-padding));
+  min-height: calc(100dvh - 2 * var(--page-vertical-padding));
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
   padding-top: var(--header-height);
@@ -714,8 +714,8 @@
 }
 
 .start-page-content {
-  height: calc(100vh - 2 * var(--page-vertical-padding) - var(--header-height));
-  min-height: calc(100vh - 2 * var(--page-vertical-padding) - var(--header-height));
+  height: calc(100dvh - 2 * var(--page-vertical-padding) - var(--header-height));
+  min-height: calc(100dvh - 2 * var(--page-vertical-padding) - var(--header-height));
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
   background-color: var(--light-color);

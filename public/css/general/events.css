@@ -430,7 +430,7 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  max-height: 100vh;
+  max-height: 100dvh;
   width: 100%;
   min-width: 100%;
   display: flex;

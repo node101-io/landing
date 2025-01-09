@@ -47,8 +47,8 @@
 }
 
 .all-wrapper {
-  height: 100vh;
-  min-height: 100vh;
+  height: 100dvh;
+  min-height: 100dvh;
   width: 100vw;
   min-width: 100vw;
   display: flex;
@@ -800,8 +800,8 @@
 .header-wrapper-responsive-menu-opened {
   padding: var(--page-horizontal-padding);
   padding-top: var(--header-height);
-  height: calc(100vh - 2 * var(--page-vertical-padding));
-  min-height: calc(100vh - 2 * var(--page-vertical-padding));
+  height: calc(100dvh - 2 * var(--page-vertical-padding));
+  min-height: calc(100dvh - 2 * var(--page-vertical-padding));
   width: calc(100vw - 2 * var(--page-horizontal-padding));
   min-width: calc(100vw - 2 * var(--page-horizontal-padding));
 }
@@ -888,8 +888,8 @@
 }
 
 .content-wrapper {
-  height: 100vh;
-  min-height: 100vh;
+  height: 100dvh;
+  min-height: 100dvh;
   width: 100vw;
   min-width: 100vw;
   display: flex;

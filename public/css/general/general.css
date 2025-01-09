@@ -7,7 +7,7 @@
 }
 html {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   margin: 0px;
   padding: 0px;
   overflow: hidden;
@@ -17,7 +17,7 @@ html {
 body {
   margin: 0px;
   padding: 0px;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   background: var(--background-color);
