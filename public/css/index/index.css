@@ -1733,7 +1733,7 @@
   min-height: fit-content;
   width: 100vw;
   min-width: 100vw;
-  background-color: var(--secondary-light-color);
+  /* background-color: var(--secondary-light-color); */
   padding: var(--footer-vertical-padding) var(--page-horizontal-padding);
   z-index: 3;
 }
@@ -2147,8 +2147,8 @@
 
 .foooter-background-shape {
   position: absolute;
-  left: calc(var(--page-horizontal-padding) - var(--footer-background-shape-height) / 20);
-  bottom: 0;
+  left: calc(var(--footer-background-shape-height) / -10);
+  bottom: calc(var(--footer-background-shape-height) / -20);
   height: var(--footer-background-shape-height);
   min-height: var(--footer-background-shape-height);
   width: auto;
@@ -2414,6 +2414,7 @@
     --footer-top-left-input-width: 100%;
     --footer-top-left-text-font-size: 16px;
     --footer-top-left-input-height: 50px;
+    --footer-top-min-height: 0;
     --footer-bottom-social-media-gap: 14px;
   }
 
@@ -2445,6 +2446,17 @@
   }
   .team-footer-color {
     display: none;
+  }
+  .footer-top-right-wrapper {
+    display: none;
+  }
+  .footer-wrapper {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
   }
 }
 @media only screen and (max-width: 500px) {
