@@ -1,9 +1,6 @@
 extends ../partials/header
 block main
   .hello-node101-wrapper(class=`${!is_hello_shown ? '' : 'display-none'}`)
-    //- .hello-node101-text= __('hello, we\'re')
-    //- img.hello-node101-logo(src='/img/hello-we-are.svg' alt='hello we\'re text')
-    //- img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
     svg.hello-node101-text(viewbox='0 0 380 64' fill='none' xmlns='http://www.w3.org/2000/svg')
       -
         const paths = [

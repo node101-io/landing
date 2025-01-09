@@ -21,8 +21,8 @@ function headerBackgroundAnimation() {
     buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - headerLastBackgroundAnimationPercentage} * var(--header-vertical-padding)))`;
     buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage})`;
     buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = `calc(max(var(--header-vertical-padding), ((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage}))`;
-    buttonsWrapper.style.width = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
-    buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
+    buttonsWrapper.style.width = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
+    buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
     buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${headerLastBackgroundAnimationPercentage})`;
     headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
 
@@ -38,8 +38,8 @@ function headerBackgroundAnimation() {
     buttonsWrapper.style.height = 'calc(calc(var(--header-height) - 2 * var(--header-vertical-padding)))';
     buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = '0';
     buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = '0';
-    buttonsWrapper.style.width = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
-    buttonsWrapper.style.minWidth = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--header-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
+    buttonsWrapper.style.width = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
+    buttonsWrapper.style.minWidth = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
     buttonsWrapper.style.padding = '0';
     headerMenuWrapper.style.borderBottomLeftRadius = '0';
     headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
@@ -78,7 +78,7 @@ function handleScrollToSection(section, behavior) {
   const contentGap = parseInt(cssRoot.getPropertyValue('--content-gap'));
   const headerHeight =
     parseInt(cssRoot.getPropertyValue('--header-height')) +
-    parseInt(cssRoot.getPropertyValue('--page-vertical-padding'));
+    parseInt(cssRoot.getPropertyValue('--header-vertical-padding'));
 
   contentWrapper.scrollBy({
     top: offsetTop - headerHeight - (section != 'footer' ? contentGap / 2 : 0),
@@ -138,18 +138,13 @@ window.addEventListener('load', _ => {
       window.location.href = url;
     };
 
-    if (event.target.closest('.header-responsive-menu-button') || event.target.closest('.header-wrapper-responsive-menu-each-button')) {
-      if (headerResponsiveMenuButton.childNodes[0].classList.contains('header-responsive-menu-button-each-icon-top-opened')) {
-        headerWrapperResponsiveMenu.classList.remove('header-wrapper-responsive-menu-opened');
-        headerResponsiveMenuButton.childNodes[0].classList.remove('header-responsive-menu-button-each-icon-top-opened');
-        headerResponsiveMenuButton.childNodes[1].classList.remove('header-responsive-menu-button-each-icon-middle-opened');
-        headerResponsiveMenuButton.childNodes[2].classList.remove('header-responsive-menu-button-each-icon-bottom-opened');
-      } else {
-        headerWrapperResponsiveMenu.classList.add('header-wrapper-responsive-menu-opened');
-        headerResponsiveMenuButton.childNodes[0].classList.add('header-responsive-menu-button-each-icon-top-opened');
-        headerResponsiveMenuButton.childNodes[1].classList.add('header-responsive-menu-button-each-icon-middle-opened');
-        headerResponsiveMenuButton.childNodes[2].classList.add('header-responsive-menu-button-each-icon-bottom-opened');
-      };
+    if (event.target.closest('.header-responsive-menu-button-wrapper') || event.target.closest('.header-wrapper-responsive-menu-each-button')) {
+      headerWrapperResponsiveMenu.classList.toggle('header-wrapper-responsive-menu-opened');
+      headerResponsiveMenuButton.childNodes[0].classList.toggle('header-responsive-menu-button-each-icon-top-opened');
+      headerResponsiveMenuButton.childNodes[1].classList.toggle('header-responsive-menu-button-each-icon-middle-opened');
+      headerResponsiveMenuButton.childNodes[2].classList.toggle('header-responsive-menu-button-each-icon-bottom-opened');
+
+      document.querySelectorAll('.header-change-language-button')[1].classList.toggle('display-none');
     };
 
     if (event.target.closest('.each-header-button') || event.target.closest('.header-wrapper-responsive-menu-each-button') || event.target.closest('.header-stake-with-node101-button')) {
