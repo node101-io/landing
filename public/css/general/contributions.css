@@ -980,6 +980,7 @@
   align-items: center;
   gap: calc(var(--contributions-content-open-source-link-text-font-size) / 2);
   cursor: var(--pointer-hand-explore-dark);
+  text-decoration: none;
 }
 .contributions-content-open-source-link-icon {
   width: calc(var(--contributions-content-open-source-link-text-font-size));
@@ -988,6 +989,9 @@
   min-height: auto;
   fill: var(--light-color);
   transition: transform .5s;
+}
+.contributions-content-open-source-link-wrapper:hover .contributions-content-open-source-link-icon:last-child {
+  transform: translateX(20%);
 }
 .contributions-content-open-source-link-text {
   font-family: 'Igra Sans', sans-serif;
