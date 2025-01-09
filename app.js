@@ -68,6 +68,7 @@ if (cluster.isMaster) {
       req.body = {};
 
     res.locals.url = URL;
+    res.locals.dev = process.env.NODE_ENV === 'development';
 
     next();
   });

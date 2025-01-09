@@ -265,7 +265,7 @@ module.exports = (req, res) => {
     title: res.__('For you to make most of the distributed value'),
     includes: {
       external: {
-        css: ['general', 'header', 'page'],
+        css: ['general', 'header', 'page', 'contributions', 'events'],
         js: ['header', 'page', 'serverRequest']
       },
       meta: {
