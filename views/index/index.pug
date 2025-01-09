@@ -1,10 +1,10 @@
 extends ../partials/header
 block main
-  .hello-node101-wrapper(class=`${is_new_user ? '' : 'display-none'}`)
+  .hello-node101-wrapper(class=`${!is_hello_shown ? '' : 'display-none'}`)
     .hello-node101-text= __('hello, we\'re')
     img.hello-node101-logo(src='/img/logo-purple.svg' alt='node101 logo')
   .content-inner-wrapper
-    .start-page-background(style=`${is_new_user ? '--start-page-background-global-delay: calc(1.2 * var(--hello-node101-opacity-animation-duration))' : ''}`)
+    .start-page-background(style=`${!is_hello_shown ? '--start-page-background-global-delay: calc(1.2 * var(--hello-node101-opacity-animation-duration))' : ''}`)
       .start-page-background-inner-wrapper
         .start-page-background-shape-one-wrapper
           svg.start-page-background-shape-one(viewbox='0 0 755 747' fill='none' xmlns='http://www.w3.org/2000/svg')

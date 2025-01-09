@@ -275,6 +275,7 @@ module.exports = (req, res) => {
         twitter: true
       }
     },
+    is_hello_shown: req.cookies.isHelloShown === 'true',
     portfolio: PORTFOLIO,
     services: SERVICES,
     events: EVENTS,

@@ -1,16 +1,13 @@
-const bodyParser = require('body-parser');
 const cluster = require('cluster');
+const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv');
 const express = require('express');
 const favicon = require('serve-favicon');
 const http = require('http');
 const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo');
 const os = require('os');
 const path = require('path');
-const session = require('express-session');
 
-const detectNewUser = require('./middleware/detectNewUser');
 const enableDynamicInclude = require('./middleware/enableDynamicInclude');
 const setLanguage = require('./middleware/setLanguage');
 
@@ -49,17 +46,9 @@ if (cluster.isMaster) {
 
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(favicon(path.join(__dirname, 'public/img/favicon/favicon.ico')));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({
+  app.use(cookieParser());
+  app.use(express.json({
     extended: true
-  }));
-  app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: MONGODB_URI
-    })
   }));
   app.use((req, res, next) => {
     if (!req.query || typeof req.query != 'object')
@@ -70,10 +59,9 @@ if (cluster.isMaster) {
     res.locals.url = URL;
     res.locals.dev = process.env.NODE_ENV === 'development';
 
-    next();
+    return next();
   });
   app.use(setLanguage);
-  app.use(detectNewUser);
   app.use(enableDynamicInclude);
 
   app.use('/', indexRouteController);

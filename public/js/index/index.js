@@ -165,16 +165,16 @@ function handleContributionClick(contentDifferenceCount) {
   if(contentDifferenceCount == 0) return;
 
   const scrollAmount = contentDifferenceCount > 0 ? -4 : 4;
-  scrollContributionsContentBy(scrollAmount,_ => {}); 
+  scrollContributionsContentBy(scrollAmount,_ => {});
 
   clickScrollCount++;
-  if(clickScrollCount < Math.abs(contentDifferenceCount) * 18) 
+  if(clickScrollCount < Math.abs(contentDifferenceCount) * 18)
     setTimeout(() => { handleContributionClick(contentDifferenceCount) }, 10);
   else {
     clickScrollCount = 0;
     scrollContributionsContentBySmooth(-contributionsFirstItemMarginTop);
-  }    
-}
+  }
+};
 
 function updateContributionsStyleInfoRegularly() {
   CONTRIBUTIONS_EACH_CONTRIBUTION_FONT_SIZE = Number(getComputedStyle(document.documentElement).getPropertyValue('--contributions-navbar-content-each-contribution-font-size').replace('px', ''));
@@ -305,6 +305,8 @@ function addToSubscriberList() {
 window.addEventListener('load', _ => {
   initalizeContributionScrollEvent();
   initalizeDragEvent();
+
+  document.cookie = 'isHelloShown=true; path=/';
 
   document.addEventListener('click', event => {
     if (event.target.closest('.events-content-navbar-header-wrapper')) {
