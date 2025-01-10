@@ -878,7 +878,7 @@
   min-width: 100%;
   display: flex;
   justify-content: center;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--dark-text-color);
   font-size: var(--header-wrapper-responsive-copyright-text-font-size);
   margin-top: var(--header-wrapper-responsive-copyright-text-margin-top);

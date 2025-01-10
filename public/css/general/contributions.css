@@ -117,19 +117,23 @@
   border-radius: var(--contributions-border-radius);
 }
 .contributions-header-text {
+  display: flex;
+  flex-direction: column;
   font-family: 'Igra Sans', sans-serif;
   font-weight: 400;
   font-size: var(--contributions-header-font-size);
   color: var(--background-color);
   line-height: 1.3;
+  gap: calc(var(--contributions-header-font-size) / 5);
 }
 .contributions-header-highlight-text {
-  font-family: 'Quality Sunrise', Georgia, sans-serif;
+  /* font-family: 'Quality Sunrise', Georgia, sans-serif; */
   color: var(--dark-text-color);
   line-height: 1.3;
   background-color: var(--lila-color);
   padding: calc(var(--contributions-header-font-size) / 5);
   border-radius: calc(var(--contributions-header-font-size) / 10);
+  margin-right: auto;
 }
 
 .contributions-content-wrapper {

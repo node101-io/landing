@@ -368,7 +368,14 @@ window.addEventListener('load', _ => {
 
       const diff = Math.ceil((targetY - middleContentY) / 70)
       handleContributionClick(-diff);
-    }
+    };
+
+    if (event.target.closest('.portfolio-content-project-wrapper-responsive-more-button')) {
+      const allRepsonsiveProjects = document.querySelectorAll('.portfolio-content-each-project-wrapper-responsive.display-none');
+
+      for (let i = 0; i < 5; i++)
+        allRepsonsiveProjects[i]?.classList.remove('display-none');
+    };
   });
 
   document.addEventListener('keyup', event => {

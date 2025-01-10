@@ -4,7 +4,7 @@
 
   --about-us-page-wrapper-gap: 0px;
 
-  --about-us-page-text-wrapper-width: 400px;
+  --about-us-page-text-wrapper-width: 500px;
   --about-us-page-text-wrapper-gap: 20px;
   --about-us-page-text-font-size: 15px;
 
@@ -260,7 +260,7 @@
   :root {
     --about-us-page-horizontal-padding: 90px;
 
-    --about-us-page-text-wrapper-width: 300px;
+    --about-us-page-text-wrapper-width: 380px;
 
     --about-us-page-each-card-width: 180px;
   }
@@ -269,7 +269,7 @@
   :root {
     --about-us-page-horizontal-padding: 60px;
     --about-us-page-wrapper-gap: 50px;
-    --about-us-page-text-wrapper-width: 400px;
+    --about-us-page-text-wrapper-width: 500px;
 
     --about-us-page-each-row-wrapper-gap: 50px;
 
