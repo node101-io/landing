@@ -34,16 +34,17 @@
   --events-content-each-event-width: 800px;
   --events-content-each-event-padding: 40px;
 
+  --events-content-links-gap: 6px;
+  --events-content-each-link-gap: 5px;
+  --events-content-each-link-font-size: 16px;
+  --events-content-each-link-icon-width: 12px;
+
   --events-content-cryptist-gap: 40px;
   --events-content-cryptist-text-font-size: 26px;
   --events-content-cryptist-title-font-size: 30px;
   --events-content-cryptist-each-image-gap: 20px;
   --events-content-cryptist-each-image-margin-right: 20px;
-  --events-content-cryptist-links-gap: 6px;
   --events-content-cryptist-each-image-width: 200px;
-  --events-content-cryptist-each-link-gap: 5px;
-  --events-content-cryptist-each-link-font-size: 16px;
-  --events-content-cryptist-each-link-icon-width: 12px;
 
   --events-content-cosmosphere-gap: 40px;
   --events-content-cosmosphere-text-font-size: 26px;
@@ -55,10 +56,6 @@
   --events-content-cosmosphere-right-image-width: 120px;
   --events-content-cosmosphere-bottom-link-gap: 6px;
   --events-content-cosmosphere-bottom-link-icon-width: 10px;
-  --events-content-cosmosphere-links-gap: 6px;
-  --events-content-cosmosphere-each-link-gap: 5px;
-  --events-content-cosmosphere-each-link-font-size: 16px;
-  --events-content-cosmosphere-each-link-icon-width: 12px;
 
   --events-content-moda-palas-gap: 40px;
   --events-content-moda-palas-text-font-size: 26px;
@@ -70,10 +67,6 @@
   --events-content-moda-palas-title-font-size: 30px;
   --events-content-moda-palas-bottom-link-gap: 6px;
   --events-content-moda-palas-bottom-link-icon-width: 10px;
-  --events-content-moda-palas-links-gap: 6px;
-  --events-content-moda-palas-each-link-gap: 5px;
-  --events-content-moda-palas-each-link-font-size: 16px;
-  --events-content-moda-palas-each-link-icon-width: 12px;
 
   --events-content-workshops-gap: 40px;
   --events-content-workshops-text-font-size: 26px;
@@ -564,6 +557,47 @@
   margin: auto;
   padding: var(--events-content-each-event-padding);
 }
+.events-content-links-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--events-content-links-gap);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.events-content-each-link {
+  display: flex;
+  align-items: center;
+  gap: var(--events-content-each-link-gap);
+  font-family: 'Igra Sans', sans-serif;
+  font-size: var(--events-content-each-link-font-size);
+  color: var(--dark-text-color);
+  text-decoration: none;
+  fill: var(--dark-text-color);
+  transition: color .5s;
+}
+.events-content-each-link-icon {
+  height: auto;
+  min-height: auto;
+  width: var(--events-content-each-link-icon-width);
+  min-width: var(--events-content-each-link-icon-width);
+  transition: all .5s;
+  opacity: 0;
+}
+.events-content-each-link:hover {
+  color: rgba(255, 58, 58, 1);
+  fill: rgba(255, 58, 58, 1);
+}
+.events-content-each-link:first-child .events-content-each-link-icon {
+  opacity: 1;
+}
+.events-content-links-wrapper:hover .events-content-each-link:first-child .events-content-each-link-icon {
+  opacity: 0;
+}
+.events-content-links-wrapper:hover .events-content-each-link:hover .events-content-each-link-icon {
+  opacity: 1;
+  transform: translate(20%, -10%);
+}
 
 .events-content-cryptist-wrapper {
   display: flex;
@@ -628,32 +662,6 @@
   min-height: auto;
   width: 100%;
   min-width: 100%;
-}
-.events-content-cryptist-links-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--events-content-cryptist-links-gap);
-}
-.events-content-cryptist-each-link {
-  display: flex;
-  align-items: center;
-  gap: var(--events-content-cryptist-each-link-gap);
-  text-decoration: none;
-  font-family: 'Igra Sans', sans-serif;
-  font-size: var(--events-content-cryptist-each-link-font-size);
-  color: var(--dark-text-color);
-  cursor: var(--pointer-hand-dark);
-}
-.events-content-cryptist-each-link:hover .events-content-cryptist-each-link-icon {
-  transform: translate(20%, -10%);
-}
-.events-content-cryptist-each-link-icon {
-  fill: var(--dark-text-color);
-  height: auto;
-  min-height: auto;
-  width: var(--events-content-cryptist-each-link-icon-width);
-  min-width: var(--events-content-cryptist-each-link-icon-width);
-  transition: all .5s;
 }
 
 .events-content-cosmosphere-wrapper {
@@ -730,37 +738,6 @@
 }
 .events-content-cosmosphere-bottom-link-wrapper:hover .events-content-cosmosphere-bottom-link-icon {
   transform: translate(20%, -10%);
-}
-.events-content-cosmosphere-links-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--events-content-cosmosphere-links-gap);
-}
-.events-content-cosmosphere-each-link {
-  display: flex;
-  align-items: center;
-  gap: var(--events-content-cosmosphere-each-link-gap);
-  font-family: 'Igra Sans', sans-serif;
-  font-size: var(--events-content-cosmosphere-each-link-font-size);
-  color: var(--dark-text-color);
-  text-decoration: none;
-}
-.events-content-cosmosphere-each-link-icon {
-  fill: var(--dark-text-color);
-  height: auto;
-  min-height: auto;
-  width: var(--events-content-cosmosphere-each-link-icon-width);
-  min-width: var(--events-content-cosmosphere-each-link-icon-width);
-  transition: all .5s;
-}
-.events-content-cosmosphere-each-link:hover .events-content-cosmosphere-each-link-icon {
-  transform: translate(20%, -10%);
-}
-.events-content-cosmosphere-each-link-red {
-  color: rgba(255, 58, 58, 1);
-}
-.events-content-cosmosphere-each-link-red-icon {
-  fill: rgba(255, 58, 58, 1);
 }
 
 .events-content-moda-palas-wrapper {
@@ -846,6 +823,13 @@
   gap: var(--events-content-moda-palas-bottom-link-gap);
   text-decoration: none;
   color: var(--bright-color-gradient-two);
+  position: relative;
+}
+.events-content-moda-palas-bottom-link-pre-icon {
+  height: auto;
+  min-height: auto;
+  width: calc(1.6 * var(--events-content-moda-palas-bottom-link-icon-width));
+  min-width: calc(1.6 * var(--events-content-moda-palas-bottom-link-icon-width));
 }
 .events-content-moda-palas-bottom-link-icon {
   fill: var(--bright-color-gradient-two);
@@ -856,31 +840,6 @@
   transition: all .5s;
 }
 .events-content-moda-palas-bottom-link-wrapper:hover .events-content-moda-palas-bottom-link-icon {
-  transform: translate(20%, -10%);
-}
-.events-content-moda-palas-links-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--events-content-moda-palas-links-gap);
-}
-.events-content-moda-palas-each-link {
-  display: flex;
-  align-items: center;
-  gap: var(--events-content-moda-palas-each-link-gap);
-  font-family: 'Igra Sans', sans-serif;
-  font-size: var(--events-content-moda-palas-each-link-font-size);
-  color: var(--dark-text-color);
-  text-decoration: none;
-}
-.events-content-moda-palas-each-link-icon {
-  fill: var(--dark-text-color);
-  height: auto;
-  min-height: auto;
-  width: var(--events-content-moda-palas-each-link-icon-width);
-  min-width: var(--events-content-moda-palas-each-link-icon-width);
-  transition: all .5s;
-}
-.events-content-moda-palas-each-link:hover .events-content-moda-palas-each-link-icon {
   transform: translate(20%, -10%);
 }
 
@@ -1190,22 +1149,18 @@
     --events-content-cryptist-text-font-size: 24px;
     --events-content-cryptist-title-font-size: 24px;
     --events-content-cryptist-each-image-width: 160px;
-    --events-content-cryptist-each-link-font-size: 14px;
-    --events-content-cryptist-each-link-icon-width: 10px;
+    --events-content-each-link-font-size: 14px;
+    --events-content-each-link-icon-width: 10px;
     --events-content-moda-palas-text-font-size: 24px;
     --events-content-moda-palas-title-font-size: 24px;
     --events-content-moda-palas-left-image-width: 210px;
     --events-content-moda-palas-middle-image-width: 160px;
     --events-content-moda-palas-right-image-width: 110px;
-    --events-content-moda-palas-each-link-font-size: 14px;
-    --events-content-moda-palas-each-link-icon-width: 10px;
     --events-content-cosmosphere-text-font-size: 24px;
     --events-content-cosmosphere-title-font-size: 24px;
     --events-content-cosmosphere-left-image-width: 210px;
     --events-content-cosmosphere-middle-image-width: 160px;
     --events-content-cosmosphere-right-image-width: 110px;
-    --events-content-cosmosphere-each-link-font-size: 14px;
-    --events-content-cosmosphere-each-link-icon-width: 10px;
     --events-content-workshops-text-font-size: 24px;
     --events-content-gatherings-text-font-size: 24px;
     --events-content-hacker-houses-text-font-size: 24px;
@@ -1324,10 +1279,6 @@
     justify-content: space-between;
     gap: var(--events-content-cryptist-each-image-margin-right);
     overflow-x: auto;
-  }
-  .events-content-cryptist-links-wrapper,
-  .events-content-moda-palas-links-wrapper {
-    display: none;
   }
   .events-content-cryptist-title-link-icon,
   .events-content-moda-palas-title-link-icon {

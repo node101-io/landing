@@ -40,7 +40,7 @@
   --start-page-background-shape-five-animation-height-start-ratio: 104 / 473;
   --start-page-background-shape-five-animation-duration: 0.3s;
 
-  --start-page-external-link-hover-transition-duration: 0.05s;
+  --start-page-external-link-hover-transition-duration: 0.3s;
   --start-page-external-link-title-font-size: 18px;
   --start-page-external-link-icon-width: 15px;
   --start-page-external-link-icon-margin-left: 8px;
@@ -58,6 +58,7 @@
   --start-page-social-media-margin-right: 20px;
   --start-page-social-media-button-width: 22px;
   --start-page-social-media-button-gap: 20px;
+  --start-page-social-media-button-hover-transition-duration: 0.3s;
 
   --start-page-content-horizontal-padding: 60px;
 
@@ -806,16 +807,16 @@
   margin-left: var(--start-page-external-link-icon-margin-left);
   transform: translateY(-10%);
   transition: var(--start-page-external-link-hover-transition-duration);
-  visibility: hidden;
+  opacity: 0;
 }
 .start-page-external-link-each-line:first-child .start-page-external-link-each-icon {
-  visibility: visible;
+  opacity: 1;
 }
 .start-page-external-link-wrapper:hover .start-page-external-link-each-line:first-child .start-page-external-link-each-icon {
-  visibility: hidden;
+  opacity: 0;
 }
 .start-page-external-link-wrapper:hover .start-page-external-link-each-line:hover .start-page-external-link-each-icon {
-  visibility: visible;
+  opacity: 1;
   transform: translate(10%, -20%);
 }
 .start-page-external-link-each-text {
@@ -914,18 +915,18 @@
   width: var(--start-page-social-media-button-width);
   min-width: var(--start-page-social-media-button-width);
   margin: calc(var(--start-page-social-media-button-gap) / 2) 0;
-  opacity: .8;
   cursor: var(--pointer-hand-dark);
 }
-.start-page-social-media-each-button:hover {
-  opacity: 1;
+.start-page-social-media-each-button:hover .start-page-social-media-each-button-icon {
+  transform: scale(1.1);
 }
-.start-page-social-media-button-each-icon {
+.start-page-social-media-each-button-icon {
   fill: var(--dark-text-color);
   height: auto;
   min-height: auto;
   width: var(--start-page-social-media-button-width);
   min-width: var(--start-page-social-media-button-width);
+  transition: transform var(--start-page-social-media-button-hover-transition-duration) ease-in-out;
 }
 
 .portfolio-wrapper {
@@ -2143,6 +2144,10 @@
   min-height: auto;
   width: var(--footer-bottom-social-media-width);
   min-width: var(--footer-bottom-social-media-width);
+  transition: transform var(--start-page-social-media-button-hover-transition-duration) ease-in-out;
+}
+.footer-bottom-each-social-media-icon:hover {
+  transform: scale(1.1);
 }
 
 .foooter-background-shape {

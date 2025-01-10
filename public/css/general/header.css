@@ -855,13 +855,10 @@
   min-width: -moz-fit-content;
   min-width: fit-content;
   margin: 0 calc(var(--header-wrapper-responsive-menu-media-each-button-icon-gap) / 2);
-  opacity: 0.9;
   cursor: var(--pointer-hand-dark);
   text-decoration: none;
 }
-.header-wrapper-responsive-menu-media-each-button:hover {
-  opacity: 1;
-}
+
 .header-wrapper-responsive-menu-media-each-button-icon {
   height: var(--header-wrapper-responsive-menu-media-each-button-icon-height);
   min-height: var(--header-wrapper-responsive-menu-media-each-button-icon-height);

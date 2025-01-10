@@ -65,29 +65,30 @@ input[type=number] {
   --page-horizontal-padding: 40px;
   --page-vertical-padding: 20px;
 
-  --background-color: rgba(245, 245, 245, 1);
-  --light-color: rgba(223, 229, 255, 1);
-  --light-color-contrast: rgba(251, 255, 224, 1);
-  --light-color-shadow: rgba(213, 218, 243, 1);
-  --dark-color: rgba(33, 24, 32, 1);
-  --dark-text-color: rgba(44, 32, 42, 1);
-  --light-text-color: rgba(245, 245, 245, 1);
-  --link-dark-color: rgba(71, 53, 202, 1);
-  --link-light-color: rgba(150, 149, 223, 1);
-  --secondary-light-color: rgba(196, 205, 244, 1);
-  --dark-color-contrast: rgba(112, 130, 227, 1);
-  --bright-color-gradient-one: rgba(253, 134, 77, 1);
-  --bright-color-gradient-two: rgba(254, 72, 108, 1);
-  --lila-color: rgba(231, 224, 255, 1);
-  --green-color: rgba(220, 254, 188, 1);
-  --purple-color: rgba(127, 48, 255, 1);
-  --light-pink-color: rgba(240, 213, 236, 1);
-  --klein-color: rgba(89, 100, 250, 1);
+  --background-color: rgb(245, 245, 245);
+  --light-color: rgb(223, 229, 255);
+  --light-color-contrast: rgb(251, 255, 224);
+  --light-color-shadow: rgb(213, 218, 243);
+  --dark-color: rgb(33, 24, 32);
+  --dark-text-color: rgb(44, 32, 42);
+  --light-text-color: rgb(245, 245, 245);
+  --link-dark-color: rgb(71, 53, 202);
+  --link-light-color: rgb(150, 149, 223);
+  --secondary-light-color: rgb(196, 205, 244);
+  --dark-color-contrast: rgb(112, 130, 227);
+  --bright-color-gradient-one: rgb(253, 134, 77);
+  --bright-color-gradient-two: rgb(254, 72, 108);
+  --lila-color: rgb(231, 224, 255);
+  --green-color: rgb(220, 254, 188);
+  --purple-color: rgb(127, 48, 255);
+  --light-pink-color: rgb(240, 213, 236);
+  --klein-color: rgb(89, 100, 250);
+  --social-media-icon-hover-color: rgb(108, 53, 99);
 
-  --hello-101-logo-color: rgba(172, 150, 234, 1);
-  --about-us-page-each-card-information-box-background-color: rgba(237, 237, 237, 1);
-  --about-us-page-each-card-information-box-text-color: rgba(94, 93, 157, 1);
-  --placeholder-color: rgba(153, 153, 153, 1);
+  --hello-101-logo-color: rgb(172, 150, 234);
+  --about-us-page-each-card-information-box-background-color: rgb(237, 237, 237);
+  --about-us-page-each-card-information-box-text-color: rgb(94, 93, 157);
+  --placeholder-color: rgb(153, 153, 153);
 }
 
 .display-none {
