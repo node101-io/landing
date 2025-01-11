@@ -6,7 +6,7 @@
   font-family: 'Montserrat', Arial, sans-serif;
 }
 html {
-  width: 100vw;
+  width: 100dvw;
   height: 100dvh;
   margin: 0px;
   padding: 0px;
@@ -18,7 +18,7 @@ body {
   margin: 0px;
   padding: 0px;
   height: 100dvh;
-  width: 100vw;
+  width: 100dvw;
   overflow: hidden;
   background: var(--background-color);
   cursor: var(--pointer-default-dark);
@@ -100,7 +100,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (min-width: 1920px) {
   :root {
-    --page-horizontal-padding: calc((100vw - 1920px) / 2 + 40px);
+    --page-horizontal-padding: calc((100dvw - 1920px) / 2 + 40px);
   }
 }
 @media only screen and (max-width: 800px) {

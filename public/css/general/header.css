@@ -49,8 +49,8 @@
 .all-wrapper {
   height: 100dvh;
   min-height: 100dvh;
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   display: flex;
   flex-direction: column;
   background-color: var(--background-color);
@@ -63,8 +63,8 @@
   left: 0;
   height: calc(var(--page-vertical-padding) + var(--header-height));
   min-height: calc(var(--page-vertical-padding) + var(--header-height));
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   display: flex;
   flex-direction: column;
   z-index: 999;
@@ -73,8 +73,8 @@
 .header-top-line-wrapper {
   height: var(--page-vertical-padding);
   min-height: var(--page-vertical-padding);
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   background-color: var(--background-color);
   overflow: visible;
 }
@@ -110,8 +110,8 @@
 .header-bottom-line-wrapper {
   height: var(--header-height);
   min-height: var(--header-height);
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -158,8 +158,8 @@
 .header-buttons-wrapper {
   height: calc(var(--header-height) - 2 * var(--header-vertical-padding));
   min-height: calc(var(--header-height) - 2 * var(--header-vertical-padding));
-  width: calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)));
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -646,8 +646,8 @@
   right: 0;
   height: calc(var(--page-vertical-padding) + var(--header-height));
   min-height: calc(var(--page-vertical-padding) + var(--header-height));
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   display: none;
   flex-direction: column;
   z-index: 999;
@@ -802,8 +802,8 @@
   padding-top: var(--header-height);
   height: calc(100dvh - 2 * var(--page-vertical-padding));
   min-height: calc(100dvh - 2 * var(--page-vertical-padding));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
 }
 /* header-wrapper-responsive-menu-opened olunca aşağıdakini header-stake-with-node101-button display none yap: */
 
@@ -814,8 +814,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 4 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 4 * var(--page-horizontal-padding));
+  width: calc(100dvw - 4 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 4 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -887,8 +887,8 @@
 .content-wrapper {
   height: 100dvh;
   min-height: 100dvh;
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   display: flex;
   flex-direction: column;
   padding-top: var(--page-vertical-padding);

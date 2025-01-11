@@ -66,8 +66,8 @@
   --portfolio-header-font-size: 22px;
   --portfolio-header-text-gap: 15px;
   --portfolio-header-curvature-border-radius: 20px;
-  --portfolio-header-top-line-text-width: 690px;
-  --portfolio-header-top-line-text-width-ratio: 17 / 20;
+  --portfolio-header-top-line-text-width: 660px;
+  --portfolio-header-top-line-text-width-ratio: 0.92;
   --portfolio-content-padding: 40px;
   --portfolio-content-max-width: 1000px;
   --portfolio-content-project-gap: 90px;
@@ -266,8 +266,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   display: flex;
   flex-direction: column;
   z-index: 4;
@@ -280,8 +280,8 @@
   left: var(--page-horizontal-padding);
   height: calc(100dvh - 2 * var(--page-vertical-padding));
   min-height: calc(100dvh - 2 * var(--page-vertical-padding));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   border-radius: var(--start-page-radius);
   background-color: var(--light-color);
   overflow: hidden;
@@ -670,8 +670,8 @@
   position: relative;
   height: calc(100dvh - 2 * var(--page-vertical-padding));
   min-height: calc(100dvh - 2 * var(--page-vertical-padding));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   padding-top: var(--header-height);
   margin-left: var(--page-horizontal-padding);
   display: flex;
@@ -717,8 +717,8 @@
 .start-page-content {
   height: calc(100dvh - 2 * var(--page-vertical-padding) - var(--header-height));
   min-height: calc(100dvh - 2 * var(--page-vertical-padding) - var(--header-height));
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   background-color: var(--light-color);
   display: flex;
   flex-direction: column;
@@ -936,8 +936,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
   margin-left: var(--page-horizontal-padding);
@@ -951,10 +951,11 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
+  letter-spacing: -0.05em;
 }
 .portfolio-header-top-line {
   height: -webkit-fit-content;
@@ -963,8 +964,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
 }
 .portfolio-header-top-line-text {
@@ -983,7 +984,8 @@
   line-height: 1.5;
   z-index: 2;
   padding-right: var(--portfolio-header-text-gap);
-  padding-bottom: 5px;
+  padding-bottom: 4px;
+  padding-left: calc(1/2 * var(--portfolio-curvature-border-radius));
   color: var(--dark-text-color);
 }
 .portfolio-header-top-line-color-space {
@@ -997,8 +999,8 @@
 .portfolio-header-top-line-color {
   height: 100%;
   min-height: 100%;
-  width: calc(100vw - var(--portfolio-header-top-line-text-width) - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - var(--portfolio-header-top-line-text-width) - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - var(--portfolio-header-top-line-text-width) - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - var(--portfolio-header-top-line-text-width) - 2 * var(--page-horizontal-padding));
   background-color: var(--dark-text-color);
   border-top-left-radius: var(--portfolio-header-curvature-border-radius);
   border-top-right-radius: var(--portfolio-curvature-border-radius);
@@ -1010,8 +1012,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
 }
 .portfolio-header-bottom-line-text {
@@ -1027,7 +1029,8 @@
   background-color: var(--background-color);
   border-bottom-right-radius: var(--portfolio-header-curvature-border-radius);
   z-index: 2;
-  padding-bottom: 16px;
+  padding-bottom: calc(var(--portfolio-header-font-size) / 2);
+  padding-left: calc(1/2 * var(--portfolio-curvature-border-radius));
   display: flex;
   gap: calc(var(--portfolio-header-font-size) / 4);
   flex-wrap: wrap;
@@ -1046,13 +1049,13 @@
   align-items: center;
   cursor: var(--pointer-hand-dark);
 }
-.portfolio-header-bottom-line-link:hover .portfolio-header-bottom-line-link-icon {
+/* .portfolio-header-bottom-line-link:hover .portfolio-header-bottom-line-link-icon {
   transform: translate(10%, -20%);
-}
+} */
 .portfolio-header-bottom-line-link-text {
   line-height: 1.2;
 }
-.portfolio-header-bottom-line-link-icon {
+/* .portfolio-header-bottom-line-link-icon {
   fill: var(--link-light-color);
   height: auto;
   min-height: auto;
@@ -1061,7 +1064,7 @@
   margin-left: 6px;
   transform: translateY(-10%);
   transition: var(--start-page-external-link-hover-transition-duration);
-}
+} */
 .portfolio-header-bottom-line-color-space {
   height: 100%;
   min-height: 100%;
@@ -1073,10 +1076,8 @@
 .portfolio-header-bottom-line-color {
   height: 100%;
   min-height: 100%;
-  /* width: calc(100vw - (var(--portfolio-header-top-line-text-width) - 2 * var(--portfolio-header-curvature-border-radius)) - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - (var(--portfolio-header-top-line-text-width) - 2 * var(--portfolio-header-curvature-border-radius)) - 2 * var(--page-horizontal-padding)); */
-  width: calc(100vw - (var(--portfolio-header-top-line-text-width) * var(--portfolio-header-top-line-text-width-ratio)) - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - (var(--portfolio-header-top-line-text-width) * var(--portfolio-header-top-line-text-width-ratio)) - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - (var(--portfolio-header-top-line-text-width) * var(--portfolio-header-top-line-text-width-ratio)) - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - (var(--portfolio-header-top-line-text-width) * var(--portfolio-header-top-line-text-width-ratio)) - 2 * var(--page-horizontal-padding));
   background-color: var(--dark-text-color);
   border-top-left-radius: var(--portfolio-header-curvature-border-radius);
 }
@@ -1088,8 +1089,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
   background-color: var(--dark-text-color);
@@ -1105,11 +1106,11 @@
   min-height: fit-content;
   width: calc(min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ));
   min-width: calc(min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ));
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -1117,9 +1118,9 @@
   margin:
     var(--portfolio-content-padding)
     calc(
-      ((100vw - 2 * var(--page-horizontal-padding)) - min(
+      ((100dvw - 2 * var(--page-horizontal-padding)) - min(
         var(--portfolio-content-max-width),
-        100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+        100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
       )) / 2
     )
   ;
@@ -1134,37 +1135,37 @@
 .portfolio-content-each-project-wrapper, .portfolio-content-each-project-logo {
   width: calc((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5);
   min-width: calc((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5);
   height: calc((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5);
   min-height: calc((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5);
 }
 .portfolio-content-each-project-wrapper:hover .portfolio-content-each-project-logo {
   width: calc(0.6 * ((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5));
   min-width: calc(0.6 * ((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5));
   height: calc(0.6 * ((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5));
   min-height: calc(0.6 * ((min(
     var(--portfolio-content-max-width),
-    100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+    100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
   ) - 4 * var(--portfolio-content-project-gap)) / 5));
 }
 .portfolio-content-each-project-wrapper {
@@ -1309,8 +1310,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
   margin-left: var(--page-horizontal-padding);
@@ -1376,19 +1377,19 @@
 .services-content-each-service-wrapper {
   height: calc(min(
     var(--services-each-max-width),
-    (100vw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
+    (100dvw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
   ));
   min-height: calc(min(
     var(--services-each-max-width),
-    (100vw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
+    (100dvw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
   ));
   width: calc(min(
     var(--services-each-max-width),
-    (100vw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
+    (100dvw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
   ));
   min-width: calc(min(
     var(--services-each-max-width),
-    (100vw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
+    (100dvw - 4 * var(--page-horizontal-padding) - 2 * var(--services-each-gap)) * 0.8 / 3
   ));
   display: flex;
   flex-direction: column;
@@ -1504,8 +1505,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   margin: var(--content-gap) var(--page-horizontal-padding);
 }
 
@@ -1513,8 +1514,8 @@
   position: absolute;
   height: var(--team-wrapper-height);
   min-height: var(--team-wrapper-height);
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   top: 0;
   left: 0;
   border-radius: var(--team-wrapper-border-radius);
@@ -1526,8 +1527,8 @@
   height: auto;
   min-height: auto;
   max-height: var(--team-wrapper-height);
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   right: 0;
 }
 .team-background-path {
@@ -1540,8 +1541,8 @@
   position: absolute;
   height: var(--team-wrapper-height);
   min-height: var(--team-wrapper-height);
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
   background-color: transparent;
@@ -1552,8 +1553,8 @@
 .team-top-line-color-wrapper {
   height: var(--team-top-line-color-height);
   min-height: var(--team-top-line-color-height);
-  width: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
-  min-width: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
+  width: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
+  min-width: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
   background-color: var(--background-color);
 }
 .team-top-line-color {
@@ -1564,7 +1565,7 @@
   min-width: var(--team-top-line-color-height);
   background-color: transparent;
   top: 0;
-  left: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
+  left: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
   overflow: hidden;
 }
 .team-top-line-color-inner-circle {
@@ -1585,8 +1586,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
-  min-width: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
+  width: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
+  min-width: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
   background-color: var(--background-color);
   border-bottom-right-radius: var(--team-wrapper-border-radius);
   padding-bottom: var(--team-header-padding-bottom);
@@ -1610,8 +1611,8 @@
 
 .team-content-wrapper {
   position: relative;
-  width: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
-  min-width: calc(var(--team-header-width-ratio) * (100vw - 2 * var(--page-horizontal-padding)));
+  width: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
+  min-width: calc(var(--team-header-width-ratio) * (100dvw - 2 * var(--page-horizontal-padding)));
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1640,8 +1641,8 @@
 .team-content-images-wrapper {
   height: calc(var(--team-images-height) * 1.2);
   min-height: calc(var(--team-images-height) * 1.2);
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   padding-left: calc(var(--content-gap) / 3);
   margin-top: calc(4 * var(--page-vertical-padding));
   display: flex;
@@ -1772,8 +1773,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: 100vw;
-  min-width: 100vw;
+  width: 100dvw;
+  min-width: 100dvw;
   /* background-color: var(--secondary-light-color); */
   padding: var(--footer-vertical-padding) var(--page-horizontal-padding);
   z-index: 3;
@@ -1786,8 +1787,8 @@
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  width: calc(100vw - 2 * var(--page-horizontal-padding));
-  min-width: calc(100vw - 2 * var(--page-horizontal-padding));
+  width: calc(100dvw - 2 * var(--page-horizontal-padding));
+  min-width: calc(100dvw - 2 * var(--page-horizontal-padding));
   display: flex;
   flex-direction: column;
   gap: var(--footer-content-gap);
@@ -2236,37 +2237,37 @@
   .portfolio-content-each-project-wrapper, .portfolio-content-each-project-logo {
     width: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4);
     min-width: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4);
     height: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4);
     min-height: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4);
   }
   .portfolio-content-each-project-wrapper:hover .portfolio-content-each-project-logo {
     width: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4));
     min-width: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4));
     height: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4));
     min-height: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 3 * var(--portfolio-content-project-gap)) / 4));
   }
 }
@@ -2297,7 +2298,7 @@
     --team-button-horizontal-padding: 18px;
     --team-button-font-size: 16px;
 
-    --portfolio-header-top-line-text-width: 630px;
+    --portfolio-header-top-line-text-width: 600px;
     --portfolio-header-font-size: 20px;
 
     --footer-top-right-wrapper-width: 360px;
@@ -2311,7 +2312,8 @@
 
     --portfolio-curvature-border-radius: 20px;
     --portfolio-header-font-size: 18px;
-    --portfolio-header-top-line-text-width: 570px;
+    --portfolio-header-curvature-border-radius: 16px;
+    --portfolio-header-top-line-text-width: 528px;
     --portfolio-content-max-width: 500px;
     --portfolio-content-project-gap: 60px;
 
@@ -2341,37 +2343,37 @@
   .portfolio-content-each-project-wrapper, .portfolio-content-each-project-logo {
     width: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3);
     min-width: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3);
     height: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3);
     min-height: calc((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3);
   }
   .portfolio-content-each-project-wrapper:hover .portfolio-content-each-project-logo {
     width: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3));
     min-width: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3));
     height: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3));
     min-height: calc(0.6 * ((min(
       var(--portfolio-content-max-width),
-      100vw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
+      100dvw - 2 * var(--page-horizontal-padding) - 2 * var(--portfolio-content-padding)
     ) - 2 * var(--portfolio-content-project-gap)) / 3));
   }
 
@@ -2398,9 +2400,9 @@
     --start-page-description-font-size: 14px;
     --start-page-external-link-title-font-size: 15px;
 
+    --portfolio-header-top-line-text-width: 100%;
     --portfolio-content-project-gap: 10px;
     --portfolio-content-project-name-margin-bottom: 0;
-    --portfolio-header-top-line-text-width: 100%;
 
     --team-wrapper-height: 540px;
     --team-images-height: 160px;
@@ -2446,7 +2448,7 @@
     --start-page-external-link-title-font-size: 13px;
 
     --team-wrapper-height: 400px;
-    --team-footer-width: calc(100vw - 2 * var(--page-horizontal-padding));
+    --team-footer-width: calc(100dvw - 2 * var(--page-horizontal-padding));
     --team-top-line-color-height: 20px;
     --team-wrapper-border-radius: 20px;
     --team-header-padding-bottom: 6px;

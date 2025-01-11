@@ -21,8 +21,8 @@ function headerBackgroundAnimation() {
     buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - headerLastBackgroundAnimationPercentage} * var(--header-vertical-padding)))`;
     buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage})`;
     buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = `calc(max(var(--header-vertical-padding), ((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage}))`;
-    buttonsWrapper.style.width = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
-    buttonsWrapper.style.minWidth = `calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
+    buttonsWrapper.style.width = `calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
+    buttonsWrapper.style.minWidth = `calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
     buttonsWrapper.style.padding = `0 calc(var(--header-gap) * ${headerLastBackgroundAnimationPercentage})`;
     headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
 
@@ -38,8 +38,8 @@ function headerBackgroundAnimation() {
     buttonsWrapper.style.height = 'calc(calc(var(--header-height) - 2 * var(--header-vertical-padding)))';
     buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = '0';
     buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = '0';
-    buttonsWrapper.style.width = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
-    buttonsWrapper.style.minWidth = 'calc(100vw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
+    buttonsWrapper.style.width = 'calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
+    buttonsWrapper.style.minWidth = 'calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))';
     buttonsWrapper.style.padding = '0';
     headerMenuWrapper.style.borderBottomLeftRadius = '0';
     headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
