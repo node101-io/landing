@@ -1,12 +1,13 @@
 .contributions-content-klein-loading-text-wrapper
   .contributions-content-klein-loading-each-text(style='margin-right: auto;')= __('Your node is loading...')
+  .contributions-content-klein-loading-each-text(style='margin-right: auto;')= __('Installation done!')
   if (lang == 'tr')
     .contributions-content-klein-loading-each-text= '%'
     .contributions-content-klein-loading-counter
   else
     .contributions-content-klein-loading-counter
     .contributions-content-klein-loading-each-text= '%'
-- const loadingPercentage = 60;
+- const loadingPercentage = 100;
 .contributions-content-klein-loading-bar
   - for (let i = 0; i < 100; i++)
     svg.contributions-content-klein-loading-bar-each-part(class=`${i < loadingPercentage ? 'contributions-content-klein-loading-bar-each-part-filled' : ''}` style=(i < loadingPercentage ? `animation-delay: calc(${i} * var(--contributions-content-klein-loading-animation-duration) / 100);` : '') viewBox='0 0 3 5' xmlns='http://www.w3.org/2000/svg')

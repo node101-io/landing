@@ -28,7 +28,7 @@
   --contributions-content-klein-loading-bar-margin: 20px;
   --contributions-content-klein-loading-bar-each-part-width: 5px;
   --contributions-content-klein-each-text-font-size: 16px;
-  --contributions-content-klein-loading-animation-duration: 10s;
+  --contributions-content-klein-loading-animation-duration: 5s;
 
   --contributions-content-podcasts-images-gap: 20px;
   --contributions-content-podcasts-images-margin-bottom: 40px;
@@ -492,6 +492,72 @@
   font-size: var(--contributions-content-klein-loading-each-text-font-size);
   color: var(--klein-color);
 }
+@-webkit-keyframes contributionsContentKleinTextVisible {
+  0% {
+    position: unset;
+    visibility: unset;
+  }
+  99% {
+    position: unset;
+    visibility: unset;
+  }
+  100% {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+@keyframes contributionsContentKleinTextVisible {
+  0% {
+    position: unset;
+    visibility: unset;
+  }
+  99% {
+    position: unset;
+    visibility: unset;
+  }
+  100% {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes contributionsContentKleinTextHidden {
+  0% {
+    position: absolute;
+    visibility: hidden;
+  }
+  99% {
+    position: absolute;
+    visibility: hidden;
+  }
+  100% {
+    position: unset;
+    visibility: unset;
+  }
+}
+@keyframes contributionsContentKleinTextHidden {
+  0% {
+    position: absolute;
+    visibility: hidden;
+  }
+  99% {
+    position: absolute;
+    visibility: hidden;
+  }
+  100% {
+    position: unset;
+    visibility: unset;
+  }
+}
+.contributions-content-klein-loading-each-text:first-child {
+  -webkit-animation: contributionsContentKleinTextVisible var(--contributions-content-klein-loading-animation-duration) linear forwards;
+          animation: contributionsContentKleinTextVisible var(--contributions-content-klein-loading-animation-duration) linear forwards;
+}
+.contributions-content-klein-loading-each-text:nth-child(2) {
+  position: absolute;
+  visibility: hidden;
+  -webkit-animation: contributionsContentKleinTextHidden var(--contributions-content-klein-loading-animation-duration) linear forwards;
+          animation: contributionsContentKleinTextHidden var(--contributions-content-klein-loading-animation-duration) linear forwards;
+}
 .contributions-content-klein-loading-counter::after {
   content: counter(count);
   font-size: var(--contributions-content-klein-each-text-font-size);
@@ -563,8 +629,7 @@
   58% { counter-increment: count 58; }
   59% { counter-increment: count 59; }
   60% { counter-increment: count 60; }
-  100% { counter-increment: count 60; }
-  /* 61% { counter-increment: count 61; }
+  61% { counter-increment: count 61; }
   62% { counter-increment: count 62; }
   63% { counter-increment: count 63; }
   64% { counter-increment: count 64; }
@@ -603,7 +668,7 @@
   97% { counter-increment: count 97; }
   98% { counter-increment: count 98; }
   99% { counter-increment: count 99; }
-  100% { counter-increment: count 100; } */
+  100% { counter-increment: count 100; }
 }
 @keyframes contributionsContentKleinLoadingCounter {
   0% { counter-increment: count 0; }
@@ -667,8 +732,7 @@
   58% { counter-increment: count 58; }
   59% { counter-increment: count 59; }
   60% { counter-increment: count 60; }
-  100% { counter-increment: count 60; }
-  /* 61% { counter-increment: count 61; }
+  61% { counter-increment: count 61; }
   62% { counter-increment: count 62; }
   63% { counter-increment: count 63; }
   64% { counter-increment: count 64; }
@@ -707,7 +771,7 @@
   97% { counter-increment: count 97; }
   98% { counter-increment: count 98; }
   99% { counter-increment: count 99; }
-  100% { counter-increment: count 100; } */
+  100% { counter-increment: count 100; }
 }
 .contributions-content-klein-loading-bar,
 .contributions-content-klein-loading-bar-responsive {
