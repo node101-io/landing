@@ -74,7 +74,7 @@ block main
           h2.start-page-external-link-each-text= __('With Just a Click')
         .start-page-header-wrapper
           - let start_page_text = [__('FOR YOU TO'), __('MAKE MOST OF'), __('THE'), __('DISTRIBUTED'), __('VALUE')]
-          h1.start-page-header-each-line(class=`${lang == 'tr' ? 'start-page-header-each-line-turkish-char-fix' : ''}`)= start_page_text[0]
+          h1.start-page-header-each-line= start_page_text[0]
           h1.start-page-header-each-line= start_page_text[1]
           h1.start-page-header-each-line= start_page_text[2]
             a.start-page-external-link-wrapper.start-page-external-events-wrapper(href='https://lu.ma/node101' target='_blank')

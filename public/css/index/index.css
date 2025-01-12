@@ -857,12 +857,6 @@
   margin-bottom: var(--start-page-header-gap);
   white-space: nowrap;
 }
-.start-page-header-each-line-turkish-char-fix::before {
-  content: '˘';
-  position: absolute;
-  top: 0;
-  left: calc(8.78 * var(--start-page-header-font-size));
-}
 .start-page-last-line-wrapper {
   height: -webkit-fit-content;
   height: -moz-fit-content;

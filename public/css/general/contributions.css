@@ -127,7 +127,7 @@
   gap: calc(var(--contributions-header-font-size) / 5);
 }
 .contributions-header-highlight-text {
-  /* font-family: 'Quality Sunrise', Georgia, sans-serif; */
+  font-family: 'Quality Sunrise', Georgia, sans-serif;
   color: var(--dark-text-color);
   line-height: 1.3;
   background-color: var(--lila-color);
