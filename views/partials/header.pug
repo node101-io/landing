@@ -10,7 +10,7 @@ block content
       .header-bottom-line-wrapper
         .header-logo-wrapper
           a.header-logo-link(href=insertLanguageToLink('/', lang))
-            img.header-logo(src='/img/logo.svg' alt='node101 logo')
+            img.header-logo(src='/img/logo.svg' alt='node101 logo' loading='lazy')
         .header-buttons-wrapper
           - let header_buttons = [__('Portfolio'), __('Services'), __('Events'), __('Contributions'), __('About Us'), __('Reach Us')]
           a.each-header-button#header-portfolio-button
@@ -83,7 +83,7 @@ block content
       .header-wrapper-responsive-content
         .header-logo-wrapper
           a.header-logo-link(href=insertLanguageToLink('/', lang))
-            img.header-logo(src='/img/logo.svg' alt='node101 logo')
+            img.header-logo(src='/img/logo.svg' alt='node101 logo' loading='lazy')
         //- a.header-stake-with-node101-button(href=insertLanguageToLink('/stake-with-node101', lang))
         .header-change-language-button.display-none
           .header-change-language-button-content
@@ -128,6 +128,7 @@ block content
           h1.footer-top-right-subtitle= __('Do you have a question about our events?')
           .footer-top-right-contact-wrapper
             img.footer-top-right-contact-image(
+              loading='lazy'
               srcset='/img/team/contact/mete-80w.png, /img/team/contact/mete-160w.png 2x'
               src='/img/team/contact/mete-160w.png'
               alt='node101 events contact Mete Koray Gergin'
@@ -142,6 +143,7 @@ block content
           h1.footer-top-right-subtitle= __('Do you have a question about our validator services?')
           .footer-top-right-contact-wrapper
             img.footer-top-right-contact-image(
+              loading='lazy'
               srcset='/img/team/contact/mustafa-80w.png, /img/team/contact/mustafa-160w.png 2x'
               src='/img/team/contact/mustafa-160w.png'
               alt='node101 events contact Mustafa Aksöz'

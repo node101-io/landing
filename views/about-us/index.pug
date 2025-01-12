@@ -31,6 +31,7 @@ block main
                   .about-us-page-each-card-wrapper(class=`${j == 1 ? 'about-us-page-each-card-wrapper-shifted' : ''}`)
                     .about-us-page-each-card-image-wrapper
                       img.about-us-page-each-card-image(
+                        loading='lazy'
                         srcset=`/img/team/portrait/${member.name.toLowerCase()}-160w.png, /img/team/portrait/${member.name.toLowerCase()}-240w.png 1.5x, /img/team/portrait/${member.name.toLowerCase()}-320w.png 2x`,
                         src=`/img/team/portrait/${member.name.toLowerCase()}-160w.png`,
                         alt=`node101 team member ${member.name}`

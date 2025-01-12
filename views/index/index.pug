@@ -142,6 +142,7 @@ block main
               //- a.portfolio-content-each-project-wrapper(href=insertLanguageToLink(`/stake-with-node101#${project._id}`, lang))
               a.portfolio-content-each-project-wrapper(href=project.link target='_blank')
                 img.portfolio-content-each-project-logo(
+                  loading='lazy'
                   srcset=`/img/chains/${project._id}-160w.png, /img/chains/${project._id}-240w.png 1.5x, /img/chains/${project._id}-320w.png 2x`,
                   src=`/img/chains/${project._id}-320w.png`
                   alt=project.name
@@ -157,6 +158,7 @@ block main
             each project, i in portfolio
               .portfolio-content-each-project-wrapper-responsive(class=`${i < 5 ? '' : 'display-none'}`)
                 img.portfolio-content-each-project-logo(
+                  loading='lazy'
                   srcset=`/img/chains/${project._id}-80w.png, /img/chains/${project._id}-160w.png 2x`,
                   src=`/img/chains/${project._id}-160w.png`
                   alt=project.name
@@ -277,7 +279,7 @@ block main
             //- each event in events
             //-   if (event.logo)
             //-     a.events-links-each-individual-event(href=event.link target='_blank')
-            //-       img.events-links-each-individual-event-image(src=event.logo alt=event.name)
+            //-       img.events-links-each-individual-event-image(src=event.logo alt=event.name loading='lazy')
         a.events-links-all-events-button(href='https://lu.ma/node101' target='_blank')
           svg.events-links-all-events-button-icon.events-links-all-events-button-icon-left(viewBox='0 0 19 20' xmlns='http://www.w3.org/2000/svg')
             path(d='M9.33599 18.9772C9.35317 18.9949 9.87966 19.13 10.5059 19.2774C11.1321 19.4247 11.6513 19.5228 11.6597 19.4954C11.6679 19.468 11.7327 19.0229 11.8036 18.5063C11.9459 17.4689 12.2906 16.2577 12.6588 15.5003C13.8067 13.1395 15.8661 11.5764 18.3639 11.1701L19 11.0666V10.0237V8.98077L18.4235 8.88173C14.6465 8.2329 12.184 5.34118 11.7234 1.01371C11.6933 0.731127 11.6574 0.5 11.6435 0.5C11.5161 0.5 9.40541 1.02085 9.36549 1.06212C9.33663 1.09195 9.3581 1.35686 9.41328 1.6507C10.0241 4.90448 11.7729 7.55217 14.0424 8.65923L14.5867 8.9248L3.39217 8.94559L0 8.9588V11.0694L3.41038 11.0826L14.5785 11.1035L13.8913 11.46C12.1083 12.385 10.6967 14.1993 9.86543 16.6346C9.62854 17.3284 9.27111 18.9101 9.33599 18.9772Z')
@@ -364,6 +366,7 @@ block main
             - for (let i = 1; i <= 10; i++)
               if (i != 3 && i != 4 && i != 6 && i != 7)
                 img.team-content-each-image(
+                  loading='lazy'
                   srcset=`/img/team/photos/team-${i}-512w.png, /img/team/photos/team-${i}-1024w.png 2x, /img/team/photos/team-${i}-2048w.png 4x`
                   src=`/img/team/photos/team-${i}-2048w.png`
                   style=`transform: rotate(${Math.floor(Math.random() * 5 - 2.5)}deg);`
@@ -417,6 +420,7 @@ block main
             h1.footer-top-right-subtitle= __('Do you have a question about our events?')
             .footer-top-right-contact-wrapper
               img.footer-top-right-contact-image(
+                loading='lazy'
                 srcset='/img/team/contact/mete-80w.png, /img/team/contact/mete-160w.png 2x'
                 src='/img/team/contact/mete-160w.png'
                 alt='node101 events contact Mete Koray Gergin'
@@ -431,6 +435,7 @@ block main
             h1.footer-top-right-subtitle= __('Do you have a question about our validator services?')
             .footer-top-right-contact-wrapper
               img.footer-top-right-contact-image(
+                loading='lazy'
                 srcset='/img/team/contact/mustafa-80w.png, /img/team/contact/mustafa-160w.png 2x'
                 src='/img/team/contact/mustafa-160w.png'
                 alt='node101 events contact Mustafa Aksöz'

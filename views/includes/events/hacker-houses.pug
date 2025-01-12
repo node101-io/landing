@@ -11,6 +11,7 @@
   each hackerHouse in hackerHouses
     a.events-content-hacker-houses-each-card-wrapper(href=hackerHouse.link target='_blank' draggable='false')
       img.events-content-hacker-houses-each-card-image(
+        loading='lazy'
         srcset=`/img/events/hacker-houses/${hackerHouse._id}-240w.png, /img/events/hacker-houses/${hackerHouse._id}-480w.png 2x`,
         src=`/img/events/hacker-houses/${hackerHouse._id}-480w.png`
         alt=hackerHouse.name

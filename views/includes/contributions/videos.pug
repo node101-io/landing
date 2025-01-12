@@ -32,7 +32,12 @@
           .contributions-content-videos-each-thumbnail-button-radius-top-inner-circle
         .contributions-content-videos-each-thumbnail-button-radius-left
           .contributions-content-videos-each-thumbnail-button-radius-left-inner-circle
-      img.contributions-content-videos-each-thumbnail-image(src=`https://i.ytimg.com/vi/${video.video_id}/sddefault.jpg` alt=video.title draggable='false')
+      img.contributions-content-videos-each-thumbnail-image(
+        loading='lazy'
+        src=`https://i.ytimg.com/vi/${video.video_id}/sddefault.jpg`
+        alt=video.title
+        draggable='false'
+      )
       .contributions-content-videos-each-thumbnail-text= __(video.title)
 .contributions-content-videos-each-text= __('node101 YouTube Videos')
 .contributions-content-videos-each-text= __('The easiest way of learning is for sure seeing it for yourself. node101’s blockchain videos are available in English & Turkish for its followers, making sure to include anything from the ground level.')
