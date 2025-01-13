@@ -481,6 +481,8 @@
   align-items: flex-start;
   overflow: visible;
   z-index: 2;
+  transition-property: opacity;
+  transition-delay: var(--header-responsive-menu-opening-transition-duration);
 }
 
 .header-change-language-button-content {
@@ -814,6 +816,19 @@
   padding-bottom: 0;
   transition-delay: 0s;
 }
+@-webkit-keyframes headerChangeLanguageButtonOpacity {
+  0% { opacity: 0 }
+  90% { opacity: 0 }
+  100% { opacity: 1 }
+}
+@keyframes headerChangeLanguageButtonOpacity {
+  0% { opacity: 0 }
+  90% { opacity: 0 }
+  100% { opacity: 1 }
+}
+.header-wrapper-responsive-menu-opened .header-change-language-button {
+  animation: headerChangeLanguageButtonOpacity var(--header-responsive-menu-opening-transition-duration) forwards ease-in-out;
+}
 
 .header-wrapper-responsive-menu-buttons-wrapper {
   height: -webkit-fit-content;
@@ -1047,6 +1062,7 @@
   .header-change-language-button {
     margin-left: 0;
     margin-right: calc(var(--header-stake-with-node101-button-width) * -1 + var(--header-responsive-menu-button-spacing) * 1.5);
+    opacity: 0;
   }
   .header-change-language-button-content {
     display: flex;
