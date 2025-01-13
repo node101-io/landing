@@ -19,7 +19,8 @@ function headerBackgroundAnimation() {
   if (window.innerWidth > HEADER_ANIMATION_WIDTH_LIMIT) {
     headerLogoWrapper.style.borderBottomRightRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
     buttonsWrapper.style.height = `calc(calc(var(--header-height) - 2 * ${1 - headerLastBackgroundAnimationPercentage} * var(--header-vertical-padding)))`;
-    buttonsWrapper.style.borderBottomLeftRadius = buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage})`;
+    buttonsWrapper.style.borderBottomLeftRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage})`;
+    buttonsWrapper.style.borderBottomRightRadius = `calc(((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage})`;
     buttonsWrapper.style.borderTopLeftRadius = buttonsWrapper.style.borderTopRightRadius = `calc(max(var(--header-vertical-padding), ((var(--header-height) - 2 * var(--header-vertical-padding)) / 2) * ${1 - headerLastBackgroundAnimationPercentage}))`;
     buttonsWrapper.style.width = `calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
     buttonsWrapper.style.minWidth = `calc(100dvw - 2 * var(--page-horizontal-padding) - 3 * var(--page-horizontal-padding) - 2 * ${(1 - headerLastBackgroundAnimationPercentage)} * var(--header-gap) - var(--header-logo-width) - (2 * var(--header-menu-gap) + var(--header-stake-with-node101-button-width) + var(--header-change-language-button-width)))`;
@@ -27,6 +28,7 @@ function headerBackgroundAnimation() {
     headerMenuWrapper.style.borderBottomLeftRadius = window.innerWidth >= 1000 ? `calc((var(--header-height) - 10px) * ${1 - headerLastBackgroundAnimationPercentage})` : `calc(30px * ${1 - headerLastBackgroundAnimationPercentage})`;
 
     if (headerLastBackgroundAnimationPercentage == 1)  {
+      console.log(headerLastBackgroundAnimationPercentage);
       headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
       headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'var(--background-color)';
     } else {
@@ -44,7 +46,7 @@ function headerBackgroundAnimation() {
     headerMenuWrapper.style.borderBottomLeftRadius = '0';
     headerTopLineRadiusLeftInnerCircle.style.borderRadius = headerTopLineRadiusRightInnerCircle.style.borderRadius = '0';
     headerTopLineRadiusLeftInnerCircle.style.backgroundColor = headerTopLineRadiusRightInnerCircle.style.backgroundColor = 'var(--background-color)';
-  }
+  };
 };
 
 function handleScrollToSection(section, behavior) {
@@ -107,7 +109,7 @@ window.addEventListener('load', _ => {
   WINDOW_HEIGHT = window.innerHeight;
 
   const headerResponsiveMenuButton = document.querySelector('.header-responsive-menu-button');
-  const headerWrapperResponsiveMenu = document.querySelector('.header-wrapper-responsive-menu');
+  const headerWrapperResponsiveMenu = document.querySelector('.header-wrapper-responsive');
 
   document.addEventListener('click', event => {
     if (event.target.closest('.header-change-language-button')) {
