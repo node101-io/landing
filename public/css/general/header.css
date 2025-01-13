@@ -36,7 +36,6 @@
   --header-responsive-menu-button-each-icon-gap: 4px;
   --header-responsive-menu-button-each-icon-animation-duration: .5s;
 
-  --header-wrapper-responsive-menu-buttons-wrapper-margin-top: 20px;
   --header-wrapper-responsive-menu-each-button-font-size: 45px;
   --header-wrapper-responsive-menu-each-button-margin-top: 30px;
 
@@ -842,7 +841,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: var(--header-wrapper-responsive-menu-buttons-wrapper-margin-top);
 }
 .header-wrapper-responsive-menu-each-button {
   font-weight: 400;
@@ -1075,7 +1073,6 @@
 }
 @media only screen and (max-width: 500px) {
   :root {
-    --header-wrapper-responsive-menu-buttons-wrapper-margin-top: 15px;
     --header-wrapper-responsive-menu-each-button-font-size: 35px;
     --header-wrapper-responsive-menu-each-button-margin-top: 24px;
   }

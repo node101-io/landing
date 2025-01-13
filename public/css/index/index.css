@@ -289,23 +289,25 @@
 }
 .start-page-background-inner-wrapper {
   position: relative;
-  left: var(--start-page-background-left)
+  top: calc(-1 * var(--header-height));
+  left: calc((100dvw - 1500px) / 2);
 }
 @media (orientation: landscape) {
-  :root {
-    --start-page-background-left: 0;
+  .start-page-background-inner-wrapper {
+    left: calc((100dvw - 1500px) / 2);
   }
 }
 @media (orientation: portrait) {
-  :root {
-    --start-page-background-left: -60vh;
+  .start-page-background-inner-wrapper {
+    left: calc((100dvw - 1000px) / 2);
+    transform: rotate(30deg) scale(0.7);
   }
 }
 
 .start-page-background-shape-one-wrapper {
   position: absolute;
   top: calc(min(0px, 100dvh - var(--start-page-background-shape-height)));
-  left: calc(var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding));
+  left: calc(var(--page-horizontal-padding));
   height: 0;
   min-height: 0;
   width: 0;
@@ -368,7 +370,7 @@
     * var(--start-page-background-shape-one-two-height-difference-ratio)
   );
   left: calc(
-    var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+    var(--page-horizontal-padding) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
     * (1 - var(--start-page-background-shape-one-two-width-difference-ratio))
   );
@@ -436,7 +438,7 @@
     * (1 - var(--start-page-background-shape-two-three-height-difference-ratio))
   );
   left: calc(
-    var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+    var(--page-horizontal-padding) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
     * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -492,7 +494,7 @@
     * (1 - var(--start-page-background-shape-three-four-height-difference-ratio))
   );
   left: calc(
-    var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+    var(--page-horizontal-padding) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
     * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -517,7 +519,7 @@
     width: 0;
     min-width: 0;
     left: calc(
-      var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+      var(--page-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
       * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
       (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -530,7 +532,7 @@
     width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     left: calc(
-      var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+      var(--page-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
       * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
       (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -542,7 +544,7 @@
     width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     left: calc(
-      var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+      var(--page-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
       * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
       (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -556,7 +558,7 @@
     width: 0;
     min-width: 0;
     left: calc(
-      var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+      var(--page-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
       * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
       (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -569,7 +571,7 @@
     width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     left: calc(
-      var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+      var(--page-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
       * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
       (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -581,7 +583,7 @@
     width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     min-width: calc(var(--start-page-background-shape-four-width-over-height-ratio) * var(--start-page-background-shape-four-over-total-height-ratio) * var(--start-page-background-shape-height));
     left: calc(
-      var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+      var(--page-horizontal-padding) +
       (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
       * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
       (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -605,7 +607,7 @@
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-five-height-difference-ratio)
   );
   left: calc(
-    var(--page-horizontal-padding) + 2 * var(--page-horizontal-padding) +
+    var(--page-horizontal-padding) +
     (var(--start-page-background-shape-one-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-one-width-over-height-ratio)
     * (1 - var(--start-page-background-shape-one-two-width-difference-ratio)) +
     (var(--start-page-background-shape-two-over-total-height-ratio) * var(--start-page-background-shape-height)) * var(--start-page-background-shape-two-width-over-height-ratio)
@@ -2507,7 +2509,7 @@
   :root {
     --hello-node101-text-font-size: 24px;
 
-    --start-page-header-font-size: 35px;
+    --start-page-header-font-size: 40px;
 
     --portfolio-header-top-line-text-width-ratio: 1;
     --portfolio-content-project-name-font-size: 16px;
@@ -2531,9 +2533,15 @@
     --footer-top-left-input-button-width: 50px;
   }
 }
+@media only screen and (max-width: 450px) {
+  :root {
+    --start-page-header-font-size: 35px;
+  }
+}
 @media only screen and (max-width: 400px) {
   :root {
-    --start-page-header-font-size: 26px;
+    --start-page-header-font-size: 30px;
+    --start-page-content-horizontal-padding: 10px;
 
     --portfolio-content-project-name-font-size: 14px;
     --portfolio-content-project-apr-font-size: 14px;
@@ -2548,5 +2556,10 @@
 
   .footer-bottom-wrapper {
     padding-left: 0;
+  }
+}
+@media only screen and (max-width: 350px) {
+  :root {
+    --start-page-header-font-size: 25px;
   }
 }
