@@ -48,7 +48,6 @@ const minifyJS = (source) => {
           });
       });
     });
-
 };
 
 minifyCSS(path.join(import.meta.dirname, '../public/css'));
