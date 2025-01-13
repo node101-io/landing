@@ -748,6 +748,7 @@
   flex-direction: column;
   cursor: var(--pointer-hand-dark);
   text-decoration: none;
+  margin-bottom: calc(var(--start-page-external-link-title-font-size) / 2)
 }
 .start-page-external-klein-wrapper {
   margin-bottom: var(--start-page-external-klein-margin-bottom);
@@ -2331,6 +2332,9 @@
   .start-page-description {
     margin-left: 0;
     margin-top: var(--start-page-header-gap);
+  }
+  .start-page-external-link-wrapper {
+    margin-bottom: 0;
   }
 
   .portfolio-content-project-wrapper {
