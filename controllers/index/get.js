@@ -279,7 +279,7 @@ module.exports = (req, res) => {
     portfolio: PORTFOLIO,
     services: SERVICES,
     events: EVENTS,
-    contributions: CONTRIBUTIONS.concat(CONTRIBUTIONS),
+    contributions: CONTRIBUTIONS,
     // frequently_asked_questions: []
   });
 };
