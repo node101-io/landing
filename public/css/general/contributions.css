@@ -4,7 +4,7 @@
   --contributions-header-margin-top: 5px;
   --contributions-navbar-content-margin-left: 20px;
   --contributions-navbar-content-each-contribution-height: 75px;
-  --contributions-navbar-content-each-contribution-width: 180px;
+  --contributions-navbar-content-each-contribution-width: calc(100% / 3);
   --contributions-navbar-content-each-contribution-font-size: 34px;
   --contributions-navbar-responsive-gap: 8px;
   --contributions-navbar-each-event-responsive-font-size: 16px;
@@ -136,8 +136,8 @@
   position: relative;
   width: 100%;
   min-width: 100%;
-  height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
-  min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height));
+  height: calc(9 * var(--contributions-navbar-content-each-contribution-height) + 2 * var(--page-vertical-padding));
+  min-height: calc(9 * var(--contributions-navbar-content-each-contribution-height) + 2 * var(--page-vertical-padding));
   padding: var(--page-vertical-padding) calc(var(--content-gap) / 4);
   margin-top: var(--contributions-header-margin-top);
   background-color: var(--dark-text-color);
@@ -198,7 +198,8 @@
   height: 100%;
   min-height: 100%;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: both mandatory;
+  overscroll-behavior: contain;
   background:
     linear-gradient(var(--dark-text-color), var(--dark-text-color)) padding-box,
     linear-gradient(to bottom, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.4), rgba(245, 245, 245, 0));
@@ -219,6 +220,9 @@
   scroll-snap-align: center;
   cursor: pointer;
 }
+.contributions-navbar-content-each-contribution-responsive {
+  display: none;
+}
 
 .contributions-content-each-contribution-wrapper {
   display: flex;
@@ -231,6 +235,8 @@
 }
 
 .contributions-content-101-telegram-wrapper {
+  display: flex;
+  flex-direction: column;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -239,9 +245,6 @@
   min-height: fit-content;
   width: var(--contributions-content-each-wrapper-width);
   min-width: var(--contributions-content-each-wrapper-width);
-  margin: auto;
-  display: flex;
-  flex-direction: column;
 }
 .contributions-content-101-telegram-dialog-wrapper {
   width: 100%;
@@ -792,11 +795,12 @@
 }
 
 .contributions-content-podcasts-wrapper {
-  width: calc(var(--contributions-content-podcasts-rectangle-image-width) * 2.9 + var(--contributions-content-podcasts-images-gap) * 2);
-  min-width: calc(var(--contributions-content-podcasts-rectangle-image-width) * 2.9 + var(--contributions-content-podcasts-images-gap) * 2);
   display: flex;
   flex-direction: column;
-  margin: auto;
+  padding: 0 calc((
+    var(--contributions-content-each-wrapper-width) -
+    (var(--contributions-content-podcasts-rectangle-image-width) * 2.9 + var(--contributions-content-podcasts-images-gap) * 2)
+  ) / 2);
 }
 .contributions-content-podcasts-images-wrapper {
   display: flex;
@@ -1410,16 +1414,28 @@
     min-height: 100%;
     background:
       linear-gradient(var(--dark-text-color), var(--dark-text-color)) padding-box,
-      linear-gradient(to right, rgba(245, 245, 245, 0), rgba(245, 245, 245, 0.4), rgba(245, 245, 245, 0));
-    border-right: none;
+      linear-gradient(
+        to right,
+        rgba(245, 245, 245, 0) 0%,
+        rgba(245, 245, 245, 0) 40%,
+        rgba(245, 245, 245, 0.4) 50%,
+        rgba(245, 245, 245, 0) 60%,
+        rgba(245, 245, 245, 0) 100%
+      );    border-right: none;
     border-bottom: 1px solid transparent;
     overflow-x: scroll;
     overflow-y: unset;
+    padding-right: 0;
   }
   .contributions-navbar-content-each-contribution {
     justify-content: center;
     width: var(--contributions-navbar-content-each-contribution-width);
     min-width: var(--contributions-navbar-content-each-contribution-width);
+    height: 100%;
+    min-height: 100%;
+  }
+  .contributions-navbar-content-each-contribution-responsive {
+    display: flex;
   }
   .contributions-navbar-wrapper-responsive {
     display: flex;
@@ -1430,7 +1446,11 @@
     padding: calc(var(--content-gap)) 0;
   }
 }
-@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 800px) {
+  :root {
+    --contributions-navbar-content-each-contribution-font-size: 20px;
+  }
+}
 @media only screen and (max-width: 700px) {
   :root {
     --contributions-border-radius: 20px;
@@ -1438,6 +1458,9 @@
 }
 @media only screen and (max-width: 600px) {
   :root {
+    --contributions-navbar-content-each-contribution-font-size: 18px;
+    --contributions-navbar-content-each-contribution-height: 50px;
+
     --contributions-content-101-telegram-each-message-height: 26px;
     --contributions-content-101-telegram-title-margin-bottom: 20px;
     --contributions-content-101-telegram-each-text-font-size: 14px;
@@ -1464,6 +1487,9 @@
 }
 @media only screen and (max-width: 500px) {
   :root {
+    --contributions-navbar-content-each-contribution-font-size: 15px;
+    --contributions-navbar-content-each-contribution-height: 40px;
+
     --contributions-content-open-source-each-project-width: 28px;
     --contributions-content-open-source-each-project-height: 300px;
 
@@ -1478,6 +1504,8 @@
 }
 @media only screen and (max-width: 400px) {
   :root {
+    --contributions-navbar-content-each-contribution-font-size: 13px;
+    --contributions-navbar-content-each-contribution-height: 40px;
     --contributions-content-podcasts-images-gap: 10px;
     --contributions-content-podcasts-rectangle-image-width: 76px;
   }
