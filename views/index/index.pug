@@ -315,34 +315,26 @@ block main
           h1.contributions-header-text
             span= __('From mass content creation to software development, node101 is helping the distributed ecosystem in various ways.') + ' '
             span.contributions-header-highlight-text= __('Scroll to explore.')
-        .contributions-navbar-wrapper-responsive
-          each contribution, i in contributions.slice(0, contributions.length / 2)
-            .contributions-navbar-each-contribution-responsive(
-              id=`contribution-${contributions[i]._id}-responsive`
-              class=(i == 0 ? 'contributions-navbar-each-contribution-selected-responsive' : '')
-            )= contribution.title
-        .contributions-content-wrapper
-          .contributions-navbar-wrapper
-            .contributions-navbar-scroll-wrapper
-              - for (let i = 0; i < 10 * contributions.length; i++)
-                .contributions-navbar-scroll-inner-each-wrapper
+        //- .contributions-navbar-wrapper-responsive
+        //-   each contribution, i in contributions.slice(0, contributions.length / 2)
+        //-     .contributions-navbar-each-contribution-responsive(
+        //-       id=`contribution-${contributions[i]._id}-responsive`
+        //-       class=(i == 0 ? 'contributions-navbar-each-contribution-selected-responsive' : '')
+        //-     )= contribution.title
+        .contributions-navbar-wrapper
+          .contributions-navbar-inner-wrapper(data-item-count=contributions.length)
             svg.contributions-navbar-selected-icon(viewbox='0 0 51 53' xmlns='http://www.w3.org/2000/svg')
               path(d='M25.0598 51.5416C25.1059 51.5909 26.5191 51.9679 28.1999 52.3789C29.881 52.79 31.2746 53.0636 31.297 52.9872C31.3192 52.9106 31.4932 51.6691 31.6833 50.2281C32.0654 47.3344 32.9905 43.9558 33.9789 41.8428C37.06 35.2576 42.588 30.8972 49.2927 29.7639L51 29.4752V26.5662V23.6569L49.4525 23.3806C39.3142 21.5707 32.7045 13.5043 31.468 1.43297C31.3873 0.644722 31.2908 0 31.2537 0C30.9118 0 25.2461 1.45291 25.139 1.56801C25.0615 1.65123 25.1191 2.3902 25.2672 3.20986C26.9067 12.2862 31.601 19.6719 37.6926 22.76L39.1539 23.5008L9.10529 23.5588L0 23.5956L0 29.4831L9.15417 29.5199L39.1319 29.5782L37.2871 30.5728C32.5013 33.1528 28.7122 38.2138 26.4809 45.007C25.845 46.9424 24.8856 51.3545 25.0598 51.5416Z')
             .contributions-navbar-content-wrapper
-              .contributions-navbar-content-inner-wrapper
-                - const contributions_start_index = 5;
-                - for (let i = contributions_start_index; i < contributions.length; i++)
-                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}` class=(i == (contributions_start_index + 4 % (contributions.length / 2)) ? 'contributions-navbar-content-each-contribution-selected' : ''))= contributions[i].title
-                - for (let i = 0; i < contributions_start_index; i++)
-                  .contributions-navbar-content-each-contribution(id=`contribution-${contributions[i]._id}`)= contributions[i].title
-            .contributions-navbar-border
-          .contributions-content-inner-wrapper
-            each contribution, i in contributions.slice(0, contributions.length / 2)
-              .contributions-content-each-contribution-wrapper(class=`contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[(contributions_start_index + 4) % (contributions.length / 2)]._id ? '' : 'display-none'}`)
-                |!{include(`/includes/contributions/${contribution._id}.pug`)}
-            //- .contributions-content-each-contribution-wrapper.contributions-content-validator-wrapper
-            //-   include ../includes/contributions/validator.pug
-              //- .contributions-content-each-contribution-wrapper(style=`background-color: ${contribution.color}`)
+              each contribution, i in contributions
+                .contributions-navbar-content-each-contribution(id=`contribution-${contribution._id}`)= contribution.title
+              each contribution, i in contributions
+                .contributions-navbar-content-each-contribution(id=`contribution-${contribution._id}`)= contribution.title
+              - for (let i = 0; i < 3; i++)
+                .contributions-navbar-content-each-contribution.contributions-navbar-content-each-contribution-responsive(id=`contribution-${contributions[i]._id}`)= contributions[i].title
+          each contribution, i in contributions
+            .contributions-content-each-contribution-wrapper(class=`contributions-content-${contribution._id}-wrapper ${contribution._id == contributions[0]._id ? '' : 'display-none'}`)
+              |!{include(`/includes/contributions/${contribution._id}.pug`)}
     .team-wrapper
       .team-background-wrapper
         svg.team-background(viewBox='0 0 1806 827' fill='none' xmlns='http://www.w3.org/2000/svg')
