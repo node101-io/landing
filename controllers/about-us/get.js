@@ -1,16 +1,6 @@
 module.exports = (req, res) => {
   const TEAM = [
     {
-      name: 'Akın',
-      title: res.__('Strategy'),
-      description: res.__('A white-paperworm, the Sun-Tzu of blockchain investing, Akın, the patron of reports and presentations, is a very talented crypto "mentat".')
-    },
-    {
-      name: 'Mustafa',
-      title: res.__('Sales & DevOps'),
-      description: res.__('Mustafa, a "big brother" who builds the team\'s common experience and culture, a talented salesperson, and an excellent DevOps player, is better known as "mechul".He is the "hacıcavcav" of the Turkish Blockchain Ecosystem, and is its humble bracer.')
-    },
-    {
       name: 'Yunus',
       title: res.__('Leader'),
       description: res.__('As the "marshal" of node101, he coordinates many operations, especially development. With his energy and high technical skills, he is a playmaker who impresses and adds value to everyone he talks to. He is both a Parisian and an Istanbulite.')
