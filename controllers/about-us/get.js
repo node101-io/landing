@@ -59,6 +59,16 @@ module.exports = (req, res) => {
       name: 'Ahmed',
       title: res.__('Developer'),
       description: res.__('Ahmed creates amazing things with the products he codes, showcasing his unwavering dedication. He is like a rare Socotra dragon tree, valuable and unique. As an esteemed member of the team, he is a respected gentleman, known for his coin collection, intellectual personality, interesting friendships, and aesthetic outlook. Ahlan wa sahlan!')
+    },
+    {
+      name: 'Miray',
+      title: res.__('Designer'),
+      description: res.__('bla bla bla')
+    },
+    {
+      name: 'Miray',
+      title: res.__('Developer'),
+      description: res.__('bla bla bla')
     }
   ];
 
