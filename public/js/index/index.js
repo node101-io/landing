@@ -10,15 +10,29 @@ function isContributionsResponsive() {
   return window.matchMedia('(orientation: portrait) and (max-width: 900px)').matches;
 };
 
-function getCenteredContribution() {
+function getCenteredContributionId() {
   const navbarScrollWrapper = document.querySelector('.contributions-navbar-content-wrapper');
 
-  const element = document.elementFromPoint(
-    navbarScrollWrapper.getBoundingClientRect().x + navbarScrollWrapper.getBoundingClientRect().width / 2,
-    navbarScrollWrapper.getBoundingClientRect().y + navbarScrollWrapper.getBoundingClientRect().height / 2
-  );
+  const rect = navbarScrollWrapper.getBoundingClientRect();
+  const centerY = rect.y + rect.height / 2;
 
-  return element?.id?.replace('contribution-', '');
+  let closestContributionId = null;
+  let minDistance = Infinity;
+
+  const contributions = navbarScrollWrapper.querySelectorAll('.contributions-navbar-content-each-contribution');
+
+  for (let i = 0; i < contributions.length; i++) {
+    const contributionRect = contributions[i].getBoundingClientRect();
+
+    const distance = Math.abs(centerY - contributionRect.y + contributionRect.height / 2);
+
+    if (distance < minDistance) {
+      minDistance = distance;
+      closestContributionId = contributions[i].id.replace('contribution-', '');
+    };
+  };
+
+  return closestContributionId;
 };
 
 function initalizeContributionScrollEvent() {
@@ -33,26 +47,24 @@ function initalizeContributionScrollEvent() {
   navbarScrollWrapper.addEventListener('scroll', () => {
     if (isScrolling) return;
 
-    changeVisibleContribution(getCenteredContribution());
+    isScrolling = true;
+
+    changeVisibleContribution(getCenteredContributionId());
 
     if (isContributionsResponsive()) {
       const maxScrollLeft = navbarScrollWrapper.scrollWidth - navbarScrollWrapper.clientWidth;
 
       if (navbarScrollWrapper.scrollLeft >= maxScrollLeft) {
-        isScrolling = true;
         navbarScrollWrapper.scrollLeft = 0;
       } else if (navbarScrollWrapper.scrollLeft === 0) {
-        isScrolling = true;
         navbarScrollWrapper.scrollLeft = maxScrollLeft;
       };
     } else {
       const maxScrollTop = navbarScrollWrapper.scrollHeight - navbarScrollWrapper.clientHeight;
 
       if (navbarScrollWrapper.scrollTop >= maxScrollTop) {
-        isScrolling = true;
         navbarScrollWrapper.scrollTop = 0;
       } else if (navbarScrollWrapper.scrollTop === 0) {
-        isScrolling = true;
         navbarScrollWrapper.scrollTop = maxScrollTop;
       };
     };

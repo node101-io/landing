@@ -87,6 +87,8 @@ function handleScrollToSection(section, behavior) {
   });
 };
 
+window.addEventListener('resize', headerBackgroundAnimation);
+
 window.addEventListener('load', _ => {
   if (window.location.hash) {
     if (window.location.hash == '#portfolio') {
@@ -167,8 +169,4 @@ window.addEventListener('load', _ => {
     headerLastBackgroundAnimationPercentage = Math.min(1, event.target.scrollTop / HEADER_HEIGHT);
     headerBackgroundAnimation();
   });
-});
-
-window.addEventListener('resize', _ => {
-  headerBackgroundAnimation();
 });
