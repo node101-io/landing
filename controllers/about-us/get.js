@@ -63,12 +63,7 @@ module.exports = (req, res) => {
     {
       name: 'Miray',
       title: res.__('Designer'),
-      description: res.__('bla bla bla')
-    },
-    {
-      name: 'Miray',
-      title: res.__('Developer'),
-      description: res.__('bla bla bla')
+      description: res.__('Our junior designer, Miralay Miray, who is quite a sleepyhead, has forced us to schedule our daily meetings at 11 AM. She claims this is because she stays up late working on designs. Fighting on every design front—from UI/UX to presentations, from social media visuals to brand design—Miralay holds a crucial position in our talent pool\'s battlefield.')
     }
   ];
 
