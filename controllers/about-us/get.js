@@ -59,6 +59,11 @@ module.exports = (req, res) => {
       name: 'Ahmed',
       title: res.__('Developer'),
       description: res.__('Ahmed creates amazing things with the products he codes, showcasing his unwavering dedication. He is like a rare Socotra dragon tree, valuable and unique. As an esteemed member of the team, he is a respected gentleman, known for his coin collection, intellectual personality, interesting friendships, and aesthetic outlook. Ahlan wa sahlan!')
+    },
+    {
+      name: 'Miray',
+      title: res.__('Designer'),
+      description: res.__('Our junior designer, Miralay Miray, who is quite a sleepyhead, has forced us to schedule our daily meetings at 11 AM. She claims this is because she stays up late working on designs. Fighting on every design front—from UI/UX to presentations, from social media visuals to brand design—Miralay holds a crucial position in our talent pool\'s battlefield.')
     }
   ];
 
