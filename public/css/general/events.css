@@ -684,6 +684,7 @@
   display: flex;
   width: 100%;
   min-width: 100%;
+  scrollbar-width: none;
 }
 .events-content-cosmosphere-bottom-wrapper::-webkit-scrollbar {
   display: none;
@@ -755,6 +756,7 @@
   display: flex;
   width: 100%;
   min-width: 100%;
+  scrollbar-width: none;
 }
 .events-content-moda-palas-bottom-wrapper::-webkit-scrollbar {
   display: none;
@@ -1089,6 +1091,7 @@
   min-width: 100%;
   gap: var(--events-content-summits-bottom-gap);
   overflow-x: auto;
+  scrollbar-width: none;
 }
 .events-content-summits-bottom-wrapper::-webkit-scrollbar {
   display: none;
