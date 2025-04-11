@@ -14,7 +14,8 @@ function getCenteredContributionId() {
   const navbarScrollWrapper = document.querySelector('.contributions-navbar-content-wrapper');
 
   const rect = navbarScrollWrapper.getBoundingClientRect();
-  const centerY = rect.y + rect.height / 2;
+  // const centerY = rect.y + rect.height / 2;
+  const center = isContributionsResponsive() ? rect.x + rect.width / 2 : rect.y + rect.height / 2;
 
   let closestContributionId = null;
   let minDistance = Infinity;
@@ -24,7 +25,7 @@ function getCenteredContributionId() {
   for (let i = 0; i < contributions.length; i++) {
     const contributionRect = contributions[i].getBoundingClientRect();
 
-    const distance = Math.abs(centerY - contributionRect.y + contributionRect.height / 2);
+    const distance = Math.abs(center - (isContributionsResponsive() ? contributionRect.x + contributionRect.width / 2 : contributionRect.y + contributionRect.height / 2));
 
     if (distance < minDistance) {
       minDistance = distance;
