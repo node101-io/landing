@@ -1,7 +1,7 @@
 const Subscriber = require('../../models/subscriber/Subscriber');
 
 module.exports = (req, res) => {
-  req.body.type = 'general';
+  req.body.type = req.body.type || 'general';
 
   Subscriber.createSubscriber(req.body, (err, subscriber) => {
     if (err) return res.json({ error: err });
