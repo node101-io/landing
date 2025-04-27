@@ -1,7 +1,7 @@
 const validator = require('validator');
 
 const MAX_DATABASE_TEXT_FIELD_LENGTH = 1e4;
-const TYPE_VALUES = ['general', 'klein', 'library']
+const TYPE_VALUES = ['general', 'klein', 'library', 'buildersweekistanbul']
 
 module.exports = data => {
   if (!data || typeof data != 'object')
