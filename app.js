@@ -7,6 +7,7 @@ const http = require('http');
 const mongoose = require('mongoose');
 const os = require('os');
 const path = require('path');
+const cors = require('cors');
 
 const enableDynamicInclude = require('./middleware/enableDynamicInclude');
 const setLanguage = require('./middleware/setLanguage');
@@ -50,6 +51,7 @@ if (cluster.isMaster) {
   app.use(express.json({
     extended: true
   }));
+  app.use(cors());
   app.use((req, res, next) => {
     if (!req.query || typeof req.query != 'object')
       req.query = {};
