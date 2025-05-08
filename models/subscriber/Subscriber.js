@@ -6,7 +6,7 @@ const generateKey = require('./functions/generateKey');
 
 const DUPLICATED_UNIQUE_FIELD_ERROR_CODE = 11000;
 const MAX_DATABASE_TEXT_FIELD_LENGTH = 1e4;
-const TYPE_VALUES = ['general', 'klein', 'library', 'buildersweekistanbul']
+const TYPE_VALUES = ['general', 'klein', 'library', 'buildersweekistanbul', 'ethistanbul']
 
 const Schema = mongoose.Schema;
 
