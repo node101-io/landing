@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FBD9AA;
+  --color-warm-gray: #8B7355;
+  --color-soft-white: #FEFEFE;
+  --font-primary: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --primary-bg: var(--color-cream);
+  --text-primary: var(--color-warm-gray);
+  --text-light: var(--color-soft-white);
+}

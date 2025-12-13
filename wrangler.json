@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "node101-landing",
+  "compatibility_date": "2025-06-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/index.ts",
+  "assets": {
+	"directory": "./public"
+  },
+  "observability": {
+    "enabled": true
+  },
+}

@@ -1,26 +1,42 @@
 {
-  "name": "node101-landing",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.0.8",
-    "react": "19.2.1",
-    "react-dom": "19.2.1"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.8",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+	"name": "node101-landing",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"build:css": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --watch",
+		"build:css:prod": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --minify",
+		"deploy:preview": "npm run build:css:prod && wrangler deploy",
+		"deploy": "npm run build:css:prod && wrangler deploy",
+		"dev": "run-p build:css dev:server",
+		"dev:server": "wrangler dev",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20251209.0",
+		"@eslint/js": "^9.39.2",
+		"@tailwindcss/cli": "^4.1.17",
+		"@typescript-eslint/eslint-plugin": "^8.49.0",
+		"@typescript-eslint/parser": "^8.49.0",
+		"autoprefixer": "^10.4.22",
+		"eslint": "^9.39.2",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-prettier": "^5.5.4",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"globals": "^16.5.0",
+		"npm-run-all": "^4.1.5",
+		"postcss": "^8.5.6",
+		"prettier": "^3.7.4",
+		"tailwindcss": "^4.1.17",
+		"typed-htmx": "^0.3.1",
+		"typescript": "5.9.3",
+		"typescript-eslint": "^8.49.0",
+		"wrangler": "4.53.0"
+	},
+	"dependencies": {
+		"cloudflare": "^5.2.0",
+		"hono": "4.10.8",
+		"zod": "^4.1.13"
+	}
 }
