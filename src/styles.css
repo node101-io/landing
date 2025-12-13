@@ -1,14 +1,56 @@
 @import "tailwindcss";
 
-@theme {
-  --color-cream: #FBD9AA;
-  --color-warm-gray: #8B7355;
-  --color-soft-white: #FEFEFE;
-  --font-primary: "Inter", system-ui, sans-serif;
+@font-face {
+  font-family: "Node Sans";
+  src: url("/fonts/node-sans.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
 }
 
-:root {
-  --primary-bg: var(--color-cream);
-  --text-primary: var(--color-warm-gray);
-  --text-light: var(--color-soft-white);
+@theme {
+  /* Fonts */
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Arial, sans-serif;
+  --font-display: "Node Sans", var(--font-sans);
+
+  /* v4 spacing scale */
+  --spacing: 0.25rem;
+
+  /* Radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  /* Base colors (senin palette) */
+  --color-espresso: #2c0d00;
+  --color-cream: #fef9f3;
+  --color-gray-50: #fafafa;
+  --color-lav-200: #dae1fc;s
+  --color-lav-300: #dfe5ff;
+  --color-accent-muted: #A48C7E;
+  --color-footnote: #6A4D42;
+  --color-separator: #DED6D2;
+
+  /* Semantic tokens */
+  --color-background: var(--color-gray-50);
+  --color-surface: #ffffff;
+  --color-surface-2: var(--color-lav-300);
+
+  --color-foreground: var(--color-espresso);
+  --color-muted: color-mix(in oklab, var(--color-espresso) 55%, white);
+  --color-border: color-mix(in oklab, var(--color-espresso) 14%, white);
+
+  /* Primary */
+  --color-primary: var(--color-espresso);
+  --color-primary-foreground: #fafafa;
+
+  /* Secondary */
+  --color-secondary: var(--color-lav-200);
+  --color-secondary-foreground: var(--color-espresso);
+
+  /* Hero spacing */
+  --hero-margin: 0.625rem;
+  --hero-margin-total: calc(var(--hero-margin) * 2);
+  --banner-height: 2.5rem;
 }

@@ -1,24 +1,14 @@
 import { HeaderMenu } from "./components/menu";
-import { HeaderMenuSection } from "./components/menu-section";
-import type { MenuSectionItemProps } from "./components/menu-section-item";
-
-// Placeholder icon - sonradan değiştirilecek
-const PlaceholderIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 16v-4M12 8h.01" />
-  </svg>
-);
-
-type MenuItemSection = {
-  title: string;
-  items: MenuSectionItemProps[];
-  footnote?: string;
-};
+import {
+  HeaderMenuSection,
+  HeaderMenuSectionType,
+  type HeaderMenuSectionProps,
+  type GridCategory,
+} from "./components/menu-section";
 
 type MenuItem = {
   label: string;
-  sections: MenuItemSection[];
+  sections: HeaderMenuSectionProps[];
 };
 
 const menuItems: MenuItem[] = [
@@ -26,39 +16,133 @@ const menuItems: MenuItem[] = [
     label: "Yatırım",
     sections: [
       {
-        title: "Yatırım Araçları",
+        type: HeaderMenuSectionType.GRID,
+        title: "DESTEKLEDİĞİMİZ POPÜLER BLOKZİNCİRLER",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Yatırım Fırsatları",
-            description: "Güncel piyasa fırsatlarını keşfedin",
-            href: "/yatirim/firsatlar",
+            icon: "/img/networks/ethereum.webp",
+            name: "Ethereum",
+            symbol: "ETH",
+            href: "/networks/ethereum",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Portföy Yönetimi",
-            description: "Varlıklarınızı profesyonelce yönetin",
-            href: "/yatirim/portfoy",
+            icon: "/img/networks/bitcoin.webp",
+            name: "Bitcoin",
+            symbol: "BTC",
+            href: "/networks/bitcoin",
+          },
+          {
+            icon: "/img/networks/solana.webp",
+            name: "Solana",
+            symbol: "SOL",
+            href: "/networks/solana",
+          },
+          {
+            icon: "/img/networks/avalanche.webp",
+            name: "Avalanche",
+            symbol: "AVAX",
+            href: "/networks/avalanche",
+          },
+          {
+            icon: "/img/networks/sui.webp",
+            name: "Sui",
+            symbol: "SUI",
+            href: "/networks/sui",
+          },
+          {
+            icon: "/img/networks/walrus.webp",
+            name: "Walrus",
+            symbol: "WAL",
+            href: "/networks/walrus",
+          },
+          {
+            icon: "/img/networks/celestia.webp",
+            name: "Celestia",
+            symbol: "TIA",
+            href: "/networks/celestia",
+          },
+          {
+            icon: "/img/networks/cosmos.webp",
+            name: "Cosmos",
+            symbol: "ATOM",
+            href: "/networks/cosmos",
+          },
+          {
+            icon: "/img/networks/band.webp",
+            name: "Band",
+            symbol: "BAND",
+            href: "/networks/band",
+          },
+          {
+            icon: "/img/networks/starknet.webp",
+            name: "Starknet",
+            symbol: "STRK",
+            href: "/networks/starknet",
           },
         ],
       },
       {
-        title: "Piyasa Verileri",
+        type: HeaderMenuSectionType.LIST,
+        title: "TEKRARLI GETİRİ",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Canlı Veriler",
-            description: "Anlık piyasa verileri",
-            href: "/yatirim/canli",
+            icon: (
+              <img
+                src="/img/header-icons/btc-restaking.webp"
+                alt="BTC Restaking icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "BTC Yatırım Getirisi",
+            description: "Bitcoinlerinizi Babylon üzerinde stake edin",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Analiz Raporları",
-            description: "Detaylı piyasa analizleri",
-            href: "/yatirim/analizler",
+            icon: (
+              <img
+                src="/img/header-icons/eth-restaking.webp"
+                alt="ETH Restaking icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "ETH Tekrarlı Getiri",
+            description: "Ethereumlarınızı EigenLayer ile restake edin",
+            href: "",
           },
         ],
-        footnote: "Yatırım tavsiyesi değildir",
+        footnote:
+          "Desteklediğimiz ağların hepsinde bütün hizmetlerimiz bulunmayabilir. Daha fazla bilgiyi ağ sayfalarında bulabilirsiniz.",
+      },
+      {
+        type: HeaderMenuSectionType.LIST,
+        title: "KURUMSAL YATIRIM",
+        items: [
+          {
+            icon: (
+              <img
+                src="/img/header-icons/whitelabel-validation.webp"
+                alt="Whitelabel Validation icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Fason Validatörlük",
+            description: "Kendi validatörünüzü kurun node101 yürütsün",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/referral-program.webp"
+                alt="Referral Program icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Referans Programı",
+            description:
+              "İşbirlikleri ve referanslar oluşturun kazançtan pay alın",
+            href: "",
+          },
+        ],
       },
     ],
   },
@@ -66,53 +150,164 @@ const menuItems: MenuItem[] = [
     label: "RPC",
     sections: [
       {
-        title: "Başlangıç",
-        items: [
+        type: HeaderMenuSectionType.MULTI_GRID,
+        title: "RPC HİZMETLERİ",
+        categories: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Hızlı Başlangıç",
-            description: "5 dakikada entegrasyon",
-            href: "/rpc/baslangic",
+            title: "ŞU ANDA POPÜLER",
+            columns: 1,
+            items: [
+              {
+                icon: "/img/networks/ethereum.webp",
+                name: "Ethereum",
+                symbol: "ETH",
+                href: "/rpc/ethereum",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+            ],
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "API Dokümantasyonu",
-            description: "Kapsamlı API referansı",
-            href: "/rpc/api",
+            title: "YENİ",
+            columns: 1,
+            items: [
+              {
+                icon: "/img/networks/ethereum.webp",
+                name: "Ethereum",
+                symbol: "ETH",
+                href: "/rpc/ethereum",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+            ],
           },
-        ],
+          {
+            title: "EN ÇOK KULLANILANLAR",
+            columns: 2,
+            items: [
+              {
+                icon: "/img/networks/ethereum.webp",
+                name: "Ethereum",
+                symbol: "ETH",
+                href: "/rpc/ethereum",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+              {
+                icon: "/img/networks/celestia.webp",
+                name: "Celestia",
+                symbol: "TIA",
+                href: "/rpc/celestia",
+              },
+            ],
+          },
+        ] as GridCategory[],
       },
       {
-        title: "Araçlar",
+        type: HeaderMenuSectionType.LIST,
+        title: "",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "SDK İndirmeleri",
-            description: "Tüm platformlar için SDK'lar",
-            href: "/rpc/sdk",
+            icon: (
+              <img
+                src="/img/header-icons/pricing.webp"
+                alt="Pricing icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Ücretlendirme",
+            description: "RPC hizmeti ile ilgili ücretlendirme detayları",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "CLI Araçları",
-            description: "Komut satırı araçları",
-            href: "/rpc/cli",
-          },
-        ],
-      },
-      {
-        title: "Kaynaklar",
-        items: [
-          {
-            icon: <PlaceholderIcon />,
-            label: "Entegrasyon Rehberi",
-            description: "Adım adım kılavuz",
-            href: "/rpc/entegrasyon",
+            icon: (
+              <img
+                src="/img/header-icons/free-rpc.webp"
+                alt="Free RPC icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Ücretsiz RPC",
+            description: "Ücretsiz RPC hizmeti detayları",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Örnek Projeler",
-            description: "Hazır kod örnekleri",
-            href: "/rpc/ornekler",
+            icon: (
+              <img
+                src="/img/header-icons/documents.webp"
+                alt="Documents icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Belgeler",
+            description: "RPC hizmeti ile ilgili tüm belgeler",
+            href: "",
           },
         ],
       },
@@ -122,53 +317,190 @@ const menuItems: MenuItem[] = [
     label: "Hizmetler",
     sections: [
       {
-        title: "Profesyonel",
+        type: HeaderMenuSectionType.LIST,
+        title: "DÜĞÜM HİZMETLERİ",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Danışmanlık",
-            description: "Uzman ekibimizden destek",
-            href: "/hizmetler/danismanlik",
+            icon: (
+              <img
+                src="/img/header-icons/crypto-asset-investment.webp"
+                alt="Crypto Asset Investment icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "node101 ile Kripto Yatırımı Yapın",
+            description:
+              "Valide ettiğimiz düğümlere stake edin, kripto kazanın",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Kurumsal Çözümler",
-            description: "Özel kurumsal hizmetler",
-            href: "/hizmetler/kurumsal",
+            icon: (
+              <img
+                src="/img/header-icons/whitelabel-validation.webp"
+                alt="Whitelabel Validation icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Fason Validatörlük",
+            description: "Kendi validatörünüzü kurun node101 yürütsün",
+            href: "",
+            subItems: [
+              {
+                label: "BTC Fason Madencilik",
+                description: "Sizin için Bitcoin miner'ı kuralım ve yürütelim",
+                href: "",
+              },
+              {
+                label: "ETH Fason Validatörlük",
+                description: "Sizin için Ethereum düğümü kuralım ve yürütelim",
+                href: "",
+              },
+            ],
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/btc-restaking.webp"
+                alt="BTC Restaking icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "BTC Yatırım Getirisi",
+            description:
+              "Bitcoinlerinizi Babylon üzerinde stake edin, kripto kazanın",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/eth-restaking.webp"
+                alt="ETH Restaking icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "ETH Tekrarlı Getiri",
+            description: "Ethereumlarınızı EigenLayer ile restake edin",
+            href: "",
           },
         ],
       },
       {
-        title: "Eğitim",
+        type: HeaderMenuSectionType.LIST,
+        title: "DANIŞMANLIK",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Online Eğitimler",
-            description: "Kapsamlı video eğitimler",
-            href: "/hizmetler/online-egitim",
+            icon: (
+              <img
+                src="/img/header-icons/architectural-consulting.webp"
+                alt="Architectural Consulting icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Mimari Danışmanlık",
+            description:
+              "İhtiyacınız olan teknik mimariyi birlikte inşa edelim",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Sertifika Programları",
-            description: "Profesyonel sertifikalar",
-            href: "/hizmetler/sertifika",
+            icon: (
+              <img
+                src="/img/header-icons/blockchain-consulting.webp"
+                alt="Blockchain Consulting icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Blokzincir 101 Danışmanlığı",
+            description:
+              "Kripto varlıklara ve blokzincire ilginiz var ama ne yapacağınızı bilmiyorsanız, node101'a ulaşın",
+            href: "",
+          },
+        ],
+        additionalGroups: [
+          {
+            title: "BLOKZİNCİR ÜRETİMİ",
+            items: [
+              {
+                icon: (
+                  <img
+                    src="/img/header-icons/product-development.webp"
+                    alt="Product Development icon"
+                    class="w-full h-full"
+                  />
+                ),
+                label: "Ürün Üretimi",
+                description:
+                  "İhtiyacınız olan ürünün tamamını ya da bir parçasını, tecrübeli ekibimizle tasarlar ve üretiriz",
+                href: "",
+              },
+            ],
           },
         ],
       },
       {
-        title: "Destek",
+        type: HeaderMenuSectionType.LIST,
+        title: "ETKİNLİKLER VE KOMÜNİTE",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Teknik Destek",
-            description: "7/24 teknik destek",
-            href: "/hizmetler/destek",
+            icon: (
+              <img
+                src="/img/header-icons/turkish-ecosystem.webp"
+                alt="Turkish Ecosystem Gateway icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Türk ekosistemine açılan kapı",
+            description:
+              "node101, Blokzincir şirketlerinin Türk yazılımcılara ulaşmasını planlar ve partnerleriyle uygular.",
+            href: "",
+            subItems: [
+              {
+                label: "Sui Türkiye Komünite Etkinlikleri",
+                href: "",
+              },
+              {
+                label: "Celestia Türkiye Komünite Etkinlikleri",
+                href: "",
+              },
+            ],
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Topluluk",
-            description: "Geliştirici topluluğu",
-            href: "/hizmetler/topluluk",
+            icon: (
+              <img
+                src="/img/header-icons/builders-week-istanbul.webp"
+                alt="Builders Week Istanbul icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Builders Week Istanbul",
+            description:
+              "BWI blokzincir ekosistemini ölçeklendirmek için tasarlanmış, bir haftalık etkinlikler dizisidir.",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/ethistanbul.webp"
+                alt="ETHIstanbul Conference icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "ETHIstanbul",
+            description:
+              "Ethereum felsefesinin genç yetenekler arasında kök salmasının hedeflendiği konferans ve hackathon",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/cryptist.webp"
+                alt="Cryptist icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Cryptist",
+            description:
+              "Cryptist; sıfır bilgi, gizlilik ve kriptografiye odaklanan yıllık bir topluluk odaklı etkinliktir",
+            href: "",
           },
         ],
       },
@@ -178,36 +510,115 @@ const menuItems: MenuItem[] = [
     label: "Ürünler",
     sections: [
       {
-        title: "Yazılım",
+        type: HeaderMenuSectionType.LIST,
+        title: "PROTOKOL",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Platform",
-            description: "Ana yazılım platformu",
-            href: "/urunler/platform",
+            icon: (
+              <img
+                src="/img/header-icons/pulsar.webp"
+                alt="Pulsar Chain icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Pulsar Chain",
+            description:
+              "Sıfır-Bilgi altyapısını Interchain altyapısı ile buluşturur",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Mobil Uygulama",
-            description: "iOS ve Android uygulaması",
-            href: "/urunler/mobil",
+            icon: (
+              <img
+                src="/img/header-icons/zkvot.webp"
+                alt="zkVot icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "zkVot",
+            description: "Oylama süreçlerinde mahremiyet ve merkeziyetsizlik",
+            href: "",
+          },
+        ],
+        additionalGroups: [
+          {
+            title: "DİĞER",
+            items: [
+              {
+                icon: (
+                  <img
+                    src="/img/header-icons/hackathons.webp"
+                    alt="Hackathon Ürünlerimiz icon"
+                    class="w-full h-full"
+                  />
+                ),
+                label: "Hackathon Ürünlerimiz",
+                description: "Hackathonlarda neler inşa ettiğimizi keşfedin",
+                href: "",
+              },
+            ],
           },
         ],
       },
       {
-        title: "Altyapı",
+        type: HeaderMenuSectionType.LIST,
+        title: "UYGULAMA",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Bulut Hizmetleri",
-            description: "Ölçeklenebilir bulut",
-            href: "/urunler/bulut",
+            icon: (
+              <img
+                src="/img/header-icons/pulsar.webp"
+                alt="Pulsar icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Pulsar",
+            description:
+              "Sıfır-Bilgi altyapısı ile kurulmuş ilk merkeziyetsiz borsa",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Node Altyapısı",
-            description: "Dağıtık node ağı",
-            href: "/urunler/node",
+            icon: (
+              <img
+                src="/img/header-icons/punch.webp"
+                alt="PUNCH icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "PUNCH",
+            description: "Merkeziyetsiz yayın platformu",
+            href: "",
+          },
+        ],
+      },
+      {
+        type: HeaderMenuSectionType.LIST,
+        title: "TOOLING",
+        items: [
+          {
+            icon: (
+              <img
+                src="/img/header-icons/validatier.webp"
+                alt="Validatier icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Validatier",
+            description:
+              "Blokzincir yazılımcılarının tüm aktivitelerine ulaşın",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/blockchain-developer-report.webp"
+                alt="Blockchain Developer Report icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Blockchain Developer Report",
+            description:
+              "Blokzincir yazılımcılarının tüm aktivitelerine ulaşın",
+            href: "",
           },
         ],
       },
@@ -217,53 +628,181 @@ const menuItems: MenuItem[] = [
     label: "Kurumsal",
     sections: [
       {
-        title: "Şirket",
+        type: HeaderMenuSectionType.LIST,
+        title: "KURUMSAL UZMANLIK",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Hakkımızda",
-            description: "Vizyon ve misyonumuz",
-            href: "/kurumsal/hakkimizda",
+            icon: (
+              <img
+                src="/img/header-icons/financial-institutions.webp"
+                alt="Financial Institutions icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Finansal Kurumlar",
+            description: "Blokzincir teknik altyapı çözümlerimizi keşfedin",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Ekibimiz",
-            description: "Liderlik ekibi",
-            href: "/kurumsal/ekip",
+            icon: (
+              <img
+                src="/img/header-icons/centralized-exchanges.webp"
+                alt="Centralized Exchanges icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Merkezi Kripto Borsaları",
+            description:
+              "Validatörlük, RPC & API ve diğer teknik hizmetlerimize erişin",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/custodials.webp"
+                alt="Custodials icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Saklamacılar",
+            description:
+              "Staking API'larımızı, %99 uptime garantili SLA'lerimiz ile Blokzincir işlemlerinizde kullanın",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/foundations.webp"
+                alt="Foundations icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Foundationlar",
+            description:
+              "node101 ile protokolünüzü güvenle kodlayın, mainnete çıkın ve büyütün",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/companies.webp"
+                alt="Companies icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Şirketler",
+            description: "Blokzincir dünyasına ilk adımınızı node101 ile atın",
+            href: "",
           },
         ],
       },
       {
-        title: "Kariyer",
+        type: HeaderMenuSectionType.LIST,
+        title: "node101",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Açık Pozisyonlar",
-            description: "Bize katılın",
-            href: "/kurumsal/kariyer",
+            icon: (
+              <img
+                src="/img/header-icons/about-node101.webp"
+                alt="About node101 icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "node101 Hakkında",
+            description: "Türkiye'nin en büyük validatörünün hikayesi",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "Kültürümüz",
-            description: "Çalışma ortamımız",
-            href: "/kurumsal/kultur",
+            icon: (
+              <img
+                src="/img/header-icons/team.webp"
+                alt="Team icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Takım",
+            description: "Küresel düzeyde rekabet en iyilerle mümkündür",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/career.webp"
+                alt="Career icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Kariyer",
+            description: "Size en uygun pozisyona başvurun",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/brand-details.webp"
+                alt="Brand Details icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Marka Detayları",
+            description: "node101 branding hikayesi",
+            href: "",
           },
         ],
       },
       {
-        title: "İletişim",
+        type: HeaderMenuSectionType.LIST,
+        title: "VERİ MERKEZİ",
         items: [
           {
-            icon: <PlaceholderIcon />,
-            label: "Basın",
-            description: "Basın ve medya",
-            href: "/kurumsal/basin",
+            icon: (
+              <img
+                src="/img/header-icons/blog.webp"
+                alt="Blog icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Blog",
+            description:
+              "node101 kütüphanesini keşfedin, ürettiğimiz tüm içeriklere erişin",
+            href: "",
           },
           {
-            icon: <PlaceholderIcon />,
-            label: "İletişim",
-            description: "Bize ulaşın",
-            href: "/kurumsal/iletisim",
+            icon: (
+              <img
+                src="/img/header-icons/support-center.webp"
+                alt="Support Center icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Destek Merkezi",
+            description: "Bizlere 7/24 istediğiniz anda ulaşın",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/faq.webp"
+                alt="FAQ icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "SSS",
+            description:
+              "node101 hizmetleri ve blokzincir terimleri ile alakalı sıkça sorulan sorular",
+            href: "",
+          },
+          {
+            icon: (
+              <img
+                src="/img/header-icons/case-studies.webp"
+                alt="Case Studies icon"
+                class="w-full h-full"
+              />
+            ),
+            label: "Vaka Çalışmaları",
+            description: "Söylediklerimize değil aksiyonlarımıza odaklanın",
+            href: "",
           },
         ],
       },
@@ -272,46 +811,63 @@ const menuItems: MenuItem[] = [
 ];
 
 export const Header = () => (
-  <header class="relative flex items-center justify-between py-4 gap-8">
-    <img src="/logo.png" alt="logo" class="h-10 w-auto" />
-    <nav class="flex items-center gap-1">
+  <header class="group/menu relative flex items-center justify-between py-4 gap-8 font-sans bg-[#FDF8F2]/40 rounded-full px-5 border border-surface">
+    <a href="/" class="h-full flex items-center relative z-60">
+      <img
+        src="/img/logo.svg"
+        alt="node101 logo"
+        class="w-20 shrink-0 h-auto"
+      />
+    </a>
+
+    {/* Mobile Menu Toggle - checkbox */}
+    <input type="checkbox" id="mobile-menu-toggle" class="peer sr-only" />
+
+    {/* Navigation - Mobilde fullscreen overlay, Desktop'ta inline */}
+    <nav class="overflow-y-auto fixed top-[var(--banner-height)] left-0 right-0 bottom-0 flex flex-col justify-items-start items-center gap-6 px-8 py-32 lg:py-0 bg-cream opacity-0 invisible transition-all duration-300 z-50 peer-checked:opacity-100 peer-checked:visible lg:static lg:flex-row lg:bg-transparent lg:opacity-100 lg:visible lg:gap-10 lg:px-5">
       {menuItems.map((item, index) => (
-        <div class="group" key={index}>
+        <div class="group w-full lg:w-auto" key={index}>
           <button
-            class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-warm-gray rounded-md transition-colors hover:bg-warm-gray/10 focus:bg-warm-gray/15 focus:outline-none"
+            class="inline-flex items-center gap-1.5 lg:px-3 lg:py-2 text-base lg:text-sm font-medium text-foreground rounded-full transition-colors lg:hover:bg-foreground/10 lg:focus:bg-foreground/15 focus:outline-none cursor-pointer"
             type="button"
-            onclick="this.focus()" // for safari
+            onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); }"
           >
             {item.label}
-            <svg
-              class="w-2.5 h-1.5 transition-transform group-focus-within:rotate-180"
-              viewBox="0 0 10 6"
-              fill="none"
-            >
-              <path
-                d="M1 1L5 5L9 1"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
+            <img
+              src="/img/plus.svg"
+              alt="plus icon"
+              class="w-2.5 h-2.5 transition-transform group-focus-within:rotate-45 text-foreground"
+            />
           </button>
-          <HeaderMenu class="absolute top-full left-0 right-0 mt-2 p-1.5 shadow-lg opacity-0 invisible translate-y-[-8px] transition-all duration-200 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 z-50 flex gap-1.5 justify-center">
+          <HeaderMenu>
             {item.sections.map((section, sectionIndex) => (
-              <HeaderMenuSection
-                key={sectionIndex}
-                title={section.title}
-                items={section.items}
-                footnote={section.footnote}
-              />
+              <HeaderMenuSection key={sectionIndex} {...section} />
             ))}
           </HeaderMenu>
         </div>
       ))}
     </nav>
-    <button class="bg-warm-gray text-soft-white px-5 py-2.5 rounded-lg font-medium text-sm transition-all hover:bg-warm-gray/85 hover:-translate-y-0.5 whitespace-nowrap">
+
+    {/* Desktop Bize Ulaşın */}
+    <button class="hidden lg:block active:scale-98 transition-transform cursor-pointer bg-primary text-primary-foreground px-8 py-2.5 rounded-lg font-medium text-sm lg:hover:scale-104 whitespace-nowrap relative z-60">
       Bize Ulaşın
     </button>
+
+    {/* Mobile Hamburger Toggle Label */}
+    <label
+      for="mobile-menu-toggle"
+      class="lg:hidden relative z-60 flex flex-col justify-center items-center w-10 h-10 cursor-pointer rounded-lg transition-colors gap-1.5"
+    >
+      <span class="block w-5 h-0.5 bg-foreground transition-all duration-300 origin-center group-has-checked/menu:rotate-45 group-has-checked/menu:translate-y-1" />
+      <span class="block w-5 h-0.5 bg-foreground transition-all duration-300 origin-center group-has-checked/menu:-rotate-45 group-has-checked/menu:-translate-y-1" />
+    </label>
+
+    {/* Mobile Bize Ulaşın */}
+    <a
+      href="/contact"
+      class="lg:hidden fixed bottom-8 left-8 right-8 active:scale-98 transition-all cursor-pointer bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-base text-center opacity-0 invisible peer-checked:opacity-100 peer-checked:visible z-50"
+    >
+      Bize Ulaşın
+    </a>
   </header>
 );
