@@ -2,6 +2,7 @@ import { mkdir, writeFile, cp, rm, readdir, stat } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import type { HtmlEscapedString } from "hono/utils/html";
+import { minify } from "html-minifier-terser";
 import { LOCALES, DEFAULT_LOCALE, setLocale, type Locale } from "./i18n";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -58,7 +59,19 @@ async function buildPage(
 ): Promise<void> {
   setLocale(locale);
   const rendered = component();
-  const html = "<!DOCTYPE html>" + String(rendered);
+  const raw = "<!DOCTYPE html>" + String(rendered);
+
+  const html = isDev
+    ? raw
+    : await minify(raw, {
+        collapseWhitespace: true,
+        removeComments: true,
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes: true,
+        removeEmptyAttributes: true,
+        sortAttributes: true,
+        sortClassName: true,
+      });
 
   const dir = `${DIST}/${locale}`;
   await mkdir(dir, { recursive: true });
