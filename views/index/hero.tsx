@@ -9,7 +9,7 @@ export const Hero = () => (
       h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
       flex-col
       overflow-hidden
-      rounded-4xl
+      rounded-[calc(var(--radius-4xl)+var(--hero-margin))]
       bg-[url('/img/hero-background.webp')]
       bg-cover
       bg-center

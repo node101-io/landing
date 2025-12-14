@@ -10,9 +10,10 @@ export const en = {
     contactUs: "Contact Us",
     learnMore: "Learn More",
     allNetworks: "View All Networks",
+    viewAllProtocols: "View All Protocols",
   },
   banner: {
-    text: "node101 has been Turkey's largest validator since 2022, with over $40,000,000 in crypto assets under management.",
+    text: "node101 validates over 27 networks, creates tools, and provides RPCs making it the largest provider in Türkiye since 2022.",
   },
   hero: {
     badge: "TURKEY'S LARGEST VALIDATOR",

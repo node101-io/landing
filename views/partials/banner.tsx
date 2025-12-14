@@ -6,7 +6,7 @@ export const Banner = () => {
     <div
       class={`
         flex
-        h-10
+        h-(--banner-height)
         w-full
         items-center
         overflow-hidden
@@ -21,6 +21,7 @@ export const Banner = () => {
           hidden
           w-full
           justify-center
+          text-xs
           md:flex
         `}
       >
@@ -39,8 +40,11 @@ export const Banner = () => {
           class={`
             animate-marquee
             flex
+            text-xs
           `}
         >
+          <span class="pr-16">{text}</span>
+          <span class="pr-16">{text}</span>
           <span class="pr-16">{text}</span>
           <span class="pr-16">{text}</span>
         </div>

@@ -8,7 +8,7 @@
     "build:css": "tailwindcss -i ./src/styles.css -o ./dist/static/styles.css --watch",
     "build:css:prod": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --minify",
     "dev": "tsx src/build.ts && run-p build:css dev:watch dev:server",
-    "dev:watch": "nodemon --watch views --watch src -e tsx,ts --exec 'tsx src/build.ts'",
+    "dev:watch": "nodemon --watch views --watch src -e tsx,ts,css --exec 'tsx src/build.ts'",
     "dev:server": "npx serve dist -l 3000",
     "preview": "npm run build && npx serve dist",
     "deploy": "npm run build && wrangler pages deploy dist --project-name=node101-landing",

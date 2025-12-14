@@ -1,3 +1,4 @@
+import { t } from "../../../../src/i18n";
 import {
   HeaderMenuSectionItem,
   type MenuSectionItemProps,
@@ -153,7 +154,7 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
             text-footnote
           `}
         >
-          Tüm Protokolleri Gör
+          {t("common.viewAllProtocols")}
         </a>
         {footnote && (
           <p
@@ -281,12 +282,14 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
             href=""
             class={`
               mt-2
+              block
+              text-right
               text-[10px]
               font-medium
               text-footnote
             `}
           >
-            Tüm Protokolleri Gör
+            {t("common.viewAllProtocols")}
           </a>
         </>
       )}

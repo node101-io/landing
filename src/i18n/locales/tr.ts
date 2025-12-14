@@ -7,6 +7,7 @@ export const tr = {
     contactUs: "Bize Ulaşın",
     learnMore: "Daha Fazla",
     allNetworks: "Tüm Ağları Gör",
+    viewAllProtocols: "Tüm Protokolleri Gör",
   },
   banner: {
     text: "node101, $40M+ kripto varlık yatırımıyla Türkiye'nin en büyük validatörü.",
@@ -16,7 +17,7 @@ export const tr = {
     titleLine1: "BLOKZİNCİRLERE ERİŞMEK",
     titleLine2: "BİZİMLE MÜMKÜN",
     description:
-      "node101 2022'den beri Türkiye'nin en büyük blokzincir altyapı sağlayıcısı",
+      "node101; validasyon, ürün geliştirme, danışmanlık ve kurumsal RPC çözümleriyle 2022'den beri Türkiye'nin en büyük blokzincir altyapı sağlayıcısı",
   },
   nav: {
     investment: "Yatırım",

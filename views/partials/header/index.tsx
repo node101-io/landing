@@ -941,7 +941,6 @@ export const Header = () => (
       border
       border-surface
       bg-header-bg
-      px-5
       font-sans
       transition-all
       duration-300
@@ -959,7 +958,7 @@ export const Header = () => (
       href="/"
       class={`
         absolute
-        left-5
+        left-4
         z-60
         flex
         h-full
@@ -993,9 +992,9 @@ export const Header = () => (
       class={`
         invisible
         fixed
-        top-[calc(var(--banner-height)+var(--header-height))]
+        top-[calc(var(--banner-height)+var(--header-margin)+var(--header-height)+var(--hero-margin))]
         right-(--nav-inset)
-        bottom-0
+        bottom-[calc(var(--nav-inset)+var(--hero-margin))]
         left-(--nav-inset)
         z-50
         flex
@@ -1004,6 +1003,7 @@ export const Header = () => (
         justify-items-start
         space-y-6
         overflow-y-auto
+        rounded-4xl
         bg-nav-mobile-bg
         px-8
         py-8
@@ -1011,8 +1011,11 @@ export const Header = () => (
         transition-all
         duration-300
         peer-checked:visible
+        peer-checked:top-[calc(var(--banner-height)+var(--header-height))]
         peer-checked:right-0
+        peer-checked:bottom-0
         peer-checked:left-0
+        peer-checked:rounded-none
         peer-checked:opacity-100
         lg:visible
         lg:static
@@ -1087,6 +1090,16 @@ export const Header = () => (
       <a
         href="/contact"
         class={`
+          lg:transition-duration-300
+          lg:absolute
+          lg:right-(--header-padding)
+          lg:mt-0
+          lg:h-[calc(var(--header-height)-2*var(--header-padding))]
+          lg:w-auto
+          lg:rounded-lg
+          lg:py-2.5
+          lg:text-sm
+          lg:transition-[border-radius]
           mt-auto
           w-full
           cursor-pointer
@@ -1100,14 +1113,7 @@ export const Header = () => (
           whitespace-nowrap
           text-primary-foreground
           transition-transform
-          lg:absolute
-          lg:right-5
-          lg:mt-0
-          lg:w-auto
-          lg:rounded-lg
-          lg:py-2.5
-          lg:text-sm
-          lg:hover:scale-104
+          lg:hover:rounded-sm
           lg:active:scale-98
         `}
       >
