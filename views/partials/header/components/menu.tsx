@@ -17,7 +17,7 @@ export const HeaderMenu = ({ children }: HeaderMenuProps) => {
       class="
         w-full max-h-0 overflow-hidden opacity-0
         transition-all duration-300 ease-out
-        group-focus-within:max-h-[80vh] group-focus-within:opacity-100 group-focus-within:overflow-y-auto
+        group-focus-within:max-h-none group-focus-within:opacity-100
         flex flex-col gap-4 lg:px-2
         lg:absolute lg:top-full lg:left-[2.5%] lg:right-[2.5%] lg:w-auto
         lg:mt-3 lg:p-2.5 lg:shadow-lg lg:max-h-none lg:overflow-visible

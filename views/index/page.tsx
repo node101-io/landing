@@ -4,7 +4,7 @@ import { Hero } from "./hero";
 
 // Ana sayfa component'i
 export const LandingPage = () => (
-  <Layout title="Ana Sayfa">
+  <Layout title="node101">
     <Banner />
     <Hero />
   </Layout>

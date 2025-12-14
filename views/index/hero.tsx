@@ -1,7 +1,7 @@
 import { Header } from "../partials/header";
 
 export const Hero = () => (
-  <div class="h-[calc(100vh-var(--banner-height)-var(--hero-margin-total))] overflow-hidden flex flex-col bg-[url('/img/hero-background.png')] bg-cover bg-center m-(--hero-margin) rounded-4xl p-4 pb-6">
+  <div class="h-[calc(100vh-var(--banner-height)-var(--hero-margin-total))] overflow-hidden flex flex-col bg-[url('/img/hero-background.png')] bg-cover bg-center m-(--hero-margin) lg:has-checked:m-(--hero-margin) has-checked:m-0 has-checked:rounded-none lg:has-checked:rounded-4xl transition-all duration-300 rounded-4xl">
     <Header />
 
     <section class="flex-1 flex flex-col items-center justify-center text-center pt-32 pb-40">
@@ -31,7 +31,7 @@ export const Hero = () => (
       </p>
     </section>
 
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between mx-4 mb-6">
       <img
         src="/img/iso-badge.png"
         alt="ISO 27001 Information Security Management"

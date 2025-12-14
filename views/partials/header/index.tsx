@@ -811,8 +811,8 @@ const menuItems: MenuItem[] = [
 ];
 
 export const Header = () => (
-  <header class="group/menu relative flex items-center justify-between py-4 gap-8 font-sans bg-[#FDF8F2]/40 rounded-full px-5 border border-surface">
-    <a href="/" class="h-full flex items-center relative z-60">
+  <header class="group/menu relative flex items-center justify-center h-(--header-height) min-h-(--header-height) shrink-0 gap-8 font-sans bg-header-bg rounded-4xl px-5 border border-surface m-4 transition-all duration-300 has-checked:m-0 lg:has-checked:m-4 has-checked:rounded-none lg:has-checked:rounded-4xl has-checked:border-header-bg-checked lg:has-checked:border-surface has-checked:bg-header-bg-checked lg:has-checked:bg-header-bg">
+    <a href="/" class="absolute left-5 h-full flex items-center z-60">
       <img
         src="/img/logo.svg"
         alt="node101 logo"
@@ -824,11 +824,14 @@ export const Header = () => (
     <input type="checkbox" id="mobile-menu-toggle" class="peer sr-only" />
 
     {/* Navigation - Mobilde fullscreen overlay, Desktop'ta inline */}
-    <nav class="overflow-y-auto fixed top-[var(--banner-height)] left-0 right-0 bottom-0 flex flex-col justify-items-start items-center gap-6 px-8 py-32 lg:py-0 bg-cream opacity-0 invisible transition-all duration-300 z-50 peer-checked:opacity-100 peer-checked:visible lg:static lg:flex-row lg:bg-transparent lg:opacity-100 lg:visible lg:gap-10 lg:px-5">
+    <nav class="overflow-y-scroll lg:overflow-y-hidden fixed top-[calc(var(--banner-height)+var(--header-height))] left-0 right-0 bottom-0 flex flex-col justify-items-start items-center space-y-6 px-8 py-8 lg:py-0 bg-nav-mobile-bg opacity-0 invisible transition-all duration-300 z-50 peer-checked:opacity-100 peer-checked:visible lg:static lg:flex-row lg:bg-transparent lg:opacity-100 lg:visible lg:space-y-0 lg:space-x-10 lg:px-5">
       {menuItems.map((item, index) => (
-        <div class="group w-full lg:w-auto" key={index}>
+        <div
+          class="group w-full lg:w-auto lg:overflow-hidden flex flex-col gap-4"
+          key={index}
+        >
           <button
-            class="inline-flex items-center gap-1.5 lg:px-3 lg:py-2 text-base lg:text-sm font-medium text-foreground rounded-full transition-colors lg:hover:bg-foreground/10 lg:focus:bg-foreground/15 focus:outline-none cursor-pointer"
+            class="inline-flex items-center gap-1.5 lg:px-3 lg:py-2 text-xl lg:text-sm font-medium text-foreground rounded-full transition-colors lg:hover:bg-foreground/10 lg:focus:bg-foreground/15 focus:outline-none cursor-pointer"
             type="button"
             onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); }"
           >
@@ -836,7 +839,7 @@ export const Header = () => (
             <img
               src="/img/plus.svg"
               alt="plus icon"
-              class="w-2.5 h-2.5 transition-transform group-focus-within:rotate-45 text-foreground"
+              class="size-3.5 lg:size-2.5 transition-transform group-focus-within:rotate-45 text-foreground"
             />
           </button>
           <HeaderMenu>
@@ -846,28 +849,23 @@ export const Header = () => (
           </HeaderMenu>
         </div>
       ))}
-    </nav>
 
-    {/* Desktop Bize Ulaşın */}
-    <button class="hidden lg:block active:scale-98 transition-transform cursor-pointer bg-primary text-primary-foreground px-8 py-2.5 rounded-lg font-medium text-sm lg:hover:scale-104 whitespace-nowrap relative z-60">
-      Bize Ulaşın
-    </button>
+      {/* Bize Ulaşın */}
+      <a
+        href="/contact"
+        class="w-full lg:w-auto mt-auto lg:mt-0 lg:absolute lg:right-5 active:scale-98 transition-transform cursor-pointer bg-primary text-primary-foreground px-8 py-4 lg:py-2.5 rounded-xl lg:rounded-lg font-medium text-base lg:text-sm text-center lg:hover:scale-104 whitespace-nowrap"
+      >
+        Bize Ulaşın
+      </a>
+    </nav>
 
     {/* Mobile Hamburger Toggle Label */}
     <label
       for="mobile-menu-toggle"
-      class="lg:hidden relative z-60 flex flex-col justify-center items-center w-10 h-10 cursor-pointer rounded-lg transition-colors gap-1.5"
+      class="lg:hidden absolute right-5 z-60 flex flex-col justify-center items-center w-10 h-10 cursor-pointer rounded-lg transition-colors gap-1.5"
     >
       <span class="block w-5 h-0.5 bg-foreground transition-all duration-300 origin-center group-has-checked/menu:rotate-45 group-has-checked/menu:translate-y-1" />
       <span class="block w-5 h-0.5 bg-foreground transition-all duration-300 origin-center group-has-checked/menu:-rotate-45 group-has-checked/menu:-translate-y-1" />
     </label>
-
-    {/* Mobile Bize Ulaşın */}
-    <a
-      href="/contact"
-      class="lg:hidden fixed bottom-8 left-8 right-8 active:scale-98 transition-all cursor-pointer bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium text-base text-center opacity-0 invisible peer-checked:opacity-100 peer-checked:visible z-50"
-    >
-      Bize Ulaşın
-    </a>
   </header>
 );

@@ -24,6 +24,9 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^4.20251209.0
         version: 4.20251209.0
+      '@eslint/css':
+        specifier: ^0.14.1
+        version: 0.14.1
       '@eslint/js':
         specifier: ^9.39.2
         version: 9.39.2
@@ -72,6 +75,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(prettier@3.7.4)
+      tailwind-csstree:
+        specifier: ^0.1.4
+        version: 0.1.4
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
@@ -383,6 +389,14 @@ packages:
 
   '@eslint/core@0.17.0':
     resolution: {integrity: sha512-yL/sLrpmtDaFEiUj1osRP4TI2MDz1AddJL+jZ7KSqvBuliN4xqYY54IfdN8qD8Toa6g1iloph1fxQNkjOxrrpQ==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/css-tree@3.6.8':
+    resolution: {integrity: sha512-s0f40zY7dlMp8i0Jf0u6l/aSswS0WRAgkhgETgiCJRcxIWb4S/Sp9uScKHWbkM3BnoFLbJbmOYk5AZUDFVxaLA==}
+    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
+
+  '@eslint/css@0.14.1':
+    resolution: {integrity: sha512-NXiteSacmpaXqgyIW3+GcNzexXyfC0kd+gig6WTjD4A74kBGJeNx1tV0Hxa0v7x0+mnIyKfGPhGNs1uhRFdh+w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/eslintrc@3.3.3':
@@ -1685,6 +1699,9 @@ packages:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
 
+  mdn-data@2.23.0:
+    resolution: {integrity: sha512-786vq1+4079JSeu2XdcDjrhi/Ry7BWtjDl9WtGPWLiIHb2T66GvIVflZTBoSNZ5JqTtJGYEVMuFA/lbQlMOyDQ==}
+
   memorystream@0.3.1:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}
     engines: {node: '>= 0.10.0'}
@@ -2185,6 +2202,10 @@ packages:
     peerDependencies:
       tailwindcss: ^3.3.0 || ^4.0.0 || ^4.0.0-beta
 
+  tailwind-csstree@0.1.4:
+    resolution: {integrity: sha512-FzD187HuFIZEyeR7Xy6sJbJll2d4SybS90satC8SKIuaNRC05CxMvdzN7BUsfDQffcnabckRM5OIcfArjsZ0mg==}
+    engines: {node: '>=18.18'}
+
   tailwindcss@4.1.17:
     resolution: {integrity: sha512-j9Ee2YjuQqYT9bbRTfTZht9W/ytp5H+jJpZKiYdP/bpnXARAuELt9ofP0lPnmHjbga7SNQIxdTAXCmtKVYjN+Q==}
 
@@ -2602,6 +2623,17 @@ snapshots:
   '@eslint/core@0.17.0':
     dependencies:
       '@types/json-schema': 7.0.15
+
+  '@eslint/css-tree@3.6.8':
+    dependencies:
+      mdn-data: 2.23.0
+      source-map-js: 1.2.1
+
+  '@eslint/css@0.14.1':
+    dependencies:
+      '@eslint/core': 0.17.0
+      '@eslint/css-tree': 3.6.8
+      '@eslint/plugin-kit': 0.4.1
 
   '@eslint/eslintrc@3.3.3':
     dependencies:
@@ -3999,6 +4031,8 @@ snapshots:
 
   math-intrinsics@1.1.0: {}
 
+  mdn-data@2.23.0: {}
+
   memorystream@0.3.1: {}
 
   merge2@1.4.1: {}
@@ -4508,6 +4542,8 @@ snapshots:
       jiti: 2.6.1
       local-pkg: 1.1.2
       tailwindcss: 4.1.17
+
+  tailwind-csstree@0.1.4: {}
 
   tailwindcss@4.1.17: {}
 

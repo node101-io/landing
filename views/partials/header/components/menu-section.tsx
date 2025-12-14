@@ -145,7 +145,7 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
         ))}
       {type === HeaderMenuSectionType.GRID && items.length > 0 && (
         <>
-          <div class="grid grid-cols-2 gap-2 w-full py-2">
+          <div class="flex flex-wrap gap-1.5 lg:grid lg:grid-cols-2 lg:gap-2 w-full py-2">
             {(items as GridItemProps[]).map((item, index) => (
               <HeaderMenuGridItem key={index} {...item} />
             ))}

@@ -4,6 +4,8 @@ import tseslint from "typescript-eslint";
 import { defineConfig } from "eslint/config";
 import prettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
+import css from "@eslint/css";
+import { tailwind4 } from "tailwind-csstree";
 
 export default defineConfig([
   {
@@ -34,6 +36,15 @@ export default defineConfig([
         { allowInterfaces: "with-single-extends" },
       ],
       ...prettierConfig.rules,
+    },
+  },
+  {
+    files: ["**/*.css"],
+    plugins: { css },
+    language: "css/css",
+    extends: ["css/recommended"],
+    languageOptions: {
+      customSyntax: tailwind4,
     },
   },
 ]);

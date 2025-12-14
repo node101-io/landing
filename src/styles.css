@@ -9,8 +9,7 @@
 
 @theme {
   /* Fonts */
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Arial, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", arial, sans-serif;
   --font-display: "Node Sans", var(--font-sans);
 
   /* v4 spacing scale */
@@ -26,7 +25,7 @@
   --color-espresso: #2c0d00;
   --color-cream: #fef9f3;
   --color-gray-50: #fafafa;
-  --color-lav-200: #dae1fc;s
+  --color-lav-200: #dae1fc;
   --color-lav-300: #dfe5ff;
   --color-accent-muted: #A48C7E;
   --color-footnote: #6A4D42;
@@ -34,9 +33,8 @@
 
   /* Semantic tokens */
   --color-background: var(--color-gray-50);
-  --color-surface: #ffffff;
+  --color-surface: #fff;
   --color-surface-2: var(--color-lav-300);
-
   --color-foreground: var(--color-espresso);
   --color-muted: color-mix(in oklab, var(--color-espresso) 55%, white);
   --color-border: color-mix(in oklab, var(--color-espresso) 14%, white);
@@ -53,4 +51,10 @@
   --hero-margin: 0.625rem;
   --hero-margin-total: calc(var(--hero-margin) * 2);
   --banner-height: 2.5rem;
+  --header-height: 4rem;
+
+  /* Header */
+  --color-header-bg: oklch(from #FDF8F2 l c h / 40%);
+  --color-header-bg-checked: var(--color-cream);
+  --color-nav-mobile-bg: #F7F2EC;
 }
