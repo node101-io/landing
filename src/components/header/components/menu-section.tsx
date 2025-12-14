@@ -1,4 +1,5 @@
 import { i18n } from "@/i18n";
+import type { Child } from "hono/jsx";
 import {
   HeaderMenuSectionItem,
   type MenuSectionItemProps,
@@ -48,34 +49,160 @@ export type HeaderMenuSectionProps = {
 );
 
 /**
- * Header'daki her bir alt menü için section wrapper component'i
+ * Component Wrapper
  */
+const MenuSectionWrapper = (props: { children: Child; className?: string }) => (
+  <section
+    class={`
+      h-full
+      rounded-lg
+      lg:min-w-[220px]
+      lg:bg-surface
+      lg:p-6
+      ${props.className || ""}
+    `}
+  >
+    {props.children}
+  </section>
+);
+
+/**
+ * Section Title
+ */
+const MenuSectionTitle = (props: { title: string; className?: string }) => (
+  <h3
+    class={`
+      mb-4
+      text-xs
+      tracking-wider
+      text-accent-muted
+      uppercase
+      ${props.className || ""}
+    `}
+  >
+    {props.title}
+  </h3>
+);
+
+/**
+ * View All Link
+ */
+const ViewAllLink = () => (
+  <a
+    href=""
+    class={`
+      mt-4
+      block
+      text-right
+      text-[10px]
+      font-medium
+      text-footnote
+    `}
+  >
+    {i18n().common.viewAllProtocols}
+  </a>
+);
+
+/**
+ * Footnote
+ */
+const Footnote = (props: { text: string }) => (
+  <p
+    class={`
+      mt-3
+      text-[10px]
+      text-footnote
+    `}
+  >
+    {props.text}
+  </p>
+);
+
+/**
+ * Menu List Implementation
+ */
+const MenuList = (props: { items: MenuSectionItemProps[] }) => {
+  if (props.items.length === 0) return null;
+  return (
+    <div
+      class={`
+        flex
+        flex-col
+      `}
+    >
+      {props.items.map((item, index) => (
+        <div
+          key={index}
+          class={`
+            py-1
+            ${
+              index < props.items.length - 1
+                ? `
+                  border-b
+                  border-separator
+                `
+                : ""
+            }
+          `}
+        >
+          <HeaderMenuSectionItem {...item} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+/**
+ * Menu Grid Implementation
+ */
+const MenuGrid = (props: {
+  items: GridItemProps[];
+  columns?: 1 | 2;
+  mobileHidden?: boolean;
+}) => {
+  if (props.items.length === 0) return null;
+  return (
+    <div
+      class={`
+        flex
+        h-[calc(var(--icon-size-mobile))]
+        max-h-[calc(var(--icon-size-mobile))]
+        w-full
+        flex-wrap
+        gap-1.5
+        overflow-hidden
+        lg:grid
+        lg:h-auto
+        lg:max-h-none
+        lg:gap-2
+        lg:overflow-visible
+        ${props.columns === 2 ? "lg:grid-cols-2" : "lg:grid-cols-1"}
+        ${
+          props.mobileHidden
+            ? `
+              hidden
+              lg:grid
+            `
+            : ""
+        }
+      `}
+    >
+      {props.items.map((item, index) => (
+        <HeaderMenuGridItem key={index} {...item} />
+      ))}
+    </div>
+  );
+};
+
 export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
   const { type, title, footnote } = props;
 
+  // Handle MULTI_GRID
   if (type === HeaderMenuSectionType.MULTI_GRID) {
     const { categories } = props;
     return (
-      <section
-        class={`
-          h-full
-          rounded-lg
-          lg:min-w-[220px]
-          lg:bg-surface
-          lg:p-6
-        `}
-      >
-        <h3
-          class={`
-            mb-4
-            text-xs
-            tracking-wider
-            text-accent-muted
-            uppercase
-          `}
-        >
-          {title}
-        </h3>
+      <MenuSectionWrapper>
+        <MenuSectionTitle title={title} />
         <div
           class={`
             flex
@@ -104,42 +231,20 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
                   last:lg:pr-0
                 `}
               >
-                <h4
-                  class={`
+                <MenuSectionTitle
+                  title={category.title}
+                  className={`
                     mb-3
                     text-[10px]
                     font-medium
-                    tracking-wider
                     text-muted
-                    uppercase
                   `}
-                >
-                  {category.title}
-                </h4>
-                <div
-                  class={`
-                    flex
-                    h-[calc(var(--icon-size-mobile))]
-                    max-h-[calc(var(--icon-size-mobile))]
-                    flex-wrap
-                    gap-1.5
-                    overflow-hidden
-                    lg:grid
-                    lg:h-auto
-                    lg:max-h-none
-                    lg:gap-2
-                    lg:overflow-visible
-                    ${
-                      category.columns === 2
-                        ? "lg:grid-cols-2"
-                        : `lg:grid-cols-1`
-                    }
-                  `}
-                >
-                  {category.items.map((item, index) => (
-                    <HeaderMenuGridItem key={index} {...item} />
-                  ))}
-                </div>
+                />
+                <MenuGrid
+                  items={category.items}
+                  columns={category.columns}
+                  mobileHidden={false} // Handled by parent div for category
+                />
               </div>
               {catIndex < categories.length - 1 && (
                 <div
@@ -165,178 +270,46 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
             </>
           ))}
         </div>
-        <a
-          href=""
-          class={`
-            mt-4
-            block
-            text-right
-            text-[10px]
-            font-medium
-            text-footnote
-          `}
-        >
-          {i18n().common.viewAllProtocols}
-        </a>
-        {footnote && (
-          <p
-            class={`
-              mt-3
-              text-[10px]
-              text-footnote
-            `}
-          >
-            {footnote}
-          </p>
-        )}
-      </section>
+        <ViewAllLink />
+        {footnote && <Footnote text={footnote} />}
+      </MenuSectionWrapper>
     );
   }
 
+  // Handle LIST and GRID
   const additionalGroups =
     type === HeaderMenuSectionType.LIST ? props.additionalGroups : undefined;
 
   return (
-    <section
-      class={`
-        h-full
-        rounded-lg
-        lg:min-w-[220px]
-        lg:bg-surface
-        lg:p-6
-      `}
-    >
-      <h3
-        class={`
-          mb-2
-          text-xs
-          tracking-wider
-          text-accent-muted
-          uppercase
-        `}
-      >
-        {title}
-      </h3>
-      {type === HeaderMenuSectionType.LIST && props.items.length > 0 && (
-        <div
-          class={`
-            flex
-            flex-col
-          `}
-        >
-          {props.items.map((item, index) => (
-            <div
-              key={index}
-              class={`
-                py-1
-                ${
-                  index < props.items.length - 1
-                    ? `
-                      border-b
-                      border-separator
-                    `
-                    : ""
-                }
-              `}
-            >
-              <HeaderMenuSectionItem {...item} />
+    <MenuSectionWrapper>
+      <MenuSectionTitle title={title} className="mb-2" />
+
+      {type === HeaderMenuSectionType.LIST && (
+        <>
+          <MenuList items={props.items} />
+          {additionalGroups?.map((group, idx) => (
+            <div key={idx}>
+              <MenuSectionTitle
+                title={group.title}
+                className={`
+                  mt-4
+                  mb-2
+                `}
+              />
+              <MenuList items={group.items} />
             </div>
           ))}
-        </div>
-      )}
-      {additionalGroups &&
-        additionalGroups.map((group, groupIndex) => (
-          <div key={groupIndex}>
-            <h3
-              class={`
-                mt-4
-                mb-2
-                text-xs
-                tracking-wider
-                text-accent-muted
-                uppercase
-              `}
-            >
-              {group.title}
-            </h3>
-            {group.items.length > 0 && (
-              <div
-                class={`
-                  flex
-                  flex-col
-                `}
-              >
-                {group.items.map((item, index) => (
-                  <div
-                    key={index}
-                    class={`
-                      py-1
-                      ${
-                        index < group.items.length - 1
-                          ? `
-                            border-b
-                            border-separator
-                          `
-                          : ""
-                      }
-                    `}
-                  >
-                    <HeaderMenuSectionItem {...item} />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      {type === HeaderMenuSectionType.GRID && props.items.length > 0 && (
-        <>
-          <div
-            class={`
-              flex
-              h-[calc(var(--icon-size-mobile))]
-              max-h-[calc(var(--icon-size-mobile))]
-              w-full
-              flex-wrap
-              gap-1.5
-              overflow-hidden
-              lg:grid
-              lg:h-auto
-              lg:max-h-none
-              lg:grid-cols-2
-              lg:gap-2
-              lg:overflow-visible
-            `}
-          >
-            {props.items.map((item, index) => (
-              <HeaderMenuGridItem key={index} {...item} />
-            ))}
-          </div>
-          <a
-            href=""
-            class={`
-              mt-2
-              block
-              text-right
-              text-[10px]
-              font-medium
-              text-footnote
-            `}
-          >
-            {i18n().common.viewAllProtocols}
-          </a>
         </>
       )}
-      {footnote && (
-        <p
-          class={`
-            mt-3
-            text-[10px]
-            text-footnote
-          `}
-        >
-          {footnote}
-        </p>
+
+      {type === HeaderMenuSectionType.GRID && (
+        <>
+          <MenuGrid items={props.items} columns={2} />
+          <ViewAllLink />
+        </>
       )}
-    </section>
+
+      {footnote && <Footnote text={footnote} />}
+    </MenuSectionWrapper>
   );
 };
