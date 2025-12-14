@@ -7,9 +7,6 @@
     sans-serif;
   --font-display: "Node Sans", var(--font-sans);
 
-  /* v4 spacing scale */
-  --spacing: 0.25rem;
-
   /* Radius */
   --radius-sm: 0.75rem;
   --radius-md: 1rem;

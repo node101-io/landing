@@ -30,37 +30,64 @@ export const Hero = () => (
         flex-col
         items-center
         justify-center
-        pt-32
-        pb-40
+        px-4
+        pt-16
+        pb-20
         text-center
+        sm:px-6
+        sm:pt-24
+        sm:pb-32
+        md:px-8
+        md:pt-32
+        md:pb-40
       `}
     >
       <div
         class={`
           hero-animate
-          mb-8
+          mb-6
           inline-flex
           items-center
-          gap-2
+          gap-1.5
           opacity-0
+          sm:mb-8
+          sm:gap-2
         `}
       >
         <img
           src="/img/hero-subtext-icon.svg"
           alt="Hero subtext icon"
           class={`
-            h-10
-            w-4
+            h-6
+            w-3
+            sm:h-8
+            sm:w-3
+            md:h-10
+            md:w-4
           `}
         />
-        <span class="text-foreground">{t("hero.badge")}</span>
+        <span
+          class={`
+            text-xs
+            font-medium
+            text-foreground
+            sm:text-sm
+            md:text-base
+          `}
+        >
+          {t("hero.badge")}
+        </span>
         <img
           src="/img/hero-subtext-icon.svg"
           alt="Hero subtext icon"
           class={`
-            h-10
-            w-4
+            h-6
+            w-3
             -scale-x-100
+            sm:h-8
+            sm:w-3
+            md:h-10
+            md:w-4
           `}
         />
       </div>
@@ -70,18 +97,23 @@ export const Hero = () => (
           hero-animate
           max-w-5xl
           font-display
-          text-7xl
+          text-3xl
           leading-[1.1]
           font-bold
           text-foreground
           opacity-0
+          sm:text-4xl
+          md:text-5xl
+          lg:text-6xl
+          xl:text-7xl
         `}
       >
         {t("hero.titleLine1")}
         <span
           class={`
-            mt-2
+            mt-1
             block
+            sm:mt-2
           `}
         >
           {t("hero.titleLine2")}
@@ -92,11 +124,15 @@ export const Hero = () => (
         class={`
           text-muted-foreground
           hero-animate
-          mt-8
+          mt-6
           max-w-2xl
+          text-sm
           leading-relaxed
           font-normal
           opacity-0
+          sm:mt-8
+          sm:text-base
+          md:text-lg
         `}
       >
         {t("hero.description")}
@@ -106,24 +142,30 @@ export const Hero = () => (
     <div
       class={`
         mx-4
-        mb-6
+        mb-4
         flex
         items-center
         justify-between
+        sm:mb-6
       `}
     >
       <img
         src="/img/iso-badge.webp"
         alt="ISO 27001 Information Security Management"
-        class="h-10"
+        class={`
+          h-8
+          sm:h-10
+        `}
       />
       <nav
         class={`
           flex
           items-center
-          gap-6
-          text-sm
+          gap-4
+          text-xs
           text-foreground
+          sm:gap-6
+          sm:text-sm
         `}
       >
         <a

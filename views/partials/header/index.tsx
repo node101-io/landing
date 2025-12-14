@@ -1093,7 +1093,7 @@ export const Header = () => (
           rounded-xl
           bg-primary
           px-8
-          py-4
+          py-3
           text-center
           text-base
           font-medium
