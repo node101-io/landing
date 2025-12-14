@@ -3,7 +3,6 @@ import {
   HeaderMenuSection,
   HeaderMenuSectionType,
   type HeaderMenuSectionProps,
-  type GridCategory,
 } from "./components/menu-section";
 
 type MenuItem = {
@@ -90,7 +89,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/btc-restaking.webp"
                 alt="BTC Restaking icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "BTC Yatırım Getirisi",
@@ -102,7 +104,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/eth-restaking.webp"
                 alt="ETH Restaking icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "ETH Tekrarlı Getiri",
@@ -122,7 +127,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/whitelabel-validation.webp"
                 alt="Whitelabel Validation icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Fason Validatörlük",
@@ -134,7 +142,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/referral-program.webp"
                 alt="Referral Program icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Referans Programı",
@@ -267,7 +278,7 @@ const menuItems: MenuItem[] = [
               },
             ],
           },
-        ] as GridCategory[],
+        ],
       },
       {
         type: HeaderMenuSectionType.LIST,
@@ -278,7 +289,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/pricing.webp"
                 alt="Pricing icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Ücretlendirme",
@@ -290,7 +304,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/free-rpc.webp"
                 alt="Free RPC icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Ücretsiz RPC",
@@ -302,7 +319,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/documents.webp"
                 alt="Documents icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Belgeler",
@@ -325,7 +345,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/crypto-asset-investment.webp"
                 alt="Crypto Asset Investment icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "node101 ile Kripto Yatırımı Yapın",
@@ -338,7 +361,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/whitelabel-validation.webp"
                 alt="Whitelabel Validation icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Fason Validatörlük",
@@ -362,7 +388,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/btc-restaking.webp"
                 alt="BTC Restaking icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "BTC Yatırım Getirisi",
@@ -375,7 +404,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/eth-restaking.webp"
                 alt="ETH Restaking icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "ETH Tekrarlı Getiri",
@@ -393,7 +425,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/architectural-consulting.webp"
                 alt="Architectural Consulting icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Mimari Danışmanlık",
@@ -406,7 +441,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/blockchain-consulting.webp"
                 alt="Blockchain Consulting icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Blokzincir 101 Danışmanlığı",
@@ -424,7 +462,10 @@ const menuItems: MenuItem[] = [
                   <img
                     src="/img/header-icons/product-development.webp"
                     alt="Product Development icon"
-                    class="w-full h-full"
+                    class={`
+                      h-full
+                      w-full
+                    `}
                   />
                 ),
                 label: "Ürün Üretimi",
@@ -445,7 +486,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/turkish-ecosystem.webp"
                 alt="Turkish Ecosystem Gateway icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Türk ekosistemine açılan kapı",
@@ -468,7 +512,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/builders-week-istanbul.webp"
                 alt="Builders Week Istanbul icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Builders Week Istanbul",
@@ -481,7 +528,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/ethistanbul.webp"
                 alt="ETHIstanbul Conference icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "ETHIstanbul",
@@ -494,7 +544,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/cryptist.webp"
                 alt="Cryptist icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Cryptist",
@@ -518,7 +571,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/pulsar.webp"
                 alt="Pulsar Chain icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Pulsar Chain",
@@ -531,7 +587,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/zkvot.webp"
                 alt="zkVot icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "zkVot",
@@ -548,7 +607,10 @@ const menuItems: MenuItem[] = [
                   <img
                     src="/img/header-icons/hackathons.webp"
                     alt="Hackathon Ürünlerimiz icon"
-                    class="w-full h-full"
+                    class={`
+                      h-full
+                      w-full
+                    `}
                   />
                 ),
                 label: "Hackathon Ürünlerimiz",
@@ -568,7 +630,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/pulsar.webp"
                 alt="Pulsar icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Pulsar",
@@ -581,7 +646,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/punch.webp"
                 alt="PUNCH icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "PUNCH",
@@ -599,7 +667,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/validatier.webp"
                 alt="Validatier icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Validatier",
@@ -612,7 +683,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/blockchain-developer-report.webp"
                 alt="Blockchain Developer Report icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Blockchain Developer Report",
@@ -636,7 +710,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/financial-institutions.webp"
                 alt="Financial Institutions icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Finansal Kurumlar",
@@ -648,7 +725,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/centralized-exchanges.webp"
                 alt="Centralized Exchanges icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Merkezi Kripto Borsaları",
@@ -661,7 +741,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/custodials.webp"
                 alt="Custodials icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Saklamacılar",
@@ -674,7 +757,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/foundations.webp"
                 alt="Foundations icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Foundationlar",
@@ -687,7 +773,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/companies.webp"
                 alt="Companies icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Şirketler",
@@ -705,7 +794,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/about-node101.webp"
                 alt="About node101 icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "node101 Hakkında",
@@ -717,7 +809,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/team.webp"
                 alt="Team icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Takım",
@@ -729,7 +824,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/career.webp"
                 alt="Career icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Kariyer",
@@ -741,7 +839,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/brand-details.webp"
                 alt="Brand Details icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Marka Detayları",
@@ -759,7 +860,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/blog.webp"
                 alt="Blog icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Blog",
@@ -772,7 +876,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/support-center.webp"
                 alt="Support Center icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Destek Merkezi",
@@ -784,7 +891,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/faq.webp"
                 alt="FAQ icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "SSS",
@@ -797,7 +907,10 @@ const menuItems: MenuItem[] = [
               <img
                 src="/img/header-icons/case-studies.webp"
                 alt="Case Studies icon"
-                class="w-full h-full"
+                class={`
+                  h-full
+                  w-full
+                `}
               />
             ),
             label: "Vaka Çalışmaları",
@@ -811,27 +924,141 @@ const menuItems: MenuItem[] = [
 ];
 
 export const Header = () => (
-  <header class="group/menu relative flex items-center justify-center h-(--header-height) min-h-(--header-height) shrink-0 gap-8 font-sans bg-header-bg rounded-4xl px-5 border border-surface m-4 transition-all duration-300 has-checked:m-0 lg:has-checked:m-4 has-checked:rounded-none lg:has-checked:rounded-4xl has-checked:border-header-bg-checked lg:has-checked:border-surface has-checked:bg-header-bg-checked lg:has-checked:bg-header-bg">
-    <a href="/" class="absolute left-5 h-full flex items-center z-60">
+  <header
+    class={`
+      group/menu
+      relative
+      m-4
+      flex
+      h-(--header-height)
+      min-h-(--header-height)
+      shrink-0
+      items-center
+      justify-center
+      gap-8
+      rounded-4xl
+      border
+      border-surface
+      bg-header-bg
+      px-5
+      font-sans
+      transition-all
+      duration-300
+      has-checked:m-0
+      has-checked:rounded-none
+      has-checked:border-header-bg-checked
+      has-checked:bg-header-bg-checked
+      lg:has-checked:m-4
+      lg:has-checked:rounded-4xl
+      lg:has-checked:border-surface
+      lg:has-checked:bg-header-bg
+    `}
+  >
+    <a
+      href="/"
+      class={`
+        absolute
+        left-5
+        z-60
+        flex
+        h-full
+        items-center
+      `}
+    >
       <img
         src="/img/logo.svg"
         alt="node101 logo"
-        class="w-20 shrink-0 h-auto"
+        class={`
+          h-auto
+          w-20
+          shrink-0
+        `}
       />
     </a>
 
     {/* Mobile Menu Toggle - checkbox */}
-    <input type="checkbox" id="mobile-menu-toggle" class="peer sr-only" />
+    <input
+      type="checkbox"
+      id="mobile-menu-toggle"
+      class={`
+        peer
+        sr-only
+      `}
+    />
 
     {/* Navigation - Mobilde fullscreen overlay, Desktop'ta inline */}
-    <nav class="overflow-y-scroll lg:overflow-y-hidden fixed top-[calc(var(--banner-height)+var(--header-height))] left-0 right-0 bottom-0 flex flex-col justify-items-start items-center space-y-6 px-8 py-8 lg:py-0 bg-nav-mobile-bg opacity-0 invisible transition-all duration-300 z-50 peer-checked:opacity-100 peer-checked:visible lg:static lg:flex-row lg:bg-transparent lg:opacity-100 lg:visible lg:space-y-0 lg:space-x-10 lg:px-5">
+    <nav
+      class={`
+        invisible
+        fixed
+        top-[calc(var(--banner-height)+var(--header-height))]
+        right-4
+        bottom-4
+        left-4
+        z-50
+        flex
+        flex-col
+        items-center
+        justify-items-start
+        space-y-6
+        overflow-y-auto
+        bg-nav-mobile-bg
+        px-8
+        py-8
+        opacity-0
+        transition-all
+        duration-300
+        peer-checked:visible
+        peer-checked:right-0
+        peer-checked:bottom-0
+        peer-checked:left-0
+        peer-checked:opacity-100
+        lg:visible
+        lg:static
+        lg:right-auto
+        lg:bottom-auto
+        lg:left-auto
+        lg:flex-row
+        lg:space-y-0
+        lg:space-x-10
+        lg:overflow-y-hidden
+        lg:bg-transparent
+        lg:px-5
+        lg:py-0
+        lg:opacity-100
+      `}
+    >
       {menuItems.map((item, index) => (
         <div
-          class="group w-full lg:w-auto lg:overflow-hidden flex flex-col gap-4"
+          class={`
+            group
+            flex
+            w-full
+            flex-col
+            gap-4
+            lg:w-auto
+            lg:overflow-hidden
+          `}
           key={index}
         >
           <button
-            class="inline-flex items-center gap-1.5 lg:px-3 lg:py-2 text-xl lg:text-sm font-medium text-foreground rounded-full transition-colors lg:hover:bg-foreground/10 lg:focus:bg-foreground/15 focus:outline-none cursor-pointer"
+            class={`
+              inline-flex
+              cursor-pointer
+              items-center
+              gap-1.5
+              rounded-full
+              text-xl
+              font-medium
+              text-foreground
+              transition-colors
+              focus:outline-none
+              lg:px-3
+              lg:py-2
+              lg:text-sm
+              lg:hover:bg-foreground/10
+              lg:focus:bg-foreground/15
+            `}
             type="button"
             onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); }"
           >
@@ -839,7 +1066,13 @@ export const Header = () => (
             <img
               src="/img/plus.svg"
               alt="plus icon"
-              class="size-3.5 lg:size-2.5 transition-transform group-focus-within:rotate-45 text-foreground"
+              class={`
+                size-3.5
+                text-foreground
+                transition-transform
+                group-focus-within:rotate-45
+                lg:size-2.5
+              `}
             />
           </button>
           <HeaderMenu>
@@ -853,7 +1086,30 @@ export const Header = () => (
       {/* Bize Ulaşın */}
       <a
         href="/contact"
-        class="w-full lg:w-auto mt-auto lg:mt-0 lg:absolute lg:right-5 lg:hover:scale-104 lg:active:scale-98 transition-transform cursor-pointer bg-primary text-primary-foreground px-8 py-4 lg:py-2.5 rounded-xl lg:rounded-lg font-medium text-base lg:text-sm text-center whitespace-nowrap"
+        class={`
+          mt-auto
+          w-full
+          cursor-pointer
+          rounded-xl
+          bg-primary
+          px-8
+          py-4
+          text-center
+          text-base
+          font-medium
+          whitespace-nowrap
+          text-primary-foreground
+          transition-transform
+          lg:absolute
+          lg:right-5
+          lg:mt-0
+          lg:w-auto
+          lg:rounded-lg
+          lg:py-2.5
+          lg:text-sm
+          lg:hover:scale-104
+          lg:active:scale-98
+        `}
       >
         Bize Ulaşın
       </a>
@@ -862,10 +1118,49 @@ export const Header = () => (
     {/* Mobile Hamburger Toggle Label */}
     <label
       for="mobile-menu-toggle"
-      class="lg:hidden absolute right-5 z-60 flex flex-col justify-center items-center w-10 h-10 cursor-pointer rounded-lg transition-colors gap-1.5"
+      class={`
+        absolute
+        right-5
+        z-60
+        flex
+        h-10
+        w-10
+        cursor-pointer
+        flex-col
+        items-center
+        justify-center
+        gap-1.5
+        rounded-lg
+        transition-colors
+        lg:hidden
+      `}
     >
-      <span class="block w-5 h-0.5 bg-foreground transition-all duration-300 origin-center group-has-checked/menu:rotate-45 group-has-checked/menu:translate-y-1" />
-      <span class="block w-5 h-0.5 bg-foreground transition-all duration-300 origin-center group-has-checked/menu:-rotate-45 group-has-checked/menu:-translate-y-1" />
+      <span
+        class={`
+          block
+          h-0.5
+          w-5
+          origin-center
+          bg-foreground
+          transition-all
+          duration-300
+          group-has-checked/menu:translate-y-1
+          group-has-checked/menu:rotate-45
+        `}
+      />
+      <span
+        class={`
+          block
+          h-0.5
+          w-5
+          origin-center
+          bg-foreground
+          transition-all
+          duration-300
+          group-has-checked/menu:-translate-y-1
+          group-has-checked/menu:-rotate-45
+        `}
+      />
     </label>
   </header>
 );

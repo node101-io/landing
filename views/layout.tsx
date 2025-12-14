@@ -25,7 +25,15 @@ export const Layout = ({
         <link rel="stylesheet" href="/static/styles.css" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="bg-background font-sans w-full max-w-[1920px] mx-auto">
+      <body
+        class={`
+          mx-auto
+          w-full
+          max-w-[1920px]
+          bg-background
+          font-sans
+        `}
+      >
         {children}
       </body>
     </html>

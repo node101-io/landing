@@ -51,26 +51,74 @@ export type HeaderMenuSectionProps = {
 export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
   const { type, title, footnote } = props;
 
-  // MULTI_GRID için özel layout
   if (type === HeaderMenuSectionType.MULTI_GRID) {
     const { categories } = props;
     return (
-      <section class="rounded-lg lg:bg-surface lg:p-6 lg:min-w-[220px] h-full">
-        <h3 class="text-xs text-accent-muted uppercase tracking-wider mb-4">
+      <section
+        class={`
+          h-full
+          rounded-lg
+          lg:min-w-[220px]
+          lg:bg-surface
+          lg:p-6
+        `}
+      >
+        <h3
+          class={`
+            mb-4
+            text-xs
+            tracking-wider
+            text-accent-muted
+            uppercase
+          `}
+        >
           {title}
         </h3>
-        <div class="flex flex-col gap-4 lg:flex-row lg:gap-0">
+        <div
+          class={`
+            flex
+            flex-col
+            gap-4
+            lg:flex-row
+            lg:gap-0
+          `}
+        >
           {categories.map((category, catIndex) => (
             <>
               <div
                 key={catIndex}
-                class={`${category.columns === 2 ? "lg:flex-2" : "lg:flex-1"} lg:px-5 first:lg:pl-0 last:lg:pr-0`}
+                class={`
+                  ${category.columns === 2 ? "lg:flex-2" : "lg:flex-1"}
+                  lg:px-5
+                  first:lg:pl-0
+                  last:lg:pr-0
+                `}
               >
-                <h4 class="text-[10px] text-muted uppercase tracking-wider mb-3 font-medium">
+                <h4
+                  class={`
+                    mb-3
+                    text-[10px]
+                    font-medium
+                    tracking-wider
+                    text-muted
+                    uppercase
+                  `}
+                >
                   {category.title}
                 </h4>
                 <div
-                  class={`grid gap-2 ${category.columns === 2 ? "grid-cols-2" : "grid-cols-1"}`}
+                  class={`
+                    flex
+                    flex-wrap
+                    gap-1.5
+                    lg:grid
+                    lg:gap-2
+                    ${
+                      category.columns === 2
+                        ? "lg:grid-cols-2"
+                        : `lg:grid-cols-1`
+                    }
+                  `}
                 >
                   {category.items.map((item, index) => (
                     <HeaderMenuGridItem key={index} {...item} />
@@ -78,40 +126,91 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
                 </div>
               </div>
               {catIndex < categories.length - 1 && (
-                <div class="hidden lg:block w-px self-stretch bg-linear-to-b from-transparent via-muted/30 to-transparent" />
+                <div
+                  class={`
+                    hidden
+                    w-px
+                    self-stretch
+                    bg-linear-to-b
+                    from-transparent
+                    via-muted/30
+                    to-transparent
+                    lg:block
+                  `}
+                />
               )}
             </>
           ))}
         </div>
         <a
           href=""
-          class="text-[10px] font-medium text-footnote mt-4 block text-right"
+          class={`
+            mt-4
+            block
+            text-right
+            text-[10px]
+            font-medium
+            text-footnote
+          `}
         >
           Tüm Protokolleri Gör
         </a>
-        {footnote && <p class="text-[10px] text-footnote mt-3">{footnote}</p>}
+        {footnote && (
+          <p
+            class={`
+              mt-3
+              text-[10px]
+              text-footnote
+            `}
+          >
+            {footnote}
+          </p>
+        )}
       </section>
     );
   }
 
-  const items = props.items;
-
-  // LIST type için additionalGroups kontrolü
   const additionalGroups =
     type === HeaderMenuSectionType.LIST ? props.additionalGroups : undefined;
 
   return (
-    <section class="rounded-lg lg:bg-surface lg:p-6 lg:min-w-[220px] h-full">
-      <h3 class="text-xs text-accent-muted uppercase tracking-wider mb-2">
+    <section
+      class={`
+        h-full
+        rounded-lg
+        lg:min-w-[220px]
+        lg:bg-surface
+        lg:p-6
+      `}
+    >
+      <h3
+        class={`
+          mb-2
+          text-xs
+          tracking-wider
+          text-accent-muted
+          uppercase
+        `}
+      >
         {title}
       </h3>
-      {type === HeaderMenuSectionType.LIST && items.length > 0 && (
-        <div class="flex flex-col">
-          {(items as MenuSectionItemProps[]).map((item, index) => (
+      {type === HeaderMenuSectionType.LIST && props.items.length > 0 && (
+        <div
+          class={`
+            flex
+            flex-col
+          `}
+        >
+          {props.items.map((item, index) => (
             <div
               key={index}
               class={
-                index < items.length - 1 ? "border-b border-separator" : ""
+                index < props.items.length - 1
+                  ? `
+                    border-b
+                    border-separator
+                  `
+                  : ""
               }
             >
               <HeaderMenuSectionItem {...item} />
@@ -122,17 +221,34 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
       {additionalGroups &&
         additionalGroups.map((group, groupIndex) => (
           <div key={groupIndex}>
-            <h3 class="text-xs text-accent-muted uppercase tracking-wider mb-2 mt-4">
+            <h3
+              class={`
+                mt-4
+                mb-2
+                text-xs
+                tracking-wider
+                text-accent-muted
+                uppercase
+              `}
+            >
               {group.title}
             </h3>
             {group.items.length > 0 && (
-              <div class="flex flex-col">
+              <div
+                class={`
+                  flex
+                  flex-col
+                `}
+              >
                 {group.items.map((item, index) => (
                   <div
                     key={index}
                     class={
                       index < group.items.length - 1
-                        ? "border-b border-separator"
+                        ? `
+                          border-b
+                          border-separator
+                        `
                         : ""
                     }
                   >
@@ -143,19 +259,48 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
             )}
           </div>
         ))}
-      {type === HeaderMenuSectionType.GRID && items.length > 0 && (
+      {type === HeaderMenuSectionType.GRID && props.items.length > 0 && (
         <>
-          <div class="flex flex-wrap gap-1.5 lg:grid lg:grid-cols-2 lg:gap-2 w-full py-2">
-            {(items as GridItemProps[]).map((item, index) => (
+          <div
+            class={`
+              flex
+              w-full
+              flex-wrap
+              gap-1.5
+              py-2
+              lg:grid
+              lg:grid-cols-2
+              lg:gap-2
+            `}
+          >
+            {props.items.map((item, index) => (
               <HeaderMenuGridItem key={index} {...item} />
             ))}
           </div>
-          <a href="" class="text-[10px] font-medium text-footnote mt-2">
+          <a
+            href=""
+            class={`
+              mt-2
+              text-[10px]
+              font-medium
+              text-footnote
+            `}
+          >
             Tüm Protokolleri Gör
           </a>
         </>
       )}
-      {footnote && <p class="text-[10px] text-footnote mt-3">{footnote}</p>}
+      {footnote && (
+        <p
+          class={`
+            mt-3
+            text-[10px]
+            text-footnote
+          `}
+        >
+          {footnote}
+        </p>
+      )}
     </section>
   );
 };

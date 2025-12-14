@@ -17,5 +17,10 @@
     "skipLibCheck": true
   },
   "exclude": ["test"],
-  "include": ["src/**/*.ts", "src/**/*.tsx", "views/**/*.tsx", "types/**/*.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "views/**/*.tsx",
+    "types/**/*.d.ts"
+  ]
 }

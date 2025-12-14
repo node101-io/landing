@@ -18,14 +18,56 @@ export const HeaderMenuGridItem = ({
 }: GridItemProps) => (
   <a
     href={href}
-    class="flex items-center gap-1 lg:gap-3 lg:px-4 lg:py-2.5 rounded-xs lg:rounded-full lg:border lg:border-separator lg:bg-background lg:hover:border-muted transition-colors group"
+    class={`
+      group
+      flex
+      items-center
+      gap-1
+      rounded-xs
+      transition-colors
+      lg:gap-3
+      lg:rounded-full
+      lg:border
+      lg:border-separator
+      lg:bg-background
+      lg:px-4
+      lg:py-2.5
+      lg:hover:border-muted
+    `}
   >
     <img
       src={icon}
       alt={`${name} icon`}
-      class="size-7 lg:size-10 rounded-xs lg:rounded-full shrink-0"
+      class={`
+        size-7
+        shrink-0
+        rounded-xs
+        lg:size-10
+        lg:rounded-full
+      `}
     />
-    <span class="hidden lg:block text-lg font-medium text-foreground flex-1">{name}</span>
-    <span class="hidden lg:block text-sm text-muted font-medium">{symbol}</span>
+    <span
+      class={`
+        hidden
+        flex-1
+        text-lg
+        font-medium
+        text-foreground
+        lg:block
+      `}
+    >
+      {name}
+    </span>
+    <span
+      class={`
+        hidden
+        text-sm
+        font-medium
+        text-muted
+        lg:block
+      `}
+    >
+      {symbol}
+    </span>
   </a>
 );
