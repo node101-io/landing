@@ -20,6 +20,7 @@ export type GridCategory = {
   title: string;
   columns: 1 | 2;
   items: GridItemProps[];
+  hideOnMobile?: boolean;
 };
 
 export type ListGroup = {
@@ -89,6 +90,14 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
               <div
                 key={catIndex}
                 class={`
+                  ${
+                    category.hideOnMobile
+                      ? `
+                        hidden
+                        lg:block
+                      `
+                      : ""
+                  }
                   ${category.columns === 2 ? "lg:flex-2" : "lg:flex-1"}
                   lg:px-5
                   first:lg:pl-0
@@ -110,10 +119,16 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
                 <div
                   class={`
                     flex
+                    h-[calc(var(--icon-size-mobile))]
+                    max-h-[calc(var(--icon-size-mobile))]
                     flex-wrap
                     gap-1.5
+                    overflow-hidden
                     lg:grid
+                    lg:h-auto
+                    lg:max-h-none
                     lg:gap-2
+                    lg:overflow-visible
                     ${
                       category.columns === 2
                         ? "lg:grid-cols-2"
@@ -129,7 +144,14 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
               {catIndex < categories.length - 1 && (
                 <div
                   class={`
-                    hidden
+                    ${
+                      category.hideOnMobile
+                        ? `
+                          hidden
+                          lg:block
+                        `
+                        : "hidden"
+                    }
                     w-px
                     self-stretch
                     bg-linear-to-b
@@ -271,13 +293,12 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
           <div
             class={`
               flex
-              h-[calc(var(--icon-size-mobile)+0.5rem)]
-              max-h-[calc(var(--icon-size-mobile)+0.5rem)]
+              h-[calc(var(--icon-size-mobile))]
+              max-h-[calc(var(--icon-size-mobile))]
               w-full
               flex-wrap
               gap-1.5
               overflow-hidden
-              py-2
               lg:grid
               lg:h-auto
               lg:max-h-none
