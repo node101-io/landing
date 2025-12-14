@@ -32,6 +32,7 @@ export type ListGroup = {
 export type HeaderMenuSectionProps = {
   title: string;
   footnote?: string;
+  hideOnMobile?: boolean;
 } & (
   | {
       type: HeaderMenuSectionType.LIST;
@@ -51,7 +52,11 @@ export type HeaderMenuSectionProps = {
 /**
  * Component Wrapper
  */
-const MenuSectionWrapper = (props: { children: Child; className?: string }) => (
+const MenuSectionWrapper = (props: {
+  children: Child;
+  className?: string;
+  hideOnMobile?: boolean;
+}) => (
   <section
     class={`
       h-full
@@ -60,6 +65,14 @@ const MenuSectionWrapper = (props: { children: Child; className?: string }) => (
       lg:bg-surface
       lg:p-6
       ${props.className || ""}
+      ${
+        props.hideOnMobile
+          ? `
+            hidden
+            lg:block
+          `
+          : ""
+      }
     `}
   >
     {props.children}
@@ -201,7 +214,7 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
   if (type === HeaderMenuSectionType.MULTI_GRID) {
     const { categories } = props;
     return (
-      <MenuSectionWrapper>
+      <MenuSectionWrapper hideOnMobile={props.hideOnMobile}>
         <MenuSectionTitle title={title} />
         <div
           class={`
@@ -281,7 +294,7 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
     type === HeaderMenuSectionType.LIST ? props.additionalGroups : undefined;
 
   return (
-    <MenuSectionWrapper>
+    <MenuSectionWrapper hideOnMobile={props.hideOnMobile}>
       <MenuSectionTitle title={title} className="mb-2" />
 
       {type === HeaderMenuSectionType.LIST && (

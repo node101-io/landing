@@ -22,6 +22,7 @@ export type Translations = {
     investment: string;
     rpc: string;
     services: string;
+    eventsAndCommunity: string;
     products: string;
     corporate: string;
     mobileMenuToggle: string;

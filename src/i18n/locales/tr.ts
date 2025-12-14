@@ -25,6 +25,7 @@ export const tr: Translations = {
     investment: "Yatırım",
     rpc: "RPC",
     services: "Hizmetler",
+    eventsAndCommunity: "Etkinlikler ve Komünite",
     products: "Ürünler",
     corporate: "Kurumsal",
     mobileMenuToggle: "Mobil menüyü aç/kapat",

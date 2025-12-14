@@ -26,6 +26,7 @@ export const en: Translations = {
     investment: "Investment",
     rpc: "RPC",
     services: "Services",
+    eventsAndCommunity: "Community and Events",
     products: "Products",
     corporate: "Corporate",
     mobileMenuToggle: "Toggle mobile menu",
