@@ -1,7 +1,7 @@
-import { t } from "../../src/i18n";
+import { i18n } from "../../src/i18n";
 
 export const Banner = () => {
-  const text = t("banner.text");
+  const text = i18n().banner.text;
   return (
     <div
       class={`

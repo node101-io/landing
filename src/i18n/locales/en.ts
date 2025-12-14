@@ -1,6 +1,6 @@
-import type { Translations } from "./tr";
+import type { Translations } from "./types";
 
-export const en = {
+export const en: Translations = {
   meta: {
     title: "node101",
     description:
@@ -246,4 +246,4 @@ export const en = {
   footer: {
     copyright: "© 2025 node101. All rights reserved.",
   },
-} as const satisfies Translations;
+};

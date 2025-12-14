@@ -1,4 +1,4 @@
-import { t } from "../../src/i18n";
+import { i18n } from "../../src/i18n";
 import { Header } from "../partials/header";
 
 export const Hero = () => (
@@ -75,7 +75,7 @@ export const Hero = () => (
             md:text-base
           `}
         >
-          {t("hero.badge")}
+          {i18n().hero.badge}
         </span>
         <img
           src="/img/hero-subtext-icon.svg"
@@ -108,7 +108,7 @@ export const Hero = () => (
           xl:text-7xl
         `}
       >
-        {t("hero.titleLine1")}
+        {i18n().hero.titleLine1}
         <span
           class={`
             mt-1
@@ -116,7 +116,7 @@ export const Hero = () => (
             sm:mt-2
           `}
         >
-          {t("hero.titleLine2")}
+          {i18n().hero.titleLine2}
         </span>
       </h1>
 
@@ -135,7 +135,7 @@ export const Hero = () => (
           md:text-lg
         `}
       >
-        {t("hero.description")}
+        {i18n().hero.description}
       </p>
     </section>
 

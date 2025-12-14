@@ -1,5 +1,11 @@
 import type { PropsWithChildren } from "hono/jsx";
-import { getLocale, LOCALES, t, SITE_URL, DEFAULT_LOCALE } from "../src/i18n";
+import {
+  getLocale,
+  LOCALES,
+  i18n,
+  SITE_URL,
+  DEFAULT_LOCALE,
+} from "../src/i18n";
 
 export const Layout = ({
   children,
@@ -10,7 +16,7 @@ export const Layout = ({
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{title}</title>
-      <meta name="description" content={t("meta.description")} />
+      <meta name="description" content={i18n().meta.description} />
       {/* Critical resource preloads - break request chain */}
       <link
         rel="preload"

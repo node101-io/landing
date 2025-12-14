@@ -1,4 +1,6 @@
-export const tr = {
+import type { Translations } from "./types";
+
+export const tr: Translations = {
   meta: {
     title: "node101",
     description: "node101 - Blokzincir altyapı sağlayıcısı",
@@ -242,15 +244,4 @@ export const tr = {
   footer: {
     copyright: "2025 node101. Tüm hakları saklıdır.",
   },
-} as const;
-
-// Recursive type that converts all string literals to string
-type DeepStringRecord<T> = {
-  [K in keyof T]: T[K] extends string
-    ? string
-    : T[K] extends object
-      ? DeepStringRecord<T[K]>
-      : T[K];
 };
-
-export type Translations = DeepStringRecord<typeof tr>;

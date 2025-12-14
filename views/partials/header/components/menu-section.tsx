@@ -1,4 +1,4 @@
-import { t } from "../../../../src/i18n";
+import { i18n } from "../../../../src/i18n";
 import {
   HeaderMenuSectionItem,
   type MenuSectionItemProps,
@@ -154,7 +154,7 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
             text-footnote
           `}
         >
-          {t("common.viewAllProtocols")}
+          {i18n().common.viewAllProtocols}
         </a>
         {footnote && (
           <p
@@ -295,7 +295,7 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
               text-footnote
             `}
           >
-            {t("common.viewAllProtocols")}
+            {i18n().common.viewAllProtocols}
           </a>
         </>
       )}

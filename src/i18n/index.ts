@@ -1,10 +1,10 @@
 import type { Locale } from "./config";
-import type { TranslationKey } from "./types";
-import { DEFAULT_LOCALE, LOCALES } from "./config";
+import type { Translations } from "./locales/types";
+import { DEFAULT_LOCALE } from "./config";
 import { tr } from "./locales/tr";
 import { en } from "./locales/en";
 
-const translations = { tr, en } as const;
+const translations: Record<Locale, Translations> = { tr, en };
 
 let currentLocale: Locale = DEFAULT_LOCALE;
 
@@ -16,26 +16,13 @@ export function getLocale(): Locale {
   return currentLocale;
 }
 
-function getNestedValue(obj: Record<string, unknown>, path: string): string {
-  let current: unknown = obj;
-  for (const key of path.split(".")) {
-    if (current && typeof current === "object" && key in current) {
-      current = (current as Record<string, unknown>)[key];
-    } else {
-      return path; // fallback to key if not found
-    }
-  }
-  return typeof current === "string" ? current : path;
+// Returns current translation object
+export function getTranslations(): Translations {
+  return translations[currentLocale];
 }
 
-export function t(key: TranslationKey): string {
-  const dict = translations[currentLocale];
-  return getNestedValue(dict as Record<string, unknown>, key);
-}
-
-export function isValidLocale(locale: string): locale is Locale {
-  return LOCALES.includes(locale as Locale);
-}
+// Shorthand - use: i18n().meta.title
+export const i18n = getTranslations;
 
 export {
   LOCALES,
@@ -44,4 +31,3 @@ export {
   SITE_URL,
   type Locale,
 } from "./config";
-export type { TranslationKey } from "./types";

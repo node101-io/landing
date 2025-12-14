@@ -1,4 +1,4 @@
-import { t } from "../../../src/i18n";
+import { i18n } from "../../../src/i18n";
 import { HeaderMenu } from "./components/menu";
 import {
   HeaderMenuSection,
@@ -13,7 +13,7 @@ type MenuItem = {
 
 const getMenuItems = (): MenuItem[] => [
   {
-    label: t("nav.investment"),
+    label: i18n().nav.investment,
     sections: [
       {
         type: HeaderMenuSectionType.GRID,
@@ -159,7 +159,7 @@ const getMenuItems = (): MenuItem[] => [
     ],
   },
   {
-    label: t("nav.rpc"),
+    label: i18n().nav.rpc,
     sections: [
       {
         type: HeaderMenuSectionType.MULTI_GRID,
@@ -335,7 +335,7 @@ const getMenuItems = (): MenuItem[] => [
     ],
   },
   {
-    label: t("nav.services"),
+    label: i18n().nav.services,
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
@@ -561,7 +561,7 @@ const getMenuItems = (): MenuItem[] => [
     ],
   },
   {
-    label: t("nav.products"),
+    label: i18n().nav.products,
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
@@ -700,7 +700,7 @@ const getMenuItems = (): MenuItem[] => [
     ],
   },
   {
-    label: t("nav.corporate"),
+    label: i18n().nav.corporate,
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
@@ -980,7 +980,7 @@ export const Header = () => (
     <input
       type="checkbox"
       id="mobile-menu-toggle"
-      aria-label={t("nav.mobileMenuToggle")}
+      aria-label={i18n().nav.mobileMenuToggle}
       class={`
         peer
         sr-only
@@ -1117,7 +1117,7 @@ export const Header = () => (
           lg:active:scale-98
         `}
       >
-        {t("common.contactUs")}
+        {i18n().common.contactUs}
       </a>
     </nav>
 
