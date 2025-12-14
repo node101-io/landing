@@ -1,11 +1,5 @@
 import type { PropsWithChildren } from "hono/jsx";
-import {
-  getLocale,
-  LOCALES,
-  i18n,
-  SITE_URL,
-  DEFAULT_LOCALE,
-} from "../src/i18n";
+import { getLocale, LOCALES, i18n, SITE_URL, DEFAULT_LOCALE } from "@/i18n";
 
 export const Layout = ({
   children,

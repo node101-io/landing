@@ -1,5 +1,5 @@
 import { Layout } from "../layout";
-import { Banner } from "../partials/banner";
+import { Banner } from "@/components/banner";
 import { Hero } from "./hero";
 
 const IndexPage = () => (

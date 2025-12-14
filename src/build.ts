@@ -7,7 +7,7 @@ import { LOCALES, DEFAULT_LOCALE, setLocale, type Locale } from "./i18n";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
-const VIEWS_DIR = join(ROOT, "views");
+const VIEWS_DIR = join(ROOT, "src", "views");
 const DIST = "dist";
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -123,12 +123,12 @@ async function build(): Promise<void> {
   const pages = await discoverPages();
 
   if (pages.length === 0) {
-    console.log("  ⚠ No pages found! Create views/{slug}/page.tsx files.");
+    console.log("  ⚠ No pages found! Create src/views/{slug}/page.tsx files.");
     process.exit(1);
   }
 
   for (const page of pages) {
-    console.log(`  ✓ Found: views/${page.slug}/page.tsx`);
+    console.log(`  ✓ Found: src/views/${page.slug}/page.tsx`);
   }
 
   // Clean dist folder

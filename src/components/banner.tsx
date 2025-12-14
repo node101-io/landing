@@ -1,4 +1,4 @@
-import { i18n } from "../../src/i18n";
+import { i18n } from "@/i18n";
 
 export const Banner = () => {
   const text = i18n().banner.text;
