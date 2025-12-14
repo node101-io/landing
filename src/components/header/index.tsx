@@ -1107,7 +1107,7 @@ export const Header = () => (
         flex-col
         items-center
         justify-items-start
-        space-y-6
+        space-y-4
         overflow-y-auto
         rounded-4xl
         bg-nav-mobile-bg
@@ -1171,7 +1171,7 @@ export const Header = () => (
               lg:focus:bg-foreground/15
             `}
             type="button"
-            onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); }"
+            onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); setTimeout(() => { this.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300); }"
           >
             {item.label}
             <img

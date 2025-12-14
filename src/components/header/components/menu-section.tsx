@@ -85,11 +85,12 @@ const MenuSectionWrapper = (props: {
 const MenuSectionTitle = (props: { title: string; className?: string }) => (
   <h3
     class={`
-      mb-4
+      mb-2
       text-xs
       tracking-wider
       text-accent-muted
       uppercase
+      lg:mb-4
       ${props.className || ""}
     `}
   >
