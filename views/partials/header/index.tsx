@@ -992,9 +992,9 @@ export const Header = () => (
         invisible
         fixed
         top-[calc(var(--banner-height)+var(--header-height))]
-        right-4
-        bottom-4
-        left-4
+        right-(--nav-inset)
+        bottom-0
+        left-(--nav-inset)
         z-50
         flex
         flex-col
@@ -1010,13 +1010,11 @@ export const Header = () => (
         duration-300
         peer-checked:visible
         peer-checked:right-0
-        peer-checked:bottom-0
         peer-checked:left-0
         peer-checked:opacity-100
         lg:visible
         lg:static
         lg:right-auto
-        lg:bottom-auto
         lg:left-auto
         lg:flex-row
         lg:space-y-0

@@ -1,12 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Node Sans";
-  src: url("/fonts/node-sans.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 @theme {
   /* Fonts */
   --font-sans:
@@ -49,9 +42,11 @@
   --color-secondary: var(--color-lav-200);
   --color-secondary-foreground: var(--color-espresso);
 
-  /* Hero spacing */
+  /* Spacing */
   --hero-margin: 0.625rem;
   --hero-margin-total: calc(var(--hero-margin) * 2);
+  --header-margin: 1rem;
+  --nav-inset: calc(var(--header-margin) + var(--hero-margin));
   --banner-height: 2.5rem;
   --header-height: 4rem;
 
@@ -59,4 +54,33 @@
   --color-header-bg: oklch(from #fdf8f2 l c h / 40%);
   --color-header-bg-checked: var(--color-cream);
   --color-nav-mobile-bg: #f7f2ec;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  --animation-duration: 40s;
+  animation: marquee var(--animation-duration) linear infinite;
+  animation-delay: calc(var(--animation-duration) * -0.75);
+}
+
+@media (min-width: 768px) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+@font-face {
+  font-family: "Node Sans";
+  src: url("/fonts/node-sans.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
 }

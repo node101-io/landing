@@ -9,7 +9,7 @@ export const Hero = () => (
       flex-col
       overflow-hidden
       rounded-4xl
-      bg-[url('/img/hero-background.png')]
+      bg-[url('/img/hero-background.webp')]
       bg-cover
       bg-center
       transition-all
@@ -114,7 +114,7 @@ export const Hero = () => (
       `}
     >
       <img
-        src="/img/iso-badge.png"
+        src="/img/iso-badge.webp"
         alt="ISO 27001 Information Security Management"
         class="h-10"
       />
