@@ -89,14 +89,19 @@ export const HeaderMenuSectionItem = ({
     {subItems && subItems.length > 0 && (
       <div
         class={`
+          relative
           ml-4
           flex
           flex-col
           gap-1
-          border-l
-          border-separator
           pb-2
           pl-2
+          before:absolute
+          before:top-0
+          before:left-0
+          before:h-[calc(100%-12px)]
+          before:w-px
+          before:bg-separator
         `}
       >
         {subItems.map((subItem, index) => (

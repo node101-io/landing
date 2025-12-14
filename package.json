@@ -2,22 +2,26 @@
   "name": "node101-landing",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build:css": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --watch",
+    "build": "npm run build:css:prod && tsx src/build.ts",
+    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/static/styles.css --watch",
     "build:css:prod": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --minify",
-    "deploy": "npm run build:css:prod && wrangler deploy",
-    "deploy:preview": "npm run build:css:prod && wrangler deploy --env preview",
-    "dev": "run-p build:css dev:server",
-    "dev:server": "wrangler dev",
+    "dev": "tsx src/build.ts && run-p build:css dev:watch dev:server",
+    "dev:watch": "nodemon --watch views --watch src -e tsx,ts --exec 'tsx src/build.ts'",
+    "dev:server": "npx serve dist -l 3000",
+    "preview": "npm run build && npx serve dist",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name=node101-landing",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --project-name=node101-landing --branch=preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix && prettier --write .",
     "format": "prettier --write ."
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20251209.0",
     "@eslint/css": "^0.14.1",
     "@eslint/js": "^9.39.2",
     "@tailwindcss/cli": "^4.1.17",
+    "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
     "autoprefixer": "^10.4.22",
@@ -29,20 +33,20 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-tailwindcss": "4.0.0-beta.0",
     "globals": "^16.5.0",
+    "nodemon": "^3.1.11",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.5.6",
     "prettier": "^3.7.4",
+    "prettier-linter-helpers": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwind-csstree": "^0.1.4",
     "tailwindcss": "^4.1.17",
+    "tsx": "^4.19.0",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.49.0",
     "wrangler": "4.53.0"
   },
   "dependencies": {
-    "cloudflare": "^5.2.0",
-    "hono": "4.10.8",
-    "motion": "^12.23.26",
-    "zod": "^4.1.13"
+    "hono": "4.10.8"
   }
 }

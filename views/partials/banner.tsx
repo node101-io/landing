@@ -1,7 +1,7 @@
-const text =
-  "node101, üzerindeki $40,000,000 aşan kripto varlık yatırımıyla 2022'den beri Türkiye'nin en büyük validatörü.";
+import { t } from "../../src/i18n";
 
 export const Banner = () => {
+  const text = t("banner.text");
   return (
     <div
       class={`

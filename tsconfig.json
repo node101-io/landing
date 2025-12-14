@@ -1,26 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "types": ["@cloudflare/workers-types"],
-    "lib": ["ES2021", "DOM"],
+    "types": ["node"],
+    "lib": ["ES2022", "DOM"],
     "paths": {
-      "@packages/*": ["./packages/*"]
+      "@/*": ["./src/*"]
     },
     "allowJs": true,
     "esModuleInterop": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true
   },
-  "exclude": ["test"],
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "views/**/*.tsx",
-    "types/**/*.d.ts"
-  ]
+  "exclude": ["node_modules", "dist"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "views/**/*.tsx"]
 }

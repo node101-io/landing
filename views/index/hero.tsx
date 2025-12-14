@@ -1,3 +1,4 @@
+import { t } from "../../src/i18n";
 import { Header } from "../partials/header";
 
 export const Hero = () => (
@@ -5,7 +6,7 @@ export const Hero = () => (
     class={`
       m-(--hero-margin)
       flex
-      h-[calc(100vh-var(--banner-height)-var(--hero-margin-total))]
+      h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
       flex-col
       overflow-hidden
       rounded-4xl
@@ -52,7 +53,7 @@ export const Hero = () => (
             w-4
           `}
         />
-        <span class="text-foreground">TÜRKİYE'NİN EN BÜYÜK VALİDATÖRÜ</span>
+        <span class="text-foreground">{t("hero.badge")}</span>
         <img
           src="/img/hero-subtext-icon.svg"
           alt="Hero subtext icon"
@@ -76,14 +77,14 @@ export const Hero = () => (
           opacity-0
         `}
       >
-        BLOKZİNCİRLERE ERİŞMEK
+        {t("hero.titleLine1")}
         <span
           class={`
             mt-2
             block
           `}
         >
-          BİZİMLE MÜMKÜN
+          {t("hero.titleLine2")}
         </span>
       </h1>
 
@@ -98,9 +99,7 @@ export const Hero = () => (
           opacity-0
         `}
       >
-        node101; validasyon, ürün geliştirme, danışmanlık ve kurumsal RPC
-        çözümleriyle 2022'den beri Türkiye'nin en büyük blokzincir altyapı
-        sağlayıcısı
+        {t("hero.description")}
       </p>
     </section>
 
@@ -149,7 +148,5 @@ export const Hero = () => (
         </a>
       </nav>
     </div>
-
-    <script type="module" src="/js/hero-animation.js"></script>
   </div>
 );

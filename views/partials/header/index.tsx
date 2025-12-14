@@ -1,3 +1,4 @@
+import { t } from "../../../src/i18n";
 import { HeaderMenu } from "./components/menu";
 import {
   HeaderMenuSection,
@@ -10,9 +11,9 @@ type MenuItem = {
   sections: HeaderMenuSectionProps[];
 };
 
-const menuItems: MenuItem[] = [
+const getMenuItems = (): MenuItem[] => [
   {
-    label: "Yatırım",
+    label: t("nav.investment"),
     sections: [
       {
         type: HeaderMenuSectionType.GRID,
@@ -158,7 +159,7 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: "RPC",
+    label: t("nav.rpc"),
     sections: [
       {
         type: HeaderMenuSectionType.MULTI_GRID,
@@ -334,7 +335,7 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: "Hizmetler",
+    label: t("nav.services"),
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
@@ -560,7 +561,7 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: "Ürünler",
+    label: t("nav.products"),
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
@@ -699,7 +700,7 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: "Kurumsal",
+    label: t("nav.corporate"),
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
@@ -980,6 +981,7 @@ export const Header = () => (
     <input
       type="checkbox"
       id="mobile-menu-toggle"
+      aria-label={t("nav.mobileMenuToggle")}
       class={`
         peer
         sr-only
@@ -1026,7 +1028,7 @@ export const Header = () => (
         lg:opacity-100
       `}
     >
-      {menuItems.map((item, index) => (
+      {getMenuItems().map((item, index) => (
         <div
           class={`
             group
@@ -1109,7 +1111,7 @@ export const Header = () => (
           lg:active:scale-98
         `}
       >
-        Bize Ulaşın
+        {t("common.contactUs")}
       </a>
     </nav>
 
