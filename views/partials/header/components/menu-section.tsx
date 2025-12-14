@@ -205,14 +205,17 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
           {props.items.map((item, index) => (
             <div
               key={index}
-              class={
-                index < props.items.length - 1
-                  ? `
-                    border-b
-                    border-separator
-                  `
-                  : ""
-              }
+              class={`
+                py-1
+                ${
+                  index < props.items.length - 1
+                    ? `
+                      border-b
+                      border-separator
+                    `
+                    : ""
+                }
+              `}
             >
               <HeaderMenuSectionItem {...item} />
             </div>
@@ -244,14 +247,17 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
                 {group.items.map((item, index) => (
                   <div
                     key={index}
-                    class={
-                      index < group.items.length - 1
-                        ? `
-                          border-b
-                          border-separator
-                        `
-                        : ""
-                    }
+                    class={`
+                      py-1
+                      ${
+                        index < group.items.length - 1
+                          ? `
+                            border-b
+                            border-separator
+                          `
+                          : ""
+                      }
+                    `}
                   >
                     <HeaderMenuSectionItem {...item} />
                   </div>

@@ -35,11 +35,15 @@ export const HeaderMenuSectionItem = ({
       href={href}
       class={`
         group/item
+        -mx-2.5
         flex
         items-start
         gap-2
-        py-2.5
+        rounded-[8px]
+        px-2.5
+        py-1.5
         transition-colors
+        hover:bg-gray-100
       `}
     >
       <span
