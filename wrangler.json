@@ -10,4 +10,9 @@
   "observability": {
     "enabled": true
   },
+  "env": {
+    "preview": {
+      "name": "node101-landing-preview"
+    }
+  }
 }

@@ -853,7 +853,7 @@ export const Header = () => (
       {/* Bize Ulaşın */}
       <a
         href="/contact"
-        class="w-full lg:w-auto mt-auto lg:mt-0 lg:absolute lg:right-5 active:scale-98 transition-transform cursor-pointer bg-primary text-primary-foreground px-8 py-4 lg:py-2.5 rounded-xl lg:rounded-lg font-medium text-base lg:text-sm text-center lg:hover:scale-104 whitespace-nowrap"
+        class="w-full lg:w-auto mt-auto lg:mt-0 lg:absolute lg:right-5 lg:hover:scale-104 lg:active:scale-98 transition-transform cursor-pointer bg-primary text-primary-foreground px-8 py-4 lg:py-2.5 rounded-xl lg:rounded-lg font-medium text-base lg:text-sm text-center whitespace-nowrap"
       >
         Bize Ulaşın
       </a>

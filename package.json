@@ -5,8 +5,8 @@
 	"scripts": {
 		"build:css": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --watch",
 		"build:css:prod": "tailwindcss -i ./src/styles.css -o ./public/static/styles.css --minify",
-		"deploy:preview": "npm run build:css:prod && wrangler deploy",
 		"deploy": "npm run build:css:prod && wrangler deploy",
+		"deploy:preview": "npm run build:css:prod && wrangler deploy --env preview",
 		"dev": "run-p build:css dev:server",
 		"dev:server": "wrangler dev",
 		"lint": "eslint .",
