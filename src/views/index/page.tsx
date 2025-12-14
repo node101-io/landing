@@ -1,6 +1,6 @@
 import { Layout } from "../layout";
 import { Banner } from "@/components/banner";
-import { Hero } from "./hero";
+import { Hero } from "@/components/home/hero";
 
 const IndexPage = () => (
   <Layout title="node101">

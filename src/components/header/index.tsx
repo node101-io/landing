@@ -17,7 +17,7 @@ const getMenuItems = (): MenuItem[] => [
     sections: [
       {
         type: HeaderMenuSectionType.GRID,
-        title: "DESTEKLEDİĞİMİZ POPÜLER BLOKZİNCİRLER",
+        title: i18n().menu.investment.popularBlockchains,
         items: [
           {
             icon: "/img/networks/ethereum.webp",
@@ -83,7 +83,7 @@ const getMenuItems = (): MenuItem[] => [
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "TEKRARLI GETİRİ",
+        title: i18n().menu.investment.recurringYield,
         items: [
           {
             icon: (
@@ -96,8 +96,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "BTC Yatırım Getirisi",
-            description: "Bitcoinlerinizi Babylon üzerinde stake edin",
+            label: i18n().menu.investment.btcRestaking.label,
+            description: i18n().menu.investment.btcRestaking.description,
             href: "",
           },
           {
@@ -111,17 +111,16 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "ETH Tekrarlı Getiri",
-            description: "Ethereumlarınızı EigenLayer ile restake edin",
+            label: i18n().menu.investment.ethRestaking.label,
+            description: i18n().menu.investment.ethRestaking.description,
             href: "",
           },
         ],
-        footnote:
-          "Desteklediğimiz ağların hepsinde bütün hizmetlerimiz bulunmayabilir. Daha fazla bilgiyi ağ sayfalarında bulabilirsiniz.",
+        footnote: i18n().menu.investment.footnote,
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "KURUMSAL YATIRIM",
+        title: i18n().menu.investment.corporateInvestment,
         items: [
           {
             icon: (
@@ -134,8 +133,9 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Fason Validatörlük",
-            description: "Kendi validatörünüzü kurun node101 yürütsün",
+            label: i18n().menu.investment.whitelabelValidation.label,
+            description:
+              i18n().menu.investment.whitelabelValidation.description,
             href: "",
           },
           {
@@ -149,9 +149,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Referans Programı",
-            description:
-              "İşbirlikleri ve referanslar oluşturun kazançtan pay alın",
+            label: i18n().menu.investment.referralProgram.label,
+            description: i18n().menu.investment.referralProgram.description,
             href: "",
           },
         ],
@@ -163,10 +162,10 @@ const getMenuItems = (): MenuItem[] => [
     sections: [
       {
         type: HeaderMenuSectionType.MULTI_GRID,
-        title: "RPC HİZMETLERİ",
+        title: i18n().menu.rpc.rpcServices,
         categories: [
           {
-            title: "ŞU ANDA POPÜLER",
+            title: i18n().menu.rpc.currentlyPopular,
             columns: 1,
             items: [
               {
@@ -196,7 +195,7 @@ const getMenuItems = (): MenuItem[] => [
             ],
           },
           {
-            title: "YENİ",
+            title: i18n().menu.rpc.new,
             columns: 1,
             items: [
               {
@@ -226,7 +225,7 @@ const getMenuItems = (): MenuItem[] => [
             ],
           },
           {
-            title: "EN ÇOK KULLANILANLAR",
+            title: i18n().menu.rpc.mostUsed,
             columns: 2,
             items: [
               {
@@ -296,8 +295,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Ücretlendirme",
-            description: "RPC hizmeti ile ilgili ücretlendirme detayları",
+            label: i18n().menu.rpc.pricing.label,
+            description: i18n().menu.rpc.pricing.description,
             href: "",
           },
           {
@@ -311,8 +310,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Ücretsiz RPC",
-            description: "Ücretsiz RPC hizmeti detayları",
+            label: i18n().menu.rpc.freeRpc.label,
+            description: i18n().menu.rpc.freeRpc.description,
             href: "",
           },
           {
@@ -326,8 +325,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Belgeler",
-            description: "RPC hizmeti ile ilgili tüm belgeler",
+            label: i18n().menu.rpc.documents.label,
+            description: i18n().menu.rpc.documents.description,
             href: "",
           },
         ],
@@ -339,7 +338,7 @@ const getMenuItems = (): MenuItem[] => [
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
-        title: "DÜĞÜM HİZMETLERİ",
+        title: i18n().menu.services.nodeServices,
         items: [
           {
             icon: (
@@ -352,9 +351,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "node101 ile Kripto Yatırımı Yapın",
-            description:
-              "Valide ettiğimiz düğümlere stake edin, kripto kazanın",
+            label: i18n().menu.services.cryptoInvestment.label,
+            description: i18n().menu.services.cryptoInvestment.description,
             href: "",
           },
           {
@@ -368,18 +366,26 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Fason Validatörlük",
-            description: "Kendi validatörünüzü kurun node101 yürütsün",
+            label: i18n().menu.services.whitelabelValidation.label,
+            description: i18n().menu.services.whitelabelValidation.description,
             href: "",
             subItems: [
               {
-                label: "BTC Fason Madencilik",
-                description: "Sizin için Bitcoin miner'ı kuralım ve yürütelim",
+                label:
+                  i18n().menu.services.whitelabelValidation.subItems.btcMining
+                    .label,
+                description:
+                  i18n().menu.services.whitelabelValidation.subItems.btcMining
+                    .description,
                 href: "",
               },
               {
-                label: "ETH Fason Validatörlük",
-                description: "Sizin için Ethereum düğümü kuralım ve yürütelim",
+                label:
+                  i18n().menu.services.whitelabelValidation.subItems
+                    .ethValidation.label,
+                description:
+                  i18n().menu.services.whitelabelValidation.subItems
+                    .ethValidation.description,
                 href: "",
               },
             ],
@@ -395,9 +401,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "BTC Yatırım Getirisi",
-            description:
-              "Bitcoinlerinizi Babylon üzerinde stake edin, kripto kazanın",
+            label: i18n().menu.services.btcRestaking.label,
+            description: i18n().menu.services.btcRestaking.description,
             href: "",
           },
           {
@@ -411,15 +416,15 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "ETH Tekrarlı Getiri",
-            description: "Ethereumlarınızı EigenLayer ile restake edin",
+            label: i18n().menu.services.ethRestaking.label,
+            description: i18n().menu.services.ethRestaking.description,
             href: "",
           },
         ],
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "DANIŞMANLIK",
+        title: i18n().menu.services.consulting,
         items: [
           {
             icon: (
@@ -432,9 +437,9 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Mimari Danışmanlık",
+            label: i18n().menu.services.architecturalConsulting.label,
             description:
-              "İhtiyacınız olan teknik mimariyi birlikte inşa edelim",
+              i18n().menu.services.architecturalConsulting.description,
             href: "",
           },
           {
@@ -448,15 +453,14 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Blokzincir 101 Danışmanlığı",
-            description:
-              "Kripto varlıklara ve blokzincire ilginiz var ama ne yapacağınızı bilmiyorsanız, node101'a ulaşın",
+            label: i18n().menu.services.blockchainConsulting.label,
+            description: i18n().menu.services.blockchainConsulting.description,
             href: "",
           },
         ],
         additionalGroups: [
           {
-            title: "BLOKZİNCİR ÜRETİMİ",
+            title: i18n().menu.services.blockchainProduction,
             items: [
               {
                 icon: (
@@ -469,9 +473,9 @@ const getMenuItems = (): MenuItem[] => [
                     `}
                   />
                 ),
-                label: "Ürün Üretimi",
+                label: i18n().menu.services.productDevelopment.label,
                 description:
-                  "İhtiyacınız olan ürünün tamamını ya da bir parçasını, tecrübeli ekibimizle tasarlar ve üretiriz",
+                  i18n().menu.services.productDevelopment.description,
                 href: "",
               },
             ],
@@ -480,7 +484,7 @@ const getMenuItems = (): MenuItem[] => [
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "ETKİNLİKLER VE KOMÜNİTE",
+        title: i18n().menu.services.eventsAndCommunity,
         items: [
           {
             icon: (
@@ -493,17 +497,17 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Türk ekosistemine açılan kapı",
-            description:
-              "node101, Blokzincir şirketlerinin Türk yazılımcılara ulaşmasını planlar ve partnerleriyle uygular.",
+            label: i18n().menu.services.turkishEcosystem.label,
+            description: i18n().menu.services.turkishEcosystem.description,
             href: "",
             subItems: [
               {
-                label: "Sui Türkiye Komünite Etkinlikleri",
+                label: i18n().menu.services.turkishEcosystem.subItems.suiTurkey,
                 href: "",
               },
               {
-                label: "Celestia Türkiye Komünite Etkinlikleri",
+                label:
+                  i18n().menu.services.turkishEcosystem.subItems.celestiaTurkey,
                 href: "",
               },
             ],
@@ -519,9 +523,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Builders Week Istanbul",
-            description:
-              "BWI blokzincir ekosistemini ölçeklendirmek için tasarlanmış, bir haftalık etkinlikler dizisidir.",
+            label: i18n().menu.services.buildersWeek.label,
+            description: i18n().menu.services.buildersWeek.description,
             href: "",
           },
           {
@@ -535,9 +538,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "ETHIstanbul",
-            description:
-              "Ethereum felsefesinin genç yetenekler arasında kök salmasının hedeflendiği konferans ve hackathon",
+            label: i18n().menu.services.ethIstanbul.label,
+            description: i18n().menu.services.ethIstanbul.description,
             href: "",
           },
           {
@@ -551,9 +553,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Cryptist",
-            description:
-              "Cryptist; sıfır bilgi, gizlilik ve kriptografiye odaklanan yıllık bir topluluk odaklı etkinliktir",
+            label: i18n().menu.services.cryptist.label,
+            description: i18n().menu.services.cryptist.description,
             href: "",
           },
         ],
@@ -565,7 +566,7 @@ const getMenuItems = (): MenuItem[] => [
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
-        title: "PROTOKOL",
+        title: i18n().menu.products.protocol,
         items: [
           {
             icon: (
@@ -578,9 +579,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Pulsar Chain",
-            description:
-              "Sıfır-Bilgi altyapısını Interchain altyapısı ile buluşturur",
+            label: i18n().menu.products.pulsarChain.label,
+            description: i18n().menu.products.pulsarChain.description,
             href: "",
           },
           {
@@ -594,14 +594,14 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "zkVot",
-            description: "Oylama süreçlerinde mahremiyet ve merkeziyetsizlik",
+            label: i18n().menu.products.zkvot.label,
+            description: i18n().menu.products.zkvot.description,
             href: "",
           },
         ],
         additionalGroups: [
           {
-            title: "DİĞER",
+            title: i18n().menu.products.other,
             items: [
               {
                 icon: (
@@ -614,8 +614,8 @@ const getMenuItems = (): MenuItem[] => [
                     `}
                   />
                 ),
-                label: "Hackathon Ürünlerimiz",
-                description: "Hackathonlarda neler inşa ettiğimizi keşfedin",
+                label: i18n().menu.products.hackathonProducts.label,
+                description: i18n().menu.products.hackathonProducts.description,
                 href: "",
               },
             ],
@@ -624,7 +624,7 @@ const getMenuItems = (): MenuItem[] => [
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "UYGULAMA",
+        title: i18n().menu.products.application,
         items: [
           {
             icon: (
@@ -637,9 +637,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Pulsar",
-            description:
-              "Sıfır-Bilgi altyapısı ile kurulmuş ilk merkeziyetsiz borsa",
+            label: i18n().menu.products.pulsar.label,
+            description: i18n().menu.products.pulsar.description,
             href: "",
           },
           {
@@ -653,15 +652,15 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "PUNCH",
-            description: "Merkeziyetsiz yayın platformu",
+            label: i18n().menu.products.punch.label,
+            description: i18n().menu.products.punch.description,
             href: "",
           },
         ],
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "TOOLING",
+        title: i18n().menu.products.tooling,
         items: [
           {
             icon: (
@@ -674,9 +673,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Validatier",
-            description:
-              "Blokzincir yazılımcılarının tüm aktivitelerine ulaşın",
+            label: i18n().menu.products.validatier.label,
+            description: i18n().menu.products.validatier.description,
             href: "",
           },
           {
@@ -690,9 +688,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Blockchain Developer Report",
-            description:
-              "Blokzincir yazılımcılarının tüm aktivitelerine ulaşın",
+            label: i18n().menu.products.blockchainDevReport.label,
+            description: i18n().menu.products.blockchainDevReport.description,
             href: "",
           },
         ],
@@ -704,7 +701,7 @@ const getMenuItems = (): MenuItem[] => [
     sections: [
       {
         type: HeaderMenuSectionType.LIST,
-        title: "KURUMSAL UZMANLIK",
+        title: i18n().menu.corporate.corporateExpertise,
         items: [
           {
             icon: (
@@ -717,8 +714,9 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Finansal Kurumlar",
-            description: "Blokzincir teknik altyapı çözümlerimizi keşfedin",
+            label: i18n().menu.corporate.financialInstitutions.label,
+            description:
+              i18n().menu.corporate.financialInstitutions.description,
             href: "",
           },
           {
@@ -732,9 +730,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Merkezi Kripto Borsaları",
-            description:
-              "Validatörlük, RPC & API ve diğer teknik hizmetlerimize erişin",
+            label: i18n().menu.corporate.centralizedExchanges.label,
+            description: i18n().menu.corporate.centralizedExchanges.description,
             href: "",
           },
           {
@@ -748,9 +745,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Saklamacılar",
-            description:
-              "Staking API'larımızı, %99 uptime garantili SLA'lerimiz ile Blokzincir işlemlerinizde kullanın",
+            label: i18n().menu.corporate.custodials.label,
+            description: i18n().menu.corporate.custodials.description,
             href: "",
           },
           {
@@ -764,9 +760,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Foundationlar",
-            description:
-              "node101 ile protokolünüzü güvenle kodlayın, mainnete çıkın ve büyütün",
+            label: i18n().menu.corporate.foundations.label,
+            description: i18n().menu.corporate.foundations.description,
             href: "",
           },
           {
@@ -780,15 +775,15 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Şirketler",
-            description: "Blokzincir dünyasına ilk adımınızı node101 ile atın",
+            label: i18n().menu.corporate.companies.label,
+            description: i18n().menu.corporate.companies.description,
             href: "",
           },
         ],
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "node101",
+        title: i18n().menu.corporate.node101,
         items: [
           {
             icon: (
@@ -801,8 +796,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "node101 Hakkında",
-            description: "Türkiye'nin en büyük validatörünün hikayesi",
+            label: i18n().menu.corporate.aboutNode101.label,
+            description: i18n().menu.corporate.aboutNode101.description,
             href: "",
           },
           {
@@ -816,8 +811,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Takım",
-            description: "Küresel düzeyde rekabet en iyilerle mümkündür",
+            label: i18n().menu.corporate.team.label,
+            description: i18n().menu.corporate.team.description,
             href: "",
           },
           {
@@ -831,8 +826,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Kariyer",
-            description: "Size en uygun pozisyona başvurun",
+            label: i18n().menu.corporate.career.label,
+            description: i18n().menu.corporate.career.description,
             href: "",
           },
           {
@@ -846,15 +841,15 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Marka Detayları",
-            description: "node101 branding hikayesi",
+            label: i18n().menu.corporate.brandDetails.label,
+            description: i18n().menu.corporate.brandDetails.description,
             href: "",
           },
         ],
       },
       {
         type: HeaderMenuSectionType.LIST,
-        title: "VERİ MERKEZİ",
+        title: i18n().menu.corporate.dataCenter,
         items: [
           {
             icon: (
@@ -867,9 +862,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Blog",
-            description:
-              "node101 kütüphanesini keşfedin, ürettiğimiz tüm içeriklere erişin",
+            label: i18n().menu.corporate.blog.label,
+            description: i18n().menu.corporate.blog.description,
             href: "",
           },
           {
@@ -883,8 +877,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Destek Merkezi",
-            description: "Bizlere 7/24 istediğiniz anda ulaşın",
+            label: i18n().menu.corporate.supportCenter.label,
+            description: i18n().menu.corporate.supportCenter.description,
             href: "",
           },
           {
@@ -898,9 +892,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "SSS",
-            description:
-              "node101 hizmetleri ve blokzincir terimleri ile alakalı sıkça sorulan sorular",
+            label: i18n().menu.corporate.faq.label,
+            description: i18n().menu.corporate.faq.description,
             href: "",
           },
           {
@@ -914,8 +907,8 @@ const getMenuItems = (): MenuItem[] => [
                 `}
               />
             ),
-            label: "Vaka Çalışmaları",
-            description: "Söylediklerimize değil aksiyonlarımıza odaklanın",
+            label: i18n().menu.corporate.caseStudies.label,
+            description: i18n().menu.corporate.caseStudies.description,
             href: "",
           },
         ],

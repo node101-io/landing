@@ -24,7 +24,6 @@ export const HeaderMenuGridItem = ({
       min-w-0
       items-center
       gap-1
-      rounded-xs
       transition-colors
       lg:w-full
       lg:gap-2
@@ -41,9 +40,9 @@ export const HeaderMenuGridItem = ({
       src={icon}
       alt={`${name} icon`}
       class={`
-        size-7
+        size-(--icon-size-mobile)
         shrink-0
-        rounded-xs
+        rounded-[4px]
         lg:size-5.5
         lg:rounded-full
       `}

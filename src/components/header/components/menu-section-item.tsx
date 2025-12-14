@@ -82,7 +82,7 @@ export const HeaderMenuSectionItem = ({
         <span
           class={`
             text-xs
-            leading-relaxed
+            leading-snug
             text-footnote
           `}
         >
@@ -133,7 +133,7 @@ export const HeaderMenuSectionItem = ({
               <span
                 class={`
                   text-[11px]
-                  leading-relaxed
+                  leading-snug
                   text-footnote
                 `}
               >

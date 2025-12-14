@@ -53,6 +53,7 @@
   --color-header-bg: oklch(from #fdf8f2 l c h / 40%);
   --color-header-bg-checked: var(--color-surface);
   --color-nav-mobile-bg: var(--color-surface);
+  --icon-size-mobile: 1.75rem;
 }
 
 /* Marquee animation */

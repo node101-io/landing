@@ -271,13 +271,19 @@ export const HeaderMenuSection = (props: HeaderMenuSectionProps) => {
           <div
             class={`
               flex
+              h-[calc(var(--icon-size-mobile)+0.5rem)]
+              max-h-[calc(var(--icon-size-mobile)+0.5rem)]
               w-full
               flex-wrap
               gap-1.5
+              overflow-hidden
               py-2
               lg:grid
+              lg:h-auto
+              lg:max-h-none
               lg:grid-cols-2
               lg:gap-2
+              lg:overflow-visible
             `}
           >
             {props.items.map((item, index) => (
