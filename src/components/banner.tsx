@@ -3,7 +3,8 @@ import { i18n } from "@/i18n";
 export const Banner = () => {
   const text = i18n().banner.text;
   return (
-    <div
+    <a
+      href="#"
       class={`
         flex
         h-(--banner-height)
@@ -13,6 +14,7 @@ export const Banner = () => {
         bg-primary
         text-sm
         text-primary-foreground
+        no-underline
       `}
     >
       {/* Desktop: centered text */}
@@ -49,6 +51,6 @@ export const Banner = () => {
           <span class="pr-16">{text}</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
