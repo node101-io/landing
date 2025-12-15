@@ -87,8 +87,8 @@
   font-display: swap;
 }
 
-/* Hero fade-in animation - replaces motion.js */
-@keyframes hero-fade-in {
+/* First time fade-in animation - triggered by intersection observer */
+@keyframes first-time-fade-in {
   from {
     opacity: 0;
     transform: translateY(24px);
@@ -99,18 +99,21 @@
   }
 }
 
-.hero-animate {
-  animation: hero-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.first-time-animate {
+  opacity: 0;
 }
 
-.hero-animate:nth-child(1) {
-  animation-delay: 0.3s;
+.first-time-animate.is-visible {
+  animation: first-time-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.hero-animate:nth-child(2) {
-  animation-delay: 0.4s;
-}
-
-.hero-animate:nth-child(3) {
-  animation-delay: 0.5s;
+@keyframes slide-up {
+  0% {
+    display: block;
+    top: 0;
+  }
+  100% {
+    display: none;
+    top: -120vh;
+  }
 }

@@ -1034,11 +1034,12 @@ export const Header = () => (
   <header
     class={`
       group/menu
-      relative
-      m-4
+      absolute
+      m-(--header-margin)
       flex
       h-(--header-height)
       min-h-(--header-height)
+      min-w-[calc(100dvw-var(--hero-margin)*2-var(--header-margin)*2)]
       shrink-0
       items-center
       justify-center
@@ -1051,10 +1052,12 @@ export const Header = () => (
       transition-all
       duration-300
       has-checked:m-0
+      has-checked:min-w-dvw
       has-checked:rounded-none
       has-checked:border-header-bg-checked
       has-checked:bg-header-bg-checked
-      lg:has-checked:m-4
+      lg:has-checked:m-(--header-margin)
+      lg:has-checked:min-w-[calc(100dvw-var(--hero-margin)*2-var(--header-margin)*2)]
       lg:has-checked:rounded-4xl
       lg:has-checked:border-surface
       lg:has-checked:bg-header-bg

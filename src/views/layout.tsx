@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "hono/jsx";
 import { getLocale, LOCALES, i18n, SITE_URL, DEFAULT_LOCALE } from "@/i18n";
+// import { Curtain } from "@/components/curtain";
 
 export const Layout = ({
   children,
@@ -88,7 +89,9 @@ export const Layout = ({
         font-sans
       `}
     >
+      {/* <Curtain /> */}
       <main>{children}</main>
+      <script src="/static/fade.js" defer></script>
     </body>
   </html>
 );

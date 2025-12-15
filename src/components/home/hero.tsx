@@ -31,25 +31,18 @@ export const Hero = () => (
         items-center
         justify-center
         px-4
-        pt-16
-        pb-20
+        py-10
         text-center
         sm:px-6
-        sm:pt-24
-        sm:pb-32
         md:px-8
-        md:pt-32
-        md:pb-40
       `}
     >
       <div
         class={`
-          hero-animate
           mb-6
           inline-flex
           items-center
           gap-1.5
-          opacity-0
           sm:mb-8
           sm:gap-2
         `}
@@ -94,14 +87,12 @@ export const Hero = () => (
 
       <h1
         class={`
-          hero-animate
           max-w-5xl
           font-display
           text-3xl
-          leading-[1.1]
+          leading-tight
           font-bold
           text-foreground
-          opacity-0
           sm:text-4xl
           md:text-5xl
           lg:text-6xl
@@ -109,27 +100,17 @@ export const Hero = () => (
         `}
       >
         {i18n().hero.titleLine1}
-        <span
-          class={`
-            mt-1
-            block
-            sm:mt-2
-          `}
-        >
-          {i18n().hero.titleLine2}
-        </span>
+        <span class={`block`}>{i18n().hero.titleLine2}</span>
       </h1>
 
       <p
         class={`
           text-muted-foreground
-          hero-animate
           mt-6
           max-w-2xl
           text-sm
           leading-relaxed
           font-normal
-          opacity-0
           sm:mt-8
           sm:text-base
           md:text-lg
@@ -141,9 +122,12 @@ export const Hero = () => (
 
     <div
       class={`
-        mx-4
-        mb-4
+        absolute
+        bottom-(--hero-margin)
+        mx-(--header-margin)
+        mb-(--header-margin)
         flex
+        w-[calc(100dvw-var(--hero-margin)*2-var(--header-margin)*2)]
         items-center
         justify-between
         sm:mb-6
