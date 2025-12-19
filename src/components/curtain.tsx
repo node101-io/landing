@@ -2,7 +2,6 @@ export const Curtain = () => {
   return (
     <svg
       className={`
-        pointer-events-none
         fixed
         left-0
         z-100
