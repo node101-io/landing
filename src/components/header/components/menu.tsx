@@ -37,7 +37,7 @@ export const HeaderMenu = ({ children }: HeaderMenuProps) => {
         lg:grid
         lg:max-h-none
         lg:w-auto
-        lg:translate-y-[-8px]
+        lg:-translate-y-2
         lg:grid-cols-3
         lg:gap-1.5
         lg:overflow-visible
