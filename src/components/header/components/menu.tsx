@@ -24,6 +24,7 @@ export const HeaderMenu = ({ children }: HeaderMenuProps) => {
         transition-all
         duration-300
         ease-out
+        will-change-[opacity,transform]
         group-focus-within:max-h-[200dvh]
         group-focus-within:opacity-100
         lg:invisible

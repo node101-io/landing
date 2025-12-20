@@ -40,9 +40,11 @@ export const Banner = () => {
       >
         <div
           class={`
-            animate-marquee
             flex
+            animate-marquee
             text-xs
+            will-change-transform
+            md:animate-none
           `}
         >
           <span class="pr-16">{text}</span>

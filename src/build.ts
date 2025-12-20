@@ -28,23 +28,31 @@ async function discoverPages() {
       if ((await stat(pagePath)).isFile()) {
         pages.push({ slug: entry.name, path: pagePath });
       }
-    } catch {}
+    } catch {
+      // Page file doesn't exist, skip
+    }
   }
   return pages;
 }
 
-async function buildPage(locale: Locale, slug: string, component: PageComponent) {
+async function buildPage(
+  locale: Locale,
+  slug: string,
+  component: PageComponent,
+) {
   setLocale(locale);
   const raw = "<!DOCTYPE html>" + String(component());
-  const html = isDev ? raw : await minify(raw, {
-    collapseWhitespace: true,
-    removeComments: true,
-    collapseBooleanAttributes: true,
-    removeAttributeQuotes: true,
-    removeEmptyAttributes: true,
-    sortAttributes: true,
-    sortClassName: true,
-  });
+  const html = isDev
+    ? raw
+    : await minify(raw, {
+        collapseWhitespace: true,
+        removeComments: true,
+        collapseBooleanAttributes: true,
+        removeAttributeQuotes: true,
+        removeEmptyAttributes: true,
+        sortAttributes: true,
+        sortClassName: true,
+      });
 
   await mkdir(`${DIST}/${locale}`, { recursive: true });
   await writeFile(`${DIST}/${locale}/${slug}.html`, html, "utf-8");
@@ -66,11 +74,15 @@ async function build() {
 
   try {
     await cp("public", DIST, { recursive: true });
-  } catch {}
+  } catch {
+    // Public directory doesn't exist, skip
+  }
 
   for (const page of pages) {
     const mod = await import(page.path);
-    const Component: PageComponent = mod.default || mod[`${page.slug[0].toUpperCase()}${page.slug.slice(1)}Page`];
+    const Component: PageComponent =
+      mod.default ||
+      mod[`${page.slug[0].toUpperCase()}${page.slug.slice(1)}Page`];
     if (!Component) {
       console.error(`  ✗ No component in ${page.slug}/page.tsx`);
       process.exit(1);
@@ -81,7 +93,10 @@ async function build() {
   }
 
   // Root redirect
-  await writeFile(`${DIST}/index.html`, `<!DOCTYPE html><meta http-equiv="refresh" content="0;url=/${DEFAULT_LOCALE}/">`);
+  await writeFile(
+    `${DIST}/index.html`,
+    `<!DOCTYPE html><meta http-equiv="refresh" content="0;url=/${DEFAULT_LOCALE}/">`,
+  );
 
   console.log(`\n✅ Done in ${(performance.now() - start).toFixed(0)}ms\n`);
 }
@@ -93,7 +108,7 @@ function runBuild(): Promise<void> {
       stdio: "inherit",
       shell: true,
     });
-    child.on("close", (code) => code === 0 ? resolve() : reject());
+    child.on("close", (code) => (code === 0 ? resolve() : reject()));
     child.on("error", reject);
   });
 }
@@ -106,12 +121,22 @@ async function startWatch() {
   let queued = false;
 
   const rebuild = async () => {
-    if (building) { queued = true; return; }
+    if (building) {
+      queued = true;
+      return;
+    }
     building = true;
     console.log("\n🔄 Rebuilding...\n");
-    try { await runBuild(); } catch {}
+    try {
+      await runBuild();
+    } catch {
+      // Build failed, continue watching
+    }
     building = false;
-    if (queued) { queued = false; rebuild(); }
+    if (queued) {
+      queued = false;
+      rebuild();
+    }
   };
 
   watch(SRC_DIR, {
@@ -128,4 +153,4 @@ async function startWatch() {
   process.on("SIGINT", () => process.exit(0));
 }
 
-isWatch ? startWatch() : build().catch(() => process.exit(1));
+void (isWatch ? startWatch() : build().catch(() => process.exit(1)));

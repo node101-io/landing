@@ -19,6 +19,7 @@ export default defineConfig([
       "**/pnpm-lock.yaml",
       "**/package-lock.json",
       "**/yarn.lock",
+      "**/*.css",
     ],
   },
   {
@@ -60,6 +61,9 @@ export default defineConfig([
     extends: ["css/recommended"],
     languageOptions: {
       customSyntax: tailwind4,
+    },
+    rules: {
+      "css/no-invalid-at-rules": "off",
     },
   },
 ]);

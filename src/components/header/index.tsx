@@ -1119,6 +1119,7 @@ export const Header = () => (
         opacity-0
         transition-all
         duration-300
+        will-change-[opacity,transform]
         peer-checked:visible
         peer-checked:top-[calc(var(--banner-height)+var(--header-height))]
         peer-checked:right-0
