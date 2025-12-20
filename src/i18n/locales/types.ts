@@ -18,6 +18,9 @@ export type Translations = {
     titleLine2: string;
     description: string;
   };
+  trustedBy: {
+    description: string;
+  };
   nav: {
     investment: string;
     rpc: string;

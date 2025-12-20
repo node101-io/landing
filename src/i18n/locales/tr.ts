@@ -21,6 +21,10 @@ export const tr: Translations = {
     description:
       "node101; validasyon, ürün geliştirme, danışmanlık ve kurumsal RPC çözümleriyle 2022'den beri Türkiye'nin en büyük blokzincir altyapı sağlayıcısı",
   },
+  trustedBy: {
+    description:
+      "Dünya genelinde 40'ın üzerinde kurum, kripto yatırımları ve RPC hizmetleri için node101'e güveniyor",
+  },
   nav: {
     investment: "Yatırım",
     rpc: "RPC",

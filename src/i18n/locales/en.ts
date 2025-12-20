@@ -22,6 +22,10 @@ export const en: Translations = {
     description:
       "node101 has been Turkey's largest blockchain infrastructure provider since 2022, offering validation, product development, consulting, and enterprise RPC solutions",
   },
+  trustedBy: {
+    description:
+      "Over 40 institutions worldwide trust node101 for crypto investments and RPC services",
+  },
   nav: {
     investment: "Investment",
     rpc: "RPC",
