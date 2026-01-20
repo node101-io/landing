@@ -1,0 +1,48 @@
+---
+// Header Menu wrapper component
+---
+
+<section
+  class={`
+    flex
+    max-h-0
+    w-full
+    flex-col
+    gap-4
+    overflow-hidden
+    opacity-0
+    transition-all
+    duration-300
+    ease-out
+    will-change-[opacity,transform]
+    group-focus-within:max-h-[200dvh]
+    group-focus-within:opacity-100
+    lg:invisible
+    lg:absolute
+    lg:inset-x-[2.5%]
+    lg:top-full
+    lg:z-50
+    lg:mt-3
+    lg:grid
+    lg:max-h-none
+    lg:w-[95%]
+    lg:-translate-y-2
+    lg:grid-cols-3
+    lg:gap-1.5
+    lg:overflow-visible
+    lg:rounded-xl
+    lg:border
+    lg:border-surface
+    lg:bg-[#FDF8F2]/40
+    lg:p-2.5
+    lg:px-2
+    lg:shadow-lg
+    lg:backdrop-blur-sm
+    lg:group-focus-within:visible
+    lg:group-focus-within:translate-y-0
+    lg:group-focus-within:overflow-visible
+  `}
+  onmousedown="event.preventDefault()"
+>
+  <slot />
+</section>

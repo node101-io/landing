@@ -111,3 +111,7 @@
   will-change: opacity, transform;
   animation: first-time-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+@utility flex-2 {
+  flex: 2 2 0%;
+}

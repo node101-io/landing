@@ -1,0 +1,253 @@
+---
+import { getTranslations, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import Menu from './components/Menu.astro';
+import MenuSection from './components/MenuSection.astro';
+import { getMenuItems } from './menu-data';
+
+const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
+const t = getTranslations(locale);
+const menuItems = getMenuItems(t);
+---
+
+<header class={`
+  group/menu
+  absolute
+  right-(--hero-margin)
+  left-(--hero-margin)
+  m-(--header-margin)
+  flex
+  h-(--header-height)
+  min-h-(--header-height)
+  shrink-0
+  items-center
+  justify-center
+  gap-8
+  rounded-4xl
+  border
+  border-surface
+  bg-header-bg
+  font-sans
+  transition-all
+  duration-300
+  has-checked:right-0
+  has-checked:left-0
+  has-checked:m-0
+  has-checked:rounded-none
+  has-checked:border-header-bg-checked
+  has-checked:bg-header-bg-checked
+  lg:has-checked:right-(--hero-margin)
+  lg:has-checked:left-(--hero-margin)
+  lg:has-checked:m-(--header-margin)
+  lg:has-checked:rounded-4xl
+  lg:has-checked:border-surface
+  lg:has-checked:bg-header-bg
+`}>
+  <a href="/" class={`
+    absolute
+    left-4
+    z-60
+    flex
+    h-full
+    items-center
+  `}>
+    <img
+      src="/img/logo.svg"
+      alt="node101 logo"
+      class={`
+        h-auto
+        w-20
+        shrink-0
+      `}
+    />
+  </a>
+
+  {/* Mobile Menu Toggle - checkbox */}
+  <input
+    type="checkbox"
+    id="mobile-menu-toggle"
+    aria-label={t.nav.mobileMenuToggle}
+    class={`
+      peer
+      sr-only
+    `}
+  />
+
+  {/* Navigation */}
+  <nav class={`
+    invisible
+    fixed
+    top-[calc(var(--banner-height)+var(--header-margin)+var(--header-height)+var(--hero-margin))]
+    right-(--nav-inset)
+    bottom-[calc(var(--nav-inset)+var(--hero-margin))]
+    left-(--nav-inset)
+    z-50
+    flex
+    flex-col
+    items-center
+    justify-items-start
+    space-y-4
+    overflow-y-auto
+    rounded-4xl
+    bg-nav-mobile-bg
+    px-8
+    py-8
+    opacity-0
+    transition-all
+    duration-300
+    peer-checked:visible
+    peer-checked:top-[calc(var(--banner-height)+var(--header-height))]
+    peer-checked:right-0
+    peer-checked:bottom-0
+    peer-checked:left-0
+    peer-checked:rounded-none
+    peer-checked:opacity-100
+    lg:visible
+    lg:static
+    lg:right-auto
+    lg:left-auto
+    lg:flex-row
+    lg:space-y-0
+    lg:space-x-10
+    lg:overflow-y-hidden
+    lg:bg-transparent
+    lg:px-5
+    lg:py-0
+    lg:opacity-100
+  `}>
+    {menuItems.map((item) => (
+      <div
+        class:list={[
+          `
+            group
+            flex
+            w-full
+            flex-col
+            gap-4
+            lg:w-auto
+            lg:overflow-hidden
+          `,
+          item.hideOnDesktop && 'lg:hidden'
+        ]}
+      >
+        <button
+          class={`
+            inline-flex
+            cursor-pointer
+            items-center
+            justify-between
+            gap-1.5
+            rounded-full
+            text-xl
+            font-medium
+            text-foreground
+            transition-colors
+            focus:outline-none
+            lg:px-3
+            lg:py-2
+            lg:text-sm
+            lg:hover:bg-foreground/10
+            lg:focus:bg-foreground/15
+          `}
+          type="button"
+          onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); setTimeout(() => { this.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300); }"
+        >
+          {item.label}
+          <img
+            src="/img/plus.svg"
+            alt="plus icon"
+            class={`
+              size-3.5
+              text-foreground
+              transition-transform
+              group-focus-within:rotate-45
+              lg:size-2.5
+            `}
+          />
+        </button>
+        <Menu>
+          {item.sections.map((section) => (
+            <MenuSection {...section} />
+          ))}
+        </Menu>
+      </div>
+    ))}
+
+    {/* Contact Us Button */}
+    <a
+      href="/contact"
+      class={`
+        lg:transition-duration-300
+        lg:absolute
+        lg:right-(--header-padding)
+        lg:mt-0
+        lg:h-[calc(var(--header-height)-2*var(--header-padding))]
+        lg:w-auto
+        lg:rounded-lg
+        lg:py-2.5
+        lg:text-sm
+        lg:transition-[border-radius]
+        mt-auto
+        w-full
+        cursor-pointer
+        rounded-xl
+        bg-primary
+        px-8
+        py-3
+        text-center
+        text-base
+        font-medium
+        whitespace-nowrap
+        text-primary-foreground
+        transition-transform
+        lg:hover:rounded-sm
+        lg:active:scale-98
+      `}
+    >
+      {t.common.contactUs}
+    </a>
+  </nav>
+
+  {/* Mobile Hamburger Toggle Label */}
+  <label
+    for="mobile-menu-toggle"
+    class={`
+      absolute
+      right-5
+      z-60
+      flex
+      h-10
+      w-10
+      cursor-pointer
+      flex-col
+      items-center
+      justify-center
+      gap-1.5
+      rounded-lg
+      transition-colors
+      lg:hidden
+    `}
+  >
+    <span class={`
+      block
+      h-0.5
+      w-5
+      origin-center
+      bg-foreground
+      transition-all
+      duration-300
+      group-has-checked/menu:translate-y-1
+      group-has-checked/menu:rotate-45
+    `} />
+    <span class={`
+      block
+      h-0.5
+      w-5
+      origin-center
+      bg-foreground
+      transition-all
+      duration-300
+      group-has-checked/menu:-translate-y-1
+      group-has-checked/menu:-rotate-45
+    `} />
+  </label>
+</header>

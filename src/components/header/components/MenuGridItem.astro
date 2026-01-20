@@ -1,0 +1,65 @@
+---
+export interface Props {
+  icon: string;
+  name: string;
+  symbol: string;
+  href: string;
+}
+
+const { icon, name, symbol, href } = Astro.props;
+---
+
+<a
+  href={href}
+  class={`
+    group
+    flex
+    min-w-0
+    items-center
+    gap-1
+    transition-colors
+    lg:w-full
+    lg:gap-2
+    lg:rounded-full
+    lg:border
+    lg:border-separator
+    lg:bg-background
+    lg:p-1.5
+    lg:pr-3
+    lg:hover:border-muted
+  `}
+>
+  <img
+    src={icon}
+    alt={`${name} icon`}
+    class={`
+      size-(--icon-size-mobile)
+      shrink-0
+      rounded-[4px]
+      lg:size-5.5
+      lg:rounded-full
+    `}
+  />
+  <span class={`
+    hidden
+    min-w-0
+    flex-1
+    truncate
+    text-sm
+    font-medium
+    text-foreground
+    lg:block
+  `}>
+    {name}
+  </span>
+  <span class={`
+    hidden
+    shrink-0
+    text-xs
+    font-medium
+    text-muted
+    lg:block
+  `}>
+    {symbol}
+  </span>
+</a>

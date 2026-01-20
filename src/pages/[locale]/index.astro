@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Banner from '@/components/Banner.astro';
+import Hero from '@/components/home/Hero.astro';
+import { LOCALES } from '@/i18n/utils';
+
+// Static generation for all locales
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({
+    params: { locale },
+  }));
+}
+---
+
+<Layout title="node101">
+  <Banner />
+  <Hero />
+</Layout>

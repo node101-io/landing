@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       root: null,
       rootMargin: "0px",
       threshold: 0.1,
-    }
+    },
   );
 
   targets.forEach((target) => observer.observe(target));

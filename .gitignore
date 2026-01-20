@@ -183,3 +183,5 @@ worker-configuration.d.ts
 .wrangler/
 
 public/static/styles.css
+
+.astro
