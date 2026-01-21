@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 export interface SubItemProps {
   label: string;
   description?: string;
@@ -15,6 +17,8 @@ export interface Props {
 }
 
 const { iconSrc, iconAlt, label, description, href, subItems } = Astro.props;
+const locale = Astro.currentLocale!;
+const localizedHref = href ? getRelativeLocaleUrl(locale, href) : href;
 ---
 
 <div class={`
@@ -22,7 +26,7 @@ const { iconSrc, iconAlt, label, description, href, subItems } = Astro.props;
   flex-col
 `}>
   <a
-    href={href}
+    href={localizedHref}
     class={`
       group/item
       -mx-2.5
@@ -49,10 +53,18 @@ const { iconSrc, iconAlt, label, description, href, subItems } = Astro.props;
       transition-colors
       lg:group-hover/item:text-foreground
     `}>
-      <img src={iconSrc} alt={iconAlt} class={`
-        h-full
-        w-full
-      `} />
+      <img
+        src={iconSrc}
+        alt={iconAlt}
+        width="36"
+        height="36"
+        loading="lazy"
+        decoding="async"
+        class={`
+          h-full
+          w-full
+        `}
+      />
     </span>
     <div class={`
       flex
@@ -91,9 +103,9 @@ const { iconSrc, iconAlt, label, description, href, subItems } = Astro.props;
       before:w-px
       before:bg-separator
     `}>
-      {subItems.map((subItem) => (
+      {subItems.map((subItem: SubItemProps) => (
         <a
-          href={subItem.href}
+          href={subItem.href ? getRelativeLocaleUrl(locale, subItem.href) : subItem.href}
           class={`
             flex
             flex-col

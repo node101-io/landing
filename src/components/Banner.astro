@@ -1,13 +1,39 @@
 ---
-import { getTranslations, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import { getTranslations, DEFAULT_LOCALE, type Locale } from "@/i18n/utils";
+
+// Server Island - her istekte sunucuda render edilir
+export const prerender = false;
 
 const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
 const t = getTranslations(locale);
-const text = t.banner.text;
+
+// KV'den banner verisini çek
+type BannerData = {
+  text: string;
+  link: string;
+};
+
+let banner: BannerData = {
+  text: t.banner.text,
+  link: "#",
+};
+
+try {
+  // Astro 5 + Cloudflare: runtime API üzerinden env erişimi
+  const runtime = Astro.locals.runtime;
+  if (runtime?.env?.KV) {
+    const data = await runtime.env.KV.get(`banner:${locale}`, "json");
+    if (data && typeof data === "object" && "text" in data && typeof data.text === "string") {
+      banner = data as BannerData;
+    }
+  }
+} catch {
+  // KV erişilemezse veya dev modda fallback kullan (beklenen davranış)
+}
 ---
 
 <a
-  href="#"
+  href={banner.link}
   class={`
     flex
     h-(--banner-height)
@@ -21,33 +47,39 @@ const text = t.banner.text;
   `}
 >
   {/* Desktop: centered text */}
-  <div class={`
-    hidden
-    w-full
-    justify-center
-    text-xs
-    md:flex
-  `}>
-    {text}
+  <div
+    class={`
+      hidden
+      w-full
+      justify-center
+      text-xs
+      md:flex
+    `}
+  >
+    {banner.text}
   </div>
 
   {/* Mobile: marquee */}
-  <div class={`
-    flex
-    whitespace-nowrap
-    md:hidden
-  `}>
-    <div class={`
+  <div
+    class={`
       flex
-      animate-marquee
-      text-xs
-      will-change-transform
-      md:animate-none
-    `}>
-      <span class="pr-16">{text}</span>
-      <span class="pr-16">{text}</span>
-      <span class="pr-16">{text}</span>
-      <span class="pr-16">{text}</span>
+      whitespace-nowrap
+      md:hidden
+    `}
+  >
+    <div
+      class={`
+        flex
+        animate-marquee
+        text-xs
+        will-change-transform
+        md:animate-none
+      `}
+    >
+      <span class="pr-16">{banner.text}</span>
+      <span class="pr-16">{banner.text}</span>
+      <span class="pr-16">{banner.text}</span>
+      <span class="pr-16">{banner.text}</span>
     </div>
   </div>
 </a>

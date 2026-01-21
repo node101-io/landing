@@ -1,15 +1,21 @@
 ---
-import { getTranslations, LOCALES, SITE_URL, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import { getTranslations, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import SEO from '@/components/SEO.astro';
 import Curtain from '@/components/Curtain.astro';
-import '@/styles/global.css';
+import '../styles/global.css';
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description, image, type, noindex } = Astro.props;
 const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
 const t = getTranslations(locale);
+const metaDescription = description ?? t.meta.description;
 ---
 
 <!DOCTYPE html>
@@ -18,7 +24,15 @@ const t = getTranslations(locale);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content={t.meta.description} />
+
+    {/* SEO Meta Tags */}
+    <SEO
+      title={title}
+      description={metaDescription}
+      image={image}
+      type={type}
+      noindex={noindex}
+    />
 
     {/* Critical resource preloads */}
     <link
@@ -30,26 +44,12 @@ const t = getTranslations(locale);
       fetchpriority="high"
     />
 
-    {/* SEO: hreflang alternates */}
-    {LOCALES.map((loc) => (
-      <link rel="alternate" hreflang={loc} href={`${SITE_URL}/${loc}/`} />
-    ))}
-    <link rel="alternate" hreflang="x-default" href={`${SITE_URL}/${DEFAULT_LOCALE}/`} />
-
     {/* Google Fonts */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
-    />
-
-    {/* Hero image preload */}
-    <link
-      rel="preload"
-      as="image"
-      href="/img/hero-background.webp"
-      fetchpriority="high"
     />
 
     {/* Favicons */}
@@ -69,6 +69,8 @@ const t = getTranslations(locale);
     <main>
       <slot />
     </main>
-    <script src="/static/fade.js" defer></script>
+    <script>
+      import "@/scripts/fade";
+    </script>
   </body>
 </html>

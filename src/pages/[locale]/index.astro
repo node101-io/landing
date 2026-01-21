@@ -4,7 +4,9 @@ import Banner from '@/components/Banner.astro';
 import Hero from '@/components/home/Hero.astro';
 import { LOCALES } from '@/i18n/utils';
 
-// Static generation for all locales
+// Prerender for all locales
+export const prerender = true;
+
 export function getStaticPaths() {
   return LOCALES.map((locale) => ({
     params: { locale },
@@ -13,6 +15,10 @@ export function getStaticPaths() {
 ---
 
 <Layout title="node101">
-  <Banner />
+  <Banner server:defer>
+    <div slot="fallback" class="flex h-(--banner-height) w-full items-center justify-center bg-primary">
+      <div class="h-3 w-48 animate-pulse rounded bg-primary-foreground/20"></div>
+    </div>
+  </Banner>
   <Hero />
 </Layout>

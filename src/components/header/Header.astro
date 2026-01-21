@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getTranslations, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
 import Menu from './components/Menu.astro';
 import MenuSection from './components/MenuSection.astro';
@@ -42,7 +43,7 @@ const menuItems = getMenuItems(t);
   lg:has-checked:border-surface
   lg:has-checked:bg-header-bg
 `}>
-  <a href="/" class={`
+  <a href={getRelativeLocaleUrl(locale, '/')} class={`
     absolute
     left-4
     z-60
@@ -53,6 +54,8 @@ const menuItems = getMenuItems(t);
     <img
       src="/img/logo.svg"
       alt="node101 logo"
+      width="80"
+      height="24"
       class={`
         h-auto
         w-20
@@ -154,7 +157,10 @@ const menuItems = getMenuItems(t);
           {item.label}
           <img
             src="/img/plus.svg"
-            alt="plus icon"
+            alt=""
+            aria-hidden="true"
+            width="14"
+            height="14"
             class={`
               size-3.5
               text-foreground
@@ -174,7 +180,7 @@ const menuItems = getMenuItems(t);
 
     {/* Contact Us Button */}
     <a
-      href="/contact"
+      href={getRelativeLocaleUrl(locale, '/contact')}
       class={`
         lg:transition-duration-300
         lg:absolute

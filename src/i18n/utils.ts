@@ -5,7 +5,6 @@ import { en } from "./locales/en";
 export type Locale = "tr" | "en";
 export const LOCALES = ["tr", "en"] as const;
 export const DEFAULT_LOCALE: Locale = "tr";
-export const SITE_URL = "https://node101.io";
 
 export const LOCALE_NAMES: Record<Locale, string> = {
   tr: "Türkçe",
@@ -21,5 +20,3 @@ export function getTranslations(
     locale && (locale === "tr" || locale === "en") ? locale : DEFAULT_LOCALE;
   return translations[validLocale];
 }
-
-export const t = getTranslations;

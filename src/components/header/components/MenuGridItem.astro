@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 export interface Props {
   icon: string;
   name: string;
@@ -7,10 +9,11 @@ export interface Props {
 }
 
 const { icon, name, symbol, href } = Astro.props;
+const localizedHref = href ? getRelativeLocaleUrl(Astro.currentLocale!, href) : href;
 ---
 
 <a
-  href={href}
+  href={localizedHref}
   class={`
     group
     flex

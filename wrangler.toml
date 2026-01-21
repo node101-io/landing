@@ -1,3 +1,8 @@
 name = "node101-landing"
-compatibility_date = "2025-01-15"
 pages_build_output_dir = "dist"
+compatibility_date = "2026-01-14"
+compatibility_flags = ["nodejs_compat", "disable_nodejs_process_v2"]
+
+[[kv_namespaces]]
+binding = "KV"
+id = "f74d4ef98a4043878809b9ce411a7006"
