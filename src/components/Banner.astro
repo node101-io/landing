@@ -1,11 +1,11 @@
 ---
-import { getTranslations, DEFAULT_LOCALE, type Locale } from "@/i18n/utils";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 // Server Island - her istekte sunucuda render edilir
 export const prerender = false;
 
-const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
-const t = getTranslations(locale);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 // KV'den banner verisini çek
 type BannerData = {
@@ -14,7 +14,7 @@ type BannerData = {
 };
 
 let banner: BannerData = {
-  text: t.banner.text,
+  text: t('banner.text'),
   link: "#",
 };
 
@@ -22,7 +22,7 @@ try {
   // Astro 5 + Cloudflare: runtime API üzerinden env erişimi
   const runtime = Astro.locals.runtime;
   if (runtime?.env?.KV) {
-    const data = await runtime.env.KV.get(`banner:${locale}`, "json");
+    const data = await runtime.env.KV.get(`banner:${lang}`, "json");
     if (data && typeof data === "object" && "text" in data && typeof data.text === "string") {
       banner = data as BannerData;
     }

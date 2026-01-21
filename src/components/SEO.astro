@@ -1,6 +1,6 @@
 ---
 import { getAbsoluteLocaleUrl } from 'astro:i18n';
-import { LOCALES, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import { getLangFromUrl, LOCALES, DEFAULT_LANG, type Lang } from '@/i18n/utils';
 
 export interface Props {
   title: string;
@@ -22,11 +22,11 @@ const {
   noindex = false,
 } = Astro.props;
 
-const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
+const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
 
-const ogLocale = locale === 'tr' ? 'tr_TR' : 'en_US';
+const ogLocale = lang === 'tr' ? 'tr_TR' : 'en_US';
 ---
 
 {/* Primary Meta Tags */}
@@ -45,8 +45,8 @@ const ogLocale = locale === 'tr' ? 'tr_TR' : 'en_US';
 <meta property="og:image" content={imageURL} />
 <meta property="og:site_name" content="node101" />
 <meta property="og:locale" content={ogLocale} />
-{LOCALES.filter((l) => l !== locale).map((altLocale) => (
-  <meta property="og:locale:alternate" content={altLocale === 'tr' ? 'tr_TR' : 'en_US'} />
+{LOCALES.filter((l) => l !== lang).map((altLang) => (
+  <meta property="og:locale:alternate" content={altLang === 'tr' ? 'tr_TR' : 'en_US'} />
 ))}
 {type === 'article' && publishedTime && (
   <meta property="article:published_time" content={publishedTime} />
@@ -65,6 +65,6 @@ const ogLocale = locale === 'tr' ? 'tr_TR' : 'en_US';
 
 {/* SEO: hreflang alternates */}
 {LOCALES.map((loc) => (
-  <link rel="alternate" hreflang={loc} href={getAbsoluteLocaleUrl(loc, Astro.url.pathname.replace(`/${locale}`, ''))} />
+  <link rel="alternate" hreflang={loc} href={getAbsoluteLocaleUrl(loc, Astro.url.pathname.replace(`/${lang}`, ''))} />
 ))}
-<link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl(DEFAULT_LOCALE, Astro.url.pathname.replace(`/${locale}`, ''))} />
+<link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl(DEFAULT_LANG, Astro.url.pathname.replace(`/${lang}`, ''))} />

@@ -1,12 +1,12 @@
 ---
 import { Image, getImage } from 'astro:assets';
-import { getTranslations, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import Header from '@/components/header/Header.astro';
 import isoBadge from '@/assets/images/iso-badge.webp';
 import heroBackground from '@/assets/images/hero-background.webp';
 
-const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
-const t = getTranslations(locale);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
 ---
@@ -73,7 +73,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
         sm:text-sm
         md:text-base
       `}>
-        {t.hero.badge}
+        {t('hero.badge')}
       </span>
       <img
         src="/img/hero-subtext-icon.svg"
@@ -105,8 +105,8 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
       lg:text-6xl
       xl:text-7xl
     `}>
-      {t.hero.titleLine1}
-      <span class="block">{t.hero.titleLine2}</span>
+      {t('hero.titleLine1')}
+      <span class="block">{t('hero.titleLine2')}</span>
     </h1>
 
     <p class={`
@@ -120,7 +120,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
       sm:text-base
       md:text-lg
     `}>
-      {t.hero.description}
+      {t('hero.description')}
     </p>
   </section>
 

@@ -1,22 +1,20 @@
-import type { Translations } from "./locales/types";
-import { tr } from "./locales/tr";
-import { en } from "./locales/en";
+import { ui, defaultLang, languages } from './ui';
 
-export type Locale = "tr" | "en";
-export const LOCALES = ["tr", "en"] as const;
-export const DEFAULT_LOCALE: Locale = "tr";
+export type Lang = keyof typeof ui;
 
-export const LOCALE_NAMES: Record<Locale, string> = {
-  tr: "Türkçe",
-  en: "English",
-};
+// Re-export for compatibility
+export const LOCALES = Object.keys(ui) as Lang[];
+export const DEFAULT_LANG = defaultLang;
+export { languages };
 
-const translations: Record<Locale, Translations> = { tr, en };
+export function getLangFromUrl(url: URL): Lang {
+  const [, lang] = url.pathname.split('/');
+  if (lang in ui) return lang as Lang;
+  return defaultLang;
+}
 
-export function getTranslations(
-  locale: Locale | string | undefined,
-): Translations {
-  const validLocale =
-    locale && (locale === "tr" || locale === "en") ? locale : DEFAULT_LOCALE;
-  return translations[validLocale];
+export function useTranslations(lang: Lang) {
+  return function t(key: keyof typeof ui[typeof defaultLang]) {
+    return ui[lang][key] || ui[defaultLang][key];
+  };
 }

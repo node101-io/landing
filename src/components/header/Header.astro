@@ -1,12 +1,12 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getTranslations, DEFAULT_LOCALE, type Locale } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import Menu from './components/Menu.astro';
 import MenuSection from './components/MenuSection.astro';
 import { getMenuItems } from './menu-data';
 
-const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
-const t = getTranslations(locale);
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const menuItems = getMenuItems(t);
 ---
 
@@ -43,7 +43,7 @@ const menuItems = getMenuItems(t);
   lg:has-checked:border-surface
   lg:has-checked:bg-header-bg
 `}>
-  <a href={getRelativeLocaleUrl(locale, '/')} class={`
+  <a href={getRelativeLocaleUrl(lang, '/')} class={`
     absolute
     left-4
     z-60
@@ -68,7 +68,7 @@ const menuItems = getMenuItems(t);
   <input
     type="checkbox"
     id="mobile-menu-toggle"
-    aria-label={t.nav.mobileMenuToggle}
+    aria-label={t('nav.mobileMenuToggle')}
     class={`
       peer
       sr-only
@@ -180,7 +180,7 @@ const menuItems = getMenuItems(t);
 
     {/* Contact Us Button */}
     <a
-      href={getRelativeLocaleUrl(locale, '/contact')}
+      href={getRelativeLocaleUrl(lang, '/contact')}
       class={`
         lg:transition-duration-300
         lg:absolute
@@ -209,7 +209,7 @@ const menuItems = getMenuItems(t);
         lg:active:scale-98
       `}
     >
-      {t.common.contactUs}
+      {t('common.contactUs')}
     </a>
   </nav>
 
