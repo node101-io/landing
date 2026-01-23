@@ -22,12 +22,12 @@ export const ui = {
 
     // Hero
     'hero.badge': 'TURKEY\'S LARGEST VALIDATOR',
-    'hero.titleLine1': 'ACCESS TO BLOCKCHAINS',
-    'hero.titleLine2': 'MADE POSSIBLE WITH US',
+    'hero.titleLine1': 'BUILD SOMETHING',
+    'hero.titleLine2': 'UNORDINARY',
     'hero.description': 'node101 has been Turkey\'s largest blockchain infrastructure provider since 2022, offering validation, product development, consulting, and enterprise RPC solutions',
 
     // Trusted By
-    'trustedBy.description': 'Over 40 institutions worldwide trust node101 for crypto investments and RPC services',
+    'trustedBy.description': 'Over 40 institutions worldwide trust node101 for crypto staking, consultancy and RPC services',
 
     // Nav
     'nav.investment': 'Investment',
