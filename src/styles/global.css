@@ -5,7 +5,7 @@
   --font-sans:
     "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", arial,
     sans-serif;
-  --font-display: "Node Sans", var(--font-sans);
+  --font-display: "101 Display", var(--font-sans);
 
   /* Radius */
   --radius-sm: 0.75rem;
@@ -94,10 +94,10 @@
 }
 
 @font-face {
-  font-family: "Node Sans";
+  font-family: "101 Display";
   src:
-    url("/fonts/node-sans.woff2") format("woff2"),
-    url("/fonts/node-sans.ttf") format("truetype");
+    url("/fonts/101-display.woff2") format("woff2"),
+    url("/fonts/101-display.ttf") format("truetype");
   font-weight: 100 900;
   font-display: swap;
 }
