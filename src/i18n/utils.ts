@@ -1,6 +1,8 @@
 import { ui, defaultLang, languages } from './ui';
 
 export type Lang = keyof typeof ui;
+export type TranslationKey = keyof typeof ui[typeof defaultLang];
+export type TranslationFn = (key: TranslationKey) => string;
 
 // Re-export for compatibility
 export const LOCALES = Object.keys(ui) as Lang[];

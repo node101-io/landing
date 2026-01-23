@@ -52,6 +52,9 @@ const metaDescription = description ?? t('meta.description');
       rel="stylesheet"
     />
 
+    {/* Theme color */}
+    <meta name="theme-color" content="#fafafa" />
+
     {/* Favicons */}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -65,8 +68,14 @@ const metaDescription = description ?? t('meta.description');
     bg-background
     font-sans
   `}>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-200 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+    >
+      {t('common.skipToContent')}
+    </a>
     <Curtain />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <script>

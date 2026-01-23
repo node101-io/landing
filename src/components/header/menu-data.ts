@@ -5,6 +5,7 @@ import type {
   ListGroup,
   SectionType,
 } from "./components/MenuSection.astro";
+import type { TranslationFn } from "@/i18n/utils";
 
 export type MenuSectionData = {
   type: SectionType;
@@ -22,8 +23,6 @@ export type MenuItem = {
   hideOnDesktop?: boolean;
 };
 
-// Translation function type
-type TranslationFn = (key: string) => string;
 
 // =============================================================================
 // STATIC DATA

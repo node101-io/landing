@@ -22,7 +22,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
   rounded-[calc(var(--radius-4xl)+var(--hero-margin))]
   bg-cover
   bg-center
-  transition-all
+  transition-[margin,border-radius]
   duration-300
   has-checked:m-0
   has-checked:rounded-none
@@ -95,6 +95,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
 
     <h1 class={`
       max-w-5xl
+      text-balance
       font-display
       text-3xl
       leading-tight
@@ -159,6 +160,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
           hover:text-primary
         `}
         target="_blank"
+        rel="noopener noreferrer"
       >
         GitHub
       </a>
@@ -169,6 +171,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
           hover:text-primary
         `}
         target="_blank"
+        rel="noopener noreferrer"
       >
         X
       </a>

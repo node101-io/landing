@@ -16,6 +16,7 @@ export const ui = {
     'common.learnMore': 'Learn More',
     'common.allNetworks': 'View All Networks',
     'common.viewAllProtocols': 'View All Protocols',
+    'common.skipToContent': 'Skip to content',
 
     // Banner
     'banner.text': 'node101 validates over 27 networks, creates tools, and provides RPCs making it the largest provider in Türkiye since 2022.',
@@ -162,6 +163,7 @@ export const ui = {
     'common.learnMore': 'Daha Fazla',
     'common.allNetworks': 'Tüm Ağları Gör',
     'common.viewAllProtocols': 'Tüm Protokolleri Gör',
+    'common.skipToContent': 'İçeriğe geç',
 
     // Banner
     'banner.text': 'node101, $40M+ kripto varlık yatırımıyla Türkiye\'nin en büyük validatörü.',
