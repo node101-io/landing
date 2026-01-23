@@ -30,6 +30,12 @@ export const ui = {
     // Trusted By
     'trustedBy.description': 'Over 40 institutions worldwide trust node101 for crypto staking, consultancy and RPC services',
 
+    // Services Section
+    'services.title': 'What can node101 provide to you?',
+    'services.staking': 'Staking Services',
+    'services.rpc': 'RPC Services',
+    'services.security': 'Security & Compliance',
+
     // Nav
     'nav.investment': 'Investment',
     'nav.rpc': 'RPC',
@@ -176,6 +182,12 @@ export const ui = {
 
     // Trusted By
     'trustedBy.description': 'Dünya genelinde 40\'ın üzerinde kurum, kripto yatırımları ve RPC hizmetleri için node101\'e güveniyor',
+
+    // Services Section
+    'services.title': 'node101 size ne sağlayabilir?',
+    'services.staking': 'Staking Hizmetleri',
+    'services.rpc': 'RPC Hizmetleri',
+    'services.security': 'Güvenlik & Uyumluluk',
 
     // Nav
     'nav.investment': 'Yatırım',

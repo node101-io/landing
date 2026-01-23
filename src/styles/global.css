@@ -23,6 +23,7 @@
   --color-accent-muted: #a48c7e;
   --color-footnote: #6a4d42;
   --color-separator: #ded6d2;
+  --color-lav-active: #d9dbfc;
 
   /* Semantic tokens */
   --color-background: var(--color-gray-50);
@@ -41,6 +42,7 @@
   --color-secondary-foreground: var(--color-espresso);
 
   /* Spacing */
+  --section-margin: 1.5rem;
   --hero-margin: 0.625rem;
   --hero-margin-total: calc(var(--hero-margin) * 2);
   --header-margin: 1rem;

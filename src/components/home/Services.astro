@@ -1,0 +1,188 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const services = [
+  {
+    id: 'staking',
+    label: t('services.staking'),
+    cardTitle: 'Staking',
+    cardDescription: 'Secure and reliable staking infrastructure for institutional and retail investors.',
+  },
+  {
+    id: 'rpc',
+    label: t('services.rpc'),
+    cardTitle: 'RPC',
+    cardDescription: 'High-performance RPC endpoints with 99.9% uptime guarantee.',
+  },
+  {
+    id: 'security',
+    label: ['Security &', 'Compliance'],
+    cardTitle: 'Security',
+    cardDescription: 'Enterprise-grade security and compliance solutions for blockchain operations.',
+  },
+];
+---
+
+<section
+  class="m-(--section-margin) flex h-[85dvh] w-[calc(100%-var(--section-margin)*2)] flex-col overflow-hidden rounded-4xl bg-espresso lg:flex-row"
+  aria-label="Services"
+>
+  <!-- Left Side: Title and Clickable Labels -->
+  <div class="flex flex-col justify-between p-6 lg:w-1/2 lg:p-10">
+    <h2 class="mt-8 font-sans text-xl font-normal text-cream lg:mt-16">
+      {t('services.title')}
+    </h2>
+
+    <div class="flex flex-col gap-6">
+      {services.map((service, index) => (
+        <div class="relative">
+          <input
+            type="radio"
+            name="service-selector"
+            id={`service-${service.id}`}
+            value={service.id}
+            checked={index === 1}
+            class="peer sr-only"
+          />
+          <label
+            for={`service-${service.id}`}
+            class={`
+              relative
+              block
+              cursor-pointer
+              font-sans
+              text-[clamp(36px,5vw,84px)]
+              font-normal
+              leading-none
+              text-cream
+              transition-all
+              duration-500
+              pl-0
+              peer-checked:text-lav-active
+              peer-checked:pl-7
+            `}
+          >
+            <!-- Star Icon -->
+            <img
+              src="/img/star.svg"
+              alt=""
+              aria-hidden="true"
+              class={`
+                absolute
+                left-0
+                top-[0.15em]
+                size-5
+                opacity-0
+                scale-50
+                transition-all
+                duration-500
+              `}
+            />
+            {Array.isArray(service.label)
+              ? service.label.map((line, i) => <>{i > 0 && <br />}{line}</>)
+              : service.label}
+          </label>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Right Side: Sliding Cards -->
+  <div class="relative flex-1 pl-2 pr-6 lg:w-1/2 lg:pl-4 lg:pr-10">
+    <!-- Top gradient -->
+    <div class="pointer-events-none absolute inset-x-0 top-0 z-10 h-[14dvh] bg-gradient-to-b from-espresso to-transparent"></div>
+    <!-- Bottom gradient -->
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[14dvh] bg-gradient-to-t from-espresso to-transparent"></div>
+    <div class="relative h-full" id="services-cards-container">
+      {services.map((service, index) => (
+        <div
+          class="services-card absolute inset-x-0 h-[65%] rounded-xl bg-cream p-6 lg:p-8"
+          data-service={service.id}
+          data-index={index}
+        >
+          <h3 class="font-sans text-2xl font-normal text-espresso lg:text-3xl">
+            {service.cardTitle}
+          </h3>
+          <p class="mt-4 text-base text-espresso/70 lg:text-lg">
+            {service.cardDescription}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initServicesSection() {
+    const radios = document.querySelectorAll<HTMLInputElement>('input[name="service-selector"]');
+    const cards = document.querySelectorAll<HTMLElement>('.services-card');
+    const serviceOrder = ['staking', 'rpc', 'security'];
+
+    const CARD_HEIGHT = 65; // percentage
+    const CENTER_POSITION = 17.5; // percentage from top
+    const GAP = 4; // percentage gap between cards
+    const OFFSET = CARD_HEIGHT + GAP; // 69%
+
+    function updateCards(selectedId: string) {
+      const selectedIndex = serviceOrder.indexOf(selectedId);
+
+      cards.forEach((card) => {
+        const cardService = card.dataset.service;
+        if (!cardService) return;
+
+        const cardIndex = serviceOrder.indexOf(cardService);
+        const relativeIndex = cardIndex - selectedIndex;
+
+        const topPosition = CENTER_POSITION + (relativeIndex * OFFSET);
+        const zIndex = relativeIndex === 0 ? 3 : 2;
+
+        card.style.top = `${topPosition}%`;
+        card.style.zIndex = String(zIndex);
+      });
+    }
+
+    function updateStars() {
+      radios.forEach((radio) => {
+        const label = radio.nextElementSibling as HTMLLabelElement;
+        const star = label?.querySelector('img');
+        if (star) {
+          if (radio.checked) {
+            star.classList.remove('opacity-0', 'scale-50');
+            star.classList.add('opacity-100', 'scale-100');
+          } else {
+            star.classList.remove('opacity-100', 'scale-100');
+            star.classList.add('opacity-0', 'scale-50');
+          }
+        }
+      });
+    }
+
+    radios.forEach((radio) => {
+      radio.addEventListener('change', () => {
+        if (radio.checked) {
+          updateCards(radio.value);
+          updateStars();
+        }
+      });
+    });
+
+    // Initialize
+    const checkedRadio = document.querySelector<HTMLInputElement>('input[name="service-selector"]:checked');
+    if (checkedRadio) {
+      updateCards(checkedRadio.value);
+      updateStars();
+    }
+  }
+
+  initServicesSection();
+  document.addEventListener('astro:page-load', initServicesSection);
+</script>
+
+<style>
+  .services-card {
+    transition: top 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+</style>
