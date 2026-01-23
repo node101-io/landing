@@ -9,8 +9,8 @@
     "preview": "astro preview",
     "deploy": "astro build && wrangler pages deploy",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix && prettier --write --ignore-pattern pnpm-lock.yaml .",
-    "format": "prettier --write --ignore-pattern pnpm-lock.yaml ."
+    "lint:fix": "eslint . --fix && prettier --write . '!pnpm-lock.yaml'",
+    "format": "prettier --write . '!pnpm-lock.yaml'"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",

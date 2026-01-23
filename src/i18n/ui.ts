@@ -1,321 +1,414 @@
 export const languages = {
-  tr: 'Türkçe',
-  en: 'English',
+  tr: "Türkçe",
+  en: "English",
 } as const;
 
-export const defaultLang = 'tr';
+export const defaultLang = "tr";
 
 export const ui = {
   en: {
     // Meta
-    'meta.title': 'node101',
-    'meta.description': 'node101 has been Turkey\'s largest blockchain infrastructure provider since 2022, offering validation, product development, consulting, and enterprise RPC solutions',
+    "meta.title": "node101",
+    "meta.description":
+      "node101 has been Turkey's largest blockchain infrastructure provider since 2022, offering validation, product development, consulting, and enterprise RPC solutions",
 
     // Common
-    'common.contactUs': 'Contact Us',
-    'common.learnMore': 'Learn More',
-    'common.allNetworks': 'View All Networks',
-    'common.viewAllProtocols': 'View All Protocols',
-    'common.skipToContent': 'Skip to content',
+    "common.contactUs": "Contact Us",
+    "common.learnMore": "Learn More",
+    "common.allNetworks": "View All Networks",
+    "common.viewAllProtocols": "View All Protocols",
+    "common.skipToContent": "Skip to content",
 
     // Banner
-    'banner.text': 'node101 validates over 27 networks, creates tools, and provides RPCs making it the largest provider in Türkiye since 2022.',
+    "banner.text":
+      "node101 validates over 27 networks, creates tools, and provides RPCs making it the largest provider in Türkiye since 2022.",
 
     // Hero
-    'hero.badge': 'TURKEY\'S LARGEST VALIDATOR',
-    'hero.titleLine1': 'BUILD SOMETHING',
-    'hero.titleLine2': 'UNORDINARY',
-    'hero.description': 'node101 has been Turkey\'s largest blockchain infrastructure provider since 2022, offering validation, product development, consulting, and enterprise RPC solutions',
+    "hero.badge": "TURKEY'S LARGEST VALIDATOR",
+    "hero.titleLine1": "BUILD SOMETHING",
+    "hero.titleLine2": "UNORDINARY",
+    "hero.description":
+      "node101 has been Turkey's largest blockchain infrastructure provider since 2022, offering validation, product development, consulting, and enterprise RPC solutions",
 
     // Trusted By
-    'trustedBy.description': 'Over 40 institutions worldwide trust node101 for crypto staking, consultancy and RPC services',
+    "trustedBy.description":
+      "Over 40 institutions worldwide trust node101 for crypto staking, consultancy and RPC services",
 
     // Services Section
-    'services.title': 'What can node101 provide to you?',
-    'services.staking': 'Staking Services',
-    'services.rpc': 'RPC Services',
-    'services.security': 'Security & Compliance',
-    'services.staking.description': "Stake across 27+ blockchain networks with premium rewards all powered by node101's trusted infrastructure. With node101, you earn more.",
-    'services.rpc.description': 'node101 provides fast, secure RPC access to all major blockchain networks, from Ethereum to Solana, ensuring your applications are powered by enterprise-grade infrastructure.',
-    'services.security.description': 'node101 is ISO27001 certified and AAA verified, making us the most trusted validator in Turkiye and one of the few globally. World-class security and compliance for institutions.',
+    "services.title": "What can node101 provide to you?",
+    "services.staking": "Staking Services",
+    "services.rpc": "RPC Services",
+    "services.security": "Security & Compliance",
+    "services.staking.description":
+      "Stake across 27+ blockchain networks with premium rewards all powered by node101's trusted infrastructure. With node101, you earn more.",
+    "services.rpc.description":
+      "node101 provides fast, secure RPC access to all major blockchain networks, from Ethereum to Solana, ensuring your applications are powered by enterprise-grade infrastructure.",
+    "services.security.description":
+      "node101 is ISO27001 certified and AAA verified, making us the most trusted validator in Turkiye and one of the few globally. World-class security and compliance for institutions.",
 
     // Nav
-    'nav.investment': 'Investment',
-    'nav.rpc': 'RPC',
-    'nav.services': 'Services',
-    'nav.eventsAndCommunity': 'Community and Events',
-    'nav.products': 'Products',
-    'nav.corporate': 'Corporate',
-    'nav.mobileMenuToggle': 'Toggle mobile menu',
+    "nav.investment": "Investment",
+    "nav.rpc": "RPC",
+    "nav.services": "Services",
+    "nav.eventsAndCommunity": "Community and Events",
+    "nav.products": "Products",
+    "nav.corporate": "Corporate",
+    "nav.mobileMenuToggle": "Toggle mobile menu",
 
     // Menu - Investment
-    'menu.investment.popularBlockchains': 'POPULAR BLOCKCHAINS WE SUPPORT',
-    'menu.investment.recurringYield': 'RECURRING YIELD',
-    'menu.investment.corporateInvestment': 'CORPORATE INVESTMENT',
-    'menu.investment.btcRestaking.label': 'BTC Yield',
-    'menu.investment.btcRestaking.description': 'Stake your Bitcoin on Babylon',
-    'menu.investment.ethRestaking.label': 'ETH Restaking',
-    'menu.investment.ethRestaking.description': 'Restake your Ethereum with EigenLayer',
-    'menu.investment.whitelabelValidation.label': 'Whitelabel Validation',
-    'menu.investment.whitelabelValidation.description': 'Set up your own validator, let node101 run it',
-    'menu.investment.referralProgram.label': 'Referral Program',
-    'menu.investment.referralProgram.description': 'Create partnerships and referrals, earn a share',
-    'menu.investment.footnote': 'Not all services are available on all networks we support. More information can be found on the network pages.',
+    "menu.investment.popularBlockchains": "POPULAR BLOCKCHAINS WE SUPPORT",
+    "menu.investment.recurringYield": "RECURRING YIELD",
+    "menu.investment.corporateInvestment": "CORPORATE INVESTMENT",
+    "menu.investment.btcRestaking.label": "BTC Yield",
+    "menu.investment.btcRestaking.description": "Stake your Bitcoin on Babylon",
+    "menu.investment.ethRestaking.label": "ETH Restaking",
+    "menu.investment.ethRestaking.description":
+      "Restake your Ethereum with EigenLayer",
+    "menu.investment.whitelabelValidation.label": "Whitelabel Validation",
+    "menu.investment.whitelabelValidation.description":
+      "Set up your own validator, let node101 run it",
+    "menu.investment.referralProgram.label": "Referral Program",
+    "menu.investment.referralProgram.description":
+      "Create partnerships and referrals, earn a share",
+    "menu.investment.footnote":
+      "Not all services are available on all networks we support. More information can be found on the network pages.",
 
     // Menu - RPC
-    'menu.rpc.rpcServices': 'RPC SERVICES',
-    'menu.rpc.currentlyPopular': 'CURRENTLY POPULAR',
-    'menu.rpc.new': 'NEW',
-    'menu.rpc.mostUsed': 'MOST USED',
-    'menu.rpc.pricing.label': 'Pricing',
-    'menu.rpc.pricing.description': 'RPC service pricing details',
-    'menu.rpc.freeRpc.label': 'Free RPC',
-    'menu.rpc.freeRpc.description': 'Free RPC service details',
-    'menu.rpc.documents.label': 'Documents',
-    'menu.rpc.documents.description': 'All documents related to RPC service',
+    "menu.rpc.rpcServices": "RPC SERVICES",
+    "menu.rpc.currentlyPopular": "CURRENTLY POPULAR",
+    "menu.rpc.new": "NEW",
+    "menu.rpc.mostUsed": "MOST USED",
+    "menu.rpc.pricing.label": "Pricing",
+    "menu.rpc.pricing.description": "RPC service pricing details",
+    "menu.rpc.freeRpc.label": "Free RPC",
+    "menu.rpc.freeRpc.description": "Free RPC service details",
+    "menu.rpc.documents.label": "Documents",
+    "menu.rpc.documents.description": "All documents related to RPC service",
 
     // Menu - Services
-    'menu.services.nodeServices': 'NODE SERVICES',
-    'menu.services.consulting': 'CONSULTING',
-    'menu.services.blockchainProduction': 'BLOCKCHAIN PRODUCTION',
-    'menu.services.eventsAndCommunity': 'EVENTS AND COMMUNITY',
-    'menu.services.cryptoInvestment.label': 'Invest in Crypto with node101',
-    'menu.services.cryptoInvestment.description': 'Stake on our validated nodes, earn crypto',
-    'menu.services.whitelabelValidation.label': 'Whitelabel Validation',
-    'menu.services.whitelabelValidation.description': 'Set up your own validator, let node101 run it',
-    'menu.services.whitelabelValidation.subItems.btcMining.label': 'BTC Whitelabel Mining',
-    'menu.services.whitelabelValidation.subItems.btcMining.description': 'Let us set up and run a Bitcoin miner for you',
-    'menu.services.whitelabelValidation.subItems.ethValidation.label': 'ETH Whitelabel Validation',
-    'menu.services.whitelabelValidation.subItems.ethValidation.description': 'Let us set up and run an Ethereum node for you',
-    'menu.services.btcRestaking.label': 'BTC Yield',
-    'menu.services.btcRestaking.description': 'Stake your Bitcoin on Babylon, earn crypto',
-    'menu.services.ethRestaking.label': 'ETH Restaking',
-    'menu.services.ethRestaking.description': 'Restake your Ethereum with EigenLayer',
-    'menu.services.architecturalConsulting.label': 'Architectural Consulting',
-    'menu.services.architecturalConsulting.description': 'Let\'s build the technical architecture you need together',
-    'menu.services.blockchainConsulting.label': 'Blockchain 101 Consulting',
-    'menu.services.blockchainConsulting.description': 'If you\'re interested in crypto assets and blockchain but don\'t know what to do, reach out to node101',
-    'menu.services.productDevelopment.label': 'Product Development',
-    'menu.services.productDevelopment.description': 'We design and build the complete product or a part of it with our experienced team',
-    'menu.services.turkishEcosystem.label': 'Gateway to Turkish Ecosystem',
-    'menu.services.turkishEcosystem.description': 'node101 plans and implements blockchain companies\' outreach to Turkish developers with its partners.',
-    'menu.services.turkishEcosystem.subItems.suiTurkey': 'Sui Turkey Community Events',
-    'menu.services.turkishEcosystem.subItems.celestiaTurkey': 'Celestia Turkey Community Events',
-    'menu.services.buildersWeek.label': 'Builders Week Istanbul',
-    'menu.services.buildersWeek.description': 'BWI is a week-long series of events designed to scale the blockchain ecosystem.',
-    'menu.services.ethIstanbul.label': 'ETHIstanbul',
-    'menu.services.ethIstanbul.description': 'A conference and hackathon aimed at fostering Ethereum philosophy among young talents',
-    'menu.services.cryptist.label': 'Cryptist',
-    'menu.services.cryptist.description': 'Cryptist is an annual community-driven event focused on zero-knowledge, privacy, and cryptography',
+    "menu.services.nodeServices": "NODE SERVICES",
+    "menu.services.consulting": "CONSULTING",
+    "menu.services.blockchainProduction": "BLOCKCHAIN PRODUCTION",
+    "menu.services.eventsAndCommunity": "EVENTS AND COMMUNITY",
+    "menu.services.cryptoInvestment.label": "Invest in Crypto with node101",
+    "menu.services.cryptoInvestment.description":
+      "Stake on our validated nodes, earn crypto",
+    "menu.services.whitelabelValidation.label": "Whitelabel Validation",
+    "menu.services.whitelabelValidation.description":
+      "Set up your own validator, let node101 run it",
+    "menu.services.whitelabelValidation.subItems.btcMining.label":
+      "BTC Whitelabel Mining",
+    "menu.services.whitelabelValidation.subItems.btcMining.description":
+      "Let us set up and run a Bitcoin miner for you",
+    "menu.services.whitelabelValidation.subItems.ethValidation.label":
+      "ETH Whitelabel Validation",
+    "menu.services.whitelabelValidation.subItems.ethValidation.description":
+      "Let us set up and run an Ethereum node for you",
+    "menu.services.btcRestaking.label": "BTC Yield",
+    "menu.services.btcRestaking.description":
+      "Stake your Bitcoin on Babylon, earn crypto",
+    "menu.services.ethRestaking.label": "ETH Restaking",
+    "menu.services.ethRestaking.description":
+      "Restake your Ethereum with EigenLayer",
+    "menu.services.architecturalConsulting.label": "Architectural Consulting",
+    "menu.services.architecturalConsulting.description":
+      "Let's build the technical architecture you need together",
+    "menu.services.blockchainConsulting.label": "Blockchain 101 Consulting",
+    "menu.services.blockchainConsulting.description":
+      "If you're interested in crypto assets and blockchain but don't know what to do, reach out to node101",
+    "menu.services.productDevelopment.label": "Product Development",
+    "menu.services.productDevelopment.description":
+      "We design and build the complete product or a part of it with our experienced team",
+    "menu.services.turkishEcosystem.label": "Gateway to Turkish Ecosystem",
+    "menu.services.turkishEcosystem.description":
+      "node101 plans and implements blockchain companies' outreach to Turkish developers with its partners.",
+    "menu.services.turkishEcosystem.subItems.suiTurkey":
+      "Sui Turkey Community Events",
+    "menu.services.turkishEcosystem.subItems.celestiaTurkey":
+      "Celestia Turkey Community Events",
+    "menu.services.buildersWeek.label": "Builders Week Istanbul",
+    "menu.services.buildersWeek.description":
+      "BWI is a week-long series of events designed to scale the blockchain ecosystem.",
+    "menu.services.ethIstanbul.label": "ETHIstanbul",
+    "menu.services.ethIstanbul.description":
+      "A conference and hackathon aimed at fostering Ethereum philosophy among young talents",
+    "menu.services.cryptist.label": "Cryptist",
+    "menu.services.cryptist.description":
+      "Cryptist is an annual community-driven event focused on zero-knowledge, privacy, and cryptography",
 
     // Menu - Products
-    'menu.products.protocol': 'PROTOCOL',
-    'menu.products.application': 'APPLICATION',
-    'menu.products.tooling': 'TOOLING',
-    'menu.products.other': 'OTHER',
-    'menu.products.pulsarChain.label': 'Pulsar Chain',
-    'menu.products.pulsarChain.description': 'Bridges Zero-Knowledge infrastructure with Interchain infrastructure',
-    'menu.products.zkvot.label': 'zkVot',
-    'menu.products.zkvot.description': 'Privacy and decentralization in voting processes',
-    'menu.products.hackathonProducts.label': 'Our Hackathon Products',
-    'menu.products.hackathonProducts.description': 'Discover what we build at hackathons',
-    'menu.products.pulsar.label': 'Pulsar',
-    'menu.products.pulsar.description': 'The first decentralized exchange built with Zero-Knowledge infrastructure',
-    'menu.products.punch.label': 'PUNCH',
-    'menu.products.punch.description': 'Decentralized publishing platform',
-    'menu.products.validatier.label': 'Validatier',
-    'menu.products.validatier.description': 'Access all activities of blockchain developers',
-    'menu.products.blockchainDevReport.label': 'Blockchain Developer Report',
-    'menu.products.blockchainDevReport.description': 'Access all activities of blockchain developers',
+    "menu.products.protocol": "PROTOCOL",
+    "menu.products.application": "APPLICATION",
+    "menu.products.tooling": "TOOLING",
+    "menu.products.other": "OTHER",
+    "menu.products.pulsarChain.label": "Pulsar Chain",
+    "menu.products.pulsarChain.description":
+      "Bridges Zero-Knowledge infrastructure with Interchain infrastructure",
+    "menu.products.zkvot.label": "zkVot",
+    "menu.products.zkvot.description":
+      "Privacy and decentralization in voting processes",
+    "menu.products.hackathonProducts.label": "Our Hackathon Products",
+    "menu.products.hackathonProducts.description":
+      "Discover what we build at hackathons",
+    "menu.products.pulsar.label": "Pulsar",
+    "menu.products.pulsar.description":
+      "The first decentralized exchange built with Zero-Knowledge infrastructure",
+    "menu.products.punch.label": "PUNCH",
+    "menu.products.punch.description": "Decentralized publishing platform",
+    "menu.products.validatier.label": "Validatier",
+    "menu.products.validatier.description":
+      "Access all activities of blockchain developers",
+    "menu.products.blockchainDevReport.label": "Blockchain Developer Report",
+    "menu.products.blockchainDevReport.description":
+      "Access all activities of blockchain developers",
 
     // Menu - Corporate
-    'menu.corporate.corporateExpertise': 'CORPORATE EXPERTISE',
-    'menu.corporate.node101': 'node101',
-    'menu.corporate.dataCenter': 'DATA CENTER',
-    'menu.corporate.financialInstitutions.label': 'Financial Institutions',
-    'menu.corporate.financialInstitutions.description': 'Discover our blockchain technical infrastructure solutions',
-    'menu.corporate.centralizedExchanges.label': 'Centralized Crypto Exchanges',
-    'menu.corporate.centralizedExchanges.description': 'Access validation, RPC & API, and other technical services',
-    'menu.corporate.custodials.label': 'Custodials',
-    'menu.corporate.custodials.description': 'Use our Staking APIs with 99% uptime guaranteed SLAs for your blockchain operations',
-    'menu.corporate.foundations.label': 'Foundations',
-    'menu.corporate.foundations.description': 'Safely code, launch to mainnet, and grow your protocol with node101',
-    'menu.corporate.companies.label': 'Companies',
-    'menu.corporate.companies.description': 'Take your first step into the blockchain world with node101',
-    'menu.corporate.aboutNode101.label': 'About node101',
-    'menu.corporate.aboutNode101.description': 'The story of Turkey\'s largest validator',
-    'menu.corporate.team.label': 'Team',
-    'menu.corporate.team.description': 'Global competition is possible with the best',
-    'menu.corporate.career.label': 'Career',
-    'menu.corporate.career.description': 'Apply for the position that suits you best',
-    'menu.corporate.brandDetails.label': 'Brand Details',
-    'menu.corporate.brandDetails.description': 'node101 branding story',
-    'menu.corporate.blog.label': 'Blog',
-    'menu.corporate.blog.description': 'Explore the node101 library, access all the content we produce',
-    'menu.corporate.supportCenter.label': 'Support Center',
-    'menu.corporate.supportCenter.description': 'Reach us 24/7 anytime you want',
-    'menu.corporate.faq.label': 'FAQ',
-    'menu.corporate.faq.description': 'Frequently asked questions about node101 services and blockchain terms',
-    'menu.corporate.caseStudies.label': 'Case Studies',
-    'menu.corporate.caseStudies.description': 'Focus on our actions, not our words',
+    "menu.corporate.corporateExpertise": "CORPORATE EXPERTISE",
+    "menu.corporate.node101": "node101",
+    "menu.corporate.dataCenter": "DATA CENTER",
+    "menu.corporate.financialInstitutions.label": "Financial Institutions",
+    "menu.corporate.financialInstitutions.description":
+      "Discover our blockchain technical infrastructure solutions",
+    "menu.corporate.centralizedExchanges.label": "Centralized Crypto Exchanges",
+    "menu.corporate.centralizedExchanges.description":
+      "Access validation, RPC & API, and other technical services",
+    "menu.corporate.custodials.label": "Custodials",
+    "menu.corporate.custodials.description":
+      "Use our Staking APIs with 99% uptime guaranteed SLAs for your blockchain operations",
+    "menu.corporate.foundations.label": "Foundations",
+    "menu.corporate.foundations.description":
+      "Safely code, launch to mainnet, and grow your protocol with node101",
+    "menu.corporate.companies.label": "Companies",
+    "menu.corporate.companies.description":
+      "Take your first step into the blockchain world with node101",
+    "menu.corporate.aboutNode101.label": "About node101",
+    "menu.corporate.aboutNode101.description":
+      "The story of Turkey's largest validator",
+    "menu.corporate.team.label": "Team",
+    "menu.corporate.team.description":
+      "Global competition is possible with the best",
+    "menu.corporate.career.label": "Career",
+    "menu.corporate.career.description":
+      "Apply for the position that suits you best",
+    "menu.corporate.brandDetails.label": "Brand Details",
+    "menu.corporate.brandDetails.description": "node101 branding story",
+    "menu.corporate.blog.label": "Blog",
+    "menu.corporate.blog.description":
+      "Explore the node101 library, access all the content we produce",
+    "menu.corporate.supportCenter.label": "Support Center",
+    "menu.corporate.supportCenter.description":
+      "Reach us 24/7 anytime you want",
+    "menu.corporate.faq.label": "FAQ",
+    "menu.corporate.faq.description":
+      "Frequently asked questions about node101 services and blockchain terms",
+    "menu.corporate.caseStudies.label": "Case Studies",
+    "menu.corporate.caseStudies.description":
+      "Focus on our actions, not our words",
 
     // Footer
-    'footer.copyright': '© 2025 node101. All rights reserved.',
+    "footer.copyright": "© 2025 node101. All rights reserved.",
   },
   tr: {
     // Meta
-    'meta.title': 'node101',
-    'meta.description': 'node101 - Blokzincir altyapı sağlayıcısı',
+    "meta.title": "node101",
+    "meta.description": "node101 - Blokzincir altyapı sağlayıcısı",
 
     // Common
-    'common.contactUs': 'Bize Ulaşın',
-    'common.learnMore': 'Daha Fazla',
-    'common.allNetworks': 'Tüm Ağları Gör',
-    'common.viewAllProtocols': 'Tüm Protokolleri Gör',
-    'common.skipToContent': 'İçeriğe geç',
+    "common.contactUs": "Bize Ulaşın",
+    "common.learnMore": "Daha Fazla",
+    "common.allNetworks": "Tüm Ağları Gör",
+    "common.viewAllProtocols": "Tüm Protokolleri Gör",
+    "common.skipToContent": "İçeriğe geç",
 
     // Banner
-    'banner.text': 'node101, $40M+ kripto varlık yatırımıyla Türkiye\'nin en büyük validatörü.',
+    "banner.text":
+      "node101, $40M+ kripto varlık yatırımıyla Türkiye'nin en büyük validatörü.",
 
     // Hero
-    'hero.badge': 'TÜRKİYE\'NİN EN BÜYÜK VALİDATÖRÜ',
-    'hero.titleLine1': 'BLOKZİNCİRLERE ERİŞMEK',
-    'hero.titleLine2': 'BİZİMLE MÜMKÜN',
-    'hero.description': 'node101; validasyon, ürün geliştirme, danışmanlık ve kurumsal RPC çözümleriyle 2022\'den beri Türkiye\'nin en büyük blokzincir altyapı sağlayıcısı',
+    "hero.badge": "TÜRKİYE'NİN EN BÜYÜK VALİDATÖRÜ",
+    "hero.titleLine1": "BLOKZİNCİRLERE ERİŞMEK",
+    "hero.titleLine2": "BİZİMLE MÜMKÜN",
+    "hero.description":
+      "node101; validasyon, ürün geliştirme, danışmanlık ve kurumsal RPC çözümleriyle 2022'den beri Türkiye'nin en büyük blokzincir altyapı sağlayıcısı",
 
     // Trusted By
-    'trustedBy.description': 'Dünya genelinde 40\'ın üzerinde kurum, kripto yatırımları ve RPC hizmetleri için node101\'e güveniyor',
+    "trustedBy.description":
+      "Dünya genelinde 40'ın üzerinde kurum, kripto yatırımları ve RPC hizmetleri için node101'e güveniyor",
 
     // Services Section
-    'services.title': 'node101 size ne sağlayabilir?',
-    'services.staking': 'Staking Hizmetleri',
-    'services.rpc': 'RPC Hizmetleri',
-    'services.security': 'Güvenlik & Uyumluluk',
-    'services.staking.description': "node101'in güvenilir altyapısıyla 27'den fazla blokzincir ağında premium ödüllerle stake edin. node101 ile daha fazla kazanın.",
-    'services.rpc.description': "node101, Ethereum'dan Solana'ya kadar tüm büyük blokzincir ağlarına hızlı ve güvenli RPC erişimi sağlar. Uygulamalarınız kurumsal düzeyde altyapıyla desteklenir.",
-    'services.security.description': "node101, ISO27001 sertifikalı ve AAA doğrulanmış olup Türkiye'nin en güvenilir validatörü ve dünya genelinde sayılı olanlardan biridir. Kurumlar için dünya standartlarında güvenlik ve uyumluluk.",
+    "services.title": "node101 size ne sağlayabilir?",
+    "services.staking": "Staking Hizmetleri",
+    "services.rpc": "RPC Hizmetleri",
+    "services.security": "Güvenlik & Uyumluluk",
+    "services.staking.description":
+      "node101'in güvenilir altyapısıyla 27'den fazla blokzincir ağında premium ödüllerle stake edin. node101 ile daha fazla kazanın.",
+    "services.rpc.description":
+      "node101, Ethereum'dan Solana'ya kadar tüm büyük blokzincir ağlarına hızlı ve güvenli RPC erişimi sağlar. Uygulamalarınız kurumsal düzeyde altyapıyla desteklenir.",
+    "services.security.description":
+      "node101, ISO27001 sertifikalı ve AAA doğrulanmış olup Türkiye'nin en güvenilir validatörü ve dünya genelinde sayılı olanlardan biridir. Kurumlar için dünya standartlarında güvenlik ve uyumluluk.",
 
     // Nav
-    'nav.investment': 'Yatırım',
-    'nav.rpc': 'RPC',
-    'nav.services': 'Hizmetler',
-    'nav.eventsAndCommunity': 'Etkinlikler ve Komünite',
-    'nav.products': 'Ürünler',
-    'nav.corporate': 'Kurumsal',
-    'nav.mobileMenuToggle': 'Mobil menüyü aç/kapat',
+    "nav.investment": "Yatırım",
+    "nav.rpc": "RPC",
+    "nav.services": "Hizmetler",
+    "nav.eventsAndCommunity": "Etkinlikler ve Komünite",
+    "nav.products": "Ürünler",
+    "nav.corporate": "Kurumsal",
+    "nav.mobileMenuToggle": "Mobil menüyü aç/kapat",
 
     // Menu - Investment
-    'menu.investment.popularBlockchains': 'DESTEKLEDİĞİMİZ POPÜLER BLOKZİNCİRLER',
-    'menu.investment.recurringYield': 'TEKRARLI GETİRİ',
-    'menu.investment.corporateInvestment': 'KURUMSAL YATIRIM',
-    'menu.investment.btcRestaking.label': 'BTC Yatırım Getirisi',
-    'menu.investment.btcRestaking.description': 'Bitcoinlerinizi Babylon üzerinde stake edin',
-    'menu.investment.ethRestaking.label': 'ETH Tekrarlı Getiri',
-    'menu.investment.ethRestaking.description': 'Ethereumlarınızı EigenLayer ile restake edin',
-    'menu.investment.whitelabelValidation.label': 'Fason Validatörlük',
-    'menu.investment.whitelabelValidation.description': 'Kendi validatörünüzü kurun node101 yürütsün',
-    'menu.investment.referralProgram.label': 'Referans Programı',
-    'menu.investment.referralProgram.description': 'İşbirlikleri ve referanslar oluşturun kazançtan pay alın',
-    'menu.investment.footnote': 'Desteklediğimiz ağların hepsinde bütün hizmetlerimiz bulunmayabilir.',
+    "menu.investment.popularBlockchains":
+      "DESTEKLEDİĞİMİZ POPÜLER BLOKZİNCİRLER",
+    "menu.investment.recurringYield": "TEKRARLI GETİRİ",
+    "menu.investment.corporateInvestment": "KURUMSAL YATIRIM",
+    "menu.investment.btcRestaking.label": "BTC Yatırım Getirisi",
+    "menu.investment.btcRestaking.description":
+      "Bitcoinlerinizi Babylon üzerinde stake edin",
+    "menu.investment.ethRestaking.label": "ETH Tekrarlı Getiri",
+    "menu.investment.ethRestaking.description":
+      "Ethereumlarınızı EigenLayer ile restake edin",
+    "menu.investment.whitelabelValidation.label": "Fason Validatörlük",
+    "menu.investment.whitelabelValidation.description":
+      "Kendi validatörünüzü kurun node101 yürütsün",
+    "menu.investment.referralProgram.label": "Referans Programı",
+    "menu.investment.referralProgram.description":
+      "İşbirlikleri ve referanslar oluşturun kazançtan pay alın",
+    "menu.investment.footnote":
+      "Desteklediğimiz ağların hepsinde bütün hizmetlerimiz bulunmayabilir.",
 
     // Menu - RPC
-    'menu.rpc.rpcServices': 'RPC HİZMETLERİ',
-    'menu.rpc.currentlyPopular': 'ŞU ANDA POPÜLER',
-    'menu.rpc.new': 'YENİ',
-    'menu.rpc.mostUsed': 'EN ÇOK KULLANILANLAR',
-    'menu.rpc.pricing.label': 'Ücretlendirme',
-    'menu.rpc.pricing.description': 'RPC hizmeti ile ilgili ücretlendirme detayları',
-    'menu.rpc.freeRpc.label': 'Ücretsiz RPC',
-    'menu.rpc.freeRpc.description': 'Ücretsiz RPC hizmeti detayları',
-    'menu.rpc.documents.label': 'Belgeler',
-    'menu.rpc.documents.description': 'RPC hizmeti ile ilgili tüm belgeler',
+    "menu.rpc.rpcServices": "RPC HİZMETLERİ",
+    "menu.rpc.currentlyPopular": "ŞU ANDA POPÜLER",
+    "menu.rpc.new": "YENİ",
+    "menu.rpc.mostUsed": "EN ÇOK KULLANILANLAR",
+    "menu.rpc.pricing.label": "Ücretlendirme",
+    "menu.rpc.pricing.description":
+      "RPC hizmeti ile ilgili ücretlendirme detayları",
+    "menu.rpc.freeRpc.label": "Ücretsiz RPC",
+    "menu.rpc.freeRpc.description": "Ücretsiz RPC hizmeti detayları",
+    "menu.rpc.documents.label": "Belgeler",
+    "menu.rpc.documents.description": "RPC hizmeti ile ilgili tüm belgeler",
 
     // Menu - Services
-    'menu.services.nodeServices': 'DÜĞÜM HİZMETLERİ',
-    'menu.services.consulting': 'DANIŞMANLIK',
-    'menu.services.blockchainProduction': 'BLOKZİNCİR ÜRETİMİ',
-    'menu.services.eventsAndCommunity': 'ETKİNLİKLER VE KOMÜNİTE',
-    'menu.services.cryptoInvestment.label': 'node101 ile Kripto Yatırımı Yapın',
-    'menu.services.cryptoInvestment.description': 'Valide ettiğimiz düğümlere stake edin, kripto kazanın',
-    'menu.services.whitelabelValidation.label': 'Fason Validatörlük',
-    'menu.services.whitelabelValidation.description': 'Kendi validatörünüzü kurun node101 yürütsün',
-    'menu.services.whitelabelValidation.subItems.btcMining.label': 'BTC Fason Madencilik',
-    'menu.services.whitelabelValidation.subItems.btcMining.description': 'Sizin için Bitcoin mineri kuralım ve yürütelim',
-    'menu.services.whitelabelValidation.subItems.ethValidation.label': 'ETH Fason Validatörlük',
-    'menu.services.whitelabelValidation.subItems.ethValidation.description': 'Sizin için Ethereum düğümü kuralım ve yürütelim',
-    'menu.services.btcRestaking.label': 'BTC Yatırım Getirisi',
-    'menu.services.btcRestaking.description': 'Bitcoinlerinizi Babylon üzerinde stake edin, kripto kazanın',
-    'menu.services.ethRestaking.label': 'ETH Tekrarlı Getiri',
-    'menu.services.ethRestaking.description': 'Ethereumlarınızı EigenLayer ile restake edin',
-    'menu.services.architecturalConsulting.label': 'Mimari Danışmanlık',
-    'menu.services.architecturalConsulting.description': 'İhtiyacınız olan teknik mimariyi birlikte inşa edelim',
-    'menu.services.blockchainConsulting.label': 'Blokzincir 101 Danışmanlığı',
-    'menu.services.blockchainConsulting.description': 'Kripto varlıklara ve blokzincire ilginiz var ama ne yapacağınızı bilmiyorsanız, node101\'a ulaşın',
-    'menu.services.productDevelopment.label': 'Ürün Üretimi',
-    'menu.services.productDevelopment.description': 'İhtiyacınız olan ürünün tamamını ya da bir parçasını, tecrübeli ekibimizle tasarlar ve üretiriz',
-    'menu.services.turkishEcosystem.label': 'Türk ekosistemine açılan kapı',
-    'menu.services.turkishEcosystem.description': 'node101, Blokzincir şirketlerinin Türk yazılımcılara ulaşmasını planlar ve partnerleriyle uygular.',
-    'menu.services.turkishEcosystem.subItems.suiTurkey': 'Sui Türkiye Komünite Etkinlikleri',
-    'menu.services.turkishEcosystem.subItems.celestiaTurkey': 'Celestia Türkiye Komünite Etkinlikleri',
-    'menu.services.buildersWeek.label': 'Builders Week Istanbul',
-    'menu.services.buildersWeek.description': 'BWI blokzincir ekosistemini ölçeklendirmek için tasarlanmış, bir haftalık etkinlikler dizisidir.',
-    'menu.services.ethIstanbul.label': 'ETHIstanbul',
-    'menu.services.ethIstanbul.description': 'Ethereum felsefesinin genç yetenekler arasında kök salmasının hedeflendiği konferans ve hackathon',
-    'menu.services.cryptist.label': 'Cryptist',
-    'menu.services.cryptist.description': 'Cryptist; sıfır bilgi, gizlilik ve kriptografiye odaklanan yıllık bir topluluk odaklı etkinliktir',
+    "menu.services.nodeServices": "DÜĞÜM HİZMETLERİ",
+    "menu.services.consulting": "DANIŞMANLIK",
+    "menu.services.blockchainProduction": "BLOKZİNCİR ÜRETİMİ",
+    "menu.services.eventsAndCommunity": "ETKİNLİKLER VE KOMÜNİTE",
+    "menu.services.cryptoInvestment.label": "node101 ile Kripto Yatırımı Yapın",
+    "menu.services.cryptoInvestment.description":
+      "Valide ettiğimiz düğümlere stake edin, kripto kazanın",
+    "menu.services.whitelabelValidation.label": "Fason Validatörlük",
+    "menu.services.whitelabelValidation.description":
+      "Kendi validatörünüzü kurun node101 yürütsün",
+    "menu.services.whitelabelValidation.subItems.btcMining.label":
+      "BTC Fason Madencilik",
+    "menu.services.whitelabelValidation.subItems.btcMining.description":
+      "Sizin için Bitcoin mineri kuralım ve yürütelim",
+    "menu.services.whitelabelValidation.subItems.ethValidation.label":
+      "ETH Fason Validatörlük",
+    "menu.services.whitelabelValidation.subItems.ethValidation.description":
+      "Sizin için Ethereum düğümü kuralım ve yürütelim",
+    "menu.services.btcRestaking.label": "BTC Yatırım Getirisi",
+    "menu.services.btcRestaking.description":
+      "Bitcoinlerinizi Babylon üzerinde stake edin, kripto kazanın",
+    "menu.services.ethRestaking.label": "ETH Tekrarlı Getiri",
+    "menu.services.ethRestaking.description":
+      "Ethereumlarınızı EigenLayer ile restake edin",
+    "menu.services.architecturalConsulting.label": "Mimari Danışmanlık",
+    "menu.services.architecturalConsulting.description":
+      "İhtiyacınız olan teknik mimariyi birlikte inşa edelim",
+    "menu.services.blockchainConsulting.label": "Blokzincir 101 Danışmanlığı",
+    "menu.services.blockchainConsulting.description":
+      "Kripto varlıklara ve blokzincire ilginiz var ama ne yapacağınızı bilmiyorsanız, node101'a ulaşın",
+    "menu.services.productDevelopment.label": "Ürün Üretimi",
+    "menu.services.productDevelopment.description":
+      "İhtiyacınız olan ürünün tamamını ya da bir parçasını, tecrübeli ekibimizle tasarlar ve üretiriz",
+    "menu.services.turkishEcosystem.label": "Türk ekosistemine açılan kapı",
+    "menu.services.turkishEcosystem.description":
+      "node101, Blokzincir şirketlerinin Türk yazılımcılara ulaşmasını planlar ve partnerleriyle uygular.",
+    "menu.services.turkishEcosystem.subItems.suiTurkey":
+      "Sui Türkiye Komünite Etkinlikleri",
+    "menu.services.turkishEcosystem.subItems.celestiaTurkey":
+      "Celestia Türkiye Komünite Etkinlikleri",
+    "menu.services.buildersWeek.label": "Builders Week Istanbul",
+    "menu.services.buildersWeek.description":
+      "BWI blokzincir ekosistemini ölçeklendirmek için tasarlanmış, bir haftalık etkinlikler dizisidir.",
+    "menu.services.ethIstanbul.label": "ETHIstanbul",
+    "menu.services.ethIstanbul.description":
+      "Ethereum felsefesinin genç yetenekler arasında kök salmasının hedeflendiği konferans ve hackathon",
+    "menu.services.cryptist.label": "Cryptist",
+    "menu.services.cryptist.description":
+      "Cryptist; sıfır bilgi, gizlilik ve kriptografiye odaklanan yıllık bir topluluk odaklı etkinliktir",
 
     // Menu - Products
-    'menu.products.protocol': 'PROTOKOL',
-    'menu.products.application': 'UYGULAMA',
-    'menu.products.tooling': 'TOOLING',
-    'menu.products.other': 'DİĞER',
-    'menu.products.pulsarChain.label': 'Pulsar Chain',
-    'menu.products.pulsarChain.description': 'Sıfır-Bilgi altyapısını Interchain altyapısı ile buluşturur',
-    'menu.products.zkvot.label': 'zkVot',
-    'menu.products.zkvot.description': 'Oylama süreçlerinde mahremiyet ve merkeziyetsizlik',
-    'menu.products.hackathonProducts.label': 'Hackathon Ürünlerimiz',
-    'menu.products.hackathonProducts.description': 'Hackathonlarda neler inşa ettiğimizi keşfedin',
-    'menu.products.pulsar.label': 'Pulsar',
-    'menu.products.pulsar.description': 'Sıfır-Bilgi altyapısı ile kurulmuş ilk merkeziyetsiz borsa',
-    'menu.products.punch.label': 'PUNCH',
-    'menu.products.punch.description': 'Merkeziyetsiz yayın platformu',
-    'menu.products.validatier.label': 'Validatier',
-    'menu.products.validatier.description': 'Blokzincir yazılımcılarının tüm aktivitelerine ulaşın',
-    'menu.products.blockchainDevReport.label': 'Blockchain Developer Report',
-    'menu.products.blockchainDevReport.description': 'Blokzincir yazılımcılarının tüm aktivitelerine ulaşın',
+    "menu.products.protocol": "PROTOKOL",
+    "menu.products.application": "UYGULAMA",
+    "menu.products.tooling": "TOOLING",
+    "menu.products.other": "DİĞER",
+    "menu.products.pulsarChain.label": "Pulsar Chain",
+    "menu.products.pulsarChain.description":
+      "Sıfır-Bilgi altyapısını Interchain altyapısı ile buluşturur",
+    "menu.products.zkvot.label": "zkVot",
+    "menu.products.zkvot.description":
+      "Oylama süreçlerinde mahremiyet ve merkeziyetsizlik",
+    "menu.products.hackathonProducts.label": "Hackathon Ürünlerimiz",
+    "menu.products.hackathonProducts.description":
+      "Hackathonlarda neler inşa ettiğimizi keşfedin",
+    "menu.products.pulsar.label": "Pulsar",
+    "menu.products.pulsar.description":
+      "Sıfır-Bilgi altyapısı ile kurulmuş ilk merkeziyetsiz borsa",
+    "menu.products.punch.label": "PUNCH",
+    "menu.products.punch.description": "Merkeziyetsiz yayın platformu",
+    "menu.products.validatier.label": "Validatier",
+    "menu.products.validatier.description":
+      "Blokzincir yazılımcılarının tüm aktivitelerine ulaşın",
+    "menu.products.blockchainDevReport.label": "Blockchain Developer Report",
+    "menu.products.blockchainDevReport.description":
+      "Blokzincir yazılımcılarının tüm aktivitelerine ulaşın",
 
     // Menu - Corporate
-    'menu.corporate.corporateExpertise': 'KURUMSAL UZMANLIK',
-    'menu.corporate.node101': 'node101',
-    'menu.corporate.dataCenter': 'VERİ MERKEZİ',
-    'menu.corporate.financialInstitutions.label': 'Finansal Kurumlar',
-    'menu.corporate.financialInstitutions.description': 'Blokzincir teknik altyapı çözümlerimizi keşfedin',
-    'menu.corporate.centralizedExchanges.label': 'Merkezi Kripto Borsaları',
-    'menu.corporate.centralizedExchanges.description': 'Validatörlük, RPC & API ve diğer teknik hizmetlerimize erişin',
-    'menu.corporate.custodials.label': 'Saklamacılar',
-    'menu.corporate.custodials.description': 'Staking API\'larımızı, %99 uptime garantili SLA\'lerimiz ile Blokzincir işlemlerinizde kullanın',
-    'menu.corporate.foundations.label': 'Foundation\'lar',
-    'menu.corporate.foundations.description': 'node101 ile protokolünüzü güvenle kodlayın, mainnete çıkın ve büyütün',
-    'menu.corporate.companies.label': 'Şirketler',
-    'menu.corporate.companies.description': 'Blokzincir dünyasına ilk adımınızı node101 ile atın',
-    'menu.corporate.aboutNode101.label': 'node101 Hakkında',
-    'menu.corporate.aboutNode101.description': 'Türkiye\'nin en büyük validatörünün hikayesi',
-    'menu.corporate.team.label': 'Takım',
-    'menu.corporate.team.description': 'Küresel düzeyde rekabet en iyilerle mümkündür',
-    'menu.corporate.career.label': 'Kariyer',
-    'menu.corporate.career.description': 'Size en uygun pozisyona başvurun',
-    'menu.corporate.brandDetails.label': 'Marka Detayları',
-    'menu.corporate.brandDetails.description': 'node101 branding hikayesi',
-    'menu.corporate.blog.label': 'Blog',
-    'menu.corporate.blog.description': 'node101 kütüphanesini keşfedin, ürettiğimiz tüm içeriklere erişin',
-    'menu.corporate.supportCenter.label': 'Destek Merkezi',
-    'menu.corporate.supportCenter.description': 'Bizlere 7/24 istediğiniz anda ulaşın',
-    'menu.corporate.faq.label': 'SSS',
-    'menu.corporate.faq.description': 'node101 hizmetleri ve blokzincir terimleri ile alakalı sıkça sorulan sorular',
-    'menu.corporate.caseStudies.label': 'Vaka Çalışmaları',
-    'menu.corporate.caseStudies.description': 'Söylediklerimize değil aksiyonlarımıza odaklanın',
+    "menu.corporate.corporateExpertise": "KURUMSAL UZMANLIK",
+    "menu.corporate.node101": "node101",
+    "menu.corporate.dataCenter": "VERİ MERKEZİ",
+    "menu.corporate.financialInstitutions.label": "Finansal Kurumlar",
+    "menu.corporate.financialInstitutions.description":
+      "Blokzincir teknik altyapı çözümlerimizi keşfedin",
+    "menu.corporate.centralizedExchanges.label": "Merkezi Kripto Borsaları",
+    "menu.corporate.centralizedExchanges.description":
+      "Validatörlük, RPC & API ve diğer teknik hizmetlerimize erişin",
+    "menu.corporate.custodials.label": "Saklamacılar",
+    "menu.corporate.custodials.description":
+      "Staking API'larımızı, %99 uptime garantili SLA'lerimiz ile Blokzincir işlemlerinizde kullanın",
+    "menu.corporate.foundations.label": "Foundation'lar",
+    "menu.corporate.foundations.description":
+      "node101 ile protokolünüzü güvenle kodlayın, mainnete çıkın ve büyütün",
+    "menu.corporate.companies.label": "Şirketler",
+    "menu.corporate.companies.description":
+      "Blokzincir dünyasına ilk adımınızı node101 ile atın",
+    "menu.corporate.aboutNode101.label": "node101 Hakkında",
+    "menu.corporate.aboutNode101.description":
+      "Türkiye'nin en büyük validatörünün hikayesi",
+    "menu.corporate.team.label": "Takım",
+    "menu.corporate.team.description":
+      "Küresel düzeyde rekabet en iyilerle mümkündür",
+    "menu.corporate.career.label": "Kariyer",
+    "menu.corporate.career.description": "Size en uygun pozisyona başvurun",
+    "menu.corporate.brandDetails.label": "Marka Detayları",
+    "menu.corporate.brandDetails.description": "node101 branding hikayesi",
+    "menu.corporate.blog.label": "Blog",
+    "menu.corporate.blog.description":
+      "node101 kütüphanesini keşfedin, ürettiğimiz tüm içeriklere erişin",
+    "menu.corporate.supportCenter.label": "Destek Merkezi",
+    "menu.corporate.supportCenter.description":
+      "Bizlere 7/24 istediğiniz anda ulaşın",
+    "menu.corporate.faq.label": "SSS",
+    "menu.corporate.faq.description":
+      "node101 hizmetleri ve blokzincir terimleri ile alakalı sıkça sorulan sorular",
+    "menu.corporate.caseStudies.label": "Vaka Çalışmaları",
+    "menu.corporate.caseStudies.description":
+      "Söylediklerimize değil aksiyonlarımıza odaklanın",
 
     // Footer
-    'footer.copyright': '2025 node101. Tüm hakları saklıdır.',
+    "footer.copyright": "2025 node101. Tüm hakları saklıdır.",
   },
 } as const;
