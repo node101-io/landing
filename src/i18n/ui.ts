@@ -35,6 +35,9 @@ export const ui = {
     'services.staking': 'Staking Services',
     'services.rpc': 'RPC Services',
     'services.security': 'Security & Compliance',
+    'services.staking.description': "Stake across 27+ blockchain networks with premium rewards all powered by node101's trusted infrastructure. With node101, you earn more.",
+    'services.rpc.description': 'node101 provides fast, secure RPC access to all major blockchain networks, from Ethereum to Solana, ensuring your applications are powered by enterprise-grade infrastructure.',
+    'services.security.description': 'node101 is ISO27001 certified and AAA verified, making us the most trusted validator in Turkiye and one of the few globally. World-class security and compliance for institutions.',
 
     // Nav
     'nav.investment': 'Investment',
@@ -188,6 +191,9 @@ export const ui = {
     'services.staking': 'Staking Hizmetleri',
     'services.rpc': 'RPC Hizmetleri',
     'services.security': 'Güvenlik & Uyumluluk',
+    'services.staking.description': "node101'in güvenilir altyapısıyla 27'den fazla blokzincir ağında premium ödüllerle stake edin. node101 ile daha fazla kazanın.",
+    'services.rpc.description': "node101, Ethereum'dan Solana'ya kadar tüm büyük blokzincir ağlarına hızlı ve güvenli RPC erişimi sağlar. Uygulamalarınız kurumsal düzeyde altyapıyla desteklenir.",
+    'services.security.description': "node101, ISO27001 sertifikalı ve AAA doğrulanmış olup Türkiye'nin en güvenilir validatörü ve dünya genelinde sayılı olanlardan biridir. Kurumlar için dünya standartlarında güvenlik ve uyumluluk.",
 
     // Nav
     'nav.investment': 'Yatırım',
