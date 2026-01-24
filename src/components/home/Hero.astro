@@ -14,21 +14,21 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
 <div
   style={`background-image: url('${optimizedHeroBg.src}')`}
   class={`
-  m-(--hero-margin)
-  flex
-  h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
-  flex-col
-  overflow-hidden
-  rounded-[calc(var(--radius-4xl)+var(--hero-margin))]
-  bg-cover
-  bg-center
-  transition-[margin,border-radius]
-  duration-300
-  has-checked:m-0
-  has-checked:rounded-none
-  lg:has-checked:m-(--hero-margin)
-  lg:has-checked:rounded-4xl
-`}>
+    m-(--hero-margin)
+    flex
+    h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
+    flex-col
+    overflow-hidden
+    rounded-[calc(var(--radius-4xl)+var(--hero-margin))]
+    bg-cover
+    bg-center
+    transition-[margin,border-radius]
+    duration-300
+    has-checked:m-0
+    has-checked:rounded-none
+    lg:has-checked:m-(--hero-margin)
+    lg:has-checked:rounded-4xl
+  `}>
   <Header />
 
   <section class={`
@@ -95,11 +95,11 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
 
     <h1 class={`
       max-w-5xl
-      text-balance
       font-display
       text-3xl
       leading-tight
       font-bold
+      text-balance
       text-foreground
       sm:text-4xl
       md:text-5xl

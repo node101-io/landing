@@ -30,16 +30,63 @@ const services = [
 ---
 
 <section
-  class="m-(--section-margin) flex h-[85dvh] w-[calc(100%-var(--section-margin)*2)] flex-col overflow-hidden rounded-4xl bg-espresso lg:flex-row"
+  class={`
+    m-0
+    flex
+    h-fit
+    w-full
+    flex-col
+    overflow-hidden
+    rounded-none
+    bg-espresso
+    lg:m-(--section-margin)
+    lg:h-[85dvh]
+    lg:w-[calc(100%-var(--section-margin)*2)]
+    lg:flex-row
+    lg:rounded-4xl
+  `}
   aria-label="Services"
 >
   <!-- Left Side: Title and Clickable Labels -->
-  <div class="flex flex-col justify-between p-6 lg:w-1/2 lg:p-10">
-    <h2 class="mt-8 font-sans text-2xl font-normal text-cream lg:mt-16">
+  <div class={`
+    flex
+    flex-col
+    items-center
+    justify-between
+    p-6
+    lg:w-1/2
+    lg:items-start
+    lg:p-10
+  `}>
+    <h2 class={`
+      mt-8
+      mb-6
+      font-sans
+      text-base
+      font-normal
+      text-cream
+      sm:text-lg
+      md:text-xl
+      lg:mt-16
+      lg:mb-0
+      lg:text-2xl
+    `}>
       {t('services.title')}
     </h2>
 
-    <div class="flex flex-col gap-6">
+    <div class={`
+      flex
+      flex-row
+      flex-wrap
+      justify-center
+      gap-2
+      pb-4
+      lg:flex-col
+      lg:flex-nowrap
+      lg:justify-start
+      lg:gap-6
+      lg:pb-0
+    `}>
       {services.map((service, index) => (
         <div class="relative">
           <input
@@ -48,47 +95,76 @@ const services = [
             id={`service-${service.id}`}
             value={service.id}
             checked={index === 1}
-            class="peer sr-only"
+            class={`
+              peer
+              sr-only
+            `}
           />
           <label
             for={`service-${service.id}`}
             class={`
               relative
               block
+              shrink-0
               cursor-pointer
+              rounded-full
+              bg-cream
+              px-3
+              py-1.5
               font-sans
-              text-[clamp(36px,5vw,84px)]
+              text-xs
               font-normal
-              leading-none
-              text-cream
-              transition-[color,padding-left]
+              whitespace-nowrap
+              text-espresso
+              transition-all
               duration-500
+              peer-checked:bg-lav-active
+              peer-focus-visible:outline-2
+              peer-focus-visible:outline-offset-4
+              peer-focus-visible:outline-lav-active
               motion-reduce:transition-none
-              pl-0
-              peer-checked:text-lav-active
-              peer-checked:pl-7
-              peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-lav-active
+              sm:text-sm
+              md:text-base
+              lg:rounded-none
+              lg:bg-transparent
+              lg:px-0
+              lg:py-0
+              lg:pl-0
+              lg:text-[clamp(36px,5vw,84px)]
+              lg:leading-none
+              lg:whitespace-normal
+              lg:text-cream
+              lg:peer-checked:bg-transparent
+              lg:peer-checked:pl-7
+              lg:peer-checked:text-lav-active
             `}
           >
-            <!-- Star Icon -->
+            <!-- Star Icon (desktop only) -->
             <img
               src="/img/star.svg"
               alt=""
               aria-hidden="true"
               class={`
                 absolute
-                left-0
                 top-[0.15em]
+                left-0
+                hidden
                 size-5
-                opacity-0
                 scale-50
+                opacity-0
                 transition-[opacity,transform]
                 duration-500
                 motion-reduce:transition-none
+                lg:block
               `}
             />
             {Array.isArray(service.label)
-              ? service.label.map((line, i) => <>{i > 0 && <br />}{line}</>)
+              ? service.label.map((line, i) => <>{i > 0 && <><span class={`
+                lg:hidden
+              `}>{' '}</span><br class={`
+                hidden
+                lg:inline
+              `} /></>}{line}</>)
               : service.label}
           </label>
         </div>
@@ -97,33 +173,191 @@ const services = [
   </div>
 
   <!-- Right Side: Sliding Cards -->
-  <div class="relative flex-1 pl-2 pr-6 lg:w-1/2 lg:pl-4 lg:pr-10">
-    <!-- Top gradient -->
-    <div class="pointer-events-none absolute inset-x-0 top-0 z-10 h-[14dvh] bg-linear-to-b from-espresso to-transparent"></div>
-    <!-- Bottom gradient -->
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[14dvh] bg-linear-to-t from-espresso to-transparent"></div>
-    <div class="relative h-full" id="services-cards-container">
+  <div class={`
+    relative
+    flex-1
+    lg:w-1/2
+    lg:pr-10
+    lg:pl-4
+  `}>
+    <!-- Top gradient (desktop only) -->
+    <div class={`
+      pointer-events-none
+      absolute
+      inset-x-0
+      top-0
+      z-10
+      hidden
+      h-[14dvh]
+      bg-linear-to-b
+      from-espresso
+      to-transparent
+      lg:block
+    `}></div>
+    <!-- Bottom gradient (desktop only) -->
+    <div class={`
+      pointer-events-none
+      absolute
+      inset-x-0
+      bottom-0
+      z-10
+      hidden
+      h-[14dvh]
+      bg-linear-to-t
+      from-espresso
+      to-transparent
+      lg:block
+    `}></div>
+    <div class={`
+      relative
+      mb-10
+      h-80
+      sm:h-96
+      md:h-112
+      lg:mb-0
+      lg:h-full
+    `} id="services-cards-container">
       {services.map((service, index) => (
         <div
-          class="services-card absolute inset-x-0 flex h-[65%] flex-col justify-end rounded-xl bg-cream p-5"
+          class={`
+            services-card
+            absolute
+            flex
+            h-80
+            w-[80vw]
+            flex-col
+            justify-between
+            rounded-xl
+            bg-cream
+            p-5
+            transition-[left,top,background-color]
+            duration-600
+            ease-[cubic-bezier(0.22,1,0.36,1)]
+            motion-reduce:duration-0
+            sm:h-96
+            md:h-112
+            lg:inset-x-0
+            lg:h-[65%]
+            lg:w-auto
+            lg:justify-end
+          `}
           data-service={service.id}
           data-index={index}
         >
-          {service.id === 'security' && (
-            <div class="absolute left-5 top-5 flex items-center gap-2">
-              <Image src={isoBadge} alt="ISO 27001" class="h-8 w-auto lg:h-10" />
-              <Image src={gdprBadge} alt="GDPR" class="h-8 w-auto lg:h-10" />
-            </div>
-          )}
+          <!-- Mobile Header: spiral + title -->
+          <div class={`
+            mb-auto
+            flex
+            items-center
+            justify-between
+            lg:hidden
+          `}>
+            <img
+              src={service.spiral}
+              alt=""
+              aria-hidden="true"
+              class={`
+                h-8
+                w-auto
+              `}
+            />
+            <h3 class={`
+              text-right
+              font-sans
+              text-xl
+              tracking-wide
+              text-espresso
+              uppercase
+              sm:text-2xl
+              md:text-3xl
+            `}>
+              {Array.isArray(service.label) ? service.label.join(' ') : service.label}
+            </h3>
+          </div>
+
+          <!-- Desktop spiral (top right) -->
           <img
             src={service.spiral}
             alt=""
             aria-hidden="true"
-            class="absolute right-5 top-5 h-12 w-auto lg:h-16"
+            class={`
+              absolute
+              top-5
+              right-5
+              hidden
+              h-16
+              w-auto
+              lg:block
+            `}
           />
-          <p class="font-sans text-[clamp(24px,3vw,36px)] font-normal leading-relaxed text-espresso">
+
+          <!-- Badges (security only) -->
+          {service.id === 'security' && (
+            <div class={`
+              flex
+              items-center
+              gap-2
+              lg:absolute
+              lg:top-5
+              lg:left-5
+            `}>
+              <Image src={isoBadge} alt="ISO 27001" class={`
+                h-8
+                w-auto
+                sm:h-9
+                md:h-10
+                lg:h-10
+              `} />
+              <Image src={gdprBadge} alt="GDPR" class={`
+                h-8
+                w-auto
+                sm:h-9
+                md:h-10
+                lg:h-10
+              `} />
+            </div>
+          )}
+
+          <!-- Description -->
+          <p class={`
+            py-4
+            font-sans
+            text-sm
+            leading-relaxed
+            font-normal
+            text-espresso
+            sm:text-xl
+            md:text-2xl
+            lg:py-0
+            lg:text-[clamp(24px,3vw,36px)]
+          `}>
             {service.description}
           </p>
+
+          <!-- Discover button (mobile only) -->
+          <a
+            href="#"
+            class={`
+              flex
+              items-center
+              justify-between
+              rounded-full
+              bg-espresso
+              px-5
+              py-3
+              text-sm
+              text-cream
+              transition-colors
+              hover:bg-espresso/90
+              lg:hidden
+            `}
+          >
+            <span>Discover</span>
+            <img src="/img/arrow/arrow-right-light.svg" alt="" aria-hidden="true" class={`
+              h-3.5
+              w-auto
+            `} />
+          </a>
         </div>
       ))}
     </div>
@@ -143,6 +377,7 @@ const services = [
 
     function updateCards(selectedId: string) {
       const selectedIndex = serviceOrder.indexOf(selectedId);
+      const isMobile = window.innerWidth < 1024; // lg breakpoint
 
       cards.forEach((card) => {
         const cardService = card.dataset.service;
@@ -150,12 +385,43 @@ const services = [
 
         const cardIndex = serviceOrder.indexOf(cardService);
         const relativeIndex = cardIndex - selectedIndex;
-
-        const topPosition = CENTER_POSITION + (relativeIndex * OFFSET);
         const zIndex = relativeIndex === 0 ? 3 : 2;
 
-        card.style.top = `${topPosition}%`;
-        card.style.zIndex = String(zIndex);
+        if (isMobile) {
+          // Mobile: horizontal slide
+          const CARD_WIDTH_VW = 80;
+          const GAP_VW = 5;
+          const CENTER_LEFT_VW = 10;
+          const OFFSET_VW = CARD_WIDTH_VW + GAP_VW;
+
+          const leftPosition = CENTER_LEFT_VW + (relativeIndex * OFFSET_VW);
+
+          card.style.left = `${leftPosition}vw`;
+          card.style.top = '50%';
+          card.style.transform = 'translateY(-50%)';
+          card.style.zIndex = String(zIndex);
+
+          // Mobile: selected card has lav-active background
+          if (cardService === selectedId) {
+            card.classList.remove('bg-cream');
+            card.classList.add('bg-lav-active');
+          } else {
+            card.classList.remove('bg-lav-active');
+            card.classList.add('bg-cream');
+          }
+        } else {
+          // Desktop: vertical slide
+          const topPosition = CENTER_POSITION + (relativeIndex * OFFSET);
+
+          card.style.left = '';
+          card.style.top = `${topPosition}%`;
+          card.style.transform = '';
+          card.style.zIndex = String(zIndex);
+
+          // Desktop: all cards have cream background
+          card.classList.remove('bg-lav-active');
+          card.classList.add('bg-cream');
+        }
       });
     }
 
@@ -184,6 +450,19 @@ const services = [
       });
     });
 
+    // Handle resize - update cards when crossing lg breakpoint
+    let wasMobile = window.innerWidth < 1024;
+    window.addEventListener('resize', () => {
+      const isMobile = window.innerWidth < 1024;
+      if (isMobile !== wasMobile) {
+        wasMobile = isMobile;
+        const checkedRadio = document.querySelector<HTMLInputElement>('input[name="service-selector"]:checked');
+        if (checkedRadio) {
+          updateCards(checkedRadio.value);
+        }
+      }
+    });
+
     // Initialize
     const checkedRadio = document.querySelector<HTMLInputElement>('input[name="service-selector"]:checked');
     if (checkedRadio) {
@@ -196,14 +475,4 @@ const services = [
   document.addEventListener('astro:page-load', initServicesSection);
 </script>
 
-<style>
-  .services-card {
-    transition: top 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
 
-  @media (prefers-reduced-motion: reduce) {
-    .services-card {
-      transition-duration: 0.01ms;
-    }
-  }
-</style>

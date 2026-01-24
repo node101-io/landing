@@ -18,8 +18,21 @@ export function getStaticPaths() {
 
 <Layout title="node101">
   <Banner server:defer>
-    <div slot="fallback" class="flex h-(--banner-height) w-full items-center justify-center bg-primary">
-      <div class="h-3 w-48 animate-pulse rounded bg-primary-foreground/20"></div>
+    <div slot="fallback" class={`
+      flex
+      h-(--banner-height)
+      w-full
+      items-center
+      justify-center
+      bg-primary
+    `}>
+      <div class={`
+        h-3
+        w-48
+        animate-pulse
+        rounded
+        bg-primary-foreground/20
+      `}></div>
     </div>
   </Banner>
   <Hero />

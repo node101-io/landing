@@ -16,27 +16,65 @@ const placeholders = [
 
 <section
   aria-label="Trusted by leading institutions"
-  class="flex w-full items-center gap-8 py-16 pl-4 pr-0 sm:py-20 sm:pl-6 md:gap-12"
+  class={`
+    flex
+    w-full
+    items-center
+    gap-8
+    py-16
+    pr-0
+    pl-4
+    sm:py-20
+    sm:pl-6
+    md:gap-12
+  `}
 >
-  <p class="flex-2 text-sm font-normal text-espresso sm:text-base">
+  <p class={`
+    flex-2
+    text-sm
+    font-normal
+    text-espresso
+    sm:text-base
+  `}>
     {t('trustedBy.description')}
   </p>
 
-  <div class="relative flex-3 overflow-hidden">
+  <div class={`
+    relative
+    flex-3
+    overflow-hidden
+  `}>
     <!--
       Easing gradient for smoother fade-out transition
       Generated with: https://larsenwork.com/easing-gradients/
       Input: hsl(0, 0%, 98%) to transparent, ease-in-out
     -->
     <div
-      class="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 md:w-32"
+      class={`
+        pointer-events-none
+        absolute
+        inset-y-0
+        left-0
+        z-10
+        w-24
+        md:w-32
+      `}
       style="background: linear-gradient(to right, hsl(0, 0%, 98%) 0%, hsla(0, 0%, 98%, 0.987) 8.1%, hsla(0, 0%, 98%, 0.951) 15.5%, hsla(0, 0%, 98%, 0.896) 22.5%, hsla(0, 0%, 98%, 0.825) 29%, hsla(0, 0%, 98%, 0.741) 35.3%, hsla(0, 0%, 98%, 0.648) 41.2%, hsla(0, 0%, 98%, 0.55) 47.1%, hsla(0, 0%, 98%, 0.45) 52.9%, hsla(0, 0%, 98%, 0.352) 58.8%, hsla(0, 0%, 98%, 0.259) 64.7%, hsla(0, 0%, 98%, 0.175) 71%, hsla(0, 0%, 98%, 0.104) 77.5%, hsla(0, 0%, 98%, 0.049) 84.5%, hsla(0, 0%, 98%, 0.013) 91.9%, hsla(0, 0%, 98%, 0) 100%);"
       aria-hidden="true"
     ></div>
 
     <!-- Scrolling track -->
     <div
-      class="flex w-max animate-marquee-logos gap-8 pr-8 motion-reduce:animate-none md:gap-12 md:pr-12"
+      class={`
+        flex
+        w-max
+        animate-marquee-logos
+        gap-8
+        pr-8
+        motion-reduce:animate-none
+        md:gap-12
+        md:pr-12
+      `}
       aria-hidden="true"
     >
       <!-- First set of logos -->
@@ -44,7 +82,13 @@ const placeholders = [
         placeholders.map((p) => (
           <div
             style={`background: ${p.color}; width: ${p.width}px`}
-            class="h-10 shrink-0 rounded-sm opacity-60 md:h-12"
+            class={`
+              h-10
+              shrink-0
+              rounded-sm
+              opacity-60
+              md:h-12
+            `}
             aria-hidden="true"
           />
         ))
@@ -54,7 +98,13 @@ const placeholders = [
         placeholders.map((p) => (
           <div
             style={`background: ${p.color}; width: ${p.width}px`}
-            class="h-10 shrink-0 rounded-sm opacity-60 md:h-12"
+            class={`
+              h-10
+              shrink-0
+              rounded-sm
+              opacity-60
+              md:h-12
+            `}
             aria-hidden="true"
           />
         ))
