@@ -28,7 +28,12 @@ export function getStaticPaths() {
       transition-[height,opacity]
       duration-300
     `}>
-      <div class="flex flex-1 items-center justify-center">
+      <div class={`
+        flex
+        flex-1
+        items-center
+        justify-center
+      `}>
         <div class={`
           h-3
           w-48
@@ -38,7 +43,12 @@ export function getStaticPaths() {
         `}></div>
       </div>
       <div class="px-3">
-        <div class="size-3.5 animate-pulse rounded bg-primary-foreground/20"></div>
+        <div class={`
+          size-3.5
+          animate-pulse
+          rounded
+          bg-primary-foreground/20
+        `}></div>
       </div>
     </div>
   </Banner>
