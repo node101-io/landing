@@ -69,7 +69,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
       <span class={`
         text-xs
         font-medium
-        text-foreground
+        text-espresso-light
         sm:text-sm
         md:text-base
       `}>
@@ -96,30 +96,32 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
     <h1 class={`
       max-w-5xl
       font-display
-      text-3xl
-      leading-tight
+      text-4xl
+      leading-[0.85]
       font-bold
       text-balance
-      text-foreground
-      sm:text-4xl
-      md:text-5xl
-      lg:text-6xl
-      xl:text-7xl
+      text-espresso-light
+      sm:text-5xl
+      md:text-6xl
+      lg:text-7xl
+      xl:text-8xl
     `}>
       {t('hero.titleLine1')}
       <span class="block">{t('hero.titleLine2')}</span>
     </h1>
 
     <p class={`
-      text-muted-foreground
+      text-espresso-light
       mt-6
-      max-w-2xl
-      text-sm
+      max-w-md
+      text-xs
       leading-relaxed
       font-normal
       sm:mt-8
-      sm:text-base
-      md:text-lg
+      sm:text-sm
+      sm:max-w-lg
+      md:text-base
+      md:max-w-xl
     `}>
       {t('hero.description')}
     </p>
@@ -149,7 +151,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
       items-center
       gap-4
       text-xs
-      text-foreground
+      text-espresso-light
       sm:gap-6
       sm:text-sm
     `}>
