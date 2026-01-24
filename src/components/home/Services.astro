@@ -210,10 +210,10 @@ const services = [
     `}></div>
     <div class={`
       relative
-      mb-10
-      h-80
-      sm:h-96
-      md:h-112
+      mb-[4vw]
+      h-[65vw]
+      sm:mb-6
+      sm:h-72
       lg:mb-0
       lg:h-full
     `} id="services-cards-container">
@@ -223,19 +223,20 @@ const services = [
             services-card
             absolute
             flex
-            h-80
-            w-[80vw]
+            aspect-7/5
+            w-[85vw]
             flex-col
             justify-between
             rounded-xl
             bg-cream
-            p-5
+            p-[4vw]
             transition-[left,top,background-color]
             duration-600
             ease-[cubic-bezier(0.22,1,0.36,1)]
             motion-reduce:duration-0
-            sm:h-96
-            md:h-112
+            sm:w-96
+            sm:p-5
+            lg:aspect-auto
             lg:inset-x-0
             lg:h-[65%]
             lg:w-auto
@@ -257,19 +258,21 @@ const services = [
               alt=""
               aria-hidden="true"
               class={`
-                h-8
+                h-[6vw]
                 w-auto
+                sm:h-6
+                lg:h-8
               `}
             />
             <h3 class={`
               text-right
               font-sans
-              text-xl
+              text-[5vw]
               tracking-wide
               text-espresso
               uppercase
-              sm:text-2xl
-              md:text-3xl
+              sm:text-lg
+              lg:text-xl
             `}>
               {Array.isArray(service.label) ? service.label.join(' ') : service.label}
             </h3>
@@ -296,24 +299,23 @@ const services = [
             <div class={`
               flex
               items-center
-              gap-2
+              gap-[1.5vw]
+              sm:gap-2
               lg:absolute
               lg:top-[1vw]
               lg:left-[1vw]
               lg:gap-[0.5vw]
             `}>
               <Image src={isoBadge} alt="ISO 27001" class={`
-                h-8
+                h-[6vw]
                 w-auto
-                sm:h-9
-                md:h-10
+                sm:h-6
                 lg:h-[2.5vw]
               `} />
               <Image src={gdprBadge} alt="GDPR" class={`
-                h-8
+                h-[6vw]
                 w-auto
-                sm:h-9
-                md:h-10
+                sm:h-6
                 lg:h-[2.5vw]
               `} />
             </div>
@@ -321,16 +323,16 @@ const services = [
 
           <!-- Description -->
           <p class={`
-            py-4
+            py-[2vw]
             font-sans
-            text-sm
+            text-[3.5vw]
             leading-relaxed
             font-normal
             text-espresso
-            sm:text-xl
-            md:text-2xl
+            sm:py-3
+            sm:text-sm
             lg:py-0
-            lg:text-[2vw]
+            lg:text-[1.6vw]
           `}>
             {service.description}
           </p>
@@ -344,19 +346,23 @@ const services = [
               justify-between
               rounded-full
               bg-espresso
-              px-5
-              py-3
-              text-sm
+              px-[3vw]
+              py-[2vw]
+              text-[2.5vw]
               text-cream
               transition-colors
               hover:bg-espresso/90
+              sm:px-4
+              sm:py-2.5
+              sm:text-sm
               lg:hidden
             `}
           >
             <span>Discover</span>
             <img src="/img/arrow/arrow-right-light.svg" alt="" aria-hidden="true" class={`
-              h-3.5
+              h-[2vw]
               w-auto
+              sm:h-3
             `} />
           </a>
         </div>
@@ -390,14 +396,25 @@ const services = [
 
         if (isMobile) {
           // Mobile: horizontal slide
-          const CARD_WIDTH_VW = 80;
-          const GAP_VW = 5;
-          const CENTER_LEFT_VW = 10;
-          const OFFSET_VW = CARD_WIDTH_VW + GAP_VW;
+          const isSmall = window.innerWidth < 640; // sm breakpoint
 
-          const leftPosition = CENTER_LEFT_VW + (relativeIndex * OFFSET_VW);
-
-          card.style.left = `${leftPosition}vw`;
+          if (isSmall) {
+            // Small screens: vw based
+            const viewportWidth = window.innerWidth;
+            const CARD_WIDTH = viewportWidth * 0.85;
+            const GAP = viewportWidth * 0.02; // 2vw
+            const centerLeft = (viewportWidth - CARD_WIDTH) / 2;
+            const leftPosition = centerLeft + (relativeIndex * (CARD_WIDTH + GAP));
+            card.style.left = `${leftPosition}px`;
+          } else {
+            // sm-lg: fixed card size, centered with gap
+            const CARD_WIDTH_PX = 384;
+            const GAP_PX = 24;
+            const containerWidth = card.parentElement?.offsetWidth || window.innerWidth;
+            const centerLeftPx = (containerWidth - CARD_WIDTH_PX) / 2;
+            const leftPosition = centerLeftPx + (relativeIndex * (CARD_WIDTH_PX + GAP_PX));
+            card.style.left = `${leftPosition}px`;
+          }
           card.style.top = '50%';
           card.style.transform = 'translateY(-50%)';
           card.style.zIndex = String(zIndex);
@@ -451,12 +468,16 @@ const services = [
       });
     });
 
-    // Handle resize - update cards when crossing lg breakpoint
+    // Handle resize - update cards when crossing breakpoints or on small screens
     let wasMobile = window.innerWidth < 1024;
+    let wasSmall = window.innerWidth < 640;
     window.addEventListener('resize', () => {
       const isMobile = window.innerWidth < 1024;
-      if (isMobile !== wasMobile) {
+      const isSmall = window.innerWidth < 640;
+      // Update on breakpoint change OR always on mobile (viewport-dependent positioning)
+      if (isMobile !== wasMobile || isSmall !== wasSmall || isMobile) {
         wasMobile = isMobile;
+        wasSmall = isSmall;
         const checkedRadio = document.querySelector<HTMLInputElement>('input[name="service-selector"]:checked');
         if (checkedRadio) {
           updateCards(checkedRadio.value);
