@@ -32,8 +32,8 @@ try {
 }
 ---
 
-<a
-  href={banner.link}
+<div
+  id="banner"
   class={`
     flex
     h-(--banner-height)
@@ -43,43 +43,127 @@ try {
     bg-primary
     text-sm
     text-primary-foreground
-    no-underline
+    transition-[height,opacity]
+    duration-300
   `}
 >
-  {/* Desktop: centered text */}
-  <div
-    class={`
-      hidden
-      w-full
-      justify-center
-      text-xs
-      md:flex
-    `}
-  >
-    {banner.text}
-  </div>
-
-  {/* Mobile: marquee */}
-  <div
+  <a
+    href={banner.link}
     class={`
       flex
-      whitespace-nowrap
-      md:hidden
+      flex-1
+      items-center
+      justify-center
+      no-underline
     `}
   >
+    {/* Desktop: centered text */}
+    <div
+      class={`
+        hidden
+        w-full
+        justify-center
+        text-xs
+        md:flex
+      `}
+    >
+      {banner.text}
+    </div>
+
+    {/* Mobile: marquee */}
     <div
       class={`
         flex
-        animate-marquee
-        text-xs
-        will-change-transform
-        md:animate-none
+        whitespace-nowrap
+        md:hidden
       `}
     >
-      <span class="pr-16">{banner.text}</span>
-      <span class="pr-16">{banner.text}</span>
-      <span class="pr-16">{banner.text}</span>
-      <span class="pr-16">{banner.text}</span>
+      <div
+        class={`
+          flex
+          animate-marquee
+          text-xs
+          will-change-transform
+          md:animate-none
+        `}
+      >
+        <span class="pr-16">{banner.text}</span>
+        <span class="pr-16">{banner.text}</span>
+        <span class="pr-16">{banner.text}</span>
+        <span class="pr-16">{banner.text}</span>
+      </div>
     </div>
-  </div>
-</a>
+  </a>
+
+  <button
+    id="banner-close"
+    type="button"
+    aria-label="Close banner"
+    class={`
+      flex
+      h-full
+      cursor-pointer
+      items-center
+      px-3
+      text-primary-foreground/90
+      transition-colors
+      hover:text-primary-foreground
+    `}
+  >
+    <span
+      aria-hidden="true"
+      class="size-3 rotate-45 bg-current [mask:url('/img/plus.svg')_no-repeat_center/contain]"
+    />
+  </button>
+</div>
+
+<script>
+  const COOKIE_NAME = 'banner_dismissed';
+  const COOKIE_DAYS = 7;
+
+  function getCookie(name: string): string | null {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
+  function setCookie(name: string, value: string, days: number): void {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+  }
+
+  function initBanner(): void {
+    const banner = document.getElementById('banner');
+    const closeBtn = document.getElementById('banner-close');
+
+    if (!banner) return;
+
+    // Cookie varsa banner'ı gizle
+    if (getCookie(COOKIE_NAME)) {
+      banner.style.height = '0';
+      banner.style.opacity = '0';
+      banner.style.overflow = 'hidden';
+      // CSS variable'ı güncelle
+      document.documentElement.style.setProperty('--banner-height', '0rem');
+      return;
+    }
+
+    closeBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Cookie set et
+      setCookie(COOKIE_NAME, '1', COOKIE_DAYS);
+
+      // Banner'ı animasyonlu gizle
+      banner.style.height = '0';
+      banner.style.opacity = '0';
+
+      // CSS variable'ı güncelle (hero positioning için)
+      document.documentElement.style.setProperty('--banner-height', '0rem');
+    });
+  }
+
+  // Sayfa yüklendiğinde ve view transitions sonrası çalıştır
+  initBanner();
+  document.addEventListener('astro:after-swap', initBanner);
+</script>

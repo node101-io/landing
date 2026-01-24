@@ -40,7 +40,7 @@ const services = [
     rounded-none
     bg-espresso
     lg:m-(--section-margin)
-    lg:h-[85dvh]
+    lg:aspect-20/9
     lg:w-[calc(100%-var(--section-margin)*2)]
     lg:flex-row
     lg:rounded-4xl
@@ -67,9 +67,9 @@ const services = [
       text-cream
       sm:text-lg
       md:text-xl
-      lg:mt-16
+      lg:mt-[3vw]
       lg:mb-0
-      lg:text-2xl
+      lg:text-[1.5vw]
     `}>
       {t('services.title')}
     </h2>
@@ -130,12 +130,12 @@ const services = [
               lg:px-0
               lg:py-0
               lg:pl-0
-              lg:text-[clamp(36px,5vw,84px)]
+              lg:text-[4vw]
               lg:leading-none
               lg:whitespace-normal
               lg:text-cream
               lg:peer-checked:bg-transparent
-              lg:peer-checked:pl-7
+              lg:peer-checked:pl-[1.5vw]
               lg:peer-checked:text-lav-active
             `}
           >
@@ -149,10 +149,10 @@ const services = [
                 top-[0.15em]
                 left-0
                 hidden
-                size-5
+                size-[0.25em]
                 scale-50
                 opacity-0
-                transition-[opacity,transform]
+                transition-all
                 duration-500
                 motion-reduce:transition-none
                 lg:block
@@ -282,10 +282,10 @@ const services = [
             aria-hidden="true"
             class={`
               absolute
-              top-5
-              right-5
+              top-[1vw]
+              right-[1vw]
               hidden
-              h-16
+              h-[4vw]
               w-auto
               lg:block
             `}
@@ -298,22 +298,23 @@ const services = [
               items-center
               gap-2
               lg:absolute
-              lg:top-5
-              lg:left-5
+              lg:top-[1vw]
+              lg:left-[1vw]
+              lg:gap-[0.5vw]
             `}>
               <Image src={isoBadge} alt="ISO 27001" class={`
                 h-8
                 w-auto
                 sm:h-9
                 md:h-10
-                lg:h-10
+                lg:h-[2.5vw]
               `} />
               <Image src={gdprBadge} alt="GDPR" class={`
                 h-8
                 w-auto
                 sm:h-9
                 md:h-10
-                lg:h-10
+                lg:h-[2.5vw]
               `} />
             </div>
           )}
@@ -329,7 +330,7 @@ const services = [
             sm:text-xl
             md:text-2xl
             lg:py-0
-            lg:text-[clamp(24px,3vw,36px)]
+            lg:text-[2vw]
           `}>
             {service.description}
           </p>

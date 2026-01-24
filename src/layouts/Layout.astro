@@ -68,6 +68,12 @@ const metaDescription = description ?? t('meta.description');
     bg-background
     font-sans
   `}>
+    {/* Banner cookie kontrolü - flash önlemek için blocking script */}
+    <script is:inline>
+      if (document.cookie.includes('banner_dismissed=')) {
+        document.documentElement.style.setProperty('--banner-height', '0rem');
+      }
+    </script>
     <a
       href="#main-content"
       class={`

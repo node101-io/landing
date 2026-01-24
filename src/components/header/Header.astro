@@ -13,8 +13,8 @@ const menuItems = getMenuItems(t);
 <header class={`
   group/menu
   absolute
-  right-(--hero-margin)
-  left-(--hero-margin)
+  right-0
+  left-0
   m-(--header-margin)
   flex
   h-(--header-height)
@@ -28,16 +28,12 @@ const menuItems = getMenuItems(t);
   border-surface
   bg-header-bg
   font-sans
-  transition-[margin,border-radius,border-color,background-color,right,left]
+  transition-[margin,border-radius,border-color,background-color]
   duration-300
-  has-checked:right-0
-  has-checked:left-0
   has-checked:m-0
   has-checked:rounded-none
   has-checked:border-header-bg-checked
   has-checked:bg-header-bg-checked
-  lg:has-checked:right-(--hero-margin)
-  lg:has-checked:left-(--hero-margin)
   lg:has-checked:m-(--header-margin)
   lg:has-checked:rounded-4xl
   lg:has-checked:border-surface

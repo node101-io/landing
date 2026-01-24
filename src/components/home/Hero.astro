@@ -14,6 +14,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
 <div
   style={`background-image: url('${optimizedHeroBg.src}')`}
   class={`
+    relative
     m-(--hero-margin)
     flex
     h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
@@ -22,7 +23,7 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
     rounded-[calc(var(--radius-4xl)+var(--hero-margin))]
     bg-cover
     bg-center
-    transition-[margin,border-radius]
+    transition-[height,margin,border-radius]
     duration-300
     has-checked:m-0
     has-checked:rounded-none
@@ -129,13 +130,13 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
 
   <div class={`
     absolute
-    right-[calc(var(--hero-margin)+var(--header-margin))]
-    bottom-[calc(var(--hero-margin)+var(--header-margin))]
-    left-[calc(var(--hero-margin)+var(--header-margin))]
+    right-(--header-margin)
+    bottom-(--header-margin)
+    left-(--header-margin)
     flex
     items-center
     justify-between
-    sm:bottom-[calc(var(--hero-margin)+1.5rem)]
+    sm:bottom-6
   `}>
     <Image
       src={isoBadge}
