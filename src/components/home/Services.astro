@@ -88,7 +88,7 @@ const services = [
       lg:pb-0
     `}>
       {services.map((service, index) => (
-        <div class="relative">
+        <div class="group relative">
           <input
             type="radio"
             name="service-selector"
@@ -156,6 +156,8 @@ const services = [
                 duration-500
                 motion-reduce:transition-none
                 lg:block
+                lg:group-has-[:checked]:opacity-100
+                lg:group-has-[:checked]:scale-100
               `}
             />
             {Array.isArray(service.label)
@@ -443,27 +445,10 @@ const services = [
       });
     }
 
-    function updateStars() {
-      radios.forEach((radio) => {
-        const label = radio.nextElementSibling as HTMLLabelElement;
-        const star = label?.querySelector('img');
-        if (star) {
-          if (radio.checked) {
-            star.classList.remove('opacity-0', 'scale-50');
-            star.classList.add('opacity-100', 'scale-100');
-          } else {
-            star.classList.remove('opacity-100', 'scale-100');
-            star.classList.add('opacity-0', 'scale-50');
-          }
-        }
-      });
-    }
-
     radios.forEach((radio) => {
       radio.addEventListener('change', () => {
         if (radio.checked) {
           updateCards(radio.value);
-          updateStars();
         }
       });
     });
@@ -489,7 +474,6 @@ const services = [
     const checkedRadio = document.querySelector<HTMLInputElement>('input[name="service-selector"]:checked');
     if (checkedRadio) {
       updateCards(checkedRadio.value);
-      updateStars();
     }
   }
 
