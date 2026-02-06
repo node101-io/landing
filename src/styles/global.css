@@ -19,17 +19,15 @@
   --color-cream: #fef9f3;
   --color-gray-50: #fafafa;
   --color-gray-100: #f5f5f5;
-  --color-lav-200: #dae1fc;
-  --color-lav-300: #dfe5ff;
   --color-accent-muted: #a48c7e;
   --color-footnote: #6a4d42;
   --color-separator: #ded6d2;
-  --color-lav-active: #d9dbfc;
+  --color-lav-active: #edf1ff;
 
   /* Semantic tokens */
   --color-background: var(--color-gray-50);
   --color-surface: #fff;
-  --color-surface-2: var(--color-lav-300);
+  --color-surface-2: var(--color-lav-active);
   --color-foreground: var(--color-espresso);
   --color-muted: color-mix(in oklab, var(--color-espresso) 55%, white);
   --color-border: color-mix(in oklab, var(--color-espresso) 14%, white);
@@ -38,9 +36,6 @@
   --color-primary: var(--color-espresso);
   --color-primary-foreground: #fafafa;
 
-  /* Secondary */
-  --color-secondary: var(--color-lav-200);
-  --color-secondary-foreground: var(--color-espresso);
 
   /* Spacing */
   --section-margin: 1.5rem;
