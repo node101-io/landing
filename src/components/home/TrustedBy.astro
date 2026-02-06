@@ -20,10 +20,11 @@ const placeholders = [
     flex
     w-full
     items-center
-    gap-8
+    gap-4
     py-16
     pr-0
     pl-4
+    sm:gap-8
     sm:py-20
     sm:pl-6
     md:gap-12
@@ -31,10 +32,11 @@ const placeholders = [
 >
   <p class={`
     flex-2
-    text-sm
+    text-xs
     font-normal
     text-espresso
-    sm:text-base
+    sm:text-sm
+    md:text-base
   `}>
     {t('trustedBy.description')}
   </p>
@@ -69,9 +71,11 @@ const placeholders = [
         flex
         w-max
         animate-marquee-logos
-        gap-8
-        pr-8
+        gap-4
+        pr-4
         motion-reduce:animate-none
+        sm:gap-8
+        sm:pr-8
         md:gap-12
         md:pr-12
       `}
@@ -83,10 +87,11 @@ const placeholders = [
           <div
             style={`background: ${p.color}; width: ${p.width}px`}
             class={`
-              h-10
+              h-7
               shrink-0
               rounded-sm
               opacity-60
+              sm:h-10
               md:h-12
             `}
             aria-hidden="true"
@@ -99,10 +104,11 @@ const placeholders = [
           <div
             style={`background: ${p.color}; width: ${p.width}px`}
             class={`
-              h-10
+              h-7
               shrink-0
               rounded-sm
               opacity-60
+              sm:h-10
               md:h-12
             `}
             aria-hidden="true"
