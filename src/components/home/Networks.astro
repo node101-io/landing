@@ -1,9 +1,85 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { networks } from '@/components/header/menu-data';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+interface Network {
+  icon: string;
+  name: string;
+  symbol: string;
+}
+
+const bySymbol: Record<string, Network> = Object.fromEntries(
+  networks.map(n => [n.symbol, { icon: n.icon, name: n.name, symbol: n.symbol }])
+);
+
+type CardType = 'featured' | 'tall' | 'medium' | 'small' | 'cta';
+type Vis = 'shared' | 'desktop' | 'mobile';
+
+interface GridItem {
+  type: CardType;
+  vis: Vis;
+  grid: string;
+  network?: Network;
+}
+
+// 12-col desktop (4 rows, 18 cells), 4-col mobile (6 rows, 11 cells)
+const items: GridItem[] = [
+  // === Shared (mobile + desktop) ===
+  { vis: 'shared', type: 'featured', network: bySymbol['ETH'],
+    grid: 'col-[3/5] row-[1/3] lg:col-[4/7] lg:row-[1/3]' },
+  { vis: 'shared', type: 'tall', network: bySymbol['BTC'],
+    grid: 'col-[1/3] row-[1/3] lg:col-[7/9] lg:row-[1/3]' },
+  { vis: 'shared', type: 'small', network: bySymbol['BAND'],
+    grid: 'col-[2/3] row-[6/7] lg:col-[9/10] lg:row-[1/2]' },
+  { vis: 'shared', type: 'medium', network: bySymbol['SOL'],
+    grid: 'col-[3/5] row-[3/4] lg:col-[10/13] lg:row-[1/2]' },
+  { vis: 'shared', type: 'small', network: bySymbol['AVAX'],
+    grid: 'col-[1/2] row-[6/7] lg:col-[9/10] lg:row-[2/3]' },
+  { vis: 'shared', type: 'medium', network: bySymbol['WAL'],
+    grid: 'col-[1/3] row-[4/5] lg:col-[1/4] lg:row-[3/4]' },
+  { vis: 'shared', type: 'medium', network: bySymbol['TIA'],
+    grid: 'col-[3/5] row-[4/5] lg:col-[4/7] lg:row-[3/4]' },
+  { vis: 'shared', type: 'medium', network: bySymbol['STRK'],
+    grid: 'col-[1/3] row-[5/6] lg:col-[7/10] lg:row-[3/4]' },
+  { vis: 'shared', type: 'medium', network: bySymbol['ATOM'],
+    grid: 'col-[3/5] row-[5/6] lg:col-[10/13] lg:row-[3/4]' },
+  { vis: 'shared', type: 'cta',
+    grid: 'col-[3/5] row-[6/7] lg:col-[11/13] lg:row-[4/5]' },
+
+  // === Mobile-only ===
+  { vis: 'mobile', type: 'medium', network: bySymbol['SUI'],
+    grid: 'col-[1/3] row-[3/4]' },
+
+  // === Desktop-only ===
+  { vis: 'desktop', type: 'featured', network: bySymbol['SUI'],
+    grid: 'col-[1/4] row-[1/3]' },
+  { vis: 'desktop', type: 'medium', network: bySymbol['STRK'],
+    grid: 'col-[10/13] row-[2/3]' },
+  { vis: 'desktop', type: 'medium', network: bySymbol['SOL'],
+    grid: 'col-[1/4] row-[4/5]' },
+  { vis: 'desktop', type: 'medium', network: bySymbol['TIA'],
+    grid: 'col-[4/7] row-[4/5]' },
+  { vis: 'desktop', type: 'small', network: bySymbol['ATOM'],
+    grid: 'col-[7/8] row-[4/5]' },
+  { vis: 'desktop', type: 'small', network: bySymbol['ETH'],
+    grid: 'col-[8/9] row-[4/5]' },
+  { vis: 'desktop', type: 'small', network: bySymbol['WAL'],
+    grid: 'col-[9/10] row-[4/5]' },
+  { vis: 'desktop', type: 'small', network: bySymbol['SUI'],
+    grid: 'col-[10/11] row-[4/5]' },
+];
+
+function getDisplay(vis: Vis) {
+  if (vis === 'desktop') return 'hidden lg:flex';
+  if (vis === 'mobile') return 'flex lg:hidden';
+  return 'flex';
+}
+
+const cellStyle = 'bg-gray-50 border border-lav-border';
+const imgStyle = 'aspect-square object-contain rounded-[1vw]';
 ---
 
 <section
@@ -17,65 +93,131 @@ const t = useTranslations(lang);
     py-12
     sm:py-16
     md:py-20
-    lg:flex-row
-    lg:items-center
-    lg:justify-between
-    lg:gap-16
+    lg:gap-12
     lg:py-24
   `}
   aria-label={t('networks.ariaLabel')}
 >
-  <h2 class={`
-    font-display
-    text-5xl
-    font-bold
-    leading-[0.85]
-    text-balance
-    text-espresso
-    md:text-6xl
-    lg:w-[60%]
-    lg:text-7xl
-  `}>
-    {t('networks.title')}
-  </h2>
-
+  <!-- Title section -->
   <div class={`
     flex
     flex-col
-    gap-6
-    lg:w-[40%]
-    lg:items-start
+    gap-8
+    lg:flex-row
+    lg:items-center
+    lg:justify-between
+    lg:gap-16
   `}>
-    <p class={`
-      font-sans
-      text-xs
-      leading-relaxed
+    <h2 class={`
+      font-display
+      text-5xl
+      font-bold
+      leading-[0.85]
+      text-balance
       text-espresso
-      sm:text-sm
-      md:text-base
+      md:text-6xl
+      lg:w-[60%]
+      lg:text-7xl
     `}>
-      {t('networks.description')}
-    </p>
+      {t('networks.title')}
+    </h2>
 
-    <a
-      href="#"
-      class={`
-        inline-flex
-        w-fit
-        items-center
-        justify-center
-        rounded-full
-        bg-espresso
-        px-5
-        py-2
+    <div class={`
+      flex
+      flex-col
+      gap-6
+      lg:w-[40%]
+      lg:items-start
+    `}>
+      <p class={`
         font-sans
-        text-sm
-        text-cream
-        transition-colors
-        hover:bg-espresso/90
-      `}
-    >
-      {t('networks.cta')}
-    </a>
+        text-xs
+        leading-relaxed
+        text-espresso
+        sm:text-sm
+        md:text-base
+      `}>
+        {t('networks.description')}
+      </p>
+
+      <a
+        href="#"
+        class={`
+          inline-flex
+          w-fit
+          items-center
+          justify-center
+          rounded-full
+          bg-espresso
+          px-5
+          py-2
+          font-sans
+          text-sm
+          text-cream
+          transition-colors
+          hover:bg-espresso/90
+        `}
+      >
+        {t('networks.cta')}
+      </a>
+    </div>
+  </div>
+
+  <!-- Networks Grid -->
+  <div class={`
+    grid
+    grid-cols-4
+    gap-[4vw]
+    lg:grid-cols-12
+    lg:grid-rows-4
+    lg:gap-[1.4vw]
+    lg:aspect-[3.09/1]
+  `}>
+    {items.map((item) => (
+      <div
+        class:list={[
+          item.grid,
+          getDisplay(item.vis),
+          cellStyle,
+          'min-h-0 overflow-hidden rounded-[2vw] p-[4vw] lg:p-[1.4vw]',
+        ]}
+      >
+        {/* Featured: 3×2 — logo = 30% of cell width */}
+        {item.type === 'featured' && item.network && (
+          <img
+            src={item.network.icon}
+            alt={item.network.name}
+            class={`w-[30%] ${imgStyle}`}
+          />
+        )}
+
+        {/* Tall: 2×2 — logo = smallest cell size minus paddings */}
+        {item.type === 'tall' && item.network && (
+          <img
+            src={item.network.icon}
+            alt={item.network.name}
+            class={`w-[calc(50%-2.1vw)] ${imgStyle}`}
+          />
+        )}
+
+        {/* Small: 1×1 — logo fills cell */}
+        {item.type === 'small' && item.network && (
+          <img
+            src={item.network.icon}
+            alt={item.network.name}
+            class={`size-full ${imgStyle}`}
+          />
+        )}
+
+        {/* Medium: 3×1 — logo = 50% of cell height */}
+        {item.type === 'medium' && item.network && (
+          <img
+            src={item.network.icon}
+            alt={item.network.name}
+            class={`h-[3.686vw] ${imgStyle}`}
+          />
+        )}
+      </div>
+    ))}
   </div>
 </section>

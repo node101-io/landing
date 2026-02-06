@@ -27,7 +27,7 @@ export type MenuItem = {
 // STATIC DATA
 // =============================================================================
 
-const networks: GridItemProps[] = [
+export const networks: GridItemProps[] = [
   {
     icon: "/img/networks/ethereum.webp",
     name: "Ethereum",
