@@ -217,7 +217,8 @@ export const ui = {
     // Menu Icon Alt Texts - Investment
     "menu.investment.btcRestaking.iconAlt": "BTC Restaking icon",
     "menu.investment.ethRestaking.iconAlt": "ETH Restaking icon",
-    "menu.investment.whitelabelValidation.iconAlt": "Whitelabel Validation icon",
+    "menu.investment.whitelabelValidation.iconAlt":
+      "Whitelabel Validation icon",
     "menu.investment.referralProgram.iconAlt": "Referral Program icon",
 
     // Menu Icon Alt Texts - RPC
@@ -230,7 +231,8 @@ export const ui = {
     "menu.services.whitelabelValidation.iconAlt": "Whitelabel Validation icon",
     "menu.services.btcRestaking.iconAlt": "BTC Restaking icon",
     "menu.services.ethRestaking.iconAlt": "ETH Restaking icon",
-    "menu.services.architecturalConsulting.iconAlt": "Architectural Consulting icon",
+    "menu.services.architecturalConsulting.iconAlt":
+      "Architectural Consulting icon",
     "menu.services.blockchainConsulting.iconAlt": "Blockchain Consulting icon",
     "menu.services.productDevelopment.iconAlt": "Product Development icon",
     "menu.services.turkishEcosystem.iconAlt": "Turkish Ecosystem Gateway icon",
@@ -245,10 +247,12 @@ export const ui = {
     "menu.products.pulsar.iconAlt": "Pulsar icon",
     "menu.products.punch.iconAlt": "PUNCH icon",
     "menu.products.validatier.iconAlt": "Validatier icon",
-    "menu.products.blockchainDevReport.iconAlt": "Blockchain Developer Report icon",
+    "menu.products.blockchainDevReport.iconAlt":
+      "Blockchain Developer Report icon",
 
     // Menu Icon Alt Texts - Corporate
-    "menu.corporate.financialInstitutions.iconAlt": "Financial Institutions icon",
+    "menu.corporate.financialInstitutions.iconAlt":
+      "Financial Institutions icon",
     "menu.corporate.centralizedExchanges.iconAlt": "Centralized Exchanges icon",
     "menu.corporate.custodials.iconAlt": "Custodials icon",
     "menu.corporate.foundations.iconAlt": "Foundations icon",
@@ -477,7 +481,8 @@ export const ui = {
     // Menu Icon Alt Texts - Investment
     "menu.investment.btcRestaking.iconAlt": "BTC Restaking simgesi",
     "menu.investment.ethRestaking.iconAlt": "ETH Restaking simgesi",
-    "menu.investment.whitelabelValidation.iconAlt": "Fason Validatörlük simgesi",
+    "menu.investment.whitelabelValidation.iconAlt":
+      "Fason Validatörlük simgesi",
     "menu.investment.referralProgram.iconAlt": "Referans Programı simgesi",
 
     // Menu Icon Alt Texts - RPC
@@ -490,8 +495,10 @@ export const ui = {
     "menu.services.whitelabelValidation.iconAlt": "Fason Validatörlük simgesi",
     "menu.services.btcRestaking.iconAlt": "BTC Restaking simgesi",
     "menu.services.ethRestaking.iconAlt": "ETH Restaking simgesi",
-    "menu.services.architecturalConsulting.iconAlt": "Mimari Danışmanlık simgesi",
-    "menu.services.blockchainConsulting.iconAlt": "Blokzincir Danışmanlığı simgesi",
+    "menu.services.architecturalConsulting.iconAlt":
+      "Mimari Danışmanlık simgesi",
+    "menu.services.blockchainConsulting.iconAlt":
+      "Blokzincir Danışmanlığı simgesi",
     "menu.services.productDevelopment.iconAlt": "Ürün Üretimi simgesi",
     "menu.services.turkishEcosystem.iconAlt": "Türk Ekosistemi Kapısı simgesi",
     "menu.services.buildersWeek.iconAlt": "Builders Week Istanbul simgesi",
@@ -505,11 +512,13 @@ export const ui = {
     "menu.products.pulsar.iconAlt": "Pulsar simgesi",
     "menu.products.punch.iconAlt": "PUNCH simgesi",
     "menu.products.validatier.iconAlt": "Validatier simgesi",
-    "menu.products.blockchainDevReport.iconAlt": "Blockchain Developer Report simgesi",
+    "menu.products.blockchainDevReport.iconAlt":
+      "Blockchain Developer Report simgesi",
 
     // Menu Icon Alt Texts - Corporate
     "menu.corporate.financialInstitutions.iconAlt": "Finansal Kurumlar simgesi",
-    "menu.corporate.centralizedExchanges.iconAlt": "Merkezi Kripto Borsaları simgesi",
+    "menu.corporate.centralizedExchanges.iconAlt":
+      "Merkezi Kripto Borsaları simgesi",
     "menu.corporate.custodials.iconAlt": "Saklamacılar simgesi",
     "menu.corporate.foundations.iconAlt": "Foundation'lar simgesi",
     "menu.corporate.companies.iconAlt": "Şirketler simgesi",
