@@ -9,6 +9,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
+
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/node101-io' },
+  { label: 'X', href: 'https://x.com/node_101' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/node101/' },
+];
 ---
 
 <div
@@ -150,34 +156,25 @@ const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
     <nav class={`
       flex
       items-center
-      gap-4
-      text-xs
+      gap-5
+      text-sm
       text-espresso-light
-      sm:gap-6
-      sm:text-sm
+      sm:gap-7
+      sm:text-base
     `}>
-      <a
-        href="https://github.com/node101-io"
-        class={`
-          transition-colors
-          hover:text-primary
-        `}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GitHub
-      </a>
-      <a
-        href="https://x.com/node_101"
-        class={`
-          transition-colors
-          hover:text-primary
-        `}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        X
-      </a>
+      {socialLinks.map(({ label, href }) => (
+        <a
+          href={href}
+          class={`
+            transition-colors
+            hover:text-primary
+          `}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {label}
+        </a>
+      ))}
     </nav>
   </div>
 </div>

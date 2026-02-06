@@ -13,23 +13,20 @@ const services = [
     label: t('services.staking'),
     description: t('services.staking.description'),
     spiral: '/img/services-spirals/staking-spiral.svg',
-    index: 0,
   },
   {
     id: 'rpc',
     label: t('services.rpc'),
     description: t('services.rpc.description'),
     spiral: '/img/services-spirals/rpc-spiral.svg',
-    index: 1,
   },
   {
     id: 'security',
-    label: ['Security &', 'Compliance'],
+    label: t('services.security'),
     description: t('services.security.description'),
     spiral: '/img/services-spirals/security-spiral.svg',
-    index: 2,
   },
-] as const;
+];
 ---
 
 <section
@@ -167,22 +164,7 @@ const services = [
                 lg:group-has-checked:opacity-100
               `}
             />
-            {Array.isArray(service.label)
-              ? service.label.map((line, i) => (
-                  <>
-                    {i > 0 && (
-                      <>
-                        <span class="lg:hidden">{' '}</span>
-                        <br class={`
-                          hidden
-                          lg:inline
-                        `} />
-                      </>
-                    )}
-                    {line}
-                  </>
-                ))
-              : service.label}
+            {service.label}
           </label>
         </div>
       ))}
@@ -226,7 +208,7 @@ const services = [
     `} />
 
     <!-- Cards -->
-    <div class={`
+    <div id="services-cards" class={`
       relative
       mb-[4vw]
       h-[65vw]
@@ -235,7 +217,7 @@ const services = [
       lg:mb-0
       lg:h-full
     `}>
-      {services.map((service) => (
+      {services.map((service, i) => (
         <article
           class={`
             service-card
@@ -256,7 +238,7 @@ const services = [
             lg:w-auto
             lg:justify-end
           `}
-          style={`--index: ${service.index}`}
+          style={`--index: ${i}`}
           data-service={service.id}
         >
           <!-- Mobile Header -->
@@ -281,7 +263,7 @@ const services = [
               uppercase
               sm:text-lg
             `}>
-              {Array.isArray(service.label) ? service.label.join(' ') : service.label}
+              {service.label}
             </h3>
           </div>
 
@@ -356,7 +338,7 @@ const services = [
             sm:text-sm
             lg:hidden
           `}>
-            <span>Discover</span>
+            <span>{t('services.cta')}</span>
             <img src="/img/arrow/arrow-right-light.svg" alt="" aria-hidden="true" class={`
               h-[2vw]
               w-auto
@@ -397,7 +379,7 @@ const services = [
     .service-card {
       left: 50%;
       top: 50%;
-      translate: calc(-50% + var(--offset) * 87vw) -50%;
+      translate: calc(-50% + var(--offset) * 87vw + var(--drag-offset, 0px)) -50%;
     }
   }
 
@@ -406,7 +388,7 @@ const services = [
     .service-card {
       left: 50%;
       top: 50%;
-      translate: calc(-50% + var(--offset) * 408px) -50%;
+      translate: calc(-50% + var(--offset) * 408px + var(--drag-offset, 0px)) -50%;
     }
   }
 
@@ -435,8 +417,91 @@ const services = [
     }
   }
 
+  /* Disable transition during drag for instant feedback */
+  .service-card.dragging {
+    transition-duration: 0s;
+  }
+
   /* Accessibility */
   @media (prefers-reduced-motion: reduce) {
     .service-card { transition-duration: 0s; }
   }
 </style>
+
+<script>
+  const serviceIds = ['staking', 'rpc', 'security'] as const;
+  const container = document.getElementById('services-cards');
+  const isMobile = () => window.matchMedia('(max-width: 1023px)').matches;
+
+  function getSelected(): number {
+    for (let i = 0; i < serviceIds.length; i++) {
+      const radio = document.getElementById(`service-${serviceIds[i]}`) as HTMLInputElement | null;
+      if (radio?.checked) return i;
+    }
+    return 1;
+  }
+
+  function selectService(index: number) {
+    const clamped = Math.max(0, Math.min(serviceIds.length - 1, index));
+    const radio = document.getElementById(`service-${serviceIds[clamped]}`) as HTMLInputElement | null;
+    if (radio) {
+      radio.checked = true;
+    }
+  }
+
+  if (container) {
+    let startX = 0;
+    let startY = 0;
+    let isHorizontal: boolean | null = null;
+    const cards = container.querySelectorAll('.service-card');
+
+    container.addEventListener('touchstart', (e: TouchEvent) => {
+      if (!isMobile()) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      isHorizontal = null;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isMobile()) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+
+      // Determine swipe direction on first significant move
+      if (isHorizontal === null && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+        isHorizontal = Math.abs(dx) > Math.abs(dy);
+      }
+
+      if (isHorizontal) {
+        e.preventDefault();
+        // Set drag offset on all cards via CSS custom property
+        container.style.setProperty('--drag-offset', `${dx}px`);
+        cards.forEach(card => card.classList.add('dragging'));
+      }
+    }, { passive: false });
+
+    container.addEventListener('touchend', (e: TouchEvent) => {
+      if (!isMobile()) return;
+      const endX = e.changedTouches[0].clientX;
+      const deltaX = endX - startX;
+
+      // Remove drag state — transition kicks back in for smooth snap
+      cards.forEach(card => card.classList.remove('dragging'));
+      container.style.removeProperty('--drag-offset');
+
+      if (Math.abs(deltaX) > 50) {
+        const current = getSelected();
+        selectService(deltaX < 0 ? current + 1 : current - 1);
+      }
+
+      // Reset direction lock
+      isHorizontal = null;
+    }, { passive: true });
+
+    container.addEventListener('touchcancel', () => {
+      cards.forEach(card => card.classList.remove('dragging'));
+      container.style.removeProperty('--drag-offset');
+      isHorizontal = null;
+    }, { passive: true });
+  }
+</script>

@@ -45,6 +45,7 @@ export const ui = {
       "node101 provides fast, secure RPC access to all major blockchain networks, from Ethereum to Solana, ensuring your applications are powered by enterprise-grade infrastructure.",
     "services.security.description":
       "node101 is ISO27001 certified and AAA verified, making us the most trusted validator in Turkiye and one of the few globally. World-class security and compliance for institutions.",
+    "services.cta": "Discover",
 
     // Nav
     "nav.investment": "Investment",
@@ -246,6 +247,7 @@ export const ui = {
       "node101, Ethereum'dan Solana'ya kadar tüm büyük blokzincir ağlarına hızlı ve güvenli RPC erişimi sağlar. Uygulamalarınız kurumsal düzeyde altyapıyla desteklenir.",
     "services.security.description":
       "node101, ISO27001 sertifikalı ve AAA doğrulanmış olup Türkiye'nin en güvenilir validatörü ve dünya genelinde sayılı olanlardan biridir. Kurumlar için dünya standartlarında güvenlik ve uyumluluk.",
+    "services.cta": "Keşfet",
 
     // Nav
     "nav.investment": "Yatırım",
