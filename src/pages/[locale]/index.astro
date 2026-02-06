@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Banner from '@/components/Banner.astro';
+import Header from '@/components/header/Header.astro';
 import Hero from '@/components/home/Hero.astro';
 import TrustedBy from '@/components/home/TrustedBy.astro';
 import Services from '@/components/home/Services.astro';
@@ -52,7 +53,10 @@ export function getStaticPaths() {
       </div>
     </div>
   </Banner>
-  <Hero />
+  <div class="group/menu">
+    <Header />
+    <Hero />
+  </div>
   <TrustedBy />
   <Services />
 </Layout>

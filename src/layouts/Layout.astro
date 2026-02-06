@@ -19,7 +19,7 @@ const metaDescription = description ?? t('meta.description');
 ---
 
 <!DOCTYPE html>
-<html lang={lang} class="overscroll-none">
+<html lang={lang} class="overscroll-none has-[#mobile-menu-toggle:checked]:overflow-hidden has-[#mobile-menu-toggle:checked]:[--banner-height:0rem]">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -67,7 +67,6 @@ const metaDescription = description ?? t('meta.description');
     max-w-[1920px]
     bg-background
     font-sans
-    max-lg:has-[#mobile-menu-toggle:checked]:overflow-hidden
   `}>
     {/* Banner cookie kontrolü - flash önlemek için blocking script */}
     <script is:inline>

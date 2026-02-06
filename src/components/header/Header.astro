@@ -11,11 +11,12 @@ const menuItems = getMenuItems(t);
 ---
 
 <header class={`
-  group/menu
-  absolute
-  right-0
-  left-0
-  m-(--header-margin)
+  sticky
+  top-(--header-margin)
+  z-40
+  mx-[calc(var(--header-margin)+var(--hero-margin))]
+  mt-[calc(var(--header-margin)+var(--hero-margin))]
+  mb-[calc((var(--header-margin)+var(--hero-margin))*-1-var(--header-height))]
   flex
   h-(--header-height)
   min-h-(--header-height)
@@ -24,19 +25,26 @@ const menuItems = getMenuItems(t);
   justify-center
   gap-8
   rounded-4xl
-  border
-  border-surface
+  ring
+  ring-surface
   bg-header-bg
   font-sans
-  transition-[margin,border-radius,border-color,background-color]
+  backdrop-blur-md
+  transition-[margin,border-radius,shadow,background-color,top]
   duration-300
-  has-checked:m-0
+  has-checked:top-0
+  has-checked:mx-0
+  has-checked:mt-0
+  has-checked:mb-[calc(var(--header-height)*-1)]
   has-checked:rounded-none
-  has-checked:border-header-bg-checked
+  has-checked:ring-header-bg-checked
   has-checked:bg-header-bg-checked
-  lg:has-checked:m-(--header-margin)
+  lg:has-checked:top-[calc(var(--header-margin)+var(--hero-margin))]
+  lg:has-checked:mx-[calc(var(--header-margin)+var(--hero-margin))]
+  lg:has-checked:mt-[calc(var(--header-margin)+var(--hero-margin))]
+  lg:has-checked:mb-[calc((var(--header-margin)+var(--hero-margin))*-1-var(--header-height))]
   lg:has-checked:rounded-4xl
-  lg:has-checked:border-surface
+  lg:has-checked:ring-surface
   lg:has-checked:bg-header-bg
 `}>
   <a href={getRelativeLocaleUrl(lang, '/')} class={`
@@ -74,12 +82,12 @@ const menuItems = getMenuItems(t);
   {/* Navigation */}
   <nav class={`
     invisible
-    fixed
-    top-[calc(var(--banner-height)+var(--header-margin)+var(--header-height)+var(--hero-margin))]
-    right-(--nav-inset)
-    bottom-[calc(var(--nav-inset)+var(--hero-margin))]
-    left-(--nav-inset)
+    absolute
+    top-full
+    right-0
+    left-0
     z-50
+    h-[calc(100dvh-var(--header-height))]
     flex
     flex-col
     items-center
@@ -91,19 +99,14 @@ const menuItems = getMenuItems(t);
     px-8
     py-8
     opacity-0
-    transition-[visibility,opacity,top,right,bottom,left,border-radius]
+    transition-[visibility,opacity,border-radius]
     duration-300
     peer-checked:visible
-    peer-checked:top-[calc(var(--banner-height)+var(--header-height))]
-    peer-checked:right-0
-    peer-checked:bottom-0
-    peer-checked:left-0
     peer-checked:rounded-none
     peer-checked:opacity-100
     lg:visible
     lg:static
-    lg:right-auto
-    lg:left-auto
+    lg:h-auto
     lg:flex-row
     lg:space-y-0
     lg:space-x-10

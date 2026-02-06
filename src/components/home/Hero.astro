@@ -1,7 +1,6 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
-import Header from '@/components/header/Header.astro';
 import isoBadge from '@/assets/images/iso-badge.webp';
 import heroBackground from '@/assets/images/hero-background.webp';
 
@@ -29,14 +28,17 @@ const socialLinks = [
     rounded-[calc(var(--radius-4xl)+var(--hero-margin))]
     bg-cover
     bg-center
-    transition-[height,margin,border-radius]
+    transition-[height,margin,border-radius,padding]
     duration-300
-    has-checked:m-0
-    has-checked:rounded-none
-    lg:has-checked:m-(--hero-margin)
-    lg:has-checked:rounded-4xl
+    group-has-checked/menu:m-0
+    group-has-checked/menu:h-[calc(100dvh-var(--banner-height))]
+    group-has-checked/menu:p-(--hero-margin)
+    group-has-checked/menu:rounded-none
+    lg:group-has-checked/menu:m-(--hero-margin)
+    lg:group-has-checked/menu:h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
+    lg:group-has-checked/menu:p-0
+    lg:group-has-checked/menu:rounded-4xl
   `}>
-  <Header />
 
   <section class={`
     flex
