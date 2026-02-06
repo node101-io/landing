@@ -110,14 +110,14 @@ function buildInvestmentMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/btc-restaking.webp",
-            iconAlt: "BTC Restaking icon",
+            iconAlt: t("menu.investment.btcRestaking.iconAlt"),
             label: t("menu.investment.btcRestaking.label"),
             description: t("menu.investment.btcRestaking.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/eth-restaking.webp",
-            iconAlt: "ETH Restaking icon",
+            iconAlt: t("menu.investment.ethRestaking.iconAlt"),
             label: t("menu.investment.ethRestaking.label"),
             description: t("menu.investment.ethRestaking.description"),
             href: "",
@@ -130,14 +130,14 @@ function buildInvestmentMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/whitelabel-validation.webp",
-            iconAlt: "Whitelabel Validation icon",
+            iconAlt: t("menu.investment.whitelabelValidation.iconAlt"),
             label: t("menu.investment.whitelabelValidation.label"),
             description: t("menu.investment.whitelabelValidation.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/referral-program.webp",
-            iconAlt: "Referral Program icon",
+            iconAlt: t("menu.investment.referralProgram.iconAlt"),
             label: t("menu.investment.referralProgram.label"),
             description: t("menu.investment.referralProgram.description"),
             href: "",
@@ -181,21 +181,21 @@ function buildRpcMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/pricing.webp",
-            iconAlt: "Pricing icon",
+            iconAlt: t("menu.rpc.pricing.iconAlt"),
             label: t("menu.rpc.pricing.label"),
             description: t("menu.rpc.pricing.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/free-rpc.webp",
-            iconAlt: "Free RPC icon",
+            iconAlt: t("menu.rpc.freeRpc.iconAlt"),
             label: t("menu.rpc.freeRpc.label"),
             description: t("menu.rpc.freeRpc.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/documents.webp",
-            iconAlt: "Documents icon",
+            iconAlt: t("menu.rpc.documents.iconAlt"),
             label: t("menu.rpc.documents.label"),
             description: t("menu.rpc.documents.description"),
             href: "",
@@ -216,14 +216,14 @@ function buildServicesMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/crypto-asset-investment.webp",
-            iconAlt: "Crypto Asset Investment icon",
+            iconAlt: t("menu.services.cryptoInvestment.iconAlt"),
             label: t("menu.services.cryptoInvestment.label"),
             description: t("menu.services.cryptoInvestment.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/whitelabel-validation.webp",
-            iconAlt: "Whitelabel Validation icon",
+            iconAlt: t("menu.services.whitelabelValidation.iconAlt"),
             label: t("menu.services.whitelabelValidation.label"),
             description: t("menu.services.whitelabelValidation.description"),
             href: "",
@@ -250,14 +250,14 @@ function buildServicesMenu(t: TranslationFn): MenuItem {
           },
           {
             iconSrc: "/img/header-icons/btc-restaking.webp",
-            iconAlt: "BTC Restaking icon",
+            iconAlt: t("menu.services.btcRestaking.iconAlt"),
             label: t("menu.services.btcRestaking.label"),
             description: t("menu.services.btcRestaking.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/eth-restaking.webp",
-            iconAlt: "ETH Restaking icon",
+            iconAlt: t("menu.services.ethRestaking.iconAlt"),
             label: t("menu.services.ethRestaking.label"),
             description: t("menu.services.ethRestaking.description"),
             href: "",
@@ -270,14 +270,14 @@ function buildServicesMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/architectural-consulting.webp",
-            iconAlt: "Architectural Consulting icon",
+            iconAlt: t("menu.services.architecturalConsulting.iconAlt"),
             label: t("menu.services.architecturalConsulting.label"),
             description: t("menu.services.architecturalConsulting.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/blockchain-consulting.webp",
-            iconAlt: "Blockchain Consulting icon",
+            iconAlt: t("menu.services.blockchainConsulting.iconAlt"),
             label: t("menu.services.blockchainConsulting.label"),
             description: t("menu.services.blockchainConsulting.description"),
             href: "",
@@ -289,7 +289,7 @@ function buildServicesMenu(t: TranslationFn): MenuItem {
             items: [
               {
                 iconSrc: "/img/header-icons/product-development.webp",
-                iconAlt: "Product Development icon",
+                iconAlt: t("menu.services.productDevelopment.iconAlt"),
                 label: t("menu.services.productDevelopment.label"),
                 description: t("menu.services.productDevelopment.description"),
                 href: "",
@@ -312,7 +312,7 @@ function buildEventsAndCommunityItems(t: TranslationFn): MenuSectionItemData[] {
   return [
     {
       iconSrc: "/img/header-icons/turkish-ecosystem.webp",
-      iconAlt: "Turkish Ecosystem Gateway icon",
+      iconAlt: t("menu.services.turkishEcosystem.iconAlt"),
       label: t("menu.services.turkishEcosystem.label"),
       description: t("menu.services.turkishEcosystem.description"),
       href: "",
@@ -329,21 +329,21 @@ function buildEventsAndCommunityItems(t: TranslationFn): MenuSectionItemData[] {
     },
     {
       iconSrc: "/img/header-icons/builders-week-istanbul.webp",
-      iconAlt: "Builders Week Istanbul icon",
+      iconAlt: t("menu.services.buildersWeek.iconAlt"),
       label: t("menu.services.buildersWeek.label"),
       description: t("menu.services.buildersWeek.description"),
       href: "",
     },
     {
       iconSrc: "/img/header-icons/ethistanbul.webp",
-      iconAlt: "ETHIstanbul Conference icon",
+      iconAlt: t("menu.services.ethIstanbul.iconAlt"),
       label: t("menu.services.ethIstanbul.label"),
       description: t("menu.services.ethIstanbul.description"),
       href: "",
     },
     {
       iconSrc: "/img/header-icons/cryptist.webp",
-      iconAlt: "Cryptist icon",
+      iconAlt: t("menu.services.cryptist.iconAlt"),
       label: t("menu.services.cryptist.label"),
       description: t("menu.services.cryptist.description"),
       href: "",
@@ -375,14 +375,14 @@ function buildProductsMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/pulsar.webp",
-            iconAlt: "Pulsar Chain icon",
+            iconAlt: t("menu.products.pulsarChain.iconAlt"),
             label: t("menu.products.pulsarChain.label"),
             description: t("menu.products.pulsarChain.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/zkvot.webp",
-            iconAlt: "zkVot icon",
+            iconAlt: t("menu.products.zkvot.iconAlt"),
             label: t("menu.products.zkvot.label"),
             description: t("menu.products.zkvot.description"),
             href: "",
@@ -394,7 +394,7 @@ function buildProductsMenu(t: TranslationFn): MenuItem {
             items: [
               {
                 iconSrc: "/img/header-icons/hackathons.webp",
-                iconAlt: "Hackathon Products icon",
+                iconAlt: t("menu.products.hackathonProducts.iconAlt"),
                 label: t("menu.products.hackathonProducts.label"),
                 description: t("menu.products.hackathonProducts.description"),
                 href: "",
@@ -409,14 +409,14 @@ function buildProductsMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/pulsar.webp",
-            iconAlt: "Pulsar icon",
+            iconAlt: t("menu.products.pulsar.iconAlt"),
             label: t("menu.products.pulsar.label"),
             description: t("menu.products.pulsar.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/punch.webp",
-            iconAlt: "PUNCH icon",
+            iconAlt: t("menu.products.punch.iconAlt"),
             label: t("menu.products.punch.label"),
             description: t("menu.products.punch.description"),
             href: "",
@@ -429,14 +429,14 @@ function buildProductsMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/validatier.webp",
-            iconAlt: "Validatier icon",
+            iconAlt: t("menu.products.validatier.iconAlt"),
             label: t("menu.products.validatier.label"),
             description: t("menu.products.validatier.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/blockchain-developer-report.webp",
-            iconAlt: "Blockchain Developer Report icon",
+            iconAlt: t("menu.products.blockchainDevReport.iconAlt"),
             label: t("menu.products.blockchainDevReport.label"),
             description: t("menu.products.blockchainDevReport.description"),
             href: "",
@@ -451,28 +451,28 @@ function buildNode101Items(t: TranslationFn): MenuSectionItemData[] {
   return [
     {
       iconSrc: "/img/header-icons/about-node101.webp",
-      iconAlt: "About node101 icon",
+      iconAlt: t("menu.corporate.aboutNode101.iconAlt"),
       label: t("menu.corporate.aboutNode101.label"),
       description: t("menu.corporate.aboutNode101.description"),
       href: "",
     },
     {
       iconSrc: "/img/header-icons/team.webp",
-      iconAlt: "Team icon",
+      iconAlt: t("menu.corporate.team.iconAlt"),
       label: t("menu.corporate.team.label"),
       description: t("menu.corporate.team.description"),
       href: "",
     },
     {
       iconSrc: "/img/header-icons/career.webp",
-      iconAlt: "Career icon",
+      iconAlt: t("menu.corporate.career.iconAlt"),
       label: t("menu.corporate.career.label"),
       description: t("menu.corporate.career.description"),
       href: "",
     },
     {
       iconSrc: "/img/header-icons/brand-details.webp",
-      iconAlt: "Brand Details icon",
+      iconAlt: t("menu.corporate.brandDetails.iconAlt"),
       label: t("menu.corporate.brandDetails.label"),
       description: t("menu.corporate.brandDetails.description"),
       href: "",
@@ -490,35 +490,35 @@ function buildCorporateMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/financial-institutions.webp",
-            iconAlt: "Financial Institutions icon",
+            iconAlt: t("menu.corporate.financialInstitutions.iconAlt"),
             label: t("menu.corporate.financialInstitutions.label"),
             description: t("menu.corporate.financialInstitutions.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/centralized-exchanges.webp",
-            iconAlt: "Centralized Exchanges icon",
+            iconAlt: t("menu.corporate.centralizedExchanges.iconAlt"),
             label: t("menu.corporate.centralizedExchanges.label"),
             description: t("menu.corporate.centralizedExchanges.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/custodials.webp",
-            iconAlt: "Custodials icon",
+            iconAlt: t("menu.corporate.custodials.iconAlt"),
             label: t("menu.corporate.custodials.label"),
             description: t("menu.corporate.custodials.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/foundations.webp",
-            iconAlt: "Foundations icon",
+            iconAlt: t("menu.corporate.foundations.iconAlt"),
             label: t("menu.corporate.foundations.label"),
             description: t("menu.corporate.foundations.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/companies.webp",
-            iconAlt: "Companies icon",
+            iconAlt: t("menu.corporate.companies.iconAlt"),
             label: t("menu.corporate.companies.label"),
             description: t("menu.corporate.companies.description"),
             href: "",
@@ -537,28 +537,28 @@ function buildCorporateMenu(t: TranslationFn): MenuItem {
         items: [
           {
             iconSrc: "/img/header-icons/blog.webp",
-            iconAlt: "Blog icon",
+            iconAlt: t("menu.corporate.blog.iconAlt"),
             label: t("menu.corporate.blog.label"),
             description: t("menu.corporate.blog.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/support-center.webp",
-            iconAlt: "Support Center icon",
+            iconAlt: t("menu.corporate.supportCenter.iconAlt"),
             label: t("menu.corporate.supportCenter.label"),
             description: t("menu.corporate.supportCenter.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/faq.webp",
-            iconAlt: "FAQ icon",
+            iconAlt: t("menu.corporate.faq.iconAlt"),
             label: t("menu.corporate.faq.label"),
             description: t("menu.corporate.faq.description"),
             href: "",
           },
           {
             iconSrc: "/img/header-icons/case-studies.webp",
-            iconAlt: "Case Studies icon",
+            iconAlt: t("menu.corporate.caseStudies.iconAlt"),
             label: t("menu.corporate.caseStudies.label"),
             description: t("menu.corporate.caseStudies.description"),
             href: "",

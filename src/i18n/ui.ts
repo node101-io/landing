@@ -206,6 +206,62 @@ export const ui = {
     "menu.corporate.caseStudies.description":
       "Focus on our actions, not our words",
 
+    // Aria Labels
+    "trustedBy.ariaLabel": "Trusted by leading institutions",
+    "services.ariaLabel": "Services",
+    "banner.closeAriaLabel": "Close banner",
+
+    // Alt Texts
+    "hero.isoBadgeAlt": "ISO 27001 Information Security Management",
+
+    // Menu Icon Alt Texts - Investment
+    "menu.investment.btcRestaking.iconAlt": "BTC Restaking icon",
+    "menu.investment.ethRestaking.iconAlt": "ETH Restaking icon",
+    "menu.investment.whitelabelValidation.iconAlt": "Whitelabel Validation icon",
+    "menu.investment.referralProgram.iconAlt": "Referral Program icon",
+
+    // Menu Icon Alt Texts - RPC
+    "menu.rpc.pricing.iconAlt": "Pricing icon",
+    "menu.rpc.freeRpc.iconAlt": "Free RPC icon",
+    "menu.rpc.documents.iconAlt": "Documents icon",
+
+    // Menu Icon Alt Texts - Services
+    "menu.services.cryptoInvestment.iconAlt": "Crypto Asset Investment icon",
+    "menu.services.whitelabelValidation.iconAlt": "Whitelabel Validation icon",
+    "menu.services.btcRestaking.iconAlt": "BTC Restaking icon",
+    "menu.services.ethRestaking.iconAlt": "ETH Restaking icon",
+    "menu.services.architecturalConsulting.iconAlt": "Architectural Consulting icon",
+    "menu.services.blockchainConsulting.iconAlt": "Blockchain Consulting icon",
+    "menu.services.productDevelopment.iconAlt": "Product Development icon",
+    "menu.services.turkishEcosystem.iconAlt": "Turkish Ecosystem Gateway icon",
+    "menu.services.buildersWeek.iconAlt": "Builders Week Istanbul icon",
+    "menu.services.ethIstanbul.iconAlt": "ETHIstanbul Conference icon",
+    "menu.services.cryptist.iconAlt": "Cryptist icon",
+
+    // Menu Icon Alt Texts - Products
+    "menu.products.pulsarChain.iconAlt": "Pulsar Chain icon",
+    "menu.products.zkvot.iconAlt": "zkVot icon",
+    "menu.products.hackathonProducts.iconAlt": "Hackathon Products icon",
+    "menu.products.pulsar.iconAlt": "Pulsar icon",
+    "menu.products.punch.iconAlt": "PUNCH icon",
+    "menu.products.validatier.iconAlt": "Validatier icon",
+    "menu.products.blockchainDevReport.iconAlt": "Blockchain Developer Report icon",
+
+    // Menu Icon Alt Texts - Corporate
+    "menu.corporate.financialInstitutions.iconAlt": "Financial Institutions icon",
+    "menu.corporate.centralizedExchanges.iconAlt": "Centralized Exchanges icon",
+    "menu.corporate.custodials.iconAlt": "Custodials icon",
+    "menu.corporate.foundations.iconAlt": "Foundations icon",
+    "menu.corporate.companies.iconAlt": "Companies icon",
+    "menu.corporate.aboutNode101.iconAlt": "About node101 icon",
+    "menu.corporate.team.iconAlt": "Team icon",
+    "menu.corporate.career.iconAlt": "Career icon",
+    "menu.corporate.brandDetails.iconAlt": "Brand Details icon",
+    "menu.corporate.blog.iconAlt": "Blog icon",
+    "menu.corporate.supportCenter.iconAlt": "Support Center icon",
+    "menu.corporate.faq.iconAlt": "FAQ icon",
+    "menu.corporate.caseStudies.iconAlt": "Case Studies icon",
+
     // Footer
     "footer.copyright": "© 2025 node101. All rights reserved.",
   },
@@ -409,6 +465,62 @@ export const ui = {
     "menu.corporate.caseStudies.label": "Vaka Çalışmaları",
     "menu.corporate.caseStudies.description":
       "Söylediklerimize değil aksiyonlarımıza odaklanın",
+
+    // Aria Labels
+    "trustedBy.ariaLabel": "Güvenilen kurumlar",
+    "services.ariaLabel": "Hizmetler",
+    "banner.closeAriaLabel": "Banneri kapat",
+
+    // Alt Texts
+    "hero.isoBadgeAlt": "ISO 27001 Bilgi Güvenliği Yönetimi",
+
+    // Menu Icon Alt Texts - Investment
+    "menu.investment.btcRestaking.iconAlt": "BTC Restaking simgesi",
+    "menu.investment.ethRestaking.iconAlt": "ETH Restaking simgesi",
+    "menu.investment.whitelabelValidation.iconAlt": "Fason Validatörlük simgesi",
+    "menu.investment.referralProgram.iconAlt": "Referans Programı simgesi",
+
+    // Menu Icon Alt Texts - RPC
+    "menu.rpc.pricing.iconAlt": "Ücretlendirme simgesi",
+    "menu.rpc.freeRpc.iconAlt": "Ücretsiz RPC simgesi",
+    "menu.rpc.documents.iconAlt": "Belgeler simgesi",
+
+    // Menu Icon Alt Texts - Services
+    "menu.services.cryptoInvestment.iconAlt": "Kripto Varlık Yatırımı simgesi",
+    "menu.services.whitelabelValidation.iconAlt": "Fason Validatörlük simgesi",
+    "menu.services.btcRestaking.iconAlt": "BTC Restaking simgesi",
+    "menu.services.ethRestaking.iconAlt": "ETH Restaking simgesi",
+    "menu.services.architecturalConsulting.iconAlt": "Mimari Danışmanlık simgesi",
+    "menu.services.blockchainConsulting.iconAlt": "Blokzincir Danışmanlığı simgesi",
+    "menu.services.productDevelopment.iconAlt": "Ürün Üretimi simgesi",
+    "menu.services.turkishEcosystem.iconAlt": "Türk Ekosistemi Kapısı simgesi",
+    "menu.services.buildersWeek.iconAlt": "Builders Week Istanbul simgesi",
+    "menu.services.ethIstanbul.iconAlt": "ETHIstanbul Konferansı simgesi",
+    "menu.services.cryptist.iconAlt": "Cryptist simgesi",
+
+    // Menu Icon Alt Texts - Products
+    "menu.products.pulsarChain.iconAlt": "Pulsar Chain simgesi",
+    "menu.products.zkvot.iconAlt": "zkVot simgesi",
+    "menu.products.hackathonProducts.iconAlt": "Hackathon Ürünleri simgesi",
+    "menu.products.pulsar.iconAlt": "Pulsar simgesi",
+    "menu.products.punch.iconAlt": "PUNCH simgesi",
+    "menu.products.validatier.iconAlt": "Validatier simgesi",
+    "menu.products.blockchainDevReport.iconAlt": "Blockchain Developer Report simgesi",
+
+    // Menu Icon Alt Texts - Corporate
+    "menu.corporate.financialInstitutions.iconAlt": "Finansal Kurumlar simgesi",
+    "menu.corporate.centralizedExchanges.iconAlt": "Merkezi Kripto Borsaları simgesi",
+    "menu.corporate.custodials.iconAlt": "Saklamacılar simgesi",
+    "menu.corporate.foundations.iconAlt": "Foundation'lar simgesi",
+    "menu.corporate.companies.iconAlt": "Şirketler simgesi",
+    "menu.corporate.aboutNode101.iconAlt": "node101 Hakkında simgesi",
+    "menu.corporate.team.iconAlt": "Takım simgesi",
+    "menu.corporate.career.iconAlt": "Kariyer simgesi",
+    "menu.corporate.brandDetails.iconAlt": "Marka Detayları simgesi",
+    "menu.corporate.blog.iconAlt": "Blog simgesi",
+    "menu.corporate.supportCenter.iconAlt": "Destek Merkezi simgesi",
+    "menu.corporate.faq.iconAlt": "SSS simgesi",
+    "menu.corporate.caseStudies.iconAlt": "Vaka Çalışmaları simgesi",
 
     // Footer
     "footer.copyright": "2025 node101. Tüm hakları saklıdır.",
