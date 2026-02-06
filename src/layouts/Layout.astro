@@ -19,7 +19,13 @@ const metaDescription = description ?? t('meta.description');
 ---
 
 <!DOCTYPE html>
-<html lang={lang} class="overscroll-none has-[#mobile-menu-toggle:checked]:overflow-hidden has-[#mobile-menu-toggle:checked]:[--banner-height:0rem]">
+<html lang={lang} class={`
+  overscroll-none
+  has-[#mobile-menu-toggle:checked]:overflow-hidden
+  has-[#mobile-menu-toggle:checked]:[--banner-height:0rem]
+  lg:has-[#mobile-menu-toggle:checked]:overflow-auto
+  lg:has-[#mobile-menu-toggle:checked]:[--banner-height:2rem]
+`}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

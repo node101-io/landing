@@ -32,12 +32,12 @@ const socialLinks = [
     duration-300
     group-has-checked/menu:m-0
     group-has-checked/menu:h-[calc(100dvh-var(--banner-height))]
-    group-has-checked/menu:p-(--hero-margin)
     group-has-checked/menu:rounded-none
+    group-has-checked/menu:p-(--hero-margin)
     lg:group-has-checked/menu:m-(--hero-margin)
     lg:group-has-checked/menu:h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
-    lg:group-has-checked/menu:p-0
     lg:group-has-checked/menu:rounded-4xl
+    lg:group-has-checked/menu:p-0
   `}>
 
   <section class={`
@@ -54,6 +54,7 @@ const socialLinks = [
   `}>
     <div class={`
       mb-6
+      !hidden
       inline-flex
       items-center
       gap-1.5
@@ -144,8 +145,8 @@ const socialLinks = [
     flex
     items-center
     justify-between
-    sm:items-end
     sm:bottom-6
+    sm:items-end
   `}>
     <Image
       src={isoBadge}

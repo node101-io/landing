@@ -25,10 +25,10 @@ const menuItems = getMenuItems(t);
   justify-center
   gap-8
   rounded-4xl
-  ring
-  ring-surface
   bg-header-bg
   font-sans
+  ring
+  ring-surface
   backdrop-blur-md
   transition-[margin,border-radius,shadow,background-color,top]
   duration-300
@@ -37,15 +37,15 @@ const menuItems = getMenuItems(t);
   has-checked:mt-0
   has-checked:mb-[calc(var(--header-height)*-1)]
   has-checked:rounded-none
-  has-checked:ring-header-bg-checked
   has-checked:bg-header-bg-checked
+  has-checked:ring-header-bg-checked
   lg:has-checked:top-[calc(var(--header-margin)+var(--hero-margin))]
   lg:has-checked:mx-[calc(var(--header-margin)+var(--hero-margin))]
   lg:has-checked:mt-[calc(var(--header-margin)+var(--hero-margin))]
   lg:has-checked:mb-[calc((var(--header-margin)+var(--hero-margin))*-1-var(--header-height))]
   lg:has-checked:rounded-4xl
-  lg:has-checked:ring-surface
   lg:has-checked:bg-header-bg
+  lg:has-checked:ring-surface
 `}>
   <a href={getRelativeLocaleUrl(lang, '/')} class={`
     absolute
@@ -87,8 +87,8 @@ const menuItems = getMenuItems(t);
     right-0
     left-0
     z-50
-    h-[calc(100dvh-var(--header-height))]
     flex
+    h-[calc(100dvh-var(--header-height))]
     flex-col
     items-center
     justify-items-start
