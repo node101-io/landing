@@ -42,7 +42,15 @@
     lg:group-focus-within:translate-y-0
     lg:group-focus-within:overflow-visible
   `}
-  onmousedown="event.preventDefault()"
+  data-menu-section
 >
   <slot />
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-menu-section]').forEach((section) => {
+    section.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+    });
+  });
+</script>

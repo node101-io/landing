@@ -148,7 +148,7 @@ const menuItems = getMenuItems(t);
             lg:focus:bg-foreground/15
           `}
           type="button"
-          onmousedown="event.preventDefault(); if(document.activeElement === this){ this.blur(); } else { this.focus(); if(window.innerWidth < 1024){ setTimeout(() => { this.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300); } }"
+          data-menu-toggle
         >
           {item.label}
           <img
@@ -212,6 +212,7 @@ const menuItems = getMenuItems(t);
   {/* Mobile Hamburger Toggle Label */}
   <label
     for="mobile-menu-toggle"
+    onclick="const cb = document.getElementById('mobile-menu-toggle'); if (!cb.checked) { window.scrollTo({ top: 0, behavior: 'smooth' }); }"
     aria-label={t('nav.mobileMenuToggle')}
     class={`
       absolute
@@ -254,3 +255,21 @@ const menuItems = getMenuItems(t);
     `} />
   </label>
 </header>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-menu-toggle]').forEach((btn) => {
+    btn.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      if (document.activeElement === btn) {
+        btn.blur();
+      } else {
+        btn.focus();
+        if (window.innerWidth < 1024) {
+          setTimeout(() => {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 300);
+        }
+      }
+    });
+  });
+</script>
