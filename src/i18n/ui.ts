@@ -206,9 +206,16 @@ export const ui = {
     "menu.corporate.caseStudies.description":
       "Focus on our actions, not our words",
 
+    // Networks Section
+    "networks.title": "IN NETWORKS WE TRUST",
+    "networks.description":
+      "node101 provides a wide array of services for 27+ networks, from Ethereum to Sui. Click any chain to discover how we can help.",
+    "networks.cta": "Get a Special Offer",
+
     // Aria Labels
     "trustedBy.ariaLabel": "Trusted by leading institutions",
     "services.ariaLabel": "Services",
+    "networks.ariaLabel": "Networks",
     "banner.closeAriaLabel": "Close banner",
 
     // Alt Texts
@@ -470,9 +477,16 @@ export const ui = {
     "menu.corporate.caseStudies.description":
       "Söylediklerimize değil aksiyonlarımıza odaklanın",
 
+    // Networks Section
+    "networks.title": "DESTEKLEDİĞİMİZ AĞLAR",
+    "networks.description":
+      "node101, Ethereum'dan Sui'ye 27'den fazla ağ için geniş bir hizmet yelpazesi sunar. Nasıl yardımcı olabileceğimizi öğrenmek için herhangi bir zincire tıklayın.",
+    "networks.cta": "Özel Teklif Al",
+
     // Aria Labels
     "trustedBy.ariaLabel": "Güvenilen kurumlar",
     "services.ariaLabel": "Hizmetler",
+    "networks.ariaLabel": "Ağlar",
     "banner.closeAriaLabel": "Banneri kapat",
 
     // Alt Texts

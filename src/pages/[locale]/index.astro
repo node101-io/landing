@@ -5,6 +5,7 @@ import Header from '@/components/header/Header.astro';
 import Hero from '@/components/home/Hero.astro';
 import TrustedBy from '@/components/home/TrustedBy.astro';
 import Services from '@/components/home/Services.astro';
+import Networks from '@/components/home/Networks.astro';
 import { LOCALES } from '@/i18n/utils';
 
 // Prerender for all locales
@@ -59,4 +60,5 @@ export function getStaticPaths() {
   </div>
   <TrustedBy />
   <Services />
+  <Networks />
 </Layout>

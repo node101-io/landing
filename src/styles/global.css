@@ -38,7 +38,7 @@
 
 
   /* Spacing */
-  --section-margin: 1.5rem;
+  --section-margin: 1rem;
   --hero-margin: 0.625rem;
   --hero-margin-total: calc(var(--hero-margin) * 2);
   --header-margin: 1rem;
@@ -99,6 +99,12 @@
       display: none;
       top: -120vh;
     }
+  }
+}
+
+@media (width >= 640px) {
+  :root {
+    --section-margin: 1.5rem;
   }
 }
 
