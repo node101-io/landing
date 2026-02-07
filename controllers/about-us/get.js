@@ -36,11 +36,6 @@ module.exports = (req, res) => {
       description: res.__('Ahmet, the wealthiest member of the team, derives his fortune from his heart; in fact, we suspect that he might hold half of our total staked assets because we thought he was secretly trading. You know what, since he is also involved in overseeing our node operations, I don\'t feel suspicious anymore, just joking ahah! More importantly, Recep Bey is an engineer and the most gentlemanly and charismatic member of the Yıldız Technical University gang in the company.')
     },
     {
-      name: 'Kadircan',
-      title: res.__('Developer'),
-      description: res.__('A comedian with highly skilled jokes that require an IQ of at least 120 to be fully appreciated. The most technical member of the team with a rare mind hidden under his joker identity and bonus hair to solve the impossible with a keyboard... 006 Ankara Kadircan... AKA Düldül Osman serves as a secret blockchain agent in daylight.')
-    },
-    {
       name: 'Miray',
       title: res.__('Designer'),
       description: res.__('Our junior designer, Miralay Miray, who is quite a sleepyhead, has forced us to schedule our daily meetings at 11 AM. She claims this is because she stays up late working on designs. Fighting on every design front—from UI/UX to presentations, from social media visuals to brand design—Miralay holds a crucial position in our talent pool\'s battlefield.')
