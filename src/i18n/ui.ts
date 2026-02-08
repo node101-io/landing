@@ -212,6 +212,28 @@ export const ui = {
       "node101 provides a wide array of services for 27+ networks, from Ethereum to Sui. Click any chain to discover how we can help.",
     "networks.cta": "Get a Special Offer",
 
+    // Network Descriptions
+    "networks.ethereum.description":
+      "The leading smart contract platform for DeFi and Web3",
+    "networks.bitcoin.description":
+      "The original decentralized digital currency and store of value",
+    "networks.solana.description":
+      "High-performance blockchain with fast, low-cost transactions",
+    "networks.avalanche.description":
+      "Fast and eco-friendly platform for decentralized applications",
+    "networks.sui.description":
+      "Next-gen Layer 1 with parallel execution and Move contracts",
+    "networks.walrus.description":
+      "Decentralized storage network built on Sui ecosystem",
+    "networks.celestia.description":
+      "Modular data availability layer for rollups and appchains",
+    "networks.cosmos.description":
+      "Interoperable ecosystem of sovereign connected blockchains",
+    "networks.band.description":
+      "Cross-chain oracle delivering real-world data on-chain",
+    "networks.starknet.description":
+      "ZK-rollup scaling Ethereum with STARK proof technology",
+
     // Aria Labels
     "trustedBy.ariaLabel": "Trusted by leading institutions",
     "services.ariaLabel": "Services",
@@ -482,6 +504,28 @@ export const ui = {
     "networks.description":
       "node101, Ethereum'dan Sui'ye 27'den fazla ağ için geniş bir hizmet yelpazesi sunar. Nasıl yardımcı olabileceğimizi öğrenmek için herhangi bir zincire tıklayın.",
     "networks.cta": "Özel Teklif Al",
+
+    // Network Descriptions
+    "networks.ethereum.description":
+      "DeFi ve Web3 için lider akıllı sözleşme platformu",
+    "networks.bitcoin.description":
+      "Orijinal merkeziyetsiz dijital para birimi ve değer saklama aracı",
+    "networks.solana.description":
+      "Hızlı ve düşük maliyetli işlemlerle yüksek performanslı blokzincir",
+    "networks.avalanche.description":
+      "Merkeziyetsiz uygulamalar için hızlı ve çevre dostu platform",
+    "networks.sui.description":
+      "Paralel yürütme ve Move sözleşmelerle yeni nesil Layer 1",
+    "networks.walrus.description":
+      "Sui ekosistemi üzerine inşa edilmiş merkeziyetsiz depolama ağı",
+    "networks.celestia.description":
+      "Rollup ve appchain'ler için modüler veri erişilebilirlik katmanı",
+    "networks.cosmos.description":
+      "Birbirine bağlı egemen blokzincirlerin birlikte çalışabilir ekosistemi",
+    "networks.band.description":
+      "Gerçek dünya verilerini zincir üstüne taşıyan oracle platformu",
+    "networks.starknet.description":
+      "STARK kanıt teknolojisiyle Ethereum'u ölçeklendiren ZK-rollup",
 
     // Aria Labels
     "trustedBy.ariaLabel": "Güvenilen kurumlar",

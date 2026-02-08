@@ -6,6 +6,7 @@ import type {
   SectionType,
 } from "./components/MenuSection.astro";
 import type { TranslationFn } from "@/i18n/utils";
+import { networks as networkData } from "@/data/networks";
 
 export type MenuSectionData = {
   type: SectionType;
@@ -27,68 +28,12 @@ export type MenuItem = {
 // STATIC DATA
 // =============================================================================
 
-export const networks: GridItemProps[] = [
-  {
-    icon: "/img/networks/ethereum.webp",
-    name: "Ethereum",
-    symbol: "ETH",
-    href: "/networks/ethereum",
-  },
-  {
-    icon: "/img/networks/bitcoin.webp",
-    name: "Bitcoin",
-    symbol: "BTC",
-    href: "/networks/bitcoin",
-  },
-  {
-    icon: "/img/networks/solana.webp",
-    name: "Solana",
-    symbol: "SOL",
-    href: "/networks/solana",
-  },
-  {
-    icon: "/img/networks/avalanche.webp",
-    name: "Avalanche",
-    symbol: "AVAX",
-    href: "/networks/avalanche",
-  },
-  {
-    icon: "/img/networks/sui.webp",
-    name: "Sui",
-    symbol: "SUI",
-    href: "/networks/sui",
-  },
-  {
-    icon: "/img/networks/walrus.webp",
-    name: "Walrus",
-    symbol: "WAL",
-    href: "/networks/walrus",
-  },
-  {
-    icon: "/img/networks/celestia.webp",
-    name: "Celestia",
-    symbol: "TIA",
-    href: "/networks/celestia",
-  },
-  {
-    icon: "/img/networks/cosmos.webp",
-    name: "Cosmos",
-    symbol: "ATOM",
-    href: "/networks/cosmos",
-  },
-  {
-    icon: "/img/networks/band.webp",
-    name: "Band",
-    symbol: "BAND",
-    href: "/networks/band",
-  },
-  {
-    icon: "/img/networks/starknet.webp",
-    name: "Starknet",
-    symbol: "STRK",
-    href: "/networks/starknet",
-  },
-];
+export const networks: GridItemProps[] = networkData.map((n) => ({
+  icon: n.logo.src,
+  name: n.name,
+  symbol: n.symbol,
+  href: n.href,
+}));
 
 // =============================================================================
 // MENU ITEM BUILDERS

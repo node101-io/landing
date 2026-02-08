@@ -1,18 +1,13 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
-import { networks } from '@/components/header/menu-data';
+import { networks, type NetworkData } from '@/data/networks';
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-interface Network {
-  icon: string;
-  name: string;
-  symbol: string;
-}
-
-const bySymbol: Record<string, Network> = Object.fromEntries(
-  networks.map(n => [n.symbol, { icon: n.icon, name: n.name, symbol: n.symbol }])
+const bySymbol: Record<string, NetworkData> = Object.fromEntries(
+  networks.map(n => [n.symbol, n])
 );
 
 type CardType = 'featured' | 'tall' | 'medium' | 'small' | 'cta';
@@ -22,7 +17,7 @@ interface GridItem {
   type: CardType;
   vis: Vis;
   grid: string;
-  network?: Network;
+  network?: NetworkData;
 }
 
 // 12-col desktop (4 rows, 18 cells), 4-col mobile (6 rows, 11 cells)
@@ -78,8 +73,30 @@ function getDisplay(vis: Vis) {
   return 'flex';
 }
 
+const featureColors: Record<string, string> = {
+  rpc: '#D9DBFC',
+  staking: '#D3EDFF',
+};
+
+function renderFeatureTags(features: NetworkData['features']) {
+  const tags = features.map(f =>
+    `<div class="flex size-[4vw] items-center justify-center rounded-full lg:size-[1.5vw] aspect-square" style="background:${featureColors[f]}">
+      <img src="/img/network-feature.svg" alt="${f}" class="size-[2.2vw] lg:size-[0.8vw]" />
+    </div>`
+  ).join('');
+  return `<div class="flex gap-[0.5vw]">${tags}</div>`;
+}
+
 const cellStyle = 'bg-gray-50 border border-lav-border';
 const imgStyle = 'aspect-square object-contain rounded-[1vw]';
+
+/* ── Cell image class per type ─────────────────────────────── */
+const imgClass: Record<string, string> = {
+  featured: `w-[35%] h-fit shrink-0 ${imgStyle}`,
+  tall:     `w-[calc(50%-2.1vw)] h-fit ${imgStyle}`,
+  small:    `size-full ${imgStyle}`,
+  medium:   `h-[3.686vw] w-auto ${imgStyle}`,
+};
 ---
 
 <section
@@ -107,6 +124,7 @@ const imgStyle = 'aspect-square object-contain rounded-[1vw]';
     lg:items-center
     lg:justify-between
     lg:gap-16
+    font-sans
   `}>
     <h2 class={`
       font-display
@@ -130,7 +148,6 @@ const imgStyle = 'aspect-square object-contain rounded-[1vw]';
       lg:items-start
     `}>
       <p class={`
-        font-sans
         text-xs
         leading-relaxed
         text-espresso
@@ -151,7 +168,6 @@ const imgStyle = 'aspect-square object-contain rounded-[1vw]';
           bg-espresso
           px-5
           py-2
-          font-sans
           text-sm
           text-cream
           transition-colors
@@ -173,51 +189,86 @@ const imgStyle = 'aspect-square object-contain rounded-[1vw]';
     lg:gap-[1.4vw]
     lg:aspect-[3.09/1]
   `}>
-    {items.map((item) => (
-      <div
-        class:list={[
-          item.grid,
-          getDisplay(item.vis),
-          cellStyle,
-          'min-h-0 overflow-hidden rounded-[2vw] p-[4vw] lg:p-[1.4vw]',
-        ]}
-      >
-        {/* Featured: 3×2 — logo = 30% of cell width */}
-        {item.type === 'featured' && item.network && (
-          <img
-            src={item.network.icon}
-            alt={item.network.name}
-            class={`w-[30%] ${imgStyle}`}
-          />
-        )}
+    {items.map((item) => {
+      const n = item.network;
+      return (
+        <div
+          class:list={[
+            item.grid,
+            getDisplay(item.vis),
+            cellStyle,
+            'min-h-0 overflow-hidden rounded-[2vw] p-[4vw] lg:p-[1.4vw] font-sans',
+          ]}
+        >
+          {/* ── Featured ── */}
+          {item.type === 'featured' && n && (
+            <div class="flex flex-col justify-between">
+              <div class="flex gap-[1.4vw]">
+                <Image src={n.logo} alt={n.name} class={imgClass.featured} />
+                <div class="flex flex-col gap-[0.4vw]">
+                  <span class="text-[3vw] uppercase leading-relaxed text-espresso-dark lg:text-[1.3vw]">
+                    {n.name}
+                  </span>
+                  <p class="text-[2.5vw] leading-tight text-footnote lg:text-[0.9vw]">
+                    {t(n.descriptionKey)}
+                  </p>
+                </div>
+              </div>
+              <div set:html={renderFeatureTags(n.features)} class="flex justify-end" />
+              <div class="flex items-end justify-between text-[3vw] lg:text-[1.3vw] leading-tight">
+                <span class="uppercase text-espresso-dark">{n.symbol}</span>
+                <span class="text-footnote">APR {n.apr}%</span>
+              </div>
+            </div>
+          )}
 
-        {/* Tall: 2×2 — logo = smallest cell size minus paddings */}
-        {item.type === 'tall' && item.network && (
-          <img
-            src={item.network.icon}
-            alt={item.network.name}
-            class={`w-[calc(50%-2.1vw)] ${imgStyle}`}
-          />
-        )}
-
-        {/* Small: 1×1 — logo fills cell */}
-        {item.type === 'small' && item.network && (
-          <img
-            src={item.network.icon}
-            alt={item.network.name}
-            class={`size-full ${imgStyle}`}
-          />
-        )}
-
-        {/* Medium: 3×1 — logo = 50% of cell height */}
-        {item.type === 'medium' && item.network && (
-          <img
-            src={item.network.icon}
-            alt={item.network.name}
-            class={`h-[3.686vw] ${imgStyle}`}
-          />
-        )}
-      </div>
-    ))}
+          {/* ── Tall ── */}
+          {item.type === 'tall' && n && (
+            <div class="flex h-full flex-col justify-between">
+              <div class="flex gap-[1.4vw]">
+                <Image src={n.logo} alt={n.name} class={imgClass.tall} />
+                <div class="flex flex-col">
+                  <span class="text-[3vw] uppercase leading-relaxed text-espresso-dark lg:text-[1.3vw]">
+                    {n.name}
+                  </span>
+                  <span class="text-[2.8vw] uppercase leading-tight text-footnote lg:text-[0.9vw]">
+                    {n.symbol}
+                  </span>
+                </div>
+              </div>
+              <p class="text-[2.5vw] leading-tight text-footnote lg:text-[0.9vw]">
+                {t(n.descriptionKey)}
+              </p>
+              <div class="flex items-end justify-between text-[3vw] lg:text-[1.3vw] leading-tight">
+                <span class="text-footnote">APR {n.apr}%</span>
+                <div set:html={renderFeatureTags(n.features)} />
+              </div>
+            </div>
+          )}
+          {item.type === 'small' && n && (
+            <Image src={n.logo} alt={n.name} class={imgClass.small} />
+          )}
+          {item.type === 'medium' && n && (
+            <div class="flex h-full items-center gap-[0.8vw] w-full">
+              <Image src={n.logo} alt={n.name} class={imgClass.medium} />
+              <div class="flex flex-col">
+                <div class="flex items-baseline gap-[0.4vw]">
+                  <span class="text-[3vw] uppercase leading-relaxed text-espresso-dark lg:text-[1.3vw]">
+                    {n.name}
+                  </span>
+                  <span class="text-[2.5vw] uppercase leading-tight text-footnote lg:text-[0.9vw]">
+                    {n.symbol}
+                  </span>
+                </div>
+                <span class="text-[2.5vw] leading-tight text-footnote lg:text-[0.9vw]">
+                  APR {n.apr}%
+                </span>
+              </div>
+              <div set:html={renderFeatureTags(n.features)} class="ml-auto" />
+            </div>
+          )}
+        </div>
+      );
+    })}
   </div>
 </section>
