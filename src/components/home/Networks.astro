@@ -6,72 +6,86 @@ import { Image } from 'astro:assets';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const bySymbol: Record<string, NetworkData> = Object.fromEntries(
-  networks.map(n => [n.symbol, n])
-);
+type CardType = 'rectangle-big' | 'square-big' | 'rectangle-small' | 'square-small' | 'cta';
 
-type CardType = 'featured' | 'tall' | 'medium' | 'small' | 'cta';
-type Vis = 'shared' | 'desktop' | 'mobile';
+interface LayoutSlot {
+  type: CardType;
+  grid: string;
+}
 
 interface GridItem {
   type: CardType;
-  vis: Vis;
   grid: string;
+  display: string;
   network?: NetworkData;
 }
 
-// 12-col desktop (4 rows, 18 cells), 4-col mobile (6 rows, 11 cells)
-const items: GridItem[] = [
-  // === Shared (mobile + desktop) ===
-  { vis: 'shared', type: 'featured', network: bySymbol['ETH'],
-    grid: 'col-[3/5] row-[1/3] lg:col-[4/7] lg:row-[1/3]' },
-  { vis: 'shared', type: 'tall', network: bySymbol['BTC'],
-    grid: 'col-[1/3] row-[1/3] lg:col-[7/9] lg:row-[1/3]' },
-  { vis: 'shared', type: 'small', network: bySymbol['BAND'],
-    grid: 'col-[2/3] row-[6/7] lg:col-[9/10] lg:row-[1/2]' },
-  { vis: 'shared', type: 'medium', network: bySymbol['SOL'],
-    grid: 'col-[3/5] row-[3/4] lg:col-[10/13] lg:row-[1/2]' },
-  { vis: 'shared', type: 'small', network: bySymbol['AVAX'],
-    grid: 'col-[1/2] row-[6/7] lg:col-[9/10] lg:row-[2/3]' },
-  { vis: 'shared', type: 'medium', network: bySymbol['WAL'],
-    grid: 'col-[1/3] row-[4/5] lg:col-[1/4] lg:row-[3/4]' },
-  { vis: 'shared', type: 'medium', network: bySymbol['TIA'],
-    grid: 'col-[3/5] row-[4/5] lg:col-[4/7] lg:row-[3/4]' },
-  { vis: 'shared', type: 'medium', network: bySymbol['STRK'],
-    grid: 'col-[1/3] row-[5/6] lg:col-[7/10] lg:row-[3/4]' },
-  { vis: 'shared', type: 'medium', network: bySymbol['ATOM'],
-    grid: 'col-[3/5] row-[5/6] lg:col-[10/13] lg:row-[3/4]' },
-  { vis: 'shared', type: 'cta',
-    grid: 'col-[3/5] row-[6/7] lg:col-[11/13] lg:row-[4/5]' },
-
-  // === Mobile-only ===
-  { vis: 'mobile', type: 'medium', network: bySymbol['SUI'],
-    grid: 'col-[1/3] row-[3/4]' },
-
-  // === Desktop-only ===
-  { vis: 'desktop', type: 'featured', network: bySymbol['SUI'],
-    grid: 'col-[1/4] row-[1/3]' },
-  { vis: 'desktop', type: 'medium', network: bySymbol['STRK'],
-    grid: 'col-[10/13] row-[2/3]' },
-  { vis: 'desktop', type: 'medium', network: bySymbol['SOL'],
-    grid: 'col-[1/4] row-[4/5]' },
-  { vis: 'desktop', type: 'medium', network: bySymbol['TIA'],
-    grid: 'col-[4/7] row-[4/5]' },
-  { vis: 'desktop', type: 'small', network: bySymbol['ATOM'],
-    grid: 'col-[7/8] row-[4/5]' },
-  { vis: 'desktop', type: 'small', network: bySymbol['ETH'],
-    grid: 'col-[8/9] row-[4/5]' },
-  { vis: 'desktop', type: 'small', network: bySymbol['WAL'],
-    grid: 'col-[9/10] row-[4/5]' },
-  { vis: 'desktop', type: 'small', network: bySymbol['SUI'],
-    grid: 'col-[10/11] row-[4/5]' },
+// ── Desktop layout (12-col, 4 rows) ──────────────────────────
+const desktopLayout: LayoutSlot[] = [
+  // Row 1-2 (slots 0-6)
+  { type: 'rectangle-big',   grid: 'col-[1/4] row-[1/3]' },
+  { type: 'rectangle-big',   grid: 'col-[4/7] row-[1/3]' },
+  { type: 'square-big',      grid: 'col-[7/9] row-[1/3]' },
+  { type: 'square-small',    grid: 'col-[9/10] row-[1/2]' },
+  { type: 'rectangle-small', grid: 'col-[10/13] row-[1/2]' },
+  { type: 'square-small',    grid: 'col-[9/10] row-[2/3]' },
+  { type: 'rectangle-small', grid: 'col-[10/13] row-[2/3]' },
+  // Row 3 (slots 7-10)
+  { type: 'rectangle-small', grid: 'col-[1/4] row-[3/4]' },
+  { type: 'rectangle-small', grid: 'col-[4/7] row-[3/4]' },
+  { type: 'rectangle-small', grid: 'col-[7/10] row-[3/4]' },
+  { type: 'rectangle-small', grid: 'col-[10/13] row-[3/4]' },
+  // Row 4 (slots 11-17)
+  { type: 'rectangle-small', grid: 'col-[1/4] row-[4/5]' },
+  { type: 'rectangle-small', grid: 'col-[4/7] row-[4/5]' },
+  { type: 'square-small',    grid: 'col-[7/8] row-[4/5]' },
+  { type: 'square-small',    grid: 'col-[8/9] row-[4/5]' },
+  { type: 'square-small',    grid: 'col-[9/10] row-[4/5]' },
+  { type: 'square-small',    grid: 'col-[10/11] row-[4/5]' },
+  // CTA
+  { type: 'cta',             grid: 'col-[11/13] row-[4/5]' },
 ];
 
-function getDisplay(vis: Vis) {
-  if (vis === 'desktop') return 'hidden lg:flex';
-  if (vis === 'mobile') return 'flex lg:hidden';
-  return 'flex';
+// ── Mobile layout (4-col, 7 rows) ────────────────────────────
+const mobileLayout: LayoutSlot[] = [
+  // Row 1-2
+  { type: 'square-big',      grid: 'col-[1/3] row-[1/3]' },
+  { type: 'square-big',      grid: 'col-[3/5] row-[1/3]' },
+  // Row 3
+  { type: 'rectangle-small', grid: 'col-[1/3] row-[3/4]' },
+  { type: 'rectangle-small', grid: 'col-[3/5] row-[3/4]' },
+  // Row 4
+  { type: 'rectangle-small', grid: 'col-[1/3] row-[4/5]' },
+  { type: 'rectangle-small', grid: 'col-[3/5] row-[4/5]' },
+  // Row 5
+  { type: 'rectangle-small', grid: 'col-[1/3] row-[5/6]' },
+  { type: 'square-small',    grid: 'col-[3/4] row-[5/6]' },
+  { type: 'square-small',    grid: 'col-[4/5] row-[5/6]' },
+  // Row 6
+  { type: 'square-small',    grid: 'col-[1/2] row-[6/7]' },
+  { type: 'square-small',    grid: 'col-[2/3] row-[6/7]' },
+  { type: 'square-small',    grid: 'col-[3/4] row-[6/7]' },
+  { type: 'square-small',    grid: 'col-[4/5] row-[6/7]' },
+  // Row 7
+  { type: 'cta',             grid: 'col-[1/5] row-[7/8]' },
+];
+
+// ── Build items from layout + networks ───────────────────────
+function buildItems(layout: LayoutSlot[], display: string): GridItem[] {
+  let networkIndex = 0;
+  return layout.map((slot) => {
+    if (slot.type === 'cta') {
+      return { type: slot.type, grid: slot.grid, display };
+    }
+    const network = networks[networkIndex % networks.length];
+    networkIndex++;
+    return { type: slot.type, grid: slot.grid, display, network };
+  });
 }
+
+const desktopItems = buildItems(desktopLayout, 'hidden lg:flex');
+const mobileItems = buildItems(mobileLayout, 'flex lg:hidden');
+const allItems = [...desktopItems, ...mobileItems];
 
 const featureColors: Record<string, string> = {
   rpc: '#D9DBFC',
@@ -88,14 +102,13 @@ function renderFeatureTags(features: NetworkData['features']) {
 }
 
 const cellStyle = 'bg-gray-50 border border-lav-border';
-const imgStyle = 'aspect-square object-contain rounded-[1vw]';
+const imgStyle = 'aspect-square object-contain rounded-[4vw] lg:rounded-[1vw]';
 
-/* ── Cell image class per type ─────────────────────────────── */
 const imgClass: Record<string, string> = {
-  featured: `w-[35%] h-fit shrink-0 ${imgStyle}`,
-  tall:     `w-[calc(50%-2.1vw)] h-fit ${imgStyle}`,
-  small:    `size-full ${imgStyle}`,
-  medium:   `h-[3.686vw] w-auto ${imgStyle}`,
+  'rectangle-big':   `w-[35%] h-fit shrink-0 ${imgStyle}`,
+  'square-big':      `w-[calc(50%-6vw)] lg:w-[calc(50%-2.1vw)] h-fit ${imgStyle}`,
+  'square-small':    `size-full ${imgStyle}`,
+  'rectangle-small': `h-[13vw] lg:h-[3.686vw] w-auto ${imgStyle}`,
 };
 ---
 
@@ -120,17 +133,17 @@ const imgClass: Record<string, string> = {
     flex
     flex-col
     gap-8
+    font-sans
     lg:flex-row
     lg:items-center
     lg:justify-between
     lg:gap-16
-    font-sans
   `}>
     <h2 class={`
       font-display
       text-5xl
-      font-bold
       leading-[0.85]
+      font-bold
       text-balance
       text-espresso
       md:text-6xl
@@ -183,89 +196,225 @@ const imgClass: Record<string, string> = {
   <div class={`
     grid
     grid-cols-4
+    grid-rows-[repeat(6,1fr)_auto]
     gap-[4vw]
+    lg:aspect-[3.09/1]
     lg:grid-cols-12
     lg:grid-rows-4
     lg:gap-[1.4vw]
-    lg:aspect-[3.09/1]
   `}>
-    {items.map((item) => {
+    {allItems.map((item) => {
       const n = item.network;
       return (
         <div
           class:list={[
             item.grid,
-            getDisplay(item.vis),
+            item.display,
             cellStyle,
-            'min-h-0 overflow-hidden rounded-[2vw] p-[4vw] lg:p-[1.4vw] font-sans',
+            `
+              min-h-0
+              overflow-hidden
+              rounded-[6vw]
+              p-[3vw]
+              font-sans
+              lg:rounded-[2vw]
+              lg:p-[1.4vw]
+            `,
+            item.type === 'square-big' && 'aspect-square lg:aspect-auto',
+            item.type === 'square-small' && 'items-center justify-center',
           ]}
         >
-          {/* ── Featured ── */}
-          {item.type === 'featured' && n && (
-            <div class="flex flex-col justify-between">
-              <div class="flex gap-[1.4vw]">
-                <Image src={n.logo} alt={n.name} class={imgClass.featured} />
-                <div class="flex flex-col gap-[0.4vw]">
-                  <span class="text-[3vw] uppercase leading-relaxed text-espresso-dark lg:text-[1.3vw]">
+          {/* ── Rectangle Big ── */}
+          {item.type === 'rectangle-big' && n && (
+            <div class={`
+              flex
+              flex-col
+              justify-between
+            `}>
+              <div class={`
+                flex
+                gap-[1.4vw]
+              `}>
+                <Image src={n.logo} alt={n.name} class={imgClass['rectangle-big']} />
+                <div class={`
+                  flex
+                  flex-col
+                  gap-[0.4vw]
+                `}>
+                  <span class={`
+                    text-[3vw]
+                    leading-relaxed
+                    text-espresso-dark
+                    uppercase
+                    lg:text-[1.3vw]
+                  `}>
                     {n.name}
                   </span>
-                  <p class="text-[2.5vw] leading-tight text-footnote lg:text-[0.9vw]">
+                  <p class={`
+                    text-[2.5vw]
+                    leading-tight
+                    text-footnote
+                    lg:text-[0.9vw]
+                  `}>
                     {t(n.descriptionKey)}
                   </p>
                 </div>
               </div>
-              <div set:html={renderFeatureTags(n.features)} class="flex justify-end" />
-              <div class="flex items-end justify-between text-[3vw] lg:text-[1.3vw] leading-tight">
-                <span class="uppercase text-espresso-dark">{n.symbol}</span>
+              <div set:html={renderFeatureTags(n.features)} class={`
+                flex
+                justify-end
+              `} />
+              <div class={`
+                flex
+                items-end
+                justify-between
+                text-[3vw]
+                leading-tight
+                lg:text-[1.3vw]
+              `}>
+                <span class={`
+                  text-espresso-dark
+                  uppercase
+                `}>{n.symbol}</span>
                 <span class="text-footnote">APR {n.apr}%</span>
               </div>
             </div>
           )}
 
-          {/* ── Tall ── */}
-          {item.type === 'tall' && n && (
-            <div class="flex h-full flex-col justify-between">
-              <div class="flex gap-[1.4vw]">
-                <Image src={n.logo} alt={n.name} class={imgClass.tall} />
-                <div class="flex flex-col">
-                  <span class="text-[3vw] uppercase leading-relaxed text-espresso-dark lg:text-[1.3vw]">
+          {/* ── Square Big ── */}
+          {item.type === 'square-big' && n && (
+            <div class={`
+              flex
+              h-full
+              flex-col
+              justify-between
+            `}>
+              <div class={`
+                flex
+                gap-[1.4vw]
+              `}>
+                <Image src={n.logo} alt={n.name} class={imgClass['square-big']} />
+                <div class={`
+                  flex
+                  flex-col
+                `}>
+                  <span class={`
+                    text-[3vw]
+                    leading-relaxed
+                    text-espresso-dark
+                    uppercase
+                    lg:text-[1.3vw]
+                  `}>
                     {n.name}
                   </span>
-                  <span class="text-[2.8vw] uppercase leading-tight text-footnote lg:text-[0.9vw]">
+                  <span class={`
+                    text-[2.8vw]
+                    leading-tight
+                    text-footnote
+                    uppercase
+                    lg:text-[0.9vw]
+                  `}>
                     {n.symbol}
                   </span>
                 </div>
               </div>
-              <p class="text-[2.5vw] leading-tight text-footnote lg:text-[0.9vw]">
+              <p class={`
+                text-[2.5vw]
+                leading-tight
+                text-footnote
+                lg:text-[0.9vw]
+              `}>
                 {t(n.descriptionKey)}
               </p>
-              <div class="flex items-end justify-between text-[3vw] lg:text-[1.3vw] leading-tight">
+              <div class={`
+                flex
+                items-end
+                justify-between
+                text-[3vw]
+                leading-tight
+                lg:text-[1.3vw]
+              `}>
                 <span class="text-footnote">APR {n.apr}%</span>
                 <div set:html={renderFeatureTags(n.features)} />
               </div>
             </div>
           )}
-          {item.type === 'small' && n && (
-            <Image src={n.logo} alt={n.name} class={imgClass.small} />
+
+          {/* ── Square Small ── */}
+          {item.type === 'square-small' && n && (
+            <Image src={n.logo} alt={n.name} class={imgClass['square-small']} />
           )}
-          {item.type === 'medium' && n && (
-            <div class="flex h-full items-center gap-[0.8vw] w-full">
-              <Image src={n.logo} alt={n.name} class={imgClass.medium} />
-              <div class="flex flex-col">
-                <div class="flex items-baseline gap-[0.4vw]">
-                  <span class="text-[3vw] uppercase leading-relaxed text-espresso-dark lg:text-[1.3vw]">
+
+          {/* ── Rectangle Small ── */}
+          {item.type === 'rectangle-small' && n && (
+            <div class={`
+              flex
+              h-full
+              w-full
+              items-center
+              gap-[2vw]
+              lg:gap-[0.8vw]
+            `}>
+              <Image src={n.logo} alt={n.name} class={imgClass['rectangle-small']} />
+              <div class={`
+                flex
+                flex-col
+              `}>
+                <div class={`
+                  flex
+                  items-baseline
+                  gap-[0.4vw]
+                `}>
+                  <span class={`
+                    text-[3vw]
+                    leading-relaxed
+                    text-espresso-dark
+                    uppercase
+                    lg:text-[1.3vw]
+                  `}>
                     {n.name}
                   </span>
-                  <span class="text-[2.5vw] uppercase leading-tight text-footnote lg:text-[0.9vw]">
+                  <span class={`
+                    text-[2.5vw]
+                    leading-tight
+                    text-footnote
+                    uppercase
+                    lg:text-[0.9vw]
+                  `}>
                     {n.symbol}
                   </span>
                 </div>
-                <span class="text-[2.5vw] leading-tight text-footnote lg:text-[0.9vw]">
+                <span class={`
+                  text-[2.5vw]
+                  leading-tight
+                  text-footnote
+                  lg:text-[0.9vw]
+                `}>
                   APR {n.apr}%
                 </span>
               </div>
-              <div set:html={renderFeatureTags(n.features)} class="ml-auto" />
+              <div set:html={renderFeatureTags(n.features)} class="ml-auto hidden lg:flex" />
             </div>
+          )}
+
+          {/* ── CTA ── */}
+          {item.type === 'cta' && (
+            <a
+              href="#"
+              class={`
+                flex
+                h-full
+                w-full
+                items-center
+                justify-center
+                text-[3vw]
+                text-espresso-dark
+                underline
+                lg:text-[1.3vw]
+              `}
+            >
+              {t('common.allNetworks')}
+            </a>
           )}
         </div>
       );
