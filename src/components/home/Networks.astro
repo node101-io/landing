@@ -121,7 +121,7 @@ const imgClass: Record<string, string> = {
     w-[calc(100%-var(--section-margin)*2)]
     flex-col
     gap-8
-    overflow-visible
+    overflow-x-clip
     bg-background
     py-12
     sm:py-16
@@ -133,7 +133,7 @@ const imgClass: Record<string, string> = {
     before:-inset-40
     before:-z-10
     before:content-['']
-    before:bg-[radial-gradient(ellipse_70vw_40vw_at_center,#F5F5FE_0%,#F9F9FF_30%,#FEFBF6_60%,transparent_100%)]
+    before:bg-[radial-gradient(ellipse_max(70vw,700px)_max(40vw,400px)_at_center,#F5F5FE_0%,#F9F9FF_30%,#FEFBF6_60%,transparent_100%)]
   `}
   aria-label={t('networks.ariaLabel')}
 >
@@ -207,9 +207,8 @@ const imgClass: Record<string, string> = {
     grid-cols-4
     grid-rows-[repeat(6,1fr)_auto]
     gap-[4vw]
-    lg:aspect-[3.09/1]
     lg:grid-cols-12
-    lg:grid-rows-4
+    lg:grid-rows-[repeat(4,7vw)]
     lg:gap-[1.4vw]
   `}>
     {allItems.map((item) => {
@@ -300,7 +299,6 @@ const imgClass: Record<string, string> = {
           {item.type === 'square-big' && n && (
             <div class={`
               flex
-              h-full
               flex-col
               justify-between
             `}>
