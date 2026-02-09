@@ -114,17 +114,26 @@ const imgClass: Record<string, string> = {
 
 <section
   class={`
+    relative
+    isolate
     m-(--section-margin)
     flex
     w-[calc(100%-var(--section-margin)*2)]
     flex-col
     gap-8
+    overflow-visible
     bg-background
     py-12
     sm:py-16
     md:py-20
     lg:gap-12
     lg:py-24
+    before:pointer-events-none
+    before:absolute
+    before:-inset-40
+    before:-z-10
+    before:content-['']
+    before:bg-[radial-gradient(ellipse_70vw_40vw_at_center,#F5F5FE_0%,#F9F9FF_30%,#FEFBF6_60%,transparent_100%)]
   `}
   aria-label={t('networks.ariaLabel')}
 >
@@ -220,8 +229,14 @@ const imgClass: Record<string, string> = {
               lg:rounded-[2vw]
               lg:p-[1.4vw]
             `,
-            item.type === 'square-big' && 'aspect-square lg:aspect-auto',
-            item.type === 'square-small' && 'items-center justify-center',
+            item.type === 'square-big' && `
+              aspect-square
+              lg:aspect-auto
+            `,
+            item.type === 'square-small' && `
+              items-center
+              justify-center
+            `,
           ]}
         >
           {/* ── Rectangle Big ── */}
@@ -393,7 +408,11 @@ const imgClass: Record<string, string> = {
                   APR {n.apr}%
                 </span>
               </div>
-              <div set:html={renderFeatureTags(n.features)} class="ml-auto hidden lg:flex" />
+              <div set:html={renderFeatureTags(n.features)} class={`
+                ml-auto
+                hidden
+                lg:flex
+              `} />
             </div>
           )}
 
