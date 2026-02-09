@@ -23,20 +23,19 @@ const placeholders = [
     gap-4
     py-16
     pr-0
-    pl-4
     sm:gap-8
     sm:py-20
-    sm:pl-6
     md:gap-12
+    lg:pl-6
   `}
 >
   <p class={`
+    hidden
     flex-2
-    text-xs
     font-normal
     text-espresso
-    sm:text-sm
-    md:text-base
+    lg:block
+    lg:text-base
   `}>
     {t('trustedBy.description')}
   </p>
@@ -58,8 +57,10 @@ const placeholders = [
         inset-y-0
         left-0
         z-10
+        hidden
         w-24
         md:w-32
+        lg:block
       `}
       style="background: linear-gradient(to right, hsl(0, 0%, 98%) 0%, hsla(0, 0%, 98%, 0.987) 8.1%, hsla(0, 0%, 98%, 0.951) 15.5%, hsla(0, 0%, 98%, 0.896) 22.5%, hsla(0, 0%, 98%, 0.825) 29%, hsla(0, 0%, 98%, 0.741) 35.3%, hsla(0, 0%, 98%, 0.648) 41.2%, hsla(0, 0%, 98%, 0.55) 47.1%, hsla(0, 0%, 98%, 0.45) 52.9%, hsla(0, 0%, 98%, 0.352) 58.8%, hsla(0, 0%, 98%, 0.259) 64.7%, hsla(0, 0%, 98%, 0.175) 71%, hsla(0, 0%, 98%, 0.104) 77.5%, hsla(0, 0%, 98%, 0.049) 84.5%, hsla(0, 0%, 98%, 0.013) 91.9%, hsla(0, 0%, 98%, 0) 100%);"
       aria-hidden="true"

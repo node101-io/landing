@@ -112,31 +112,36 @@ const imgClass: Record<string, string> = {
 };
 ---
 
-<section
-  class={`
-    relative
-    isolate
-    m-(--section-margin)
-    flex
-    w-[calc(100%-var(--section-margin)*2)]
-    flex-col
-    gap-8
-    overflow-x-clip
-    bg-background
-    py-12
-    sm:py-16
-    md:py-20
-    lg:gap-12
-    lg:py-24
-    before:pointer-events-none
-    before:absolute
-    before:-inset-40
-    before:-z-10
-    before:content-['']
-    before:bg-[radial-gradient(ellipse_max(70vw,700px)_max(40vw,400px)_at_center,#F5F5FE_0%,#F9F9FF_30%,#FEFBF6_60%,transparent_100%)]
-  `}
-  aria-label={t('networks.ariaLabel')}
->
+<div class={`
+  relative
+  m-(--section-margin)
+  w-[calc(100%-var(--section-margin)*2)]
+`}>
+  <div class={`
+    pointer-events-none
+    absolute
+    -inset-40
+    -z-10
+    opacity-60
+    bg-[radial-gradient(ellipse_max(70vw,700px)_max(40vw,400px)_at_center,#E5E6FF_0%,#FEF9F3_60%,transparent_100%)]
+  `} aria-hidden="true"></div>
+  <section
+    class={`
+      @container
+      relative
+      isolate
+      flex
+      flex-col
+      gap-8
+      overflow-x-clip
+      py-12
+      sm:py-16
+      md:py-20
+      lg:gap-12
+      lg:py-24
+    `}
+    aria-label={t('networks.ariaLabel')}
+  >
   <!-- Title section -->
   <div class={`
     flex
@@ -205,10 +210,10 @@ const imgClass: Record<string, string> = {
   <div class={`
     grid
     grid-cols-4
-    grid-rows-[repeat(6,1fr)_auto]
+    grid-rows-[repeat(6,calc(25cqi-3vw))_auto]
     gap-[4vw]
     lg:grid-cols-12
-    lg:grid-rows-[repeat(4,7vw)]
+    lg:grid-rows-[repeat(4,calc(8.3333cqi-1.2833vw))]
     lg:gap-[1.4vw]
   `}>
     {allItems.map((item) => {
@@ -437,4 +442,5 @@ const imgClass: Record<string, string> = {
       );
     })}
   </div>
-</section>
+  </section>
+</div>
