@@ -211,6 +211,7 @@ export const ui = {
     "networks.description":
       "node101 provides a wide array of services for 27+ networks, from Ethereum to Sui. Click any chain to discover how we can help.",
     "networks.cta": "Get a Special Offer",
+    "networks.search.placeholder": "Type network, symbol, or keyword",
 
     // Network Descriptions
     "networks.ethereum.description":
@@ -504,6 +505,7 @@ export const ui = {
     "networks.description":
       "node101, Ethereum'dan Sui'ye 27'den fazla ağ için geniş bir hizmet yelpazesi sunar. Nasıl yardımcı olabileceğimizi öğrenmek için herhangi bir zincire tıklayın.",
     "networks.cta": "Özel Teklif Al",
+    "networks.search.placeholder": "Ağ, sembol veya anahtar kelime yazın",
 
     // Network Descriptions
     "networks.ethereum.description":

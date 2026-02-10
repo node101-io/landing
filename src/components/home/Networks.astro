@@ -1,115 +1,156 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
-import { networks, type NetworkData } from '@/data/networks';
-import { Image } from 'astro:assets';
+import { networks, type NetworkData, type NetworkFeature } from '@/data/networks';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 type CardType = 'rectangle-big' | 'square-big' | 'rectangle-small' | 'square-small' | 'cta';
 
-interface LayoutSlot {
-  type: CardType;
-  grid: string;
+interface SearchableNetwork {
+  id: string;
+  name: string;
+  symbol: string;
+  description: string;
+  apr: number;
+  logoSrc: string;
+  logoWidth: number;
+  logoHeight: number;
+  features: NetworkData['features'];
+  searchText: string;
 }
 
 interface GridItem {
   type: CardType;
   grid: string;
-  display: string;
-  network?: NetworkData;
+  displayClass: string;
+  slotIndex?: number;
+  network?: SearchableNetwork;
 }
 
-// ── Desktop layout (12-col, 4 rows) ──────────────────────────
-const desktopLayout: LayoutSlot[] = [
-  // Row 1-2 (slots 0-6)
-  { type: 'rectangle-big',   grid: 'col-[1/4] row-[1/3]' },
-  { type: 'rectangle-big',   grid: 'col-[4/7] row-[1/3]' },
-  { type: 'square-big',      grid: 'col-[7/9] row-[1/3]' },
-  { type: 'square-small',    grid: 'col-[9/10] row-[1/2]' },
+const desktopLayout = [
+  { type: 'rectangle-big', grid: 'col-[1/4] row-[1/3]' },
+  { type: 'rectangle-big', grid: 'col-[4/7] row-[1/3]' },
+  { type: 'square-big', grid: 'col-[7/9] row-[1/3]' },
+  { type: 'square-small', grid: 'col-[9/10] row-[1/2]' },
   { type: 'rectangle-small', grid: 'col-[10/13] row-[1/2]' },
-  { type: 'square-small',    grid: 'col-[9/10] row-[2/3]' },
+  { type: 'square-small', grid: 'col-[9/10] row-[2/3]' },
   { type: 'rectangle-small', grid: 'col-[10/13] row-[2/3]' },
-  // Row 3 (slots 7-10)
   { type: 'rectangle-small', grid: 'col-[1/4] row-[3/4]' },
   { type: 'rectangle-small', grid: 'col-[4/7] row-[3/4]' },
   { type: 'rectangle-small', grid: 'col-[7/10] row-[3/4]' },
   { type: 'rectangle-small', grid: 'col-[10/13] row-[3/4]' },
-  // Row 4 (slots 11-17)
   { type: 'rectangle-small', grid: 'col-[1/4] row-[4/5]' },
   { type: 'rectangle-small', grid: 'col-[4/7] row-[4/5]' },
-  { type: 'square-small',    grid: 'col-[7/8] row-[4/5]' },
-  { type: 'square-small',    grid: 'col-[8/9] row-[4/5]' },
-  { type: 'square-small',    grid: 'col-[9/10] row-[4/5]' },
-  { type: 'square-small',    grid: 'col-[10/11] row-[4/5]' },
-  // CTA
-  { type: 'cta',             grid: 'col-[11/13] row-[4/5]' },
-];
+  { type: 'square-small', grid: 'col-[7/8] row-[4/5]' },
+  { type: 'square-small', grid: 'col-[8/9] row-[4/5]' },
+  { type: 'square-small', grid: 'col-[9/10] row-[4/5]' },
+  { type: 'square-small', grid: 'col-[10/11] row-[4/5]' },
+  { type: 'cta', grid: 'col-[11/13] row-[4/5]' },
+] as const;
 
-// ── Mobile layout (4-col, 7 rows) ────────────────────────────
-const mobileLayout: LayoutSlot[] = [
-  // Row 1-2
-  { type: 'square-big',      grid: 'col-[1/3] row-[1/3]' },
-  { type: 'square-big',      grid: 'col-[3/5] row-[1/3]' },
-  // Row 3
+const mobileLayout = [
+  { type: 'square-big', grid: 'col-[1/3] row-[1/3]' },
+  { type: 'square-big', grid: 'col-[3/5] row-[1/3]' },
   { type: 'rectangle-small', grid: 'col-[1/3] row-[3/4]' },
   { type: 'rectangle-small', grid: 'col-[3/5] row-[3/4]' },
-  // Row 4
   { type: 'rectangle-small', grid: 'col-[1/3] row-[4/5]' },
   { type: 'rectangle-small', grid: 'col-[3/5] row-[4/5]' },
-  // Row 5
   { type: 'rectangle-small', grid: 'col-[1/3] row-[5/6]' },
-  { type: 'square-small',    grid: 'col-[3/4] row-[5/6]' },
-  { type: 'square-small',    grid: 'col-[4/5] row-[5/6]' },
-  // Row 6
-  { type: 'square-small',    grid: 'col-[1/2] row-[6/7]' },
-  { type: 'square-small',    grid: 'col-[2/3] row-[6/7]' },
-  { type: 'square-small',    grid: 'col-[3/4] row-[6/7]' },
-  { type: 'square-small',    grid: 'col-[4/5] row-[6/7]' },
-  // Row 7
-  { type: 'cta',             grid: 'col-[1/5] row-[7/8]' },
-];
-
-// ── Build items from layout + networks ───────────────────────
-function buildItems(layout: LayoutSlot[], display: string): GridItem[] {
-  let networkIndex = 0;
-  return layout.map((slot) => {
-    if (slot.type === 'cta') {
-      return { type: slot.type, grid: slot.grid, display };
-    }
-    const network = networks[networkIndex % networks.length];
-    networkIndex++;
-    return { type: slot.type, grid: slot.grid, display, network };
-  });
-}
-
-const desktopItems = buildItems(desktopLayout, 'hidden lg:flex');
-const mobileItems = buildItems(mobileLayout, 'flex lg:hidden');
-const allItems = [...desktopItems, ...mobileItems];
-
-const featureColors: Record<string, string> = {
-  rpc: '#D9DBFC',
-  staking: '#D3EDFF',
-};
-
-function renderFeatureTags(features: NetworkData['features']) {
-  const tags = features.map(f =>
-    `<div class="flex size-[4vw] items-center justify-center rounded-full lg:size-[1.5vw] aspect-square" style="background:${featureColors[f]}">
-      <img src="/img/network-feature.svg" alt="${f}" class="size-[2.2vw] lg:size-[0.8vw]" />
-    </div>`
-  ).join('');
-  return `<div class="flex gap-[0.5vw]">${tags}</div>`;
-}
+  { type: 'square-small', grid: 'col-[3/4] row-[5/6]' },
+  { type: 'square-small', grid: 'col-[4/5] row-[5/6]' },
+  { type: 'square-small', grid: 'col-[1/2] row-[6/7]' },
+  { type: 'square-small', grid: 'col-[2/3] row-[6/7]' },
+  { type: 'square-small', grid: 'col-[3/4] row-[6/7]' },
+  { type: 'square-small', grid: 'col-[4/5] row-[6/7]' },
+  { type: 'cta', grid: 'col-[1/5] row-[7/8]' },
+] as const;
 
 const cellStyle = 'bg-gray-50 border border-lav-border';
 const imgStyle = 'aspect-square object-contain rounded-[4vw] lg:rounded-[1vw]';
+const featureRowClass = 'flex gap-[0.5vw]';
+const featurePillClass = 'flex size-[4vw] aspect-square items-center justify-center rounded-full lg:size-[1.5vw]';
+const featureIconClass = 'size-[2.2vw] lg:size-[0.8vw]';
 
-const imgClass: Record<string, string> = {
-  'rectangle-big':   `w-[35%] h-fit shrink-0 ${imgStyle}`,
-  'square-big':      `w-[calc(50%-6vw)] lg:w-[calc(50%-2.1vw)] h-fit ${imgStyle}`,
-  'square-small':    `size-full ${imgStyle}`,
+const imgClass: Record<Exclude<CardType, 'cta'>, string> = {
+  'rectangle-big': `w-[35%] h-fit shrink-0 ${imgStyle}`,
+  'square-big': `w-[calc(50%-6vw)] lg:w-[calc(50%-2.1vw)] h-fit ${imgStyle}`,
+  'square-small': `size-full ${imgStyle}`,
   'rectangle-small': `h-[13vw] lg:h-[3.686vw] w-auto ${imgStyle}`,
 };
+
+const featureBgClass: Record<NetworkFeature, string> = {
+  rpc: 'bg-lavender',
+  staking: 'bg-ice-blue',
+};
+
+const searchableNetworks: SearchableNetwork[] = networks.map((network) => {
+  const description = t(network.descriptionKey);
+  return {
+    id: network.id,
+    name: network.name,
+    symbol: network.symbol,
+    description,
+    apr: network.apr,
+    logoSrc: network.logo.src,
+    logoWidth: network.logo.width,
+    logoHeight: network.logo.height,
+    features: [...network.features],
+    searchText: `${network.name} ${network.symbol} ${description}`.toLocaleLowerCase(),
+  };
+});
+
+function createGridItemsFromLayout(
+  layout: ReadonlyArray<{ type: CardType; grid: string }>,
+  displayClass: string,
+): GridItem[] {
+  let networkCursor = 0;
+  let slotIndex = 0;
+
+  return layout.map(({ type, grid }) => {
+    if (type === 'cta') {
+      return { type, grid, displayClass };
+    }
+
+    const network = searchableNetworks.length > 0
+      ? searchableNetworks[networkCursor % searchableNetworks.length]
+      : undefined;
+
+    networkCursor++;
+    return { type, grid, displayClass, slotIndex: slotIndex++, network };
+  });
+}
+
+function isSearchSlot(item: GridItem): boolean {
+  return item.type !== 'cta' && typeof item.slotIndex === 'number';
+}
+
+function getGridItemClassList(item: GridItem): string[] {
+  const classes = [
+    item.grid,
+    item.displayClass,
+    cellStyle,
+    `
+      min-h-0
+      overflow-hidden
+      rounded-[6vw]
+      p-[3vw]
+      font-sans
+      lg:rounded-[2vw]
+      lg:p-[1.4vw]
+    `,
+  ];
+
+  if (item.type !== 'cta') classes.push('network-slot');
+  if (item.type === 'square-big') classes.push('aspect-square lg:aspect-auto');
+  if (item.type === 'square-small') classes.push('items-center justify-center');
+
+  return classes;
+}
+
+const desktopItems = createGridItemsFromLayout(desktopLayout, 'hidden lg:flex');
+const mobileItems = createGridItemsFromLayout(mobileLayout, 'flex lg:hidden');
+const allItems = [...desktopItems, ...mobileItems];
 ---
 
 <div class={`
@@ -122,8 +163,8 @@ const imgClass: Record<string, string> = {
     absolute
     -inset-40
     -z-10
-    opacity-60
     bg-[radial-gradient(ellipse_max(70vw,700px)_max(40vw,400px)_at_center,#E5E6FF_0%,#FEF9F3_60%,transparent_100%)]
+    opacity-60
   `} aria-hidden="true"></div>
   <section
     class={`
@@ -141,6 +182,7 @@ const imgClass: Record<string, string> = {
       lg:py-24
     `}
     aria-label={t('networks.ariaLabel')}
+    data-networks-component
   >
   <!-- Title section -->
   <div class={`
@@ -206,6 +248,63 @@ const imgClass: Record<string, string> = {
     </div>
   </div>
 
+  <div class="flex items-center gap-2 font-sans lg:gap-3">
+    <button
+      data-filter="all"
+      class="cursor-pointer rounded-full border border-[#6A4D42] bg-lavender px-4 py-1.5 text-sm text-[#6A4D42] transition-colors lg:py-2"
+    >
+      all
+    </button>
+    <button
+      data-filter="staking"
+      class="cursor-pointer rounded-full border border-[#6A4D42] bg-transparent px-4 py-1.5 text-sm text-[#6A4D42] transition-colors lg:py-2"
+    >
+      staking
+    </button>
+    <button
+      data-filter="rpc"
+      class="cursor-pointer rounded-full border border-[#6A4D42] bg-transparent px-4 py-1.5 text-sm text-[#6A4D42] transition-colors lg:py-2"
+    >
+      rpc
+    </button>
+
+    <div class="relative ml-auto w-full lg:w-[27vw]">
+      <img
+        src="/img/search.svg"
+        alt=""
+        class="pointer-events-none absolute left-3 top-1/2 size-3.5 -translate-y-1/2 lg:left-3"
+        aria-hidden="true"
+      />
+      <input
+        id="networks-search"
+        type="search"
+        autocomplete="off"
+        placeholder={t('networks.search.placeholder')}
+        class={`
+          w-full
+          rounded-full
+          border
+          border-[#6A4D42]
+          bg-gray-50
+          py-1.5
+          pl-8
+          pr-3
+          text-sm
+          text-espresso-dark
+          transition-colors
+          outline-none
+          [&::-webkit-search-cancel-button]:appearance-none
+          placeholder:text-placeholder
+          focus:border-espresso-dark
+          lg:py-2
+          lg:pl-8
+          lg:pr-4
+        `}
+        data-networks-search-input
+      />
+    </div>
+  </div>
+
   <!-- Networks Grid -->
   <div class={`
     grid
@@ -217,34 +316,16 @@ const imgClass: Record<string, string> = {
     lg:gap-[1.4vw]
   `}>
     {allItems.map((item) => {
-      const n = item.network;
+      const network = item.network;
+      const searchSlot = isSearchSlot(item);
       return (
         <div
-          class:list={[
-            item.grid,
-            item.display,
-            cellStyle,
-            `
-              min-h-0
-              overflow-hidden
-              rounded-[6vw]
-              p-[3vw]
-              font-sans
-              lg:rounded-[2vw]
-              lg:p-[1.4vw]
-            `,
-            item.type === 'square-big' && `
-              aspect-square
-              lg:aspect-auto
-            `,
-            item.type === 'square-small' && `
-              items-center
-              justify-center
-            `,
-          ]}
+          class:list={getGridItemClassList(item)}
+          data-network-slot={searchSlot ? '' : undefined}
+          data-slot-index={searchSlot ? item.slotIndex : undefined}
         >
           {/* ── Rectangle Big ── */}
-          {item.type === 'rectangle-big' && n && (
+          {item.type === 'rectangle-big' && network && (
             <div class={`
               flex
               flex-col
@@ -254,7 +335,14 @@ const imgClass: Record<string, string> = {
                 flex
                 gap-[1.4vw]
               `}>
-                <Image src={n.logo} alt={n.name} class={imgClass['rectangle-big']} />
+                <img
+                  src={network.logoSrc}
+                  alt={network.name}
+                  width={network.logoWidth}
+                  height={network.logoHeight}
+                  class={imgClass['rectangle-big']}
+                  data-network-logo
+                />
                 <div class={`
                   flex
                   flex-col
@@ -266,23 +354,35 @@ const imgClass: Record<string, string> = {
                     text-espresso-dark
                     uppercase
                     lg:text-[1.3vw]
-                  `}>
-                    {n.name}
+                  `}
+                  data-network-name
+                  >
+                    {network.name}
                   </span>
                   <p class={`
                     text-[2.5vw]
                     leading-tight
                     text-footnote
                     lg:text-[0.9vw]
-                  `}>
-                    {t(n.descriptionKey)}
+                  `}
+                  data-network-description
+                  >
+                    {network.description}
                   </p>
                 </div>
               </div>
-              <div set:html={renderFeatureTags(n.features)} class={`
+              <div class={`
                 flex
                 justify-end
-              `} />
+              `} data-network-features>
+                <div class={featureRowClass}>
+                  {network.features.map((feature) => (
+                    <div class:list={[featurePillClass, featureBgClass[feature]]}>
+                      <img src="/img/network-feature.svg" alt={feature} class={featureIconClass} />
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div class={`
                 flex
                 items-end
@@ -294,14 +394,18 @@ const imgClass: Record<string, string> = {
                 <span class={`
                   text-espresso-dark
                   uppercase
-                `}>{n.symbol}</span>
-                <span class="text-footnote">APR {n.apr}%</span>
+                `}
+                data-network-symbol
+                >
+                  {network.symbol}
+                </span>
+                <span class="text-footnote" data-network-apr>APR {network.apr}%</span>
               </div>
             </div>
           )}
 
           {/* ── Square Big ── */}
-          {item.type === 'square-big' && n && (
+          {item.type === 'square-big' && network && (
             <div class={`
               flex
               flex-col
@@ -311,7 +415,14 @@ const imgClass: Record<string, string> = {
                 flex
                 gap-[1.4vw]
               `}>
-                <Image src={n.logo} alt={n.name} class={imgClass['square-big']} />
+                <img
+                  src={network.logoSrc}
+                  alt={network.name}
+                  width={network.logoWidth}
+                  height={network.logoHeight}
+                  class={imgClass['square-big']}
+                  data-network-logo
+                />
                 <div class={`
                   flex
                   flex-col
@@ -322,8 +433,10 @@ const imgClass: Record<string, string> = {
                     text-espresso-dark
                     uppercase
                     lg:text-[1.3vw]
-                  `}>
-                    {n.name}
+                  `}
+                  data-network-name
+                  >
+                    {network.name}
                   </span>
                   <span class={`
                     text-[2.8vw]
@@ -331,8 +444,10 @@ const imgClass: Record<string, string> = {
                     text-footnote
                     uppercase
                     lg:text-[0.9vw]
-                  `}>
-                    {n.symbol}
+                  `}
+                  data-network-symbol
+                  >
+                    {network.symbol}
                   </span>
                 </div>
               </div>
@@ -341,8 +456,10 @@ const imgClass: Record<string, string> = {
                 leading-tight
                 text-footnote
                 lg:text-[0.9vw]
-              `}>
-                {t(n.descriptionKey)}
+              `}
+              data-network-description
+              >
+                {network.description}
               </p>
               <div class={`
                 flex
@@ -352,19 +469,34 @@ const imgClass: Record<string, string> = {
                 leading-tight
                 lg:text-[1.3vw]
               `}>
-                <span class="text-footnote">APR {n.apr}%</span>
-                <div set:html={renderFeatureTags(n.features)} />
+                <span class="text-footnote" data-network-apr>APR {network.apr}%</span>
+                <div data-network-features>
+                  <div class={featureRowClass}>
+                    {network.features.map((feature) => (
+                      <div class:list={[featurePillClass, featureBgClass[feature]]}>
+                        <img src="/img/network-feature.svg" alt={feature} class={featureIconClass} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           )}
 
           {/* ── Square Small ── */}
-          {item.type === 'square-small' && n && (
-            <Image src={n.logo} alt={n.name} class={imgClass['square-small']} />
+          {item.type === 'square-small' && network && (
+            <img
+              src={network.logoSrc}
+              alt={network.name}
+              width={network.logoWidth}
+              height={network.logoHeight}
+              class={imgClass['square-small']}
+              data-network-logo
+            />
           )}
 
           {/* ── Rectangle Small ── */}
-          {item.type === 'rectangle-small' && n && (
+          {item.type === 'rectangle-small' && network && (
             <div class={`
               flex
               h-full
@@ -373,7 +505,14 @@ const imgClass: Record<string, string> = {
               gap-[2vw]
               lg:gap-[0.8vw]
             `}>
-              <Image src={n.logo} alt={n.name} class={imgClass['rectangle-small']} />
+              <img
+                src={network.logoSrc}
+                alt={network.name}
+                width={network.logoWidth}
+                height={network.logoHeight}
+                class={imgClass['rectangle-small']}
+                data-network-logo
+              />
               <div class={`
                 flex
                 flex-col
@@ -389,8 +528,10 @@ const imgClass: Record<string, string> = {
                     text-espresso-dark
                     uppercase
                     lg:text-[1.3vw]
-                  `}>
-                    {n.name}
+                  `}
+                  data-network-name
+                  >
+                    {network.name}
                   </span>
                   <span class={`
                     text-[2.5vw]
@@ -398,8 +539,10 @@ const imgClass: Record<string, string> = {
                     text-footnote
                     uppercase
                     lg:text-[0.9vw]
-                  `}>
-                    {n.symbol}
+                  `}
+                  data-network-symbol
+                  >
+                    {network.symbol}
                   </span>
                 </div>
                 <span class={`
@@ -407,15 +550,25 @@ const imgClass: Record<string, string> = {
                   leading-tight
                   text-footnote
                   lg:text-[0.9vw]
-                `}>
-                  APR {n.apr}%
+                `}
+                data-network-apr
+                >
+                  APR {network.apr}%
                 </span>
               </div>
-              <div set:html={renderFeatureTags(n.features)} class={`
+              <div class={`
                 ml-auto
                 hidden
                 lg:flex
-              `} />
+              `} data-network-features>
+                <div class={featureRowClass}>
+                  {network.features.map((feature) => (
+                    <div class:list={[featurePillClass, featureBgClass[feature]]}>
+                      <img src="/img/network-feature.svg" alt={feature} class={featureIconClass} />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 
@@ -444,3 +597,161 @@ const imgClass: Record<string, string> = {
   </div>
   </section>
 </div>
+
+<script define:vars={{ searchableNetworks, featureBgClass, featurePillClass, featureIconClass, featureRowClass }}>
+  const component = document.querySelector('[data-networks-component]');
+
+  if (component instanceof HTMLElement) {
+    const searchInput = component.querySelector('[data-networks-search-input]');
+    const filterButtons = Array.from(component.querySelectorAll('[data-filter]')).filter(
+      (btn) => btn instanceof HTMLButtonElement,
+    );
+    const slotElements = Array.from(component.querySelectorAll('[data-network-slot]')).filter(
+      (slot) => slot instanceof HTMLElement,
+    );
+
+    if (searchInput instanceof HTMLInputElement && slotElements.length > 0) {
+      const networksData = Array.isArray(searchableNetworks) ? searchableNetworks : [];
+      const renderedSlotState = new WeakMap();
+      let activeFilter = 'all';
+
+      const activeClasses = ['bg-lavender'];
+      const inactiveClasses = ['bg-transparent'];
+
+      const updateFilterButtons = () => {
+        for (const btn of filterButtons) {
+          const filter = btn.getAttribute('data-filter');
+          if (filter === activeFilter) {
+            btn.classList.remove(...inactiveClasses);
+            btn.classList.add(...activeClasses);
+          } else {
+            btn.classList.remove(...activeClasses);
+            btn.classList.add(...inactiveClasses);
+          }
+        }
+      };
+
+      for (const btn of filterButtons) {
+        btn.addEventListener('click', () => {
+          activeFilter = btn.getAttribute('data-filter') || 'all';
+          updateFilterButtons();
+          render();
+        });
+      }
+
+      const slotBindings = slotElements
+        .map((slot) => {
+          const slotIndex = Number(slot.getAttribute('data-slot-index'));
+          if (!Number.isFinite(slotIndex)) return null;
+
+          return {
+            slot,
+            slotIndex,
+            logos: Array.from(slot.querySelectorAll('[data-network-logo]')).filter((node) => node instanceof HTMLImageElement),
+            names: Array.from(slot.querySelectorAll('[data-network-name]')).filter((node) => node instanceof HTMLElement),
+            symbols: Array.from(slot.querySelectorAll('[data-network-symbol]')).filter((node) => node instanceof HTMLElement),
+            aprValues: Array.from(slot.querySelectorAll('[data-network-apr]')).filter((node) => node instanceof HTMLElement),
+            descriptions: Array.from(slot.querySelectorAll('[data-network-description]')).filter((node) => node instanceof HTMLElement),
+            featureContainers: Array.from(slot.querySelectorAll('[data-network-features]')).filter((node) => node instanceof HTMLElement),
+          };
+        })
+        .filter((binding) => binding !== null);
+
+      const createFeatureRow = (features) => {
+        const row = document.createElement('div');
+        row.className = featureRowClass;
+
+        for (const feature of Array.isArray(features) ? features : []) {
+          const pill = document.createElement('div');
+          pill.className = `${featurePillClass} ${featureBgClass[feature] || ''}`;
+
+          const icon = document.createElement('img');
+          icon.src = '/img/network-feature.svg';
+          icon.alt = String(feature);
+          icon.className = featureIconClass;
+
+          pill.append(icon);
+          row.append(pill);
+        }
+
+        return row;
+      };
+
+      const setEmptySlot = (binding) => {
+        binding.slot.classList.add('opacity-0', 'pointer-events-none');
+        binding.slot.setAttribute('aria-hidden', 'true');
+      };
+
+      const setFilledSlot = (binding, network) => {
+        binding.slot.classList.remove('opacity-0', 'pointer-events-none');
+        binding.slot.removeAttribute('aria-hidden');
+
+        for (const logoNode of binding.logos) {
+          logoNode.src = network.logoSrc;
+          logoNode.alt = network.name;
+          logoNode.width = network.logoWidth;
+          logoNode.height = network.logoHeight;
+        }
+
+        for (const nameNode of binding.names) {
+          nameNode.textContent = network.name;
+        }
+
+        for (const symbolNode of binding.symbols) {
+          symbolNode.textContent = network.symbol;
+        }
+
+        for (const aprNode of binding.aprValues) {
+          aprNode.textContent = `APR ${network.apr}%`;
+        }
+
+        for (const descriptionNode of binding.descriptions) {
+          descriptionNode.textContent = network.description;
+        }
+
+        for (const featureContainer of binding.featureContainers) {
+          featureContainer.replaceChildren(createFeatureRow(network.features));
+        }
+      };
+
+      const getNetworkForSlot = (isFiltered, matches, slotIndex) => {
+        if (isFiltered) return matches[slotIndex];
+        if (matches.length === 0) return undefined;
+        return matches[slotIndex % matches.length];
+      };
+
+      const render = () => {
+        const query = searchInput.value.trim().toLocaleLowerCase();
+        let filtered = networksData;
+
+        if (activeFilter !== 'all') {
+          filtered = filtered.filter((network) =>
+            Array.isArray(network.features) && network.features.includes(activeFilter),
+          );
+        }
+
+        const matches = query
+          ? filtered.filter((network) => network.searchText.includes(query))
+          : filtered;
+
+        const isFiltered = query !== '' || activeFilter !== 'all';
+
+        for (const binding of slotBindings) {
+          const network = getNetworkForSlot(isFiltered, matches, binding.slotIndex);
+          const nextState = network ? network.id : null;
+          const previousState = renderedSlotState.get(binding.slot);
+
+          if (previousState === nextState) continue;
+
+          if (network) setFilledSlot(binding, network);
+          else setEmptySlot(binding);
+
+          renderedSlotState.set(binding.slot, nextState);
+        }
+      };
+
+      searchInput.addEventListener('input', render);
+      render();
+    }
+  }
+</script>
