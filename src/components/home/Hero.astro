@@ -30,14 +30,14 @@ const socialLinks = [
     bg-center
     transition-[height,margin,border-radius,padding]
     duration-300
-    group-has-checked/menu:m-0
-    group-has-checked/menu:h-[calc(100dvh-var(--banner-height))]
-    group-has-checked/menu:rounded-none
-    group-has-checked/menu:p-(--hero-margin)
-    lg:group-has-checked/menu:m-(--hero-margin)
-    lg:group-has-checked/menu:h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
-    lg:group-has-checked/menu:rounded-4xl
-    lg:group-has-checked/menu:p-0
+    group-has-[#mobile-menu-toggle:checked]/menu:m-0
+    group-has-[#mobile-menu-toggle:checked]/menu:h-[calc(100dvh-var(--banner-height))]
+    group-has-[#mobile-menu-toggle:checked]/menu:rounded-none
+    group-has-[#mobile-menu-toggle:checked]/menu:p-(--hero-margin)
+    lg:group-has-[#mobile-menu-toggle:checked]/menu:m-(--hero-margin)
+    lg:group-has-[#mobile-menu-toggle:checked]/menu:h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
+    lg:group-has-[#mobile-menu-toggle:checked]/menu:rounded-4xl
+    lg:group-has-[#mobile-menu-toggle:checked]/menu:p-0
   `}>
 
   <section class={`
