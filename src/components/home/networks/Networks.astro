@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { R2_PUBLIC_URL } from '@/data/r2';
 import { getNetworks } from '@/data/networks';
@@ -7,11 +8,13 @@ import NetworkCardRectangleBig from './NetworkCardRectangleBig.astro';
 import NetworkCardSquareBig from './NetworkCardSquareBig.astro';
 import NetworkCardRectangleSmall from './NetworkCardRectangleSmall.astro';
 import NetworkCardCta from './NetworkCardCta.astro';
+import babylonBannerImg from '@/assets/images/babylon-bitcoin-banner-image.png';
 
 export const prerender = false;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const bannerText = t('networks.babylonStakingBanner');
 
 const desktopLayout = [
   { type: 'rectangle-big', grid: 'col-[1/4] row-[1/3]' },
@@ -148,7 +151,7 @@ const allItems = [...desktopItems, ...mobileItems];
       flex-col
       gap-8
       overflow-x-clip
-      bg-[radial-gradient(ellipse_45%_45%_at_center,#E5E6FF_0%,transparent_100%)]
+      bg-[radial-gradient(ellipse_45%_45%_at_center,#E5E6FF80_0%,transparent_100%)]
       py-12
       sm:py-16
       md:py-20
@@ -352,6 +355,18 @@ const allItems = [...desktopItems, ...mobileItems];
         `}
         data-networks-search-input
       />
+    </div>
+  </div>
+
+  <!-- Babylon Staking Banner -->
+  <div class="w-full overflow-hidden rounded-xl bg-gray-50 py-1.5">
+    <div class="flex w-max animate-babylon-marquee items-center">
+      {[...Array(8)].map(() => (
+        <Fragment>
+          <span class="mx-2 shrink-0 text-3xl font-display font-normal whitespace-nowrap text-espresso">{bannerText}</span>
+          <Image src={babylonBannerImg} format="webp" alt="" height={72} class="mx-2 h-7 w-auto shrink-0" />
+        </Fragment>
+      ))}
     </div>
   </div>
 

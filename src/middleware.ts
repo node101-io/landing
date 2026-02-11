@@ -6,7 +6,7 @@ const i18n = defineMiddleware((context, next) => {
   if (context.url.pathname.startsWith("/admin")) return next();
   return i18nMiddleware({
     prefixDefaultLocale: true,
-    redirectToDefaultLocale: true,
+    redirectToDefaultLocale: false,
   })(context, next);
 });
 

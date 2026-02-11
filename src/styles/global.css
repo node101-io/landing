@@ -70,22 +70,14 @@
 
   /* Animations */
   --animate-marquee: marquee 20s linear infinite -15s;
-  --animate-marquee-logos: marquee-logos 30s linear infinite;
+  --animate-marquee-logos: marquee 30s linear infinite;
+  --animate-babylon-marquee: marquee 140s linear infinite;
   --animate-fade-in: first-time-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1)
     forwards;
   --animate-cta-marquee: marquee 12s linear infinite;
   --animate-slide-up: slide-up 0.6s ease-out forwards;
 
   @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  @keyframes marquee-logos {
     from {
       transform: translateX(0);
     }
