@@ -3,11 +3,33 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import Menu from './components/Menu.astro';
 import MenuSection from './components/MenuSection.astro';
+import type { GridItemProps } from './components/MenuSection.astro';
 import { getMenuItems } from './menu-data';
+import { R2_PUBLIC_URL } from '@/data/r2';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const menuItems = getMenuItems(t);
+
+// Read networks from KV for header menu
+let kvNetworks: GridItemProps[] = [];
+try {
+  const KV = Astro.locals.runtime?.env?.KV;
+  if (KV) {
+    const kvData = await KV.get('networks', 'json') as Array<{ id: string; name: string; symbol: string; href: string; logoKey: string }> | null;
+    if (kvData) {
+      kvNetworks = kvData.map((n) => ({
+        icon: `${R2_PUBLIC_URL}/networks/${n.logoKey}`,
+        name: n.name,
+        symbol: n.symbol,
+        href: n.href,
+      }));
+    }
+  }
+} catch {
+  // KV unavailable — menu will render without network items
+}
+
+const menuItems = getMenuItems(t, kvNetworks);
 ---
 
 <header class={`

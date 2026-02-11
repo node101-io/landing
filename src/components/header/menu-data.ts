@@ -6,7 +6,6 @@ import type {
   SectionType,
 } from "./components/MenuSection.astro";
 import type { TranslationFn } from "@/i18n/utils";
-import { networks as networkData } from "@/data/networks";
 
 export type MenuSectionData = {
   type: SectionType;
@@ -25,21 +24,10 @@ export type MenuItem = {
 };
 
 // =============================================================================
-// STATIC DATA
-// =============================================================================
-
-export const networks: GridItemProps[] = networkData.map((n) => ({
-  icon: n.logo.src,
-  name: n.name,
-  symbol: n.symbol,
-  href: n.href,
-}));
-
-// =============================================================================
 // MENU ITEM BUILDERS
 // =============================================================================
 
-function buildInvestmentMenu(t: TranslationFn): MenuItem {
+function buildInvestmentMenu(t: TranslationFn, networks: GridItemProps[]): MenuItem {
   return {
     label: t("nav.investment"),
     sections: [
@@ -93,7 +81,7 @@ function buildInvestmentMenu(t: TranslationFn): MenuItem {
   };
 }
 
-function buildRpcMenu(t: TranslationFn): MenuItem {
+function buildRpcMenu(t: TranslationFn, networks: GridItemProps[]): MenuItem {
   return {
     label: t("nav.rpc"),
     sections: [
@@ -532,10 +520,10 @@ function buildNode101MobileMenu(t: TranslationFn): MenuItem {
 // MAIN EXPORT
 // =============================================================================
 
-export function getMenuItems(t: TranslationFn): MenuItem[] {
+export function getMenuItems(t: TranslationFn, networks: GridItemProps[]): MenuItem[] {
   return [
-    buildInvestmentMenu(t),
-    buildRpcMenu(t),
+    buildInvestmentMenu(t, networks),
+    buildRpcMenu(t, networks),
     buildServicesMenu(t),
     buildEventsCommunityMobileMenu(t),
     buildProductsMenu(t),

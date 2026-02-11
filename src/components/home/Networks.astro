@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
-import type { NetworkFeature } from '@/data/networks';
 import { R2_PUBLIC_URL } from '@/data/r2';
 
 export const prerender = false;
@@ -9,6 +8,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 type CardType = 'rectangle-big' | 'square-big' | 'rectangle-small' | 'square-small' | 'cta';
+type NetworkFeature = 'rpc' | 'staking';
 
 interface SearchableNetwork {
   id: string;
@@ -70,16 +70,16 @@ const mobileLayout = [
 ] as const;
 
 const cellStyle = 'bg-gray-50 border border-lav-border';
-const imgStyle = 'aspect-square object-contain rounded-[4vw] lg:rounded-[1vw]';
-const featureRowClass = 'flex gap-[0.5vw]';
-const featurePillClass = 'flex size-[4vw] aspect-square items-center justify-center rounded-full lg:size-[1.5vw]';
-const featureIconClass = 'size-[2.2vw] lg:size-[0.8vw]';
+const imgStyle = 'aspect-square object-contain rounded-[calc(var(--vw)*4)] lg:rounded-[calc(var(--vw)*1)]';
+const featureRowClass = 'flex gap-[calc(var(--vw)*0.5)]';
+const featurePillClass = 'flex size-[calc(var(--vw)*4)] aspect-square items-center justify-center rounded-full lg:size-[calc(var(--vw)*1.5)]';
+const featureIconClass = 'size-[calc(var(--vw)*2.2)] lg:size-[calc(var(--vw)*0.8)]';
 
 const imgClass: Record<Exclude<CardType, 'cta'>, string> = {
   'rectangle-big': `w-[35%] h-fit shrink-0 ${imgStyle}`,
-  'square-big': `w-[calc(50%-6vw)] lg:w-[calc(50%-2.1vw)] h-fit ${imgStyle}`,
+  'square-big': `w-[calc(50%-var(--vw)*6)] lg:w-[calc(50%-var(--vw)*2.1)] h-fit ${imgStyle}`,
   'square-small': `size-full ${imgStyle}`,
-  'rectangle-small': `h-[13vw] lg:h-[3.686vw] w-auto ${imgStyle}`,
+  'rectangle-small': `h-[calc(var(--vw)*13)] lg:h-[calc(var(--vw)*3.686)] w-auto ${imgStyle}`,
 };
 
 const featureBgClass: Record<NetworkFeature, string> = {
@@ -162,11 +162,11 @@ function getGridItemClassList(item: GridItem): string[] {
     `
       min-h-0
       overflow-hidden
-      rounded-[6vw]
-      p-[3vw]
+      rounded-[calc(var(--vw)*6)]
+      p-[calc(var(--vw)*3)]
       font-sans
-      lg:rounded-[2vw]
-      lg:p-[1.4vw]
+      lg:rounded-[calc(var(--vw)*2)]
+      lg:p-[calc(var(--vw)*1.4)]
     `,
   ];
 
@@ -187,14 +187,6 @@ const allItems = [...desktopItems, ...mobileItems];
   m-(--section-margin)
   w-[calc(100%-var(--section-margin)*2)]
 `}>
-  <div class={`
-    pointer-events-none
-    absolute
-    -inset-40
-    -z-10
-    bg-[radial-gradient(ellipse_max(70vw,700px)_max(40vw,400px)_at_center,#E5E6FF_0%,#FEF9F3_60%,transparent_100%)]
-    opacity-60
-  `} aria-hidden="true"></div>
   <section
     class={`
       @container
@@ -204,6 +196,7 @@ const allItems = [...desktopItems, ...mobileItems];
       flex-col
       gap-8
       overflow-x-clip
+      bg-[radial-gradient(ellipse_45%_45%_at_center,#E5E6FF_0%,transparent_100%)]
       py-12
       sm:py-16
       md:py-20
@@ -297,7 +290,7 @@ const allItems = [...desktopItems, ...mobileItems];
       rpc
     </button>
 
-    <div class="relative ml-auto w-full lg:w-[27vw]">
+    <div class="relative ml-auto w-full lg:w-[calc(var(--vw)*27)]">
       <img
         src="/img/search.svg"
         alt=""
@@ -338,11 +331,11 @@ const allItems = [...desktopItems, ...mobileItems];
   <div class={`
     grid
     grid-cols-4
-    grid-rows-[repeat(6,calc(25cqi-3vw))_auto]
-    gap-[4vw]
+    grid-rows-[repeat(6,calc(25cqi-var(--vw)*3))_auto]
+    gap-[calc(var(--vw)*4)]
     lg:grid-cols-12
-    lg:grid-rows-[repeat(4,calc(8.3333cqi-1.2833vw))]
-    lg:gap-[1.4vw]
+    lg:grid-rows-[repeat(4,calc(8.3333cqi-var(--vw)*1.2833))]
+    lg:gap-[calc(var(--vw)*1.4)]
   `}>
     {allItems.map((item) => {
       const network = item.network;
@@ -362,7 +355,7 @@ const allItems = [...desktopItems, ...mobileItems];
             `}>
               <div class={`
                 flex
-                gap-[1.4vw]
+                gap-[calc(var(--vw)*1.4)]
               `}>
                 <img
                   src={network.logoSrc}
@@ -375,24 +368,23 @@ const allItems = [...desktopItems, ...mobileItems];
                 <div class={`
                   flex
                   flex-col
-                  gap-[0.4vw]
+                  gap-[calc(var(--vw)*0.4)]
                 `}>
                   <span class={`
-                    text-[3vw]
+                    text-[calc(var(--vw)*3)]
                     leading-relaxed
                     text-espresso-dark
-                    uppercase
-                    lg:text-[1.3vw]
+                    lg:text-[calc(var(--vw)*1.3)]
                   `}
                   data-network-name
                   >
-                    {network.name}
+                    {network.name.toLocaleUpperCase('en')}
                   </span>
                   <p class={`
-                    text-[2.5vw]
+                    text-[calc(var(--vw)*2.5)]
                     leading-tight
                     text-footnote
-                    lg:text-[0.9vw]
+                    lg:text-[calc(var(--vw)*0.9)]
                   `}
                   data-network-description
                   >
@@ -416,17 +408,16 @@ const allItems = [...desktopItems, ...mobileItems];
                 flex
                 items-end
                 justify-between
-                text-[3vw]
+                text-[calc(var(--vw)*3)]
                 leading-tight
-                lg:text-[1.3vw]
+                lg:text-[calc(var(--vw)*1.3)]
               `}>
                 <span class={`
                   text-espresso-dark
-                  uppercase
                 `}
                 data-network-symbol
                 >
-                  {network.symbol}
+                  {network.symbol.toLocaleUpperCase('en')}
                 </span>
                 <span class="text-footnote" data-network-apr>APR {network.apr}%</span>
               </div>
@@ -442,7 +433,7 @@ const allItems = [...desktopItems, ...mobileItems];
             `}>
               <div class={`
                 flex
-                gap-[1.4vw]
+                gap-[calc(var(--vw)*1.4)]
               `}>
                 <img
                   src={network.logoSrc}
@@ -457,34 +448,32 @@ const allItems = [...desktopItems, ...mobileItems];
                   flex-col
                 `}>
                   <span class={`
-                    text-[3vw]
+                    text-[calc(var(--vw)*3)]
                     leading-relaxed
                     text-espresso-dark
-                    uppercase
-                    lg:text-[1.3vw]
+                    lg:text-[calc(var(--vw)*1.3)]
                   `}
                   data-network-name
                   >
-                    {network.name}
+                    {network.name.toLocaleUpperCase('en')}
                   </span>
                   <span class={`
-                    text-[2.8vw]
+                    text-[calc(var(--vw)*2.8)]
                     leading-tight
                     text-footnote
-                    uppercase
-                    lg:text-[0.9vw]
+                    lg:text-[calc(var(--vw)*0.9)]
                   `}
                   data-network-symbol
                   >
-                    {network.symbol}
+                    {network.symbol.toLocaleUpperCase('en')}
                   </span>
                 </div>
               </div>
               <p class={`
-                text-[2.5vw]
+                text-[calc(var(--vw)*2.5)]
                 leading-tight
                 text-footnote
-                lg:text-[0.9vw]
+                lg:text-[calc(var(--vw)*0.9)]
               `}
               data-network-description
               >
@@ -494,9 +483,9 @@ const allItems = [...desktopItems, ...mobileItems];
                 flex
                 items-end
                 justify-between
-                text-[3vw]
+                text-[calc(var(--vw)*3)]
                 leading-tight
-                lg:text-[1.3vw]
+                lg:text-[calc(var(--vw)*1.3)]
               `}>
                 <span class="text-footnote" data-network-apr>APR {network.apr}%</span>
                 <div data-network-features>
@@ -531,8 +520,8 @@ const allItems = [...desktopItems, ...mobileItems];
               h-full
               w-full
               items-center
-              gap-[2vw]
-              lg:gap-[0.8vw]
+              gap-[calc(var(--vw)*2)]
+              lg:gap-[calc(var(--vw)*0.8)]
             `}>
               <img
                 src={network.logoSrc}
@@ -549,36 +538,34 @@ const allItems = [...desktopItems, ...mobileItems];
                 <div class={`
                   flex
                   items-baseline
-                  gap-[0.4vw]
+                  gap-[calc(var(--vw)*0.4)]
                 `}>
                   <span class={`
-                    text-[3vw]
+                    text-[calc(var(--vw)*3)]
                     leading-relaxed
                     text-espresso-dark
-                    uppercase
-                    lg:text-[1.3vw]
+                    lg:text-[calc(var(--vw)*1.3)]
                   `}
                   data-network-name
                   >
-                    {network.name}
+                    {network.name.toLocaleUpperCase('en')}
                   </span>
                   <span class={`
-                    text-[2.5vw]
+                    text-[calc(var(--vw)*2.5)]
                     leading-tight
                     text-footnote
-                    uppercase
-                    lg:text-[0.9vw]
+                    lg:text-[calc(var(--vw)*0.9)]
                   `}
                   data-network-symbol
                   >
-                    {network.symbol}
+                    {network.symbol.toLocaleUpperCase('en')}
                   </span>
                 </div>
                 <span class={`
-                  text-[2.5vw]
+                  text-[calc(var(--vw)*2.5)]
                   leading-tight
                   text-footnote
-                  lg:text-[0.9vw]
+                  lg:text-[calc(var(--vw)*0.9)]
                 `}
                 data-network-apr
                 >
@@ -611,10 +598,10 @@ const allItems = [...desktopItems, ...mobileItems];
                 w-full
                 items-center
                 justify-center
-                text-[3vw]
+                text-[calc(var(--vw)*3)]
                 text-espresso-dark
                 underline
-                lg:text-[1.3vw]
+                lg:text-[calc(var(--vw)*1.3)]
               `}
             >
               {t('common.allNetworks')}
@@ -723,11 +710,11 @@ const allItems = [...desktopItems, ...mobileItems];
         }
 
         for (const nameNode of binding.names) {
-          nameNode.textContent = network.name;
+          nameNode.textContent = network.name.toLocaleUpperCase('en');
         }
 
         for (const symbolNode of binding.symbols) {
-          symbolNode.textContent = network.symbol;
+          symbolNode.textContent = network.symbol.toLocaleUpperCase('en');
         }
 
         for (const aprNode of binding.aprValues) {

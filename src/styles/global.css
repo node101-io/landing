@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+  --vw: 1vw;
+}
+
+@media (width >= 1920px) {
+  :root {
+    --vw: 19.2px;
+  }
+}
+
 @theme {
   /* Fonts */
   --font-sans:

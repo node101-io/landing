@@ -6,16 +6,8 @@ import Hero from '@/components/home/Hero.astro';
 import TrustedBy from '@/components/home/TrustedBy.astro';
 import Services from '@/components/home/Services.astro';
 import Networks from '@/components/home/Networks.astro';
-import { LOCALES } from '@/i18n/utils';
 
-// Prerender for all locales
-export const prerender = true;
-
-export function getStaticPaths() {
-  return LOCALES.map((locale) => ({
-    params: { locale },
-  }));
-}
+export const prerender = false;
 ---
 
 <Layout title="node101">
@@ -64,11 +56,11 @@ export function getStaticPaths() {
     <div slot="fallback" class="m-(--section-margin) w-[calc(100%-var(--section-margin)*2)]">
       <div class="flex flex-col gap-8 py-12 sm:py-16 md:py-20 lg:gap-12 lg:py-24">
         <div class="h-12 w-64 animate-pulse rounded-lg bg-espresso/10"></div>
-        <div class="grid grid-cols-4 gap-[4vw] lg:grid-cols-12 lg:gap-[1.4vw]">
-          <div class="col-span-2 aspect-square animate-pulse rounded-[6vw] bg-espresso/5 lg:col-span-3 lg:rounded-[2vw]"></div>
-          <div class="col-span-2 aspect-square animate-pulse rounded-[6vw] bg-espresso/5 lg:col-span-3 lg:rounded-[2vw]"></div>
-          <div class="col-span-2 aspect-square animate-pulse rounded-[6vw] bg-espresso/5 lg:col-span-3 lg:rounded-[2vw]"></div>
-          <div class="col-span-2 aspect-square animate-pulse rounded-[6vw] bg-espresso/5 lg:col-span-3 lg:rounded-[2vw]"></div>
+        <div class="grid grid-cols-4 gap-[calc(var(--vw)*4)] lg:grid-cols-12 lg:gap-[calc(var(--vw)*1.4)]">
+          <div class="col-span-2 aspect-square animate-pulse rounded-[calc(var(--vw)*6)] bg-espresso/5 lg:col-span-3 lg:rounded-[calc(var(--vw)*2)]"></div>
+          <div class="col-span-2 aspect-square animate-pulse rounded-[calc(var(--vw)*6)] bg-espresso/5 lg:col-span-3 lg:rounded-[calc(var(--vw)*2)]"></div>
+          <div class="col-span-2 aspect-square animate-pulse rounded-[calc(var(--vw)*6)] bg-espresso/5 lg:col-span-3 lg:rounded-[calc(var(--vw)*2)]"></div>
+          <div class="col-span-2 aspect-square animate-pulse rounded-[calc(var(--vw)*6)] bg-espresso/5 lg:col-span-3 lg:rounded-[calc(var(--vw)*2)]"></div>
         </div>
       </div>
     </div>
