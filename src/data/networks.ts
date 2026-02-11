@@ -1,5 +1,5 @@
 // Types
-export type NetworkFeature = 'rpc' | 'staking';
+export type NetworkFeature = "rpc" | "staking";
 
 export interface KVNetwork {
   id: string;
@@ -20,10 +20,13 @@ export interface NetworkCategories {
 }
 
 export const CATEGORY_DEFS = [
-  { key: 'popularBlockchains' as const, label: 'Popular Blockchains (Investment Menu)' },
-  { key: 'currentlyPopular' as const, label: 'Currently Popular (RPC Menu)' },
-  { key: 'new' as const, label: 'New (RPC Menu)' },
-  { key: 'mostUsed' as const, label: 'Most Used (RPC Menu)' },
+  {
+    key: "popularBlockchains" as const,
+    label: "Popular Blockchains (Investment Menu)",
+  },
+  { key: "currentlyPopular" as const, label: "Currently Popular (RPC Menu)" },
+  { key: "new" as const, label: "New (RPC Menu)" },
+  { key: "mostUsed" as const, label: "Most Used (RPC Menu)" },
 ];
 
 export const EMPTY_CATEGORIES: NetworkCategories = {
@@ -35,21 +38,29 @@ export const EMPTY_CATEGORIES: NetworkCategories = {
 
 // KV access — encapsulates the repeated try/catch/cast/fallback pattern
 type KVNamespace = {
-  get(key: string, type: 'json'): Promise<unknown>;
+  get(key: string, type: "json"): Promise<unknown>;
   put(key: string, value: string): Promise<void>;
 };
 
 export async function getNetworks(KV: KVNamespace): Promise<KVNetwork[]> {
-  const data = (await KV.get('networks', 'json')) as KVNetwork[] | null;
+  const data = (await KV.get("networks", "json")) as KVNetwork[] | null;
   return data ?? [];
 }
 
-export async function putNetworks(KV: KVNamespace, networks: KVNetwork[]): Promise<void> {
-  await KV.put('networks', JSON.stringify(networks));
+export async function putNetworks(
+  KV: KVNamespace,
+  networks: KVNetwork[],
+): Promise<void> {
+  await KV.put("networks", JSON.stringify(networks));
 }
 
-export async function getNetworkCategories(KV: KVNamespace): Promise<NetworkCategories> {
-  const data = (await KV.get('network-categories', 'json')) as NetworkCategories | null;
+export async function getNetworkCategories(
+  KV: KVNamespace,
+): Promise<NetworkCategories> {
+  const data = (await KV.get(
+    "network-categories",
+    "json",
+  )) as NetworkCategories | null;
   return data ?? { ...EMPTY_CATEGORIES };
 }
 
@@ -57,7 +68,7 @@ export async function putNetworkCategories(
   KV: KVNamespace,
   categories: NetworkCategories,
 ): Promise<void> {
-  await KV.put('network-categories', JSON.stringify(categories));
+  await KV.put("network-categories", JSON.stringify(categories));
 }
 
 // Remove a network ID from all categories (used on network delete)

@@ -1,0 +1,76 @@
+---
+import { type SearchableNetwork, imgClass } from './types';
+import FeaturePills from './FeaturePills.astro';
+
+interface Props {
+  network: SearchableNetwork;
+}
+
+const { network } = Astro.props;
+---
+
+<div class={`
+  flex
+  h-full
+  w-full
+  items-center
+  gap-[calc(var(--vw)*2)]
+  lg:gap-[calc(var(--vw)*0.8)]
+`}>
+  <img
+    src={network.logoSrc}
+    alt={network.name}
+    width={network.logoWidth}
+    height={network.logoHeight}
+    class:list={imgClass['rectangle-small']}
+    data-network-logo
+  />
+  <div class={`
+    flex
+    flex-col
+  `}>
+    <div class={`
+      flex
+      items-baseline
+      gap-[calc(var(--vw)*0.4)]
+    `}>
+      <span class={`
+        text-[calc(var(--vw)*3)]
+        leading-relaxed
+        text-espresso-dark
+        lg:text-[calc(var(--vw)*1.3)]
+      `}
+      data-network-name
+      >
+        {network.name.toLocaleUpperCase('en')}
+      </span>
+      <span class={`
+        text-[calc(var(--vw)*2.5)]
+        leading-tight
+        text-footnote
+        lg:text-[calc(var(--vw)*0.9)]
+      `}
+      data-network-symbol
+      >
+        {network.symbol.toLocaleUpperCase('en')}
+      </span>
+    </div>
+    <span class={`
+      text-[calc(var(--vw)*2.5)]
+      leading-tight
+      text-footnote
+      lg:text-[calc(var(--vw)*0.9)]
+    `}
+    data-network-apr
+    >
+      APR {network.apr}%
+    </span>
+  </div>
+  <div class={`
+    ml-auto
+    hidden
+    lg:flex
+  `} data-network-features>
+    <FeaturePills features={network.features} />
+  </div>
+</div>

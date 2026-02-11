@@ -390,7 +390,10 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
         lg:grid-cols-4
       `}>
         {CATEGORY_DEFS.map((def) => (
-          <div class="flex flex-col" data-category-col={def.key}>
+          <div class={`
+            flex
+            flex-col
+          `} data-category-col={def.key}>
             <h3 class={`
               mb-2
               text-sm
@@ -417,7 +420,10 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
             >
               <!-- JS renders ordered list here -->
             </div>
-            <div class="flex gap-1">
+            <div class={`
+              flex
+              gap-1
+            `}>
               <select
                 class={`
                   flex-1

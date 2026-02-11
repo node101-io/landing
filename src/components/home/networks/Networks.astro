@@ -1,35 +1,17 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { R2_PUBLIC_URL } from '@/data/r2';
-import { type NetworkFeature, getNetworks } from '@/data/networks';
+import { getNetworks } from '@/data/networks';
+import { type CardType, type SearchableNetwork, type GridItem, imgClass } from './types';
+import NetworkCardRectangleBig from './NetworkCardRectangleBig.astro';
+import NetworkCardSquareBig from './NetworkCardSquareBig.astro';
+import NetworkCardRectangleSmall from './NetworkCardRectangleSmall.astro';
+import NetworkCardCta from './NetworkCardCta.astro';
 
 export const prerender = false;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-type CardType = 'rectangle-big' | 'square-big' | 'rectangle-small' | 'square-small' | 'cta';
-
-interface SearchableNetwork {
-  id: string;
-  name: string;
-  symbol: string;
-  description: string;
-  apr: number;
-  logoSrc: string;
-  logoWidth: number;
-  logoHeight: number;
-  features: NetworkFeature[];
-  searchText: string;
-}
-
-interface GridItem {
-  type: CardType;
-  grid: string;
-  displayClass: string;
-  slotIndex?: number;
-  network?: SearchableNetwork;
-}
 
 const desktopLayout = [
   { type: 'rectangle-big', grid: 'col-[1/4] row-[1/3]' },
@@ -70,22 +52,6 @@ const mobileLayout = [
 ] as const;
 
 const cellStyle = ['bg-gray-50', 'border', 'border-lav-border'];
-const imgStyle = ['aspect-square', 'object-contain', 'rounded-[calc(var(--vw)*4)]', 'lg:rounded-[calc(var(--vw)*1)]'];
-const featureRowClass = ['flex', 'gap-[calc(var(--vw)*0.5)]'];
-const featurePillClass = ['flex', 'size-[calc(var(--vw)*4)]', 'aspect-square', 'items-center', 'justify-center', 'rounded-full', 'lg:size-[calc(var(--vw)*1.5)]'];
-const featureIconClass = ['size-[calc(var(--vw)*2.2)]', 'lg:size-[calc(var(--vw)*0.8)]'];
-
-const imgClass: Record<Exclude<CardType, 'cta'>, string[]> = {
-  'rectangle-big': ['w-[35%]', 'h-fit', 'shrink-0', ...imgStyle],
-  'square-big': ['w-[calc(50%-var(--vw)*6)]', 'lg:w-[calc(50%-var(--vw)*2.1)]', 'h-fit', ...imgStyle],
-  'square-small': ['size-full', ...imgStyle],
-  'rectangle-small': ['h-[calc(var(--vw)*13)]', 'lg:h-[calc(var(--vw)*3.686)]', 'w-auto', ...imgStyle],
-};
-
-const featureBgClass: Record<NetworkFeature, string> = {
-  rpc: 'bg-lavender',
-  staking: 'bg-ice-blue',
-};
 
 // Read networks from KV (only source of truth)
 let searchableNetworks: SearchableNetwork[] = [];
@@ -408,174 +374,14 @@ const allItems = [...desktopItems, ...mobileItems];
           data-network-slot={searchSlot ? '' : undefined}
           data-slot-index={searchSlot ? item.slotIndex : undefined}
         >
-          {/* ── Rectangle Big ── */}
           {item.type === 'rectangle-big' && network && (
-            <div class={`
-              flex
-              flex-col
-              justify-between
-            `}>
-              <div class={`
-                flex
-                gap-[calc(var(--vw)*1.4)]
-              `}>
-                <img
-                  src={network.logoSrc}
-                  alt={network.name}
-                  width={network.logoWidth}
-                  height={network.logoHeight}
-                  class:list={imgClass['rectangle-big']}
-                  data-network-logo
-                />
-                <div class={`
-                  flex
-                  flex-col
-                  gap-[calc(var(--vw)*0.4)]
-                `}>
-                  <span class={`
-                    text-[calc(var(--vw)*3)]
-                    leading-relaxed
-                    text-espresso-dark
-                    lg:text-[calc(var(--vw)*1.3)]
-                  `}
-                  data-network-name
-                  >
-                    {network.name.toLocaleUpperCase('en')}
-                  </span>
-                  <p class={`
-                    text-[calc(var(--vw)*2.5)]
-                    leading-tight
-                    text-footnote
-                    lg:text-[calc(var(--vw)*0.9)]
-                  `}
-                  data-network-description
-                  >
-                    {network.description}
-                  </p>
-                </div>
-              </div>
-              <div class={`
-                flex
-                justify-end
-              `} data-network-features>
-                <div class:list={featureRowClass}>
-                  {(['rpc', 'staking'] as const).map((feature) => (
-                    <div
-                      class:list={[
-                        featurePillClass,
-                        featureBgClass[feature],
-                        !network.features.includes(feature) && 'hidden',
-                      ]}
-                      data-feature={feature}
-                    >
-                      <img src="/img/network-feature.svg" alt={feature} class:list={featureIconClass} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div class={`
-                flex
-                items-end
-                justify-between
-                text-[calc(var(--vw)*3)]
-                leading-tight
-                lg:text-[calc(var(--vw)*1.3)]
-              `}>
-                <span class={`text-espresso-dark`}
-                data-network-symbol
-                >
-                  {network.symbol.toLocaleUpperCase('en')}
-                </span>
-                <span class="text-footnote" data-network-apr>APR {network.apr}%</span>
-              </div>
-            </div>
+            <NetworkCardRectangleBig network={network} />
           )}
 
-          {/* ── Square Big ── */}
           {item.type === 'square-big' && network && (
-            <div class={`
-              flex
-              flex-col
-              justify-between
-            `}>
-              <div class={`
-                flex
-                gap-[calc(var(--vw)*1.4)]
-              `}>
-                <img
-                  src={network.logoSrc}
-                  alt={network.name}
-                  width={network.logoWidth}
-                  height={network.logoHeight}
-                  class:list={imgClass['square-big']}
-                  data-network-logo
-                />
-                <div class={`
-                  flex
-                  flex-col
-                `}>
-                  <span class={`
-                    text-[calc(var(--vw)*3)]
-                    leading-relaxed
-                    text-espresso-dark
-                    lg:text-[calc(var(--vw)*1.3)]
-                  `}
-                  data-network-name
-                  >
-                    {network.name.toLocaleUpperCase('en')}
-                  </span>
-                  <span class={`
-                    text-[calc(var(--vw)*2.8)]
-                    leading-tight
-                    text-footnote
-                    lg:text-[calc(var(--vw)*0.9)]
-                  `}
-                  data-network-symbol
-                  >
-                    {network.symbol.toLocaleUpperCase('en')}
-                  </span>
-                </div>
-              </div>
-              <p class={`
-                text-[calc(var(--vw)*2.5)]
-                leading-tight
-                text-footnote
-                lg:text-[calc(var(--vw)*0.9)]
-              `}
-              data-network-description
-              >
-                {network.description}
-              </p>
-              <div class={`
-                flex
-                items-end
-                justify-between
-                text-[calc(var(--vw)*3)]
-                leading-tight
-                lg:text-[calc(var(--vw)*1.3)]
-              `}>
-                <span class="text-footnote" data-network-apr>APR {network.apr}%</span>
-                <div data-network-features>
-                  <div class:list={featureRowClass}>
-                    {(['rpc', 'staking'] as const).map((feature) => (
-                      <div
-                        class:list={[
-                          featurePillClass,
-                          featureBgClass[feature],
-                          !network.features.includes(feature) && 'hidden',
-                        ]}
-                        data-feature={feature}
-                      >
-                        <img src="/img/network-feature.svg" alt={feature} class:list={featureIconClass} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <NetworkCardSquareBig network={network} />
           )}
 
-          {/* ── Square Small ── */}
           {item.type === 'square-small' && network && (
             <img
               src={network.logoSrc}
@@ -587,234 +393,12 @@ const allItems = [...desktopItems, ...mobileItems];
             />
           )}
 
-          {/* ── Rectangle Small ── */}
           {item.type === 'rectangle-small' && network && (
-            <div class={`
-              flex
-              h-full
-              w-full
-              items-center
-              gap-[calc(var(--vw)*2)]
-              lg:gap-[calc(var(--vw)*0.8)]
-            `}>
-              <img
-                src={network.logoSrc}
-                alt={network.name}
-                width={network.logoWidth}
-                height={network.logoHeight}
-                class:list={imgClass['rectangle-small']}
-                data-network-logo
-              />
-              <div class={`
-                flex
-                flex-col
-              `}>
-                <div class={`
-                  flex
-                  items-baseline
-                  gap-[calc(var(--vw)*0.4)]
-                `}>
-                  <span class={`
-                    text-[calc(var(--vw)*3)]
-                    leading-relaxed
-                    text-espresso-dark
-                    lg:text-[calc(var(--vw)*1.3)]
-                  `}
-                  data-network-name
-                  >
-                    {network.name.toLocaleUpperCase('en')}
-                  </span>
-                  <span class={`
-                    text-[calc(var(--vw)*2.5)]
-                    leading-tight
-                    text-footnote
-                    lg:text-[calc(var(--vw)*0.9)]
-                  `}
-                  data-network-symbol
-                  >
-                    {network.symbol.toLocaleUpperCase('en')}
-                  </span>
-                </div>
-                <span class={`
-                  text-[calc(var(--vw)*2.5)]
-                  leading-tight
-                  text-footnote
-                  lg:text-[calc(var(--vw)*0.9)]
-                `}
-                data-network-apr
-                >
-                  APR {network.apr}%
-                </span>
-              </div>
-              <div class={`
-                ml-auto
-                hidden
-                lg:flex
-              `} data-network-features>
-                <div class:list={featureRowClass}>
-                  {(['rpc', 'staking'] as const).map((feature) => (
-                    <div
-                      class:list={[
-                        featurePillClass,
-                        featureBgClass[feature],
-                        !network.features.includes(feature) && 'hidden',
-                      ]}
-                      data-feature={feature}
-                    >
-                      <img src="/img/network-feature.svg" alt={feature} class:list={featureIconClass} />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <NetworkCardRectangleSmall network={network} />
           )}
 
-          {/* ── CTA ── */}
           {item.type === 'cta' && (
-            <a
-              href="#"
-              class={`
-                group
-                relative
-                flex
-                h-full
-                w-full
-                items-center
-                justify-center
-                overflow-hidden
-                rounded-[calc(var(--vw)*6)]
-                bg-espresso
-                no-underline
-                transition-colors
-                delay-200
-                duration-500
-                lg:rounded-[calc(var(--vw)*2)]
-                lg:bg-lav-border
-                lg:hover:bg-espresso
-                lg:hover:delay-0
-              `}
-            >
-              {/* Mobile — static text, styled like desktop hover */}
-              <span class={`
-                flex
-                items-center
-                gap-[calc(var(--vw)*1.5)]
-                px-[calc(var(--vw)*3)]
-                py-[calc(var(--vw)*2)]
-                text-[calc(var(--vw)*3)]
-                text-cream
-                lg:hidden
-              `}>
-                {t('common.allNetworks')}
-                <img
-                  src="/img/arrow/arrow-right-light.svg"
-                  alt=""
-                  class={`
-                    h-[0.6em]
-                    w-auto
-                    -rotate-45
-                  `}
-                />
-              </span>
-
-              {/* Desktop — marquee strip, slides up on hover */}
-              <span class={`
-                absolute
-                inset-y-0
-                left-0
-                hidden
-                w-max
-                animate-cta-marquee
-                items-center
-                whitespace-nowrap
-                transition-[opacity,translate]
-                duration-300
-                will-change-transform
-                motion-reduce:animate-none
-                lg:flex
-                lg:group-hover:-translate-y-[10%]
-                lg:group-hover:opacity-0
-              `}>
-                {Array.from({ length: 4 }).map(() => (
-                  <span class={`
-                    flex
-                    shrink-0
-                    items-center
-                    gap-[calc(var(--vw)*0.5)]
-                    px-[calc(var(--vw)*1)]
-                    text-[calc(var(--vw)*1.3)]
-                    text-espresso-dark
-                  `}>
-                    {t('common.allNetworks')}
-                    <img
-                      src="/img/arrow/arrow-right-dark.svg"
-                      alt=""
-                      class={`
-                        h-[0.6em]
-                        w-auto
-                      `}
-                    />
-                  </span>
-                ))}
-              </span>
-
-              {/* Desktop — hover text, staggered letter entrance */}
-              <span class={`
-                pointer-events-none
-                absolute
-                inset-0
-                hidden
-                items-center
-                justify-center
-                lg:flex
-              `}>
-                <span class={`
-                  flex
-                  items-center
-                  overflow-hidden
-                  leading-tight
-                `}>
-                  {t('common.allNetworks').split('').map((char, i) => (
-                    <span
-                      class={`
-                        inline-block
-                        translate-y-full
-                        text-[calc(var(--vw)*1.3)]
-                        text-cream
-                        transition-transform
-                        duration-300
-                        lg:group-hover:translate-y-0
-                      `}
-                      style={`transition-delay: ${i * 8}ms`}
-                    >
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  ))}
-                  <span
-                    class={`
-                      ml-[calc(var(--vw)*0.5)]
-                      inline-block
-                      translate-y-full
-                      text-[calc(var(--vw)*1.3)]
-                      transition-transform
-                      duration-300
-                      lg:group-hover:translate-y-0
-                    `}
-                    style={`transition-delay: ${t('common.allNetworks').length * 8}ms`}
-                  >
-                    <img
-                      src="/img/arrow/arrow-right-light.svg"
-                      alt=""
-                      class={`
-                        h-[1em]
-                        w-[0.8em]
-                        object-contain
-                      `}
-                    />
-                  </span>
-                </span>
-              </span>
-            </a>
+            <NetworkCardCta t={t} />
           )}
         </div>
       );

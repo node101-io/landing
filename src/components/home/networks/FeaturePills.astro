@@ -1,0 +1,25 @@
+---
+import { type NetworkFeature } from '@/data/networks';
+import { featureRowClass, featurePillClass, featureBgClass, featureIconClass } from './types';
+
+interface Props {
+  features: NetworkFeature[];
+}
+
+const { features } = Astro.props;
+---
+
+<div class:list={featureRowClass}>
+  {(['rpc', 'staking'] as const).map((feature) => (
+    <div
+      class:list={[
+        featurePillClass,
+        featureBgClass[feature],
+        !features.includes(feature) && 'hidden',
+      ]}
+      data-feature={feature}
+    >
+      <img src="/img/network-feature.svg" alt={feature} class:list={featureIconClass} />
+    </div>
+  ))}
+</div>

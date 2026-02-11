@@ -1,6 +1,17 @@
-import type { MiddlewareHandler } from "astro";
+import { defineMiddleware, sequence } from "astro:middleware";
+import { middleware as i18nMiddleware } from "astro:i18n";
 
-export const onRequest: MiddlewareHandler = async (context, next) => {
+// i18n middleware — skip admin routes
+const i18n = defineMiddleware((context, next) => {
+  if (context.url.pathname.startsWith("/admin")) return next();
+  return i18nMiddleware({
+    prefixDefaultLocale: true,
+    redirectToDefaultLocale: true,
+  })(context, next);
+});
+
+// Admin auth middleware — only applies to /admin routes
+const adminAuth = defineMiddleware(async (context, next) => {
   const { pathname } = context.url;
 
   if (!pathname.startsWith("/admin")) return next();
@@ -31,7 +42,9 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
   }
 
   return next();
-};
+});
+
+export const onRequest = sequence(i18n, adminAuth);
 
 // --- JWT verification helpers ---
 
