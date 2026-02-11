@@ -1,6 +1,9 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
-import { networks, type NetworkData, type NetworkFeature } from '@/data/networks';
+import type { NetworkFeature } from '@/data/networks';
+import { R2_PUBLIC_URL } from '@/data/r2';
+
+export const prerender = false;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -16,7 +19,7 @@ interface SearchableNetwork {
   logoSrc: string;
   logoWidth: number;
   logoHeight: number;
-  features: NetworkData['features'];
+  features: NetworkFeature[];
   searchText: string;
 }
 
@@ -84,21 +87,47 @@ const featureBgClass: Record<NetworkFeature, string> = {
   staking: 'bg-ice-blue',
 };
 
-const searchableNetworks: SearchableNetwork[] = networks.map((network) => {
-  const description = t(network.descriptionKey);
-  return {
-    id: network.id,
-    name: network.name,
-    symbol: network.symbol,
-    description,
-    apr: network.apr,
-    logoSrc: network.logo.src,
-    logoWidth: network.logo.width,
-    logoHeight: network.logo.height,
-    features: [...network.features],
-    searchText: `${network.name} ${network.symbol} ${description}`.toLocaleLowerCase(),
-  };
-});
+// KV network data type (matches admin panel output)
+interface KVNetwork {
+  id: string;
+  name: string;
+  symbol: string;
+  description: { tr: string; en: string };
+  href: string;
+  apr: number;
+  features: NetworkFeature[];
+  logoKey: string;
+}
+
+// Read networks from KV (only source of truth)
+let searchableNetworks: SearchableNetwork[] = [];
+
+try {
+  const KV = Astro.locals.runtime?.env?.KV;
+  if (KV) {
+    const kvData = await KV.get('networks', 'json') as KVNetwork[] | null;
+    if (kvData && kvData.length > 0) {
+      searchableNetworks = kvData.map((network) => {
+        const description = network.description[lang] || network.description.tr || '';
+        const logoSrc = `${R2_PUBLIC_URL}/networks/${network.logoKey}`;
+        return {
+          id: network.id,
+          name: network.name,
+          symbol: network.symbol,
+          description,
+          apr: network.apr,
+          logoSrc,
+          logoWidth: 200,
+          logoHeight: 200,
+          features: [...network.features],
+          searchText: `${network.name} ${network.symbol} ${description}`.toLocaleLowerCase(),
+        };
+      });
+    }
+  }
+} catch {
+  // KV unavailable
+}
 
 function createGridItemsFromLayout(
   layout: ReadonlyArray<{ type: CardType; grid: string }>,
@@ -112,8 +141,8 @@ function createGridItemsFromLayout(
       return { type, grid, displayClass };
     }
 
-    const network = searchableNetworks.length > 0
-      ? searchableNetworks[networkCursor % searchableNetworks.length]
+    const network = networkCursor < searchableNetworks.length
+      ? searchableNetworks[networkCursor]
       : undefined;
 
     networkCursor++;
@@ -714,10 +743,8 @@ const allItems = [...desktopItems, ...mobileItems];
         }
       };
 
-      const getNetworkForSlot = (isFiltered, matches, slotIndex) => {
-        if (isFiltered) return matches[slotIndex];
-        if (matches.length === 0) return undefined;
-        return matches[slotIndex % matches.length];
+      const getNetworkForSlot = (matches, slotIndex) => {
+        return slotIndex < matches.length ? matches[slotIndex] : undefined;
       };
 
       const render = () => {
@@ -734,10 +761,8 @@ const allItems = [...desktopItems, ...mobileItems];
           ? filtered.filter((network) => network.searchText.includes(query))
           : filtered;
 
-        const isFiltered = query !== '' || activeFilter !== 'all';
-
         for (const binding of slotBindings) {
-          const network = getNetworkForSlot(isFiltered, matches, binding.slotIndex);
+          const network = getNetworkForSlot(matches, binding.slotIndex);
           const nextState = network ? network.id : null;
           const previousState = renderedSlotState.get(binding.slot);
 

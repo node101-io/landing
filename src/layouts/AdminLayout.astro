@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+
+export const prerender = false;
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - Admin</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body class="mx-auto w-full max-w-[1200px] bg-background p-6 font-sans text-espresso">
+    <nav class="mb-8 flex items-center gap-4 border-b border-espresso/10 pb-4">
+      <a href="/admin" class="text-lg font-bold">node101 Admin</a>
+      <a href="/admin/banner" class="text-sm hover:underline">Banner</a>
+      <a href="/admin/networks" class="text-sm hover:underline">Networks</a>
+      <a href="/tr/" class="ml-auto text-sm text-espresso/60 hover:underline">View Site</a>
+    </nav>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

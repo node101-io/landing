@@ -1,0 +1,132 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+
+export const prerender = false;
+
+type BannerData = {
+  text: string;
+  link: string;
+};
+
+const KV = Astro.locals.runtime?.env?.KV;
+let message = '';
+
+// Handle POST
+if (Astro.request.method === 'POST' && KV) {
+  try {
+    const formData = await Astro.request.formData();
+    const locale = formData.get('locale') as string;
+    const text = (formData.get('text') as string)?.trim();
+    const link = (formData.get('link') as string)?.trim() || '#';
+
+    if (locale && text) {
+      await KV.put(`banner:${locale}`, JSON.stringify({ text, link }));
+      message = `Banner (${locale}) saved successfully.`;
+    }
+  } catch (e) {
+    message = `Error saving banner: ${e instanceof Error ? e.message : 'Unknown error'}`;
+  }
+}
+
+// Read current values
+let bannerTr: BannerData = { text: '', link: '#' };
+let bannerEn: BannerData = { text: '', link: '#' };
+
+if (KV) {
+  try {
+    const tr = await KV.get('banner:tr', 'json') as BannerData | null;
+    if (tr) bannerTr = tr;
+    const en = await KV.get('banner:en', 'json') as BannerData | null;
+    if (en) bannerEn = en;
+  } catch {
+    // fallback to empty
+  }
+}
+
+const inputClass = 'w-full rounded-lg border border-espresso/20 bg-white px-3 py-2 text-sm outline-none focus:border-espresso/40';
+const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
+---
+
+<AdminLayout title="Banner">
+  <h1 class="mb-6 text-3xl font-bold">Banner Management</h1>
+
+  {message && (
+    <div class="mb-6 rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
+      {message}
+    </div>
+  )}
+
+  <div class="grid gap-8 lg:grid-cols-2">
+    <!-- Turkish Banner -->
+    <form method="POST" class="rounded-xl border border-espresso/10 p-6">
+      <h2 class="mb-4 text-lg font-semibold">Turkish (TR)</h2>
+      <input type="hidden" name="locale" value="tr" />
+
+      <div class="mb-4">
+        <label for="text-tr" class={labelClass}>Banner Text</label>
+        <textarea
+          id="text-tr"
+          name="text"
+          rows="3"
+          class={inputClass}
+          required
+        >{bannerTr.text}</textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="link-tr" class={labelClass}>Link URL</label>
+        <input
+          id="link-tr"
+          type="text"
+          name="link"
+          value={bannerTr.link}
+          class={inputClass}
+          placeholder="#"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="rounded-lg bg-espresso px-4 py-2 text-sm text-cream transition-colors hover:bg-espresso/90"
+      >
+        Save TR Banner
+      </button>
+    </form>
+
+    <!-- English Banner -->
+    <form method="POST" class="rounded-xl border border-espresso/10 p-6">
+      <h2 class="mb-4 text-lg font-semibold">English (EN)</h2>
+      <input type="hidden" name="locale" value="en" />
+
+      <div class="mb-4">
+        <label for="text-en" class={labelClass}>Banner Text</label>
+        <textarea
+          id="text-en"
+          name="text"
+          rows="3"
+          class={inputClass}
+          required
+        >{bannerEn.text}</textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="link-en" class={labelClass}>Link URL</label>
+        <input
+          id="link-en"
+          type="text"
+          name="link"
+          value={bannerEn.link}
+          class={inputClass}
+          placeholder="#"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="rounded-lg bg-espresso px-4 py-2 text-sm text-cream transition-colors hover:bg-espresso/90"
+      >
+        Save EN Banner
+      </button>
+    </form>
+  </div>
+</AdminLayout>

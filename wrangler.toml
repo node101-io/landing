@@ -6,3 +6,11 @@ compatibility_flags = ["nodejs_compat", "disable_nodejs_process_v2"]
 [[kv_namespaces]]
 binding = "KV"
 id = "f74d4ef98a4043878809b9ce411a7006"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "landing-cdn"
+
+[vars]
+CF_ACCESS_TEAM_DOMAIN = "node101"
+CF_ACCESS_AUD = "6d62f9a6827a9dc5f3d9a1f515496d39bb9152805f778bab14b6a49600e9fe4a"

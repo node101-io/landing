@@ -37,6 +37,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/sitemap": "^3.3.1",
+    "@sindresorhus/slugify": "^3.0.0",
     "astro": "^5.16.11"
   }
 }
