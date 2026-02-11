@@ -15,6 +15,11 @@ export function getLangFromUrl(url: URL): Lang {
   return defaultLang;
 }
 
+export function toLang(locale: string | undefined): Lang {
+  if (locale && locale in ui) return locale as Lang;
+  return defaultLang;
+}
+
 export function useTranslations(lang: Lang) {
   return function t(key: keyof (typeof ui)[typeof defaultLang]) {
     return ui[lang][key] || ui[defaultLang][key];

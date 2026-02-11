@@ -7,6 +7,7 @@ const i18n = defineMiddleware((context, next) => {
   return i18nMiddleware({
     prefixDefaultLocale: true,
     redirectToDefaultLocale: false,
+    fallbackType: "redirect",
   })(context, next);
 });
 

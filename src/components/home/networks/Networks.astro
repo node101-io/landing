@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { toLang, useTranslations } from '@/i18n/utils';
 import { R2_PUBLIC_URL } from '@/data/r2';
 import { getNetworks } from '@/data/networks';
 import { type CardType, type SearchableNetwork, type GridItem, imgClass } from './types';
@@ -12,7 +12,7 @@ import babylonBannerImg from '@/assets/images/babylon-bitcoin-banner-image.png';
 
 export const prerender = false;
 
-const lang = getLangFromUrl(Astro.url);
+const lang = toLang(Astro.currentLocale);
 const t = useTranslations(lang);
 const bannerText = t('networks.babylonStakingBanner');
 

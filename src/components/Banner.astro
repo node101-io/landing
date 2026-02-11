@@ -1,10 +1,10 @@
 ---
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { toLang, useTranslations } from "@/i18n/utils";
 
 // Server Island - her istekte sunucuda render edilir
 export const prerender = false;
 
-const lang = getLangFromUrl(Astro.url);
+const lang = toLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 // KV'den banner verisini çek

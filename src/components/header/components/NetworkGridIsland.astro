@@ -3,7 +3,7 @@ export const prerender = false;
 
 import MenuSection from './MenuSection.astro';
 import type { GridItemProps } from './MenuSection.astro';
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { toLang, useTranslations } from '@/i18n/utils';
 import { R2_PUBLIC_URL } from '@/data/r2';
 import {
   type KVNetwork,
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { variant } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
+const lang = toLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 let networks: KVNetwork[] = [];
