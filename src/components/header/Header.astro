@@ -3,33 +3,13 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import Menu from './components/Menu.astro';
 import MenuSection from './components/MenuSection.astro';
-import type { GridItemProps } from './components/MenuSection.astro';
+import NetworkGridIsland from './components/NetworkGridIsland.astro';
 import { getMenuItems } from './menu-data';
-import { R2_PUBLIC_URL } from '@/data/r2';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Read networks from KV for header menu
-let kvNetworks: GridItemProps[] = [];
-try {
-  const KV = Astro.locals.runtime?.env?.KV;
-  if (KV) {
-    const kvData = await KV.get('networks', 'json') as Array<{ id: string; name: string; symbol: string; href: string; logoKey: string }> | null;
-    if (kvData) {
-      kvNetworks = kvData.map((n) => ({
-        icon: `${R2_PUBLIC_URL}/networks/${n.logoKey}`,
-        name: n.name,
-        symbol: n.symbol,
-        href: n.href,
-      }));
-    }
-  }
-} catch {
-  // KV unavailable — menu will render without network items
-}
-
-const menuItems = getMenuItems(t, kvNetworks);
+const menuItems = getMenuItems(t);
 ---
 
 <header class={`
@@ -192,6 +172,75 @@ const menuItems = getMenuItems(t, kvNetworks);
           />
         </button>
         <Menu>
+          {item.networkIsland && (
+            <NetworkGridIsland variant={item.networkIsland} server:defer>
+              <div slot="fallback" class:list={[
+                `
+                  h-full
+                  rounded-lg
+                  lg:min-w-[220px]
+                  lg:bg-surface
+                  lg:p-6
+                `,
+                item.networkIsland === 'rpc' && 'lg:col-span-2'
+              ]}>
+                <div class={`
+                  mb-2
+                  h-3
+                  w-24
+                  animate-pulse
+                  rounded
+                  bg-muted/20
+                  lg:mb-4
+                `} />
+                <div class:list={[
+                  `
+                    flex
+                    flex-wrap
+                    gap-1.5
+                    lg:grid
+                    lg:gap-2
+                  `,
+                  item.networkIsland === 'investment' ? 'lg:grid-cols-2' : `
+                    lg:grid-cols-4
+                  `
+                ]}>
+                  {Array.from({ length: item.networkIsland === 'investment' ? 8 : 12 }).map(() => (
+                    <div class={`
+                      flex
+                      items-center
+                      gap-2
+                      lg:rounded-full
+                      lg:border
+                      lg:border-separator
+                      lg:bg-background
+                      lg:p-1.5
+                      lg:pr-3
+                    `}>
+                      <div class={`
+                        size-(--icon-size-mobile)
+                        shrink-0
+                        animate-pulse
+                        rounded-[4px]
+                        bg-muted/20
+                        lg:size-5.5
+                        lg:rounded-full
+                      `} />
+                      <div class={`
+                        hidden
+                        h-3
+                        w-16
+                        animate-pulse
+                        rounded
+                        bg-muted/20
+                        lg:block
+                      `} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </NetworkGridIsland>
+          )}
           {item.sections.map((section) => (
             <MenuSection {...section} />
           ))}

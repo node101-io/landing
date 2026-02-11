@@ -1,0 +1,68 @@
+---
+export const prerender = false;
+
+import MenuSection from './MenuSection.astro';
+import type { GridItemProps } from './MenuSection.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { R2_PUBLIC_URL } from '@/data/r2';
+
+interface Props {
+  variant: 'investment' | 'rpc';
+}
+
+const { variant } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+let kvNetworks: GridItemProps[] = [];
+try {
+  const KV = Astro.locals.runtime?.env?.KV;
+  if (KV) {
+    const kvData = await KV.get('networks', 'json') as Array<{ id: string; name: string; symbol: string; href: string; logoKey: string }> | null;
+    if (kvData) {
+      kvNetworks = kvData.map((n) => ({
+        icon: `${R2_PUBLIC_URL}/networks/${n.logoKey}`,
+        name: n.name,
+        symbol: n.symbol,
+        href: n.href,
+      }));
+    }
+  }
+} catch {
+  // KV unavailable — island will render without network items
+}
+---
+
+{variant === 'investment' && kvNetworks.length > 0 && (
+  <MenuSection
+    type="grid"
+    title={t('menu.investment.popularBlockchains')}
+    items={kvNetworks}
+  />
+)}
+
+{variant === 'rpc' && kvNetworks.length > 0 && (
+  <MenuSection
+    type="multi_grid"
+    title={t('menu.rpc.rpcServices')}
+    categories={[
+      {
+        title: t('menu.rpc.currentlyPopular'),
+        columns: 1,
+        items: kvNetworks,
+      },
+      {
+        title: t('menu.rpc.new'),
+        hideOnMobile: true,
+        columns: 1,
+        items: kvNetworks,
+      },
+      {
+        title: t('menu.rpc.mostUsed'),
+        hideOnMobile: true,
+        columns: 2,
+        items: kvNetworks,
+      },
+    ]}
+  />
+)}

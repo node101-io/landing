@@ -5,23 +5,63 @@ export const prerender = false;
 ---
 
 <AdminLayout title="Dashboard">
-  <h1 class="mb-8 text-3xl font-bold">Dashboard</h1>
+  <h1 class={`
+    mb-8
+    text-3xl
+    font-bold
+  `}>Dashboard</h1>
 
-  <div class="grid gap-4 sm:grid-cols-2">
+  <div class={`
+    grid
+    gap-4
+    sm:grid-cols-2
+  `}>
     <a
       href="/admin/banner"
-      class="flex flex-col gap-2 rounded-xl border border-espresso/10 p-6 transition-colors hover:bg-espresso/5"
+      class={`
+        flex
+        flex-col
+        gap-2
+        rounded-xl
+        border
+        border-espresso/10
+        p-6
+        transition-colors
+        hover:bg-espresso/5
+      `}
     >
-      <h2 class="text-xl font-semibold">Banner</h2>
-      <p class="text-sm text-espresso/60">Manage announcement banner text and links for TR/EN</p>
+      <h2 class={`
+        text-xl
+        font-semibold
+      `}>Banner</h2>
+      <p class={`
+        text-sm
+        text-espresso/60
+      `}>Manage announcement banner text and links for TR/EN</p>
     </a>
 
     <a
       href="/admin/networks"
-      class="flex flex-col gap-2 rounded-xl border border-espresso/10 p-6 transition-colors hover:bg-espresso/5"
+      class={`
+        flex
+        flex-col
+        gap-2
+        rounded-xl
+        border
+        border-espresso/10
+        p-6
+        transition-colors
+        hover:bg-espresso/5
+      `}
     >
-      <h2 class="text-xl font-semibold">Networks</h2>
-      <p class="text-sm text-espresso/60">Add, edit, or remove blockchain networks and logos</p>
+      <h2 class={`
+        text-xl
+        font-semibold
+      `}>Networks</h2>
+      <p class={`
+        text-sm
+        text-espresso/60
+      `}>Add, edit, or remove blockchain networks and logos</p>
     </a>
   </div>
 </AdminLayout>

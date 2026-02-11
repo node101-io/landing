@@ -126,62 +126,165 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
 ---
 
 <AdminLayout title="Networks">
-  <h1 class="mb-6 text-3xl font-bold">Networks Management</h1>
+  <h1 class={`
+    mb-6
+    text-3xl
+    font-bold
+  `}>Networks Management</h1>
 
   {message && (
     <div class:list={[
-      'mb-6 rounded-lg border px-4 py-3 text-sm',
+      `
+        mb-6
+        rounded-lg
+        border
+        px-4
+        py-3
+        text-sm
+      `,
       message.startsWith('Error')
-        ? 'border-red-200 bg-red-50 text-red-800'
-        : 'border-green-200 bg-green-50 text-green-800',
+        ? `
+          border-red-200
+          bg-red-50
+          text-red-800
+        `
+        : `
+          border-green-200
+          bg-green-50
+          text-green-800
+        `,
     ]}>
       {message}
     </div>
   )}
 
   <!-- Current Networks Table -->
-  <div class="mb-8 overflow-x-auto rounded-xl border border-espresso/10">
-    <table class="w-full text-left text-sm">
-      <thead class="border-b border-espresso/10 bg-espresso/5">
+  <div class={`
+    mb-8
+    overflow-x-auto
+    rounded-xl
+    border
+    border-espresso/10
+  `}>
+    <table class={`
+      w-full
+      text-left
+      text-sm
+    `}>
+      <thead class={`
+        border-b
+        border-espresso/10
+        bg-espresso/5
+      `}>
         <tr>
-          <th class="px-4 py-3 font-medium">Logo</th>
-          <th class="px-4 py-3 font-medium">ID</th>
-          <th class="px-4 py-3 font-medium">Name</th>
-          <th class="px-4 py-3 font-medium">Symbol</th>
-          <th class="px-4 py-3 font-medium">APR</th>
-          <th class="px-4 py-3 font-medium">Features</th>
-          <th class="px-4 py-3 font-medium">Actions</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>Logo</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>ID</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>Name</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>Symbol</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>APR</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>Features</th>
+          <th class={`
+            px-4
+            py-3
+            font-medium
+          `}>Actions</th>
         </tr>
       </thead>
       <tbody>
         {networksList.length === 0 ? (
           <tr>
-            <td colspan="7" class="px-4 py-8 text-center text-espresso/40">
+            <td colspan="7" class={`
+              px-4
+              py-8
+              text-center
+              text-espresso/40
+            `}>
               No networks in KV. Add one below or they will fall back to static data.
             </td>
           </tr>
         ) : (
           networksList.map((network) => (
-            <tr class="border-b border-espresso/5 last:border-0">
-              <td class="px-4 py-3">
+            <tr class={`
+              border-b
+              border-espresso/5
+              last:border-0
+            `}>
+              <td class={`
+                px-4
+                py-3
+              `}>
                 {network.logoKey && (
                   <img
                     src={`${R2_PUBLIC_URL}/networks/${network.logoKey}`}
                     alt={network.name}
-                    class="size-8 rounded object-contain"
+                    class={`
+                      size-8
+                      rounded
+                      object-contain
+                    `}
                     onerror="this.style.display='none'"
                   />
                 )}
               </td>
-              <td class="px-4 py-3 font-mono text-xs">{network.id}</td>
-              <td class="px-4 py-3">{network.name}</td>
-              <td class="px-4 py-3 font-mono">{network.symbol}</td>
-              <td class="px-4 py-3">{network.apr}%</td>
-              <td class="px-4 py-3">
-                <div class="flex gap-1">
+              <td class={`
+                px-4
+                py-3
+                font-mono
+                text-xs
+              `}>{network.id}</td>
+              <td class={`
+                px-4
+                py-3
+              `}>{network.name}</td>
+              <td class={`
+                px-4
+                py-3
+                font-mono
+              `}>{network.symbol}</td>
+              <td class={`
+                px-4
+                py-3
+              `}>{network.apr}%</td>
+              <td class={`
+                px-4
+                py-3
+              `}>
+                <div class={`
+                  flex
+                  gap-1
+                `}>
                   {network.features.map((f) => (
                     <span class:list={[
-                      'rounded-full px-2 py-0.5 text-xs',
+                      `
+                        rounded-full
+                        px-2
+                        py-0.5
+                        text-xs
+                      `,
                       f === 'rpc' ? 'bg-lavender' : 'bg-ice-blue',
                     ]}>
                       {f}
@@ -189,11 +292,22 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
                   ))}
                 </div>
               </td>
-              <td class="px-4 py-3">
-                <div class="flex gap-2">
+              <td class={`
+                px-4
+                py-3
+              `}>
+                <div class={`
+                  flex
+                  gap-2
+                `}>
                   <button
                     type="button"
-                    class="text-xs text-espresso/60 hover:text-espresso hover:underline"
+                    class={`
+                      text-xs
+                      text-espresso/60
+                      hover:text-espresso
+                      hover:underline
+                    `}
                     data-edit-network={JSON.stringify(network)}
                   >
                     Edit
@@ -201,7 +315,12 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
                   <form method="POST" class="inline" onsubmit="return confirm('Delete this network?')">
                     <input type="hidden" name="_action" value="delete" />
                     <input type="hidden" name="id" value={network.id} />
-                    <button type="submit" class="text-xs text-red-600/60 hover:text-red-600 hover:underline">
+                    <button type="submit" class={`
+                      text-xs
+                      text-red-600/60
+                      hover:text-red-600
+                      hover:underline
+                    `}>
                       Delete
                     </button>
                   </form>
@@ -215,14 +334,28 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
   </div>
 
   <!-- Add / Edit Form -->
-  <div class="rounded-xl border border-espresso/10 p-6">
-    <h2 class="mb-4 text-lg font-semibold" id="form-title">Add Network</h2>
+  <div class={`
+    rounded-xl
+    border
+    border-espresso/10
+    p-6
+  `}>
+    <h2 class={`
+      mb-4
+      text-lg
+      font-semibold
+    `} id="form-title">Add Network</h2>
 
     <form method="POST" enctype="multipart/form-data" id="network-form">
       <input type="hidden" name="_action" value="save" />
       <input type="hidden" name="id" />
 
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class={`
+        grid
+        gap-4
+        sm:grid-cols-2
+        lg:grid-cols-3
+      `}>
         <div>
           <label for="net-name" class={labelClass}>Name</label>
           <input id="net-name" type="text" name="name" class={inputClass} required placeholder="Ethereum" />
@@ -245,7 +378,12 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
         </div>
       </div>
 
-      <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      <div class={`
+        mt-4
+        grid
+        gap-4
+        sm:grid-cols-2
+      `}>
         <div>
           <label for="net-desc-tr" class={labelClass}>Description (TR)</label>
           <textarea id="net-desc-tr" name="desc_tr" rows="2" class={inputClass}></textarea>
@@ -258,29 +396,65 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
 
       <div class="mt-4">
         <span class={labelClass}>Features</span>
-        <div class="flex gap-4">
-          <label class="flex items-center gap-2 text-sm">
+        <div class={`
+          flex
+          gap-4
+        `}>
+          <label class={`
+            flex
+            items-center
+            gap-2
+            text-sm
+          `}>
             <input type="checkbox" name="feature_rpc" value="1" />
             RPC
           </label>
-          <label class="flex items-center gap-2 text-sm">
+          <label class={`
+            flex
+            items-center
+            gap-2
+            text-sm
+          `}>
             <input type="checkbox" name="feature_staking" value="1" />
             Staking
           </label>
         </div>
       </div>
 
-      <div class="mt-6 flex gap-3">
+      <div class={`
+        mt-6
+        flex
+        gap-3
+      `}>
         <button
           type="submit"
-          class="rounded-lg bg-espresso px-4 py-2 text-sm text-cream transition-colors hover:bg-espresso/90"
+          class={`
+            rounded-lg
+            bg-espresso
+            px-4
+            py-2
+            text-sm
+            text-cream
+            transition-colors
+            hover:bg-espresso/90
+          `}
         >
           Save Network
         </button>
         <button
           type="button"
           id="reset-form"
-          class="rounded-lg border border-espresso/20 px-4 py-2 text-sm text-espresso/60 transition-colors hover:bg-espresso/5"
+          class={`
+            rounded-lg
+            border
+            border-espresso/20
+            px-4
+            py-2
+            text-sm
+            text-espresso/60
+            transition-colors
+            hover:bg-espresso/5
+          `}
         >
           Reset
         </button>

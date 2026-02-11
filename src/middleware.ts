@@ -43,9 +43,7 @@ interface JwkKey {
   alg: string;
 }
 
-async function fetchJwks(
-  teamDomain: string,
-): Promise<JwkKey[]> {
+async function fetchJwks(teamDomain: string): Promise<JwkKey[]> {
   const certsUrl = `https://${teamDomain}.cloudflareaccess.com/cdn-cgi/access/certs`;
 
   const cache = caches.default;
@@ -128,7 +126,12 @@ async function verifyJwt(
     const signature = base64UrlDecode(signatureB64);
     const data = new TextEncoder().encode(`${headerB64}.${payloadB64}`);
 
-    return await crypto.subtle.verify("RSASSA-PKCS1-v1_5", cryptoKey, signature, data);
+    return await crypto.subtle.verify(
+      "RSASSA-PKCS1-v1_5",
+      cryptoKey,
+      signature,
+      data,
+    );
   } catch {
     return false;
   }

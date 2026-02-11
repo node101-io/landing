@@ -34,10 +34,10 @@
   --color-footnote: #6a4d42;
   --color-separator: #ded6d2;
   --color-lav-active: #edf1ff;
-  --color-placeholder: #BEB0AA;
+  --color-placeholder: #beb0aa;
   --color-lav-border: #dfe5ff;
-  --color-lavender: #D9DBFC;
-  --color-ice-blue: #D3EDFF;
+  --color-lavender: #d9dbfc;
+  --color-ice-blue: #d3edff;
 
   /* Semantic tokens */
   --color-background: var(--color-gray-50);

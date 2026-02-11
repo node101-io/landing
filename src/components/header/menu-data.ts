@@ -1,41 +1,34 @@
 import type {
-  GridItemProps,
   MenuSectionItemData,
-  GridCategory,
   ListGroup,
-  SectionType,
 } from "./components/MenuSection.astro";
 import type { TranslationFn } from "@/i18n/utils";
 
 export type MenuSectionData = {
-  type: SectionType;
+  type: "list";
   title: string;
   footnote?: string;
   hideOnMobile?: boolean;
-  items?: MenuSectionItemData[] | GridItemProps[];
+  items?: MenuSectionItemData[];
   additionalGroups?: ListGroup[];
-  categories?: GridCategory[];
 };
 
 export type MenuItem = {
   label: string;
   sections: MenuSectionData[];
   hideOnDesktop?: boolean;
+  networkIsland?: "investment" | "rpc";
 };
 
 // =============================================================================
 // MENU ITEM BUILDERS
 // =============================================================================
 
-function buildInvestmentMenu(t: TranslationFn, networks: GridItemProps[]): MenuItem {
+function buildInvestmentMenu(t: TranslationFn): MenuItem {
   return {
     label: t("nav.investment"),
+    networkIsland: "investment",
     sections: [
-      {
-        type: "grid",
-        title: t("menu.investment.popularBlockchains"),
-        items: networks,
-      },
       {
         type: "list",
         title: t("menu.investment.recurringYield"),
@@ -81,33 +74,11 @@ function buildInvestmentMenu(t: TranslationFn, networks: GridItemProps[]): MenuI
   };
 }
 
-function buildRpcMenu(t: TranslationFn, networks: GridItemProps[]): MenuItem {
+function buildRpcMenu(t: TranslationFn): MenuItem {
   return {
     label: t("nav.rpc"),
+    networkIsland: "rpc",
     sections: [
-      {
-        type: "multi_grid",
-        title: t("menu.rpc.rpcServices"),
-        categories: [
-          {
-            title: t("menu.rpc.currentlyPopular"),
-            columns: 1,
-            items: networks,
-          },
-          {
-            title: t("menu.rpc.new"),
-            hideOnMobile: true,
-            columns: 1,
-            items: networks,
-          },
-          {
-            title: t("menu.rpc.mostUsed"),
-            hideOnMobile: true,
-            columns: 2,
-            items: networks,
-          },
-        ],
-      },
       {
         type: "list",
         title: "",
@@ -520,10 +491,10 @@ function buildNode101MobileMenu(t: TranslationFn): MenuItem {
 // MAIN EXPORT
 // =============================================================================
 
-export function getMenuItems(t: TranslationFn, networks: GridItemProps[]): MenuItem[] {
+export function getMenuItems(t: TranslationFn): MenuItem[] {
   return [
-    buildInvestmentMenu(t, networks),
-    buildRpcMenu(t, networks),
+    buildInvestmentMenu(t),
+    buildRpcMenu(t),
     buildServicesMenu(t),
     buildEventsCommunityMobileMenu(t),
     buildProductsMenu(t),
