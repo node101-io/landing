@@ -1,22 +1,21 @@
 ---
 import AdminLayout from '@/layouts/AdminLayout.astro';
 import { R2_PUBLIC_URL } from '@/data/r2';
+import {
+  type KVNetwork,
+  type NetworkFeature,
+  type NetworkCategories,
+  getNetworks,
+  putNetworks,
+  getNetworkCategories,
+  putNetworkCategories,
+  removeFromCategories,
+  CATEGORY_DEFS,
+  EMPTY_CATEGORIES,
+} from '@/data/networks';
 import slugify from '@sindresorhus/slugify';
 
 export const prerender = false;
-
-type NetworkFeature = 'rpc' | 'staking';
-
-interface KVNetwork {
-  id: string;
-  name: string;
-  symbol: string;
-  description: { tr: string; en: string };
-  href: string;
-  apr: number;
-  features: NetworkFeature[];
-  logoKey: string;
-}
 
 const KV = Astro.locals.runtime?.env?.KV;
 const R2 = Astro.locals.runtime?.env?.R2;
@@ -31,10 +30,10 @@ if (Astro.request.method === 'POST' && KV) {
     if (action === 'delete') {
       const deleteId = formData.get('id') as string;
       if (deleteId) {
-        const existing = (await KV.get('networks', 'json') as KVNetwork[] | null) ?? [];
+        const existing = await getNetworks(KV);
         const target = existing.find((n) => n.id === deleteId);
         const updated = existing.filter((n) => n.id !== deleteId);
-        await KV.put('networks', JSON.stringify(updated));
+        await putNetworks(KV, updated);
 
         // Delete logo from R2
         if (target?.logoKey && R2) {
@@ -44,6 +43,13 @@ if (Astro.request.method === 'POST' && KV) {
             // logo may not exist in R2
           }
         }
+
+        // Clean up category references
+        const cats = await getNetworkCategories(KV);
+        if (removeFromCategories(cats, deleteId)) {
+          await putNetworkCategories(KV, cats);
+        }
+
         message = `Network "${deleteId}" deleted.`;
       }
     } else if (action === 'save') {
@@ -63,7 +69,7 @@ if (Astro.request.method === 'POST' && KV) {
       if (!id || !name || !symbol) {
         message = 'Error: id, name, and symbol are required.';
       } else {
-        const existing = (await KV.get('networks', 'json') as KVNetwork[] | null) ?? [];
+        const existing = await getNetworks(KV);
         const existingIndex = existing.findIndex((n) => n.id === id);
 
         // Determine logo key
@@ -99,11 +105,26 @@ if (Astro.request.method === 'POST' && KV) {
           existing.push(network);
         }
 
-        await KV.put('networks', JSON.stringify(existing));
+        await putNetworks(KV, existing);
         message = existingIndex >= 0
           ? `Network "${name}" updated.`
           : `Network "${name}" added.`;
       }
+    } else if (action === 'save-categories') {
+      const categories: NetworkCategories = { ...EMPTY_CATEGORIES };
+      for (const def of CATEGORY_DEFS) {
+        const raw = formData.get(`cat_${def.key}`) as string | null;
+        if (raw) {
+          try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) categories[def.key] = parsed;
+          } catch {
+            // invalid JSON — keep empty
+          }
+        }
+      }
+      await putNetworkCategories(KV, categories);
+      message = 'Categories saved.';
     }
   } catch (e) {
     message = `Error: ${e instanceof Error ? e.message : 'Unknown error'}`;
@@ -112,10 +133,15 @@ if (Astro.request.method === 'POST' && KV) {
 
 // Read current networks from KV
 let networksList: KVNetwork[] = [];
+let currentCategories: NetworkCategories = { ...EMPTY_CATEGORIES };
 if (KV) {
   try {
-    const data = await KV.get('networks', 'json') as KVNetwork[] | null;
-    if (data) networksList = data;
+    networksList = await getNetworks(KV);
+  } catch {
+    // fallback to empty
+  }
+  try {
+    currentCategories = await getNetworkCategories(KV);
   } catch {
     // fallback to empty
   }
@@ -333,6 +359,125 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
     </table>
   </div>
 
+  <!-- Header Menu Categories -->
+  <div class={`
+    mb-8
+    rounded-xl
+    border
+    border-espresso/10
+    p-6
+  `}>
+    <h2 class={`
+      mb-1
+      text-lg
+      font-semibold
+    `}>Header Menu Categories</h2>
+    <p class={`
+      mb-4
+      text-xs
+      text-espresso/60
+    `}>
+      Assign networks to header menu categories and control display order. A network can appear in multiple categories.
+    </p>
+
+    <form method="POST" id="categories-form">
+      <input type="hidden" name="_action" value="save-categories" />
+
+      <div class={`
+        grid
+        gap-4
+        sm:grid-cols-2
+        lg:grid-cols-4
+      `}>
+        {CATEGORY_DEFS.map((def) => (
+          <div class="flex flex-col" data-category-col={def.key}>
+            <h3 class={`
+              mb-2
+              text-sm
+              font-medium
+              text-espresso/80
+            `}>{def.label}</h3>
+            <input
+              type="hidden"
+              name={`cat_${def.key}`}
+              value={JSON.stringify(currentCategories[def.key])}
+              data-category-input={def.key}
+            />
+            <div
+              class={`
+                mb-2
+                min-h-[60px]
+                rounded-lg
+                border
+                border-espresso/10
+                bg-espresso/[0.02]
+                p-2
+              `}
+              data-category-list={def.key}
+            >
+              <!-- JS renders ordered list here -->
+            </div>
+            <div class="flex gap-1">
+              <select
+                class={`
+                  flex-1
+                  rounded-lg
+                  border
+                  border-espresso/20
+                  bg-white
+                  px-2
+                  py-1.5
+                  text-xs
+                  outline-none
+                  focus:border-espresso/40
+                `}
+                data-category-select={def.key}
+              >
+                <option value="">Select network...</option>
+              </select>
+              <button
+                type="button"
+                class={`
+                  rounded-lg
+                  bg-espresso/10
+                  px-2
+                  py-1.5
+                  text-xs
+                  text-espresso
+                  transition-colors
+                  hover:bg-espresso/20
+                `}
+                data-category-add={def.key}
+              >
+                + Add
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-4">
+        <button
+          type="submit"
+          class={`
+            rounded-lg
+            bg-espresso
+            px-4
+            py-2
+            text-sm
+            text-cream
+            transition-colors
+            hover:bg-espresso/90
+          `}
+        >
+          Save Categories
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div id="networks-data" hidden data-value={JSON.stringify(networksList.map((n) => ({ id: n.id, name: n.name, symbol: n.symbol })))}></div>
+
   <!-- Add / Edit Form -->
   <div class={`
     rounded-xl
@@ -517,6 +662,156 @@ const labelClass = 'block text-sm font-medium text-espresso/80 mb-1';
     });
   }
 
+  function initCategoryManager() {
+    const dataEl = document.getElementById('networks-data');
+    if (!dataEl) return;
+
+    let allNetworks: { id: string; name: string; symbol: string }[] = [];
+    try {
+      allNetworks = JSON.parse(dataEl.getAttribute('data-value') || '[]');
+    } catch {
+      return;
+    }
+
+    const networkMap = new Map(allNetworks.map((n) => [n.id, n]));
+
+    // Read initial state from hidden inputs
+    const state: Record<string, string[]> = {};
+    const inputs = document.querySelectorAll('[data-category-input]') as NodeListOf<HTMLInputElement>;
+    inputs.forEach((input) => {
+      const key = input.getAttribute('data-category-input')!;
+      try {
+        state[key] = JSON.parse(input.value || '[]');
+      } catch {
+        state[key] = [];
+      }
+    });
+
+    function renderCategory(key: string) {
+      const listEl = document.querySelector(`[data-category-list="${key}"]`);
+      const inputEl = document.querySelector(`[data-category-input="${key}"]`) as HTMLInputElement | null;
+      const selectEl = document.querySelector(`[data-category-select="${key}"]`) as HTMLSelectElement | null;
+      if (!listEl || !inputEl || !selectEl) return;
+
+      const ids = state[key] || [];
+
+      // Sync hidden input
+      inputEl.value = JSON.stringify(ids);
+
+      // Render ordered list
+      listEl.innerHTML = '';
+      if (ids.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'text-xs text-espresso/30 italic px-1 py-2';
+        empty.textContent = 'No networks assigned';
+        listEl.appendChild(empty);
+      } else {
+        ids.forEach((id, idx) => {
+          const net = networkMap.get(id);
+          const row = document.createElement('div');
+          row.className = 'flex items-center gap-1 rounded px-1 py-0.5 text-xs hover:bg-espresso/5';
+
+          const label = document.createElement('span');
+          label.className = 'flex-1 truncate';
+          label.textContent = `${idx + 1}. ${net ? `${net.name} (${net.symbol})` : id}`;
+          row.appendChild(label);
+
+          const btnClass = 'px-1 py-0.5 text-[10px] rounded hover:bg-espresso/10 text-espresso/50 hover:text-espresso';
+
+          if (idx > 0) {
+            const upBtn = document.createElement('button');
+            upBtn.type = 'button';
+            upBtn.className = btnClass;
+            upBtn.textContent = '\u2191';
+            upBtn.dataset.action = 'up';
+            upBtn.dataset.catKey = key;
+            upBtn.dataset.idx = String(idx);
+            row.appendChild(upBtn);
+          }
+
+          if (idx < ids.length - 1) {
+            const downBtn = document.createElement('button');
+            downBtn.type = 'button';
+            downBtn.className = btnClass;
+            downBtn.textContent = '\u2193';
+            downBtn.dataset.action = 'down';
+            downBtn.dataset.catKey = key;
+            downBtn.dataset.idx = String(idx);
+            row.appendChild(downBtn);
+          }
+
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.className = btnClass + ' text-red-500/50 hover:text-red-600';
+          removeBtn.textContent = '\u00D7';
+          removeBtn.dataset.action = 'remove';
+          removeBtn.dataset.catKey = key;
+          removeBtn.dataset.idx = String(idx);
+          row.appendChild(removeBtn);
+
+          listEl.appendChild(row);
+        });
+      }
+
+      // Update select options (exclude already assigned)
+      const assigned = new Set(ids);
+      selectEl.innerHTML = '<option value="">Select network...</option>';
+      allNetworks.forEach((n) => {
+        if (!assigned.has(n.id)) {
+          const opt = document.createElement('option');
+          opt.value = n.id;
+          opt.textContent = `${n.name} (${n.symbol})`;
+          selectEl.appendChild(opt);
+        }
+      });
+    }
+
+    // Event delegation on each category column
+    document.querySelectorAll('[data-category-col]').forEach((col) => {
+      col.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const action = target.dataset.action;
+        const catKey = target.dataset.catKey;
+        const idx = target.dataset.idx != null ? parseInt(target.dataset.idx, 10) : -1;
+
+        if (!action || !catKey || !state[catKey]) return;
+
+        const arr = state[catKey];
+
+        if (action === 'up' && idx > 0) {
+          [arr[idx - 1], arr[idx]] = [arr[idx], arr[idx - 1]];
+          renderCategory(catKey);
+        } else if (action === 'down' && idx < arr.length - 1) {
+          [arr[idx], arr[idx + 1]] = [arr[idx + 1], arr[idx]];
+          renderCategory(catKey);
+        } else if (action === 'remove' && idx >= 0) {
+          arr.splice(idx, 1);
+          renderCategory(catKey);
+        }
+      });
+    });
+
+    // Add button handlers
+    document.querySelectorAll('[data-category-add]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = (btn as HTMLElement).dataset.categoryAdd!;
+        const selectEl = document.querySelector(`[data-category-select="${key}"]`) as HTMLSelectElement | null;
+        if (!selectEl || !selectEl.value) return;
+
+        if (!state[key]) state[key] = [];
+        state[key].push(selectEl.value);
+        renderCategory(key);
+      });
+    });
+
+    // Initial render
+    Object.keys(state).forEach(renderCategory);
+  }
+
   initNetworkAdmin();
-  document.addEventListener('astro:after-swap', initNetworkAdmin);
+  initCategoryManager();
+  document.addEventListener('astro:after-swap', () => {
+    initNetworkAdmin();
+    initCategoryManager();
+  });
 </script>

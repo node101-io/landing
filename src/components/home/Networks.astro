@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { R2_PUBLIC_URL } from '@/data/r2';
+import { type NetworkFeature, getNetworks } from '@/data/networks';
 
 export const prerender = false;
 
@@ -8,7 +9,6 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 type CardType = 'rectangle-big' | 'square-big' | 'rectangle-small' | 'square-small' | 'cta';
-type NetworkFeature = 'rpc' | 'staking';
 
 interface SearchableNetwork {
   id: string;
@@ -87,26 +87,14 @@ const featureBgClass: Record<NetworkFeature, string> = {
   staking: 'bg-ice-blue',
 };
 
-// KV network data type (matches admin panel output)
-interface KVNetwork {
-  id: string;
-  name: string;
-  symbol: string;
-  description: { tr: string; en: string };
-  href: string;
-  apr: number;
-  features: NetworkFeature[];
-  logoKey: string;
-}
-
 // Read networks from KV (only source of truth)
 let searchableNetworks: SearchableNetwork[] = [];
 
 try {
   const KV = Astro.locals.runtime?.env?.KV;
   if (KV) {
-    const kvData = await KV.get('networks', 'json') as KVNetwork[] | null;
-    if (kvData && kvData.length > 0) {
+    const kvData = await getNetworks(KV);
+    if (kvData.length > 0) {
       searchableNetworks = kvData.map((network) => {
         const description = network.description[lang] || network.description.tr || '';
         const logoSrc = `${R2_PUBLIC_URL}/networks/${network.logoKey}`;

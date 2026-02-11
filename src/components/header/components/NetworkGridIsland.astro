@@ -5,6 +5,13 @@ import MenuSection from './MenuSection.astro';
 import type { GridItemProps } from './MenuSection.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { R2_PUBLIC_URL } from '@/data/r2';
+import {
+  type KVNetwork,
+  type NetworkCategories,
+  getNetworks,
+  getNetworkCategories,
+  EMPTY_CATEGORIES,
+} from '@/data/networks';
 
 interface Props {
   variant: 'investment' | 'rpc';
@@ -14,34 +21,71 @@ const { variant } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-let kvNetworks: GridItemProps[] = [];
+let networks: KVNetwork[] = [];
+let categories: NetworkCategories = { ...EMPTY_CATEGORIES };
 try {
   const KV = Astro.locals.runtime?.env?.KV;
   if (KV) {
-    const kvData = await KV.get('networks', 'json') as Array<{ id: string; name: string; symbol: string; href: string; logoKey: string }> | null;
-    if (kvData) {
-      kvNetworks = kvData.map((n) => ({
-        icon: `${R2_PUBLIC_URL}/networks/${n.logoKey}`,
-        name: n.name,
-        symbol: n.symbol,
-        href: n.href,
-      }));
-    }
+    [networks, categories] = await Promise.all([
+      getNetworks(KV),
+      getNetworkCategories(KV),
+    ]);
   }
 } catch {
   // KV unavailable — island will render without network items
 }
+
+// Build a lookup map for O(1) access
+const networkMap = new Map<string, GridItemProps>();
+for (const n of networks) {
+  networkMap.set(n.id, {
+    icon: `${R2_PUBLIC_URL}/networks/${n.logoKey}`,
+    name: n.name,
+    symbol: n.symbol,
+    href: n.href,
+  });
+}
+
+// All networks as GridItemProps (fallback when category is empty)
+const allNetworks: GridItemProps[] = networks.map((n) => networkMap.get(n.id)!);
+
+// Resolve an ordered array of IDs to GridItemProps, filtering out stale/missing IDs
+function resolveCategory(ids: string[]): GridItemProps[] {
+  const resolved: GridItemProps[] = [];
+  for (const id of ids) {
+    const item = networkMap.get(id);
+    if (item) resolved.push(item);
+  }
+  return resolved;
+}
+
+// Per-category arrays with fallback to all networks
+const popularBlockchains = categories.popularBlockchains.length > 0
+  ? resolveCategory(categories.popularBlockchains)
+  : allNetworks;
+
+const currentlyPopular = categories.currentlyPopular.length > 0
+  ? resolveCategory(categories.currentlyPopular)
+  : allNetworks;
+
+const newNetworks = categories.new.length > 0
+  ? resolveCategory(categories.new)
+  : allNetworks;
+
+const mostUsed = categories.mostUsed.length > 0
+  ? resolveCategory(categories.mostUsed)
+  : allNetworks;
 ---
 
-{variant === 'investment' && kvNetworks.length > 0 && (
+{variant === 'investment' && popularBlockchains.length > 0 && (
   <MenuSection
     type="grid"
     title={t('menu.investment.popularBlockchains')}
-    items={kvNetworks}
+    items={popularBlockchains}
   />
 )}
 
-{variant === 'rpc' && kvNetworks.length > 0 && (
+{variant === 'rpc' && (currentlyPopular.length > 0 || newNetworks.length > 0 || mostUsed.length > 0) && (
   <MenuSection
     type="multi_grid"
     title={t('menu.rpc.rpcServices')}
@@ -49,19 +93,19 @@ try {
       {
         title: t('menu.rpc.currentlyPopular'),
         columns: 1,
-        items: kvNetworks,
+        items: currentlyPopular,
       },
       {
         title: t('menu.rpc.new'),
         hideOnMobile: true,
         columns: 1,
-        items: kvNetworks,
+        items: newNetworks,
       },
       {
         title: t('menu.rpc.mostUsed'),
         hideOnMobile: true,
         columns: 2,
-        items: kvNetworks,
+        items: mostUsed,
       },
     ]}
   />
