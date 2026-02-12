@@ -34,6 +34,11 @@
     "vite": "^6.4.1",
     "wrangler": "4.59.2"
   },
+  "prettier": {
+    "plugins": [
+      "prettier-plugin-astro"
+    ]
+  },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/sitemap": "^3.3.1",

@@ -1,60 +1,65 @@
 ---
-import { Image } from 'astro:assets';
-import { toLang, useTranslations } from '@/i18n/utils';
-import { R2_PUBLIC_URL } from '@/data/r2';
-import { getNetworks } from '@/data/networks';
-import { type CardType, type SearchableNetwork, type GridItem, imgClass } from './types';
-import NetworkCardRectangleBig from './NetworkCardRectangleBig.astro';
-import NetworkCardSquareBig from './NetworkCardSquareBig.astro';
-import NetworkCardRectangleSmall from './NetworkCardRectangleSmall.astro';
-import NetworkCardCta from './NetworkCardCta.astro';
-import babylonBannerImg from '@/assets/images/babylon-bitcoin-banner-image.png';
+import { Image } from "astro:assets";
+import { toLang, useTranslations } from "@/i18n/utils";
+import { R2_PUBLIC_URL } from "@/data/r2";
+import { getNetworks } from "@/data/networks";
+import {
+  type CardType,
+  type SearchableNetwork,
+  type GridItem,
+  imgClass,
+} from "./types";
+import NetworkCardRectangleBig from "./NetworkCardRectangleBig.astro";
+import NetworkCardSquareBig from "./NetworkCardSquareBig.astro";
+import NetworkCardRectangleSmall from "./NetworkCardRectangleSmall.astro";
+import NetworkCardCta from "./NetworkCardCta.astro";
+import babylonBannerImg from "@/assets/images/babylon-bitcoin-banner-image.png";
 
 export const prerender = false;
 
 const lang = toLang(Astro.currentLocale);
 const t = useTranslations(lang);
-const bannerText = t('networks.babylonStakingBanner');
+const bannerText = t("networks.babylonStakingBanner");
 
 const desktopLayout = [
-  { type: 'rectangle-big', grid: 'col-[1/4] row-[1/3]' },
-  { type: 'rectangle-big', grid: 'col-[4/7] row-[1/3]' },
-  { type: 'square-big', grid: 'col-[7/9] row-[1/3]' },
-  { type: 'square-small', grid: 'col-[9/10] row-[1/2]' },
-  { type: 'rectangle-small', grid: 'col-[10/13] row-[1/2]' },
-  { type: 'square-small', grid: 'col-[9/10] row-[2/3]' },
-  { type: 'rectangle-small', grid: 'col-[10/13] row-[2/3]' },
-  { type: 'rectangle-small', grid: 'col-[1/4] row-[3/4]' },
-  { type: 'rectangle-small', grid: 'col-[4/7] row-[3/4]' },
-  { type: 'rectangle-small', grid: 'col-[7/10] row-[3/4]' },
-  { type: 'rectangle-small', grid: 'col-[10/13] row-[3/4]' },
-  { type: 'rectangle-small', grid: 'col-[1/4] row-[4/5]' },
-  { type: 'rectangle-small', grid: 'col-[4/7] row-[4/5]' },
-  { type: 'square-small', grid: 'col-[7/8] row-[4/5]' },
-  { type: 'square-small', grid: 'col-[8/9] row-[4/5]' },
-  { type: 'square-small', grid: 'col-[9/10] row-[4/5]' },
-  { type: 'square-small', grid: 'col-[10/11] row-[4/5]' },
-  { type: 'cta', grid: 'col-[11/13] row-[4/5]' },
+  { type: "rectangle-big", grid: "col-[1/4] row-[1/3]" },
+  { type: "rectangle-big", grid: "col-[4/7] row-[1/3]" },
+  { type: "square-big", grid: "col-[7/9] row-[1/3]" },
+  { type: "square-small", grid: "col-[9/10] row-[1/2]" },
+  { type: "rectangle-small", grid: "col-[10/13] row-[1/2]" },
+  { type: "square-small", grid: "col-[9/10] row-[2/3]" },
+  { type: "rectangle-small", grid: "col-[10/13] row-[2/3]" },
+  { type: "rectangle-small", grid: "col-[1/4] row-[3/4]" },
+  { type: "rectangle-small", grid: "col-[4/7] row-[3/4]" },
+  { type: "rectangle-small", grid: "col-[7/10] row-[3/4]" },
+  { type: "rectangle-small", grid: "col-[10/13] row-[3/4]" },
+  { type: "rectangle-small", grid: "col-[1/4] row-[4/5]" },
+  { type: "rectangle-small", grid: "col-[4/7] row-[4/5]" },
+  { type: "square-small", grid: "col-[7/8] row-[4/5]" },
+  { type: "square-small", grid: "col-[8/9] row-[4/5]" },
+  { type: "square-small", grid: "col-[9/10] row-[4/5]" },
+  { type: "square-small", grid: "col-[10/11] row-[4/5]" },
+  { type: "cta", grid: "col-[11/13] row-[4/5]" },
 ] as const;
 
 const mobileLayout = [
-  { type: 'square-big', grid: 'col-[1/3] row-[1/3]' },
-  { type: 'square-big', grid: 'col-[3/5] row-[1/3]' },
-  { type: 'rectangle-small', grid: 'col-[1/3] row-[3/4]' },
-  { type: 'rectangle-small', grid: 'col-[3/5] row-[3/4]' },
-  { type: 'rectangle-small', grid: 'col-[1/3] row-[4/5]' },
-  { type: 'rectangle-small', grid: 'col-[3/5] row-[4/5]' },
-  { type: 'rectangle-small', grid: 'col-[1/3] row-[5/6]' },
-  { type: 'square-small', grid: 'col-[3/4] row-[5/6]' },
-  { type: 'square-small', grid: 'col-[4/5] row-[5/6]' },
-  { type: 'square-small', grid: 'col-[1/2] row-[6/7]' },
-  { type: 'square-small', grid: 'col-[2/3] row-[6/7]' },
-  { type: 'square-small', grid: 'col-[3/4] row-[6/7]' },
-  { type: 'square-small', grid: 'col-[4/5] row-[6/7]' },
-  { type: 'cta', grid: 'col-[1/5] row-[7/8]' },
+  { type: "square-big", grid: "col-[1/3] row-[1/3]" },
+  { type: "square-big", grid: "col-[3/5] row-[1/3]" },
+  { type: "rectangle-small", grid: "col-[1/3] row-[3/4]" },
+  { type: "rectangle-small", grid: "col-[3/5] row-[3/4]" },
+  { type: "rectangle-small", grid: "col-[1/3] row-[4/5]" },
+  { type: "rectangle-small", grid: "col-[3/5] row-[4/5]" },
+  { type: "rectangle-small", grid: "col-[1/3] row-[5/6]" },
+  { type: "square-small", grid: "col-[3/4] row-[5/6]" },
+  { type: "square-small", grid: "col-[4/5] row-[5/6]" },
+  { type: "square-small", grid: "col-[1/2] row-[6/7]" },
+  { type: "square-small", grid: "col-[2/3] row-[6/7]" },
+  { type: "square-small", grid: "col-[3/4] row-[6/7]" },
+  { type: "square-small", grid: "col-[4/5] row-[6/7]" },
+  { type: "cta", grid: "col-[1/5] row-[7/8]" },
 ] as const;
 
-const cellStyle = ['bg-gray-50', 'border', 'border-lav-border'];
+const cellStyle = ["bg-gray-50", "border", "border-lav-border"];
 
 // Read networks from KV (only source of truth)
 let searchableNetworks: SearchableNetwork[] = [];
@@ -65,7 +70,8 @@ try {
     const kvData = await getNetworks(KV);
     if (kvData.length > 0) {
       searchableNetworks = kvData.map((network) => {
-        const description = network.description[lang] || network.description.tr || '';
+        const description =
+          network.description[lang] || network.description.tr || "";
         const logoSrc = `${R2_PUBLIC_URL}/networks/${network.logoKey}`;
         return {
           id: network.id,
@@ -77,7 +83,8 @@ try {
           logoWidth: 200,
           logoHeight: 200,
           features: [...network.features],
-          searchText: `${network.name} ${network.symbol} ${description}`.toLocaleLowerCase(),
+          searchText:
+            `${network.name} ${network.symbol} ${description}`.toLocaleLowerCase(),
         };
       });
     }
@@ -94,13 +101,14 @@ function createGridItemsFromLayout(
   let slotIndex = 0;
 
   return layout.map(({ type, grid }) => {
-    if (type === 'cta') {
+    if (type === "cta") {
       return { type, grid, displayClass };
     }
 
-    const network = networkCursor < searchableNetworks.length
-      ? searchableNetworks[networkCursor]
-      : undefined;
+    const network =
+      networkCursor < searchableNetworks.length
+        ? searchableNetworks[networkCursor]
+        : undefined;
 
     networkCursor++;
     return { type, grid, displayClass, slotIndex: slotIndex++, network };
@@ -108,7 +116,7 @@ function createGridItemsFromLayout(
 }
 
 function isSearchSlot(item: GridItem): boolean {
-  return item.type !== 'cta' && typeof item.slotIndex === 'number';
+  return item.type !== "cta" && typeof item.slotIndex === "number";
 }
 
 function getGridItemClassList(item: GridItem) {
@@ -116,31 +124,33 @@ function getGridItemClassList(item: GridItem) {
     item.grid,
     item.displayClass,
     ...cellStyle,
-    'min-h-0',
-    'overflow-hidden',
-    'rounded-[calc(var(--vw)*6)]',
-    'p-[calc(var(--vw)*3)]',
-    'font-sans',
-    'lg:rounded-[calc(var(--vw)*2)]',
-    'lg:p-[calc(var(--vw)*1.4)]',
+    "min-h-0",
+    "overflow-hidden",
+    "rounded-[calc(var(--vw)*6)]",
+    "p-[calc(var(--vw)*3)]",
+    "font-sans",
+    "lg:rounded-[calc(var(--vw)*2)]",
+    "lg:p-[calc(var(--vw)*1.4)]",
     {
-      'network-slot': item.type !== 'cta',
-      'aspect-square lg:aspect-auto': item.type === 'square-big',
-      'items-center justify-center': item.type === 'square-small',
+      "network-slot": item.type !== "cta",
+      "aspect-square lg:aspect-auto": item.type === "square-big",
+      "items-center justify-center": item.type === "square-small",
     },
   ];
 }
 
-const desktopItems = createGridItemsFromLayout(desktopLayout, 'hidden lg:flex');
-const mobileItems = createGridItemsFromLayout(mobileLayout, 'flex lg:hidden');
+const desktopItems = createGridItemsFromLayout(desktopLayout, "hidden lg:flex");
+const mobileItems = createGridItemsFromLayout(mobileLayout, "flex lg:hidden");
 const allItems = [...desktopItems, ...mobileItems];
 ---
 
-<div class={`
-  relative
-  m-(--section-margin)
-  w-[calc(100%-var(--section-margin)*2)]
-`}>
+<div
+  class={`
+    relative
+    m-(--section-margin)
+    w-[calc(100%-var(--section-margin)*2)]
+  `}
+>
   <section
     class={`
       @container
@@ -155,354 +165,433 @@ const allItems = [...desktopItems, ...mobileItems];
       md:py-20
       lg:py-24
     `}
-    aria-label={t('networks.ariaLabel')}
+    aria-label={t("networks.ariaLabel")}
     data-networks-component
   >
-  <!-- Title section -->
-  <div class={`
-    mb-8
-    flex
-    flex-col
-    gap-8
-    font-sans
-    lg:mb-12
-    lg:flex-row
-    lg:items-center
-    lg:justify-between
-    lg:gap-16
-  `}>
-    <h2 class={`
-      font-display
-      text-5xl
-      leading-[0.85]
-      font-bold
-      text-balance
-      text-espresso
-      md:text-6xl
-      lg:w-[60%]
-      lg:text-7xl
-    `}>
-      {t('networks.title')}
-    </h2>
-
-    <div class={`
-      flex
-      flex-col
-      gap-6
-      lg:w-[40%]
-      lg:items-start
-    `}>
-      <p class={`
-        text-xs
-        leading-relaxed
-        text-espresso
-        sm:text-sm
-        md:text-base
-      `}>
-        {t('networks.description')}
-      </p>
-
-      <a
-        href="#"
+    <!-- Title section -->
+    <div
+      class={`
+        mb-8
+        flex
+        flex-col
+        gap-8
+        font-sans
+        lg:mb-12
+        lg:flex-row
+        lg:items-center
+        lg:justify-between
+        lg:gap-16
+      `}
+    >
+      <h2
         class={`
-          inline-flex
-          w-fit
-          items-center
-          justify-center
-          rounded-full
-          bg-espresso
-          px-5
-          py-2
-          text-sm
-          text-cream
-          transition-colors
-          hover:bg-espresso/90
+          font-display
+          text-5xl
+          leading-[0.85]
+          font-bold
+          text-balance
+          text-espresso
+          md:text-6xl
+          lg:w-[60%]
+          lg:text-7xl
         `}
       >
-        {t('networks.cta')}
-      </a>
-    </div>
-  </div>
+        {t("networks.title")}
+      </h2>
 
-  <div class={`
-    mb-5
-    flex
-    items-center
-    gap-2
-    font-sans
-    lg:mb-6
-    lg:gap-3
-  `}>
-    <div class="relative">
-      <input type="radio" name="network-filter" id="network-filter-all"
-        value="all" checked class={`
-          peer
-          sr-only
-        `} data-network-filter />
-      <label for="network-filter-all"
+      <div
         class={`
-          cursor-pointer
-          rounded-full
-          border
-          border-[#6A4D42]
-          bg-transparent
-          px-3
-          py-1
-          text-sm
-          text-[#6A4D42]
-          transition-colors
-          peer-checked:bg-lavender
-          lg:px-4
-          lg:py-2
-        `}>
-        all
-      </label>
-    </div>
-    <div class="relative">
-      <input type="radio" name="network-filter" id="network-filter-staking"
-        value="staking" class={`
-          peer
-          sr-only
-        `} data-network-filter />
-      <label for="network-filter-staking"
-        class={`
-          cursor-pointer
-          rounded-full
-          border
-          border-[#6A4D42]
-          bg-transparent
-          px-3
-          py-1
-          text-sm
-          text-[#6A4D42]
-          transition-colors
-          peer-checked:bg-lavender
-          lg:px-4
-          lg:py-2
-        `}>
-        staking
-      </label>
-    </div>
-    <div class="relative">
-      <input type="radio" name="network-filter" id="network-filter-rpc"
-        value="rpc" class={`
-          peer
-          sr-only
-        `} data-network-filter />
-      <label for="network-filter-rpc"
-        class={`
-          cursor-pointer
-          rounded-full
-          border
-          border-[#6A4D42]
-          bg-transparent
-          px-3
-          py-1
-          text-sm
-          text-[#6A4D42]
-          transition-colors
-          peer-checked:bg-lavender
-          lg:px-4
-          lg:py-2
-        `}>
-        rpc
-      </label>
-    </div>
-
-    <div class={`
-      relative
-      ml-auto
-      w-full
-      lg:w-[calc(var(--vw)*27)]
-    `}>
-      <img
-        src="/img/search.svg"
-        alt=""
-        class={`
-          pointer-events-none
-          absolute
-          top-1/2
-          left-3
-          size-3.5
-          -translate-y-1/2
-          lg:left-3
+          flex
+          flex-col
+          gap-6
+          lg:w-[40%]
+          lg:items-start
         `}
-        aria-hidden="true"
-      />
-      <input
-        id="networks-search"
-        type="search"
-        autocomplete="off"
-        placeholder={t('networks.search.placeholder')}
-        class={`
-          w-full
-          rounded-full
-          border
-          border-[#6A4D42]
-          bg-gray-50
-          py-1
-          pr-0
-          pl-8
-          text-sm
-          text-espresso-dark
-          transition-colors
-          outline-none
-          placeholder:text-placeholder
-          focus:border-espresso-dark
-          lg:py-2
-          lg:pr-4
-          lg:pl-8
-          [&::-webkit-search-cancel-button]:appearance-none
-        `}
-        data-networks-search-input
-      />
-    </div>
-  </div>
-
-  <!-- Babylon Staking Banner -->
-  <div class={`
-    mb-3
-    w-full
-    overflow-hidden
-    rounded-xl
-    bg-gray-50
-    py-1.5
-    lg:mb-4
-  `}>
-    <div class={`
-      flex
-      w-max
-      animate-babylon-marquee
-      items-center
-    `}>
-      {[...Array(8)].map(() => (
-        <Fragment>
-          <span class={`
-            mx-2
-            shrink-0
-            font-display
-            text-xl
-            font-normal
-            whitespace-nowrap
+      >
+        <p
+          class={`
+            text-xs
+            leading-relaxed
             text-espresso
-          `}>{bannerText}</span>
-          <Image src={babylonBannerImg} format="webp" alt="" height={72} class={`
-            mx-2
-            h-7
-            w-auto
-            shrink-0
-          `} />
-        </Fragment>
-      ))}
-    </div>
-  </div>
-
-  <!-- Networks Grid -->
-  <div class={`
-    grid
-    grid-cols-4
-    grid-rows-[repeat(6,calc(25cqi-var(--vw)*3))_auto]
-    gap-[calc(var(--vw)*4)]
-    lg:grid-cols-12
-    lg:grid-rows-[repeat(4,calc(8.3333cqi-var(--vw)*1.2833))]
-    lg:gap-[calc(var(--vw)*1.4)]
-  `}>
-    {allItems.map((item) => {
-      if (item.type === 'cta') {
-        return (
-          <NetworkCardCta
-            t={t}
-            gridClass={[item.grid, item.displayClass, 'min-h-0', 'font-sans'].join(' ')}
-          />
-        );
-      }
-
-      const network = item.network;
-      const searchSlot = isSearchSlot(item);
-      return (
-        <div
-          class:list={getGridItemClassList(item)}
-          data-network-slot={searchSlot ? '' : undefined}
-          data-slot-index={searchSlot ? item.slotIndex : undefined}
+            sm:text-sm
+            md:text-base
+          `}
         >
-          {item.type === 'rectangle-big' && network && (
-            <NetworkCardRectangleBig network={network} />
-          )}
+          {t("networks.description")}
+        </p>
 
-          {item.type === 'square-big' && network && (
-            <NetworkCardSquareBig network={network} />
-          )}
+        <a
+          href="#"
+          class={`
+            inline-flex
+            w-fit
+            items-center
+            justify-center
+            rounded-full
+            bg-espresso
+            px-5
+            py-2
+            text-sm
+            text-cream
+            transition-colors
+            hover:bg-espresso/90
+          `}
+        >
+          {t("networks.cta")}
+        </a>
+      </div>
+    </div>
 
-          {item.type === 'square-small' && network && (
-            <img
-              src={network.logoSrc}
-              alt={network.name}
-              width={network.logoWidth}
-              height={network.logoHeight}
-              class:list={imgClass['square-small']}
-              data-network-logo
-            />
-          )}
+    <div
+      class={`
+        mb-5
+        flex
+        items-center
+        gap-2
+        font-sans
+        lg:mb-6
+        lg:gap-3
+      `}
+    >
+      <div class="relative">
+        <input
+          type="radio"
+          name="network-filter"
+          id="network-filter-all"
+          value="all"
+          checked
+          class={`
+            peer
+            sr-only
+          `}
+          data-network-filter
+        />
+        <label
+          for="network-filter-all"
+          class={`
+            cursor-pointer
+            rounded-full
+            border
+            border-[#6A4D42]
+            bg-transparent
+            px-3
+            py-1
+            text-sm
+            text-[#6A4D42]
+            transition-colors
+            peer-checked:bg-lavender
+            lg:px-4
+            lg:py-2
+          `}
+        >
+          all
+        </label>
+      </div>
+      <div class="relative">
+        <input
+          type="radio"
+          name="network-filter"
+          id="network-filter-staking"
+          value="staking"
+          class={`
+            peer
+            sr-only
+          `}
+          data-network-filter
+        />
+        <label
+          for="network-filter-staking"
+          class={`
+            cursor-pointer
+            rounded-full
+            border
+            border-[#6A4D42]
+            bg-transparent
+            px-3
+            py-1
+            text-sm
+            text-[#6A4D42]
+            transition-colors
+            peer-checked:bg-lavender
+            lg:px-4
+            lg:py-2
+          `}
+        >
+          staking
+        </label>
+      </div>
+      <div class="relative">
+        <input
+          type="radio"
+          name="network-filter"
+          id="network-filter-rpc"
+          value="rpc"
+          class={`
+            peer
+            sr-only
+          `}
+          data-network-filter
+        />
+        <label
+          for="network-filter-rpc"
+          class={`
+            cursor-pointer
+            rounded-full
+            border
+            border-[#6A4D42]
+            bg-transparent
+            px-3
+            py-1
+            text-sm
+            text-[#6A4D42]
+            transition-colors
+            peer-checked:bg-lavender
+            lg:px-4
+            lg:py-2
+          `}
+        >
+          rpc
+        </label>
+      </div>
 
-          {item.type === 'rectangle-small' && network && (
-            <NetworkCardRectangleSmall network={network} />
-          )}
-        </div>
-      );
-    })}
-  </div>
+      <div
+        class={`
+          relative
+          ml-auto
+          w-full
+          lg:w-[calc(var(--vw)*27)]
+        `}
+      >
+        <img
+          src="/img/search.svg"
+          alt=""
+          class={`
+            pointer-events-none
+            absolute
+            top-1/2
+            left-3
+            size-3.5
+            -translate-y-1/2
+            lg:left-3
+          `}
+          aria-hidden="true"
+        />
+        <input
+          id="networks-search"
+          type="search"
+          autocomplete="off"
+          placeholder={t("networks.search.placeholder")}
+          class={`
+            w-full
+            rounded-full
+            border
+            border-[#6A4D42]
+            bg-gray-50
+            py-1
+            pr-0
+            pl-8
+            text-sm
+            text-espresso-dark
+            transition-colors
+            outline-none
+            placeholder:text-placeholder
+            focus:border-espresso-dark
+            lg:py-2
+            lg:pr-4
+            lg:pl-8
+            [&::-webkit-search-cancel-button]:appearance-none
+          `}
+          data-networks-search-input
+        />
+      </div>
+    </div>
+
+    <!-- Babylon Staking Banner -->
+    <div
+      class={`
+        mb-3
+        w-full
+        overflow-hidden
+        rounded-xl
+        bg-gray-50
+        py-1.5
+        lg:mb-4
+      `}
+    >
+      <div
+        class={`
+          flex
+          w-max
+          animate-babylon-marquee
+          items-center
+        `}
+      >
+        {
+          [...Array(8)].map(() => (
+            <Fragment>
+              <span
+                class={`
+                  mx-2
+                  shrink-0
+                  font-display
+                  text-xl
+                  font-normal
+                  whitespace-nowrap
+                  text-espresso
+                `}
+              >
+                {bannerText}
+              </span>
+              <Image
+                src={babylonBannerImg}
+                format="webp"
+                alt=""
+                height={72}
+                class={`
+                  mx-2
+                  h-7
+                  w-auto
+                  shrink-0
+                `}
+              />
+            </Fragment>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Networks Grid -->
+    <div
+      class={`
+        grid
+        grid-cols-4
+        grid-rows-[repeat(6,calc(25cqi-var(--vw)*3))_auto]
+        gap-[calc(var(--vw)*4)]
+        lg:grid-cols-12
+        lg:grid-rows-[repeat(4,calc(8.3333cqi-var(--vw)*1.2833))]
+        lg:gap-[calc(var(--vw)*1.4)]
+      `}
+    >
+      {
+        allItems.map((item) => {
+          if (item.type === "cta") {
+            return (
+              <NetworkCardCta
+                t={t}
+                gridClass={[
+                  item.grid,
+                  item.displayClass,
+                  "min-h-0",
+                  "font-sans",
+                ].join(" ")}
+              />
+            );
+          }
+
+          const network = item.network;
+          const searchSlot = isSearchSlot(item);
+          return (
+            <div
+              class:list={getGridItemClassList(item)}
+              data-network-slot={searchSlot ? "" : undefined}
+              data-slot-index={searchSlot ? item.slotIndex : undefined}
+            >
+              {item.type === "rectangle-big" && network && (
+                <NetworkCardRectangleBig network={network} />
+              )}
+
+              {item.type === "square-big" && network && (
+                <NetworkCardSquareBig network={network} />
+              )}
+
+              {item.type === "square-small" && network && (
+                <img
+                  src={network.logoSrc}
+                  alt={network.name}
+                  width={network.logoWidth}
+                  height={network.logoHeight}
+                  class:list={imgClass["square-small"]}
+                  data-network-logo
+                />
+              )}
+
+              {item.type === "rectangle-small" && network && (
+                <NetworkCardRectangleSmall network={network} />
+              )}
+            </div>
+          );
+        })
+      }
+    </div>
   </section>
 </div>
 
 <script define:vars={{ searchableNetworks }}>
-  const component = document.querySelector('[data-networks-component]');
+  const component = document.querySelector("[data-networks-component]");
 
   if (!(component instanceof HTMLElement)) return;
 
-  const searchInput = component.querySelector('[data-networks-search-input]');
+  const searchInput = component.querySelector("[data-networks-search-input]");
   const filterRadios = Array.from(
-    component.querySelectorAll('input[data-network-filter]'),
+    component.querySelectorAll("input[data-network-filter]"),
   ).filter((el) => el instanceof HTMLInputElement);
-  const slotElements = Array.from(component.querySelectorAll('[data-network-slot]')).filter(
-    (slot) => slot instanceof HTMLElement,
-  );
+  const slotElements = Array.from(
+    component.querySelectorAll("[data-network-slot]"),
+  ).filter((slot) => slot instanceof HTMLElement);
 
-  if (!(searchInput instanceof HTMLInputElement) || slotElements.length === 0) return;
+  if (!(searchInput instanceof HTMLInputElement) || slotElements.length === 0)
+    return;
 
-  const networksData = Array.isArray(searchableNetworks) ? searchableNetworks : [];
+  const networksData = Array.isArray(searchableNetworks)
+    ? searchableNetworks
+    : [];
   const renderedSlotState = new WeakMap();
 
   const getActiveFilter = () => {
-    const checked = component.querySelector('input[data-network-filter]:checked');
-    return checked instanceof HTMLInputElement ? checked.value : 'all';
+    const checked = component.querySelector(
+      "input[data-network-filter]:checked",
+    );
+    return checked instanceof HTMLInputElement ? checked.value : "all";
   };
 
   const slotBindings = slotElements
     .map((slot) => {
-      const slotIndex = Number(slot.getAttribute('data-slot-index'));
+      const slotIndex = Number(slot.getAttribute("data-slot-index"));
       if (!Number.isFinite(slotIndex)) return null;
 
       return {
         slot,
         slotIndex,
-        logos: Array.from(slot.querySelectorAll('[data-network-logo]')).filter((node) => node instanceof HTMLImageElement),
-        names: Array.from(slot.querySelectorAll('[data-network-name]')).filter((node) => node instanceof HTMLElement),
-        symbols: Array.from(slot.querySelectorAll('[data-network-symbol]')).filter((node) => node instanceof HTMLElement),
-        aprValues: Array.from(slot.querySelectorAll('[data-network-apr]')).filter((node) => node instanceof HTMLElement),
-        descriptions: Array.from(slot.querySelectorAll('[data-network-description]')).filter((node) => node instanceof HTMLElement),
-        featureContainers: Array.from(slot.querySelectorAll('[data-network-features]')).filter((node) => node instanceof HTMLElement),
+        logos: Array.from(slot.querySelectorAll("[data-network-logo]")).filter(
+          (node) => node instanceof HTMLImageElement,
+        ),
+        names: Array.from(slot.querySelectorAll("[data-network-name]")).filter(
+          (node) => node instanceof HTMLElement,
+        ),
+        symbols: Array.from(
+          slot.querySelectorAll("[data-network-symbol]"),
+        ).filter((node) => node instanceof HTMLElement),
+        aprValues: Array.from(
+          slot.querySelectorAll("[data-network-apr]"),
+        ).filter((node) => node instanceof HTMLElement),
+        descriptions: Array.from(
+          slot.querySelectorAll("[data-network-description]"),
+        ).filter((node) => node instanceof HTMLElement),
+        featureContainers: Array.from(
+          slot.querySelectorAll("[data-network-features]"),
+        ).filter((node) => node instanceof HTMLElement),
       };
     })
     .filter((binding) => binding !== null);
 
   const setEmptySlot = (binding) => {
-    binding.slot.classList.add('opacity-0', 'pointer-events-none');
-    binding.slot.setAttribute('aria-hidden', 'true');
+    binding.slot.classList.add("opacity-0", "pointer-events-none");
+    binding.slot.setAttribute("aria-hidden", "true");
   };
 
   const setFilledSlot = (binding, network) => {
-    binding.slot.classList.remove('opacity-0', 'pointer-events-none');
-    binding.slot.removeAttribute('aria-hidden');
+    binding.slot.classList.remove("opacity-0", "pointer-events-none");
+    binding.slot.removeAttribute("aria-hidden");
 
     for (const logoNode of binding.logos) {
       logoNode.src = network.logoSrc;
@@ -512,11 +601,11 @@ const allItems = [...desktopItems, ...mobileItems];
     }
 
     for (const nameNode of binding.names) {
-      nameNode.textContent = network.name.toLocaleUpperCase('en');
+      nameNode.textContent = network.name.toLocaleUpperCase("en");
     }
 
     for (const symbolNode of binding.symbols) {
-      symbolNode.textContent = network.symbol.toLocaleUpperCase('en');
+      symbolNode.textContent = network.symbol.toLocaleUpperCase("en");
     }
 
     for (const aprNode of binding.aprValues) {
@@ -528,8 +617,11 @@ const allItems = [...desktopItems, ...mobileItems];
     }
 
     for (const featureContainer of binding.featureContainers) {
-      for (const pill of featureContainer.querySelectorAll('[data-feature]')) {
-        pill.classList.toggle('hidden', !network.features.includes(pill.dataset.feature));
+      for (const pill of featureContainer.querySelectorAll("[data-feature]")) {
+        pill.classList.toggle(
+          "hidden",
+          !network.features.includes(pill.dataset.feature),
+        );
       }
     }
   };
@@ -543,9 +635,11 @@ const allItems = [...desktopItems, ...mobileItems];
     const activeFilter = getActiveFilter();
     let filtered = networksData;
 
-    if (activeFilter !== 'all') {
-      filtered = filtered.filter((network) =>
-        Array.isArray(network.features) && network.features.includes(activeFilter),
+    if (activeFilter !== "all") {
+      filtered = filtered.filter(
+        (network) =>
+          Array.isArray(network.features) &&
+          network.features.includes(activeFilter),
       );
     }
 
@@ -568,8 +662,8 @@ const allItems = [...desktopItems, ...mobileItems];
   };
 
   for (const radio of filterRadios) {
-    radio.addEventListener('change', render);
+    radio.addEventListener("change", render);
   }
-  searchInput.addEventListener('input', render);
+  searchInput.addEventListener("input", render);
   render();
 </script>

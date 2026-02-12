@@ -1,7 +1,7 @@
 ---
-import MenuSectionItem, { type SubItemProps } from './MenuSectionItem.astro';
-import MenuGridItem from './MenuGridItem.astro';
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import MenuSectionItem, { type SubItemProps } from "./MenuSectionItem.astro";
+import MenuGridItem from "./MenuGridItem.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -34,7 +34,7 @@ export type ListGroup = {
   items: MenuSectionItemData[];
 };
 
-export type SectionType = 'list' | 'grid' | 'multi_grid';
+export type SectionType = "list" | "grid" | "multi_grid";
 
 export interface Props {
   type: SectionType;
@@ -46,7 +46,15 @@ export interface Props {
   categories?: GridCategory[];
 }
 
-const { type, title, footnote, hideOnMobile, items, additionalGroups, categories } = Astro.props;
+const {
+  type,
+  title,
+  footnote,
+  hideOnMobile,
+  items,
+  additionalGroups,
+  categories,
+} = Astro.props;
 ---
 
 <section
@@ -58,217 +66,257 @@ const { type, title, footnote, hideOnMobile, items, additionalGroups, categories
       lg:bg-surface
       lg:p-6
     `,
-    hideOnMobile && `
-      hidden
-      lg:block
-    `,
-    type === 'multi_grid' && 'lg:col-span-2'
+    hideOnMobile &&
+      `
+        hidden
+        lg:block
+      `,
+    type === "multi_grid" && "lg:col-span-2",
   ]}
 >
-  {title && (
-    <h3 class={`
-      mb-2
-      text-xs
-      tracking-wider
-      text-accent-muted
-      uppercase
-      lg:mb-4
-    `}>
-      {title}
-    </h3>
-  )}
+  {
+    title && (
+      <h3
+        class={`
+          mb-2
+          text-xs
+          tracking-wider
+          text-accent-muted
+          uppercase
+          lg:mb-4
+        `}
+      >
+        {title}
+      </h3>
+    )
+  }
 
-  {type === 'multi_grid' && categories && (
-    <>
-      <div class={`
-        flex
-        flex-col
-        gap-4
-        lg:flex-row
-        lg:gap-0
-      `}>
-        {categories.map((category, catIndex) => (
-          <>
-            <div
-              class:list={[
-                `
-                  lg:px-5
-                  first:lg:pl-0
-                  last:lg:pr-0
-                `,
-                category.hideOnMobile && `
-                  hidden
-                  lg:block
-                `,
-                category.columns === 2 ? 'lg:flex-2' : 'lg:flex-1'
-              ]}
-            >
-              <h3 class={`
-                mb-3
-                text-[10px]
-                font-medium
-                tracking-wider
-                text-muted
-                uppercase
-              `}>
-                {category.title}
-              </h3>
-              <div
-                class:list={[
-                  `
-                    flex
-                    h-[calc(var(--icon-size-mobile))]
-                    max-h-[calc(var(--icon-size-mobile))]
-                    w-full
-                    flex-wrap
-                    gap-1.5
-                    overflow-hidden
-                    lg:grid
-                    lg:h-auto
-                    lg:max-h-none
-                    lg:gap-2
-                    lg:overflow-visible
-                  `,
-                  category.columns === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-1'
-                ]}
-              >
-                {category.items.map((item) => (
-                  <MenuGridItem {...item} />
-                ))}
-              </div>
-            </div>
-            {catIndex < categories.length - 1 && (
-              <div
-                class:list={[
-                  `
-                    w-px
-                    self-stretch
-                    bg-linear-to-b
-                    from-transparent
-                    via-muted/30
-                    to-transparent
-                    lg:block
-                  `,
-                  category.hideOnMobile ? `
-                    hidden
-                    lg:block
-                  ` : 'hidden'
-                ]}
-              />
-            )}
-          </>
-        ))}
-      </div>
-      <a href="/" class={`
-        mt-4
-        block
-        text-right
-        text-[10px]
-        font-medium
-        text-footnote
-      `}>
-        {t('common.viewAllProtocols')}
-      </a>
-    </>
-  )}
-
-  {type === 'list' && items && (
-    <>
-      <div class={`
-        flex
-        flex-col
-      `}>
-        {(items as MenuSectionItemData[]).map((item, index) => (
-          <div
-            class:list={[
-              'py-1',
-              index < items.length - 1 && `
-                border-b
-                border-separator
-              `
-            ]}
-          >
-            <MenuSectionItem {...item} />
-          </div>
-        ))}
-      </div>
-      {additionalGroups?.map((group) => (
-        <div>
-          <h3 class={`
-            mt-4
-            mb-2
-            text-xs
-            tracking-wider
-            text-accent-muted
-            uppercase
-            lg:mb-4
-          `}>
-            {group.title}
-          </h3>
-          <div class={`
+  {
+    type === "multi_grid" && categories && (
+      <>
+        <div
+          class={`
             flex
             flex-col
-          `}>
-            {group.items.map((item, index) => (
+            gap-4
+            lg:flex-row
+            lg:gap-0
+          `}
+        >
+          {categories.map((category, catIndex) => (
+            <>
               <div
                 class:list={[
-                  'py-1',
-                  index < group.items.length - 1 && `
-                    border-b
-                    border-separator
                   `
+                    lg:px-5
+                    first:lg:pl-0
+                    last:lg:pr-0
+                  `,
+                  category.hideOnMobile &&
+                    `
+                      hidden
+                      lg:block
+                    `,
+                  category.columns === 2 ? "lg:flex-2" : "lg:flex-1",
                 ]}
               >
-                <MenuSectionItem {...item} />
+                <h3
+                  class={`
+                    mb-3
+                    text-[10px]
+                    font-medium
+                    tracking-wider
+                    text-muted
+                    uppercase
+                  `}
+                >
+                  {category.title}
+                </h3>
+                <div
+                  class:list={[
+                    `
+                      flex
+                      h-[calc(var(--icon-size-mobile))]
+                      max-h-[calc(var(--icon-size-mobile))]
+                      w-full
+                      flex-wrap
+                      gap-1.5
+                      overflow-hidden
+                      lg:grid
+                      lg:h-auto
+                      lg:max-h-none
+                      lg:gap-2
+                      lg:overflow-visible
+                    `,
+                    category.columns === 2
+                      ? "lg:grid-cols-2"
+                      : "lg:grid-cols-1",
+                  ]}
+                >
+                  {category.items.map((item) => (
+                    <MenuGridItem {...item} />
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+              {catIndex < categories.length - 1 && (
+                <div
+                  class:list={[
+                    `
+                      w-px
+                      self-stretch
+                      bg-linear-to-b
+                      from-transparent
+                      via-muted/30
+                      to-transparent
+                      lg:block
+                    `,
+                    category.hideOnMobile
+                      ? `
+                        hidden
+                        lg:block
+                      `
+                      : "hidden",
+                  ]}
+                />
+              )}
+            </>
+          ))}
         </div>
-      ))}
-    </>
-  )}
+        <a
+          href="/"
+          class={`
+            mt-4
+            block
+            text-right
+            text-[10px]
+            font-medium
+            text-footnote
+          `}
+        >
+          {t("common.viewAllProtocols")}
+        </a>
+      </>
+    )
+  }
 
-  {type === 'grid' && items && (
-    <>
-      <div class={`
-        flex
-        h-[calc(var(--icon-size-mobile))]
-        max-h-[calc(var(--icon-size-mobile))]
-        w-full
-        flex-wrap
-        gap-1.5
-        overflow-hidden
-        lg:grid
-        lg:h-auto
-        lg:max-h-none
-        lg:grid-cols-2
-        lg:gap-2
-        lg:overflow-visible
-      `}>
-        {(items as GridItemProps[]).map((item) => (
-          <MenuGridItem {...item} />
+  {
+    type === "list" && items && (
+      <>
+        <div
+          class={`
+            flex
+            flex-col
+          `}
+        >
+          {(items as MenuSectionItemData[]).map((item, index) => (
+            <div
+              class:list={[
+                "py-1",
+                index < items.length - 1 &&
+                  `
+                    border-b
+                    border-separator
+                  `,
+              ]}
+            >
+              <MenuSectionItem {...item} />
+            </div>
+          ))}
+        </div>
+        {additionalGroups?.map((group) => (
+          <div>
+            <h3
+              class={`
+                mt-4
+                mb-2
+                text-xs
+                tracking-wider
+                text-accent-muted
+                uppercase
+                lg:mb-4
+              `}
+            >
+              {group.title}
+            </h3>
+            <div
+              class={`
+                flex
+                flex-col
+              `}
+            >
+              {group.items.map((item, index) => (
+                <div
+                  class:list={[
+                    "py-1",
+                    index < group.items.length - 1 &&
+                      `
+                        border-b
+                        border-separator
+                      `,
+                  ]}
+                >
+                  <MenuSectionItem {...item} />
+                </div>
+              ))}
+            </div>
+          </div>
         ))}
-      </div>
-      <a href="/" class={`
-        mt-4
-        block
-        text-right
-        text-[10px]
-        font-medium
-        text-footnote
-      `}>
-        {t('common.viewAllProtocols')}
-      </a>
-    </>
-  )}
+      </>
+    )
+  }
 
-  {footnote && (
-    <p class={`
-      mt-3
-      text-[10px]
-      text-footnote
-    `}>
-      {footnote}
-    </p>
-  )}
+  {
+    type === "grid" && items && (
+      <>
+        <div
+          class={`
+            flex
+            h-[calc(var(--icon-size-mobile))]
+            max-h-[calc(var(--icon-size-mobile))]
+            w-full
+            flex-wrap
+            gap-1.5
+            overflow-hidden
+            lg:grid
+            lg:h-auto
+            lg:max-h-none
+            lg:grid-cols-2
+            lg:gap-2
+            lg:overflow-visible
+          `}
+        >
+          {(items as GridItemProps[]).map((item) => (
+            <MenuGridItem {...item} />
+          ))}
+        </div>
+        <a
+          href="/"
+          class={`
+            mt-4
+            block
+            text-right
+            text-[10px]
+            font-medium
+            text-footnote
+          `}
+        >
+          {t("common.viewAllProtocols")}
+        </a>
+      </>
+    )
+  }
+
+  {
+    footnote && (
+      <p
+        class={`
+          mt-3
+          text-[10px]
+          text-footnote
+        `}
+      >
+        {footnote}
+      </p>
+    )
+  }
 </section>

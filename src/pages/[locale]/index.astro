@@ -1,124 +1,159 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Banner from '@/components/Banner.astro';
-import Header from '@/components/header/Header.astro';
-import Hero from '@/components/home/Hero.astro';
-import TrustedBy from '@/components/home/TrustedBy.astro';
-import Services from '@/components/home/Services.astro';
-import Networks from '@/components/home/networks/Networks.astro';
+import Layout from "@/layouts/Layout.astro";
+import Banner from "@/components/Banner.astro";
+import Header from "@/components/header/Header.astro";
+import Hero from "@/components/home/Hero.astro";
+import TrustedBy from "@/components/home/TrustedBy.astro";
+import Offerings from "@/components/home/Offerings.astro";
+import Services from "@/components/home/Services.astro";
+import Networks from "@/components/home/networks/Networks.astro";
 
 export const prerender = false;
 ---
 
 <Layout title="node101">
   <Banner server:defer>
-    <div slot="fallback" class={`
-      flex
-      h-(--banner-height)
-      w-full
-      items-center
-      overflow-hidden
-      bg-primary
-      transition-[height,opacity]
-      duration-300
-    `}>
-      <div class={`
+    <div
+      slot="fallback"
+      class={`
         flex
-        flex-1
+        h-(--banner-height)
+        w-full
         items-center
-        justify-center
-      `}>
-        <div class={`
-          h-3
-          w-48
-          animate-pulse
-          rounded
-          bg-primary-foreground/20
-        `}></div>
+        overflow-hidden
+        bg-primary
+        transition-[height,opacity]
+        duration-300
+      `}
+    >
+      <div
+        class={`
+          flex
+          flex-1
+          items-center
+          justify-center
+        `}
+      >
+        <div
+          class={`
+            h-3
+            w-48
+            animate-pulse
+            rounded
+            bg-primary-foreground/20
+          `}
+        >
+        </div>
       </div>
       <div class="px-3">
-        <div class={`
-          size-3.5
-          animate-pulse
-          rounded
-          bg-primary-foreground/20
-        `}></div>
+        <div
+          class={`
+            size-3.5
+            animate-pulse
+            rounded
+            bg-primary-foreground/20
+          `}
+        >
+        </div>
       </div>
     </div>
   </Banner>
   <div class="group/menu">
     <Header />
     <Hero />
-  <TrustedBy />
-  <Services />
-  <Networks server:defer>
-    <div slot="fallback" class={`
-      m-(--section-margin)
-      w-[calc(100%-var(--section-margin)*2)]
-    `}>
-      <div class={`
-        flex
-        flex-col
-        gap-8
-        py-12
-        sm:py-16
-        md:py-20
-        lg:gap-12
-        lg:py-24
-      `}>
-        <div class={`
-          h-12
-          w-64
-          animate-pulse
-          rounded-lg
-          bg-espresso/10
-        `}></div>
-        <div class={`
-          grid
-          grid-cols-4
-          gap-[calc(var(--vw)*4)]
-          lg:grid-cols-12
-          lg:gap-[calc(var(--vw)*1.4)]
-        `}>
-          <div class={`
-            col-span-2
-            aspect-square
-            animate-pulse
-            rounded-[calc(var(--vw)*6)]
-            bg-espresso/5
-            lg:col-span-3
-            lg:rounded-[calc(var(--vw)*2)]
-          `}></div>
-          <div class={`
-            col-span-2
-            aspect-square
-            animate-pulse
-            rounded-[calc(var(--vw)*6)]
-            bg-espresso/5
-            lg:col-span-3
-            lg:rounded-[calc(var(--vw)*2)]
-          `}></div>
-          <div class={`
-            col-span-2
-            aspect-square
-            animate-pulse
-            rounded-[calc(var(--vw)*6)]
-            bg-espresso/5
-            lg:col-span-3
-            lg:rounded-[calc(var(--vw)*2)]
-          `}></div>
-          <div class={`
-            col-span-2
-            aspect-square
-            animate-pulse
-            rounded-[calc(var(--vw)*6)]
-            bg-espresso/5
-            lg:col-span-3
-            lg:rounded-[calc(var(--vw)*2)]
-          `}></div>
+    <TrustedBy />
+    <Offerings />
+    <Services />
+    <Networks server:defer>
+      <div
+        slot="fallback"
+        class={`
+          m-(--section-margin)
+          w-[calc(100%-var(--section-margin)*2)]
+        `}
+      >
+        <div
+          class={`
+            flex
+            flex-col
+            gap-8
+            py-12
+            sm:py-16
+            md:py-20
+            lg:gap-12
+            lg:py-24
+          `}
+        >
+          <div
+            class={`
+              h-12
+              w-64
+              animate-pulse
+              rounded-lg
+              bg-espresso/10
+            `}
+          >
+          </div>
+          <div
+            class={`
+              grid
+              grid-cols-4
+              gap-[calc(var(--vw)*4)]
+              lg:grid-cols-12
+              lg:gap-[calc(var(--vw)*1.4)]
+            `}
+          >
+            <div
+              class={`
+                col-span-2
+                aspect-square
+                animate-pulse
+                rounded-[calc(var(--vw)*6)]
+                bg-espresso/5
+                lg:col-span-3
+                lg:rounded-[calc(var(--vw)*2)]
+              `}
+            >
+            </div>
+            <div
+              class={`
+                col-span-2
+                aspect-square
+                animate-pulse
+                rounded-[calc(var(--vw)*6)]
+                bg-espresso/5
+                lg:col-span-3
+                lg:rounded-[calc(var(--vw)*2)]
+              `}
+            >
+            </div>
+            <div
+              class={`
+                col-span-2
+                aspect-square
+                animate-pulse
+                rounded-[calc(var(--vw)*6)]
+                bg-espresso/5
+                lg:col-span-3
+                lg:rounded-[calc(var(--vw)*2)]
+              `}
+            >
+            </div>
+            <div
+              class={`
+                col-span-2
+                aspect-square
+                animate-pulse
+                rounded-[calc(var(--vw)*6)]
+                bg-espresso/5
+                lg:col-span-3
+                lg:rounded-[calc(var(--vw)*2)]
+              `}
+            >
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </Networks>
+    </Networks>
   </div>
 </Layout>

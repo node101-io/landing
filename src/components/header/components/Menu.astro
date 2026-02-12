@@ -46,9 +46,11 @@
 </section>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-menu-section]').forEach((section) => {
-    section.addEventListener('mousedown', (e) => {
-      e.preventDefault();
+  document
+    .querySelectorAll<HTMLElement>("[data-menu-section]")
+    .forEach((section) => {
+      section.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+      });
     });
-  });
 </script>

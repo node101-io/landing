@@ -1,5 +1,5 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 export interface Props {
   icon: string;
@@ -9,7 +9,9 @@ export interface Props {
 }
 
 const { icon, name, symbol, href } = Astro.props;
-const localizedHref = href ? getRelativeLocaleUrl(Astro.currentLocale!, href) : href;
+const localizedHref = href
+  ? getRelativeLocaleUrl(Astro.currentLocale!, href)
+  : href;
 ---
 
 <a
@@ -45,26 +47,30 @@ const localizedHref = href ? getRelativeLocaleUrl(Astro.currentLocale!, href) : 
       lg:rounded-full
     `}
   />
-  <span class={`
-    hidden
-    min-w-0
-    flex-1
-    truncate
-    text-sm
-    font-medium
-    text-foreground
-    lg:block
-  `}>
+  <span
+    class={`
+      hidden
+      min-w-0
+      flex-1
+      truncate
+      text-sm
+      font-medium
+      text-foreground
+      lg:block
+    `}
+  >
     {name}
   </span>
-  <span class={`
-    hidden
-    shrink-0
-    text-xs
-    font-medium
-    text-muted
-    lg:block
-  `}>
+  <span
+    class={`
+      hidden
+      shrink-0
+      text-xs
+      font-medium
+      text-muted
+      lg:block
+    `}
+  >
     {symbol}
   </span>
 </a>

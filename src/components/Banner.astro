@@ -14,7 +14,7 @@ type BannerData = {
 };
 
 let banner: BannerData = {
-  text: t('banner.text'),
+  text: t("banner.text"),
   link: "#",
 };
 
@@ -23,7 +23,12 @@ try {
   const runtime = Astro.locals.runtime;
   if (runtime?.env?.KV) {
     const data = await runtime.env.KV.get(`banner:${lang}`, "json");
-    if (data && typeof data === "object" && "text" in data && typeof data.text === "string") {
+    if (
+      data &&
+      typeof data === "object" &&
+      "text" in data &&
+      typeof data.text === "string"
+    ) {
       banner = data as BannerData;
     }
   }
@@ -98,7 +103,7 @@ try {
   <button
     id="banner-close"
     type="button"
-    aria-label={t('banner.closeAriaLabel')}
+    aria-label={t("banner.closeAriaLabel")}
     class={`
       flex
       h-full
@@ -117,17 +122,18 @@ try {
         rotate-45
         bg-current
         [mask:url('/img/plus.svg')_no-repeat_center/contain]
-      `}
-    />
+      `}></span>
   </button>
 </div>
 
 <script>
-  const COOKIE_NAME = 'banner_dismissed';
+  const COOKIE_NAME = "banner_dismissed";
   const COOKIE_DAYS = 7;
 
   function getCookie(name: string): string | null {
-    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    const match = document.cookie.match(
+      new RegExp("(^| )" + name + "=([^;]+)"),
+    );
     return match ? match[2] : null;
   }
 
@@ -137,38 +143,38 @@ try {
   }
 
   function initBanner(): void {
-    const banner = document.getElementById('banner');
-    const closeBtn = document.getElementById('banner-close');
+    const banner = document.getElementById("banner");
+    const closeBtn = document.getElementById("banner-close");
 
     if (!banner) return;
 
     // Cookie varsa banner'ı gizle
     if (getCookie(COOKIE_NAME)) {
-      banner.style.height = '0';
-      banner.style.opacity = '0';
-      banner.style.overflow = 'hidden';
+      banner.style.height = "0";
+      banner.style.opacity = "0";
+      banner.style.overflow = "hidden";
       // CSS variable'ı güncelle
-      document.documentElement.style.setProperty('--banner-height', '0rem');
+      document.documentElement.style.setProperty("--banner-height", "0rem");
       return;
     }
 
-    closeBtn?.addEventListener('click', (e) => {
+    closeBtn?.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
 
       // Cookie set et
-      setCookie(COOKIE_NAME, '1', COOKIE_DAYS);
+      setCookie(COOKIE_NAME, "1", COOKIE_DAYS);
 
       // Banner'ı animasyonlu gizle
-      banner.style.height = '0';
-      banner.style.opacity = '0';
+      banner.style.height = "0";
+      banner.style.opacity = "0";
 
       // CSS variable'ı güncelle (hero positioning için)
-      document.documentElement.style.setProperty('--banner-height', '0rem');
+      document.documentElement.style.setProperty("--banner-height", "0rem");
     });
   }
 
   // Sayfa yüklendiğinde ve view transitions sonrası çalıştır
   initBanner();
-  document.addEventListener('astro:after-swap', initBanner);
+  document.addEventListener("astro:after-swap", initBanner);
 </script>

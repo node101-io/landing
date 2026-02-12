@@ -1,0 +1,596 @@
+---
+import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import isoBadge from "@/assets/images/iso-badge.webp";
+import gdprBadge from "@/assets/images/gdpr.png";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const offerings = [
+  {
+    id: "staking",
+    label: t("offerings.staking"),
+    description: t("offerings.staking.description"),
+    spiral: "/img/offerings-spirals/staking-spiral.svg",
+  },
+  {
+    id: "rpc",
+    label: t("offerings.rpc"),
+    description: t("offerings.rpc.description"),
+    spiral: "/img/offerings-spirals/rpc-spiral.svg",
+  },
+  {
+    id: "security",
+    label: t("offerings.security"),
+    description: t("offerings.security.description"),
+    spiral: "/img/offerings-spirals/security-spiral.svg",
+  },
+];
+---
+
+<section
+  class={`
+    group/offerings
+    m-0
+    flex
+    h-fit
+    w-full
+    flex-col
+    overflow-hidden
+    rounded-none
+    bg-espresso
+    lg:m-(--section-margin)
+    lg:aspect-20/9
+    lg:w-[calc(100%-var(--section-margin)*2)]
+    lg:flex-row
+    lg:rounded-4xl
+  `}
+  aria-label={t("offerings.ariaLabel")}
+>
+  <!-- Left: Title and Labels -->
+  <div
+    class={`
+    flex
+    flex-col
+    items-center
+    justify-between
+    p-6
+    lg:w-1/2
+    lg:items-start
+    lg:p-10
+  `}
+  >
+    <h2
+      class={`
+      mt-8
+      mb-6
+      font-sans
+      text-base
+      font-normal
+      text-balance
+      text-cream
+      sm:text-lg
+      md:text-xl
+      lg:mt-[calc(var(--vw)*3)]
+      lg:mb-0
+      lg:text-[calc(var(--vw)*1.5)]
+    `}
+    >
+      {t("offerings.title")}
+    </h2>
+
+    <div
+      class={`
+      flex
+      flex-row
+      flex-wrap
+      justify-center
+      gap-2
+      pb-4
+      lg:flex-col
+      lg:flex-nowrap
+      lg:justify-start
+      lg:gap-6
+      lg:pb-0
+    `}
+    >
+      {
+        offerings.map((offering, index) => (
+          <div
+            class={`
+          group
+          relative
+        `}
+          >
+            <input
+              type="radio"
+              name="service-selector"
+              id={`service-${offering.id}`}
+              value={offering.id}
+              checked={index === 1}
+              class={`
+              peer
+              sr-only
+            `}
+            />
+            <label
+              for={`service-${offering.id}`}
+              class={`
+              relative
+              block
+              shrink-0
+              cursor-pointer
+              rounded-full
+              bg-cream
+              px-3
+              py-1.5
+              font-sans
+              text-xs
+              font-normal
+              whitespace-nowrap
+              text-espresso
+              transition-[color,background-color,padding]
+              duration-500
+              ease-out
+              peer-checked:bg-lav-active
+              peer-focus-visible:outline-2
+              peer-focus-visible:outline-offset-4
+              peer-focus-visible:outline-lav-active
+              motion-reduce:transition-none
+              sm:text-sm
+              md:text-base
+              lg:rounded-none
+              lg:bg-transparent
+              lg:px-0
+              lg:py-0
+              lg:text-[calc(var(--vw)*4)]
+              lg:leading-none
+              lg:whitespace-normal
+              lg:text-cream
+              lg:peer-checked:bg-transparent
+              lg:peer-checked:pl-[calc(var(--vw)*1.5)]
+              lg:peer-checked:text-lav-active
+            `}
+            >
+              <img
+                src="/img/star.svg"
+                alt=""
+                aria-hidden="true"
+                class={`
+                absolute
+                top-[0.15em]
+                left-0
+                hidden
+                size-[0.25em]
+                scale-50
+                opacity-0
+                transition-[scale,opacity]
+                duration-500
+                ease-out
+                motion-reduce:transition-none
+                lg:block
+                lg:group-has-checked:scale-100
+                lg:group-has-checked:opacity-100
+              `}
+              />
+              {offering.label}
+            </label>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Right: Sliding Cards -->
+  <div
+    class={`
+    relative
+    flex-1
+    lg:w-1/2
+    lg:pr-10
+    lg:pl-4
+  `}
+  >
+    <!-- Gradient overlays -->
+    <div
+      class={`
+      pointer-events-none
+      absolute
+      inset-x-0
+      top-0
+      z-10
+      hidden
+      h-[14dvh]
+      bg-linear-to-b
+      from-espresso
+      to-transparent
+      lg:block
+    `}
+    >
+    </div>
+    <div
+      class={`
+      pointer-events-none
+      absolute
+      inset-x-0
+      bottom-0
+      z-10
+      hidden
+      h-[14dvh]
+      bg-linear-to-t
+      from-espresso
+      to-transparent
+      lg:block
+    `}
+    >
+    </div>
+
+    <!-- Cards -->
+    <div
+      id="offerings-cards"
+      class={`
+      relative
+      mb-[calc(var(--vw)*4)]
+      h-[calc(var(--vw)*65)]
+      sm:mb-6
+      sm:h-72
+      lg:mb-0
+      lg:h-full
+    `}
+    >
+      {
+        offerings.map((offering, i) => (
+          <article
+            class={`
+            service-card
+            absolute
+            flex
+            aspect-7/5
+            w-[calc(var(--vw)*85)]
+            flex-col
+            justify-between
+            rounded-xl
+            bg-cream
+            p-[calc(var(--vw)*4)]
+            sm:w-96
+            sm:p-5
+            lg:inset-x-0
+            lg:aspect-auto
+            lg:h-[65%]
+            lg:w-auto
+            lg:justify-end
+          `}
+            style={`--index: ${i}`}
+            data-service={offering.id}
+          >
+            <div
+              class={`
+            mb-auto
+            flex
+            items-center
+            justify-between
+            lg:hidden
+          `}
+            >
+              <img
+                src={offering.spiral}
+                alt=""
+                aria-hidden="true"
+                class={`
+              h-[calc(var(--vw)*6)]
+              w-auto
+              sm:h-6
+            `}
+              />
+              <h3
+                class={`
+              text-right
+              font-sans
+              text-[calc(var(--vw)*4.5)]
+              tracking-wide
+              text-espresso
+              uppercase
+              sm:text-lg
+            `}
+              >
+                {offering.label}
+              </h3>
+            </div>
+
+            {/* Desktop spiral */}
+            <img
+              src={offering.spiral}
+              alt=""
+              aria-hidden="true"
+              class={`
+            absolute
+            top-[calc(var(--vw)*1)]
+            right-[calc(var(--vw)*1)]
+            hidden
+            h-[calc(var(--vw)*4)]
+            w-auto
+            lg:block
+          `}
+            />
+
+            {/* Badges */}
+            {offering.id === "security" && (
+              <div
+                class={`
+              flex
+              items-center
+              gap-[calc(var(--vw)*1.5)]
+              sm:gap-2
+              lg:absolute
+              lg:top-[calc(var(--vw)*1)]
+              lg:left-[calc(var(--vw)*1)]
+              lg:gap-[calc(var(--vw)*0.5)]
+            `}
+              >
+                <Image
+                  src={isoBadge}
+                  alt="ISO 27001"
+                  class={`
+                h-[calc(var(--vw)*6)]
+                w-auto
+                sm:h-6
+                lg:h-[calc(var(--vw)*2.5)]
+              `}
+                />
+                <Image
+                  src={gdprBadge}
+                  alt="GDPR"
+                  class={`
+                h-[calc(var(--vw)*6)]
+                w-auto
+                sm:h-6
+                lg:h-[calc(var(--vw)*2.5)]
+              `}
+                />
+              </div>
+            )}
+
+            {/* Description */}
+            <p
+              class={`
+            py-[calc(var(--vw)*2)]
+            font-sans
+            text-[calc(var(--vw)*3.2)]
+            leading-relaxed
+            text-espresso
+            sm:py-3
+            sm:text-sm
+            lg:py-0
+            lg:text-[calc(var(--vw)*1.6)]
+          `}
+            >
+              {offering.description}
+            </p>
+
+            {/* Mobile CTA */}
+            <a
+              href="#"
+              class={`
+            flex
+            items-center
+            justify-between
+            rounded-full
+            bg-espresso
+            px-[calc(var(--vw)*3)]
+            py-[calc(var(--vw)*2)]
+            text-[calc(var(--vw)*2.5)]
+            text-cream
+            transition-colors
+            hover:bg-espresso/90
+            sm:px-4
+            sm:py-2.5
+            sm:text-sm
+            lg:hidden
+          `}
+            >
+              <span>{t("offerings.cta")}</span>
+              <img
+                src="/img/arrow/arrow-right-light.svg"
+                alt=""
+                aria-hidden="true"
+                class={`
+              h-[calc(var(--vw)*2)]
+              w-auto
+              sm:h-3
+            `}
+              />
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /*
+   * Service Cards Carousel
+   * Pure CSS implementation using :has() for state management
+   * Formula: position = center + (cardIndex - selectedIndex) × step
+   */
+
+  /* State: which service is selected (0, 1, or 2) */
+  .group\/offerings:has(#service-staking:checked) {
+    --selected: 0;
+  }
+  .group\/offerings:has(#service-rpc:checked) {
+    --selected: 1;
+  }
+  .group\/offerings:has(#service-security:checked) {
+    --selected: 2;
+  }
+
+  /* Card positioning */
+  .service-card {
+    --offset: calc(var(--index) - var(--selected));
+    z-index: 20;
+    transition:
+      translate 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      top 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: translate, top;
+  }
+
+  /* Mobile < 640px: horizontal, vw-based */
+  @media (width < 640px) {
+    .service-card {
+      left: 50%;
+      top: 50%;
+      translate: calc(
+          -50% + var(--offset) * var(--vw) * 87 + var(--drag-offset, 0px)
+        ) -50%;
+    }
+  }
+
+  /* Tablet 640-1023px: horizontal, px-based */
+  @media (640px <= width < 1024px) {
+    .service-card {
+      left: 50%;
+      top: 50%;
+      translate: calc(
+          -50% + var(--offset) * 408px + var(--drag-offset, 0px)
+        ) -50%;
+    }
+  }
+
+  /* Desktop ≥ 1024px: vertical */
+  @media (width >= 1024px) {
+    .service-card {
+      left: 0;
+      top: calc(17.5% + var(--offset) * 69%);
+      translate: none;
+    }
+  }
+
+  /* Selected card: higher z-index */
+  .group\/offerings:has(#service-staking:checked) [data-service="staking"],
+  .group\/offerings:has(#service-rpc:checked) [data-service="rpc"],
+  .group\/offerings:has(#service-security:checked) [data-service="security"] {
+    z-index: 30;
+  }
+
+  /* Mobile: selected card purple background */
+  @media (width < 1024px) {
+    .group\/offerings:has(#service-staking:checked) [data-service="staking"],
+    .group\/offerings:has(#service-rpc:checked) [data-service="rpc"],
+    .group\/offerings:has(#service-security:checked) [data-service="security"] {
+      background-color: var(--color-lav-active);
+    }
+  }
+
+  /* Disable transition during drag for instant feedback */
+  .service-card.dragging {
+    transition-duration: 0s;
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .service-card {
+      transition-duration: 0s;
+    }
+  }
+</style>
+
+<script>
+  const serviceIds = ["staking", "rpc", "security"] as const;
+  const container = document.getElementById("offerings-cards");
+  const isMobile = () => window.matchMedia("(max-width: 1023px)").matches;
+
+  function getSelected(): number {
+    for (let i = 0; i < serviceIds.length; i++) {
+      const radio = document.getElementById(
+        `service-${serviceIds[i]}`,
+      ) as HTMLInputElement | null;
+      if (radio?.checked) return i;
+    }
+    return 1;
+  }
+
+  function selectService(index: number) {
+    const clamped = Math.max(0, Math.min(serviceIds.length - 1, index));
+    const radio = document.getElementById(
+      `service-${serviceIds[clamped]}`,
+    ) as HTMLInputElement | null;
+    if (radio) {
+      radio.checked = true;
+    }
+  }
+
+  if (container) {
+    let startX = 0;
+    let startY = 0;
+    let isHorizontal: boolean | null = null;
+    const cards = container.querySelectorAll(".service-card");
+
+    container.addEventListener(
+      "touchstart",
+      (e: TouchEvent) => {
+        if (!isMobile()) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isHorizontal = null;
+      },
+      { passive: true },
+    );
+
+    container.addEventListener(
+      "touchmove",
+      (e: TouchEvent) => {
+        if (!isMobile()) return;
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+
+        // Determine swipe direction on first significant move
+        if (isHorizontal === null && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+          isHorizontal = Math.abs(dx) > Math.abs(dy);
+        }
+
+        if (isHorizontal) {
+          e.preventDefault();
+          // Set drag offset on all cards via CSS custom property
+          container.style.setProperty("--drag-offset", `${dx}px`);
+          cards.forEach((card) => card.classList.add("dragging"));
+        }
+      },
+      { passive: false },
+    );
+
+    container.addEventListener(
+      "touchend",
+      (e: TouchEvent) => {
+        if (!isMobile()) return;
+        const endX = e.changedTouches[0].clientX;
+        const deltaX = endX - startX;
+
+        // Remove drag state — transition kicks back in for smooth snap
+        cards.forEach((card) => card.classList.remove("dragging"));
+        container.style.removeProperty("--drag-offset");
+
+        if (Math.abs(deltaX) > 50) {
+          const current = getSelected();
+          selectService(deltaX < 0 ? current + 1 : current - 1);
+        }
+
+        // Reset direction lock
+        isHorizontal = null;
+      },
+      { passive: true },
+    );
+
+    container.addEventListener(
+      "touchcancel",
+      () => {
+        cards.forEach((card) => card.classList.remove("dragging"));
+        container.style.removeProperty("--drag-offset");
+        isHorizontal = null;
+      },
+      { passive: true },
+    );
+  }
+</script>

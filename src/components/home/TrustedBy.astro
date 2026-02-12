@@ -1,21 +1,21 @@
 ---
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const placeholders = [
-  { color: '#a48c7e', width: 100 },
-  { color: '#8b7355', width: 120 },
-  { color: '#6a4d42', width: 90 },
-  { color: '#a48c7e', width: 110 },
-  { color: '#8b7355', width: 100 },
-  { color: '#6a4d42', width: 130 },
+  { color: "#a48c7e", width: 100 },
+  { color: "#8b7355", width: 120 },
+  { color: "#6a4d42", width: 90 },
+  { color: "#a48c7e", width: 110 },
+  { color: "#8b7355", width: 100 },
+  { color: "#6a4d42", width: 130 },
 ];
 ---
 
 <section
-  aria-label={t('trustedBy.ariaLabel')}
+  aria-label={t("trustedBy.ariaLabel")}
   class={`
     flex
     w-full
@@ -29,22 +29,26 @@ const placeholders = [
     lg:pl-6
   `}
 >
-  <p class={`
-    hidden
-    flex-2
-    font-normal
-    text-espresso
-    lg:block
-    lg:text-base
-  `}>
-    {t('trustedBy.description')}
+  <p
+    class={`
+      hidden
+      flex-2
+      font-normal
+      text-espresso
+      lg:block
+      lg:text-base
+    `}
+  >
+    {t("trustedBy.description")}
   </p>
 
-  <div class={`
-    relative
-    flex-3
-    overflow-hidden
-  `}>
+  <div
+    class={`
+      relative
+      flex-3
+      overflow-hidden
+    `}
+  >
     <!--
       Easing gradient for smoother fade-out transition
       Generated with: https://larsenwork.com/easing-gradients/
@@ -64,7 +68,8 @@ const placeholders = [
       `}
       style="background: linear-gradient(to right, hsl(0, 0%, 98%) 0%, hsla(0, 0%, 98%, 0.987) 8.1%, hsla(0, 0%, 98%, 0.951) 15.5%, hsla(0, 0%, 98%, 0.896) 22.5%, hsla(0, 0%, 98%, 0.825) 29%, hsla(0, 0%, 98%, 0.741) 35.3%, hsla(0, 0%, 98%, 0.648) 41.2%, hsla(0, 0%, 98%, 0.55) 47.1%, hsla(0, 0%, 98%, 0.45) 52.9%, hsla(0, 0%, 98%, 0.352) 58.8%, hsla(0, 0%, 98%, 0.259) 64.7%, hsla(0, 0%, 98%, 0.175) 71%, hsla(0, 0%, 98%, 0.104) 77.5%, hsla(0, 0%, 98%, 0.049) 84.5%, hsla(0, 0%, 98%, 0.013) 91.9%, hsla(0, 0%, 98%, 0) 100%);"
       aria-hidden="true"
-    ></div>
+    >
+    </div>
 
     <!-- Scrolling track -->
     <div

@@ -1,20 +1,20 @@
 ---
 export const prerender = false;
 
-import MenuSection from './MenuSection.astro';
-import type { GridItemProps } from './MenuSection.astro';
-import { toLang, useTranslations } from '@/i18n/utils';
-import { R2_PUBLIC_URL } from '@/data/r2';
+import MenuSection from "./MenuSection.astro";
+import type { GridItemProps } from "./MenuSection.astro";
+import { toLang, useTranslations } from "@/i18n/utils";
+import { R2_PUBLIC_URL } from "@/data/r2";
 import {
   type KVNetwork,
   type NetworkCategories,
   getNetworks,
   getNetworkCategories,
   EMPTY_CATEGORIES,
-} from '@/data/networks';
+} from "@/data/networks";
 
 interface Props {
-  variant: 'investment' | 'rpc';
+  variant: "investment" | "rpc";
 }
 
 const { variant } = Astro.props;
@@ -60,53 +60,62 @@ function resolveCategory(ids: string[]): GridItemProps[] {
 }
 
 // Per-category arrays with fallback to all networks
-const popularBlockchains = categories.popularBlockchains.length > 0
-  ? resolveCategory(categories.popularBlockchains)
-  : allNetworks;
+const popularBlockchains =
+  categories.popularBlockchains.length > 0
+    ? resolveCategory(categories.popularBlockchains)
+    : allNetworks;
 
-const currentlyPopular = categories.currentlyPopular.length > 0
-  ? resolveCategory(categories.currentlyPopular)
-  : allNetworks;
+const currentlyPopular =
+  categories.currentlyPopular.length > 0
+    ? resolveCategory(categories.currentlyPopular)
+    : allNetworks;
 
-const newNetworks = categories.new.length > 0
-  ? resolveCategory(categories.new)
-  : allNetworks;
+const newNetworks =
+  categories.new.length > 0 ? resolveCategory(categories.new) : allNetworks;
 
-const mostUsed = categories.mostUsed.length > 0
-  ? resolveCategory(categories.mostUsed)
-  : allNetworks;
+const mostUsed =
+  categories.mostUsed.length > 0
+    ? resolveCategory(categories.mostUsed)
+    : allNetworks;
 ---
 
-{variant === 'investment' && popularBlockchains.length > 0 && (
-  <MenuSection
-    type="grid"
-    title={t('menu.investment.popularBlockchains')}
-    items={popularBlockchains}
-  />
-)}
+{
+  variant === "investment" && popularBlockchains.length > 0 && (
+    <MenuSection
+      type="grid"
+      title={t("menu.investment.popularBlockchains")}
+      items={popularBlockchains}
+    />
+  )
+}
 
-{variant === 'rpc' && (currentlyPopular.length > 0 || newNetworks.length > 0 || mostUsed.length > 0) && (
-  <MenuSection
-    type="multi_grid"
-    title={t('menu.rpc.rpcServices')}
-    categories={[
-      {
-        title: t('menu.rpc.currentlyPopular'),
-        columns: 1,
-        items: currentlyPopular,
-      },
-      {
-        title: t('menu.rpc.new'),
-        hideOnMobile: true,
-        columns: 1,
-        items: newNetworks,
-      },
-      {
-        title: t('menu.rpc.mostUsed'),
-        hideOnMobile: true,
-        columns: 2,
-        items: mostUsed,
-      },
-    ]}
-  />
-)}
+{
+  variant === "rpc" &&
+    (currentlyPopular.length > 0 ||
+      newNetworks.length > 0 ||
+      mostUsed.length > 0) && (
+      <MenuSection
+        type="multi_grid"
+        title={t("menu.rpc.rpcServices")}
+        categories={[
+          {
+            title: t("menu.rpc.currentlyPopular"),
+            columns: 1,
+            items: currentlyPopular,
+          },
+          {
+            title: t("menu.rpc.new"),
+            hideOnMobile: true,
+            columns: 1,
+            items: newNetworks,
+          },
+          {
+            title: t("menu.rpc.mostUsed"),
+            hideOnMobile: true,
+            columns: 2,
+            items: mostUsed,
+          },
+        ]}
+      />
+    )
+}

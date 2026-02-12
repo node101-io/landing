@@ -1,18 +1,18 @@
 ---
-import { Image, getImage } from 'astro:assets';
-import { getLangFromUrl, useTranslations } from '@/i18n/utils';
-import isoBadge from '@/assets/images/iso-badge.webp';
-import heroBackground from '@/assets/images/hero-background.webp';
+import { Image, getImage } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import isoBadge from "@/assets/images/iso-badge.webp";
+import heroBackground from "@/assets/images/hero-background.webp";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const optimizedHeroBg = await getImage({ src: heroBackground, format: 'webp' });
+const optimizedHeroBg = await getImage({ src: heroBackground, format: "webp" });
 
 const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/node101-io' },
-  { label: 'X', href: 'https://x.com/node_101' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/node101/' },
+  { label: "GitHub", href: "https://github.com/node101-io" },
+  { label: "X", href: "https://x.com/node_101" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/node101/" },
 ];
 ---
 
@@ -38,20 +38,22 @@ const socialLinks = [
     lg:group-has-[#mobile-menu-toggle:checked]/menu:h-[calc(100dvh-var(--banner-height)-var(--hero-margin-total))]
     lg:group-has-[#mobile-menu-toggle:checked]/menu:rounded-4xl
     lg:group-has-[#mobile-menu-toggle:checked]/menu:p-0
-  `}>
-
-  <section class={`
-    flex
-    flex-1
-    flex-col
-    items-center
-    justify-center
-    px-4
-    py-10
-    text-center
-    sm:px-6
-    md:px-8
-  `}>
+  `}
+>
+  <section
+    class={`
+      flex
+      flex-1
+      flex-col
+      items-center
+      justify-center
+      px-4
+      py-10
+      text-center
+      sm:px-6
+      md:px-8
+    `}
+  >
     <!-- <div class={`
       mb-6
       inline-flex
@@ -101,82 +103,92 @@ const socialLinks = [
         `}
       />
     </div> -->
-    <h1 class={`
-      max-w-5xl
-      font-display
-      text-4xl
-      leading-[0.85]
-      font-bold
-      text-balance
-      text-espresso-light
-      sm:text-5xl
-      md:text-6xl
-      lg:text-7xl
-      xl:text-8xl
-    `}>
-      {t('hero.titleLine1')}
-      <span class="block">{t('hero.titleLine2')}</span>
+    <h1
+      class={`
+        max-w-5xl
+        font-display
+        text-4xl
+        leading-[0.85]
+        font-bold
+        text-balance
+        text-espresso-light
+        sm:text-5xl
+        md:text-6xl
+        lg:text-7xl
+        xl:text-8xl
+      `}
+    >
+      {t("hero.titleLine1")}
+      <span class="block">{t("hero.titleLine2")}</span>
     </h1>
 
-    <p class={`
-      mt-6
-      max-w-md
-      text-xs
-      leading-relaxed
-      font-normal
-      text-espresso-light
-      sm:mt-8
-      sm:max-w-lg
-      sm:text-sm
-      md:max-w-xl
-      md:text-base
-    `}>
-      {t('hero.description')}
+    <p
+      class={`
+        mt-6
+        max-w-md
+        text-xs
+        leading-relaxed
+        font-normal
+        text-espresso-light
+        sm:mt-8
+        sm:max-w-lg
+        sm:text-sm
+        md:max-w-xl
+        md:text-base
+      `}
+    >
+      {t("hero.description")}
     </p>
   </section>
 
-  <div class={`
-    absolute
-    right-(--header-margin)
-    bottom-(--header-margin)
-    left-(--header-margin)
-    flex
-    items-center
-    justify-between
-    sm:bottom-6
-    sm:items-end
-  `}>
+  <div
+    class={`
+      absolute
+      right-(--header-margin)
+      bottom-(--header-margin)
+      left-(--header-margin)
+      flex
+      items-center
+      justify-between
+      sm:bottom-6
+      sm:items-end
+    `}
+  >
     <Image
       src={isoBadge}
-      alt={t('hero.isoBadgeAlt')}
+      alt={t("hero.isoBadgeAlt")}
       class={`
         h-8
         w-auto
         sm:h-10
       `}
     />
-    <nav class={`
-      flex
-      items-center
-      gap-5
-      text-sm
-      text-espresso-light
-      sm:gap-7
-      sm:text-base
-    `}>
-      {socialLinks.map(({ label, href }) => (
-        <a
-          href={href}
-          class={`
-            transition-colors
-            hover:text-primary
-          `}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {label}
-        </a>
-      ))}
+    <nav
+      class={`
+        flex
+        items-center
+        gap-5
+        text-sm
+        text-espresso-light
+        sm:gap-7
+        sm:text-base
+      `}
+    >
+      {
+        socialLinks.map(({ label, href }) => (
+          <a
+            href={href}
+            class={`
+              transition-colors
+              hover:text-primary
+            `}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {label}
+          </a>
+        ))
+      }
     </nav>
   </div>
 </div>
