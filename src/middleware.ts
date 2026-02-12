@@ -45,7 +45,14 @@ const adminAuth = defineMiddleware(async (context, next) => {
   return next();
 });
 
-export const onRequest = sequence(i18n, adminAuth);
+// Root path → redirect to preferred locale
+const localeRedirect = defineMiddleware((context, next) => {
+  if (context.url.pathname !== "/") return next();
+  const locale = context.preferredLocale ?? "en";
+  return context.redirect(`/${locale}/`);
+});
+
+export const onRequest = sequence(localeRedirect, i18n, adminAuth);
 
 // --- JWT verification helpers ---
 
