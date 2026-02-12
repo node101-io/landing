@@ -148,13 +148,11 @@ const allItems = [...desktopItems, ...mobileItems];
       isolate
       flex
       flex-col
-      gap-8
       overflow-x-clip
       bg-[radial-gradient(ellipse_45%_45%_at_center,#E5E6FF80_0%,transparent_100%)]
       py-12
       sm:py-16
       md:py-20
-      lg:gap-12
       lg:py-24
     `}
     aria-label={t('networks.ariaLabel')}
@@ -162,10 +160,12 @@ const allItems = [...desktopItems, ...mobileItems];
   >
   <!-- Title section -->
   <div class={`
+    mb-8
     flex
     flex-col
     gap-8
     font-sans
+    lg:mb-12
     lg:flex-row
     lg:items-center
     lg:justify-between
@@ -225,10 +225,12 @@ const allItems = [...desktopItems, ...mobileItems];
   </div>
 
   <div class={`
+    mb-5
     flex
     items-center
     gap-2
     font-sans
+    lg:mb-6
     lg:gap-3
   `}>
     <div class="relative">
@@ -359,11 +361,13 @@ const allItems = [...desktopItems, ...mobileItems];
 
   <!-- Babylon Staking Banner -->
   <div class={`
+    mb-3
     w-full
     overflow-hidden
     rounded-xl
     bg-gray-50
     py-1.5
+    lg:mb-4
   `}>
     <div class={`
       flex
