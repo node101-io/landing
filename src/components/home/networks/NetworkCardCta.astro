@@ -3,33 +3,44 @@ import { type TranslationFn } from '@/i18n/utils';
 
 interface Props {
   t: TranslationFn;
+  gridClass?: string;
 }
 
-const { t } = Astro.props;
+const { t, gridClass } = Astro.props;
 ---
 
 <a
   href="#"
-  class={`
-    group
-    relative
-    flex
-    h-full
-    w-full
-    items-center
-    justify-center
-    overflow-hidden
-    rounded-[calc(var(--vw)*6)]
-    bg-espresso
-    no-underline
-    transition-colors
-    delay-200
-    duration-500
-    lg:rounded-[calc(var(--vw)*2)]
-    lg:bg-lav-border
-    lg:hover:bg-espresso
-    lg:hover:delay-0
-  `}
+  class:list={[
+    gridClass,
+    `
+      group
+      relative
+      flex
+      items-center
+      justify-center
+    `,
+    `
+      overflow-hidden
+      rounded-[calc(var(--vw)*6)]
+      bg-espresso
+    `,
+    `
+      no-underline
+      transition-colors
+      delay-200
+      duration-500
+    `,
+    `
+      lg:rounded-[calc(var(--vw)*2)]
+      lg:border-none
+    `,
+    `
+      lg:bg-lav-border
+      lg:hover:bg-espresso
+      lg:hover:delay-0
+    `,
+  ]}
 >
   {/* Mobile — static text, styled like desktop hover */}
   <span class={`

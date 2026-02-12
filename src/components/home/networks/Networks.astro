@@ -124,7 +124,6 @@ function getGridItemClassList(item: GridItem) {
     'lg:rounded-[calc(var(--vw)*2)]',
     'lg:p-[calc(var(--vw)*1.4)]',
     {
-      '!p-0': item.type === 'cta',
       'network-slot': item.type !== 'cta',
       'aspect-square lg:aspect-auto': item.type === 'square-big',
       'items-center justify-center': item.type === 'square-small',
@@ -359,12 +358,36 @@ const allItems = [...desktopItems, ...mobileItems];
   </div>
 
   <!-- Babylon Staking Banner -->
-  <div class="w-full overflow-hidden rounded-xl bg-gray-50 py-1.5">
-    <div class="flex w-max animate-babylon-marquee items-center">
+  <div class={`
+    w-full
+    overflow-hidden
+    rounded-xl
+    bg-gray-50
+    py-1.5
+  `}>
+    <div class={`
+      flex
+      w-max
+      animate-babylon-marquee
+      items-center
+    `}>
       {[...Array(8)].map(() => (
         <Fragment>
-          <span class="mx-2 shrink-0 text-xl font-display font-normal whitespace-nowrap text-espresso">{bannerText}</span>
-          <Image src={babylonBannerImg} format="webp" alt="" height={72} class="mx-2 h-7 w-auto shrink-0" />
+          <span class={`
+            mx-2
+            shrink-0
+            font-display
+            text-xl
+            font-normal
+            whitespace-nowrap
+            text-espresso
+          `}>{bannerText}</span>
+          <Image src={babylonBannerImg} format="webp" alt="" height={72} class={`
+            mx-2
+            h-7
+            w-auto
+            shrink-0
+          `} />
         </Fragment>
       ))}
     </div>
@@ -381,6 +404,15 @@ const allItems = [...desktopItems, ...mobileItems];
     lg:gap-[calc(var(--vw)*1.4)]
   `}>
     {allItems.map((item) => {
+      if (item.type === 'cta') {
+        return (
+          <NetworkCardCta
+            t={t}
+            gridClass={[item.grid, item.displayClass, 'min-h-0', 'font-sans'].join(' ')}
+          />
+        );
+      }
+
       const network = item.network;
       const searchSlot = isSearchSlot(item);
       return (
@@ -410,10 +442,6 @@ const allItems = [...desktopItems, ...mobileItems];
 
           {item.type === 'rectangle-small' && network && (
             <NetworkCardRectangleSmall network={network} />
-          )}
-
-          {item.type === 'cta' && (
-            <NetworkCardCta t={t} />
           )}
         </div>
       );
